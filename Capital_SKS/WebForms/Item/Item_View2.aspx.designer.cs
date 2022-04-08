@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ORS_RCM {
-    
-    
-    public partial class Item_View2 {
-        
+namespace ORS_RCM
+{
+
+
+    public partial class Item_View2
+    {
+
         /// <summary>
         /// hfShowHide control.
         /// </summary>
@@ -20,7 +22,7 @@ namespace ORS_RCM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField hfShowHide;
-        
+
         /// <summary>
         /// hdfFromDate control.
         /// </summary>
@@ -29,7 +31,7 @@ namespace ORS_RCM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField hdfFromDate;
-        
+
         /// <summary>
         /// hdfToDate control.
         /// </summary>
@@ -38,7 +40,7 @@ namespace ORS_RCM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField hdfToDate;
-        
+
         /// <summary>
         /// hfid control.
         /// </summary>
@@ -47,7 +49,7 @@ namespace ORS_RCM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField hfid;
-        
+
         /// <summary>
         /// Panel2 control.
         /// </summary>
@@ -56,7 +58,7 @@ namespace ORS_RCM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel Panel2;
-        
+
         /// <summary>
         /// Panel1 control.
         /// </summary>
@@ -65,7 +67,7 @@ namespace ORS_RCM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel Panel1;
-        
+
         /// <summary>
         /// UpdatePanel2 control.
         /// </summary>
@@ -74,7 +76,7 @@ namespace ORS_RCM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel UpdatePanel2;
-        
+
         /// <summary>
         /// chkno control.
         /// </summary>
@@ -83,7 +85,7 @@ namespace ORS_RCM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBox chkno;
-        
+
         /// <summary>
         /// txtitemno control.
         /// </summary>
@@ -92,7 +94,7 @@ namespace ORS_RCM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtitemno;
-        
+
         /// <summary>
         /// txtbrandname control.
         /// </summary>
@@ -101,7 +103,7 @@ namespace ORS_RCM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtbrandname;
-        
+
         /// <summary>
         /// txtcatinfo control.
         /// </summary>
@@ -110,7 +112,7 @@ namespace ORS_RCM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtcatinfo;
-        
+
         /// <summary>
         /// ddlpersonincharge control.
         /// </summary>
@@ -119,7 +121,7 @@ namespace ORS_RCM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlpersonincharge;
-        
+
         /// <summary>
         /// ddlsksstatus control.
         /// </summary>
@@ -128,7 +130,7 @@ namespace ORS_RCM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlsksstatus;
-        
+
         /// <summary>
         /// txtdate control.
         /// </summary>
@@ -137,7 +139,7 @@ namespace ORS_RCM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtdate;
-        
+
         /// <summary>
         /// ImageButton1 control.
         /// </summary>
@@ -146,7 +148,7 @@ namespace ORS_RCM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ImageButton ImageButton1;
-        
+
         /// <summary>
         /// txtdateapproval control.
         /// </summary>
@@ -155,7 +157,7 @@ namespace ORS_RCM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtdateapproval;
-        
+
         /// <summary>
         /// ImageButton2 control.
         /// </summary>
@@ -164,7 +166,7 @@ namespace ORS_RCM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ImageButton ImageButton2;
-        
+
         /// <summary>
         /// lblPrice control.
         /// </summary>
@@ -173,7 +175,7 @@ namespace ORS_RCM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblPrice;
-        
+
         /// <summary>
         /// ddlSellingPrice control.
         /// </summary>
@@ -182,7 +184,7 @@ namespace ORS_RCM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlSellingPrice;
-        
+
         /// <summary>
         /// lblExhibition control.
         /// </summary>
@@ -191,7 +193,7 @@ namespace ORS_RCM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblExhibition;
-        
+
         /// <summary>
         /// ddlExhibiton control.
         /// </summary>
@@ -200,7 +202,7 @@ namespace ORS_RCM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlExhibiton;
-        
+
         /// <summary>
         /// txtproductname control.
         /// </summary>
@@ -209,7 +211,7 @@ namespace ORS_RCM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtproductname;
-        
+
         /// <summary>
         /// txtmanproductcode control.
         /// </summary>
@@ -218,7 +220,7 @@ namespace ORS_RCM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtmanproductcode;
-        
+
         /// <summary>
         /// txtconmpanyname control.
         /// </summary>
@@ -227,7 +229,7 @@ namespace ORS_RCM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtconmpanyname;
-        
+
         /// <summary>
         /// txtcompetitionname control.
         /// </summary>
@@ -236,7 +238,7 @@ namespace ORS_RCM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtcompetitionname;
-        
+
         /// <summary>
         /// txtclassname control.
         /// </summary>
@@ -245,7 +247,7 @@ namespace ORS_RCM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtclassname;
-        
+
         /// <summary>
         /// ddlspecialflag control.
         /// </summary>
@@ -254,7 +256,7 @@ namespace ORS_RCM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlspecialflag;
-        
+
         /// <summary>
         /// ddlreservationflag control.
         /// </summary>
@@ -263,7 +265,7 @@ namespace ORS_RCM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlreservationflag;
-        
+
         /// <summary>
         /// txtyear control.
         /// </summary>
@@ -272,7 +274,7 @@ namespace ORS_RCM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtyear;
-        
+
         /// <summary>
         /// txtseason control.
         /// </summary>
@@ -281,7 +283,7 @@ namespace ORS_RCM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtseason;
-        
+
         /// <summary>
         /// ddlshopstatus control.
         /// </summary>
@@ -290,7 +292,7 @@ namespace ORS_RCM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlshopstatus;
-        
+
         /// <summary>
         /// txtremark control.
         /// </summary>
@@ -299,7 +301,7 @@ namespace ORS_RCM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtremark;
-        
+
         /// <summary>
         /// txtjancode control.
         /// </summary>
@@ -308,7 +310,7 @@ namespace ORS_RCM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtjancode;
-        
+
         /// <summary>
         /// txtsalemanagementcode control.
         /// </summary>
@@ -317,7 +319,7 @@ namespace ORS_RCM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtsalemanagementcode;
-        
+
         /// <summary>
         /// txtinstrauctionno control.
         /// </summary>
@@ -326,7 +328,7 @@ namespace ORS_RCM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtinstrauctionno;
-        
+
         /// <summary>
         /// btnsearch control.
         /// </summary>
@@ -335,7 +337,7 @@ namespace ORS_RCM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnsearch;
-        
+
         /// <summary>
         /// hfoption control.
         /// </summary>
@@ -344,7 +346,7 @@ namespace ORS_RCM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField hfoption;
-        
+
         /// <summary>
         /// hfCtrl control.
         /// </summary>
@@ -353,7 +355,7 @@ namespace ORS_RCM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField hfCtrl;
-        
+
         /// <summary>
         /// btnselectall control.
         /// </summary>
@@ -362,7 +364,7 @@ namespace ORS_RCM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnselectall;
-        
+
         /// <summary>
         /// btncancelall control.
         /// </summary>
@@ -371,7 +373,7 @@ namespace ORS_RCM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btncancelall;
-        
+
         /// <summary>
         /// btnexhibition control.
         /// </summary>
@@ -380,7 +382,7 @@ namespace ORS_RCM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnexhibition;
-        
+
         /// <summary>
         /// btnwarehouse control.
         /// </summary>
@@ -389,7 +391,7 @@ namespace ORS_RCM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnwarehouse;
-        
+
         /// <summary>
         /// btndelete control.
         /// </summary>
@@ -398,7 +400,7 @@ namespace ORS_RCM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btndelete;
-        
+
         /// <summary>
         /// Label3 control.
         /// </summary>
@@ -407,7 +409,7 @@ namespace ORS_RCM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label3;
-        
+
         /// <summary>
         /// UpdatePanel3 control.
         /// </summary>
@@ -416,7 +418,7 @@ namespace ORS_RCM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel UpdatePanel3;
-        
+
         /// <summary>
         /// ddlname control.
         /// </summary>
@@ -425,7 +427,7 @@ namespace ORS_RCM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlname;
-        
+
         /// <summary>
         /// btnGenerate control.
         /// </summary>
@@ -434,7 +436,16 @@ namespace ORS_RCM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnGenerate;
-        
+
+        /// <summary>
+        /// AddButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button AddButton;
+
         /// <summary>
         /// ddlpage control.
         /// </summary>
@@ -443,7 +454,7 @@ namespace ORS_RCM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlpage;
-        
+
         /// <summary>
         /// lnkdownload control.
         /// </summary>
@@ -452,7 +463,7 @@ namespace ORS_RCM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lnkdownload;
-        
+
         /// <summary>
         /// hfview control.
         /// </summary>
@@ -461,7 +472,7 @@ namespace ORS_RCM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField hfview;
-        
+
         /// <summary>
         /// UpdatePanel1 control.
         /// </summary>
@@ -470,7 +481,7 @@ namespace ORS_RCM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel UpdatePanel1;
-        
+
         /// <summary>
         /// gvscroll control.
         /// </summary>
@@ -479,7 +490,7 @@ namespace ORS_RCM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl gvscroll;
-        
+
         /// <summary>
         /// gvItem control.
         /// </summary>
@@ -488,7 +499,7 @@ namespace ORS_RCM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView gvItem;
-        
+
         /// <summary>
         /// hfNewTab control.
         /// </summary>
@@ -497,7 +508,7 @@ namespace ORS_RCM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label hfNewTab;
-        
+
         /// <summary>
         /// gp control.
         /// </summary>

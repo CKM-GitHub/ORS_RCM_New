@@ -51,11 +51,10 @@ namespace ORS_RCM_BL
         {
             return iteminfo_dl.ItemView2_Search(ime, pageIndex, pageSize, option);
         }
-
-        //public DataTable ItemView2_PageLoad(Item_Master_Entity ime, int pageIndex, int pageSize, int option)
-        //{
-        //    return iteminfo_dl.ItemView2_PageLoad(ime, pageIndex, pageSize, option);
-        //}
+        public DataTable CRUDD_ShoppingCard(string cklist, int id)
+        {
+            return iteminfo_dl.CRUDD_ShoppingCard(cklist, id);
+        }
 
         public DataTable SelectShop()
         {

@@ -36,6 +36,7 @@
          if (e.keyCode == 27) {
              document.getElementById("<%=txtitemno.ClientID%>").value = null;
              document.getElementById("<%=txtbrandname.ClientID%>").value = null;
+             document.getElementById("<%=lblPrice.ClientID%>").value = null;
              document.getElementById("<%=txtcatinfo.ClientID%>").value = null;
              document.getElementById("<%=txtdate.ClientID%>").value = null;
              document.getElementById("<%=txtdateapproval.ClientID%>").value = null;
@@ -579,7 +580,10 @@ document.getElementById("<%=txtmanproductcode.ClientID%>").value = null;
                                 <asp:Button runat="server" ID="btnGenerate" Text="エクスポート" OnClick="btnGenerate_Click" OnClientClick="target=''"
                                     ToolTip="Export" Width="80px" />
                             </p>
-
+                            <p>
+                                <asp:Button  ID="AddButton" runat="server"  Text="商品情報連携" OnClick="btnAddGenerate_Click" OnClientClick="target=''" Enabled="false"
+                                    ToolTip="AddButton" Width="80px" />
+                            </p>
 
 
                             <p class="itemPage">

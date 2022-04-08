@@ -22,8 +22,8 @@ namespace ORS_RCM_DL
 {
    public  class Item_Information_DL
     {
-
-       public Item_Information_DL() { }
+      
+        public Item_Information_DL() { }
 
        public DataTable ItemSearch(string itemcode,string salecode,string competition_name,
                                                            string brand_name,string classname, string jancode,string season,string year)
@@ -565,150 +565,173 @@ namespace ORS_RCM_DL
                throw ex;
            }
        }
-       /*
-       public DataTable ItemView2_PageLoad(Item_Master_Entity ime, int pageIndex, int pageSize, int option)
-       {
-           try
-           {
-               SqlConnection connectionString = new SqlConnection(DataConfig.connectionString);
-               SqlDataAdapter da = new SqlDataAdapter("Item_View2_PageLoad", connectionString);
-               DataTable dt = new DataTable();
-               da.SelectCommand.CommandType = CommandType.StoredProcedure;
-               da.SelectCommand.CommandTimeout = 0;
-               if (String.IsNullOrWhiteSpace(ime.Item_Code))
-               {
-                   da.SelectCommand.Parameters.AddWithValue("@itemno", DBNull.Value);
-               }
-               else
-                   da.SelectCommand.Parameters.AddWithValue("@itemno", ime.Item_Code);
+     
+        public DataTable CRUDD_ShoppingCard(string cklist,  int id)
+        {
+            try
+            {
+                SqlConnection connectionString = new SqlConnection(DataConfig.connectionString);
+                SqlDataAdapter da = new SqlDataAdapter("SP_CRUDD_ShoppingCart", connectionString);
+                DataTable dt = new DataTable();
+                da.SelectCommand.CommandType = CommandType.StoredProcedure;
+                da.SelectCommand.CommandTimeout = 0;
+                da.SelectCommand.Parameters.AddWithValue("@ID", id);
+                da.SelectCommand.Parameters.AddWithValue("@itemno", cklist);
+                da.SelectCommand.Connection.Open();
+                da.Fill(dt);
+                da.SelectCommand.Connection.Close();
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        /*
+         
+        public DataTable ItemView2_PageLoad(Item_Master_Entity ime, int pageIndex, int pageSize, int option)
+        {
+            try
+            {
+                SqlConnection connectionString = new SqlConnection(DataConfig.connectionString);
+                SqlDataAdapter da = new SqlDataAdapter("Item_View2_PageLoad", connectionString);
+                DataTable dt = new DataTable();
+                da.SelectCommand.CommandType = CommandType.StoredProcedure;
+                da.SelectCommand.CommandTimeout = 0;
+                if (String.IsNullOrWhiteSpace(ime.Item_Code))
+                {
+                    da.SelectCommand.Parameters.AddWithValue("@itemno", DBNull.Value);
+                }
+                else
+                    da.SelectCommand.Parameters.AddWithValue("@itemno", ime.Item_Code);
 
-               if (String.IsNullOrWhiteSpace(ime.Brand_Name))
-               {
-                   da.SelectCommand.Parameters.AddWithValue("@brandname", DBNull.Value);
-               }
-               else
-                   da.SelectCommand.Parameters.AddWithValue("@brandname", ime.Brand_Name);
+                if (String.IsNullOrWhiteSpace(ime.Brand_Name))
+                {
+                    da.SelectCommand.Parameters.AddWithValue("@brandname", DBNull.Value);
+                }
+                else
+                    da.SelectCommand.Parameters.AddWithValue("@brandname", ime.Brand_Name);
 
-               if (String.IsNullOrWhiteSpace(ime.Catalog_Information))
-               {
-                   da.SelectCommand.Parameters.AddWithValue("@catinfo", DBNull.Value);
-               }
-               else
-                   da.SelectCommand.Parameters.AddWithValue("@catinfo", ime.Catalog_Information);
+                if (String.IsNullOrWhiteSpace(ime.Catalog_Information))
+                {
+                    da.SelectCommand.Parameters.AddWithValue("@catinfo", DBNull.Value);
+                }
+                else
+                    da.SelectCommand.Parameters.AddWithValue("@catinfo", ime.Catalog_Information);
 
-               da.SelectCommand.Parameters.AddWithValue("@skustatus", ime.Export_Status);
+                da.SelectCommand.Parameters.AddWithValue("@skustatus", ime.Export_Status);
 
-               if (String.IsNullOrWhiteSpace(ime.ProductName))
-               {
-                   da.SelectCommand.Parameters.AddWithValue("@productname", DBNull.Value);
-               }
-               else
-                   da.SelectCommand.Parameters.AddWithValue("@productname", ime.ProductName);
+                if (String.IsNullOrWhiteSpace(ime.ProductName))
+                {
+                    da.SelectCommand.Parameters.AddWithValue("@productname", DBNull.Value);
+                }
+                else
+                    da.SelectCommand.Parameters.AddWithValue("@productname", ime.ProductName);
 
-               if (String.IsNullOrWhiteSpace(ime.Product_Code))
-               {
-                   da.SelectCommand.Parameters.AddWithValue("@productcode", DBNull.Value);
-               }
-               else
-                   da.SelectCommand.Parameters.AddWithValue("@productcode", ime.Product_Code);
+                if (String.IsNullOrWhiteSpace(ime.Product_Code))
+                {
+                    da.SelectCommand.Parameters.AddWithValue("@productcode", DBNull.Value);
+                }
+                else
+                    da.SelectCommand.Parameters.AddWithValue("@productcode", ime.Product_Code);
 
-               if (String.IsNullOrWhiteSpace(ime.Company_Name))
-               {
-                   da.SelectCommand.Parameters.AddWithValue("@companyname", DBNull.Value);
-               }
-               else
-                   da.SelectCommand.Parameters.AddWithValue("@companyname", ime.Company_Name);
-               if (String.IsNullOrWhiteSpace(ime.Competition_Name))
-               {
-                   da.SelectCommand.Parameters.AddWithValue("@competitionname", DBNull.Value);
-               }
-               else
-                   da.SelectCommand.Parameters.AddWithValue("@competitionname", ime.Competition_Name);
+                if (String.IsNullOrWhiteSpace(ime.Company_Name))
+                {
+                    da.SelectCommand.Parameters.AddWithValue("@companyname", DBNull.Value);
+                }
+                else
+                    da.SelectCommand.Parameters.AddWithValue("@companyname", ime.Company_Name);
+                if (String.IsNullOrWhiteSpace(ime.Competition_Name))
+                {
+                    da.SelectCommand.Parameters.AddWithValue("@competitionname", DBNull.Value);
+                }
+                else
+                    da.SelectCommand.Parameters.AddWithValue("@competitionname", ime.Competition_Name);
 
-               if (String.IsNullOrWhiteSpace(ime.Class_Name))
-               {
-                   da.SelectCommand.Parameters.AddWithValue("@classname", DBNull.Value);
-               }
-               else
-                   da.SelectCommand.Parameters.AddWithValue("@classname", ime.Class_Name);
+                if (String.IsNullOrWhiteSpace(ime.Class_Name))
+                {
+                    da.SelectCommand.Parameters.AddWithValue("@classname", DBNull.Value);
+                }
+                else
+                    da.SelectCommand.Parameters.AddWithValue("@classname", ime.Class_Name);
 
 
-               da.SelectCommand.Parameters.AddWithValue("@specialflag", ime.Special_Flag);
+                da.SelectCommand.Parameters.AddWithValue("@specialflag", ime.Special_Flag);
 
-               da.SelectCommand.Parameters.AddWithValue("@reservationflag", ime.Reservation_Flag);
+                da.SelectCommand.Parameters.AddWithValue("@reservationflag", ime.Reservation_Flag);
 
-               if (String.IsNullOrWhiteSpace(ime.Year))
-               {
-                   da.SelectCommand.Parameters.AddWithValue("@year", DBNull.Value);
-               }
-               else
-                   da.SelectCommand.Parameters.AddWithValue("@year", ime.Year);
+                if (String.IsNullOrWhiteSpace(ime.Year))
+                {
+                    da.SelectCommand.Parameters.AddWithValue("@year", DBNull.Value);
+                }
+                else
+                    da.SelectCommand.Parameters.AddWithValue("@year", ime.Year);
 
-               if (String.IsNullOrWhiteSpace(ime.Season))
-               {
-                   da.SelectCommand.Parameters.AddWithValue("@season", DBNull.Value);
-               }
-               else
-                   da.SelectCommand.Parameters.AddWithValue("@season", ime.Season);
+                if (String.IsNullOrWhiteSpace(ime.Season))
+                {
+                    da.SelectCommand.Parameters.AddWithValue("@season", DBNull.Value);
+                }
+                else
+                    da.SelectCommand.Parameters.AddWithValue("@season", ime.Season);
 
-               if (String.IsNullOrWhiteSpace(ime.Ctrl_ID))
-               {
-                   da.SelectCommand.Parameters.AddWithValue("@shopstatus", DBNull.Value);
-               }
-               else
-                   da.SelectCommand.Parameters.AddWithValue("@shopstatus", ime.Ctrl_ID);
+                if (String.IsNullOrWhiteSpace(ime.Ctrl_ID))
+                {
+                    da.SelectCommand.Parameters.AddWithValue("@shopstatus", DBNull.Value);
+                }
+                else
+                    da.SelectCommand.Parameters.AddWithValue("@shopstatus", ime.Ctrl_ID);
 
-               if (String.IsNullOrWhiteSpace(ime.Remark))
-               {
-                   da.SelectCommand.Parameters.AddWithValue("@remark", DBNull.Value);
-               }
-               else
-                   da.SelectCommand.Parameters.AddWithValue("@remark", ime.Remark);
+                if (String.IsNullOrWhiteSpace(ime.Remark))
+                {
+                    da.SelectCommand.Parameters.AddWithValue("@remark", DBNull.Value);
+                }
+                else
+                    da.SelectCommand.Parameters.AddWithValue("@remark", ime.Remark);
 
-               if (String.IsNullOrWhiteSpace(ime.JanCode))
-               {
-                   da.SelectCommand.Parameters.AddWithValue("@jancode", DBNull.Value);
-               }
-               else
-                   da.SelectCommand.Parameters.AddWithValue("@jancode", ime.JanCode);
+                if (String.IsNullOrWhiteSpace(ime.JanCode))
+                {
+                    da.SelectCommand.Parameters.AddWithValue("@jancode", DBNull.Value);
+                }
+                else
+                    da.SelectCommand.Parameters.AddWithValue("@jancode", ime.JanCode);
 
-               if (String.IsNullOrWhiteSpace(ime.Sale_Code))
-               {
-                   da.SelectCommand.Parameters.AddWithValue("@salecode", DBNull.Value);
-               }
-               else
-                   da.SelectCommand.Parameters.AddWithValue("@salecode", ime.Sale_Code);
+                if (String.IsNullOrWhiteSpace(ime.Sale_Code))
+                {
+                    da.SelectCommand.Parameters.AddWithValue("@salecode", DBNull.Value);
+                }
+                else
+                    da.SelectCommand.Parameters.AddWithValue("@salecode", ime.Sale_Code);
 
-               if (String.IsNullOrWhiteSpace(ime.PersonInCharge))
-               {
-                   da.SelectCommand.Parameters.AddWithValue("@personincharge", -1);
-               }
-               else
-                   da.SelectCommand.Parameters.AddWithValue("@personincharge", ime.PersonInCharge);
-               if (String.IsNullOrWhiteSpace(ime.InstructionNo))
-               {
-                   da.SelectCommand.Parameters.AddWithValue("@instructionno", DBNull.Value);
-               }
-               else
-                   da.SelectCommand.Parameters.AddWithValue("@instructionno", ime.InstructionNo);
+                if (String.IsNullOrWhiteSpace(ime.PersonInCharge))
+                {
+                    da.SelectCommand.Parameters.AddWithValue("@personincharge", -1);
+                }
+                else
+                    da.SelectCommand.Parameters.AddWithValue("@personincharge", ime.PersonInCharge);
+                if (String.IsNullOrWhiteSpace(ime.InstructionNo))
+                {
+                    da.SelectCommand.Parameters.AddWithValue("@instructionno", DBNull.Value);
+                }
+                else
+                    da.SelectCommand.Parameters.AddWithValue("@instructionno", ime.InstructionNo);
 
-               da.SelectCommand.Parameters.AddWithValue("@dateofapproval", ime.FromDate);
-               da.SelectCommand.Parameters.AddWithValue("@dateapp2", ime.ToDate);
-               da.SelectCommand.Parameters.AddWithValue("@PageIndex ", pageIndex);
-               da.SelectCommand.Parameters.AddWithValue("@PageSize", pageSize);
-               da.SelectCommand.Parameters.AddWithValue("@Option", option);
-               da.SelectCommand.Connection.Open();
-               da.Fill(dt);
-               da.SelectCommand.Connection.Close();
-               return dt;
-           }
-           catch (Exception ex)
-           {
-               throw ex;
-           }
-       }
-       */
-       public DataTable LikeSearchItem(Item_Master_Entity ime, int pageIndex, int pageSize, int option)
+                da.SelectCommand.Parameters.AddWithValue("@dateofapproval", ime.FromDate);
+                da.SelectCommand.Parameters.AddWithValue("@dateapp2", ime.ToDate);
+                da.SelectCommand.Parameters.AddWithValue("@PageIndex ", pageIndex);
+                da.SelectCommand.Parameters.AddWithValue("@PageSize", pageSize);
+                da.SelectCommand.Parameters.AddWithValue("@Option", option);
+                da.SelectCommand.Connection.Open();
+                da.Fill(dt);
+                da.SelectCommand.Connection.Close();
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        */
+        public DataTable LikeSearchItem(Item_Master_Entity ime, int pageIndex, int pageSize, int option)
        {
            try
            {

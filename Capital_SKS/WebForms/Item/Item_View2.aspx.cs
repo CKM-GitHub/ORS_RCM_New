@@ -51,10 +51,10 @@ namespace ORS_RCM
         Item_Master_BL itemMasterBL;
         Item_BL itbl;
         Item_Information_BL iteminfo_bl;
-        Item_ExportField_BL itfield_bl; 
-        String[] Exfield = new String[1000]; 
+        Item_ExportField_BL itfield_bl;
+        String[] Exfield = new String[1000];
         DataTable dtExport = null;
-        DataTable dtExportdata = null; DataTable ds = null; 
+        DataTable dtExportdata = null; DataTable ds = null;
         Item_Master_BL imbl = new Item_Master_BL();
         Item_Shop_BL ItemShopBL = new Item_Shop_BL();
         string FilePath = ConfigurationManager.AppSettings["ExportFieldCSVPath"].ToString();
@@ -68,6 +68,7 @@ namespace ORS_RCM
 
         string search = string.Empty;
         int pagesize = 0;
+        private object lblSalePrice;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -83,7 +84,7 @@ namespace ORS_RCM
                         HttpCookie Cookie = Request.Cookies["lastuser"];
                         if (Request.Cookies["popupinfo"] != null)
                         {
-                        //    lbltest.Text = Server.HtmlEncode(aaCookie.Value) + "$" + Server.HtmlEncode(infoCookie.Value);
+                            //    lbltest.Text = Server.HtmlEncode(aaCookie.Value) + "$" + Server.HtmlEncode(infoCookie.Value);
                             string hfval = Server.HtmlEncode(infoCookie.Value);
                             string[] xt = hfval.Split('=');
                             if (Request.Cookies["lastuser"] != null)
@@ -94,7 +95,7 @@ namespace ORS_RCM
                                 string[] lusername = lastuser.Split('=');
                                 if (uname[1].ToString().Equals(lusername[2].ToString()))
                                 {
-                                    if (xt.Count() >1)
+                                    if (xt.Count() > 1)
                                     {
                                         hfShowHide.Value = xt[1].ToString();
                                         ScriptManager.RegisterStartupScript(this, GetType(), "myFunction", "SearchClick();", true);
@@ -104,7 +105,7 @@ namespace ORS_RCM
                         }
                         if (Request.Cookies["userInfo"] != null)
                         {
-                           string lbltest = Server.HtmlEncode(aaCookie.Value);
+                            string lbltest = Server.HtmlEncode(aaCookie.Value);
                             Response.Cookies["lastuser"]["lusername"] = lbltest;
                             HttpCookie aCookie = new HttpCookie("lastuser");
                             aCookie.Values["lusername"] = lbltest;
@@ -112,23 +113,23 @@ namespace ORS_RCM
                             Response.Cookies.Add(aCookie);
                         }
                     }
-                  
+
 
 
                     Item_Information_BL iibl = new Item_Information_BL();
                     //Bind();//for gvpaging
                     ItemView2_PageLoad(); // added by aam
-                    //gvItem.PageSize = int.Parse(ddlpage.SelectedValue.ToString());
-                    ////gvItem.DataBind();
-                    //ViewState["pagesize"] = Convert.ToInt32(ddlpage.SelectedValue);
-                    //int count = 0;
-                    //if (gvItem.Rows.Count > 0)
-                    //{
-                    //    Label tc = (Label)gvItem.Rows[0].FindControl("lblTotalCount");
-                    //    count = Convert.ToInt32(tc.Text);
-                    //}
-                    //gp.CalculatePaging(count, gvItem.PageSize, 1);
-                    
+                                          //gvItem.PageSize = int.Parse(ddlpage.SelectedValue.ToString());
+                                          ////gvItem.DataBind();
+                                          //ViewState["pagesize"] = Convert.ToInt32(ddlpage.SelectedValue);
+                                          //int count = 0;
+                                          //if (gvItem.Rows.Count > 0)
+                                          //{
+                                          //    Label tc = (Label)gvItem.Rows[0].FindControl("lblTotalCount");
+                                          //    count = Convert.ToInt32(tc.Text);
+                                          //}
+                                          //gp.CalculatePaging(count, gvItem.PageSize, 1);
+
                     ItemCheck_Change();//for checkbox
                     ArrayList arrchk = new ArrayList();
                     ViewState["list"] = arrchk;
@@ -157,7 +158,7 @@ namespace ORS_RCM
                     { }
                     else if (ctrl != null && ctrl.Contains("ddlpage")) { }
                     else if (ctrl != null && ctrl.Contains("btndelete")) { }
-                    
+
                     else if (hfCtrl.Value.ToString().Contains("ddlshoppage") && String.IsNullOrWhiteSpace(ctrl))
                     {
                         String Control = hfCtrl.Value.ToString();
@@ -238,9 +239,9 @@ namespace ORS_RCM
 
                             gvItem.DataSource = dt;
                             gvItem.DataBind();
-                        }                     
+                        }
                         ItemCheck_Change();
-                    }                   
+                    }
                 }
             }
             catch (Exception ex)
@@ -276,7 +277,7 @@ namespace ORS_RCM
                 int index = Convert.ToInt32(index1);
                 Label lnk = gvItem.Rows[index].FindControl("lnkItemNo") as Label;
                 //Page.ClientScript.RegisterStartupScript(GetType(), "MyKey1", "ShopPreview('" +  + "')", true);
-                Response.Redirect("Item_Master.aspx?Item_Code=" + lnk.Text,false);
+                Response.Redirect("Item_Master.aspx?Item_Code=" + lnk.Text, false);
             }
             catch (Exception ex)
             {
@@ -310,13 +311,13 @@ namespace ORS_RCM
                 if (mallid.Equals("1"))
                 {
                     rakuten += shopName + "/" + itemCode;
-                    Response.Redirect(rakuten,false);
+                    Response.Redirect(rakuten, false);
                     //Page.ClientScript.RegisterStartupScript(GetType(), "MyKey1", "ShopPreview('"+rakuten+"')", true);
                 }
                 else if (mallid.Equals("2"))
                 {
                     yahoo += shopName + "/" + itemCode + ".html";
-                    Response.Redirect(yahoo,false);
+                    Response.Redirect(yahoo, false);
                     //Page.ClientScript.RegisterStartupScript(GetType(), "MyKey1", "ShopPreview('" + yahoo + "')", true);
                 }
                 else if (mallid.Equals("4"))
@@ -397,19 +398,54 @@ namespace ORS_RCM
             }
         }
 
+        public Item_Master_Entity GetEntity1()
+        {
+            try
+            {
+                Item_Master_Entity imes = new Item_Master_Entity();
+                string itemcode = string.Empty;
+                itemcode = txtitemno.Text.Trim();   // if Item_Code,
+                string replace = ",";
+                imes.Item_Code = itemcode.Replace(",\r\n", replace).Replace(",\n", replace).Replace("\r\n", replace).Replace("\n", replace).Replace("\r", replace);
+                if (imes.Item_Code.EndsWith(","))
+                    imes.Item_Code = imes.Item_Code.TrimEnd(',');
+                imes.Brand_Name = txtbrandname.Text;
+
+                Label lbl = FindControl("lblPrice") as Label;
+                imes.List_Price = Convert.ToInt32(lbl.Text);
+                //if (!string.IsNullOrWhiteSpace(lblSalePrice.Text))
+                //{
+                //    imes.lblSalePrice = Convert.ToInt32(lblSalePrice.Text);
+                //}
+                //if (!string.IsNullOrWhiteSpace(lblCost.Text))
+                //{
+                //    imes.Extra_Shipping = Convert.ToInt32(lblCost.Text);
+                //}
+                //imes.List_Price = lblPrice.value();
+                // ime.Sale_Price = Convert.ToInt32(lblSalePrice.Text);
+                // ime.Cost = Convert.ToInt32(lblCost.Text);
+
+                return imes;
+            }
+            catch (Exception ex)
+            {
+                Session["Exception"] = ex.ToString();
+                Response.Redirect("~/CustomErrorPage.aspx?");
+                return new Item_Master_Entity();
+            }
+        }
         public Item_Master_Entity GetEntity()
         {
             try
             {
                 Item_Master_Entity ime = new Item_Master_Entity();
-                string itemcode = string.Empty;                
+                string itemcode = string.Empty;
                 itemcode = txtitemno.Text.Trim();   // if Item_Code,
                 string replace = ",";
                 ime.Item_Code = itemcode.Replace(",\r\n", replace).Replace(",\n", replace).Replace("\r\n", replace).Replace("\n", replace).Replace("\r", replace);
                 if (ime.Item_Code.EndsWith(","))
                     ime.Item_Code = ime.Item_Code.TrimEnd(',');
                 ime.InstructionNo = txtinstrauctionno.Text.Trim();
-                //ime.Item_Code = txtitemno.Text.Trim();
                 ime.Brand_Name = txtbrandname.Text.Trim();
                 ime.Catalog_Information = txtcatinfo.Text.Trim();
                 if (!String.IsNullOrWhiteSpace(ddlsksstatus.SelectedValue.ToString()))
@@ -475,7 +511,7 @@ namespace ORS_RCM
             }
         }
 
-        protected void btnsearch_Click(object sender,EventArgs e)
+        protected void btnsearch_Click(object sender, EventArgs e)
         {
             try
             {
@@ -485,7 +521,7 @@ namespace ORS_RCM
                 aCookie.Values["lastinfo"] = hidden;
                 aCookie.Expires = DateTime.Now.AddHours(1);
                 Response.Cookies.Add(aCookie);
-               ScriptManager.RegisterStartupScript(this, GetType(), "myFunction", "SearchClick();", true);
+                ScriptManager.RegisterStartupScript(this, GetType(), "myFunction", "SearchClick();", true);
                 Item_Master_Entity ime = GetEntity();
                 string json = JsonConvert.SerializeObject(ime);
                 ViewState["btnsearch"] = json;
@@ -524,6 +560,7 @@ namespace ORS_RCM
                 txtdate.Text = hdfFromDate.Value;
                 txtdateapproval.Text = hdfToDate.Value;
                 ddlname.Enabled = true;
+                AddButton.Enabled = true;
                 lnkdownload.Text = String.Empty;
                 ViewState.Remove("checkedValue"); // After various search and check, clean previous check value.
 
@@ -542,7 +579,7 @@ namespace ORS_RCM
                 //    count = Convert.ToInt32(tc.Text);
                 //}
                 //gp.CalculatePaging(count, gvItem.PageSize, 1);
-                
+
                 //txtdate.Text = hdfFromDate.Value;
                 //txtdateapproval.Text = hdfToDate.Value;
                 //ddlname.Enabled = true;
@@ -560,7 +597,7 @@ namespace ORS_RCM
         protected void Bind()
         {
             try
-            {              
+            {
                 Item_Master_Entity ime = GetEntity();
                 iteminfo_bl = new Item_Information_BL();
                 string json = JsonConvert.SerializeObject(ime);
@@ -628,15 +665,15 @@ namespace ORS_RCM
             if (ViewState["ItemAll"] != null)
             {
                 DataTable dtItemAll = ViewState["ItemAll"] as DataTable;
-                if(dtItemAll!=null && dtItemAll.Rows.Count>0)
-                for (int i = 0; i < dtItemAll.Rows.Count; i++)
-                {
-                    if (dtItemAll.Columns.Contains("ID"))
+                if (dtItemAll != null && dtItemAll.Rows.Count > 0)
+                    for (int i = 0; i < dtItemAll.Rows.Count; i++)
                     {
-                        if (!arrlst.Contains(dtItemAll.Rows[i]["ID"].ToString()))
-                            return false;
+                        if (dtItemAll.Columns.Contains("ID"))
+                        {
+                            if (!arrlst.Contains(dtItemAll.Rows[i]["ID"].ToString()))
+                                return false;
+                        }
                     }
-                }
                 return true;
             }
             return false;
@@ -803,7 +840,7 @@ namespace ORS_RCM
                 Response.Redirect("~/CustomErrorPage.aspx?");
             }
         }
-    
+
         protected void ckall_Check(object sender, EventArgs e)
         {
             try
@@ -818,7 +855,7 @@ namespace ORS_RCM
                 Response.Redirect("~/CustomErrorPage.aspx?");
             }
         }
-    
+
         protected void gvItem_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             //iteminfo_bl = new Item_Information_BL();
@@ -850,30 +887,30 @@ namespace ORS_RCM
             //    DataTable dt = iteminfo_bl.SearchbyItem(txtitemno.Text.Trim(), txtbrandname.Text.Trim(), txtcatinfo.Text.Trim(), ddlsksstatus.SelectedItem.Value, txtproductname.Text.Trim(), txtmanproductcode.Text.Trim(), txtconmpanyname.Text.Trim(), txtcompetitionname.Text.Trim(), txtclassname.Text.Trim(), ddlspecialflag.SelectedItem.Value, ddlreservationflag.SelectedItem.Value, txtyear.Text.Trim(), txtseason.Text.Trim(), ddlsksstatus.SelectedItem.Value, txtremark.Text.Trim(), txtjancode.Text.Trim(), txtsalemanagementcode.Text.Trim(),FromDate,ToDate,ddlpersonincharge.SelectedItem.Value);
             //    gvItem.DataSource = dt;
             //    ViewState["dt"] = dt;
-           
+
             //    gvItem.PageIndex = e.NewPageIndex;
             //    gvItem.DataBind();
             //    txtdate.Text = hdfFromDate.Value;
             //    txtdateapproval.Text = hdfToDate.Value;
             //    hdfFromDate.Value = String.Empty;
             //    hdfToDate.Value = String.Empty;
-               
+
             //}
             //else
             //{
             //    DataTable dt = iteminfo_bl.SearchbyItem(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,null,null,null);
             //    gvItem.DataSource = dt;
             //    ViewState["dt"] = dt;
-                
+
             //    gvItem.PageIndex = e.NewPageIndex;
             //    gvItem.DataBind();
-                
+
 
             //}
 
-           
 
-            
+
+
             //getCheckValue();
         }
 
@@ -946,7 +983,7 @@ namespace ORS_RCM
 
         protected void btnSearch_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         protected void gvItem_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -956,10 +993,10 @@ namespace ORS_RCM
                 if (e.CommandName == "DataEdit")
                 {
                     string Item_Code = e.CommandArgument.ToString();
-                   // string url = "Item_Master.aspx?Item_Code=" + Item_Code;
-                    Response.Redirect("Item_Master.aspx?Item_Code=" + Item_Code,false);
-                   // Response.Redirect(url);
-                 
+                    // string url = "Item_Master.aspx?Item_Code=" + Item_Code;
+                    Response.Redirect("Item_Master.aspx?Item_Code=" + Item_Code, false);
+                    // Response.Redirect(url);
+
                 }
                 //if (e.CommandName == "SKU")
                 //{
@@ -972,16 +1009,16 @@ namespace ORS_RCM
 
             }
             catch (Exception ex) {
-                    Session["Exception"] = ex.ToString();
-                    Response.Redirect("~/CustomErrorPage.aspx?");
+                Session["Exception"] = ex.ToString();
+                Response.Redirect("~/CustomErrorPage.aspx?");
             }
         }
-   
+
         protected void btnnew_Click(object sender, EventArgs e)
         {
             try
             {
-                Response.Redirect("Item_Master.aspx",false);
+                Response.Redirect("Item_Master.aspx", false);
             }
             catch (Exception ex)
             {
@@ -1057,7 +1094,7 @@ namespace ORS_RCM
                         if (ViewState["ExportField"] != null)
                         {
 
-                            DataTable dt = itfield_bl.ExportCSV(csv,"monotaro");
+                            DataTable dt = itfield_bl.ExportCSV(csv, "monotaro");
                             dt.Clear();
                             DataTable dtfield = ViewState["ExportField"] as DataTable;
                             if (dtfield != null && dtfield.Rows.Count > 0)
@@ -1109,7 +1146,7 @@ namespace ORS_RCM
             }
         }
 
-        public  DataTable DtTbl(DataTable[] dtToJoin)
+        public DataTable DtTbl(DataTable[] dtToJoin)
         {
             DataTable dtJoined = new DataTable();
 
@@ -1139,9 +1176,9 @@ namespace ORS_RCM
                 for (int k = 0; k < source.Rows.Count; k++)
                 {
                     //DataRow destRow = dest.NewRow();
-                    for (int y = 0; y < dest.Rows.Count;y++ )
+                    for (int y = 0; y < dest.Rows.Count; y++)
                     {
-                   
+
                         for (int i = 0; i < columns.Length; i++)
                         {
                             string colname = columns[i];
@@ -1152,19 +1189,19 @@ namespace ORS_RCM
                                     if (colname.Equals("ライブラリ画像") || colname.Equals("関連商品"))
                                     {
                                         if (dest.Rows[y]["商品番号"].ToString().Equals(source.Rows[k]["商品番号"].ToString()))
-                                        dest.Rows[y][colname] = source.Rows[k][colname];
+                                            dest.Rows[y][colname] = source.Rows[k][colname];
                                     }
                                 }
                                 else
                                 {
                                     //GlobalUI.MessageBox(String.Format("Invalid Export Field ({0}) !", colname));
                                     string msg = String.Format("Invalid Export Field ({0}) !", colname);
-                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "MESSAGE", "alert('"+ msg +"');", true);
+                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "MESSAGE", "alert('" + msg + "');", true);
                                 }
                             }
                         }
                     }
-                 
+
                 }
             }
             catch (Exception ex)
@@ -1191,10 +1228,10 @@ namespace ORS_RCM
                             {
                                 if (ContainColumn(colname, source) && ContainColumn(colname, dest))
                                 {
-                                   
+
                                     if (dest.Rows[y]["商品番号"].ToString().Equals(source.Rows[k]["商品番号"].ToString()))
                                         dest.Rows[y][colname] = source.Rows[k][colname];
-                                   
+
                                 }
                                 else
                                 {
@@ -1265,7 +1302,7 @@ namespace ORS_RCM
             }
         }
 
-        protected void CSV(DataTable dt, string name) 
+        protected void CSV(DataTable dt, string name)
         {
             try
             {
@@ -1335,7 +1372,7 @@ namespace ORS_RCM
             {
                 GlobalBL gb = new GlobalBL();
                 Item_BL itbl = new Item_BL();
-              
+
                 //ddlshoppage.DataSource = itbl.bindDDforShopstatus();
                 //ddlshoppage.DataTextField = "Status";
                 //ddlshoppage.DataValueField = "ID";
@@ -1377,7 +1414,7 @@ namespace ORS_RCM
                             }
                             ItemShopBL = new Item_Shop_BL();
                             DataTable dt = ItemShopBL.CheckItemCodeURL(Convert.ToInt32(chk[i].ToString()));
-                            if (dt.Rows.Count <1)
+                            if (dt.Rows.Count < 1)
                             {
                                 p++;
                                 //GlobalUI.MessageBox("There is no itemcode which dose not exist itemcode url cannot allow to exhibit!!");
@@ -1518,7 +1555,7 @@ namespace ORS_RCM
                     }
 
 
-                    if(!string.IsNullOrWhiteSpace(itemCodeTennisList))
+                    if (!string.IsNullOrWhiteSpace(itemCodeTennisList))
                     {
                         ConsoleWriteLine_Tofile("Title for Tennis");
                         ConsoleWriteLine_Tofile("Exhibition From 商品情報一覧(ページ制作)"); // Title to ConsoleWriteLine_Tofile
@@ -1538,14 +1575,14 @@ namespace ORS_RCM
                             if (dtShopList != null && dtShopList.Rows.Count > 0)
                             {
                                 string url = "../Item_Exhibition/Exhibition_Confirmation.aspx?Viewlist=" + lists;
-                                Response.Redirect(url,false);
+                                Response.Redirect(url, false);
                                 Bind();
                                 ArrayList arrlst = new ArrayList();
                                 ViewState["checkedValue"] = arrlst;
                             }
                             else
                                 ScriptManager.RegisterStartupScript(this, this.GetType(), "MESSAGE", "alert('You must select shop name!');", true);
-                                //GlobalUI.MessageBox("You must select shop name!");
+                            //GlobalUI.MessageBox("You must select shop name!");
                         }
                         else
                         {
@@ -1561,7 +1598,39 @@ namespace ORS_RCM
                 Response.Redirect("~/CustomErrorPage.aspx?");
             }
         }
+        //protected void btnAddGenerate_Click(object sender, EventArgs e)
+        //{
+        //    try
+        //    {
+        //        string itemCodeList = null;
+        //        if (ViewState["search"] != null)
+        //        {
+        //            ArrayList chk = ViewState["checkedValue"] as ArrayList;
+        //            String cklist = null;
+        //            for (int i = 0; i < chk.Count; i++)
+        //            {
 
+        //                if (IsPost_Available_Date(Convert.ToInt32(chk[i].ToString())))
+        //                {
+        //                    cklist += chk[i] + ",";
+        //                }
+        //                iteminfo_bl = new Item_Information_BL();
+        //                Item_Master_Entity imes = GetEntity();
+        //                int id = User_ID;
+        //                iteminfo_bl.CRUDD_ShoppingCard(imes, id);
+        //            }
+
+        //                ScriptManager.RegisterStartupScript(this, this.GetType(), "MESSAGE", "alert('Successful Item Information Linkage!');", true);
+
+        //        }
+
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Session["Exception"] = ex.ToString();
+        //        Response.Redirect("~/CustomErrorPage.aspx?");
+        //    }
+        //}
         protected void btnwarehouse_Click(object sender, EventArgs e)
         {
             try
@@ -1577,7 +1646,7 @@ namespace ORS_RCM
                 if (ViewState["checkedValue"] != null)
                 {
                     ArrayList chk = ViewState["checkedValue"] as ArrayList;
-                    String cklist = null;
+                    String cklist = null; int count = 0;
                     for (int i = 0; i < chk.Count; i++)
                     {
                         if (IsSelectedShop(Convert.ToInt32(chk[i].ToString())))   //Check Choice or not Shop
@@ -1586,6 +1655,7 @@ namespace ORS_RCM
                             {
                                 cklist += chk[i] + ",";
                             }
+
                         }
                         else
                         {
@@ -1715,7 +1785,7 @@ namespace ORS_RCM
                             }
                             else
                                 ScriptManager.RegisterStartupScript(this, this.GetType(), "MESSAGE", "alert('You must select shop name!');", true);
-                                //GlobalUI.MessageBox("You must select shop name!");
+                            //GlobalUI.MessageBox("You must select shop name!");
                         }
                         else
                         {
@@ -1731,7 +1801,49 @@ namespace ORS_RCM
                 Response.Redirect("~/CustomErrorPage.aspx?");
             }
         }
-
+       
+        protected void btnAddGenerate_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ArrayList chk = ViewState["checkedValue"] as ArrayList;
+                if(chk.Count>0)
+                {
+                    iteminfo_bl = new Item_Information_BL();
+                    String cklist = null; int id = User_ID;
+                    for (int i = 0; i < chk.Count; i++)
+                    {                        
+                            cklist += chk[i] + ",";
+                    }
+                    if (!String.IsNullOrWhiteSpace(cklist))
+                    {
+                        cklist = cklist.Remove(cklist.Length - 1);
+                    }
+                    iteminfo_bl.CRUDD_ShoppingCard(cklist,id);
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "MESSAGE", "alert('Successful Item Information Linkage!');", true);
+                }
+                else
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "MESSAGE", "alert('Please choose at least one checkbox!');", true);
+            }
+            catch (Exception ex)
+            {
+                Session["Exception"] = ex.ToString();
+                Save_SYS_Errorlog(ex.ToString());
+                Response.Redirect("~/CustomErrorPage.aspx?");
+            }
+        }
+        public static void Save_SYS_Errorlog(string error)
+        {
+            String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+            SqlConnection con = new SqlConnection(connectionString);
+            SqlCommand cmd = new SqlCommand("SP_Insert_SYS_Error_Log", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@UserID", -1);
+            cmd.Parameters.AddWithValue("@ErrorDetail",  error);
+            cmd.Connection.Open();
+            cmd.ExecuteNonQuery();
+            cmd.Connection.Close();
+        }
         protected void ddlname_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
@@ -2038,29 +2150,7 @@ namespace ORS_RCM
             }
         }
 
-        protected void btnsearch_Click1(object sender, EventArgs e)
-        {
-            //Cache.Remove("SearchItem");
-            //Item_Master_Entity ime = GetEntity();
-            //DataTable dt = iteminfo_bl.SearchbyItem(ime);
-
-            //gp.TotalRecord = dt.Rows.Count;
-            //gp.OnePageRecord = gvItem.PageSize;
-
-            //int index1 = 0;
-            //gp.sendIndexToThePage += delegate(int index)
-            //{
-            //    index1 = index;
-            //    gvItem.PageIndex = index1;
-            //    gvItem.PageSize = Convert.ToInt32(ddlpage.SelectedValue);
-            //};
-            //gvItem.DataSource = dt;
-            //gvItem.DataBind();
-            //ViewState["ItemAll"] = dt;
-            //Cache.Insert("SearchItem", dt, null, DateTime.Now.AddMinutes(60), TimeSpan.Zero);
-            //txtdate.Text = hdfFromDate.Value;
-            //txtdateapproval.Text = hdfToDate.Value;
-        }
+        
 
         protected void ddlpage_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -2671,7 +2761,41 @@ namespace ORS_RCM
                 return new DataTable();
             }
         }
+        public int Item_Code
+        {
+            get
+            {
+                if (Request.QueryString["Item_Code"] != null)
+                {
+                    return int.Parse(Request.QueryString["Item_Code"].ToString());
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
+        //protected void btnAddGenerate_Click(object sender, EventArgs e)
+        //{
+        //    try
+        //    {
+        //        if (ViewState["search"] != null)
+        //        {
+        //            iteminfo_bl = new Item_Information_BL();
+        //            Item_Master_Entity imes = GetEntity();
+        //            int id = User_ID;
+        //            int itemcode = Item_Code;
+        //                iteminfo_bl.CRUDD_ShoppingCard(imes,id);
+        //            ScriptManager.RegisterStartupScript(this, this.GetType(), "MESSAGE", "alert('Successful Item Information Linkage!');", true);
+        //        }
 
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Session["Exception"] = ex.ToString();
+        //        Response.Redirect("~/CustomErrorPage.aspx?");
+        //    }
+        //}
         protected void btnGenerate_Click(object sender, EventArgs e)
         {
             try

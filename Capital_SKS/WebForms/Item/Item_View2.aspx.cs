@@ -560,7 +560,7 @@ namespace ORS_RCM
                 txtdate.Text = hdfFromDate.Value;
                 txtdateapproval.Text = hdfToDate.Value;
                 ddlname.Enabled = true;
-                AddButton.Enabled = true;
+                //AddButton.Enabled = true;
                 lnkdownload.Text = String.Empty;
                 ViewState.Remove("checkedValue"); // After various search and check, clean previous check value.
 
@@ -1806,21 +1806,26 @@ namespace ORS_RCM
         {
             try
             {
-                ArrayList chk = ViewState["checkedValue"] as ArrayList;
-                if(chk.Count>0)
+                if (ViewState["checkedValue"] != null)
                 {
-                    iteminfo_bl = new Item_Information_BL();
-                    String cklist = null; int id = User_ID;
-                    for (int i = 0; i < chk.Count; i++)
-                    {                        
-                            cklist += chk[i] + ",";
-                    }
-                    if (!String.IsNullOrWhiteSpace(cklist))
+                    ArrayList chk = ViewState["checkedValue"] as ArrayList;
+                    if(chk.Count>0)
                     {
-                        cklist = cklist.Remove(cklist.Length - 1);
+                        iteminfo_bl = new Item_Information_BL();
+                        String cklist = null; int id = User_ID;
+                        for (int i = 0; i < chk.Count; i++)
+                        {
+                            cklist += chk[i] + ",";
+                        }
+                        if (!String.IsNullOrWhiteSpace(cklist))
+                        {
+                            cklist = cklist.Remove(cklist.Length - 1);
+                        }
+                        iteminfo_bl.CRUDD_ShoppingCard(cklist, id);
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "MESSAGE", "alert('Successful Item Information Linkage!');", true);
                     }
-                    iteminfo_bl.CRUDD_ShoppingCard(cklist,id);
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "MESSAGE", "alert('Successful Item Information Linkage!');", true);
+                    else
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "MESSAGE", "alert('Please choose at least one checkbox!');", true);
                 }
                 else
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "MESSAGE", "alert('Please choose at least one checkbox!');", true);

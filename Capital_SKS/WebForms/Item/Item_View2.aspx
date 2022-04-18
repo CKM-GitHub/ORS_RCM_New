@@ -581,7 +581,7 @@ document.getElementById("<%=txtmanproductcode.ClientID%>").value = null;
                                     ToolTip="Export" Width="80px" />
                             </p>
                             <p>
-                                <asp:Button  ID="AddButton" runat="server"  Text="商品情報連携" OnClick="btnAddGenerate_Click" OnClientClick="target=''" Enabled="false"
+                                <asp:Button  ID="AddButton" runat="server"  Text="商品情報連携" OnClick="btnAddGenerate_Click" OnClientClick="target=''"
                                     ToolTip="AddButton" Width="80px" />
                             </p>
 

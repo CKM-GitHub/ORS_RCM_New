@@ -26,7 +26,61 @@ namespace ORS_RCM_DL
         { 
         
         }
+        public DataTable SelectByItemCode()
+        {
+            try
+            {
+                SqlConnection connection = new SqlConnection(DataConfig.connectionString);
+                DataTable dt = new DataTable();
+                string query = "Select Item_Code,Item_Name from Item_Master ";
+                SqlDataAdapter sda = new SqlDataAdapter(query, connection);
+                sda.SelectCommand.CommandType = CommandType.Text;
+                sda.SelectCommand.CommandTimeout = 0;
+                sda.SelectCommand.Connection.Open();
+                sda.Fill(dt);
+                sda.SelectCommand.Connection.Close();
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
 
+        public DataTable SearchRelatedItem(string itemcode, string itemname)
+        {
+            try
+            {
+                SqlConnection connection = new SqlConnection(DataConfig.connectionString);
+                SqlDataAdapter da = new SqlDataAdapter();
+                SqlCommand cmdSelect = new SqlCommand("SP_SearchByRelatedID", connection);
+                da.SelectCommand = cmdSelect;
+                da.SelectCommand.CommandType = CommandType.StoredProcedure;
+                da.SelectCommand.CommandTimeout = 0;
+                if (String.IsNullOrWhiteSpace(itemcode))
+                {
+                    cmdSelect.Parameters.AddWithValue("@Item_Code", DBNull.Value);
+                }
+                else
+                    cmdSelect.Parameters.AddWithValue("@Item_Code", itemcode);
+
+                if (String.IsNullOrWhiteSpace(itemname))
+                {
+                    cmdSelect.Parameters.AddWithValue("@Item_Name", DBNull.Value);
+                }
+                else
+                    cmdSelect.Parameters.AddWithValue("@Item_Name", itemname);
+                DataTable dt = new DataTable();
+                da.SelectCommand.Connection.Open();
+                da.Fill(dt);
+                da.SelectCommand.Connection.Close();
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
         public DataTable GetItemSaleDescription(String id)
         {
             try

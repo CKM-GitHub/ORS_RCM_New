@@ -118,7 +118,35 @@ namespace ORS_RCM.WebForms.Item
                 }
             }
         }
-
+        public DataTable RelatedItem
+        {
+            get
+            {
+                if (Session["Item_Code" + ItemCode] != null)
+                {
+                    return (DataTable)Session["Item_Code" + ItemCode];
+                }
+                else
+                {
+                    return null;
+                }
+            }
+        }
+        public DataTable RelatedCodeList
+        {
+            get
+            {
+                if (Session["RelatedCodeList_" + ItemCode] != null)
+                {
+                    DataTable dt = (DataTable)Session["RelatedCodeList_" + ItemCode];
+                    return dt;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+        }
         public DataTable Option
         {
             get
@@ -231,8 +259,8 @@ namespace ORS_RCM.WebForms.Item
                         BindPhotoList();
                         BindShopName();
                         SetItemCodeURL();
-                        SetSelectedRelatedItem(ItemID);   //Select From Item_Related_Item Table
-
+                        //SetSelectedRelatedItem(ItemID);   //Select From Item_Related_Item Table
+                        DisplayRelatedItem();
                         #region EDITED BY T.Z.A 15-03-2019
 
                         SKU_BIND();
@@ -340,6 +368,11 @@ namespace ORS_RCM.WebForms.Item
                         {
                             Session.Remove("btnYPopClick_" + ItemCode);
                         }
+                    }
+                    //hhw
+                    else if (ControlID.Contains("Relatedbtn"))
+                    {
+                        DisplayRelatedItem();
                     }
                     else if (ControlID.Contains("btnAdd"))
                     {
@@ -2366,9 +2399,47 @@ namespace ORS_RCM.WebForms.Item
                 Response.Redirect("~/CustomErrorPage.aspx?", false);
             }
         }
-
         #endregion
-
+        #region RelatedItem
+        public void DisplayRelatedItem()
+        {
+            try
+            {
+                DataTable dt = RelatedItem as DataTable;
+                if (dt != null && dt.Rows.Count > 0)
+                {
+                    for (int i = 0; i < dt.Rows.Count; i++)
+                    {
+                        switch (i)
+                        {
+                            case 0:
+                                txtRelated1.Text = dt.Rows[i]["Item_Code"].ToString();
+                                break;
+                            case 1:
+                                txtRelated2.Text = dt.Rows[i]["Item_Code"].ToString();
+                                break;
+                            case 2:
+                                txtRelated3.Text = dt.Rows[i]["Item_Code"].ToString();
+                                break;
+                            case 3:
+                                txtRelated4.Text = dt.Rows[i]["Item_Code"].ToString();
+                                break;
+                            case 4:
+                                txtRelated5.Text = dt.Rows[i]["Item_Code"].ToString();
+                                break;
+                        }
+                    }
+                    Session["Item_Code"] = dt;
+                }
+                
+            }
+            catch (Exception ex)
+            {
+                Session["Exception"] = ex.ToString();
+                Response.Redirect("~/CustomErrorPage.aspx?", false);
+            }
+        }
+        #endregion
         #region Shop
         public void BindShop()
         {
@@ -4045,19 +4116,25 @@ namespace ORS_RCM.WebForms.Item
                     {
                         switch (i)
                         {
-                            case 0: txtRelated1.Text = dt.Rows[i]["Related_ItemCode"].ToString();
+                            case 0:
+                                txtRelated1.Text = dt.Rows[i]["Related_ItemCode"].ToString();
                                 break;
-                            case 1: txtRelated2.Text = dt.Rows[i]["Related_ItemCode"].ToString();
+                            case 1:
+                                txtRelated2.Text = dt.Rows[i]["Related_ItemCode"].ToString();
                                 break;
-                            case 2: txtRelated3.Text = dt.Rows[i]["Related_ItemCode"].ToString();
+                            case 2:
+                                txtRelated3.Text = dt.Rows[i]["Related_ItemCode"].ToString();
                                 break;
-                            case 3: txtRelated4.Text = dt.Rows[i]["Related_ItemCode"].ToString();
+                            case 3:
+                                txtRelated4.Text = dt.Rows[i]["Related_ItemCode"].ToString();
                                 break;
-                            case 4: txtRelated5.Text = dt.Rows[i]["Related_ItemCode"].ToString();
+                            case 4:
+                                txtRelated5.Text = dt.Rows[i]["Related_ItemCode"].ToString();
                                 break;
                         }
                     }
                 }
+                Session["Related_Item_Code"] = dt;
             }
             catch (Exception ex)
             {

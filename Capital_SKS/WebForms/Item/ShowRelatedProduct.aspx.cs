@@ -76,7 +76,7 @@ namespace Capital_SKS.WebForms.Item
         }
         protected void gvMallCategory_RowDataBound(object sender, GridViewRowEventArgs e)
         {
-            DataTable dt = (DataTable)Session["Item_Code"];
+            DataTable dt = (DataTable)Session["Related_Item_Code"];
             if (dt != null && dt.Rows.Count > 0)
             {
                 if (e.Row.RowType == DataControlRowType.DataRow)
@@ -85,7 +85,7 @@ namespace Capital_SKS.WebForms.Item
                     for (int m = 0; m < dt.Rows.Count; m++)
                     {
                         CheckBox chkbox = (CheckBox)e.Row.FindControl("ckItem");
-                        if (dt.Rows[m]["Item_Code"].ToString() == lbl.Text.ToString())
+                        if (dt.Rows[m]["Related_ItemCode"].ToString() == lbl.Text.ToString())
                         {
                             chkbox.Checked = true;
                         }

@@ -273,8 +273,8 @@ namespace ORS_RCM.WebForms.Item
                         BindPhotoList();
                         BindShopName();
                         SetItemCodeURL();
-                        //SetSelectedRelatedItem(ItemID);   //Select From Item_Related_Item Table
-                        DisplayRelatedItem();
+                        SetSelectedRelatedItem(ItemID);   //Select From Item_Related_Item Table
+                        //DisplayRelatedItem();
                         #region EDITED BY T.Z.A 15-03-2019
 
                         SKU_BIND();
@@ -2633,7 +2633,6 @@ namespace ORS_RCM.WebForms.Item
                                 break;
                         }
                     }
-                    Session["Item_Code"] = dt;
                 }
                 
             }
@@ -2644,6 +2643,49 @@ namespace ORS_RCM.WebForms.Item
             }
         }
         #endregion
+        #region Related_Item
+        /// <summary>
+        /// Connects to Related Item 
+        /// </summary>
+        /// <param name="ItemID"> By selected master id</param>
+        public void SetSelectedRelatedItem(int ItemID)
+        {
+            try
+            {
+                Item_Related_Item_BL ItemRelatedBL = new Item_Related_Item_BL();
+                DataTable dt = ItemRelatedBL.SelectByItemID(ItemID);
+                if (dt != null && dt.Rows.Count > 0)
+                {
+                    for (int i = 0; i < dt.Rows.Count; i++)
+                    {
+                        switch (i)
+                        {
+                            case 0:
+                                txtRelated1.Text = dt.Rows[i]["Related_ItemCode"].ToString();
+                                break;
+                            case 1:
+                                txtRelated2.Text = dt.Rows[i]["Related_ItemCode"].ToString();
+                                break;
+                            case 2:
+                                txtRelated3.Text = dt.Rows[i]["Related_ItemCode"].ToString();
+                                break;
+                            case 3:
+                                txtRelated4.Text = dt.Rows[i]["Related_ItemCode"].ToString();
+                                break;
+                            case 4:
+                                txtRelated5.Text = dt.Rows[i]["Related_ItemCode"].ToString();
+                                break;
+                        }
+                    }
+                }
+                Session["Related_Item_Code"] = dt;
+            }
+            catch (Exception ex)
+            {
+                Session["Exception"] = ex.ToString();
+                Response.Redirect("~/CustomErrorPage.aspx?", false);
+            }
+        }
         #region Shop
         public void BindShop()
         {
@@ -4303,49 +4345,7 @@ namespace ORS_RCM.WebForms.Item
 
         #endregion
 
-        #region Related_Item
-        /// <summary>
-        /// Connects to Related Item 
-        /// </summary>
-        /// <param name="ItemID"> By selected master id</param>
-        public void SetSelectedRelatedItem(int ItemID)
-        {
-            try
-            {
-                Item_Related_Item_BL ItemRelatedBL = new Item_Related_Item_BL();
-                DataTable dt = ItemRelatedBL.SelectByItemID(ItemID);
-                if (dt != null && dt.Rows.Count > 0)
-                {
-                    for (int i = 0; i < dt.Rows.Count; i++)
-                    {
-                        switch (i)
-                        {
-                            case 0:
-                                txtRelated1.Text = dt.Rows[i]["Related_ItemCode"].ToString();
-                                break;
-                            case 1:
-                                txtRelated2.Text = dt.Rows[i]["Related_ItemCode"].ToString();
-                                break;
-                            case 2:
-                                txtRelated3.Text = dt.Rows[i]["Related_ItemCode"].ToString();
-                                break;
-                            case 3:
-                                txtRelated4.Text = dt.Rows[i]["Related_ItemCode"].ToString();
-                                break;
-                            case 4:
-                                txtRelated5.Text = dt.Rows[i]["Related_ItemCode"].ToString();
-                                break;
-                        }
-                    }
-                }
-                Session["Related_Item_Code"] = dt;
-            }
-            catch (Exception ex)
-            {
-                Session["Exception"] = ex.ToString();
-                Response.Redirect("~/CustomErrorPage.aspx?", false);
-            }
-        }
+      
 
         public void InsertRelatedItem(int itemID)
         {

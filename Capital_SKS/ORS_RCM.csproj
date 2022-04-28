@@ -195,6 +195,7 @@
     <Content Include="WebForms\Item\Monotaro_Item_Master.aspx" />
     <Content Include="WebForms\Item\Monotaro_Item_View.aspx" />
     <Content Include="WebForms\Item\New_ItemData_Create.aspx" />
+    <Content Include="WebForms\Item\ShowRelatedProduct.aspx" />
     <Content Include="WebForms\Item\Status_Change_Confirmation.aspx" />
     <Content Include="WebForms\Item_Exhibition\Details_of_Exhibition_ORSKojima.aspx" />
     <Content Include="WebForms\Item_Exhibition\Details_of_exhibition_Tennis.aspx" />
@@ -677,6 +678,13 @@
     </Compile>
     <Compile Include="WebForms\Item\New_ItemData_Create.aspx.designer.cs">
       <DependentUpon>New_ItemData_Create.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForms\Item\ShowRelatedProduct.aspx.cs">
+      <DependentUpon>ShowRelatedProduct.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForms\Item\ShowRelatedProduct.aspx.designer.cs">
+      <DependentUpon>ShowRelatedProduct.aspx</DependentUpon>
     </Compile>
     <Compile Include="WebForms\Item\Status_Change_Confirmation.aspx.cs">
       <DependentUpon>Status_Change_Confirmation.aspx</DependentUpon>

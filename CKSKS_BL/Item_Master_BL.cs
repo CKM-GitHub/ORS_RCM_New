@@ -17,6 +17,14 @@ namespace ORS_RCM_BL
         {
             imDL = new Item_Master_DL();
         }
+        public DataTable SelectByItemCode()
+        {
+            return imDL.SelectByItemCode();
+        }
+        public DataTable SearchRelatedItem( string itemcode, string itemname)
+        {
+            return imDL.SearchRelatedItem(itemcode, itemname);
+        }
 
         public DataTable GetItemSaleDescription(String id)
         {

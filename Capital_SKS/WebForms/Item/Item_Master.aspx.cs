@@ -813,6 +813,8 @@ namespace ORS_RCM.WebForms.Item
                                     option = "Save";
                                     if (imeBL.SaveEdit(ime, option) > 0)    //btnsave
                                     {
+                                        ItemID = imeBL.SelectItemID(itemcode);
+                                        ime.ID = ItemID;
                                         //Insert Category List
                                         GetCategoryValueFromTextBox(ItemID, CategoryList);
                                         //Delete previous shop from Item_Shop table and then insert new shop or not

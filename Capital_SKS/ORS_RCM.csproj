@@ -177,6 +177,7 @@
     <Content Include="Styles\bootstrap.min.css" />
     <Content Include="Styles\calendar-blue.css" />
     <Content Include="Styles\nav-style.css" />
+    <Content Include="Styles\ors_item_master_style.css" />
     <Content Include="Styles\tab-style.css" />
     <Content Include="WebForms\Delivery\Delivery_Entry.aspx" />
     <Content Include="WebForms\Delivery\Item_SKU_Setting.aspx" />
@@ -190,13 +191,12 @@
     <Content Include="WebForms\ItemSeparated_OrderList.aspx" />
     <Content Include="WebForms\Item\AddSKU.aspx" />
     <Content Include="WebForms\Item\Item_Code_URL.aspx" />
-    <Content Include="WebForms\Item\Item_Master_Copy_Data.aspx" />
     <Content Include="WebForms\Item\Item_Master_New.aspx" />
     <Content Include="WebForms\Item\Item_Status_Change.aspx" />
     <Content Include="WebForms\Item\Monotaro_Item_Master.aspx" />
     <Content Include="WebForms\Item\Monotaro_Item_View.aspx" />
     <Content Include="WebForms\Item\New_ItemData_Create.aspx" />
-    <Content Include="WebForms\Item\ShowRelatedProduct.aspx" />
+    <Content Include="WebForms\Item\ORS_Item_Master.aspx" />
     <Content Include="WebForms\Item\Status_Change_Confirmation.aspx" />
     <Content Include="WebForms\Item_Exhibition\Details_of_Exhibition_ORSKojima.aspx" />
     <Content Include="WebForms\Item_Exhibition\Details_of_exhibition_Tennis.aspx" />
@@ -645,13 +645,6 @@
     <Compile Include="WebForms\Item\Item_Code_URL.aspx.designer.cs">
       <DependentUpon>Item_Code_URL.aspx</DependentUpon>
     </Compile>
-    <Compile Include="WebForms\Item\Item_Master_Copy_Data.aspx.cs">
-      <DependentUpon>Item_Master_Copy_Data.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="WebForms\Item\Item_Master_Copy_Data.aspx.designer.cs">
-      <DependentUpon>Item_Master_Copy_Data.aspx</DependentUpon>
-    </Compile>
     <Compile Include="WebForms\Item\Item_Master_New.aspx.cs">
       <DependentUpon>Item_Master_New.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -687,12 +680,12 @@
     <Compile Include="WebForms\Item\New_ItemData_Create.aspx.designer.cs">
       <DependentUpon>New_ItemData_Create.aspx</DependentUpon>
     </Compile>
-    <Compile Include="WebForms\Item\ShowRelatedProduct.aspx.cs">
-      <DependentUpon>ShowRelatedProduct.aspx</DependentUpon>
+    <Compile Include="WebForms\Item\ORS_Item_Master.aspx.cs">
+      <DependentUpon>ORS_Item_Master.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="WebForms\Item\ShowRelatedProduct.aspx.designer.cs">
-      <DependentUpon>ShowRelatedProduct.aspx</DependentUpon>
+    <Compile Include="WebForms\Item\ORS_Item_Master.aspx.designer.cs">
+      <DependentUpon>ORS_Item_Master.aspx</DependentUpon>
     </Compile>
     <Compile Include="WebForms\Item\Status_Change_Confirmation.aspx.cs">
       <DependentUpon>Status_Change_Confirmation.aspx</DependentUpon>

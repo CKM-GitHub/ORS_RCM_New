@@ -87,21 +87,7 @@ namespace ORS_RCM.WebForms.Item
                 }
             }
         }
-        public DataTable CopyItemCodeList
-        {
-            get
-            {
-                if (Session["Item_Code_Copy"] != null)
-                {
-                    DataTable dt = (DataTable)Session["Item_Code_Copy"];
-                    return dt;
-                }
-                else
-                {
-                    return null;
-                }
-            }
-        }
+
         public DataTable ImageList
         {
             get
@@ -132,35 +118,7 @@ namespace ORS_RCM.WebForms.Item
                 }
             }
         }
-        public DataTable RelatedItem
-        {
-            get
-            {
-                if (Session["Item_Code" + ItemCode] != null)
-                {
-                    return (DataTable)Session["Item_Code" + ItemCode];
-                }
-                else
-                {
-                    return null;
-                }
-            }
-        }
-        public DataTable RelatedCodeList
-        {
-            get
-            {
-                if (Session["RelatedCodeList_" + ItemCode] != null)
-                {
-                    DataTable dt = (DataTable)Session["RelatedCodeList_" + ItemCode];
-                    return dt;
-                }
-                else
-                {
-                    return null;
-                }
-            }
-        }
+
         public DataTable Option
         {
             get
@@ -274,7 +232,7 @@ namespace ORS_RCM.WebForms.Item
                         BindShopName();
                         SetItemCodeURL();
                         SetSelectedRelatedItem(ItemID);   //Select From Item_Related_Item Table
-                        //DisplayRelatedItem();
+
                         #region EDITED BY T.Z.A 15-03-2019
 
                         SKU_BIND();
@@ -371,10 +329,6 @@ namespace ORS_RCM.WebForms.Item
                     {
                         DisplayMallCategory(); // for display Mall_Category from popup form
                     }
-                    else if (ControlID.Contains("btnCopy"))
-                    {
-                        ReBindNewItemCode();
-                    }
                     else if (ControlID.Contains("imgbYahooSpecValue"))
                     {
                         if (Session["btnYPopClick_" + ItemCode] != null && Session["btnYPopClick_" + ItemCode].ToString() == "ok")
@@ -386,11 +340,6 @@ namespace ORS_RCM.WebForms.Item
                         {
                             Session.Remove("btnYPopClick_" + ItemCode);
                         }
-                    }
-                    //hhw
-                    else if (ControlID.Contains("Relatedbtn"))
-                    {
-                        DisplayRelatedItem();
                     }
                     else if (ControlID.Contains("btnAdd"))
                     {
@@ -424,11 +373,9 @@ namespace ORS_RCM.WebForms.Item
                     gvSKUSize.DataSource = dt;
                     gvSKUSize.DataBind();
                     rdb1.Checked = true;
-                    rdb2.Checked = false;
                 }
                 else
                 {
-                    rdb1.Checked = false;
                     rdb2.Checked = true;
                 }
             }
@@ -793,192 +740,7 @@ namespace ORS_RCM.WebForms.Item
                 String[] colName = { "Template" };
                 if (!Check_SpecialCharacter(colName, templatedt))
                 {
-                    if (Session["Item_Code_Copy"] != null)
-                    {
-                        string itemcode = txtItem_Code.Text;
-                        ime.Item_Name = txtItem_Name.Text;
-                        int ItemID = imeBL.SelectItemID(itemcode);
-                        if (ItemID == 0)
-                        {
-                            ime.ID = ItemID;
-                            ime.Updated_By = UserID;
-                            ime = GetItemData();
-                            string str = CheckLength(ime);
-                            if (!String.IsNullOrWhiteSpace(str)) { GlobalUI.MessageBox(str + "greater than length bytes!"); }
-                            else
-                            {
-                                if (ValidationUpdate())
-                                {
-                                    string option = null;
-                                    option = "Save";
-                                    if (imeBL.SaveEdit(ime, option) > 0)    //btnsave
-                                    {
-                                        ItemID = imeBL.SelectItemID(itemcode);
-                                        ime.ID = ItemID;
-                                        //Insert Category List
-                                        GetCategoryValueFromTextBox(ItemID, CategoryList);
-                                        //Delete previous shop from Item_Shop table and then insert new shop or not
-                                        InsertShopList(ItemID, itemcode);
-                                        //Delete previous photo from Item_Image table and then insert new photo or not
-                                        InsertPhoto(ItemID);
-                                        //Insert Item table when Itemcode is not exits in ItemTable
-                                        InsertItem(itemcode);
-                                        //Insert into Item_Code_URL
-                                        InsertItemCodeURL(ItemID);
-                                        //Change Shop Status To Gray
-                                        if (chkActive.Checked == true)
-                                        {
-                                            imeBL.ChangeExportStatusToPink(itemcode, 1);
-                                        }
-                                        else
-                                        {
-                                            imeBL.ChangeExportStatusToPink(itemcode, 2);
-                                        }
-                                        //Delete previous related item from Item_RelatedItem table and then insert new related item or not
-                                        InsertRelatedItem(ItemID);
-                                        //Delete previous option from Item_Option table and then insert new option or not
-                                        InsertOption(ItemID);
-                                        //Delete previous yahoo specific from Item_YahooSpecificValue table and then insert new yahoo specific or not
-                                        if (YahooSpecificValue != null)
-                                        {
-                                            InsertYahooSpecificValue(ItemID);
-                                        }
-                                        //For sks-587
-                                        if (ViewState["DailyDelivery"] != null)
-                                        {
-                                            imeBL.SetUnsetDailyDelivery(itemcode, Convert.ToInt32(ViewState["DailyDelivery"]));
-                                        }
-                                        SaveTemplateDetail(itemcode); // Insert or Update Template_Detail
-                                        //MessageBox("Save Successful ! ");
-                                        if (chkActive.Checked == true)
-                                        {
-                                            Page.ClientScript.RegisterStartupScript(this.GetType(), "myScript", "OnCheckedChanged(true);", true);
-                                        }
-                                        else
-                                        {
-                                            Page.ClientScript.RegisterStartupScript(this.GetType(), "myScript", "OnCheckedChanged(false);", true);
-                                        }
-                                        ime = new Item_Master_Entity();
-                                        ime = imeBL.SelectByID(ItemID);
-                                        if (!string.IsNullOrWhiteSpace(ime.Release_Date.ToString()))
-                                        {
-                                            txtRelease_Date.Text = String.Format("{0:yyyy/MM/dd}", ime.Release_Date);
-                                        }
-                                        else
-                                        {
-                                            txtRelease_Date.Text = "";
-                                        }
-                                        if (!string.IsNullOrWhiteSpace(ime.Post_Available_Date.ToString()))   //updated by nandar 05/01/2016
-                                        {
-                                            txtPost_Available_Date.Text = String.Format("{0:yyyy/MM/dd}", ime.Post_Available_Date);
-                                        }
-                                        else
-                                        {
-                                            txtPost_Available_Date.Text = "";
-                                        }
-                                    }
-                                }
-                            }
-                            //Response.Redirect("Item_Master.aspx?Item_Code=" + itemcode, false);
-                            Session.Remove("Item_Code_Copy");
-                            ViewState["UrlReferrer"] = "Item_Master.aspx?Item_Code=" + itemcode;
-                            string result = "Save Successful!";
-                            if (result == "Save Successful!")
-                            {
-                                object referrer = ViewState["UrlReferrer"];
-                                string url = "/WebForms/Item/" + (string)referrer;
-                                string script = "window.onload = function(){ alert('";
-                                script += result;
-                                script += "');";
-                                script += "window.location.href = '";
-                                script += url;
-                                script += "'; }";
-                                ClientScript.RegisterStartupScript(this.GetType(), "Redirect", script, true);
-                            }
-                        }
-                        else
-                        {
-                            ime.ID = ItemID;
-
-                            ime.Updated_By = UserID;
-                            ime = GetItemData();
-                            string str = CheckLength(ime);
-                            if (!String.IsNullOrWhiteSpace(str)) { GlobalUI.MessageBox(str + "greater than length bytes!"); }
-                            else
-                            {
-                                if (ValidationUpdate())
-                                {
-                                    string option = null;
-                                    option = "Update";
-                                    if (imeBL.SaveEdit(ime, option) > 0)    //btnsave
-                                    {
-                                        //Insert Category List
-                                        GetCategoryValueFromTextBox(ItemID, CategoryList);
-                                        //Delete previous shop from Item_Shop table and then insert new shop or not
-                                        InsertShopList(ItemID, itemcode);
-                                        //Delete previous photo from Item_Image table and then insert new photo or not
-                                        InsertPhoto(ItemID);
-                                        //Insert Item table when Itemcode is not exits in ItemTable
-                                        InsertItem(itemcode);
-                                        //Insert into Item_Code_URL
-                                        InsertItemCodeURL(ItemID);
-                                        //Change Shop Status To Gray
-                                        if (chkActive.Checked == true)
-                                        {
-                                            imeBL.ChangeExportStatusToPink(itemcode, 1);
-                                        }
-                                        else
-                                        {
-                                            imeBL.ChangeExportStatusToPink(itemcode, 2);
-                                        }
-                                        //Delete previous related item from Item_RelatedItem table and then insert new related item or not
-                                        InsertRelatedItem(ItemID);
-                                        //Delete previous option from Item_Option table and then insert new option or not
-                                        InsertOption(ItemID);
-                                        //Delete previous yahoo specific from Item_YahooSpecificValue table and then insert new yahoo specific or not
-                                        if (YahooSpecificValue != null)
-                                        {
-                                            InsertYahooSpecificValue(ItemID);
-                                        }
-                                        //For sks-587
-                                        if (ViewState["DailyDelivery"] != null)
-                                        {
-                                            imeBL.SetUnsetDailyDelivery(itemcode, Convert.ToInt32(ViewState["DailyDelivery"]));
-                                        }
-                                        SaveTemplateDetail(itemcode); // Insert or Update Template_Detail
-                                        MessageBox("Updating Successful ! ");
-                                        if (chkActive.Checked == true)
-                                        {
-                                            Page.ClientScript.RegisterStartupScript(this.GetType(), "myScript", "OnCheckedChanged(true);", true);
-                                        }
-                                        else
-                                        {
-                                            Page.ClientScript.RegisterStartupScript(this.GetType(), "myScript", "OnCheckedChanged(false);", true);
-                                        }
-                                        ime = new Item_Master_Entity();
-                                        ime = imeBL.SelectByID(ItemID);
-                                        if (!string.IsNullOrWhiteSpace(ime.Release_Date.ToString()))
-                                        {
-                                            txtRelease_Date.Text = String.Format("{0:yyyy/MM/dd}", ime.Release_Date);
-                                        }
-                                        else
-                                        {
-                                            txtRelease_Date.Text = "";
-                                        }
-                                        if (!string.IsNullOrWhiteSpace(ime.Post_Available_Date.ToString()))   //updated by nandar 05/01/2016
-                                        {
-                                            txtPost_Available_Date.Text = String.Format("{0:yyyy/MM/dd}", ime.Post_Available_Date);
-                                        }
-                                        else
-                                        {
-                                            txtPost_Available_Date.Text = "";
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    else if (ItemCode != null)
+                    if (ItemCode != null)
                     {
                         int ItemID = imeBL.SelectItemID(ItemCode);
                         ime.ID = ItemID;
@@ -1063,7 +825,6 @@ namespace ORS_RCM.WebForms.Item
                             }
                         }
                     }
-
                 }
             }
             catch (Exception ex)
@@ -2605,89 +2366,9 @@ namespace ORS_RCM.WebForms.Item
                 Response.Redirect("~/CustomErrorPage.aspx?", false);
             }
         }
+
         #endregion
-        #region RelatedItem
-        public void DisplayRelatedItem()
-        {
-            try
-            {
-                DataTable dt = RelatedItem as DataTable;
-                if (dt != null && dt.Rows.Count > 0)
-                {
-                    for (int i = 0; i < dt.Rows.Count; i++)
-                    {
-                        switch (i)
-                        {
-                            case 0:
-                                txtRelated1.Text = dt.Rows[i]["Item_Code"].ToString();
-                                break;
-                            case 1:
-                                txtRelated2.Text = dt.Rows[i]["Item_Code"].ToString();
-                                break;
-                            case 2:
-                                txtRelated3.Text = dt.Rows[i]["Item_Code"].ToString();
-                                break;
-                            case 3:
-                                txtRelated4.Text = dt.Rows[i]["Item_Code"].ToString();
-                                break;
-                            case 4:
-                                txtRelated5.Text = dt.Rows[i]["Item_Code"].ToString();
-                                break;
-                        }
-                    }
-                }
-                
-            }
-            catch (Exception ex)
-            {
-                Session["Exception"] = ex.ToString();
-                Response.Redirect("~/CustomErrorPage.aspx?", false);
-            }
-        }
-        #endregion
-        #region Related_Item
-        /// <summary>
-        /// Connects to Related Item 
-        /// </summary>
-        /// <param name="ItemID"> By selected master id</param>
-        public void SetSelectedRelatedItem(int ItemID)
-        {
-            try
-            {
-                Item_Related_Item_BL ItemRelatedBL = new Item_Related_Item_BL();
-                DataTable dt = ItemRelatedBL.SelectByItemID(ItemID);
-                if (dt != null && dt.Rows.Count > 0)
-                {
-                    for (int i = 0; i < dt.Rows.Count; i++)
-                    {
-                        switch (i)
-                        {
-                            case 0:
-                                txtRelated1.Text = dt.Rows[i]["Related_ItemCode"].ToString();
-                                break;
-                            case 1:
-                                txtRelated2.Text = dt.Rows[i]["Related_ItemCode"].ToString();
-                                break;
-                            case 2:
-                                txtRelated3.Text = dt.Rows[i]["Related_ItemCode"].ToString();
-                                break;
-                            case 3:
-                                txtRelated4.Text = dt.Rows[i]["Related_ItemCode"].ToString();
-                                break;
-                            case 4:
-                                txtRelated5.Text = dt.Rows[i]["Related_ItemCode"].ToString();
-                                break;
-                        }
-                    }
-                }
-                Session["Related_Item_Code"] = dt;
-            }
-            catch (Exception ex)
-            {
-                Session["Exception"] = ex.ToString();
-                Response.Redirect("~/CustomErrorPage.aspx?", false);
-            }
-        }
+
         #region Shop
         public void BindShop()
         {
@@ -4347,7 +4028,43 @@ namespace ORS_RCM.WebForms.Item
 
         #endregion
 
-      
+        #region Related_Item
+        /// <summary>
+        /// Connects to Related Item 
+        /// </summary>
+        /// <param name="ItemID"> By selected master id</param>
+        public void SetSelectedRelatedItem(int ItemID)
+        {
+            try
+            {
+                Item_Related_Item_BL ItemRelatedBL = new Item_Related_Item_BL();
+                DataTable dt = ItemRelatedBL.SelectByItemID(ItemID);
+                if (dt != null && dt.Rows.Count > 0)
+                {
+                    for (int i = 0; i < dt.Rows.Count; i++)
+                    {
+                        switch (i)
+                        {
+                            case 0: txtRelated1.Text = dt.Rows[i]["Related_ItemCode"].ToString();
+                                break;
+                            case 1: txtRelated2.Text = dt.Rows[i]["Related_ItemCode"].ToString();
+                                break;
+                            case 2: txtRelated3.Text = dt.Rows[i]["Related_ItemCode"].ToString();
+                                break;
+                            case 3: txtRelated4.Text = dt.Rows[i]["Related_ItemCode"].ToString();
+                                break;
+                            case 4: txtRelated5.Text = dt.Rows[i]["Related_ItemCode"].ToString();
+                                break;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Session["Exception"] = ex.ToString();
+                Response.Redirect("~/CustomErrorPage.aspx?", false);
+            }
+        }
 
         public void InsertRelatedItem(int itemID)
         {
@@ -5254,55 +4971,7 @@ namespace ORS_RCM.WebForms.Item
         { 
             
         }
-        public void ReBindNewItemCode()
-        {
-            try
-            {
-                if (Session["Item_Code_Copy"] != null)
-                {
-                    DataTable dt = CopyItemCodeList;
-                    if (dt.Rows.Count > 0)
-                    {
-                        txtItem_Code.Text = dt.Rows[0]["Item_Code"].ToString();
-                        txtItem_Name.Text = dt.Rows[0]["Item_Name"].ToString();
 
-                        DataTable dtskucolor = item.SelectSKUColor(dt.Rows[0]["Item_Code"].ToString());
-                        gvSKUColor.DataSource = dtskucolor; //Select From Item Table
-                        gvSKUColor.DataBind();
-                        DataTable dtsku = new DataTable();
-                        DataTable dt1 = new DataTable();
-                        if (dtskucolor.Rows.Count > 0)
-                        {
-                            dtsku = item.SelectSKU(dt.Rows[0]["Item_Code"].ToString());
-                            gvSKU.DataSource = item.SelectSKU(dt.Rows[0]["Item_Code"].ToString()); //Select From Item Table
-                            gvSKU.DataBind();
-                            dt1 = item.SelectSKUSize(dt.Rows[0]["Item_Code"].ToString()); //Select From Item Table
-                            gvSKUSize.DataSource = dt1;
-                            gvSKUSize.DataBind();
-                            rdb1.Checked = true;
-                            rdb2.Checked = false;
-                        }
-                        else
-                        {
-                            dtsku = item.SelectSKU(dt.Rows[0]["Item_Code"].ToString());
-                            gvSKU.DataSource = item.SelectSKU(dt.Rows[0]["Item_Code"].ToString()); //Select From Item Table
-                            gvSKU.DataBind();
-                            dt1 = item.SelectSKUSize(dt.Rows[0]["Item_Code"].ToString()); //Select From Item Table
-                            gvSKUSize.DataSource = dt1;
-                            gvSKUSize.DataBind();
-                            rdb1.Checked = false;
-                            rdb2.Checked = true;
-                        }
-
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                Session["Exception"] = ex.ToString();
-                Response.Redirect("~/CustomErrorPage.aspx?");
-            }
-        }
         public bool CheckExistsItemCode(string ItemCode)
         {
             imeBL = new Item_Master_BL();

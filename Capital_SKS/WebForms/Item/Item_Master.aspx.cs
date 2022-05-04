@@ -390,6 +390,11 @@ namespace ORS_RCM.WebForms.Item
                     //hhw
                     else if (ControlID.Contains("Relatedbtn"))
                     {
+                        txtRelated1.Text = "";
+                        txtRelated2.Text = "";
+                        txtRelated3.Text = "";
+                        txtRelated4.Text = "";
+                        txtRelated5.Text = "";
                         DisplayRelatedItem();
                     }
                     else if (ControlID.Contains("btnAdd"))

@@ -28,15 +28,15 @@ namespace Capital_SKS.WebForms.Item
         }
         protected void Page_Load(object sender, EventArgs e)
         {
-           
+
             try
             {
                 if (!IsPostBack)
                 {
                     gvMallCategory.DataSource = SelectByItemCode();
                     gvMallCategory.DataBind();
-                } 
-                    
+                }
+
             }
             catch (Exception ex)
             {
@@ -93,7 +93,7 @@ namespace Capital_SKS.WebForms.Item
                     }
                 }
             }
-            if (dt != null && dt.Rows.Count > 0) 
+            if (dt != null && dt.Rows.Count > 0)
             {
                 if (e.Row.RowType == DataControlRowType.DataRow)
                 {
@@ -152,7 +152,7 @@ namespace Capital_SKS.WebForms.Item
             }
         }
 
-       
+
         protected void btn_Close(object sender, EventArgs e)
         {
             try
@@ -178,7 +178,7 @@ namespace Capital_SKS.WebForms.Item
                         Session["btnRelatedbtn_" + Item_Code] = "ok";
                     }
                 }
-            this.ClientScript.RegisterClientScriptBlock(this.GetType(), "Close", "window.opener.__doPostBack();window.close()", true);
+                this.ClientScript.RegisterClientScriptBlock(this.GetType(), "Close", "window.opener.__doPostBack();window.close()", true);
             }
             catch (Exception ex)
             {
@@ -198,6 +198,6 @@ namespace Capital_SKS.WebForms.Item
                 Session["Exception"] = ex.ToString();
                 Response.Redirect("~/CustomErrorPage.aspx?");
             }
-        }       
+        }
     }
 }

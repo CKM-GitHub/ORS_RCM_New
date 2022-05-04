@@ -233,32 +233,6 @@ $(this).css('cursor', 'pointer');
         return false;
     }
 </script>
- <script type="text/javascript">	
-        function ShowCopy(ctrl) {	
-            var width = 600;	
-            var height = 300;	
-            var left = (screen.width - width) / 2;	
-            var top = (screen.height - height) / 2;	
-            var params = 'width=' + width + ', height=' + height;	
-            params += ', top=' + top + ', left=' + left;	
-            params += ', toolbar=no';	
-            params += ', menubar=no';	
-            params += ', resizable=yes';	
-            params += ', directories=no';	
-            params += ', scrollbars=yes';	
-            params += ', status=no';	
-            params += ', location=no';	
-            var itemcode = document.getElementById("<%=txtItem_Code.ClientID %>").innerHTML;	
-            var itemname = document.getElementById("<%=txtItem_Name.ClientID %>").innerHTML;	
-            var retval = window.open('../Item/Item_Master_Copy_Data.aspx?Item_Code=' + itemcode + "&Item_Name=" + itemname, window, params);	
-            var hidSourceID = document.getElementById("<%=CustomHiddenField.ClientID%>");	
-            hidSourceID.value = ctrl.id;	
-            if (window.focus) {	
-                newwin.focus()	
-            }	
-            return false;	
-        }	
-    </script>
 <script type="text/javascript">
     function ShowDialog(ctrl) {
         var width = 600;
@@ -632,7 +606,9 @@ $(this).css('cursor', 'pointer');
 	</div>
 	<div class="dBlock">
 		<dl class="relatedProduct">
-			<dt>関連商品</dt>
+			<dt>関連商品 
+           <button id="Relatedbtn" style="color:black;" onclick="ShowRelatedProduct(this)"><i class="fa fa-search" style="color:black"></i>&nbsp;関連商品を検索する</button>
+         </dt>
 			<dd style="margin-right:0px;"><asp:TextBox runat="server" ID="txtRelated1" onkeypress="return isNumberKeys(event)"/>
                 <asp:TextBox runat="server" ID="txtRelated2" onkeypress="return isNumberKeys(event)"/>
                 <asp:TextBox runat="server" ID="txtRelated3" onkeypress="return isNumberKeys(event)"/>
@@ -1194,7 +1170,6 @@ $(this).css('cursor', 'pointer');
 </section>
 <div class="itemCmnSet editPage">
 			<div class="btn">
-                <asp:Button runat="server" ID = "btnCopy" OnClientClick ="ShowCopy(this)" Text="複製コピー" />
                 <asp:Button runat="server" ID="btnPreview" Text="プレビュー" onclick="btnPreview_Click" />
             <asp:Button runat="server" ID="btnSave" Text="登 録" OnClientClick="SaveClick()" onclick="btnSave_Click"/>
             <asp:Button runat="server" ID="btnComplete" Text="出品待ち" onclick="btnComplete_Click" />

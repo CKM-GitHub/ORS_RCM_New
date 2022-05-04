@@ -274,7 +274,6 @@ namespace ORS_RCM.WebForms.Item
                         BindShopName();
                         SetItemCodeURL();
                         SetSelectedRelatedItem(ItemID);   //Select From Item_Related_Item Table
-                        //DisplayRelatedItem();
                         #region EDITED BY T.Z.A 15-03-2019
 
                         SKU_BIND();
@@ -390,6 +389,11 @@ namespace ORS_RCM.WebForms.Item
                     //hhw
                     else if (ControlID.Contains("Relatedbtn"))
                     {
+                        txtRelated1.Text = "";
+                        txtRelated2.Text = "";
+                        txtRelated3.Text = "";
+                        txtRelated4.Text = "";
+                        txtRelated5.Text = "";
                         DisplayRelatedItem();
                     }
                     else if (ControlID.Contains("btnAdd"))
@@ -2636,7 +2640,7 @@ namespace ORS_RCM.WebForms.Item
                         }
                     }
                 }
-                
+                Session["Item_Code"] = dt;
             }
             catch (Exception ex)
             {
@@ -2655,32 +2659,32 @@ namespace ORS_RCM.WebForms.Item
             try
             {
                 Item_Related_Item_BL ItemRelatedBL = new Item_Related_Item_BL();
-                DataTable dt = ItemRelatedBL.SelectByItemID(ItemID);
-                if (dt != null && dt.Rows.Count > 0)
+                DataTable dt1 = ItemRelatedBL.SelectByItemID(ItemID);
+                if (dt1 != null && dt1.Rows.Count > 0)
                 {
-                    for (int i = 0; i < dt.Rows.Count; i++)
+                    for (int i = 0; i < dt1.Rows.Count; i++)
                     {
                         switch (i)
                         {
                             case 0:
-                                txtRelated1.Text = dt.Rows[i]["Related_ItemCode"].ToString();
+                                txtRelated1.Text = dt1.Rows[i]["Related_ItemCode"].ToString();
                                 break;
                             case 1:
-                                txtRelated2.Text = dt.Rows[i]["Related_ItemCode"].ToString();
+                                txtRelated2.Text = dt1.Rows[i]["Related_ItemCode"].ToString();
                                 break;
                             case 2:
-                                txtRelated3.Text = dt.Rows[i]["Related_ItemCode"].ToString();
+                                txtRelated3.Text = dt1.Rows[i]["Related_ItemCode"].ToString();
                                 break;
                             case 3:
-                                txtRelated4.Text = dt.Rows[i]["Related_ItemCode"].ToString();
+                                txtRelated4.Text = dt1.Rows[i]["Related_ItemCode"].ToString();
                                 break;
                             case 4:
-                                txtRelated5.Text = dt.Rows[i]["Related_ItemCode"].ToString();
+                                txtRelated5.Text = dt1.Rows[i]["Related_ItemCode"].ToString();
                                 break;
                         }
                     }
                 }
-                Session["Related_Item_Code"] = dt;
+                Session["Related_Item_Code"] = dt1;
             }
             catch (Exception ex)
             {

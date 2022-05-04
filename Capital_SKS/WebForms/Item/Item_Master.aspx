@@ -307,9 +307,9 @@ $(this).css('cursor', 'pointer');
 <script type="text/javascript">
     function ShowRelatedProduct(ctrl) {
         var width = 1230;
-        var height =518;
+        var height =660;
         var left = (screen.width - width) / 2;
-        var top = (screen.height - height) / 2;
+        var top = (screen.height - height+100) / 2;
         var params = 'width=' + width + ', height=' + height;
         params += ', top=' + top + ', left=' + left;
         params += ', toolbar=no';

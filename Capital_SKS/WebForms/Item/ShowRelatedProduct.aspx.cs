@@ -76,8 +76,24 @@ namespace Capital_SKS.WebForms.Item
         }
         protected void gvMallCategory_RowDataBound(object sender, GridViewRowEventArgs e)
         {
-            DataTable dt = (DataTable)Session["Related_Item_Code"];
-            if (dt != null && dt.Rows.Count > 0)
+            DataTable dt1 = (DataTable)Session["Related_Item_Code"];
+            DataTable dt = (DataTable)Session["Item_Code"];
+            if (dt == null)
+            {
+                if (e.Row.RowType == DataControlRowType.DataRow)
+                {
+                    Label lbl = e.Row.FindControl("lblItem_Code") as Label;
+                    for (int m = 0; m < dt1.Rows.Count; m++)
+                    {
+                        CheckBox chkbox = (CheckBox)e.Row.FindControl("ckItem");
+                        if (dt1.Rows[m]["Related_ItemCode"].ToString() == lbl.Text.ToString())
+                        {
+                            chkbox.Checked = true;
+                        }
+                    }
+                }
+            }
+            if (dt != null && dt.Rows.Count > 0) 
             {
                 if (e.Row.RowType == DataControlRowType.DataRow)
                 {
@@ -85,7 +101,7 @@ namespace Capital_SKS.WebForms.Item
                     for (int m = 0; m < dt.Rows.Count; m++)
                     {
                         CheckBox chkbox = (CheckBox)e.Row.FindControl("ckItem");
-                        if (dt.Rows[m]["Related_ItemCode"].ToString() == lbl.Text.ToString())
+                        if (dt.Rows[m]["Item_Code"].ToString() == lbl.Text.ToString())
                         {
                             chkbox.Checked = true;
                         }
@@ -135,6 +151,8 @@ namespace Capital_SKS.WebForms.Item
                 return new DataTable();
             }
         }
+
+       
         protected void btn_Close(object sender, EventArgs e)
         {
             try
@@ -144,20 +162,23 @@ namespace Capital_SKS.WebForms.Item
                 dt.Columns.Add("Item_Name", typeof(String));
                 DataRow dr = dt.NewRow();
                 foreach (GridViewRow row in gvMallCategory.Rows)
-                {  
-                    Label lblItem_Code = (Label)row.FindControl("lblItem_Code");
-                    Label lblItem_Name = (Label)row.FindControl("lblItem_Name");                   
-                    if (((CheckBox)row.FindControl("ckItem")).Checked)
-                    {                      
-                        dr = dt.NewRow();
-                        dr["Item_Code"] = lblItem_Code.Text;
-                        dr["Item_Name"] = lblItem_Name.Text;
-                        dt.Rows.Add(dr);
+                {
+                    if (row.RowType == DataControlRowType.DataRow)
+                    {
+                        Label lblItem_Code = (Label)row.FindControl("lblItem_Code");
+                        Label lblItem_Name = (Label)row.FindControl("lblItem_Name");
+                        if (((CheckBox)row.FindControl("ckItem")).Checked)
+                        {
+                            dr = dt.NewRow();
+                            dr["Item_Code"] = lblItem_Code.Text;
+                            dr["Item_Name"] = lblItem_Name.Text;
+                            dt.Rows.Add(dr);
+                        }
+                        Session["Item_Code" + Item_Code] = dt;
+                        Session["btnRelatedbtn_" + Item_Code] = "ok";
                     }
-                    Session["Item_Code" + Item_Code] = dt;
-                    Session["btnRelatedbtn_" + Item_Code] = "ok";
                 }
-                this.ClientScript.RegisterClientScriptBlock(this.GetType(), "Close", "window.opener.__doPostBack();window.close()", true);
+            this.ClientScript.RegisterClientScriptBlock(this.GetType(), "Close", "window.opener.__doPostBack();window.close()", true);
             }
             catch (Exception ex)
             {
@@ -177,6 +198,6 @@ namespace Capital_SKS.WebForms.Item
                 Session["Exception"] = ex.ToString();
                 Response.Redirect("~/CustomErrorPage.aspx?");
             }
-        } 
+        }       
     }
 }

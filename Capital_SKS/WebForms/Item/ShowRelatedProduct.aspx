@@ -24,23 +24,23 @@
             }
             #btnClose,#btnCancel{
                 height: 40px !important;
-                border-radius:10px;
+                border-radius:10px;float:left;
             }
-            /*body{
-                overflow:hidden!important;
-            }*/
+            #btnClose{
+                margin-left:450px !important;
+                margin-right:50px !important;
+            }   
             .clNon{
                 overflow:hidden!important;
+                height:550px !important;
             }
         </style>
         <script type="text/javascript">
-            function ckItem_Check(latestcheck)
-            {
+            function ckItem_Check(latestcheck) {
                 var dl = document.getElementById("<%=gvMallCategory.ClientID%>");
                 var inputs = dl.getElementsByTagName("input");
                 var checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
-                if (checkboxes.length > 5)
-                {
+                if (checkboxes.length > 5) {
                     alert('The number of related products exceeds the maximun values.');
                     latestcheck.checked = false;
                 }
@@ -53,7 +53,7 @@
 	            <div id="PopContents" class="pop4_Mcate">
 	                <form runat="server">
 
-	                    <p class="popSearch" style="margin-left:150px;margin-bottom:40px; width:800px">
+	                    <p class="popSearch" style="margin-left:150px;margin-bottom:35px; width:800px">
                             商品番号
 				            <asp:TextBox ID="txtSearch" runat="server" Height="32px" Font-Bold="True" Width="210px" MaxLength="50"  onkeypress="return isNumberKeys(event)" ></asp:TextBox>
                             商品名
@@ -61,10 +61,10 @@
                             <asp:Button runat="server" ID="btnSearch" Text="検 索" Font-Bold="True" onclick="btnSearch_Click" />
 	                    </p>
 
-	                    <div style="overflow: auto; width:998px; height:350px;">
+	                    <div style="height:405px;width:998px;">
 		                    <table>
-			                    <asp:GridView ID="gvMallCategory" runat="server" AutoGenerateColumns="False" OnRowDataBound="gvMallCategory_RowDataBound"
-                                   AllowPaging="True"  PageSize="15" CellPadding="4" ForeColor="#333333" GridLines="None" onpageindexchanging="gvMallCategory_PageIndexChanging"  style="margin-right:120px;"  >
+			                    <asp:GridView ID="gvMallCategory" runat="server" AutoGenerateColumns="False" OnRowDataBound="gvMallCategory_RowDataBound" 
+                                AllowPaging="True" PageSize="15" CellPadding="4" ForeColor="#333333" GridLines="None" onpageindexchanging="gvMallCategory_PageIndexChanging" >
                                      <AlternatingRowStyle BackColor="White"  />
                                         <HeaderStyle ForeColor="White" Font-Bold="True"  Font-Size="18px" BackColor="#555555"></HeaderStyle>
                                     
@@ -90,13 +90,13 @@
 
                                 </asp:GridView>
 		                    </table>
-	                    </div>
+	                    
+                            <div class ="btn">
+                                <asp:Button runat="server" ID="btnClose" Text="決定" Width="150px" OnClick="btn_Close" />
+                                <asp:Button ID="btnCancel" runat="server" Text="キャンセル"  Width="150px" OnClick="btn_Cancel" />
+                            </div>
 
-                        <div class ="btn">
-                            <asp:Button runat="server" ID="btnClose" Text="決定" Width="150px" OnClick="btn_Close" />
-                            <asp:Button ID="btnCancel" runat="server" Text="キャンセル"  Width="150px" OnClick="btn_Cancel" />
-                        </div>
-
+                       </div>
 	                </form>
 	            </div>
             </section>

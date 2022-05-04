@@ -191,6 +191,7 @@
     <Content Include="WebForms\ItemSeparated_OrderList.aspx" />
     <Content Include="WebForms\Item\AddSKU.aspx" />
     <Content Include="WebForms\Item\Item_Code_URL.aspx" />
+    <Content Include="WebForms\Item\Item_Master_Copy_Data.aspx" />
     <Content Include="WebForms\Item\Item_Master_New.aspx" />
     <Content Include="WebForms\Item\Item_Status_Change.aspx" />
     <Content Include="WebForms\Item\Monotaro_Item_Master.aspx" />
@@ -645,6 +646,13 @@
     </Compile>
     <Compile Include="WebForms\Item\Item_Code_URL.aspx.designer.cs">
       <DependentUpon>Item_Code_URL.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForms\Item\Item_Master_Copy_Data.aspx.cs">
+      <DependentUpon>Item_Master_Copy_Data.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForms\Item\Item_Master_Copy_Data.aspx.designer.cs">
+      <DependentUpon>Item_Master_Copy_Data.aspx</DependentUpon>
     </Compile>
     <Compile Include="WebForms\Item\Item_Master_New.aspx.cs">
       <DependentUpon>Item_Master_New.aspx</DependentUpon>

@@ -1196,10 +1196,10 @@ $(this).css('cursor', 'pointer');
 			<div class="btn">
                 <asp:Button runat="server" ID = "btnCopy" OnClientClick ="ShowCopy(this)" Text="複製コピー" />
                 <asp:Button runat="server" ID="btnPreview" Text="プレビュー" onclick="btnPreview_Click" />
-            <asp:Button runat="server" ID="btnSave" Text="登 録" OnClientClick="SaveClick()" onclick="btnSave_Click"/>
-            <asp:Button runat="server" ID="btnComplete" Text="出品待ち" onclick="btnComplete_Click" />
-            <asp:Button runat="server" ID="btnToCancelExhibit" Text="出品待ち取消し"  OnClientClick ="Confirm()" onclick="btnToCancelExhibit_Click"/>
-            <asp:Button runat="server" ID="btnDelete" Text="削除" OnClientClick ="ConfirmDel()" onclick="btnDelete_Click"/></div>
+                <asp:Button runat="server" ID="btnSave" Text="登 録" OnClientClick="SaveClick()" onclick="btnSave_Click"/>
+                <asp:Button runat="server" ID="btnComplete" Text="出品待ち" onclick="btnComplete_Click" />
+                <asp:Button runat="server" ID="btnToCancelExhibit" Text="出品待ち取消し"  OnClientClick ="Confirm()" onclick="btnToCancelExhibit_Click"/>
+                <asp:Button runat="server" ID="btnDelete" Text="削除" OnClientClick ="ConfirmDel()" onclick="btnDelete_Click"/></div>
  </div>
 </main>
 </div>

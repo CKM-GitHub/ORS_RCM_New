@@ -40,7 +40,6 @@ using System.Text.RegularExpressions;
 namespace ORS_RCM.WebForms.Item
 {
     public partial class Item_Master_Edit1 : System.Web.UI.Page
-
     {
         //Global Variables
         Item_Master_Entity ime;
@@ -72,20 +71,7 @@ namespace ORS_RCM.WebForms.Item
                 }
             }
         }
-        public DataTable RelatedItem
-        {
-            get
-            {
-                if (Session["Item_Code" + ItemCode] != null)
-                {
-                    return (DataTable)Session["Item_Code" + ItemCode];
-                }
-                else
-                {
-                    return null;
-                }
-            }
-        }
+
         public DataTable CategoryList
         {
             get
@@ -146,7 +132,35 @@ namespace ORS_RCM.WebForms.Item
                 }
             }
         }
-
+        public DataTable RelatedItem
+        {
+            get
+            {
+                if (Session["Item_Code" + ItemCode] != null)
+                {
+                    return (DataTable)Session["Item_Code" + ItemCode];
+                }
+                else
+                {
+                    return null;
+                }
+            }
+        }
+        public DataTable RelatedCodeList
+        {
+            get
+            {
+                if (Session["RelatedCodeList_" + ItemCode] != null)
+                {
+                    DataTable dt = (DataTable)Session["RelatedCodeList_" + ItemCode];
+                    return dt;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+        }
         public DataTable Option
         {
             get
@@ -260,6 +274,7 @@ namespace ORS_RCM.WebForms.Item
                         BindShopName();
                         SetItemCodeURL();
                         SetSelectedRelatedItem(ItemID);   //Select From Item_Related_Item Table
+                        //DisplayRelatedItem();
                         #region EDITED BY T.Z.A 15-03-2019
 
                         SKU_BIND();
@@ -375,11 +390,6 @@ namespace ORS_RCM.WebForms.Item
                     //hhw
                     else if (ControlID.Contains("Relatedbtn"))
                     {
-                        txtRelated1.Text = "";
-                        txtRelated2.Text = "";
-                        txtRelated3.Text = "";
-                        txtRelated4.Text = "";
-                        txtRelated5.Text = "";
                         DisplayRelatedItem();
                     }
                     else if (ControlID.Contains("btnAdd"))
@@ -769,7 +779,6 @@ namespace ORS_RCM.WebForms.Item
             return dt;
         }
 
-
         protected void btnSave_Click(object sender, EventArgs e)
         {
             try
@@ -1063,55 +1072,7 @@ namespace ORS_RCM.WebForms.Item
                 Response.Redirect("~/CustomErrorPage.aspx?", false);
             }
         }
-        public void ReBindNewItemCode()
-        {
-            try
-            {
-                if (Session["Item_Code_Copy"] != null)
-                {
-                    DataTable dt = CopyItemCodeList;
-                    if (dt.Rows.Count > 0)
-                    {
-                        txtItem_Code.Text = dt.Rows[0]["Item_Code"].ToString();
-                        txtItem_Name.Text = dt.Rows[0]["Item_Name"].ToString();
 
-                        DataTable dtskucolor = item.SelectSKUColor(dt.Rows[0]["Item_Code"].ToString());
-                        gvSKUColor.DataSource = dtskucolor; //Select From Item Table
-                        gvSKUColor.DataBind();
-                        DataTable dtsku = new DataTable();
-                        DataTable dt1 = new DataTable();
-                        if (dtskucolor.Rows.Count > 0)
-                        {
-                            dtsku = item.SelectSKU(dt.Rows[0]["Item_Code"].ToString());
-                            gvSKU.DataSource = item.SelectSKU(dt.Rows[0]["Item_Code"].ToString()); //Select From Item Table
-                            gvSKU.DataBind();
-                            dt1 = item.SelectSKUSize(dt.Rows[0]["Item_Code"].ToString()); //Select From Item Table
-                            gvSKUSize.DataSource = dt1;
-                            gvSKUSize.DataBind();
-                            rdb1.Checked = true;
-                            rdb2.Checked = false;
-                        }
-                        else
-                        {
-                            dtsku = item.SelectSKU(dt.Rows[0]["Item_Code"].ToString());
-                            gvSKU.DataSource = item.SelectSKU(dt.Rows[0]["Item_Code"].ToString()); //Select From Item Table
-                            gvSKU.DataBind();
-                            dt1 = item.SelectSKUSize(dt.Rows[0]["Item_Code"].ToString()); //Select From Item Table
-                            gvSKUSize.DataSource = dt1;
-                            gvSKUSize.DataBind();
-                            rdb1.Checked = false;
-                            rdb2.Checked = true;
-                        }
-
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                Session["Exception"] = ex.ToString();
-                Response.Redirect("~/CustomErrorPage.aspx?");
-            }
-        }
         public void InsertItem(string ItemCode)
         {
             imeBL = new Item_Master_BL();
@@ -2675,7 +2636,7 @@ namespace ORS_RCM.WebForms.Item
                         }
                     }
                 }
-                Session["Item_Code"] = dt;
+
             }
             catch (Exception ex)
             {
@@ -2694,32 +2655,32 @@ namespace ORS_RCM.WebForms.Item
             try
             {
                 Item_Related_Item_BL ItemRelatedBL = new Item_Related_Item_BL();
-                DataTable dt1 = ItemRelatedBL.SelectByItemID(ItemID);
-                if (dt1 != null && dt1.Rows.Count > 0)
+                DataTable dt = ItemRelatedBL.SelectByItemID(ItemID);
+                if (dt != null && dt.Rows.Count > 0)
                 {
-                    for (int i = 0; i < dt1.Rows.Count; i++)
+                    for (int i = 0; i < dt.Rows.Count; i++)
                     {
                         switch (i)
                         {
                             case 0:
-                                txtRelated1.Text = dt1.Rows[i]["Related_ItemCode"].ToString();
+                                txtRelated1.Text = dt.Rows[i]["Related_ItemCode"].ToString();
                                 break;
                             case 1:
-                                txtRelated2.Text = dt1.Rows[i]["Related_ItemCode"].ToString();
+                                txtRelated2.Text = dt.Rows[i]["Related_ItemCode"].ToString();
                                 break;
                             case 2:
-                                txtRelated3.Text = dt1.Rows[i]["Related_ItemCode"].ToString();
+                                txtRelated3.Text = dt.Rows[i]["Related_ItemCode"].ToString();
                                 break;
                             case 3:
-                                txtRelated4.Text = dt1.Rows[i]["Related_ItemCode"].ToString();
+                                txtRelated4.Text = dt.Rows[i]["Related_ItemCode"].ToString();
                                 break;
                             case 4:
-                                txtRelated5.Text = dt1.Rows[i]["Related_ItemCode"].ToString();
+                                txtRelated5.Text = dt.Rows[i]["Related_ItemCode"].ToString();
                                 break;
                         }
                     }
                 }
-                Session["Related_Item_Code"] = dt1;
+                Session["Related_Item_Code"] = dt;
             }
             catch (Exception ex)
             {
@@ -2727,7 +2688,6 @@ namespace ORS_RCM.WebForms.Item
                 Response.Redirect("~/CustomErrorPage.aspx?", false);
             }
         }
-        #endregion
         #region Shop
         public void BindShop()
         {
@@ -4387,44 +4347,7 @@ namespace ORS_RCM.WebForms.Item
 
         #endregion
 
-        #region Related_Item
-        /// <summary>
-        /// Connects to Related Item 
-        /// </summary>
-        /// <param name="ItemID"> By selected master id</param>
-        //public void SetSelectedRelatedItem(int ItemID)
-        //{
-        //    try
-        //    {
-        //        Item_Related_Item_BL ItemRelatedBL = new Item_Related_Item_BL();
-        //        DataTable dt = ItemRelatedBL.SelectByItemID(ItemID);
-        //        if (dt != null && dt.Rows.Count > 0)
-        //        {
-        //            for (int i = 0; i < dt.Rows.Count; i++)
-        //            {
-        //                switch (i)
-        //                {
-        //                    case 0: txtRelated1.Text = dt.Rows[i]["Related_ItemCode"].ToString();
-        //                        break;
-        //                    case 1: txtRelated2.Text = dt.Rows[i]["Related_ItemCode"].ToString();
-        //                        break;
-        //                    case 2: txtRelated3.Text = dt.Rows[i]["Related_ItemCode"].ToString();
-        //                        break;
-        //                    case 3: txtRelated4.Text = dt.Rows[i]["Related_ItemCode"].ToString();
-        //                        break;
-        //                    case 4: txtRelated5.Text = dt.Rows[i]["Related_ItemCode"].ToString();
-        //                        break;
-        //                }
-        //            }
-        //        }
-        //        Session["Item_Code"] = dt;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Session["Exception"] = ex.ToString();
-        //        Response.Redirect("~/CustomErrorPage.aspx?", false);
-        //    }
-        //}
+
 
         public void InsertRelatedItem(int itemID)
         {
@@ -5331,7 +5254,55 @@ namespace ORS_RCM.WebForms.Item
         {
 
         }
+        public void ReBindNewItemCode()
+        {
+            try
+            {
+                if (Session["Item_Code_Copy"] != null)
+                {
+                    DataTable dt = CopyItemCodeList;
+                    if (dt.Rows.Count > 0)
+                    {
+                        txtItem_Code.Text = dt.Rows[0]["Item_Code"].ToString();
+                        txtItem_Name.Text = dt.Rows[0]["Item_Name"].ToString();
 
+                        DataTable dtskucolor = item.SelectSKUColor(dt.Rows[0]["Item_Code"].ToString());
+                        gvSKUColor.DataSource = dtskucolor; //Select From Item Table
+                        gvSKUColor.DataBind();
+                        DataTable dtsku = new DataTable();
+                        DataTable dt1 = new DataTable();
+                        if (dtskucolor.Rows.Count > 0)
+                        {
+                            dtsku = item.SelectSKU(dt.Rows[0]["Item_Code"].ToString());
+                            gvSKU.DataSource = item.SelectSKU(dt.Rows[0]["Item_Code"].ToString()); //Select From Item Table
+                            gvSKU.DataBind();
+                            dt1 = item.SelectSKUSize(dt.Rows[0]["Item_Code"].ToString()); //Select From Item Table
+                            gvSKUSize.DataSource = dt1;
+                            gvSKUSize.DataBind();
+                            rdb1.Checked = true;
+                            rdb2.Checked = false;
+                        }
+                        else
+                        {
+                            dtsku = item.SelectSKU(dt.Rows[0]["Item_Code"].ToString());
+                            gvSKU.DataSource = item.SelectSKU(dt.Rows[0]["Item_Code"].ToString()); //Select From Item Table
+                            gvSKU.DataBind();
+                            dt1 = item.SelectSKUSize(dt.Rows[0]["Item_Code"].ToString()); //Select From Item Table
+                            gvSKUSize.DataSource = dt1;
+                            gvSKUSize.DataBind();
+                            rdb1.Checked = false;
+                            rdb2.Checked = true;
+                        }
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Session["Exception"] = ex.ToString();
+                Response.Redirect("~/CustomErrorPage.aspx?");
+            }
+        }
         public bool CheckExistsItemCode(string ItemCode)
         {
             imeBL = new Item_Master_BL();

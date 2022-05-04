@@ -71,7 +71,7 @@
                                     <Columns>
                                         <asp:TemplateField>
                                             <ItemTemplate>
-                                                <asp:CheckBox runat="server" ID="ckItem" onclick ="ckItem_Check(this);"/>
+                                                <asp:CheckBox runat="server" ID="ckItem" onclick ="ckItem_Check(this);" OnCheckedChanged="chkItem_CheckedChanged" AutoPostBack="true"/>
                                             </ItemTemplate>
                                         </asp:TemplateField>
 

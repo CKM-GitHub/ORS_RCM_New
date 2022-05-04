@@ -4,8 +4,6 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <title></title>
 <link rel="stylesheet" href="../../Styles/tab-style.css" />
-<link rel="stylesheet" href="~/lib/font-awesome/css/font-awesome.css" />
-<link rel="shortcut icon" href="favicon.ico" >
 <link rel="stylesheet" href="../../Styles/base.css"/>
 <link rel="stylesheet" href="../../Styles/common.css" />
 <link rel="stylesheet" href="../../Styles/manager-style.css" />
@@ -15,18 +13,6 @@
 <link href ="../../Styles/Calendarstyle.css" rel="Stylesheet" type="text/css" />
 <script src="../../Scripts/jquery.droppy.js" type="text/javascript"></script>  
 <style type="text/css">
-        #Relatedbtn {
-            height: 24px;
-            font-family: "Helvetica Neue",helvetica,sans-serif;
-            font-weight: normal;
-            color: rgb(0, 143, 213);
-            font-size: 16px;
-            padding: 0px 10px;
-            border-radius: 4px;
-            background-color: rgb(255, 255, 255);
-            box-shadow: 0px 1px 2px rgb(81, 184, 228) inset;
-            border: 1px solid rgb(22, 71, 88);
-        }
 .mycheckBig input {width:25px; height:25px;}
 .mycheckSmall input {width:10px; height:10px;} 
 table {
@@ -62,7 +48,7 @@ table td {
     .tag{
         position:relative;
         left:20px;
-    } 
+    }
 </style>
 
 <script type="text/javascript" language="javascript">
@@ -247,32 +233,6 @@ $(this).css('cursor', 'pointer');
         return false;
     }
 </script>
- <script type="text/javascript">	
-        function ShowCopy(ctrl) {	
-            var width = 600;	
-            var height = 300;	
-            var left = (screen.width - width) / 2;	
-            var top = (screen.height - height) / 2;	
-            var params = 'width=' + width + ', height=' + height;	
-            params += ', top=' + top + ', left=' + left;	
-            params += ', toolbar=no';	
-            params += ', menubar=no';	
-            params += ', resizable=yes';	
-            params += ', directories=no';	
-            params += ', scrollbars=yes';	
-            params += ', status=no';	
-            params += ', location=no';	
-            var itemcode = document.getElementById("<%=txtItem_Code.ClientID %>").innerHTML;	
-            var itemname = document.getElementById("<%=txtItem_Name.ClientID %>").innerHTML;	
-            var retval = window.open('../Item/Item_Master_Copy_Data.aspx?Item_Code=' + itemcode + "&Item_Name=" + itemname, window, params);	
-            var hidSourceID = document.getElementById("<%=CustomHiddenField.ClientID%>");	
-            hidSourceID.value = ctrl.id;	
-            if (window.focus) {	
-                newwin.focus()	
-            }	
-            return false;	
-        }	
-    </script>
 <script type="text/javascript">
     function ShowDialog(ctrl) {
         var width = 600;
@@ -605,9 +565,7 @@ $(this).css('cursor', 'pointer');
            </Triggers>
            </asp:UpdatePanel>
         </dl>
-	
-
-</div><!--/#block1-->
+	</div><!--/#block1-->
 <div id="scrollArea" class="cmnEdit inlineSet">
 	<div id="hideBlock" class="skuBlock">
 		<h2>SKUデータ </h2>
@@ -648,14 +606,19 @@ $(this).css('cursor', 'pointer');
 	</div>
 	<div class="dBlock">
 		<dl class="relatedProduct">
-            <dt>関連商品 
-                <button id="Relatedbtn" style="color:black;" onclick="ShowRelatedProduct(this)"><i class="fa fa-search" style="color:black"></i>&nbsp;関連商品を検索する</button>
-            </dt>
+			<dt>関連商品</dt>
 			<dd style="margin-right:0px;"><asp:TextBox runat="server" ID="txtRelated1" onkeypress="return isNumberKeys(event)"/>
                 <asp:TextBox runat="server" ID="txtRelated2" onkeypress="return isNumberKeys(event)"/>
                 <asp:TextBox runat="server" ID="txtRelated3" onkeypress="return isNumberKeys(event)"/>
                 <asp:TextBox runat="server" ID="txtRelated4" onkeypress="return isNumberKeys(event)"/>
                 <asp:TextBox runat="server" ID="txtRelated5" onkeypress="return isNumberKeys(event)" />
+              <%--<table><tr><td style="width: 74px;text-align: center;">箱</td>
+                         <td style="width: 144px;text-align: center;">420</td>
+                         <td style="width: 118px;text-align: center;">ml</td>
+                         <td style="width: 154px;text-align: center;">12</td>
+                         <td></td>
+                     </tr>
+              </table>--%>
             <dt>販売単位</dt><dd><asp:DropDownList runat="server" ID="ddlsalesunit" Width="70px"></asp:DropDownList></dd>
 			<dt>内容量	</dt><dd><asp:TextBox runat="server" ID="txtcontentquantityunitno1" Width="50px" /></dd>
             <dt>内容量単位	</dt><dd><asp:DropDownList runat="server" ID="ddlcontentunit1" Width="70px"></asp:DropDownList></dd>
@@ -771,7 +734,7 @@ $(this).css('cursor', 'pointer');
             <asp:TemplateField>
             <ItemTemplate>
             <p><asp:TextBox runat="server" ID="txtCTGName" onkeypress="return isNumberKeys(event)"/></p>
-            <asp:Label runat="server" ID="lblCTGName" />
+            <%--<asp:Label runat="server" ID="lblCTGName" />--%>
             </ItemTemplate>
             </asp:TemplateField>
             </Columns>
@@ -1048,7 +1011,6 @@ $(this).css('cursor', 'pointer');
          <dl>
              <dt>Maker_Code</dt><dd><asp:TextBox runat="server" ID="txtmaker_code" Width="250px" /></dd>
         </dl>
-        
 		<%--<dl class="itemFlag">
 			<dt>SKU</dt>
            <asp:UpdatePanel ID="UpdatePanel7" runat="server" UpdateMode="Conditional"> <ContentTemplate>
@@ -1197,17 +1159,16 @@ $(this).css('cursor', 'pointer');
         <dl class="relatedProduct">
             <dt style="width:120px;">返品承認要否</dt>
             <dd><asp:TextBox ID="txtreturn_necessary" runat="server" Width="205px" MaxLength="40" onkeypress="return isNumberKey(event)"></asp:TextBox></dd>
+            
        </dl>
-  
        </div>
      </div>
     </div>
    </div>
 </section>
 <div class="itemCmnSet editPage">
-			<div class="btn">	
-             <asp:Button runat="server" ID="btnCopy" Text="複製コピー" OnClientClick="ShowCopy(this)" />
-            <asp:Button runat="server" ID="btnPreview" Text="プレビュー" onclick="btnPreview_Click" />
+			<div class="btn">
+                <asp:Button runat="server" ID="btnPreview" Text="プレビュー" onclick="btnPreview_Click" />
             <asp:Button runat="server" ID="btnSave" Text="登 録" OnClientClick="SaveClick()" onclick="btnSave_Click"/>
             <asp:Button runat="server" ID="btnComplete" Text="出品待ち" onclick="btnComplete_Click" />
             <asp:Button runat="server" ID="btnToCancelExhibit" Text="出品待ち取消し"  OnClientClick ="Confirm()" onclick="btnToCancelExhibit_Click"/>

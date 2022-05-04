@@ -1206,7 +1206,7 @@ $(this).css('cursor', 'pointer');
 </section>
 <div class="itemCmnSet editPage">
 			<div class="btn">	
-            <asp:Button runat="server" ID="btnCopy" OnClientClick ="ShowCopy(this)"/>
+            <asp:Button runat="server" ID="btnCopy" OnClientClick ="ShowCopy(this)" Text="複製コピー" />
             <asp:Button runat="server" ID="btnPreview" Text="プレビュー" onclick="btnPreview_Click" />
             <asp:Button runat="server" ID="btnSave" Text="登 録" OnClientClick="SaveClick()" onclick="btnSave_Click"/>
             <asp:Button runat="server" ID="btnComplete" Text="出品待ち" onclick="btnComplete_Click" />

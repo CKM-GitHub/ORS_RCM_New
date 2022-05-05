@@ -15,7 +15,7 @@
 <link href ="../../Styles/Calendarstyle.css" rel="Stylesheet" type="text/css" />
 <script src="../../Scripts/jquery.droppy.js" type="text/javascript"></script>  
 <style type="text/css">
-        #Relatedbtn {
+       /* #Relatedbtn {
             height: 24px;
             font-family: "Helvetica Neue",helvetica,sans-serif;
             font-weight: normal;
@@ -26,7 +26,7 @@
             background-color: rgb(255, 255, 255);
             box-shadow: 0px 1px 2px rgb(81, 184, 228) inset;
             border: 1px solid rgb(22, 71, 88);
-        }
+        }*/
 .mycheckBig input {width:25px; height:25px;}
 .mycheckSmall input {width:10px; height:10px;} 
 table {
@@ -40,9 +40,14 @@ table td {
 	padding: 2px 5px;
 	height:	0px;
 }
+.relatedProduct{
+    margin-top:10px !important;
+}
 .dblock1 a{
     font-size:13px !important;
     letter-spacing: 1px;
+    float:right !important;
+    margin-right:319px !important;
 }
 .m {
   margin-left: 3px !important;
@@ -654,11 +659,9 @@ $(this).css('cursor', 'pointer');
     <div class="dblock1">
         <a href="#" class="fa fa-search" onclick="ShowRelatedProduct(this)"><span class="m">関連商品を検索する</span></a>
     </div>
-<%--            <input type="button" class="fa fa-search" id = "Relatedbtn" onclick ="ShowRelatedProduct(this)" value="関連商品を検索する" runat="server" />            --%>
 		<dl class="relatedProduct">
             <dt>関連商品 
-                <%--<input type="button" class="search" id = "Relatedbtn" onclick ="ShowRelatedProduct(this)" value="関連商品を検索する" runat="server" />--%>
-<%--                <button id="Relatedbtn" style="color:black;" onclick="ShowRelatedProduct(this);" CausesValidation="false" ><i class="fa fa-search" style="color:black"></i>&nbsp;関連商品を検索する</button>--%>
+<%--<button id="Relatedbtn" style="color:black;" onclick="ShowRelatedProduct(this);" CausesValidation="false" ><i class="fa fa-search" style="color:black"></i>&nbsp;関連商品を検索する</button>--%>
             </dt>
 			<dd style="margin-right:0px;"><asp:TextBox runat="server" ID="txtRelated1" onkeypress="return isNumberKeys(event)"/>
                 <asp:TextBox runat="server" ID="txtRelated2" onkeypress="return isNumberKeys(event)"/>

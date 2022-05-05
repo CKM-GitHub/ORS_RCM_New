@@ -2616,32 +2616,32 @@ namespace ORS_RCM.WebForms.Item
         {
             try
             {
-                DataTable dt = RelatedItem as DataTable;
-                if (dt != null && dt.Rows.Count > 0)
+                DataTable dt1 = RelatedItem as DataTable;
+                if (dt1 != null && dt1.Rows.Count > 0)
                 {
-                    for (int i = 0; i < dt.Rows.Count; i++)
+                    for (int i = 0; i < dt1.Rows.Count; i++)
                     {
                         switch (i)
                         {
                             case 0:
-                                txtRelated1.Text = dt.Rows[i]["Item_Code"].ToString();
+                                txtRelated1.Text = dt1.Rows[i]["Item_Code"].ToString();
                                 break;
                             case 1:
-                                txtRelated2.Text = dt.Rows[i]["Item_Code"].ToString();
+                                txtRelated2.Text = dt1.Rows[i]["Item_Code"].ToString();
                                 break;
                             case 2:
-                                txtRelated3.Text = dt.Rows[i]["Item_Code"].ToString();
+                                txtRelated3.Text = dt1.Rows[i]["Item_Code"].ToString();
                                 break;
                             case 3:
-                                txtRelated4.Text = dt.Rows[i]["Item_Code"].ToString();
+                                txtRelated4.Text = dt1.Rows[i]["Item_Code"].ToString();
                                 break;
                             case 4:
-                                txtRelated5.Text = dt.Rows[i]["Item_Code"].ToString();
+                                txtRelated5.Text = dt1.Rows[i]["Item_Code"].ToString();
                                 break;
                         }
                     }
                 }
-
+                Session["Item_Code"] = dt1;
             }
             catch (Exception ex)
             {

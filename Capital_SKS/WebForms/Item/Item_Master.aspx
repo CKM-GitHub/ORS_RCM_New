@@ -40,7 +40,13 @@ table td {
 	padding: 2px 5px;
 	height:	0px;
 }
-
+.dblock1 a{
+    font-size:13px !important;
+    letter-spacing: 1px;
+}
+.m {
+  margin-left: 3px !important;
+}
 .lblstyle dl, dt{
     font-weight: bold;
     display: block;
@@ -645,10 +651,14 @@ $(this).css('cursor', 'pointer');
 				<dd><asp:TextBox ID="txtCatalog_Information" runat="server" Width="278px" MaxLength="3000"></asp:TextBox></dd>
 		</dl>
 	</div>
-	<div class="dBlock">
+    <div class="dblock1">
+        <a href="#" class="fa fa-search" onclick="ShowRelatedProduct(this)"><span class="m">関連商品を検索する</span></a>
+    </div>
+<%--            <input type="button" class="fa fa-search" id = "Relatedbtn" onclick ="ShowRelatedProduct(this)" value="関連商品を検索する" runat="server" />            --%>
 		<dl class="relatedProduct">
             <dt>関連商品 
-                <button id="Relatedbtn" style="color:black;" onclick="ShowRelatedProduct(this);" CausesValidation="false" ><i class="fa fa-search" style="color:black"></i>&nbsp;関連商品を検索する</button>
+                <%--<input type="button" class="search" id = "Relatedbtn" onclick ="ShowRelatedProduct(this)" value="関連商品を検索する" runat="server" />--%>
+<%--                <button id="Relatedbtn" style="color:black;" onclick="ShowRelatedProduct(this);" CausesValidation="false" ><i class="fa fa-search" style="color:black"></i>&nbsp;関連商品を検索する</button>--%>
             </dt>
 			<dd style="margin-right:0px;"><asp:TextBox runat="server" ID="txtRelated1" onkeypress="return isNumberKeys(event)"/>
                 <asp:TextBox runat="server" ID="txtRelated2" onkeypress="return isNumberKeys(event)"/>

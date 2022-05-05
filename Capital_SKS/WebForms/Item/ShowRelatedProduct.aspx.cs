@@ -33,10 +33,36 @@ namespace Capital_SKS.WebForms.Item
             {
                 if (!IsPostBack)
                 {
+                    DataTable dt1 = (DataTable)Session["Related_Item_Code"];
+                    DataTable dt = (DataTable)Session["Item_Code"];
+                    if (dt == null)
+                    {
+                        ArrayList arrlst = new ArrayList(); 
+                        
+                            for (int i = 0; i < dt1.Rows.Count; i++)
+                            {
+                                string Related_ItemCode = dt1.Rows[i]["Related_ItemCode"].ToString();
+                                arrlst.Add(Related_ItemCode);
+                            }
+                        
+                        ViewState["checkedValue"] = arrlst;
+                    }
+                    if (dt != null && dt.Rows.Count > 0)
+                    {
+                        ArrayList arrlst = new ArrayList();
+                       
+                            for (int i = 0; i < dt.Rows.Count; i++)
+                            {
+                                string Item_Code = dt.Rows[i]["Item_Code"].ToString();
+                                arrlst.Add(Item_Code);
+                            }
+                        
+                        ViewState["checkedValue"] = arrlst;
+                    }
                     gvMallCategory.DataSource = SelectByItemCode();
                     gvMallCategory.DataBind();
                 }
-
+              
             }
             catch (Exception ex)
             {
@@ -84,7 +110,7 @@ namespace Capital_SKS.WebForms.Item
                 int rowIndex = row.RowIndex;
 
                 Label lbl = gvMallCategory.Rows[rowIndex].FindControl("lblItem_Code") as Label;
-
+                
                 if (ViewState["checkedValue"] != null)
                 {
                     ArrayList arrlst = ViewState["checkedValue"] as ArrayList;
@@ -259,10 +285,11 @@ namespace Capital_SKS.WebForms.Item
                             //}
                             Session["Item_Code" + Item_Code] = dt;
                             Session["btnRelatedbtn_" + Item_Code] = "ok";
-                        //}
+                    //}
                     //}
                 }
-             this.ClientScript.RegisterClientScriptBlock(this.GetType(), "Close", "window.opener.__doPostBack();window.close()", true);
+
+                this.ClientScript.RegisterClientScriptBlock(this.GetType(), "Close", "window.opener.__doPostBack();window.close()", true);
             }
             catch (Exception ex)
             {

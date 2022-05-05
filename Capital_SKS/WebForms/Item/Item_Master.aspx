@@ -657,7 +657,7 @@ $(this).css('cursor', 'pointer');
 		</dl>
 	</div>
     <div class="dblock1">
-        <a href="#" class="fa fa-search" onclick="ShowRelatedProduct(this)"><span class="m">関連商品を検索する</span></a>
+        <a href="#" id="Relatedbtn" class="fa fa-search" onclick="ShowRelatedProduct(this)"><span class="m" >関連商品を検索する</span></a>
     </div>
 		<dl class="relatedProduct">
             <dt>関連商品 

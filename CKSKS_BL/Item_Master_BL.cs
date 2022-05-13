@@ -26,6 +26,11 @@ namespace ORS_RCM_BL
             return imDL.SearchRelatedItem(itemcode, itemname);
         }
 
+        public DataTable Item_Code_Sort(Item_Master_Entity ime, int pageIndex, int pageSize, int option, int search)
+        {
+            return imDL.Item_Code_Sort(ime, pageIndex, pageSize, option, search);
+        }
+
         public DataTable GetItemSaleDescription(String id)
         {
             return imDL.GetItemSaleDescription(id);

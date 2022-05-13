@@ -77,7 +77,28 @@ namespace ORS_RCM_DL
 
       }
 
-      public bool  Update(Shop_Entity sentity)
+        public DataTable SelectShop_Data()
+        {
+            try
+            {
+                SqlConnection connectionString = new SqlConnection(DataConfig.connectionString);
+                DataTable dt = new DataTable();
+                //string cmdstr = "select * from Shop";
+                SqlDataAdapter sda = new SqlDataAdapter("SP_Shop_Data", connectionString);
+                sda.SelectCommand.CommandType = CommandType.StoredProcedure;
+                sda.SelectCommand.CommandTimeout = 0;
+                sda.SelectCommand.Connection.Open();
+                sda.Fill(dt);
+                sda.SelectCommand.Connection.Close();
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public bool  Update(Shop_Entity sentity)
       {
           SqlConnection connectionString = new SqlConnection(DataConfig.connectionString);
           SqlCommand cmd = new SqlCommand();

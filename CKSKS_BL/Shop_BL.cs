@@ -18,7 +18,13 @@ namespace ORS_RCM_BL
         shdl = new Shop_DL();
         }
 
-          public String Insert(Shop_Entity shentity)
+        public DataTable SelectShop_Data()
+        {
+            shdl = new Shop_DL();
+            return shdl.SelectShop_Data();
+        }
+
+        public String Insert(Shop_Entity shentity)
         {
            
             if (shdl.Insert(shentity))

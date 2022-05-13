@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
+
 namespace ORS_RCM_Common
 {
     public class Item_Master_Entity
@@ -10,12 +11,14 @@ namespace ORS_RCM_Common
         #region Private Variables
         private int id=0;
         private int updated_by = 0;
+        private int normalLargeKBN = 0;
         private string ctrl_ID = string.Empty;
         private string sale_Code=String.Empty;
         private string product_Code = String.Empty;
         private string item_Code = String.Empty;
         private string item_AdminCode = String.Empty;
         private string item_Name = String.Empty;
+        private string memo = string.Empty;
         private int list_Price = 0;
         private int jisha_Price = 0;
         private int sale_Price = 0;
@@ -114,12 +117,23 @@ namespace ORS_RCM_Common
         private int wowmaprice = 0;
         private int jishaprice = 0;
         private int tennisprice = 0;
+        private int monoprice = 0;
+        private int diteprice = 0;
+        private int japanmprice = 0;
+        private int kashiwagikoukiprice = 0;
+        private string siiresaki = string.Empty;
 
         private String personInCharge = String.Empty;
         public String PersonInCharge
         {
             get { return personInCharge; }
             set { personInCharge = value; }
+        }
+
+        public String Siiresaki
+        {
+            get { return siiresaki; }
+            set { siiresaki = value; }
         }
 
         private DateTime? fromDate=null;
@@ -149,6 +163,22 @@ namespace ORS_RCM_Common
             get { return janCode; }
             set { janCode = value; }
         }
+
+
+
+        public String Memo
+        {
+            get { return memo; }
+            set { memo = value; }
+        }
+       
+        //public String Memo
+        //{
+        //    get { return memo; }
+        //    set { memo = value; }
+            
+        //}
+        
 
         private String productName = String.Empty;
         public String ProductName
@@ -206,6 +236,12 @@ namespace ORS_RCM_Common
         {
             get { return rakuten_evidence; }
             set { rakuten_evidence = value; }
+        }
+
+        public int NormalLargeKBN
+        {
+            get { return normalLargeKBN; }
+            set { normalLargeKBN = value; }
         }
 
         private int active = 0;
@@ -300,11 +336,41 @@ namespace ORS_RCM_Common
             get { return jisha_Price; }
             set { jisha_Price = value; }
         }
+
+        public int Monoprice
+        {
+            get { return monoprice; }
+            set { monoprice = value; }
+        }
+
+        public int Diteprice
+        {
+            get { return diteprice; }
+            set { diteprice = value; }
+        }
+
+        public int Japanmprice
+        {
+            get { return japanmprice; }
+            set { japanmprice = value; }
+        }
+
+        public int Kashiwagikoukiprice
+        {
+            get { return kashiwagikoukiprice; }
+            set { kashiwagikoukiprice = value; }
+        }
+
+
+
+
+
         public int Cost
         {
             get { return cost; }
             set { cost = value; }
         }
+      
         public DateTime? Release_Date
         {
             get { return release_Date; }
@@ -635,6 +701,99 @@ namespace ORS_RCM_Common
             get { return sellby; }
             set { sellby = value; }
         }
+
+        //monoratou new column
+        private int publicationType = 0;
+        public int PublicationType
+        {
+            get { return publicationType; }
+            set { publicationType = value; }
+        }
+
+        private int minimumOrderSuu = 0;
+        public int MinimumOrderSuu
+        {
+            get { return minimumOrderSuu; }
+            set { minimumOrderSuu = value; }
+        }
+
+        private string minimumOrderUnit = string.Empty;
+        public string MinimumOrderUnit
+        {
+            get { return minimumOrderUnit; }
+            set { minimumOrderUnit = value; }
+        }
+
+        private int directDelivery = 0;
+        public int DirectDelivery
+        {
+            get { return directDelivery; }
+            set { directDelivery = value; }
+        }
+
+        private DateTime? scheduleReleaseDate;
+        public DateTime? ScheduleReleaseDate
+        {
+            get { return scheduleReleaseDate; }
+            set { scheduleReleaseDate = value; }
+        }
+
+        private string categorymonotaro = string.Empty;
+        public string Categorymonotaro
+        {
+            get { return categorymonotaro; }
+            set { categorymonotaro = value; }
+        }
+
+        private string colormonotaro = string.Empty;
+        public string Colormonotaro
+        {
+            get { return colormonotaro; }
+            set { colormonotaro = value; }
+        }
+
+        private int medical_Supplies = 0;
+        public int Medical_Supplies
+        {
+            get { return medical_Supplies; }
+            set { medical_Supplies = value; }
+        }
+
+        private int greenPurchasingLaw = 0;
+        public int GreenPurchasingLaw
+        {
+            get { return greenPurchasingLaw; }
+            set { greenPurchasingLaw = value; }
+        }
+
+        private int procurement_Goods = 0;
+        public int Procurement_Goods
+        {
+            get { return procurement_Goods; }
+            set { procurement_Goods = value; }
+        }
+
+        private int ecoMarkCertifiedGoods = 0;
+        public int EcoMarkCertifiedGoods
+        {
+            get { return ecoMarkCertifiedGoods; }
+            set { ecoMarkCertifiedGoods = value; }
+        }
+
+        private int ecoMarkCertifiedNo = 0;
+        public int EcoMarkCertifiedNo
+        {
+            get { return ecoMarkCertifiedNo; }
+            set { ecoMarkCertifiedNo = value; }
+        }
+
+        private int roHS_Directive = 0;
+        public int RoHS_Directive
+        {
+            get { return roHS_Directive; }
+            set { roHS_Directive = value; }
+        }
+
         public string Selling_Rank
         {
             get { return sellingrank ; }
@@ -645,6 +804,7 @@ namespace ORS_RCM_Common
             get { return deliverydays ; }
             set { deliverydays  = value; }
         }
+
         public int KSMDelivery_Days
         {
             get { return ksmdeliverydays ; }
@@ -758,6 +918,64 @@ namespace ORS_RCM_Common
             set { costrate = value; }
         }
 
+        private string jisha_costrate = String.Empty;
+        public string Jisha_costrate
+        {
+            get { return jisha_costrate; }
+            set { jisha_costrate = value; }
+        }
+
+        private string rakuten_costrate = String.Empty;
+        public string Rakuten_costrate
+        {
+            get { return rakuten_costrate; }
+            set { rakuten_costrate = value; }
+        }
+
+        private string yahoo_costrate = String.Empty;
+        public string Yahoo_costrate
+        {
+            get { return yahoo_costrate; }
+            set { yahoo_costrate = value; }
+        }
+
+        private string wowma_costrate = String.Empty;
+        public string Wowma_costrate
+        {
+            get { return wowma_costrate; }
+            set { wowma_costrate = value; }
+        }
+
+        private string monocostrate = String.Empty;
+        public string Monocostrate
+        {
+            get { return monocostrate; }
+            set { monocostrate = value; }
+        }
+
+        private string ditecostrate = String.Empty;
+        public string Ditecostrate
+        {
+            get { return ditecostrate; }
+            set { ditecostrate = value; }
+        }
+
+        private string japanmcostrate = String.Empty;
+        public string Japanmcostrate
+        {
+            get { return japanmcostrate; }
+            set { japanmcostrate = value; }
+        }
+
+        private string kawashigicostrate = String.Empty;
+        public string Kawashigicostrate
+        {
+            get { return kawashigicostrate; }
+            set { kawashigicostrate = value; }
+        }
+
+
+
         private string discountrate = String.Empty;
         public string DiscountRate
         {
@@ -765,11 +983,123 @@ namespace ORS_RCM_Common
             set { discountrate = value; }
         }
 
+
+        private string jisha_discountrate = String.Empty;
+        public string Jisha_discountRate
+        {
+            get { return jisha_discountrate; }
+            set { jisha_discountrate = value; }
+        }
+
+        private string rakuten_discountrate = String.Empty;
+        public string Rakuten_discountRate
+        {
+            get { return rakuten_discountrate; }
+            set { rakuten_discountrate = value; }
+        }
+
+        private string yahoo_discountrate = String.Empty;
+        public string Yahoo_discountRate
+        {
+            get { return yahoo_discountrate; }
+            set { yahoo_discountrate = value; }
+        }
+
+        private string wowma_discountrate = String.Empty;
+        public string Wowma_discountRate
+        {
+            get { return wowma_discountrate; }
+            set { wowma_discountrate = value; }
+        }
+
+        private string monodiscountrate = String.Empty;
+        public string Monodiscountrate
+        {
+            get { return monodiscountrate; }
+            set { monodiscountrate = value; }
+        }
+
+        private string ditediscountrate = String.Empty;
+        public string Ditediscountrate
+        {
+            get { return ditediscountrate; }
+            set { ditediscountrate = value; }
+        }
+
+        private string japanmdiscountrate = String.Empty;
+        public string Japanmdiscountrate
+        {
+            get { return japanmdiscountrate; }
+            set { japanmdiscountrate = value; }
+        }
+
+        private string kashiwagionodiscountrate = String.Empty;
+        public string Kashiwagionodiscountrate
+        {
+            get { return kashiwagionodiscountrate; }
+            set { kashiwagionodiscountrate = value; }
+        }
         private string profitrate = String.Empty;
         public string ProfitRate
         {
             get { return profitrate; }
             set { profitrate = value; }
+        }
+
+        private string jisha_profitrate = String.Empty;
+        public string Jisha_profitrate
+        {
+            get { return jisha_profitrate; }
+            set { jisha_profitrate = value; }
+        }
+
+        private string rakuten_profitrate = String.Empty;
+        public string Rakuten_profitrate
+        {
+            get { return rakuten_profitrate; }
+            set { rakuten_profitrate = value; }
+        }
+
+        private string yahoo_profitrate = String.Empty;
+        public string Yahoo_profitrate
+        {
+            get { return yahoo_profitrate; }
+            set { yahoo_profitrate = value; }
+        }
+
+        private string wowma_profitrate = String.Empty;
+        public string Wowma_profitrate
+        {
+            get { return wowma_profitrate; }
+            set { wowma_profitrate = value; }
+        }
+
+        private string monoprofitrate = String.Empty;
+        public string MonoprofitRate
+        {
+            get { return monoprofitrate; }
+            set { monoprofitrate = value; }
+        }
+
+        private string diteprofitrate = String.Empty;
+        public string DiteprofitRate
+        {
+            get { return diteprofitrate; }
+            set { diteprofitrate = value; }
+        }
+
+        private string japanmprofitrate = String.Empty;
+        public string Japanmprofitrate
+        {
+            get { return japanmprofitrate; }
+            set { japanmprofitrate = value; }
+        }
+
+        private string kashiwagiprofitrate = String.Empty;
+        public string Kashiwagiprofitrate
+        {
+            get { return kashiwagiprofitrate; }
+            set { kashiwagiprofitrate = value; }
         }
 
         public int ShopID

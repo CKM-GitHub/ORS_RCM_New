@@ -24,6 +24,26 @@ namespace ORS_RCM_DL
     {
         public Item_DL() { }
 
+        public DataTable SelectSKUItemCode(string ItemCode)
+        {
+            try
+            {
+                SqlConnection connectionString = new SqlConnection(DataConfig.connectionString);
+                DataTable dt = new DataTable();
+                SqlDataAdapter sda = new SqlDataAdapter("SP_Item_SelectSKU_ItemCode", connectionString);
+                sda.SelectCommand.CommandTimeout = 0;
+                sda.SelectCommand.CommandType = CommandType.StoredProcedure;
+                sda.SelectCommand.Parameters.AddWithValue("@ItemCode", ItemCode);
+                sda.SelectCommand.Connection.Open();
+                sda.Fill(dt);
+                sda.SelectCommand.Connection.Close();
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
         public int SaveEdit(Item_Entity item, string option)
         {
             try

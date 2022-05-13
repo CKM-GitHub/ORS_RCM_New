@@ -40,10 +40,10 @@ table td {
 	padding: 2px 5px;
 	height:	0px;
 }
-.relatedProduct{
+.h{
     margin-top:10px !important;
 }
-.dblock1 a{
+.relatedblock a{
     font-size:13px !important;
     letter-spacing: 1px;
     float:right !important;
@@ -656,10 +656,10 @@ $(this).css('cursor', 'pointer');
 				<dd><asp:TextBox ID="txtCatalog_Information" runat="server" Width="278px" MaxLength="3000"></asp:TextBox></dd>
 		</dl>
 	</div>
-    <div class="dblock1">
+    <div class="relatedblock">
         <a href="#" id="Relatedbtn" class="fa fa-search" onclick="ShowRelatedProduct(this)"><span class="m" >関連商品を検索する</span></a>
     </div>
-		<dl class="relatedProduct">
+		<dl class="relatedProduct h">
             <dt>関連商品 
 <%--<button id="Relatedbtn" style="color:black;" onclick="ShowRelatedProduct(this);" CausesValidation="false" ><i class="fa fa-search" style="color:black"></i>&nbsp;関連商品を検索する</button>--%>
             </dt>

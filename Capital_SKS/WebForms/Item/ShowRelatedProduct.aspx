@@ -26,7 +26,7 @@
                 height: 40px !important;
                 border-radius:10px;float:left;
             }
-            #btnClose{
+            #btnCancel{
                 margin-left:450px !important;
                 margin-right:50px !important;
             }   
@@ -38,13 +38,18 @@
         <script type="text/javascript">
             function ckItem_Check(latestcheck) {
                 var dl = document.getElementById("<%=gvMallCategory.ClientID%>");
-                var inputs = dl.getElementsByTagName("input");
-                var checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
-                if (checkboxes.length > 5) {
-                    alert('The number of related products exceeds the maximun values.');
-                    latestcheck.checked = false;
+                for (var i = 1; i < dl.rows.length; i++) {
+                    var inputs = dl.rows[i].getElementsByTagName("input");
+                    var checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+                    if (checkboxes.length > 20) {
+                        alert('The number of related products exceeds the maximun values.');
+                        latestcheck.checked = false;
+                    }
                 }
             }
+            //$('#btnClose').click(function () {
+            //    $('#ckItem').attr('checked', false);
+            //});
         </script>
     </head>
     <body class="clNon">
@@ -53,7 +58,7 @@
 	            <div id="PopContents" class="pop4_Mcate">
 	                <form runat="server">
 
-	                    <p class="popSearch" style="margin-left:150px;margin-bottom:35px; width:800px">
+	                    <p class="popSearch" style="margin-left:150px;margin-bottom:25px; width:800px">
                             商品番号
 				            <asp:TextBox ID="txtSearch" runat="server" Height="32px" Font-Bold="True" Width="210px" MaxLength="50"  onkeypress="return isNumberKeys(event)" ></asp:TextBox>
                             商品名
@@ -63,7 +68,7 @@
 
 	                    <div style="height:405px;width:998px;">
 		                    <table>
-			                    <asp:GridView ID="gvMallCategory" runat="server" AutoGenerateColumns="False" OnRowDataBound="gvMallCategory_RowDataBound" 
+			                    <asp:GridView ID="gvMallCategory" runat="server" AutoGenerateColumns="False" OnRowDataBound="gvMallCategory_RowDataBound" EmptyDataText="There is no data to display."
                                 AllowPaging="True" PageSize="15" CellPadding="4" ForeColor="#333333" GridLines="None" onpageindexchanging="gvMallCategory_PageIndexChanging" >
                                      <AlternatingRowStyle BackColor="White"  />
                                         <HeaderStyle ForeColor="White" Font-Bold="True"  Font-Size="18px" BackColor="#555555"></HeaderStyle>
@@ -92,8 +97,8 @@
 		                    </table>
 	                    
                             <div class ="btn">
-                                <asp:Button runat="server" ID="btnClose" Text="決定" Width="150px" OnClick="btn_Close" />
                                 <asp:Button ID="btnCancel" runat="server" Text="キャンセル"  Width="150px" OnClick="btn_Cancel" />
+                                 <asp:Button runat="server" ID="btnClose" Text="決定" Width="150px" OnClick="btn_Close"/>
                             </div>
 
                        </div>

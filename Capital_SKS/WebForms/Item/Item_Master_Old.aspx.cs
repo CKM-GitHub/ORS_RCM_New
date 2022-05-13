@@ -1924,15 +1924,20 @@ namespace ORS_RCM
                     {
                         switch (i)
                         {
-                            case 0: txtRelated1.Text = dt.Rows[i]["Related_ItemCode"].ToString();
+                            case 0:
+                                txtRelated1.Text = dt.Rows[i]["Related_ItemCode"].ToString();
                                 break;
-                            case 1: txtRelated2.Text = dt.Rows[i]["Related_ItemCode"].ToString();
+                            case 1:
+                                txtRelated2.Text = dt.Rows[i]["Related_ItemCode"].ToString();
                                 break;
-                            case 2: txtRelated3.Text = dt.Rows[i]["Related_ItemCode"].ToString();
+                            case 2:
+                                txtRelated3.Text = dt.Rows[i]["Related_ItemCode"].ToString();
                                 break;
-                            case 3: txtRelated4.Text = dt.Rows[i]["Related_ItemCode"].ToString();
+                            case 3:
+                                txtRelated4.Text = dt.Rows[i]["Related_ItemCode"].ToString();
                                 break;
-                            case 4: txtRelated5.Text = dt.Rows[i]["Related_ItemCode"].ToString();
+                            case 4:
+                                txtRelated5.Text = dt.Rows[i]["Related_ItemCode"].ToString();
                                 break;
                         }
                     }

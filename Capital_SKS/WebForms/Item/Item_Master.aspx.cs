@@ -43,7 +43,7 @@ namespace ORS_RCM.WebForms.Item
     {
         //Global Variables
         Item_Master_Entity ime;
-        Item_Master_BL imeBL; 
+        Item_Master_BL imeBL;
         Item_Category_BL itemCategoryBL;
         Category_BL cbl;
         Item_BL ibl;
@@ -52,8 +52,8 @@ namespace ORS_RCM.WebForms.Item
         public int extract = 0;
         public String[] ex = new String[6];
         public String[] cx = new String[100];
-        public String[] ids = new String[100];         
-        string treepath = string.Empty;        
+        public String[] ids = new String[100];
+        string treepath = string.Empty;
         string catpath = string.Empty;
         UserRoleBL user;
         public int flag = 2;
@@ -81,13 +81,27 @@ namespace ORS_RCM.WebForms.Item
                     DataTable dt = (DataTable)Session["CategoryList_" + ItemCode];
                     return dt;
                 }
-                else   
+                else
                 {
                     return null;
                 }
             }
         }
-
+        public DataTable CopyItemCodeList
+        {
+            get
+            {
+                if (Session["Item_Code_Copy"] != null)
+                {
+                    DataTable dt = (DataTable)Session["Item_Code_Copy"];
+                    return dt;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+        }
         public DataTable ImageList
         {
             get
@@ -118,7 +132,35 @@ namespace ORS_RCM.WebForms.Item
                 }
             }
         }
-
+        public DataTable RelatedItem
+        {
+            get
+            {
+                if (Session["Item_Code" + ItemCode] != null)
+                {
+                    return (DataTable)Session["Item_Code" + ItemCode];
+                }
+                else
+                {
+                    return null;
+                }
+            }
+        }
+        public DataTable RelatedCodeList
+        {
+            get
+            {
+                if (Session["RelatedCodeList_" + ItemCode] != null)
+                {
+                    DataTable dt = (DataTable)Session["RelatedCodeList_" + ItemCode];
+                    return dt;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+        }
         public DataTable Option
         {
             get
@@ -169,7 +211,7 @@ namespace ORS_RCM.WebForms.Item
         protected void Page_Load(object sender, EventArgs e)
         {
             try
-            {               
+            {
                 string ControlID = string.Empty;
                 UserRoleBL user = new UserRoleBL();
                 bool resultRead = user.CanRead(UserID, "099");
@@ -223,7 +265,7 @@ namespace ORS_RCM.WebForms.Item
                         SetSelectedCategory(ItemID);      //Select From Item_Category Table
                         SetCategoryData();
                         SetJishaCategoryData();
-                        SelectByItemID(ItemID); 
+                        SelectByItemID(ItemID);
                         //Select From Item_Image Table
                         //ddlsalesunit.Items.Insert(0, "");
                         //ddlcontentunit1.Items.Insert(0, "");
@@ -232,7 +274,7 @@ namespace ORS_RCM.WebForms.Item
                         BindShopName();
                         SetItemCodeURL();
                         SetSelectedRelatedItem(ItemID);   //Select From Item_Related_Item Table
-
+                        //DisplayRelatedItem();
                         #region EDITED BY T.Z.A 15-03-2019
 
                         SKU_BIND();
@@ -329,6 +371,10 @@ namespace ORS_RCM.WebForms.Item
                     {
                         DisplayMallCategory(); // for display Mall_Category from popup form
                     }
+                    else if (ControlID.Contains("btnCopy"))
+                    {
+                        ReBindNewItemCode();
+                    }
                     else if (ControlID.Contains("imgbYahooSpecValue"))
                     {
                         if (Session["btnYPopClick_" + ItemCode] != null && Session["btnYPopClick_" + ItemCode].ToString() == "ok")
@@ -340,6 +386,16 @@ namespace ORS_RCM.WebForms.Item
                         {
                             Session.Remove("btnYPopClick_" + ItemCode);
                         }
+                    }
+                    //hhw
+                    else if (ControlID.Contains("Relatedbtn"))
+                    {
+                        txtRelated1.Text = "";
+                        txtRelated2.Text = "";
+                        txtRelated3.Text = "";
+                        txtRelated4.Text = "";
+                        txtRelated5.Text = "";
+                        DisplayRelatedItem();
                     }
                     else if (ControlID.Contains("btnAdd"))
                     {
@@ -373,9 +429,11 @@ namespace ORS_RCM.WebForms.Item
                     gvSKUSize.DataSource = dt;
                     gvSKUSize.DataBind();
                     rdb1.Checked = true;
+                    rdb2.Checked = false;
                 }
                 else
                 {
+                    rdb1.Checked = false;
                     rdb2.Checked = true;
                 }
             }
@@ -618,7 +676,7 @@ namespace ORS_RCM.WebForms.Item
             ddlsalesunit.DataTextField = "Sales_unit";
             ddlsalesunit.DataValueField = "Sales_unit";
             ddlsalesunit.DataBind();
-            ddlsalesunit.Items.Insert(0,"");
+            ddlsalesunit.Items.Insert(0, "");
         }
 
         public void BindORSTag()
@@ -640,7 +698,7 @@ namespace ORS_RCM.WebForms.Item
             ddlcontentunit2.DataTextField = "Contents_unit_2";
             ddlcontentunit2.DataValueField = "Contents_unit_2";
             ddlcontentunit2.DataBind();
-            ddlcontentunit2.Items.Insert(0,"");
+            ddlcontentunit2.Items.Insert(0, "");
         }
 
         public void BindContentUnit1()
@@ -651,7 +709,7 @@ namespace ORS_RCM.WebForms.Item
             ddlcontentunit1.DataTextField = "Contents_unit_1";
             ddlcontentunit1.DataValueField = "Contents_unit_1";
             ddlcontentunit1.DataBind();
-            ddlcontentunit1.Items.Insert(0,"");
+            ddlcontentunit1.Items.Insert(0, "");
         }
 
         public DataTable RebindItemCodeURL(string ctrl)
@@ -740,7 +798,192 @@ namespace ORS_RCM.WebForms.Item
                 String[] colName = { "Template" };
                 if (!Check_SpecialCharacter(colName, templatedt))
                 {
-                    if (ItemCode != null)
+                    if (Session["Item_Code_Copy"] != null)
+                    {
+                        string itemcode = txtItem_Code.Text;
+                        ime.Item_Name = txtItem_Name.Text;
+                        int ItemID = imeBL.SelectItemID(itemcode);
+                        if (ItemID == 0)
+                        {
+                            ime.ID = ItemID;
+                            ime.Updated_By = UserID;
+                            ime = GetItemData();
+                            string str = CheckLength(ime);
+                            if (!String.IsNullOrWhiteSpace(str)) { GlobalUI.MessageBox(str + "greater than length bytes!"); }
+                            else
+                            {
+                                if (ValidationUpdate())
+                                {
+                                    string option = null;
+                                    option = "Save";
+                                    if (imeBL.SaveEdit(ime, option) > 0)    //btnsave
+                                    {
+                                        ItemID = imeBL.SelectItemID(itemcode);
+                                        ime.ID = ItemID;
+                                        //Insert Category List
+                                        GetCategoryValueFromTextBox(ItemID, CategoryList);
+                                        //Delete previous shop from Item_Shop table and then insert new shop or not
+                                        InsertShopList(ItemID, itemcode);
+                                        //Delete previous photo from Item_Image table and then insert new photo or not
+                                        InsertPhoto(ItemID);
+                                        //Insert Item table when Itemcode is not exits in ItemTable
+                                        InsertItem(itemcode);
+                                        //Insert into Item_Code_URL
+                                        InsertItemCodeURL(ItemID);
+                                        //Change Shop Status To Gray
+                                        if (chkActive.Checked == true)
+                                        {
+                                            imeBL.ChangeExportStatusToPink(itemcode, 1);
+                                        }
+                                        else
+                                        {
+                                            imeBL.ChangeExportStatusToPink(itemcode, 2);
+                                        }
+                                        //Delete previous related item from Item_RelatedItem table and then insert new related item or not
+                                        InsertRelatedItem(ItemID);
+                                        //Delete previous option from Item_Option table and then insert new option or not
+                                        InsertOption(ItemID);
+                                        //Delete previous yahoo specific from Item_YahooSpecificValue table and then insert new yahoo specific or not
+                                        if (YahooSpecificValue != null)
+                                        {
+                                            InsertYahooSpecificValue(ItemID);
+                                        }
+                                        //For sks-587
+                                        if (ViewState["DailyDelivery"] != null)
+                                        {
+                                            imeBL.SetUnsetDailyDelivery(itemcode, Convert.ToInt32(ViewState["DailyDelivery"]));
+                                        }
+                                        SaveTemplateDetail(itemcode); // Insert or Update Template_Detail
+                                        //MessageBox("Save Successful ! ");
+                                        if (chkActive.Checked == true)
+                                        {
+                                            Page.ClientScript.RegisterStartupScript(this.GetType(), "myScript", "OnCheckedChanged(true);", true);
+                                        }
+                                        else
+                                        {
+                                            Page.ClientScript.RegisterStartupScript(this.GetType(), "myScript", "OnCheckedChanged(false);", true);
+                                        }
+                                        ime = new Item_Master_Entity();
+                                        ime = imeBL.SelectByID(ItemID);
+                                        if (!string.IsNullOrWhiteSpace(ime.Release_Date.ToString()))
+                                        {
+                                            txtRelease_Date.Text = String.Format("{0:yyyy/MM/dd}", ime.Release_Date);
+                                        }
+                                        else
+                                        {
+                                            txtRelease_Date.Text = "";
+                                        }
+                                        if (!string.IsNullOrWhiteSpace(ime.Post_Available_Date.ToString()))   //updated by nandar 05/01/2016
+                                        {
+                                            txtPost_Available_Date.Text = String.Format("{0:yyyy/MM/dd}", ime.Post_Available_Date);
+                                        }
+                                        else
+                                        {
+                                            txtPost_Available_Date.Text = "";
+                                        }
+                                    }
+                                }
+                            }
+                            //Response.Redirect("Item_Master.aspx?Item_Code=" + itemcode, false);
+                            Session.Remove("Item_Code_Copy");
+                            ViewState["UrlReferrer"] = "Item_Master.aspx?Item_Code=" + itemcode;
+                            string result = "Save Successful!";
+                            if (result == "Save Successful!")
+                            {
+                                object referrer = ViewState["UrlReferrer"];
+                                string url = (string)referrer;
+                                string script = "window.onload = function(){ alert('";
+                                script += result;
+                                script += "');";
+                                script += "window.location.href = '";
+                                script += url;
+                                script += "'; }";
+                                ClientScript.RegisterStartupScript(this.GetType(), "Redirect", script, true);
+                            }
+                        }
+                        else
+                        {
+                            ime.ID = ItemID;
+
+                            ime.Updated_By = UserID;
+                            ime = GetItemData();
+                            string str = CheckLength(ime);
+                            if (!String.IsNullOrWhiteSpace(str)) { GlobalUI.MessageBox(str + "greater than length bytes!"); }
+                            else
+                            {
+                                if (ValidationUpdate())
+                                {
+                                    string option = null;
+                                    option = "Update";
+                                    if (imeBL.SaveEdit(ime, option) > 0)    //btnsave
+                                    {
+                                        //Insert Category List
+                                        GetCategoryValueFromTextBox(ItemID, CategoryList);
+                                        //Delete previous shop from Item_Shop table and then insert new shop or not
+                                        InsertShopList(ItemID, itemcode);
+                                        //Delete previous photo from Item_Image table and then insert new photo or not
+                                        InsertPhoto(ItemID);
+                                        //Insert Item table when Itemcode is not exits in ItemTable
+                                        InsertItem(itemcode);
+                                        //Insert into Item_Code_URL
+                                        InsertItemCodeURL(ItemID);
+                                        //Change Shop Status To Gray
+                                        if (chkActive.Checked == true)
+                                        {
+                                            imeBL.ChangeExportStatusToPink(itemcode, 1);
+                                        }
+                                        else
+                                        {
+                                            imeBL.ChangeExportStatusToPink(itemcode, 2);
+                                        }
+                                        //Delete previous related item from Item_RelatedItem table and then insert new related item or not
+                                        InsertRelatedItem(ItemID);
+                                        //Delete previous option from Item_Option table and then insert new option or not
+                                        InsertOption(ItemID);
+                                        //Delete previous yahoo specific from Item_YahooSpecificValue table and then insert new yahoo specific or not
+                                        if (YahooSpecificValue != null)
+                                        {
+                                            InsertYahooSpecificValue(ItemID);
+                                        }
+                                        //For sks-587
+                                        if (ViewState["DailyDelivery"] != null)
+                                        {
+                                            imeBL.SetUnsetDailyDelivery(itemcode, Convert.ToInt32(ViewState["DailyDelivery"]));
+                                        }
+                                        SaveTemplateDetail(itemcode); // Insert or Update Template_Detail
+                                        MessageBox("Updating Successful ! ");
+                                        if (chkActive.Checked == true)
+                                        {
+                                            Page.ClientScript.RegisterStartupScript(this.GetType(), "myScript", "OnCheckedChanged(true);", true);
+                                        }
+                                        else
+                                        {
+                                            Page.ClientScript.RegisterStartupScript(this.GetType(), "myScript", "OnCheckedChanged(false);", true);
+                                        }
+                                        ime = new Item_Master_Entity();
+                                        ime = imeBL.SelectByID(ItemID);
+                                        if (!string.IsNullOrWhiteSpace(ime.Release_Date.ToString()))
+                                        {
+                                            txtRelease_Date.Text = String.Format("{0:yyyy/MM/dd}", ime.Release_Date);
+                                        }
+                                        else
+                                        {
+                                            txtRelease_Date.Text = "";
+                                        }
+                                        if (!string.IsNullOrWhiteSpace(ime.Post_Available_Date.ToString()))   //updated by nandar 05/01/2016
+                                        {
+                                            txtPost_Available_Date.Text = String.Format("{0:yyyy/MM/dd}", ime.Post_Available_Date);
+                                        }
+                                        else
+                                        {
+                                            txtPost_Available_Date.Text = "";
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    else if (ItemCode != null)
                     {
                         int ItemID = imeBL.SelectItemID(ItemCode);
                         ime.ID = ItemID;
@@ -825,6 +1068,7 @@ namespace ORS_RCM.WebForms.Item
                             }
                         }
                     }
+
                 }
             }
             catch (Exception ex)
@@ -847,7 +1091,7 @@ namespace ORS_RCM.WebForms.Item
             dt.Columns.Add("Item_ID", typeof(int));
             dt.Columns.Add("Shop_ID", typeof(int));
             dt.Columns.Add("Item_Code_URL", typeof(string));
-          
+
             foreach (DataListItem li in dlShop.Items)
             {
                 //TextBox txtitemcode = li.FindControl("txtItem_CodeList") as TextBox;
@@ -858,7 +1102,7 @@ namespace ORS_RCM.WebForms.Item
                     if (cb.Checked)
                     {
                         DataRow dr = dt.NewRow();
-                        dr["Item_ID"] = ItemID;                                               
+                        dr["Item_ID"] = ItemID;
                         dr["Item_Code_URL"] = txtItem_Code.Text;
                         dr["Shop_ID"] = Convert.ToInt32(shopid.Text);
                         dt.Rows.Add(dr);
@@ -888,8 +1132,8 @@ namespace ORS_RCM.WebForms.Item
                 }
             }
             if (dtnew != null && dtnew.Rows.Count > 0)
-            { 
-                 cat=dtnew.Rows[0]["Category"].ToString();
+            {
+                cat = dtnew.Rows[0]["Category"].ToString();
             }
             if (!String.IsNullOrWhiteSpace(cat))
             {
@@ -948,8 +1192,8 @@ namespace ORS_RCM.WebForms.Item
                         DataTable dtcopy = itemCategoryBL.CheckCategory(ItemID, dtnew);
                         dt.Merge(dtcopy);
                     }
-                        itemCategoryBL.Insert(ItemID, dt);
-                        Session.Remove("CategoryList_" + ItemCode);
+                    itemCategoryBL.Insert(ItemID, dt);
+                    Session.Remove("CategoryList_" + ItemCode);
                 }
             }
             else
@@ -1330,7 +1574,7 @@ namespace ORS_RCM.WebForms.Item
                     Page page = HttpContext.Current.CurrentHandler as Page;
                     if (page != null && !page.ClientScript.IsClientScriptBlockRegistered("alert"))
                     {
-                        page.ClientScript.RegisterClientScriptBlock(this.GetType(), "alert", script,false);
+                        page.ClientScript.RegisterClientScriptBlock(this.GetType(), "alert", script, false);
                     }
                 }
             }
@@ -1641,9 +1885,9 @@ namespace ORS_RCM.WebForms.Item
                 {
                     ime.List_Price = int.Parse(txtList_Price.Text.Replace(",", string.Empty));
                 }
-                if (!string.IsNullOrWhiteSpace(txtJisha_Price .Text ))
+                if (!string.IsNullOrWhiteSpace(txtJisha_Price.Text))
                 {
-                    ime.Jisha_Price  = int.Parse(txtJisha_Price.Text.Replace(",", string.Empty));
+                    ime.Jisha_Price = int.Parse(txtJisha_Price.Text.Replace(",", string.Empty));
                 }
                 if (!string.IsNullOrWhiteSpace(txtSale_Price.Text))
                 {
@@ -1812,13 +2056,13 @@ namespace ORS_RCM.WebForms.Item
                 {
                     ime.Cost = int.Parse(txtcost.Text.Replace(",", string.Empty));
                 }
-                if (!String.IsNullOrWhiteSpace(txtday_ship .Text))
+                if (!String.IsNullOrWhiteSpace(txtday_ship.Text))
                 {
                     ime.Day_Ship = int.Parse(txtday_ship.Text.TrimStart());
                 }
-                if (!String.IsNullOrWhiteSpace(txtreturn_necessary .Text ))
+                if (!String.IsNullOrWhiteSpace(txtreturn_necessary.Text))
                 {
-                    ime.Retrun_Necessary  = int.Parse(txtreturn_necessary.Text.TrimStart());
+                    ime.Retrun_Necessary = int.Parse(txtreturn_necessary.Text.TrimStart());
                 }
                 if (!String.IsNullOrWhiteSpace(txtwarehouse_code.Text))
                 {
@@ -1877,7 +2121,7 @@ namespace ORS_RCM.WebForms.Item
                 txtSale_Price.Text = string.Format("{0:#,#}", ime.Sale_Price);
                 txtJisha_Price.Text = string.Format("{0:#,#}", ime.Jisha_Price);
 
-                if(ime.RakutenPrice !=0 ||ime.YahooPrice !=0 ||ime.WowmaPrice !=0 || ime.JishaPrice !=0 || ime.TennisPrice != 0)
+                if (ime.RakutenPrice != 0 || ime.YahooPrice != 0 || ime.WowmaPrice != 0 || ime.JishaPrice != 0 || ime.TennisPrice != 0)
                 {
                     priceDiv.Visible = true;
 
@@ -1957,7 +2201,7 @@ namespace ORS_RCM.WebForms.Item
                 {
                     ddlsalesunit.Text = Convert.ToString(ime.SalesUnit);
                 }
-                else 
+                else
                 {
                     ddlsalesunit.Text = Convert.ToString(ime.SalesUnit);
                 }
@@ -1972,11 +2216,11 @@ namespace ORS_RCM.WebForms.Item
                 txtcontentquantityunitno1.Text = Convert.ToString(ime.ContentQuantityNo1);
                 txtcontentquantityunitno2.Text = Convert.ToString(ime.ContentQuantityNo2);
                 ddlcontentunit1.Text = Convert.ToString(ime.ContentUnit1);
-                ddlcontentunit2.Text= Convert.ToString(ime.ContentUnit2);
+                ddlcontentunit2.Text = Convert.ToString(ime.ContentUnit2);
                 txtCatchCopy.Text = ime.PC_CatchCopy;
                 txtCatchCopyMobile.Text = ime.PC_CatchCopy_Mobile;
-                txtmakername.Text=ime.Maker_Name.ToString();
-                txtcomment.Text=ime.Comment;
+                txtmakername.Text = ime.Maker_Name.ToString();
+                txtcomment.Text = ime.Comment;
 
                 if (ime.Selling_Price == 0)
                     txtsellingprice.Text = string.Empty;
@@ -1990,7 +2234,7 @@ namespace ORS_RCM.WebForms.Item
 
                 if (ime.Purchase_Price == 0)
                     txtpurchaseprice.Text = string.Empty;
-                else 
+                else
                     txtpurchaseprice.Text = ime.Purchase_Price.ToString();
 
                 if (ime.SellBy == 0)
@@ -1998,54 +2242,54 @@ namespace ORS_RCM.WebForms.Item
                 else
                     txtsellby.Text = ime.SellBy.ToString();
 
-               
-                txtsellingrank.Text=ime.Selling_Rank;
-                ddldeliverymethod.SelectedValue =Convert.ToString(ime.Delivery_Method);
-                ddldeliverytype.SelectedValue =Convert.ToString(ime.Delivery_Type);
+
+                txtsellingrank.Text = ime.Selling_Rank;
+                ddldeliverymethod.SelectedValue = Convert.ToString(ime.Delivery_Method);
+                ddldeliverytype.SelectedValue = Convert.ToString(ime.Delivery_Type);
 
                 if (ime.Delivery_Days == 0)
                     txtdeliverydays.Text = string.Empty;
-                else 
-                    txtdeliverydays.Text = Convert.ToString(ime.Delivery_Days); 
-               
-                ddldeliveryfees.SelectedValue =Convert.ToString(ime.Delivery_Fees);
-                ddlksmavaliable.SelectedValue =Convert.ToString(ime.KSMDelivery_Type);
+                else
+                    txtdeliverydays.Text = Convert.ToString(ime.Delivery_Days);
+
+                ddldeliveryfees.SelectedValue = Convert.ToString(ime.Delivery_Fees);
+                ddlksmavaliable.SelectedValue = Convert.ToString(ime.KSMDelivery_Type);
 
                 if (ime.KSMDelivery_Days == 0)
                     txtksmdeliverydays.Text = string.Empty;
                 else
                     txtksmdeliverydays.Text = ime.KSMDelivery_Days.ToString();
-               
-                ddlreturnableitem.SelectedValue =Convert.ToString(ime.Returnable_Item); 
-                ddlnoapplicablelaw.SelectedValue =Convert.ToString(ime.NoApplicable_Law);
-                ddlsalespermission.SelectedValue =Convert.ToString(ime.Sales_Permission);
-                ddllaw.SelectedValue =Convert.ToString(ime.Law);
+
+                ddlreturnableitem.SelectedValue = Convert.ToString(ime.Returnable_Item);
+                ddlnoapplicablelaw.SelectedValue = Convert.ToString(ime.NoApplicable_Law);
+                ddlsalespermission.SelectedValue = Convert.ToString(ime.Sales_Permission);
+                ddllaw.SelectedValue = Convert.ToString(ime.Law);
 
                 if (ime.Nation_Wide == "0")
                     txtnationwide.Text = string.Empty;
                 else
-                    txtnationwide.Text= Convert.ToString(ime.Nation_Wide);
+                    txtnationwide.Text = Convert.ToString(ime.Nation_Wide);
 
                 if (ime.Hokkaido == 0)
                     txthokkaido.Text = string.Empty;
                 else
-                    txthokkaido.Text= Convert.ToString(ime.Hokkaido);
+                    txthokkaido.Text = Convert.ToString(ime.Hokkaido);
 
                 if (ime.Okinawa == 0)
                     txtokinawa.Text = string.Empty;
-                else 
-                    txtokinawa.Text = Convert.ToString(ime.Okinawa); 
+                else
+                    txtokinawa.Text = Convert.ToString(ime.Okinawa);
 
                 if (ime.Remote_Island == 0)
                     txtremoteisland.Text = string.Empty;
-                else 
-                    txtremoteisland.Text = Convert.ToString(ime.Remote_Island); 
-               
-                txtundeliveredarea.Text=Convert.ToString(ime.Undelivered_Area);
-                txtdangerousgoodscontents.Text=ime.Undelivered_Area.ToString();
-                ddldanggoodsclass.SelectedValue =Convert.ToString(ime.Dangoods_Class);
+                else
+                    txtremoteisland.Text = Convert.ToString(ime.Remote_Island);
+
+                txtundeliveredarea.Text = Convert.ToString(ime.Undelivered_Area);
+                txtdangerousgoodscontents.Text = ime.Undelivered_Area.ToString();
+                ddldanggoodsclass.SelectedValue = Convert.ToString(ime.Dangoods_Class);
                 ddldanggoodsname.SelectedValue = Convert.ToString(ime.Dangoods_Name);
-                ddlriskrating.SelectedValue =Convert.ToString(ime.Risk_Rating);
+                ddlriskrating.SelectedValue = Convert.ToString(ime.Risk_Rating);
                 ddldanggoodsnature.SelectedValue = Convert.ToString(ime.Dangoods_Nature);
                 ddlfirelaw.SelectedValue = Convert.ToString(ime.Fire_Law);
                 if (!String.IsNullOrWhiteSpace(ime.CostRate))
@@ -2061,14 +2305,14 @@ namespace ORS_RCM.WebForms.Item
                     lbldiscountrate.Text = ime.DiscountRate + "%";
                 }
                 if (ime.Day_Ship == 0)
-                    txtday_ship .Text = string.Empty;
+                    txtday_ship.Text = string.Empty;
                 else
                     txtday_ship.Text = Convert.ToString(ime.Day_Ship);
-                if (ime.Retrun_Necessary  == 0)
-                    txtreturn_necessary .Text  = string.Empty;
+                if (ime.Retrun_Necessary == 0)
+                    txtreturn_necessary.Text = string.Empty;
                 else
                     txtreturn_necessary.Text = Convert.ToString(ime.Retrun_Necessary);
-                if (ime.Warehouse_Code  == 0)
+                if (ime.Warehouse_Code == 0)
                     txtwarehouse_code.Text = string.Empty;
                 else
                     txtwarehouse_code.Text = Convert.ToString(ime.Warehouse_Code);
@@ -2366,9 +2610,89 @@ namespace ORS_RCM.WebForms.Item
                 Response.Redirect("~/CustomErrorPage.aspx?", false);
             }
         }
-
         #endregion
-
+        #region RelatedItem
+        public void DisplayRelatedItem()
+        {
+            try
+            {
+                DataTable dt1 = RelatedItem as DataTable;
+                if (dt1 != null && dt1.Rows.Count > 0)
+                {
+                    for (int i = 0; i < dt1.Rows.Count; i++)
+                    {
+                        switch (i)
+                        {
+                            case 0:
+                                txtRelated1.Text = dt1.Rows[i]["Item_Code"].ToString();
+                                break;
+                            case 1:
+                                txtRelated2.Text = dt1.Rows[i]["Item_Code"].ToString();
+                                break;
+                            case 2:
+                                txtRelated3.Text = dt1.Rows[i]["Item_Code"].ToString();
+                                break;
+                            case 3:
+                                txtRelated4.Text = dt1.Rows[i]["Item_Code"].ToString();
+                                break;
+                            case 4:
+                                txtRelated5.Text = dt1.Rows[i]["Item_Code"].ToString();
+                                break;
+                        }
+                    }
+                }
+                Session["Item_Code"] = dt1;
+            }
+            catch (Exception ex)
+            {
+                Session["Exception"] = ex.ToString();
+                Response.Redirect("~/CustomErrorPage.aspx?", false);
+            }
+        }
+        #endregion
+        #region Related_Item
+        /// <summary>
+        /// Connects to Related Item 
+        /// </summary>
+        /// <param name="ItemID"> By selected master id</param>
+        public void SetSelectedRelatedItem(int ItemID)
+        {
+            try
+            {
+                Item_Related_Item_BL ItemRelatedBL = new Item_Related_Item_BL();
+                DataTable dt = ItemRelatedBL.SelectByItemID(ItemID);
+                if (dt != null && dt.Rows.Count > 0)
+                {
+                    for (int i = 0; i < dt.Rows.Count; i++)
+                    {
+                        switch (i)
+                        {
+                            case 0:
+                                txtRelated1.Text = dt.Rows[i]["Related_ItemCode"].ToString();
+                                break;
+                            case 1:
+                                txtRelated2.Text = dt.Rows[i]["Related_ItemCode"].ToString();
+                                break;
+                            case 2:
+                                txtRelated3.Text = dt.Rows[i]["Related_ItemCode"].ToString();
+                                break;
+                            case 3:
+                                txtRelated4.Text = dt.Rows[i]["Related_ItemCode"].ToString();
+                                break;
+                            case 4:
+                                txtRelated5.Text = dt.Rows[i]["Related_ItemCode"].ToString();
+                                break;
+                        }
+                    }
+                }
+                Session["Related_Item_Code"] = dt;
+            }
+            catch (Exception ex)
+            {
+                Session["Exception"] = ex.ToString();
+                Response.Redirect("~/CustomErrorPage.aspx?", false);
+            }
+        }
         #region Shop
         public void BindShop()
         {
@@ -2441,7 +2765,7 @@ namespace ORS_RCM.WebForms.Item
                 else
                 { dd6.Visible = false; }
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 Session["Exception"] = ex.ToString();
                 Response.Redirect("~/CustomErrorPage.aspx?", false);
@@ -3450,7 +3774,7 @@ namespace ORS_RCM.WebForms.Item
                         hlImage19.NavigateUrl = "";
                         hlImage20.NavigateUrl = "";
                     }
-                        #endregion
+                    #endregion
 
                     #region
                     /*
@@ -3701,7 +4025,7 @@ namespace ORS_RCM.WebForms.Item
                 }
                 else   //exist ImageList
                 {
-                    
+
                     #region delete row
                     DataRow[] dr = dt.Select("Image_Type='1' OR Image_Type='2'");
                     if (dr.Length > 0)
@@ -4028,43 +4352,7 @@ namespace ORS_RCM.WebForms.Item
 
         #endregion
 
-        #region Related_Item
-        /// <summary>
-        /// Connects to Related Item 
-        /// </summary>
-        /// <param name="ItemID"> By selected master id</param>
-        public void SetSelectedRelatedItem(int ItemID)
-        {
-            try
-            {
-                Item_Related_Item_BL ItemRelatedBL = new Item_Related_Item_BL();
-                DataTable dt = ItemRelatedBL.SelectByItemID(ItemID);
-                if (dt != null && dt.Rows.Count > 0)
-                {
-                    for (int i = 0; i < dt.Rows.Count; i++)
-                    {
-                        switch (i)
-                        {
-                            case 0: txtRelated1.Text = dt.Rows[i]["Related_ItemCode"].ToString();
-                                break;
-                            case 1: txtRelated2.Text = dt.Rows[i]["Related_ItemCode"].ToString();
-                                break;
-                            case 2: txtRelated3.Text = dt.Rows[i]["Related_ItemCode"].ToString();
-                                break;
-                            case 3: txtRelated4.Text = dt.Rows[i]["Related_ItemCode"].ToString();
-                                break;
-                            case 4: txtRelated5.Text = dt.Rows[i]["Related_ItemCode"].ToString();
-                                break;
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                Session["Exception"] = ex.ToString();
-                Response.Redirect("~/CustomErrorPage.aspx?", false);
-            }
-        }
+
 
         public void InsertRelatedItem(int itemID)
         {
@@ -4394,15 +4682,15 @@ namespace ORS_RCM.WebForms.Item
             }
             if (datalist.ItemIndex == 3)
             {
-                  if(shopList==null)
+                if (shopList == null)
                 {
                     flag = 0;
                 }
-                  else  if (shopList.Contains("4"))
+                else if (shopList.Contains("4"))
                 {
                     flag = 1;
                 }
-              
+
                 else
                 {
                     flag = 0;
@@ -4441,7 +4729,7 @@ namespace ORS_RCM.WebForms.Item
             try
             {
                 DataTable dt = imeBL.BindDailyFlag(ItemCode);
-                if (dt != null && dt.Rows.Count>0)
+                if (dt != null && dt.Rows.Count > 0)
                 {
                     if (Convert.ToBoolean(dt.Rows[0]["Flag"].ToString()) == true)
                         delivery_flag.Checked = true;
@@ -4469,7 +4757,7 @@ namespace ORS_RCM.WebForms.Item
             try
             {
 
-                 DataTable dt = new DataTable();
+                DataTable dt = new DataTable();
                 dt.Columns.Add("ItemID", typeof(int));
                 dt.Columns.Add("ShopID", typeof(int));
                 dt.Columns.Add("ItemCode", typeof(string));
@@ -4594,7 +4882,7 @@ namespace ORS_RCM.WebForms.Item
             if (rowYahoo.Count() > 0 && txtYahoo_CategoryID.Text == "")
             {
                 errorMsg += "YahooスペックIDを設定してください。, ";
-            }          
+            }
             DataRow[] rowWomma = dtshop.Select("ShopID = 4");
             if (rowWomma.Count() > 0 && txtWowma_CategoryID.Text == "")
             {
@@ -4639,7 +4927,7 @@ namespace ORS_RCM.WebForms.Item
             if (confirmValue == "はい")
             {
                 if (dt.Rows.Count <= 0 || (rowRakuten.Count() > 0 && txtRakuten_CategoryID.Text == "") || (rowYahoo.Count() > 0 && txtYahoo_CategoryID.Text == "") ||
-                    (rowWowma.Count() > 0 && txtWowma_CategoryID.Text == "")||/* (rowTennis.Count() > 0 && txtTennis_CategoryID.Text == "") ||*/ (rowImage.Count() == 0))
+                    (rowWowma.Count() > 0 && txtWowma_CategoryID.Text == "") ||/* (rowTennis.Count() > 0 && txtTennis_CategoryID.Text == "") ||*/ (rowImage.Count() == 0))
                 {
                     imeBL.ChangeExportStatusToPink(ItemCode, 0);
                 }
@@ -4664,7 +4952,7 @@ namespace ORS_RCM.WebForms.Item
 
         public void AddNewRowToGrid()
         {
-            string catvalue=null;
+            string catvalue = null;
             int rowindex = 0;
             if (ViewState["PreviousTable"] != null)
             {
@@ -4679,7 +4967,7 @@ namespace ORS_RCM.WebForms.Item
                         drCurrentRow = dtCurrentTable.NewRow();
                         dtCurrentTable.Rows[i - 1]["Category"] = box1.Text.Replace(@"\", "￥");
                         Regex reg = new Regex(@"^[a-zA-Z'.]{1,40}$");
-                        if (!Regex.IsMatch(box1.Text,@"^[a-zA-Z'.]{1,40}$"))
+                        if (!Regex.IsMatch(box1.Text, @"^[a-zA-Z'.]{1,40}$"))
                         {
                             GlobalUI.MessageBox("Please Type Valid Format!!");
                         }
@@ -4695,7 +4983,7 @@ namespace ORS_RCM.WebForms.Item
             }
             else if (ViewState["CurrentTable"] != null)
             {
-                
+
                 DataTable dtCurrentTable = (DataTable)ViewState["CurrentTable"];
                 DataRow drCurrentRow = null;
                 if (dtCurrentTable.Rows.Count > 0 && dtCurrentTable.Rows.Count < 5)
@@ -4708,9 +4996,9 @@ namespace ORS_RCM.WebForms.Item
                         dtCurrentTable.Rows[i - 1]["Category"] = box1.Text.Replace(@"\", "￥");
                         dtCurrentTable.Rows[i - 1]["SN"] = box2.Text;
                         rowindex++;
-                        if (String.IsNullOrWhiteSpace(dtCurrentTable.Rows[i-1]["Category"].ToString()))
+                        if (String.IsNullOrWhiteSpace(dtCurrentTable.Rows[i - 1]["Category"].ToString()))
                         {
-                             catvalue = "empty";
+                            catvalue = "empty";
                         }
                     }
                     if (catvalue != "empty")
@@ -4745,7 +5033,7 @@ namespace ORS_RCM.WebForms.Item
                             TextBox box1 = (TextBox)gvCategory.Rows[rowindex].Cells[0].FindControl("txtCategory");
                             TextBox box2 = (TextBox)gvCategory.Rows[rowindex].Cells[0].FindControl("txtSN");
                             box1.Text = dt.Rows[i]["Category"].ToString();
-                            box2.Text=dt.Rows[i]["SN"].ToString();
+                            box2.Text = dt.Rows[i]["SN"].ToString();
                             rowindex++;
                         }
                     }
@@ -4872,11 +5160,11 @@ namespace ORS_RCM.WebForms.Item
             imeBL = new Item_Master_BL();
             if (chkInventory.Checked)
             {
-                imeBL.ItemUpdateInventory(ItemCode,0);
+                imeBL.ItemUpdateInventory(ItemCode, 0);
             }
             else
             {
-                imeBL.ItemUpdateInventory(ItemCode,1);
+                imeBL.ItemUpdateInventory(ItemCode, 1);
             }
         }
 
@@ -4900,7 +5188,7 @@ namespace ORS_RCM.WebForms.Item
                             cb.Checked = true;
                             txtitemcode.Text = dt.Rows[i]["Item_Code_URL"].ToString();
                             break;
-                        }                                        
+                        }
                     }
                 }
             }
@@ -4968,10 +5256,58 @@ namespace ORS_RCM.WebForms.Item
         }
 
         public void RebindShopName()
-        { 
-            
-        }
+        {
 
+        }
+        public void ReBindNewItemCode()
+        {
+            try
+            {
+                if (Session["Item_Code_Copy"] != null)
+                {
+                    DataTable dt = CopyItemCodeList;
+                    if (dt.Rows.Count > 0)
+                    {
+                        txtItem_Code.Text = dt.Rows[0]["Item_Code"].ToString();
+                        txtItem_Name.Text = dt.Rows[0]["Item_Name"].ToString();
+
+                        DataTable dtskucolor = item.SelectSKUColor(dt.Rows[0]["Item_Code"].ToString());
+                        gvSKUColor.DataSource = dtskucolor; //Select From Item Table
+                        gvSKUColor.DataBind();
+                        DataTable dtsku = new DataTable();
+                        DataTable dt1 = new DataTable();
+                        if (dtskucolor.Rows.Count > 0)
+                        {
+                            dtsku = item.SelectSKU(dt.Rows[0]["Item_Code"].ToString());
+                            gvSKU.DataSource = item.SelectSKU(dt.Rows[0]["Item_Code"].ToString()); //Select From Item Table
+                            gvSKU.DataBind();
+                            dt1 = item.SelectSKUSize(dt.Rows[0]["Item_Code"].ToString()); //Select From Item Table
+                            gvSKUSize.DataSource = dt1;
+                            gvSKUSize.DataBind();
+                            rdb1.Checked = true;
+                            rdb2.Checked = false;
+                        }
+                        else
+                        {
+                            dtsku = item.SelectSKU(dt.Rows[0]["Item_Code"].ToString());
+                            gvSKU.DataSource = item.SelectSKU(dt.Rows[0]["Item_Code"].ToString()); //Select From Item Table
+                            gvSKU.DataBind();
+                            dt1 = item.SelectSKUSize(dt.Rows[0]["Item_Code"].ToString()); //Select From Item Table
+                            gvSKUSize.DataSource = dt1;
+                            gvSKUSize.DataBind();
+                            rdb1.Checked = false;
+                            rdb2.Checked = true;
+                        }
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Session["Exception"] = ex.ToString();
+                Response.Redirect("~/CustomErrorPage.aspx?");
+            }
+        }
         public bool CheckExistsItemCode(string ItemCode)
         {
             imeBL = new Item_Master_BL();
@@ -4996,7 +5332,7 @@ namespace ORS_RCM.WebForms.Item
 
         protected void txtExtra_Shipping_TextChanged(object sender, EventArgs e)
         {
-           
+
         }
 
         protected Boolean Check_SpecialCharacter(String[] columnName, DataTable dt)
@@ -5004,7 +5340,7 @@ namespace ORS_RCM.WebForms.Item
             try
             {
                 DataColumnCollection col = dt.Columns;
-               
+
 
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
@@ -5020,7 +5356,7 @@ namespace ORS_RCM.WebForms.Item
                                 string comma = ",";
                                 string plusign = "[[(+)]]";
                                 string minussign = "[[(-)]]";
-                               
+
                                 foreach (var item in specialChar)
                                 {
                                     if (input.Contains(item))
@@ -5028,19 +5364,19 @@ namespace ORS_RCM.WebForms.Item
                                         ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "alert('Template description contains special character.');", true);
                                         return true;
                                     }
-                                   
+
                                 }
                                 if (input.Contains(plusign) || input.Contains(minussign))
                                 {
                                     ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "alert('Template description contains special character.');", true);
                                     return true;
                                 }
-                                
+
                             }
                         }
                     }
                 }
-                
+
                 return false;
 
             }
@@ -5060,7 +5396,7 @@ namespace ORS_RCM.WebForms.Item
                 imeBL = new Item_Master_BL();
                 priceDiv.Visible = true;
                 dtPrice = imeBL.GetPrices(ItemCode);
-                if (dtPrice.Rows.Count > 0)               
+                if (dtPrice.Rows.Count > 0)
                 {
                     txtRakutenPrice.Text = string.Format("{0:#,#}", dtPrice.Rows[0]["RakutenPrice"].ToString());
                     txtYahooPrice.Text = string.Format("{0:#,#}", dtPrice.Rows[0]["YahooPrice"].ToString());

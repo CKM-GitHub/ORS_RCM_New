@@ -245,6 +245,11 @@ namespace ORS_RCM_BL
         {
             itemDL.UpdateStockFlag(ID,flag);
         }
-        
+
+        public DataTable SelectSKUItemCode(string ItemCode)
+        {
+            return itemDL.SelectSKUItemCode(ItemCode);
+        }
+
     }
 }

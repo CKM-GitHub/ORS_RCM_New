@@ -1,8 +1,8 @@
 ﻿
 
-body {
+/*body {
     overflow: hidden !important;
-}
+}*/
 *,
 *::before,
 *::after {
@@ -458,4 +458,69 @@ ul.image_list li a img {
         width: 100%;
     }
 }*/
+
+/* aymi lay*/
+
+.gvSKUStyle {
+    background-color: White;
+    font-family: "NotoSansMono", "NotoSansJP";
+    font-size: 12px;
+    border-collapse: collapse;
+    border: 0.2px solid;
+    margin-bottom: 0px;
+    table-layout: fixed;
+    width: 100%;
+}
+
+    .gvSKUStyle tr, .gvSKUStyle td {
+        border-collapse: collapse;
+        border: 0.2px solid #2a3f54;
+    }
+
+    .gvSKUStyle tr {
+        color: Black;
+        height: 25px;
+    }
+
+/*Your grid header column style*/ 
+.gvSKUStyle th {
+    background-color: #2a3f54;
+    border: 0.2px solid;
+    text-align: center;
+    vertical-align: top;
+    font-weight: bold;
+    font-size: 12px;
+    padding: 4px;
+    color: white;
+}
+
+.gvSKUStyle td {
+    padding: 2px;
+    text-align: right;
+}
+
+    .gvSKUStyle td:nth-child(1) {
+        background-color: #ADD8E6;
+        text-align: left;
+    }
+
+.gvSKUStyle tr th:nth-child(1) {
+    width: 12%;
+}
+
+.float-container {
+    padding: 1px;
+}
+
+.float-first-child {
+    width: 10%;
+    float: left;
+    padding: 1px;
+}
+
+.float-second-child {
+    width: 90%;
+    float: left;
+    padding: 1px;
+} 
 

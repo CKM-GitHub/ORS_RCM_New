@@ -194,6 +194,10 @@ namespace ORS_RCM_DL
                 cmd.Parameters.AddWithValue("@Product_Code", ime.Product_Code);
                 cmd.Parameters.AddWithValue("@Item_Code", ime.Item_Code);
                 cmd.Parameters.AddWithValue("@Item_Name", ime.Item_Name);
+                cmd.Parameters.AddWithValue("@JANCD", ime.JanCode);
+                cmd.Parameters.AddWithValue("@Memo", ime.Memo);
+                cmd.Parameters.AddWithValue("@Siiresaki", ime.Siiresaki);
+                cmd.Parameters.AddWithValue("@NormalLargeKBN", ime.NormalLargeKBN);
                 cmd.Parameters.AddWithValue("@List_Price", ime.List_Price);
                 cmd.Parameters.AddWithValue("@Sale_Price", ime.Sale_Price);
                 cmd.Parameters.AddWithValue("@Jisha_Price", ime.Jisha_Price);
@@ -203,6 +207,11 @@ namespace ORS_RCM_DL
                 cmd.Parameters.AddWithValue("@WowmaPrice", ime.WowmaPrice);
                 cmd.Parameters.AddWithValue("@JishaPrice", ime.JishaPrice);
                 cmd.Parameters.AddWithValue("@TennisPrice", ime.TennisPrice);
+
+                cmd.Parameters.AddWithValue("@MonoPrice", ime.Monoprice);
+                cmd.Parameters.AddWithValue("@DitePrice", ime.Diteprice);
+                cmd.Parameters.AddWithValue("@JapanMPrice", ime.Japanmprice);
+                cmd.Parameters.AddWithValue("@KashiwagikoukiPrice", ime.Kashiwagikoukiprice);
 
                 cmd.Parameters.AddWithValue("@Release_Date", ime.Release_Date);
                 cmd.Parameters.AddWithValue("@Post_Available_Date", ime.Post_Available_Date);
@@ -270,6 +279,97 @@ namespace ORS_RCM_DL
             }
         }
 
+        public DataTable Item_Code_Sort(Item_Master_Entity ime, int pageIndex, int pageSize, int option, int search)
+        {
+            try
+            {
+                SqlConnection connectionString = new SqlConnection(DataConfig.connectionString);
+                DataTable dt = new DataTable();
+                SqlDataAdapter sda = new SqlDataAdapter("SP_Item_Code_Sort1", connectionString);
+                sda.SelectCommand.CommandTimeout = 0;
+                sda.SelectCommand.CommandType = CommandType.StoredProcedure;
+                //txtImageFileName field not found
+                //CategoryName field not found
+                if (!String.IsNullOrWhiteSpace(ime.Item_Name))
+                    sda.SelectCommand.Parameters.AddWithValue("@Item_Name", ime.Item_Name);
+                else sda.SelectCommand.Parameters.AddWithValue("@Item_Name", DBNull.Value);
+
+                if (!String.IsNullOrWhiteSpace(ime.Item_Code))
+                    sda.SelectCommand.Parameters.AddWithValue("@Item_Code", ime.Item_Code);
+                else sda.SelectCommand.Parameters.AddWithValue("@Item_Code", DBNull.Value);
+
+                if (!String.IsNullOrWhiteSpace(ime.Catalog_Information))
+                    sda.SelectCommand.Parameters.AddWithValue("@Catalog_Information", ime.Catalog_Information);
+                else sda.SelectCommand.Parameters.AddWithValue("@Catalog_Information", DBNull.Value);
+
+                if (!String.IsNullOrWhiteSpace(ime.Brand_Name))
+                    sda.SelectCommand.Parameters.AddWithValue("@Brand_Name", ime.Brand_Name);
+                else sda.SelectCommand.Parameters.AddWithValue("@Brand_Name", DBNull.Value);
+
+
+                if (!String.IsNullOrWhiteSpace(ime.Competition_Name))
+                    sda.SelectCommand.Parameters.AddWithValue("@Competition_Name", ime.Competition_Name);
+                else sda.SelectCommand.Parameters.AddWithValue("@Competition_Name", DBNull.Value);
+
+                if (!String.IsNullOrWhiteSpace(ime.Year))
+                    sda.SelectCommand.Parameters.AddWithValue("@Year", ime.Year);
+                else sda.SelectCommand.Parameters.AddWithValue("@Year", DBNull.Value);
+
+                if (!String.IsNullOrWhiteSpace(ime.Season))
+                    sda.SelectCommand.Parameters.AddWithValue("@Season", ime.Season);
+                else sda.SelectCommand.Parameters.AddWithValue("@Season", DBNull.Value);
+
+                sda.SelectCommand.Parameters.AddWithValue("@Special_Flag", ime.Special_Flag);
+                sda.SelectCommand.Parameters.AddWithValue("@Reservation_Flag", ime.Reservation_Flag);
+                sda.SelectCommand.Parameters.AddWithValue("@Export_Status", ime.Export_Status);
+                sda.SelectCommand.Parameters.AddWithValue("@Updated_By", ime.Updated_By);
+
+                if (!String.IsNullOrWhiteSpace(ime.Ctrl_ID))
+                    sda.SelectCommand.Parameters.AddWithValue("@Ctrl_ID", ime.Ctrl_ID);
+                else sda.SelectCommand.Parameters.AddWithValue("@Ctrl_ID", DBNull.Value);
+
+                if (!String.IsNullOrWhiteSpace(ime.Color_Name))
+                    sda.SelectCommand.Parameters.AddWithValue("@Color_Name", ime.Color_Name);
+                else sda.SelectCommand.Parameters.AddWithValue("@Color_Name", DBNull.Value);
+
+                if (!String.IsNullOrWhiteSpace(ime.Image_Name))
+                    sda.SelectCommand.Parameters.AddWithValue("@Image_Name", ime.Image_Name);
+                else sda.SelectCommand.Parameters.AddWithValue("@Image_Name", DBNull.Value);
+
+                if (!String.IsNullOrWhiteSpace(ime.Cate_Name))
+                    sda.SelectCommand.Parameters.AddWithValue("@Cate_Name", ime.Cate_Name);
+                else sda.SelectCommand.Parameters.AddWithValue("@Cate_Name", DBNull.Value);
+
+                if (!String.IsNullOrWhiteSpace(ime.IdList))
+                    sda.SelectCommand.Parameters.AddWithValue("@IdList", ime.IdList);
+                else sda.SelectCommand.Parameters.AddWithValue("@IdList", DBNull.Value);
+
+                if (!String.IsNullOrWhiteSpace(ime.RemoveList))
+                    sda.SelectCommand.Parameters.AddWithValue("@RemoveList", ime.RemoveList);
+                else sda.SelectCommand.Parameters.AddWithValue("@RemoveList", DBNull.Value);
+
+                if (!String.IsNullOrWhiteSpace(ime.MasterKeyword))
+                    sda.SelectCommand.Parameters.AddWithValue("@MasterKeyword", ime.MasterKeyword);
+                else sda.SelectCommand.Parameters.AddWithValue("@MasterKeyword", DBNull.Value);
+
+                sda.SelectCommand.Parameters.AddWithValue("@Price", ime.Price);
+                sda.SelectCommand.Parameters.AddWithValue("@PageIndex", pageIndex);
+                sda.SelectCommand.Parameters.AddWithValue("@PageSize", pageSize);
+                sda.SelectCommand.Parameters.AddWithValue("@Option", option);
+                sda.SelectCommand.Parameters.AddWithValue("@ShopID", ime.ShopID);
+                sda.SelectCommand.Connection.Open();
+                sda.Fill(dt);
+                sda.SelectCommand.Connection.Close();
+
+                return dt;
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public int MonotaroSaveEdit(Item_Master_Entity ime,int itemID)
         {
             try
@@ -310,6 +410,23 @@ namespace ORS_RCM_DL
                 cmd.Parameters.AddWithValue("@Day_Ship", ime.Day_Ship);
                 cmd.Parameters.AddWithValue("@Warehouse_Code", ime.Warehouse_Code);
                 cmd.Parameters.AddWithValue("@Return_Necessary", ime.Retrun_Necessary);
+
+                cmd.Parameters.AddWithValue("@PublicationType", ime.PublicationType);
+                cmd.Parameters.AddWithValue("@MinimumOrderSuu", ime.MinimumOrderSuu);
+                cmd.Parameters.AddWithValue("@MinimumOrderUnit", ime.MinimumOrderUnit);
+                cmd.Parameters.AddWithValue("@DirectDelivery", ime.DirectDelivery);
+                cmd.Parameters.AddWithValue("@ScheduleReleaseDate", ime.ScheduleReleaseDate);
+                cmd.Parameters.AddWithValue("@Categorymonotaro", ime.Categorymonotaro);
+                cmd.Parameters.AddWithValue("@Colormonotaro", ime.Colormonotaro);
+                cmd.Parameters.AddWithValue("@Medical_Supplies", ime.Medical_Supplies);
+                cmd.Parameters.AddWithValue("@GreenPurchasingLaw", ime.GreenPurchasingLaw);
+                cmd.Parameters.AddWithValue("@Procurement_Goods", ime.Procurement_Goods);
+                cmd.Parameters.AddWithValue("@EcoMarkCertifiedGoods", ime.EcoMarkCertifiedGoods);
+                cmd.Parameters.AddWithValue("@EcoMarkCertifiedNo", ime.EcoMarkCertifiedNo);
+                cmd.Parameters.AddWithValue("@RoHS_Directive", ime.RoHS_Directive);
+              
+
+
                 cmd.Parameters.Add("@result", SqlDbType.Int).Direction = ParameterDirection.Output;
                 cmd.Connection.Open();
                 cmd.ExecuteNonQuery();
@@ -417,6 +534,18 @@ namespace ORS_RCM_DL
                     ime.ID = int.Parse(dt.Rows[0]["ID"].ToString());
                     ime.Ctrl_ID = dt.Rows[0]["Ctrl_ID"].ToString();
                     ime.Item_Code = dt.Rows[0]["Item_Code"].ToString();
+                    ime.JanCode = dt.Rows[0]["JANCD"].ToString();
+                    ime.Memo = dt.Rows[0]["ItemInformation"].ToString();
+                    if (!String.IsNullOrWhiteSpace(dt.Rows[0]["NormalLargeKBN"].ToString()))
+                    {
+                        ime.NormalLargeKBN = Convert.ToInt32(dt.Rows[0]["NormalLargeKBN"].ToString());
+                    }
+                    else
+                    {
+                        ime.NormalLargeKBN = 0;
+                    }
+                   // ime.NormalLargeKBN = Convert.ToInt32(dt.Rows[0]["NormalLargeKBN"].ToString());
+                    ime.Siiresaki= dt.Rows[0]["Siiresaki"].ToString();
                     ime.Item_Name = dt.Rows[0]["Item_Name"].ToString();
                     ime.Product_Code = dt.Rows[0]["Product_Code"].ToString();
                     if (dt.Rows[0]["Release_Date"] != DBNull.Value)
@@ -462,6 +591,17 @@ namespace ORS_RCM_DL
                         ime.JishaPrice = int.Parse(dt.Rows[0]["JishaPrice"].ToString());
                     if (!String.IsNullOrWhiteSpace(dt.Rows[0]["TennisPrice"].ToString()))
                         ime.TennisPrice = int.Parse(dt.Rows[0]["TennisPrice"].ToString());
+
+                    if (!String.IsNullOrWhiteSpace(dt.Rows[0]["MonotaroPrice"].ToString()))
+                        ime.Monoprice = int.Parse(dt.Rows[0]["MonotaroPrice"].ToString());
+                    if (!String.IsNullOrWhiteSpace(dt.Rows[0]["DaitoPrice"].ToString()))
+                        ime.Diteprice = int.Parse(dt.Rows[0]["DaitoPrice"].ToString());
+                    if (!String.IsNullOrWhiteSpace(dt.Rows[0]["JapanMotorPrice"].ToString()))
+                        ime.Japanmprice = int.Parse(dt.Rows[0]["JapanMotorPrice"].ToString());
+                    if (!String.IsNullOrWhiteSpace(dt.Rows[0]["KashiwagiPrice"].ToString()))
+                        ime.Kashiwagikoukiprice = int.Parse(dt.Rows[0]["KashiwagiPrice"].ToString());
+
+
                     ime.Year = dt.Rows[0]["Year"].ToString();
                     if (!String.IsNullOrWhiteSpace(dt.Rows[0]["Shipping_Flag"].ToString()))
                         ime.Shipping_Flag = int.Parse(dt.Rows[0]["Shipping_Flag"].ToString());
@@ -567,6 +707,144 @@ namespace ORS_RCM_DL
                         ime.DiscountRate = dt.Rows[0]["discount_rate"].ToString();
                     if (!String.IsNullOrWhiteSpace(dt.Rows[0]["profit_rate"].ToString()))
                         ime.ProfitRate = dt.Rows[0]["profit_rate"].ToString();
+
+                    if (!String.IsNullOrWhiteSpace(dt.Rows[0]["jisha_cost_rate"].ToString()))
+                        ime.Jisha_costrate = dt.Rows[0]["jisha_cost_rate"].ToString();
+                    if (!String.IsNullOrWhiteSpace(dt.Rows[0]["jisha_discount_rate"].ToString()))
+                        ime.Jisha_discountRate= dt.Rows[0]["jisha_discount_rate"].ToString();
+                    if (!String.IsNullOrWhiteSpace(dt.Rows[0]["jisha_profit_rate"].ToString()))
+                        ime.Jisha_profitrate = dt.Rows[0]["jisha_profit_rate"].ToString();
+
+                    if (!String.IsNullOrWhiteSpace(dt.Rows[0]["rakuten_cost_rate"].ToString()))
+                        ime.Rakuten_costrate = dt.Rows[0]["rakuten_cost_rate"].ToString();
+                    if (!String.IsNullOrWhiteSpace(dt.Rows[0]["rakuten_discount_rate"].ToString()))
+                        ime.Rakuten_discountRate = dt.Rows[0]["rakuten_discount_rate"].ToString();
+                    if (!String.IsNullOrWhiteSpace(dt.Rows[0]["rakuten_profit_rate"].ToString()))
+                        ime.Rakuten_profitrate = dt.Rows[0]["rakuten_profit_rate"].ToString();
+
+                    if (!String.IsNullOrWhiteSpace(dt.Rows[0]["yahoo_cost_rate"].ToString()))
+                        ime.Yahoo_costrate = dt.Rows[0]["yahoo_cost_rate"].ToString();
+                    if (!String.IsNullOrWhiteSpace(dt.Rows[0]["yahoo_discount_rate"].ToString()))
+                        ime.Yahoo_discountRate = dt.Rows[0]["yahoo_discount_rate"].ToString();
+                    if (!String.IsNullOrWhiteSpace(dt.Rows[0]["yahoo_profit_rate"].ToString()))
+                        ime.Yahoo_profitrate = dt.Rows[0]["yahoo_profit_rate"].ToString();
+
+                    if (!String.IsNullOrWhiteSpace(dt.Rows[0]["wowma_cost_rate"].ToString()))
+                        ime.Wowma_costrate = dt.Rows[0]["wowma_cost_rate"].ToString();
+                    if (!String.IsNullOrWhiteSpace(dt.Rows[0]["wowma_discount_rate"].ToString()))
+                        ime.Wowma_discountRate = dt.Rows[0]["wowma_discount_rate"].ToString();
+                    if (!String.IsNullOrWhiteSpace(dt.Rows[0]["wowma_profit_rate"].ToString()))
+                        ime.Wowma_profitrate = dt.Rows[0]["wowma_profit_rate"].ToString();
+                    //mono
+                    if (!String.IsNullOrWhiteSpace(dt.Rows[0]["monotaro_cost_rate"].ToString()))
+                        ime.Monocostrate = dt.Rows[0]["monotaro_cost_rate"].ToString();
+                    if (!String.IsNullOrWhiteSpace(dt.Rows[0]["monotaro_discount_rate"].ToString()))
+                        ime.Monodiscountrate = dt.Rows[0]["monotaro_discount_rate"].ToString();
+                    if (!String.IsNullOrWhiteSpace(dt.Rows[0]["monotaro_profit_rate"].ToString()))
+                        ime.MonoprofitRate = dt.Rows[0]["monotaro_profit_rate"].ToString();
+
+                    if (!String.IsNullOrWhiteSpace(dt.Rows[0]["dite_cost_rate"].ToString()))
+                        ime.Ditecostrate = dt.Rows[0]["dite_cost_rate"].ToString();
+                    if (!String.IsNullOrWhiteSpace(dt.Rows[0]["dite_discount_rate"].ToString()))
+                        ime.Ditediscountrate = dt.Rows[0]["dite_discount_rate"].ToString();
+                    if (!String.IsNullOrWhiteSpace(dt.Rows[0]["dite_profit_rate"].ToString()))
+                        ime.DiteprofitRate = dt.Rows[0]["dite_profit_rate"].ToString();
+
+                    if (!String.IsNullOrWhiteSpace(dt.Rows[0]["japanm_cost_rate"].ToString()))
+                        ime.Japanmcostrate = dt.Rows[0]["japanm_cost_rate"].ToString();
+                    if (!String.IsNullOrWhiteSpace(dt.Rows[0]["japanm_discount_rate"].ToString()))
+                        ime.Japanmdiscountrate = dt.Rows[0]["japanm_discount_rate"].ToString();
+                    if (!String.IsNullOrWhiteSpace(dt.Rows[0]["japanm_profit_rate"].ToString()))
+                        ime.Japanmprofitrate = dt.Rows[0]["japanm_profit_rate"].ToString();
+
+                    if (!String.IsNullOrWhiteSpace(dt.Rows[0]["kashiwagi_cost_rate"].ToString()))
+                        ime.Kawashigicostrate = dt.Rows[0]["kashiwagi_cost_rate"].ToString();
+                    if (!String.IsNullOrWhiteSpace(dt.Rows[0]["kashiwagi_discount_rate"].ToString()))
+                        ime.Kashiwagionodiscountrate = dt.Rows[0]["kashiwagi_discount_rate"].ToString();
+                    if (!String.IsNullOrWhiteSpace(dt.Rows[0]["kashiwagi_profit_rate"].ToString()))
+                        ime.Kashiwagiprofitrate = dt.Rows[0]["kashiwagi_profit_rate"].ToString();
+
+                    if (!String.IsNullOrWhiteSpace(dt.Rows[0]["PublicationType"].ToString()))
+                    {
+                        ime.PublicationType = Convert.ToInt32(dt.Rows[0]["PublicationType"].ToString());
+                    }
+                    else
+                    {
+                        ime.PublicationType = 0;
+                    }
+                    if (!String.IsNullOrWhiteSpace(dt.Rows[0]["MinimumOrderSuu"].ToString()))
+                    {
+                        ime.MinimumOrderSuu = Convert.ToInt32(dt.Rows[0]["MinimumOrderSuu"].ToString());
+                    }
+                    ime.MinimumOrderUnit = dt.Rows[0]["MinimumOrderUnit"].ToString();
+                    
+
+                    if (!String.IsNullOrWhiteSpace(dt.Rows[0]["DirectDelivery"].ToString()))
+                    {
+                        ime.DirectDelivery = Convert.ToInt32(dt.Rows[0]["DirectDelivery"].ToString());
+                    }
+                    else
+                    {
+                        ime.DirectDelivery = 0;
+                    }
+
+                    if (dt.Rows[0]["ScheduleReleaseDate"] != DBNull.Value)
+                    {
+                        ime.ScheduleReleaseDate = Convert.ToDateTime(dt.Rows[0]["ScheduleReleaseDate"].ToString());
+                     
+                    }
+                    ime.Categorymonotaro = dt.Rows[0]["Category"].ToString();
+                    ime.Colormonotaro = dt.Rows[0]["Color"].ToString();
+
+                    if (!String.IsNullOrWhiteSpace(dt.Rows[0]["Procurement_Goods"].ToString()))
+                    {
+                        ime.Procurement_Goods = Convert.ToInt32(dt.Rows[0]["Procurement_Goods"].ToString());
+                    }
+                    else
+                    {
+                        ime.Procurement_Goods = 0;
+                    }
+
+                    if (!String.IsNullOrWhiteSpace(dt.Rows[0]["EcoMarkCertifiedGoods"].ToString()))
+                    {
+                        ime.EcoMarkCertifiedGoods = Convert.ToInt32(dt.Rows[0]["EcoMarkCertifiedGoods"].ToString());
+                    }
+                    else
+                    {
+                        ime.EcoMarkCertifiedGoods = 0;
+                    }
+
+                    if (!String.IsNullOrWhiteSpace(dt.Rows[0]["GreenPurchasingLaw"].ToString()))
+                    {
+                        ime.GreenPurchasingLaw = Convert.ToInt32(dt.Rows[0]["GreenPurchasingLaw"].ToString());
+                    }
+                    else
+                    {
+                        ime.GreenPurchasingLaw = 0;
+                    }
+                    if (!String.IsNullOrWhiteSpace(dt.Rows[0]["EcoMarkCertifiedNo"].ToString()))
+                    {
+                        ime.EcoMarkCertifiedNo = Convert.ToInt32(dt.Rows[0]["EcoMarkCertifiedNo"].ToString());
+                    }
+
+                    if (!String.IsNullOrWhiteSpace(dt.Rows[0]["RoHS_Directive"].ToString()))
+                    {
+                        ime.RoHS_Directive = Convert.ToInt32(dt.Rows[0]["RoHS_Directive"].ToString());
+                    }
+                    else
+                    {
+                        ime.RoHS_Directive = 0;
+                    }
+
+                    if (!String.IsNullOrWhiteSpace(dt.Rows[0]["Medical_Supplies"].ToString()))
+                    {
+                        ime.Medical_Supplies = Convert.ToInt32(dt.Rows[0]["Medical_Supplies"].ToString());
+                    }
+                    else
+                    {
+                        ime.Medical_Supplies = 0;
+                    }
+
                 }
                 return ime;
             }

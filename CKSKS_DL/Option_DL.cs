@@ -42,7 +42,51 @@ namespace ORS_RCM_DL
             else return false;
         }
 
+        public DataTable BindOption()
+        {
+            try
+            {
+                SqlConnection connectionString = new SqlConnection(DataConfig.connectionString);
+                SqlDataAdapter da = new SqlDataAdapter();
+                SqlCommand cmdSelect = new SqlCommand("SP_Select_Option", connectionString);
+                da.SelectCommand = cmdSelect;
+                da.SelectCommand.CommandType = CommandType.StoredProcedure;
+                da.SelectCommand.CommandTimeout = 0;
+                DataTable dt = new DataTable();
+                da.SelectCommand.Connection.Open();
+                da.Fill(dt);
+                da.SelectCommand.Connection.Close();
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
 
+            }
+        }
+        public DataTable SelectOptionByOption_GroupName(string optionGroupName)
+        {
+            try
+            {
+                SqlConnection connectionString = new SqlConnection(DataConfig.connectionString);
+                SqlDataAdapter da = new SqlDataAdapter();
+                SqlCommand cmdSelect = new SqlCommand("SP_Select_Option_ByOption_GroupName", connectionString);
+                da.SelectCommand = cmdSelect;
+                da.SelectCommand.CommandType = CommandType.StoredProcedure;
+                da.SelectCommand.CommandTimeout = 0;
+                cmdSelect.Parameters.AddWithValue("@optionGroupName", optionGroupName);
+                DataTable dt = new DataTable();
+                da.SelectCommand.Connection.Open();
+                da.Fill(dt);
+                da.SelectCommand.Connection.Close();
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+
+            }
+        }
         public bool Insert(Option_Entity optEnt)
         {
             SqlConnection connectionString = new SqlConnection(DataConfig.connectionString);

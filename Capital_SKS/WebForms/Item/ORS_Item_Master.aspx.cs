@@ -12,6 +12,7 @@ using System.Text;
 using System.Configuration;
 using System.Web.UI.HtmlControls;
 using System.Text.RegularExpressions;
+using ORS_RCM;
 
 
 namespace Capital_SKS.WebForms.Item
@@ -49,6 +50,24 @@ namespace Capital_SKS.WebForms.Item
                 }
             }
         }
+
+        public DataTable relItem_Code
+        {
+            get
+            {
+                if (Session["relItem_Code" + ItemCode] != null)
+                {
+                    DataTable dt = (DataTable)Session["relItem_Code" + ItemCode];
+                    return dt;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+        }
+
+       
 
         public DataTable CategoryList
         {
@@ -170,6 +189,17 @@ namespace Capital_SKS.WebForms.Item
                     BindContentUnit1();
                     BindContentUnit2();
                     BindMonotaroddl();
+                    BindOption();
+
+                    BindNormalLargeKBN();
+                    BindddlPublicationType();
+                    BindDDlDirectDelivery();
+                    Bindddlgreenpurchasemethod();
+                    BindSpecifiedprocurementitem();
+                    Bindddlecomartcertifiedproduct();
+                    BindddlRoHSdirective();
+                    BindddlPharmaceuticalsandmedicaldevices();
+
                   // //// BindORSTag();//updated 3/6/2021
                     ime = new Item_Master_Entity();
                     imeBL = new Item_Master_BL();
@@ -189,22 +219,24 @@ namespace Capital_SKS.WebForms.Item
                         ViewState["UrlReferrer"] = backpage;
                     }
                     #endregion
-                   ////// BindShop(); //Bind Shop List'
+                 ////  BindShop(); //Bind Shop List'
                     if (ItemCode != null)    //Come from Item View for edit
                     {
                         //Change button name
                         btnSave.Text = "更新";
                         int ItemID = imeBL.SelectItemID(ItemCode);
+
                         ime = imeBL.SelectByID(ItemID);  //Select From Item_Master Table
                         SetItemData(ime);
+                        SetSelectedRelatedItem(ItemID);
                         SetSelectedShop(ItemID);             //Select From Item_Shop Table
                         SetSelectedCategory(ItemID);      //Select From Item_Category Table
                         SetCategoryData();
                      //   SetJishaCategoryData();
                         SelectByItemID(ItemID);                   
                         BindPhotoList();
-                       // BindShopName();
-                        //SetItemCodeURL();
+                        BindShopName();
+                        SetItemCodeURL();
                         //SetSelectedRelatedItem(ItemID);   //Select From Item_Related_Item Table
 
                         #region EDITED BY T.Z.A 15-03-2019
@@ -237,6 +269,85 @@ namespace Capital_SKS.WebForms.Item
                 }
                 #endregion
 
+                #region IsPostBack
+                else if (IsPostBack)
+                {
+
+                    if (Session["btnRelatedbtn_" + ItemCode] != null && Session["btnRelatedbtn_" + ItemCode].ToString() == "ok")
+                    {
+                        DisplayRelatedItem();
+                        Session.Remove("btnRelatedbtn_" + ItemCode);
+                    }
+                    else
+                    {
+                        Session.Remove("btnRelatedbtn_" + ItemCode);
+                        Session.Remove("relItem_Code");
+                    }
+                
+
+                if (!String.IsNullOrEmpty(CustomHiddenField.Value))
+                    {
+                        ControlID = CustomHiddenField.Value;
+                    }
+                    DataTable dt = RebindItemCodeURL(ControlID);
+                    //if (dlShop.Items.Count == 0 || dt.Rows.Count == 0)
+                    //{
+                    //    BindShopName();
+                    //}
+                    if (ControlID.Contains("lnkAddPhoto"))
+                    {
+                        ReBindPhotoList();
+                    }
+                    else if (ControlID.Contains("btnAddOption"))
+                    {
+                        ShowOption();
+                    }
+                    else if (ControlID.Contains("btnAddCatagories"))
+                    {
+                        if (Session["btnPopClick_" + ItemCode] != null && Session["btnPopClick_" + ItemCode].ToString() == "ok")
+                        {
+                            SetMallCategoryData();
+                           // SetJishaCategoryData();
+                            Session.Remove("btnPopClick_" + ItemCode);
+                        }
+                        else
+                        {
+                            Session.Remove("btnPopClick_" + ItemCode);
+                        }
+                    }
+                    else if (ControlID.Contains("btnRakuten_CategoryID"))
+                    {
+                        DisplayMallCategory(); // for display Mall_Category from popup form
+                    }
+                    else if (ControlID.Contains("btnYahoo_CategoryID"))
+                    {
+                        DisplayMallCategory(); // for display Mall_Category from popup form
+                    }
+                    else if (ControlID.Contains("btnWowma_CategoryID"))
+                    {
+                        DisplayMallCategory(); // for display Mall_Category from popup form
+                    }
+                    
+                    else if (ControlID.Contains("imgbYahooSpecValue"))
+                    {
+                        if (Session["btnYPopClick_" + ItemCode] != null && Session["btnYPopClick_" + ItemCode].ToString() == "ok")
+                        {
+                            ShowValue();
+                            Session.Remove("btnYPopClick_" + ItemCode);
+                        }
+                        else
+                        {
+                            Session.Remove("btnYPopClick_" + ItemCode);
+                        }
+                    }
+                    else if (ControlID.Contains("btnAddSKU"))
+                    {
+                        SKU_BIND();
+                    }
+
+                }
+                #endregion
+
             }
             catch (Exception ex)
             {
@@ -244,6 +355,1277 @@ namespace Capital_SKS.WebForms.Item
                 Response.Redirect("~/CustomErrorPage.aspx?");
             }
 
+        }
+
+        #region RelatedItem
+        public void DisplayRelatedItem()
+        {
+            try
+            {
+                DataTable dt1 = relItem_Code as DataTable;
+                if (dt1 != null && dt1.Rows.Count > 0)
+                {
+                    for (int i = 0; i < dt1.Rows.Count; i++)
+                    {
+                        switch (i)
+                        {
+                            case 0:
+                                txtRelated1.Text = dt1.Rows[i]["Item_Code"].ToString();
+                                break;
+                            case 1:
+                                txtRelated2.Text = dt1.Rows[i]["Item_Code"].ToString();
+                                break;
+                            case 2:
+                                txtRelated3.Text = dt1.Rows[i]["Item_Code"].ToString();
+                                break;
+                            case 3:
+                                txtRelated4.Text = dt1.Rows[i]["Item_Code"].ToString();
+                                break;
+                            case 4:
+                                txtRelated5.Text = dt1.Rows[i]["Item_Code"].ToString();
+                                break;
+                            case 5:
+                                txtRelated6.Text = dt1.Rows[i]["Item_Code"].ToString();
+                                break;
+                            case 6:
+                                txtRelated7.Text = dt1.Rows[i]["Item_Code"].ToString();
+                                break;
+                            case 7:
+                                txtRelated8.Text = dt1.Rows[i]["Item_Code"].ToString();
+                                break;
+                            case 8:
+                                txtRelated9.Text = dt1.Rows[i]["Item_Code"].ToString();
+                                break;
+                            case 9:
+                                txtRelated10.Text = dt1.Rows[i]["Item_Code"].ToString();
+                                break;
+                            case 10:
+                                txtRelated11.Text = dt1.Rows[i]["Item_Code"].ToString();
+                                break;
+                            case 11:
+                                txtRelated12.Text = dt1.Rows[i]["Item_Code"].ToString();
+                                break;
+                            case 12:
+                                txtRelated13.Text = dt1.Rows[i]["Item_Code"].ToString();
+                                break;
+                            case 13:
+                                txtRelated14.Text = dt1.Rows[i]["Item_Code"].ToString();
+                                break;
+                            case 14:
+                                txtRelated15.Text = dt1.Rows[i]["Item_Code"].ToString();
+                                break;
+                            case 15:
+                                txtRelated16.Text = dt1.Rows[i]["Item_Code"].ToString();
+                                break;
+                            case 16:
+                                txtRelated17.Text = dt1.Rows[i]["Item_Code"].ToString();
+                                break;
+                            case 17:
+                                txtRelated18.Text = dt1.Rows[i]["Item_Code"].ToString();
+                                break;
+                            case 18:
+                                txtRelated19.Text = dt1.Rows[i]["Item_Code"].ToString();
+                                break;
+                            case 19:
+                                txtRelated20.Text = dt1.Rows[i]["Item_Code"].ToString();
+                                break;
+
+                        }
+                    }
+                }
+                Session["relItem_Code" + ItemCode] = dt1;
+            }
+            catch (Exception ex)
+            {
+                Session["Exception"] = ex.ToString();
+                Response.Redirect("~/CustomErrorPage.aspx?", false);
+            }
+        }
+        #endregion
+
+        #region Related_Item
+        /// <summary>
+        /// Connects to Related Item 
+        /// </summary>
+        /// <param name="ItemID"> By selected master id</param>
+        public void SetSelectedRelatedItem(int ItemID)
+        {
+            try
+            {
+                Item_Related_Item_BL ItemRelatedBL = new Item_Related_Item_BL();
+                DataTable dt = ItemRelatedBL.SelectByItemID(ItemID);
+                if (dt != null && dt.Rows.Count > 0)
+                {
+                    for (int i = 0; i < dt.Rows.Count; i++)
+                    {
+                        switch (i)
+                        {
+                            case 0:
+                                txtRelated1.Text = dt.Rows[i]["Related_ItemCode"].ToString();
+                                break;
+                            case 1:
+                                txtRelated2.Text = dt.Rows[i]["Related_ItemCode"].ToString();
+                                break;
+                            case 2:
+                                txtRelated3.Text = dt.Rows[i]["Related_ItemCode"].ToString();
+                                break;
+                            case 3:
+                                txtRelated4.Text = dt.Rows[i]["Related_ItemCode"].ToString();
+                                break;
+                            case 4:
+                                txtRelated5.Text = dt.Rows[i]["Related_ItemCode"].ToString();
+                                break;
+                            case 5:
+                                txtRelated6.Text = dt.Rows[i]["Related_ItemCode"].ToString();
+                                break;
+                            case 6:
+                                txtRelated7.Text = dt.Rows[i]["Related_ItemCode"].ToString();
+                                break;
+                            case 7:
+                                txtRelated8.Text = dt.Rows[i]["Related_ItemCode"].ToString();
+                                break;
+                            case 8:
+                                txtRelated9.Text = dt.Rows[i]["Related_ItemCode"].ToString();
+                                break;
+                            case 9:
+                                txtRelated10.Text = dt.Rows[i]["Related_ItemCode"].ToString();
+                                break;
+                            case 10:
+                                txtRelated11.Text = dt.Rows[i]["Related_ItemCode"].ToString();
+                                break;
+                            case 11:
+                                txtRelated12.Text = dt.Rows[i]["Related_ItemCode"].ToString();
+                                break;
+                            case 12:
+                                txtRelated13.Text = dt.Rows[i]["Related_ItemCode"].ToString();
+                                break;
+                            case 13:
+                                txtRelated14.Text = dt.Rows[i]["Related_ItemCode"].ToString();
+                                break;
+                            case 14:
+                                txtRelated15.Text = dt.Rows[i]["Related_ItemCode"].ToString();
+                                break;
+                            case 15:
+                                txtRelated16.Text = dt.Rows[i]["Related_ItemCode"].ToString();
+                                break;
+                            case 16:
+                                txtRelated17.Text = dt.Rows[i]["Related_ItemCode"].ToString();
+                                break;
+                            case 17:
+                                txtRelated18.Text = dt.Rows[i]["Related_ItemCode"].ToString();
+                                break;
+                            case 18:
+                                txtRelated19.Text = dt.Rows[i]["Related_ItemCode"].ToString();
+                                break;
+                            case 19:
+                                txtRelated20.Text = dt.Rows[i]["Related_ItemCode"].ToString();
+                                break;
+                        }
+                    }
+                }
+                Session["Related_Item_Code" + ItemCode] = dt;
+            }
+            catch (Exception ex)
+            {
+                Session["Exception"] = ex.ToString();
+                Response.Redirect("~/CustomErrorPage.aspx?", false);
+            }
+        }
+        #endregion
+
+        public void BindShopName()
+        {
+            try
+            {
+                Shop_BL shopBL = new Shop_BL();
+                Item_Shop_BL isbl = new Item_Shop_BL();
+                DataTable dt = shopBL.SelectShop_Data();
+                if (ItemCode != null)
+                {
+                    DataTable dtURL = isbl.SelectItemCodeURL(ItemCode);
+                    if (dt != null && dt.Rows.Count > 0)
+                    {
+                        dt.Columns.Add("Item_Code_URL");
+                        if (dtURL.Rows.Count <= 0 && !String.IsNullOrWhiteSpace(txtItem_Code.ToString()))
+                        {
+                            for (int i = 0; i < dt.Rows.Count; i++)
+                            { dt.Rows[i]["Item_Code_URL"] = txtItem_Code.Text; }
+                            if (!String.IsNullOrEmpty(txtItem_Code.Text))
+                            {
+                                btnComplete.Enabled = true;
+                            }
+
+                        }
+                        else
+                        {
+                            foreach (DataListItem li in dlShop.Items)
+                            {
+                                TextBox txtitemcode = li.FindControl("txtItem_CodeList") as TextBox;
+                                Label shopid = li.FindControl("lblShopID") as Label;
+                                CheckBox cb = li.FindControl("ckbShop") as CheckBox;
+                                if (dtURL != null && dtURL.Rows.Count > 0)
+                                {
+                                    for (int i = 0; i < dtURL.Rows.Count; i++)
+                                    {
+                                        if ((dtURL.Rows[i]["Item_Code"].ToString() == txtitemcode.Text) && (dtURL.Rows[i]["Shop_ID"].ToString()) == shopid.Text)
+                                        {
+                                            dt.Rows[i]["Item_Code_URL"] = ItemCode;
+                                        }
+                                        else
+                                        {
+                                            if ((dtURL.Rows[i]["Shop_ID"].ToString()) == shopid.Text)
+                                            {
+                                                dt.Rows[i]["Item_Code_URL"] = txtitemcode.Text;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        dlShop.DataSource = dt;
+                        dlShop.DataBind();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Session["Exception"] = ex.ToString();
+                Response.Redirect("~/CustomErrorPage.aspx?", false);
+            }
+        }
+
+        protected void UploadButton_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+
+                //OpenFileDialog dialog = new OpenFileDialog();
+                //if (DialogResult.OK == dialog.ShowDialog())
+                //{
+                //    string path = dialog.FileName;
+                //}
+
+                if (FileUpload1.HasFile)
+                {
+
+                    txtimg1.Text = FileUpload1.FileName;
+                    if (!System.Text.RegularExpressions.Regex.IsMatch(txtimg1.Text, ItemCode + "-[0-1]?[0-9]|20.jpg"))
+                    {
+                        txtimg1.Text = "先に登録されていた場合";
+                        GlobalUI.MessageBox("Invalid Image Name");
+                        return;
+                    }
+
+                    if (txtimg1.Text.Length > 24)
+                    {
+                        txtimg1.Text = "先に登録されていた場合";
+                        GlobalUI.MessageBox("画像ファイル名は20文字までです");
+                        return;
+                    }
+                    else
+                    {
+
+                        FileUpload1.SaveAs(Server.MapPath(imagePath) + FileUpload1.FileName);
+                        if (!string.IsNullOrWhiteSpace(FileUpload1.FileName.ToString()))
+                        {
+                            Image1.ImageUrl = imagePath + FileUpload1.FileName;
+                            hlImage1.NavigateUrl = imagePath + FileUpload1.FileName;
+                        }
+                    }
+                }
+                else
+                {
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Session["Exception"] = ex.ToString();
+                Response.Redirect("~/CustomErrorPage.aspx?", false);
+            }
+        }
+
+        protected void UploadButton2_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                if (FileUpload2.HasFile)
+                {
+
+                    txtimg2.Text = FileUpload2.FileName;
+                    if (!System.Text.RegularExpressions.Regex.IsMatch(txtimg2.Text, ItemCode + "-[0-1]?[0-9]|20.jpg"))
+                    {
+                        txtimg2.Text = "先に登録されていた場合";
+                        GlobalUI.MessageBox("Invalid Image Name");
+                        return;
+                    }
+
+                    if (txtimg2.Text.Length > 24)
+                    {
+                        txtimg2.Text = "先に登録されていた場合";
+                        GlobalUI.MessageBox("画像ファイル名は20文字までです");
+                        return;
+                    }
+                    else
+                    {
+
+                        FileUpload2.SaveAs(Server.MapPath(imagePath) + FileUpload2.FileName);
+                        if (!string.IsNullOrWhiteSpace(FileUpload2.FileName.ToString()))
+                        {
+                            Image2.ImageUrl = imagePath + FileUpload2.FileName;
+                            hlImage2.NavigateUrl = imagePath + FileUpload2.FileName;
+                        }
+                    }
+                }
+                else
+                {
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Session["Exception"] = ex.ToString();
+                Response.Redirect("~/CustomErrorPage.aspx?", false);
+            }
+        }
+
+        protected void UploadButton3_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                if (FileUpload3.HasFile)
+                {
+
+                    txtimg3.Text = FileUpload3.FileName;
+                    if (!System.Text.RegularExpressions.Regex.IsMatch(txtimg3.Text, ItemCode + "-[0-1]?[0-9]|20.jpg"))
+                    {
+                        txtimg3.Text = "先に登録されていた場合";
+                        GlobalUI.MessageBox("Invalid Image Name");
+                        return;
+                    }
+
+                    if (txtimg3.Text.Length > 24)
+                    {
+                        txtimg3.Text = "先に登録されていた場合";
+                        GlobalUI.MessageBox("画像ファイル名は20文字までです");
+                        return;
+                    }
+                    else
+                    {
+
+                        FileUpload3.SaveAs(Server.MapPath(imagePath) + FileUpload3.FileName);
+                        if (!string.IsNullOrWhiteSpace(FileUpload3.FileName.ToString()))
+                        {
+                            Image3.ImageUrl = imagePath + FileUpload3.FileName;
+                            hlImage3.NavigateUrl = imagePath + FileUpload3.FileName;
+                        }
+                    }
+                }
+                else
+                {
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Session["Exception"] = ex.ToString();
+                Response.Redirect("~/CustomErrorPage.aspx?", false);
+            }
+        }
+
+        protected void UploadButton4_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                if (FileUpload4.HasFile)
+                {
+
+                    txtimg4.Text = FileUpload4.FileName;
+                    if (!System.Text.RegularExpressions.Regex.IsMatch(txtimg4.Text, ItemCode + "-[0-1]?[0-9]|20.jpg"))
+                    {
+                        txtimg4.Text = "先に登録されていた場合";
+                        GlobalUI.MessageBox("Invalid Image Name");
+                        return;
+                    }
+
+                    if (txtimg4.Text.Length > 24)
+                    {
+                        txtimg4.Text = "先に登録されていた場合";
+                        GlobalUI.MessageBox("画像ファイル名は20文字までです");
+                        return;
+                    }
+                    else
+                    {
+
+                        FileUpload4.SaveAs(Server.MapPath(imagePath) + FileUpload4.FileName);
+                        if (!string.IsNullOrWhiteSpace(FileUpload4.FileName.ToString()))
+                        {
+                            Image4.ImageUrl = imagePath + FileUpload4.FileName;
+                            hlImage4.NavigateUrl = imagePath + FileUpload4.FileName;
+                        }
+                    }
+                }
+                else
+                {
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Session["Exception"] = ex.ToString();
+                Response.Redirect("~/CustomErrorPage.aspx?", false);
+            }
+        }
+
+        protected void UploadButton5_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                if (FileUpload5.HasFile)
+                {
+
+                    txtimg5.Text = FileUpload5.FileName;
+                    if (!System.Text.RegularExpressions.Regex.IsMatch(txtimg5.Text, ItemCode + "-[0-1]?[0-9]|20.jpg"))
+                    {
+                        txtimg5.Text = "先に登録されていた場合";
+                        GlobalUI.MessageBox("Invalid Image Name");
+                        return;
+                    }
+
+                    if (txtimg5.Text.Length > 24)
+                    {
+                        txtimg5.Text = "先に登録されていた場合";
+                        GlobalUI.MessageBox("画像ファイル名は20文字までです");
+                        return;
+                    }
+                    else
+                    {
+
+                        FileUpload5.SaveAs(Server.MapPath(imagePath) + FileUpload5.FileName);
+                        if (!string.IsNullOrWhiteSpace(FileUpload5.FileName.ToString()))
+                        {
+                            Image5.ImageUrl = imagePath + FileUpload5.FileName;
+                            hlImage5.NavigateUrl = imagePath + FileUpload5.FileName;
+                        }
+                    }
+                }
+                else
+                {
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Session["Exception"] = ex.ToString();
+                Response.Redirect("~/CustomErrorPage.aspx?", false);
+            }
+        }
+
+        protected void UploadButton6_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                if (FileUpload6.HasFile)
+                {
+
+                    txtimg6.Text = FileUpload6.FileName;
+                    if (!System.Text.RegularExpressions.Regex.IsMatch(txtimg6.Text, ItemCode + "-[0-1]?[0-9]|20.jpg"))
+                    {
+                        txtimg6.Text = "先に登録されていた場合";
+                        GlobalUI.MessageBox("Invalid Image Name");
+                        return;
+                    }
+
+                    if (txtimg6.Text.Length > 24)
+                    {
+                        txtimg6.Text = "先に登録されていた場合";
+                        GlobalUI.MessageBox("画像ファイル名は20文字までです");
+                        return;
+                    }
+                    else
+                    {
+
+                        FileUpload6.SaveAs(Server.MapPath(imagePath) + FileUpload6.FileName);
+                        if (!string.IsNullOrWhiteSpace(FileUpload6.FileName.ToString()))
+                        {
+                            Image6.ImageUrl = imagePath + FileUpload6.FileName;
+                            hlImage6.NavigateUrl = imagePath + FileUpload6.FileName;
+                        }
+                    }
+                }
+                else
+                {
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Session["Exception"] = ex.ToString();
+                Response.Redirect("~/CustomErrorPage.aspx?", false);
+            }
+        }
+
+        protected void UploadButton7_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                if (FileUpload7.HasFile)
+                {
+
+                    txtimg7.Text = FileUpload7.FileName;
+                    if (!System.Text.RegularExpressions.Regex.IsMatch(txtimg7.Text, ItemCode + "-[0-1]?[0-9]|20.jpg"))
+                    {
+                        txtimg7.Text = "先に登録されていた場合";
+                        GlobalUI.MessageBox("Invalid Image Name");
+                        return;
+                    }
+
+                    if (txtimg7.Text.Length > 24)
+                    {
+                        txtimg7.Text = "先に登録されていた場合";
+                        GlobalUI.MessageBox("画像ファイル名は20文字までです");
+                        return;
+                    }
+                    else
+                    {
+
+                        FileUpload7.SaveAs(Server.MapPath(imagePath) + FileUpload7.FileName);
+                        if (!string.IsNullOrWhiteSpace(FileUpload7.FileName.ToString()))
+                        {
+                            Image7.ImageUrl = imagePath + FileUpload7.FileName;
+                            hlImage7.NavigateUrl = imagePath + FileUpload7.FileName;
+                        }
+                    }
+                }
+                else
+                {
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Session["Exception"] = ex.ToString();
+                Response.Redirect("~/CustomErrorPage.aspx?", false);
+            }
+        }
+
+        protected void UploadButton8_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                if (FileUpload8.HasFile)
+                {
+
+                    txtimg8.Text = FileUpload8.FileName;
+                    if (!System.Text.RegularExpressions.Regex.IsMatch(txtimg8.Text, ItemCode + "-[0-1]?[0-9]|20.jpg"))
+                    {
+                        txtimg8.Text = "先に登録されていた場合";
+                        GlobalUI.MessageBox("Invalid Image Name");
+                        return;
+                    }
+
+                    if (txtimg8.Text.Length > 24)
+                    {
+                        txtimg8.Text = "先に登録されていた場合";
+                        GlobalUI.MessageBox("画像ファイル名は20文字までです");
+                        return;
+                    }
+                    else
+                    {
+
+                        FileUpload8.SaveAs(Server.MapPath(imagePath) + FileUpload8.FileName);
+                        if (!string.IsNullOrWhiteSpace(FileUpload8.FileName.ToString()))
+                        {
+                            Image8.ImageUrl = imagePath + FileUpload8.FileName;
+                            hlImage8.NavigateUrl = imagePath + FileUpload8.FileName;
+                        }
+                    }
+                }
+                else
+                {
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Session["Exception"] = ex.ToString();
+                Response.Redirect("~/CustomErrorPage.aspx?", false);
+            }
+        }
+
+        protected void UploadButton9_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                if (FileUpload9.HasFile)
+                {
+
+                    txtimg9.Text = FileUpload9.FileName;
+                    if (!System.Text.RegularExpressions.Regex.IsMatch(txtimg9.Text, ItemCode + "-[0-1]?[0-9]|20.jpg"))
+                    {
+                        txtimg9.Text = "先に登録されていた場合";
+                        GlobalUI.MessageBox("Invalid Image Name");
+                        return;
+                    }
+
+                    if (txtimg9.Text.Length > 24)
+                    {
+                        txtimg9.Text = "先に登録されていた場合";
+                        GlobalUI.MessageBox("画像ファイル名は20文字までです");
+                        return;
+                    }
+                    else
+                    {
+
+                        FileUpload9.SaveAs(Server.MapPath(imagePath) + FileUpload9.FileName);
+                        if (!string.IsNullOrWhiteSpace(FileUpload9.FileName.ToString()))
+                        {
+                            Image9.ImageUrl = imagePath + FileUpload9.FileName;
+                            hlImage9.NavigateUrl = imagePath + FileUpload9.FileName;
+                        }
+                    }
+                }
+                else
+                {
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Session["Exception"] = ex.ToString();
+                Response.Redirect("~/CustomErrorPage.aspx?", false);
+            }
+        }
+
+        protected void UploadButton10_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                if (FileUpload10.HasFile)
+                {
+
+                    txtimg10.Text = FileUpload10.FileName;
+                    if (!System.Text.RegularExpressions.Regex.IsMatch(txtimg10.Text, ItemCode + "-[0-1]?[0-9]|20.jpg"))
+                    {
+                        txtimg10.Text = "先に登録されていた場合";
+                        GlobalUI.MessageBox("Invalid Image Name");
+                        return;
+                    }
+
+                    if (txtimg10.Text.Length > 24)
+                    {
+                        txtimg10.Text = "先に登録されていた場合";
+                        GlobalUI.MessageBox("画像ファイル名は20文字までです");
+                        return;
+                    }
+                    else
+                    {
+
+                        FileUpload10.SaveAs(Server.MapPath(imagePath) + FileUpload10.FileName);
+                        if (!string.IsNullOrWhiteSpace(FileUpload10.FileName.ToString()))
+                        {
+                            Image10.ImageUrl = imagePath + FileUpload10.FileName;
+                            hlImage10.NavigateUrl = imagePath + FileUpload10.FileName;
+                        }
+                    }
+                }
+                else
+                {
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Session["Exception"] = ex.ToString();
+                Response.Redirect("~/CustomErrorPage.aspx?", false);
+            }
+        }
+
+        protected void UploadButton11_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                if (FileUpload11.HasFile)
+                {
+
+                    txtimg11.Text = FileUpload11.FileName;
+                    if (!System.Text.RegularExpressions.Regex.IsMatch(txtimg11.Text, ItemCode + "-[0-1]?[0-9]|20.jpg"))
+                    {
+                        txtimg11.Text = "先に登録されていた場合";
+                        GlobalUI.MessageBox("Invalid Image Name");
+                        return;
+                    }
+
+                    if (txtimg11.Text.Length > 24)
+                    {
+                        txtimg11.Text = "先に登録されていた場合";
+                        GlobalUI.MessageBox("画像ファイル名は20文字までです");
+                        return;
+                    }
+                    else
+                    {
+
+                        FileUpload11.SaveAs(Server.MapPath(imagePath) + FileUpload11.FileName);
+                        if (!string.IsNullOrWhiteSpace(FileUpload11.FileName.ToString()))
+                        {
+                            Image11.ImageUrl = imagePath + FileUpload11.FileName;
+                            hlImage11.NavigateUrl = imagePath + FileUpload11.FileName;
+                        }
+                    }
+                }
+                else
+                {
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Session["Exception"] = ex.ToString();
+                Response.Redirect("~/CustomErrorPage.aspx?", false);
+            }
+        }
+
+        protected void UploadButton12_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                if (FileUpload12.HasFile)
+                {
+
+                    txtimg12.Text = FileUpload12.FileName;
+                    if (!System.Text.RegularExpressions.Regex.IsMatch(txtimg12.Text, ItemCode + "-[0-1]?[0-9]|20.jpg"))
+                    {
+                        txtimg12.Text = "先に登録されていた場合";
+                        GlobalUI.MessageBox("Invalid Image Name");
+                        return;
+                    }
+
+                    if (txtimg12.Text.Length > 24)
+                    {
+                        txtimg12.Text = "先に登録されていた場合";
+                        GlobalUI.MessageBox("画像ファイル名は20文字までです");
+                        return;
+                    }
+                    else
+                    {
+
+                        FileUpload12.SaveAs(Server.MapPath(imagePath) + FileUpload12.FileName);
+                        if (!string.IsNullOrWhiteSpace(FileUpload12.FileName.ToString()))
+                        {
+                            Image12.ImageUrl = imagePath + FileUpload12.FileName;
+                            hlImage12.NavigateUrl = imagePath + FileUpload12.FileName;
+                        }
+                    }
+                }
+                else
+                {
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Session["Exception"] = ex.ToString();
+                Response.Redirect("~/CustomErrorPage.aspx?", false);
+            }
+        }
+
+        protected void UploadButton13_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                if (FileUpload13.HasFile)
+                {
+
+                    txtimg13.Text = FileUpload13.FileName;
+                    if (!System.Text.RegularExpressions.Regex.IsMatch(txtimg13.Text, ItemCode + "-[0-1]?[0-9]|20.jpg"))
+                    {
+                        txtimg13.Text = "先に登録されていた場合";
+                        GlobalUI.MessageBox("Invalid Image Name");
+                        return;
+                    }
+
+                    if (txtimg13.Text.Length > 24)
+                    {
+                        txtimg13.Text = "先に登録されていた場合";
+                        GlobalUI.MessageBox("画像ファイル名は20文字までです");
+                        return;
+                    }
+                    else
+                    {
+
+                        FileUpload13.SaveAs(Server.MapPath(imagePath) + FileUpload13.FileName);
+                        if (!string.IsNullOrWhiteSpace(FileUpload13.FileName.ToString()))
+                        {
+                            Image13.ImageUrl = imagePath + FileUpload13.FileName;
+                            hlImage13.NavigateUrl = imagePath + FileUpload13.FileName;
+                        }
+                    }
+                }
+                else
+                {
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Session["Exception"] = ex.ToString();
+                Response.Redirect("~/CustomErrorPage.aspx?", false);
+            }
+        }
+
+        protected void UploadButton14_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                if (FileUpload14.HasFile)
+                {
+
+                    txtimg14.Text = FileUpload14.FileName;
+                    if (!System.Text.RegularExpressions.Regex.IsMatch(txtimg14.Text, ItemCode + "-[0-1]?[0-9]|20.jpg"))
+                    {
+                        txtimg14.Text = "先に登録されていた場合";
+                        GlobalUI.MessageBox("Invalid Image Name");
+                        return;
+                    }
+
+                    if (txtimg14.Text.Length > 24)
+                    {
+                        txtimg14.Text = "先に登録されていた場合";
+                        GlobalUI.MessageBox("画像ファイル名は20文字までです");
+                        return;
+                    }
+                    else
+                    {
+
+                        FileUpload14.SaveAs(Server.MapPath(imagePath) + FileUpload14.FileName);
+                        if (!string.IsNullOrWhiteSpace(FileUpload14.FileName.ToString()))
+                        {
+                            Image14.ImageUrl = imagePath + FileUpload14.FileName;
+                            hlImage14.NavigateUrl = imagePath + FileUpload14.FileName;
+                        }
+                    }
+                }
+                else
+                {
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Session["Exception"] = ex.ToString();
+                Response.Redirect("~/CustomErrorPage.aspx?", false);
+            }
+        }
+
+        protected void UploadButton15_Click(object sender, EventArgs e)
+        {
+
+            try 
+            {
+                if (FileUpload15.HasFile)
+                {
+
+                    txtimg15.Text = FileUpload15.FileName;
+                    if (!System.Text.RegularExpressions.Regex.IsMatch(txtimg15.Text, ItemCode + "-[0-1]?[0-9]|20.jpg"))
+                    {
+                        txtimg15.Text = "先に登録されていた場合";
+                        GlobalUI.MessageBox("Invalid Image Name");
+                        return;
+                    }
+
+                    if (txtimg15.Text.Length > 24)
+                    {
+                        txtimg15.Text = "先に登録されていた場合";
+                        GlobalUI.MessageBox("画像ファイル名は20文字までです");
+                        return;
+                    }
+                    else
+                    {
+
+                        FileUpload15.SaveAs(Server.MapPath(imagePath) + FileUpload15.FileName);
+                        if (!string.IsNullOrWhiteSpace(FileUpload15.FileName.ToString()))
+                        {
+                            Image15.ImageUrl = imagePath + FileUpload15.FileName;
+                            hlImage15.NavigateUrl = imagePath + FileUpload15.FileName;
+                        }
+                    }
+                }
+                else
+                {
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Session["Exception"] = ex.ToString();
+                Response.Redirect("~/CustomErrorPage.aspx?", false);
+            }
+        }
+
+        protected void UploadButton16_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                if (FileUpload16.HasFile)
+                {
+
+                    txtimg16.Text = FileUpload16.FileName;
+                    if (!System.Text.RegularExpressions.Regex.IsMatch(txtimg16.Text, ItemCode + "-[0-1]?[0-9]|20.jpg"))
+                    {
+                        txtimg16.Text = "先に登録されていた場合";
+                        GlobalUI.MessageBox("Invalid Image Name");
+                        return;
+                    }
+
+                    if (txtimg16.Text.Length > 24)
+                    {
+                        txtimg16.Text = "先に登録されていた場合";
+                        GlobalUI.MessageBox("画像ファイル名は20文字までです");
+                        return;
+                    }
+                    else
+                    {
+
+                        FileUpload16.SaveAs(Server.MapPath(imagePath) + FileUpload16.FileName);
+                        if (!string.IsNullOrWhiteSpace(FileUpload16.FileName.ToString()))
+                        {
+                            Image16.ImageUrl = imagePath + FileUpload16.FileName;
+                            hlImage16.NavigateUrl = imagePath + FileUpload16.FileName;
+                        }
+                    }
+                }
+                else
+                {
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Session["Exception"] = ex.ToString();
+                Response.Redirect("~/CustomErrorPage.aspx?", false);
+            }
+        }
+
+        protected void UploadButton17_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                if (FileUpload17.HasFile)
+                {
+
+                    txtimg17.Text = FileUpload17.FileName;
+                    if (!System.Text.RegularExpressions.Regex.IsMatch(txtimg17.Text, ItemCode + "-[0-1]?[0-9]|20.jpg"))
+                    {
+                        txtimg17.Text = "先に登録されていた場合";
+                        GlobalUI.MessageBox("Invalid Image Name");
+                        return;
+                    }
+
+                    if (txtimg17.Text.Length > 24)
+                    {
+                        txtimg17.Text = "先に登録されていた場合";
+                        GlobalUI.MessageBox("画像ファイル名は20文字までです");
+                        return;
+                    }
+                    else
+                    {
+
+                        FileUpload17.SaveAs(Server.MapPath(imagePath) + FileUpload17.FileName);
+                        if (!string.IsNullOrWhiteSpace(FileUpload17.FileName.ToString()))
+                        {
+                            Image17.ImageUrl = imagePath + FileUpload17.FileName;
+                            hlImage17.NavigateUrl = imagePath + FileUpload17.FileName;
+                        }
+                    }
+                }
+                else
+                {
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Session["Exception"] = ex.ToString();
+                Response.Redirect("~/CustomErrorPage.aspx?", false);
+            }
+        }
+
+        protected void UploadButton18_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                if (FileUpload18.HasFile)
+                {
+
+                    txtimg18.Text = FileUpload18.FileName;
+                    if (!System.Text.RegularExpressions.Regex.IsMatch(txtimg18.Text, ItemCode + "-[0-1]?[0-9]|20.jpg"))
+                    {
+                        txtimg18.Text = "先に登録されていた場合";
+                        GlobalUI.MessageBox("Invalid Image Name");
+                        return;
+                    }
+
+                    if (txtimg18.Text.Length > 24)
+                    {
+                        txtimg18.Text = "先に登録されていた場合";
+                        GlobalUI.MessageBox("画像ファイル名は20文字までです");
+                        return;
+                    }
+                    else
+                    {
+
+                        FileUpload18.SaveAs(Server.MapPath(imagePath) + FileUpload18.FileName);
+                        if (!string.IsNullOrWhiteSpace(FileUpload18.FileName.ToString()))
+                        {
+                            Image18.ImageUrl = imagePath + FileUpload18.FileName;
+                            hlImage18.NavigateUrl = imagePath + FileUpload18.FileName;
+                        }
+                    }
+                }
+                else
+                {
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Session["Exception"] = ex.ToString();
+                Response.Redirect("~/CustomErrorPage.aspx?", false);
+            }
+        }
+
+        protected void UploadButton19_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                if (FileUpload19.HasFile)
+                {
+
+                    txtimg19.Text = FileUpload19.FileName;
+                    if (!System.Text.RegularExpressions.Regex.IsMatch(txtimg19.Text, ItemCode + "-[0-1]?[0-9]|20.jpg"))
+                    {
+                        txtimg19.Text = "先に登録されていた場合";
+                        GlobalUI.MessageBox("Invalid Image Name");
+                        return;
+                    }
+
+                    if (txtimg19.Text.Length > 24)
+                    {
+                        txtimg19.Text = "先に登録されていた場合";
+                        GlobalUI.MessageBox("画像ファイル名は20文字までです");
+                        return;
+                    }
+                    else
+                    {
+
+                        FileUpload19.SaveAs(Server.MapPath(imagePath) + FileUpload19.FileName);
+                        if (!string.IsNullOrWhiteSpace(FileUpload19.FileName.ToString()))
+                        {
+                            Image19.ImageUrl = imagePath + FileUpload19.FileName;
+                            hlImage19.NavigateUrl = imagePath + FileUpload19.FileName;
+                        }
+                    }
+                }
+                else
+                {
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Session["Exception"] = ex.ToString();
+                Response.Redirect("~/CustomErrorPage.aspx?", false);
+            }
+        }
+
+        protected void UploadButton20_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                if (FileUpload20.HasFile)
+                {
+
+                    txtimg20.Text = FileUpload20.FileName;
+                    if (!System.Text.RegularExpressions.Regex.IsMatch(txtimg20.Text, ItemCode + "-[0-1]?[0-9]|20.jpg"))
+                    {
+                        txtimg20.Text = "先に登録されていた場合";
+                        GlobalUI.MessageBox("Invalid Image Name");
+                        return;
+                    }
+
+                    if (txtimg20.Text.Length > 24)
+                    {
+                        txtimg20.Text = "先に登録されていた場合";
+                        GlobalUI.MessageBox("画像ファイル名は20文字までです");
+                        return;
+                    }
+                    else
+                    {
+
+                        FileUpload20.SaveAs(Server.MapPath(imagePath) + FileUpload20.FileName);
+                        if (!string.IsNullOrWhiteSpace(FileUpload20.FileName.ToString()))
+                        {
+                            Image20.ImageUrl = imagePath + FileUpload20.FileName;
+                            hlImage20.NavigateUrl = imagePath + FileUpload20.FileName;
+                        }
+                    }
+                }
+                else
+                {
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Session["Exception"] = ex.ToString();
+                Response.Redirect("~/CustomErrorPage.aspx?", false);
+            }
+        }
+
+
+        #region Mall_Category
+        public void DisplayMallCategory()
+        {
+            try
+            {
+                if (MallCategoryID != null)
+                {
+                    DataTable dt = MallCategoryID as DataTable;
+                    if (dt.Rows[0]["Mall_ID"].ToString() == "1")
+                    {
+                        txtRakuten_CategoryID.Text = dt.Rows[0]["Category_ID"].ToString();
+                        txtRakuten_CategoryPath.Text = dt.Rows[0]["Category_Path"].ToString();
+                    }
+                    else if (dt.Rows[0]["Mall_ID"].ToString() == "2")
+                    {
+                        txtYahoo_CategoryID.Text = dt.Rows[0]["Category_ID"].ToString();
+                        txtYahoo_CategoryPath.Text = dt.Rows[0]["Category_Path"].ToString();
+                    }
+                    else if (dt.Rows[0]["Mall_ID"].ToString() == "4")
+                    {
+                        txtWowma_CategoryID.Text = dt.Rows[0]["Category_ID"].ToString();
+                        txtWowma_CategoryPath.Text = dt.Rows[0]["Category_Path"].ToString();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Session["Exception"] = ex.ToString();
+                Response.Redirect("~/CustomErrorPage.aspx?", false);
+            }
+        }
+
+        #endregion
+
+        public DataTable RebindItemCodeURL(string ctrl)
+        {
+
+
+            Item_Shop_BL isbl = new Item_Shop_BL();
+            DataTable dt = new DataTable();
+            dt.Columns.Add("Shop_ID", typeof(int));
+            dt.Columns.Add("Item_Code_URL", typeof(string));
+            //foreach (DataListItem li in dlShop.Items)
+            //{
+            //    TextBox txtitemcode = li.FindControl("txtItem_CodeList") as TextBox;
+            //    Label shopid = li.FindControl("lblShopID") as Label;
+            //    CheckBox cb = li.FindControl("ckbShop") as CheckBox;
+            //    string icode = txtItem_Code.Text;
+            //    if (icode == txtitemcode.Text)
+            //    {
+            //        if (cb != null)
+            //        {
+            //            if (cb.Checked)
+            //            {
+            //                DataRow dr = dt.NewRow();
+            //                dr["Item_Code_URL"] = txtitemcode.Text;
+            //                dr["Shop_ID"] = Convert.ToInt32(shopid.Text);
+            //                dt.Rows.Add(dr);
+            //            }
+            //        }
+            //    }
+            //    else
+            //    {
+            //        if (cb != null)
+            //        {
+            //            if (cb.Checked)
+            //            {
+            //                if (ctrl.Contains("txtItem_Code"))
+            //                {
+            //                    DataRow dr = dt.NewRow();
+            //                    dr["Item_Code_URL"] = txtItem_Code.Text;
+            //                    dr["Shop_ID"] = Convert.ToInt32(shopid.Text);
+            //                    dt.Rows.Add(dr);
+            //                }
+            //                else
+            //                {
+            //                    DataRow dr = dt.NewRow();
+            //                    dr["Item_Code_URL"] = txtitemcode.Text;
+            //                    dr["Shop_ID"] = Convert.ToInt32(shopid.Text);
+            //                    dt.Rows.Add(dr);
+            //                }
+            //            }
+            //        }
+            //    }
+            //}
+            //if (dt != null && dt.Rows.Count > 0)
+            //{
+            //    for (int i = 0; i < dt.Rows.Count; i++)
+            //    {
+            //        foreach (DataListItem li in dlShop.Items)
+            //        {
+            //            TextBox txtitemcode = li.FindControl("txtItem_CodeList") as TextBox;
+            //            Label shopid = li.FindControl("lblShopID") as Label;
+            //            CheckBox cb = li.FindControl("ckbShop") as CheckBox;
+            //            if (shopid.Text == dt.Rows[i]["Shop_ID"].ToString())
+            //            {
+            //                cb.Checked = true;
+            //                txtitemcode.Text = dt.Rows[i]["Item_Code_URL"].ToString();
+            //                break;
+            //            }
+            //        }
+            //    }
+            //}
+            return dt;
         }
 
         public void SetMallCategoryData()
@@ -313,9 +1695,1422 @@ namespace Capital_SKS.WebForms.Item
             }
         }
 
+        protected DataTable CreateTemplateTable()
+        {
+            DataTable dt = new DataTable();
+            dt.Columns.Add("Template");
+    
+            dt.Rows.Add(txtTemplate1.Text);
+            dt.Rows.Add(txtTemplate_Content1.Text);
+            dt.Rows.Add(txtTemplate2.Text);
+            dt.Rows.Add(txtTemplate_Content2.Text);
+            dt.Rows.Add(txtTemplate3.Text);
+            dt.Rows.Add(txtTemplate_Content3.Text);
+            dt.Rows.Add(txtTemplate4.Text);
+            dt.Rows.Add(txtTemplate_Content4.Text);
+            dt.Rows.Add(txtTemplate5.Text);
+            dt.Rows.Add(txtTemplate_Content5.Text);
+            dt.Rows.Add(txtTemplate6.Text);
+            dt.Rows.Add(txtTemplate_Content6.Text);
+            dt.Rows.Add(txtTemplate7.Text);
+            dt.Rows.Add(txtTemplate_Content7.Text);
+            dt.Rows.Add(txtTemplate8.Text);
+            dt.Rows.Add(txtTemplate_Content8.Text);
+            dt.Rows.Add(txtTemplate9.Text);
+            dt.Rows.Add(txtTemplate_Content9.Text);
+            dt.Rows.Add(txtTemplate10.Text);
+            dt.Rows.Add(txtTemplate_Content10.Text);
+            dt.Rows.Add(txtTemplate11.Text);
+            dt.Rows.Add(txtTemplate_Content11.Text);
+            dt.Rows.Add(txtTemplate12.Text);
+            dt.Rows.Add(txtTemplate_Content12.Text);
+            dt.Rows.Add(txtTemplate13.Text);
+            dt.Rows.Add(txtTemplate_Content13.Text);
+            dt.Rows.Add(txtTemplate14.Text);
+            dt.Rows.Add(txtTemplate_Content14.Text);
+            dt.Rows.Add(txtTemplate15.Text);
+            dt.Rows.Add(txtTemplate_Content15.Text);
+            dt.Rows.Add(txtTemplate16.Text);
+            dt.Rows.Add(txtTemplate_Content16.Text);
+            dt.Rows.Add(txtTemplate17.Text);
+            dt.Rows.Add(txtTemplate_Content17.Text);
+            dt.Rows.Add(txtTemplate18.Text);
+            dt.Rows.Add(txtTemplate_Content18.Text);
+            dt.Rows.Add(txtTemplate19.Text);
+            dt.Rows.Add(txtTemplate_Content19.Text);
+            dt.Rows.Add(txtTemplate20.Text);
+            dt.Rows.Add(txtTemplate_Content20.Text);
+            dt.Rows.Add(txtItem_Description_PC.Text);
+            dt.Rows.Add(txtSale_Description_PC.Text);
+            dt.Rows.Add(txtSmart_Template.Text);
+            dt.Rows.Add(txtMerchandise_Information.Text);
+
+            return dt;
+        }
+
+        protected Boolean Check_SpecialCharacter(String[] columnName, DataTable dt)
+        {
+            try
+            {
+                DataColumnCollection col = dt.Columns;
+
+
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    for (int j = 0; j < dt.Columns.Count; j++)
+                    {
+                        for (int k = 0; k < columnName.Length; k++)
+                        {
+                            if (dt.Columns[j].ColumnName == columnName[k])
+                            {
+
+                                string input = dt.Rows[i][j].ToString();
+                                string specialChar = @"㈰㈪㈫㈬㈭㈮㈯㉀㈷㉂㉃㈹㈺㈱㈾㈴㈲㈻㈶㈳㈵㈼㈽㈿㈸㊤㊥㊦㊧㊨㊩㊖㊝㊘㊞㊙㍾㍽㍼㍻㍉㌢㌔㌖㌅㌳㍎㌃㌶㌘㌕㌧㍑㍊㌹㍗㌍㍂㌣㌦㌻㌫㍍№℡㎜㎟㎝㎠㎤㎡㎥㎞㎢㎎㎏㏄㎖㎗㎘㎳㎲㎱㎰①②③④⑤⑥⑦⑧⑨⑩⑪⑫⑬⑭⑮⑯⑰⑱⑲⑳ⅠⅡⅢⅣⅤⅥⅦⅧⅨⅩⅰⅱⅲⅳⅴⅵⅶⅷⅸⅹ";
+                                string comma = ",";
+                                string plusign = "[[(+)]]";
+                                string minussign = "[[(-)]]";
+
+                                foreach (var item in specialChar)
+                                {
+                                    if (input.Contains(item))
+                                    {
+                                        ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "alert('Template description contains special character.');", true);
+                                        return true;
+                                    }
+
+                                }
+                                if (input.Contains(plusign) || input.Contains(minussign))
+                                {
+                                    ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "alert('Template description contains special character.');", true);
+                                    return true;
+                                }
+
+                            }
+                        }
+                    }
+                }
+
+                return false;
+
+            }
+            catch (Exception ex)
+            {
+                Session["Exception"] = ex.ToString();
+                Response.Redirect("~/CustomErrorPage.aspx?");
+                return false;
+            }
+        }
+
+        public Item_Master_Entity GetItemData()
+        {
+            try
+            {
+                ime.Ctrl_ID = hdfCtrl_ID.Value;
+                if (Request.QueryString["Item_Code"] != null)
+                {
+                    ime.Item_Code = txtItem_Code.Text;
+                }
+                ime.Updated_By = UserID;
+                ime.Item_Name = txtItem_Name.Text.TrimStart();
+                ime.JanCode = txtJanCD.Text.TrimStart();
+                ime.Memo = txtmemo.Text.TrimStart();
+                ime.Siiresaki = txtsiiresaki.Text.TrimStart();
+                int normallargeKBN = 0;
+                if (Convert.ToInt32(ddNormalLargeKBN.SelectedIndex) == 1)
+                {
+                    normallargeKBN = 0;
+                }
+                else if (Convert.ToInt32(ddNormalLargeKBN.SelectedIndex) == 2)
+                {
+                    normallargeKBN = 1;
+                }
+                ime.NormalLargeKBN = normallargeKBN;
+                ime.Product_Code = txtProduct_Code.Text.TrimStart();
+                string release = Request.Form[txtRelease_Date.UniqueID];
+                string post = Request.Form[txtPost_Available_Date.UniqueID];
+                if (!string.IsNullOrWhiteSpace(release))
+                {
+                    ime.Release_Date = Convert.ToDateTime(release);
+                }
+                if (!string.IsNullOrWhiteSpace(post))
+                {
+                    ime.Post_Available_Date = Convert.ToDateTime(post);
+                }
+               // ime.Season = txtSeason.Text.TrimStart();
+                ime.Brand_Name = txtBrand_Name.Text.TrimStart();
+                ime.Brand_Code = txtBrand_Code.Text.TrimStart();
+                //ime.Competition_Name = txtCompetition_Name.Text.TrimStart();
+                //ime.Class_Name = txtClass_Name.Text.Trim().TrimStart();
+                //ime.Catalog_Information = txtCatalog_Information.Text.TrimStart();
+                ime.Merchandise_Information = txtMerchandise_Information.Text.TrimStart();
+                //ime.Zett_Item_Description = txtZett_Item_Description.Text.TrimStart();
+                //ime.Zett_Sale_Description = txtZett_Sale_Description.Text.TrimStart();
+                ime.Item_Description_PC = txtItem_Description_PC.Text.TrimStart();
+                ime.Sale_Description_PC = txtSale_Description_PC.Text.TrimStart();
+                ime.Smart_Template = txtSmart_Template.Text;
+                //ime.Additional_2 = txtAdditional_2.Text;
+                //ime.Additional_3 = txtAdditional_3.Text;
+                //ime.BlackMarket_Password = txtBlackMarket_Password.Text.TrimStart();
+                //ime.DoublePrice_Ctrl_No = txtDoublePrice_Ctrl_No.Text.TrimStart();
+                if (!string.IsNullOrWhiteSpace(txtExtra_Shipping.Text))
+                {
+                    ime.Extra_Shipping = Convert.ToInt32(txtExtra_Shipping.Text.TrimStart());
+                }
+                ime.Maker_Code = txtmaker_code.Text;
+             //   ime.Year = txtYear.Text.Trim();
+                if (!string.IsNullOrWhiteSpace(txtList_Price.Text))
+                {
+                    ime.List_Price = int.Parse(txtList_Price.Text.Replace(",", string.Empty));
+                }
+                //if (!string.IsNullOrWhiteSpace(txtJisha_Price.Text))
+                //{
+                //    ime.Jisha_Price = int.Parse(txtJisha_Price.Text.Replace(",", string.Empty));
+                //}
+                if (!string.IsNullOrWhiteSpace(txtSale_Price.Text))
+                {
+                    ime.Sale_Price = int.Parse(txtSale_Price.Text.Replace(",", string.Empty));
+                }
+
+                if (!string.IsNullOrWhiteSpace(txtRakutenPrice.Text))
+                {
+                    ime.RakutenPrice = int.Parse(txtRakutenPrice.Text.Replace(",", string.Empty));
+                }
+                if (!string.IsNullOrWhiteSpace(txtYahooPrice.Text))
+                {
+                    ime.YahooPrice = int.Parse(txtYahooPrice.Text.Replace(",", string.Empty));
+                }
+                if (!string.IsNullOrWhiteSpace(txtWowmaPrice.Text))
+                {
+                    ime.WowmaPrice = int.Parse(txtWowmaPrice.Text.Replace(",", string.Empty));
+                }
+                if (!string.IsNullOrWhiteSpace(txtJishaPrice.Text))
+                {
+                    ime.JishaPrice = int.Parse(txtJishaPrice.Text.Replace(",", string.Empty));
+                }
+                //if (!string.IsNullOrWhiteSpace(txtTennisPrice.Text))
+                //{
+                //    ime.TennisPrice = int.Parse(txtTennisPrice.Text.Replace(",", string.Empty));
+                //}
+
+                if (!string.IsNullOrWhiteSpace(txtmonoprice.Text))
+                {
+                    ime.Monoprice = int.Parse(txtmonoprice.Text.Replace(",", string.Empty));
+                }
+                if (!string.IsNullOrWhiteSpace(txtditeprice.Text))
+                {
+                    ime.Diteprice = int.Parse(txtditeprice.Text.Replace(",", string.Empty));
+                }
+                if (!string.IsNullOrWhiteSpace(txtjapanmprice.Text))
+                {
+                    ime.Japanmprice = int.Parse(txtjapanmprice.Text.Replace(",", string.Empty));
+                }
+                if (!string.IsNullOrWhiteSpace(txtkashiwagi.Text))
+                {
+                    ime.Kashiwagikoukiprice = int.Parse(txtkashiwagi.Text.Replace(",", string.Empty));
+                }
+
+                ime.Rakuten_CategoryID = txtRakuten_CategoryID.Text;
+                ime.Yahoo_CategoryID = txtYahoo_CategoryID.Text;
+                ime.Wowma_CategoryID = txtWowma_CategoryID.Text;
+                //ime.Tennis_CategoryID = txtTennis_CategoryID.Text;
+
+                if (!string.IsNullOrWhiteSpace(ddlShipping_Flag.SelectedValue))
+                {
+                    ime.Shipping_Flag = int.Parse(ddlShipping_Flag.SelectedValue);
+                }
+                if (!string.IsNullOrWhiteSpace(ddlDelivery_Charges.SelectedValue))
+                {
+                    ime.Delivery_Charges = int.Parse(ddlDelivery_Charges.SelectedValue);
+                }
+                //if (!string.IsNullOrWhiteSpace(ddlWarehouse_Specified.SelectedValue))
+                //{
+                //    ime.Warehouse_Specified = int.Parse(ddlWarehouse_Specified.SelectedValue);
+                //}
+                //if (chkActive.Checked == true)
+                //{ ime.Active = 1; }
+                //else
+                //{ ime.Active = 0; }
+                //ime.InactiveComment = txtInactive.Text;
+                //ime.Yahoo_url = txtyahoourl.Text; //for sks-593
+                //if (rdb1.Checked)
+                //{
+                //    ime.Skucheck = 1;
+                //}
+                //else
+                //{
+                //    ime.Skucheck = 0;
+                //}
+                ime.SalesUnit = ddlsalesunit.SelectedItem.Text;
+                //ime.TagInformation=ddlTagInfo.SelectedItem.Text;
+                //if (!string.IsNullOrWhiteSpace(ddlTagInfo.SelectedValue))
+                //{
+                //    ime.TagInformation = ddlTagInfo.SelectedItem.Text;
+                //}
+                ime.ContentQuantityNo1 = txtcontentquantityunitno1.Text;
+                ime.ContentQuantityNo2 = txtcontentquantityunitno2.Text;
+                ime.ContentUnit1 = ddlcontentunit1.Text;
+                ime.ContentUnit2 = ddlcontentunit2.Text;
+                ime.PC_CatchCopy = txtCatchCopy.Text;
+                //ime.PC_CatchCopy_Mobile = txtCatchCopyMobile.Text;
+                ime.Maker_Name = txtmakername.Text.TrimStart();
+                ime.Comment = txtcomment.Text;
+                if (!String.IsNullOrWhiteSpace(txtsellingprice.Text))
+                {
+                    ime.Selling_Price = int.Parse(txtsellingprice.Text.TrimStart());
+                }
+                if (!String.IsNullOrWhiteSpace(txtpurchaseprice.Text))
+                {
+                    ime.Purchase_Price = int.Parse(txtpurchaseprice.Text.TrimStart());
+                }
+                if (!String.IsNullOrWhiteSpace(txtsellby.Text))
+                {
+                    ime.SellBy = int.Parse(txtsellby.Text.TrimStart());
+                }
+                ime.Selling_Rank = txtsellingrank.Text.TrimStart();
+                if (!String.IsNullOrWhiteSpace(txtdeliverydays.Text))
+                {
+                    ime.Delivery_Days = int.Parse(txtdeliverydays.Text.TrimStart());
+                }
+                if (!String.IsNullOrWhiteSpace(ddlksmavaliable.SelectedValue))
+                {
+                    ime.KSMDelivery_Type = int.Parse(ddlksmavaliable.SelectedValue);
+                }
+                if (!String.IsNullOrWhiteSpace(txtksmdeliverydays.Text))
+                {
+                    ime.KSMDelivery_Days = int.Parse(txtksmdeliverydays.Text.TrimStart());
+                }
+                ime.Nation_Wide = txtnationwide.Text;
+                if (!String.IsNullOrWhiteSpace(txthokkaido.Text))
+                {
+                    ime.Hokkaido = int.Parse(txthokkaido.Text.TrimStart());
+                }
+                if (!String.IsNullOrWhiteSpace(txtokinawa.Text))
+                {
+                    ime.Okinawa = int.Parse(txtokinawa.Text.TrimStart());
+                }
+                if (!String.IsNullOrWhiteSpace(txtremoteisland.Text))
+                {
+                    ime.Remote_Island = int.Parse(txtremoteisland.Text.TrimStart());
+                }
+                ime.Undelivered_Area = txtundeliveredarea.Text.TrimStart();
+                ime.Dangerous_Goods_Contents = txtdangerousgoodscontents.Text;
+                if (!string.IsNullOrWhiteSpace(ddldeliverymethod.SelectedValue))
+                {
+                    ime.Delivery_Method = int.Parse(ddldeliverymethod.SelectedValue);
+                }
+                if (!string.IsNullOrWhiteSpace(ddldeliverytype.SelectedValue))
+                {
+                    ime.Delivery_Type = int.Parse(ddldeliverytype.SelectedValue);
+                }
+                if (!string.IsNullOrWhiteSpace(ddldeliveryfees.SelectedValue))
+                {
+                    ime.Delivery_Fees = int.Parse(ddldeliveryfees.SelectedValue);
+                }
+                if (!string.IsNullOrWhiteSpace(ddlcustomerassembly.SelectedValue))
+                {
+                    ime.KSM_Avaliable = int.Parse(ddlcustomerassembly.SelectedValue);
+                }
+                if (!string.IsNullOrWhiteSpace(ddlreturnableitem.SelectedValue))
+                {
+                    ime.Returnable_Item = int.Parse(ddlreturnableitem.SelectedValue);
+                }
+                if (!string.IsNullOrWhiteSpace(ddlnoapplicablelaw.SelectedValue))
+                {
+                    ime.NoApplicable_Law = int.Parse(ddlnoapplicablelaw.SelectedValue);
+                }
+                if (!string.IsNullOrWhiteSpace(ddlsalespermission.SelectedValue))
+                {
+                    ime.Sales_Permission = int.Parse(ddlsalespermission.SelectedValue);
+                }
+                if (!string.IsNullOrWhiteSpace(ddllaw.SelectedValue))
+                {
+                    ime.Law = int.Parse(ddllaw.SelectedValue);
+                }
+                if (!string.IsNullOrWhiteSpace(ddldanggoodsclass.SelectedValue))
+                {
+                    ime.Dangoods_Class = int.Parse(ddldanggoodsclass.SelectedValue);
+                }
+                if (!string.IsNullOrWhiteSpace(ddldanggoodsname.SelectedValue))
+                {
+                    ime.Dangoods_Name = int.Parse(ddldanggoodsname.SelectedValue);
+                }
+                if (!string.IsNullOrWhiteSpace(ddlriskrating.SelectedValue))
+                {
+                    ime.Risk_Rating = int.Parse(ddlriskrating.SelectedValue);
+                }
+                if (!string.IsNullOrWhiteSpace(ddldanggoodsnature.SelectedValue))
+                {
+                    ime.Dangoods_Nature = int.Parse(ddldanggoodsnature.SelectedValue);
+                }
+                if (!string.IsNullOrWhiteSpace(ddlfirelaw.SelectedValue))
+                {
+                    ime.Fire_Law = int.Parse(ddlfirelaw.SelectedValue);
+                }
+                if (!string.IsNullOrWhiteSpace(txtcost.Text))
+                {
+                    ime.Cost = int.Parse(txtcost.Text.Replace(",", string.Empty));
+                }
+                if (!String.IsNullOrWhiteSpace(txtday_ship.Text))
+                {
+                    ime.Day_Ship = int.Parse(txtday_ship.Text.TrimStart());
+                }
+                if (!String.IsNullOrWhiteSpace(txtreturn_necessary.Text))
+                {
+                    ime.Retrun_Necessary = int.Parse(txtreturn_necessary.Text.TrimStart());
+                }
+                if (!String.IsNullOrWhiteSpace(txtwarehouse_code.Text))
+                {
+                    ime.Warehouse_Code = int.Parse(txtwarehouse_code.Text.TrimStart());
+                }
+
+               
+                ime.PublicationType = ddlPublicationType.SelectedIndex;
+
+                if (!String.IsNullOrWhiteSpace(txtminimumorderquantity.Text.ToString()))
+                {
+                    ime.MinimumOrderSuu = Convert.ToInt32(txtminimumorderquantity.Text);
+                }
+                ime.MinimumOrderUnit = txtminimumorderunit.Text.ToString();
+                
+                ime.DirectDelivery = ddlDirectDelivery.SelectedIndex;
+
+                if (!string.IsNullOrWhiteSpace(txtreleasedatemonotaro.Text))
+                {
+                    ime.ScheduleReleaseDate = Convert.ToDateTime(txtreleasedatemonotaro.Text.ToString());
+                }
+                ime.Categorymonotaro = txtmonocategory.Text.ToString();
+                ime.Colormonotaro = txtcolour.Text.ToString();
+                ime.Procurement_Goods = ddlSpecifiedprocurementitem.SelectedIndex;
+                ime.EcoMarkCertifiedGoods = ddlecomartcertifiedproduct.SelectedIndex;
+                ime.GreenPurchasingLaw = ddlgreenpurchasemethod.SelectedIndex;
+
+                if (!String.IsNullOrWhiteSpace(txtecomartcertifiednumber.Text.ToString()))
+                {
+                    ime.EcoMarkCertifiedNo = Convert.ToInt32(txtecomartcertifiednumber.Text.ToString());
+                }
+                ime.RoHS_Directive = ddlRoHSdirective.SelectedIndex;
+                ime.Medical_Supplies = ddlPharmaceuticalsandmedicaldevices.SelectedIndex;               
+
+
+                return ime;
+            }
+            catch (Exception ex)
+            {
+                Session["Exception"] = ex.ToString();
+                Response.Redirect("~/CustomErrorPage.aspx?", false);
+                return new Item_Master_Entity();
+            }
+        }
+
+        protected string CheckLength(Item_Master_Entity ime)
+        {
+            try
+            {
+                string msg = string.Empty; int byteLength = 0;
+                Encoding enc = Encoding.GetEncoding(932);
+                byteLength = enc.GetByteCount(ime.Ctrl_ID);
+                if (byteLength > 50)
+                {
+                    msg += ime.Ctrl_ID + ",";
+                }
+                byteLength = enc.GetByteCount(ime.Product_Code);
+                if (byteLength > 100)
+                {
+                    msg += "製品コード" + ",";
+                }
+                byteLength = enc.GetByteCount(ime.Item_Name);
+                if (byteLength > 255)
+                {
+                    msg += "商品名" + ",";
+                }
+                byteLength = enc.GetByteCount(ime.PC_CatchCopy);
+                if (byteLength > 255)
+                {
+                    msg += "PC用キャッチコピー" + ",";
+                }
+                byteLength = enc.GetByteCount(ime.PC_CatchCopy_Mobile);
+                if (byteLength > 255)
+                {
+                    msg += "モバイル用キャッチコピー" + ",";
+                }
+                byteLength = enc.GetByteCount(ime.Year);
+                if (byteLength > 20)
+                {
+                    msg += "年度" + ",";
+                }
+                byteLength = enc.GetByteCount(ime.Season);
+                if (byteLength > 40)
+                {
+                    msg += "シーズン" + ",";
+                }
+                byteLength = enc.GetByteCount(ime.Brand_Name);
+                if (byteLength > 200)
+                {
+                    msg += "ブランド名" + ",";
+                }
+                byteLength = enc.GetByteCount(ime.Brand_Code);
+                if (byteLength > 4)
+                {
+                    msg += "ブランドコード" + ",";
+                }
+                byteLength = enc.GetByteCount(ime.Competition_Name);
+                if (byteLength > 200)
+                {
+                    msg += "競技名" + ",";
+                }
+                byteLength = enc.GetByteCount(ime.Class_Name);
+                if (byteLength > 200)
+                {
+                    msg += "分類名" + ",";
+                }
+                byteLength = enc.GetByteCount(ime.Catalog_Information);
+                if (byteLength > 3000)
+                {
+                    msg += "カタログ情報" + ",";
+                }
+                byteLength = enc.GetByteCount(ime.Rakuten_CategoryID);
+                if (byteLength > 50)
+                {
+                    msg += "楽天 カテゴリID" + ",";
+                }
+                byteLength = enc.GetByteCount(ime.Yahoo_CategoryID);
+                if (byteLength > 50)
+                {
+                    msg += "ヤフー カテゴリID" + ",";
+                }
+                byteLength = enc.GetByteCount(ime.Wowma_CategoryID);
+                if (byteLength > 50)
+                {
+                    msg += "ポンパレ カテゴリID" + ",";
+                }
+                byteLength = enc.GetByteCount(ime.BlackMarket_Password);
+                if (byteLength > 50)
+                {
+                    msg += "闇市パスワード" + ",";
+                }
+                byteLength = enc.GetByteCount(ime.DoublePrice_Ctrl_No);
+                if (byteLength > 50)
+                {
+                    msg += "二重価格文書管理番号" + ",";
+                }
+                return msg;
+            }
+            catch (Exception ex)
+            {
+                string str = string.Empty;
+                Session["Exception"] = ex.ToString();
+                Response.Redirect("~/CustomErrorPage.aspx?");
+                return str;
+            }
+        }
+
+        public bool ValidationUpdate()
+        {
+            try
+            {
+                #region html field
+                int length = Encoding.GetEncoding(932).GetByteCount(txtItem_Description_PC.Text);
+                if (length > 5120)
+                {
+                    MessageBox("PC用商品説明文は5120文字までです。");
+                    return false;
+                }
+                length = Encoding.GetEncoding(932).GetByteCount(txtSale_Description_PC.Text);
+                if (length > 5120)
+                {
+                    MessageBox("PC用販売説明文は5120文字までです。");
+                    return false;
+                }
+                #endregion
+               
+               
+           
+               
+                //if (String.IsNullOrEmpty(txtInactive.Text) && chkActive.Checked == true)
+                //{
+                //    MessageBox("Write a comment for inactive! ");
+                //    return false;
+                //}
+               
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Session["Exception"] = ex.ToString();
+                Response.Redirect("~/CustomErrorPage.aspx?");
+                return false;
+            }
+        }
+
+        protected void btnSave_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                user = new UserRoleBL();
+                ime = new Item_Master_Entity();
+                imeBL = new Item_Master_BL();
+                itemCategoryBL = new Item_Category_BL();
+                Item_BL item = new Item_BL();
+                DataTable templatedt = new DataTable();
+                templatedt = CreateTemplateTable();
+                String[] colName = { "Template" };
+                if (!Check_SpecialCharacter(colName, templatedt))
+                {
+                    if (ItemCode != null)
+                    {
+                        int ItemID = imeBL.SelectItemID(ItemCode);
+                        ime.ID = ItemID;
+                        ime.Updated_By = UserID;
+                        ime = GetItemData();
+                        string str = CheckLength(ime);
+                        if (!String.IsNullOrWhiteSpace(str)) { GlobalUI.MessageBox(str + "greater than length bytes!"); }
+                        else
+                        {
+                            if (ValidationUpdate())
+                            {
+                                string option = null;
+                                if (Request.QueryString["Item_Code"] != null)
+                                {
+                                    option = "Update";
+                                }
+                                if (imeBL.SaveEdit(ime, option) > 0)    //btnsave
+                                {
+                                    ItemID = imeBL.SelectItemID(ItemCode);
+                                    //Insert Category List
+                                    GetCategoryValueFromTextBox(ItemID, CategoryList);
+                                    //Delete previous shop from Item_Shop table and then insert new shop or not
+                                    InsertShopList(ItemID, ItemCode);
+                                    //Delete previous photo from Item_Image table and then insert new photo or not
+                                    InsertPhoto(ItemID);
+                                    //Insert Item table when Itemcode is not exits in ItemTable
+                                    InsertItem(ItemCode);
+                                    //Insert into Item_Code_URL
+                                    InsertItemCodeURL(ItemID);
+                                    //Change Shop Status To Gray
+                                    //if (chkActive.Checked == true)
+                                    //{
+                                    //    imeBL.ChangeExportStatusToPink(ItemCode, 1);
+                                    //}
+                                    //else
+                                    //{
+                                    //    imeBL.ChangeExportStatusToPink(ItemCode, 2);
+                                    //}
+                                    //Delete previous related item from Item_RelatedItem table and then insert new related item or not
+                                    InsertRelatedItem(ItemID);
+                                    //Delete previous option from Item_Option table and then insert new option or not
+                                    InsertOption(ItemID);
+                                    //Delete previous yahoo specific from Item_YahooSpecificValue table and then insert new yahoo specific or not
+                                    if (YahooSpecificValue != null)
+                                    {
+                                        InsertYahooSpecificValue(ItemID);
+                                    }
+                                    //For sks-587
+                                    if (ViewState["DailyDelivery"] != null)
+                                    {
+                                        imeBL.SetUnsetDailyDelivery(ItemCode, Convert.ToInt32(ViewState["DailyDelivery"]));
+                                    }
+                                    SaveTemplateDetail(ItemCode); // Insert or Update Template_Detail
+                                    MessageBox("Updating Successful ! ");
+                                    //if (chkActive.Checked == true)
+                                    //{
+                                    //    Page.ClientScript.RegisterStartupScript(this.GetType(), "myScript", "OnCheckedChanged(true);", true);
+                                    //}
+                                    //else
+                                    //{
+                                    //    Page.ClientScript.RegisterStartupScript(this.GetType(), "myScript", "OnCheckedChanged(false);", true);
+                                    //}
+                                    ime = new Item_Master_Entity();
+                                    ime = imeBL.SelectByID(ItemID);
+                                    if (!string.IsNullOrWhiteSpace(ime.Release_Date.ToString()))
+                                    {
+                                        txtRelease_Date.Text = String.Format("{0:yyyy/MM/dd}", ime.Release_Date);
+                                    }
+                                    else
+                                    {
+                                        txtRelease_Date.Text = "";
+                                    }
+                                    if (!string.IsNullOrWhiteSpace(ime.Post_Available_Date.ToString()))   //updated by nandar 05/01/2016
+                                    {
+                                        txtPost_Available_Date.Text = String.Format("{0:yyyy/MM/dd}", ime.Post_Available_Date);
+                                    }
+                                    else
+                                    {
+                                        txtPost_Available_Date.Text = "";
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Session["Exception"] = ex.ToString();
+                Response.Redirect("~/CustomErrorPage.aspx?", false);
+            }
+        }
+
+     
+     
+
+        protected void ddlOption_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                Option_BL opBL = new Option_BL();
+                string optionGroupName = ddlOption.SelectedItem.Text;
+                DataTable dtOption = opBL.SelectOptionByOption_GroupName(optionGroupName);
+                if (dtOption != null && dtOption.Rows.Count > 0)
+                {
+                    DataTable dt = new DataTable();
+                    dt.Columns.Add("Name1", typeof(string));
+                    dt.Columns.Add("Value1", typeof(string));
+                    dt.Columns.Add("Name2", typeof(string));
+                    dt.Columns.Add("Value2", typeof(string));
+                    dt.Columns.Add("Name3", typeof(string));
+                    dt.Columns.Add("Value3", typeof(string));
+                    if (dtOption.Rows.Count > 2)
+                    {
+                        dt.Rows.Add(dtOption.Rows[0]["Option_Name"].ToString(), dtOption.Rows[0]["Option_Value"].ToString(),
+                                              dtOption.Rows[1]["Option_Name"].ToString(), dtOption.Rows[1]["Option_Value"].ToString(),
+                                              dtOption.Rows[2]["Option_Name"].ToString(), dtOption.Rows[2]["Option_Value"].ToString());
+                    }
+                    else if (dtOption.Rows.Count > 1)
+                    {
+                        dt.Rows.Add(dtOption.Rows[0]["Option_Name"].ToString(), dtOption.Rows[0]["Option_Value"].ToString(), dtOption.Rows[1]["Option_Name"].ToString(), dtOption.Rows[1]["Option_Value"].ToString(), "", "");
+                    }
+                    else if (dtOption.Rows.Count > 0)
+                    {
+                        dt.Rows.Add(dtOption.Rows[0]["Option_Name"].ToString(), dtOption.Rows[0]["Option_Value"].ToString(), "", "", "", "");
+                    }
+
+                    SetOption(dt);
+                    Session["Option_" + ItemCode] = dt;
+                }
+            }
+            catch (Exception ex)
+            {
+                Session["Exception"] = ex.ToString();
+                Response.Redirect("~/CustomErrorPage.aspx?", false);
+            }
+        }
+
+        public void InsertRelatedItem(int itemID)
+        {
+            try
+            {
+                DataTable dtRelated = new DataTable();
+                dtRelated.Columns.Add(new DataColumn("Item_ID", typeof(int)));
+                dtRelated.Columns.Add(new DataColumn("Related_ItemCode", typeof(string)));
+                dtRelated.Columns.Add(new DataColumn("SN", typeof(int)));
+                if (!string.IsNullOrWhiteSpace(txtRelated1.Text))
+                {
+                    DataRow dr1 = dtRelated.NewRow();
+                    dr1["Item_ID"] = itemID;
+                    dr1["Related_ItemCode"] = txtRelated1.Text.TrimStart();
+                    dr1["SN"] = 1;
+                    dtRelated.Rows.Add(dr1);
+                }
+                if (!string.IsNullOrWhiteSpace(txtRelated2.Text))
+                {
+                    DataRow dr2 = dtRelated.NewRow();
+                    dr2["Item_ID"] = itemID;
+                    dr2["Related_ItemCode"] = txtRelated2.Text.TrimStart();
+                    dr2["SN"] = 2;
+                    dtRelated.Rows.Add(dr2);
+                }
+                if (!string.IsNullOrWhiteSpace(txtRelated3.Text))
+                {
+                    DataRow dr3 = dtRelated.NewRow();
+                    dr3["Item_ID"] = itemID;
+                    dr3["Related_ItemCode"] = txtRelated3.Text.TrimStart();
+                    dr3["SN"] = 3;
+                    dtRelated.Rows.Add(dr3);
+                }
+                if (!string.IsNullOrWhiteSpace(txtRelated4.Text))
+                {
+                    DataRow dr4 = dtRelated.NewRow();
+                    dr4["Item_ID"] = itemID;
+                    dr4["Related_ItemCode"] = txtRelated4.Text.TrimStart();
+                    dr4["SN"] = 4;
+                    dtRelated.Rows.Add(dr4);
+                }
+                if (!string.IsNullOrWhiteSpace(txtRelated5.Text))
+                {
+                    DataRow dr5 = dtRelated.NewRow();
+                    dr5["Item_ID"] = itemID;
+                    dr5["Related_ItemCode"] = txtRelated5.Text.TrimStart();
+                    dr5["SN"] = 5;
+                    dtRelated.Rows.Add(dr5);
+                }
+                if (!string.IsNullOrWhiteSpace(txtRelated6.Text))
+                {
+                    DataRow dr6 = dtRelated.NewRow();
+                    dr6["Item_ID"] = itemID;
+                    dr6["Related_ItemCode"] = txtRelated6.Text.TrimStart();
+                    dr6["SN"] = 6;
+                    dtRelated.Rows.Add(dr6);
+                }
+                if (!string.IsNullOrWhiteSpace(txtRelated7.Text))
+                {
+                    DataRow dr7 = dtRelated.NewRow();
+                    dr7["Item_ID"] = itemID;
+                    dr7["Related_ItemCode"] = txtRelated7.Text.TrimStart();
+                    dr7["SN"] = 7;
+                    dtRelated.Rows.Add(dr7);
+                }
+                if (!string.IsNullOrWhiteSpace(txtRelated8.Text))
+                {
+                    DataRow dr8 = dtRelated.NewRow();
+                    dr8["Item_ID"] = itemID;
+                    dr8["Related_ItemCode"] = txtRelated8.Text.TrimStart();
+                    dr8["SN"] = 8;
+                    dtRelated.Rows.Add(dr8);
+                }
+                if (!string.IsNullOrWhiteSpace(txtRelated9.Text))
+                {
+                    DataRow dr9 = dtRelated.NewRow();
+                    dr9["Item_ID"] = itemID;
+                    dr9["Related_ItemCode"] = txtRelated9.Text.TrimStart();
+                    dr9["SN"] = 9;
+                    dtRelated.Rows.Add(dr9);
+                }
+                if (!string.IsNullOrWhiteSpace(txtRelated10.Text))
+                {
+                    DataRow dr10 = dtRelated.NewRow();
+                    dr10["Item_ID"] = itemID;
+                    dr10["Related_ItemCode"] = txtRelated10.Text.TrimStart();
+                    dr10["SN"] = 10;
+                    dtRelated.Rows.Add(dr10);
+                }
+                if (!string.IsNullOrWhiteSpace(txtRelated11.Text))
+                {
+                    DataRow dr11 = dtRelated.NewRow();
+                    dr11["Item_ID"] = itemID;
+                    dr11["Related_ItemCode"] = txtRelated11.Text.TrimStart();
+                    dr11["SN"] = 11;
+                    dtRelated.Rows.Add(dr11);
+                }
+                if (!string.IsNullOrWhiteSpace(txtRelated12.Text))
+                {
+                    DataRow dr12 = dtRelated.NewRow();
+                    dr12["Item_ID"] = itemID;
+                    dr12["Related_ItemCode"] = txtRelated12.Text.TrimStart();
+                    dr12["SN"] = 12;
+                    dtRelated.Rows.Add(dr12);
+                }
+                if (!string.IsNullOrWhiteSpace(txtRelated13.Text))
+                {
+                    DataRow dr13 = dtRelated.NewRow();
+                    dr13["Item_ID"] = itemID;
+                    dr13["Related_ItemCode"] = txtRelated13.Text.TrimStart();
+                    dr13["SN"] = 13;
+                    dtRelated.Rows.Add(dr13);
+                }
+                if (!string.IsNullOrWhiteSpace(txtRelated14.Text))
+                {
+                    DataRow dr14 = dtRelated.NewRow();
+                    dr14["Item_ID"] = itemID;
+                    dr14["Related_ItemCode"] = txtRelated14.Text.TrimStart();
+                    dr14["SN"] = 14;
+                    dtRelated.Rows.Add(dr14);
+                }
+                if (!string.IsNullOrWhiteSpace(txtRelated15.Text))
+                {
+                    DataRow dr15 = dtRelated.NewRow();
+                    dr15["Item_ID"] = itemID;
+                    dr15["Related_ItemCode"] = txtRelated15.Text.TrimStart();
+                    dr15["SN"] = 15;
+                    dtRelated.Rows.Add(dr15);
+                }
+                if (!string.IsNullOrWhiteSpace(txtRelated16.Text))
+                {
+                    DataRow dr16 = dtRelated.NewRow();
+                    dr16["Item_ID"] = itemID;
+                    dr16["Related_ItemCode"] = txtRelated16.Text.TrimStart();
+                    dr16["SN"] = 16;
+                    dtRelated.Rows.Add(dr16);
+                }
+                if (!string.IsNullOrWhiteSpace(txtRelated17.Text))
+                {
+                    DataRow dr17 = dtRelated.NewRow();
+                    dr17["Item_ID"] = itemID;
+                    dr17["Related_ItemCode"] = txtRelated17.Text.TrimStart();
+                    dr17["SN"] = 17;
+                    dtRelated.Rows.Add(dr17);
+                }
+                if (!string.IsNullOrWhiteSpace(txtRelated18.Text))
+                {
+                    DataRow dr18 = dtRelated.NewRow();
+                    dr18["Item_ID"] = itemID;
+                    dr18["Related_ItemCode"] = txtRelated18.Text.TrimStart();
+                    dr18["SN"] = 18;
+                    dtRelated.Rows.Add(dr18);
+                }
+                if (!string.IsNullOrWhiteSpace(txtRelated19.Text))
+                {
+                    DataRow dr19 = dtRelated.NewRow();
+                    dr19["Item_ID"] = itemID;
+                    dr19["Related_ItemCode"] = txtRelated19.Text.TrimStart();
+                    dr19["SN"] = 19;
+                    dtRelated.Rows.Add(dr19);
+                }
+                if (!string.IsNullOrWhiteSpace(txtRelated20.Text))
+                {
+                    DataRow dr20 = dtRelated.NewRow();
+                    dr20["Item_ID"] = itemID;
+                    dr20["Related_ItemCode"] = txtRelated20.Text.TrimStart();
+                    dr20["SN"] = 20;
+                    dtRelated.Rows.Add(dr20);
+                }
+                Item_Related_Item_BL ItemRelatedBL = new Item_Related_Item_BL();
+                ItemRelatedBL.Insert(itemID, dtRelated);
+            }
+            catch (Exception ex)
+            {
+                Session["Exception"] = ex.ToString();
+                Response.Redirect("~/CustomErrorPage.aspx?", false);
+            }
+        }
+
+
+
+        public void InsertItemCodeURL(int ItemID)
+        {
+            Item_Shop_BL isbl = new Item_Shop_BL();
+            DataTable dt = new DataTable();
+            dt.Columns.Add("Item_ID", typeof(int));
+            dt.Columns.Add("Shop_ID", typeof(int));
+            dt.Columns.Add("Item_Code_URL", typeof(string));
+
+            //foreach (DataListItem li in dlShop.Items)
+            //{
+            //    //TextBox txtitemcode = li.FindControl("txtItem_CodeList") as TextBox;
+            //    Label shopid = li.FindControl("lblShopID") as Label;
+            //    CheckBox cb = li.FindControl("ckbShop") as CheckBox;
+            //    if (cb != null)
+            //    {
+            //        if (cb.Checked)
+            //        {
+            //            DataRow dr = dt.NewRow();
+            //            dr["Item_ID"] = ItemID;
+            //            dr["Item_Code_URL"] = txtItem_Code.Text;
+            //            dr["Shop_ID"] = Convert.ToInt32(shopid.Text);
+            //            dt.Rows.Add(dr);
+            //        }
+            //    }
+            //}
+            isbl.InsertItemCodeURL(dt, ItemID);
+        }
+
+        public void InsertItem(string ItemCode)
+        {
+            imeBL = new Item_Master_BL();
+            imeBL.InsertItemInventory(ItemCode);
+        }
+
+        public void InsertShopList(int itemID, string itemcode)
+        {
+            try
+            {
+                DataTable dt = new DataTable();
+                dt.Columns.Add("ItemID", typeof(int));
+                dt.Columns.Add("ShopID", typeof(int));
+                dt.Columns.Add("ItemCode", typeof(string));
+                foreach (DataListItem li in dlShop1.Items)
+                {
+                    Label lbl = li.FindControl("lblMall1ShopID") as Label;
+                    CheckBox cb = li.FindControl("ckbMall1Shop") as CheckBox;
+                    if (cb != null)
+                    {
+                        if (cb.Checked)
+                        {
+                            DataRow dr = dt.NewRow();
+                            dr["ItemID"] = itemID;
+                            dr["ShopID"] = Convert.ToInt32(lbl.Text);
+                            dr["ItemCode"] = itemcode;
+                            dt.Rows.Add(dr);
+                        }
+                    }
+                }
+               
+                Item_Shop_BL itemShopBL = new Item_Shop_BL();
+                int flg = flag;
+                int realflag;
+                if (ViewState["flag"] == null)
+                {
+                    realflag = 2;
+                }
+                else
+                {
+                    realflag = Convert.ToInt32(ViewState["flag"]);
+                }
+                if (realflag != 2)
+                {
+                    itemShopBL.Check_ItemShopForAmazon(itemID, realflag, UserID);
+                }
+                itemShopBL.Insert(dt, itemID);
+            }
+            catch (Exception ex)
+            {
+                Session["Exception"] = ex.ToString();
+                Response.Redirect("~/CustomErrorPage.aspx?", false);
+            }
+        }
+
+        public void GetCategoryValueFromTextBox(int ItemID, DataTable CategoryList)
+        {
+            itemCategoryBL = new Item_Category_BL();
+            CreatenewDataTable();
+            string cat = null;
+            DataTable dtnew = (DataTable)ViewState["DataTablenew"];
+            DataRow dr = null;
+            //foreach (GridViewRow gvrow in gvCategory.Rows)
+            //{
+            //    TextBox box1 = gvrow.FindControl("txtCategory") as TextBox;
+            //    TextBox box2 = gvrow.FindControl("txtSN") as TextBox;
+            //    dr = dtnew.NewRow();
+            //    dr["Category"] = box1.Text;
+            //    dr["SN"] = box2.Text;
+            //    if ((!String.IsNullOrWhiteSpace(box1.Text)) && (!String.IsNullOrWhiteSpace(box2.Text)))
+            //    {
+            //        dtnew.Rows.Add(dr);
+            //    }
+            //}
+            if (dtnew != null && dtnew.Rows.Count > 0)
+            {
+                cat = dtnew.Rows[0]["Category"].ToString();
+            }
+            if (!String.IsNullOrWhiteSpace(cat))
+            {
+                DataTable dt = itemCategoryBL.CheckCategory(ItemID, dtnew);
+                if (dt != null && dt.Rows.Count > 0)
+                {
+                    List<DataRow> rowsToDelete = new List<DataRow>();
+                    foreach (DataRow drnew in dtnew.Rows)
+                    {
+                        if (drnew["Category"].ToString() == dt.Rows[0]["CName"].ToString())
+                            rowsToDelete.Add(drnew);
+                    }
+                    foreach (var r in rowsToDelete)
+                    {
+                        dtnew.Rows.Remove(r);
+                    }
+                    dt.Merge(CategoryList);
+                }
+                if (dtnew != null && dtnew.Rows.Count > 0)
+                {
+                    for (int i = 0; i < dtnew.Rows.Count; i++)
+                    {
+                        string str = dtnew.Rows[i]["Category"].ToString();
+                        string catsn = dtnew.Rows[i]["SN"].ToString();
+                        int sn = Convert.ToInt32(catsn);
+                        string path = null;
+                        string[] strsplit = null;
+                        if (str.Contains('\\'))
+                        {
+                            strsplit = str.Split('\\');
+                        }
+                        if (str.Contains('￥'))
+                        {
+                            strsplit = str.Split('￥');
+                        }
+                        if (strsplit != null)
+                        {
+                            for (int j = 0; j < strsplit.Count() - 1; j++)
+                            {
+                                string check = strsplit[j];
+                                path += strsplit[j] + "\\";
+                                if (j == 0)
+                                {
+                                    int catid = itemCategoryBL.CheckDescription(check, sn, 0, 0, path);
+                                    hdfCatID.Value = catid.ToString();
+                                }
+                                else
+                                {
+                                    int catno = Convert.ToInt32(hdfCatID.Value);
+                                    int catid = itemCategoryBL.CheckDescription(check, sn, 1, catno, path);
+                                    hdfCatID.Value = catid.ToString();
+                                }
+                            }
+                            hdfCatID.Value = "";
+                        }
+                        DataTable dtcopy = itemCategoryBL.CheckCategory(ItemID, dtnew);
+                        dt.Merge(dtcopy);
+                    }
+                    itemCategoryBL.Insert(ItemID, dt);
+                    Session.Remove("CategoryList_" + ItemCode);
+                }
+            }
+            else
+            {
+                if (CategoryList != null)
+                {
+                    itemCategoryBL.Insert(ItemID, CategoryList);
+                    Session.Remove("CategoryList_" + ItemCode);
+                }
+            }
+        }
+
+        public void CreatenewDataTable()
+        {
+            DataTable dtnew = new DataTable();
+            dtnew.Columns.Add(new DataColumn("RowNumber", typeof(string)));
+            dtnew.Columns.Add(new DataColumn("Category", typeof(string)));
+            dtnew.Columns.Add(new DataColumn("SN", typeof(string)));
+            ViewState["DataTablenew"] = dtnew;
+        }
+
+        protected void btnComplete_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                imeBL = new Item_Master_BL();
+                user = new UserRoleBL();
+                ime = new Item_Master_Entity();
+                itemCategoryBL = new Item_Category_BL();
+                DataTable templatedt = new DataTable();
+                templatedt = CreateTemplateTable();
+                String[] colName = { "Template" };
+                if (!String.IsNullOrEmpty(txtSale_Price.Text))
+                {
+                    btnComplete.Enabled = true;
+                }
+                if (!Check_SpecialCharacter(colName, templatedt))
+                {
+                    Item_BL item = new Item_BL();
+                    if (ItemCode != null)
+                    {
+                        int ItemID = imeBL.SelectItemID(ItemCode);
+                        ime.ID = ItemID;
+                        DataTable dtshop = CheckConditon(ItemID, ItemCode);
+                        DataTable dtImage = ImageList as DataTable;
+                        string errMsg = CheckCategoryID(dtshop, dtImage);// check sku and Mall category
+                        if (!String.IsNullOrWhiteSpace(errMsg))
+                        {
+                            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('" + errMsg + "')", true);
+                        }
+                        else
+                        {
+                            ime.Updated_By = UserID;
+                            ime = GetItemData();
+                            string str = CheckLength(ime);
+                            if (!String.IsNullOrWhiteSpace(str)) { GlobalUI.MessageBox(str + "greater than length bytes!"); }
+                            else
+                            {
+                                if (ValidationComplete())
+                                {
+                                    string option = null;
+                                    if (Request.QueryString["Item_Code"] != null)
+                                    {
+                                        option = "Edit";
+                                    }
+                                    if (imeBL.SaveEdit(ime, option) > 0)
+                                    {
+                                        ItemID = imeBL.SelectItemID(ItemCode);
+                                        //1.Change Ctrl_ID=d from Item_Category table for Previous Category List
+                                        //2.Insert Ctrl_ID=n from Item_Category table for New Category List
+                                        //Insert Category List
+                                        GetCategoryValueFromTextBox(ItemID, CategoryList);
+                                        //Delete previous shop from Item_Shop table and then insert new shop or not
+                                        InsertShopList(ItemID, ItemCode);
+                                        //Delete previous photo from Item_Image table and then insert new photo or not
+                                        InsertPhoto(ItemID);
+                                        //Insert into Item_Code_URL
+                                        InsertItemCodeURL(ItemID);
+                                        //Change Shop Status To Gray
+                                        //if (chkActive.Checked == true)
+                                        //{
+                                        //    imeBL.ChangeExportStatusToPink(ItemCode, 1);
+                                        //}
+                                        //else
+                                        //{
+                                        //    imeBL.ChangeExportStatusToPink(ItemCode, 2);
+                                        //}
+                                        //Delete previous related item from Item_RelatedItem table and then insert new related item or not
+                                        InsertRelatedItem(ItemID);
+                                        //Delete previous option from Item_Option table and then insert new option or not
+                                        InsertOption(ItemID);
+                                        //Delete previous yahoo specific from Item_YahooSpecificValue table and then insert new yahoo specific or not
+                                        if (YahooSpecificValue != null)
+                                        {
+                                            InsertYahooSpecificValue(ItemID);
+                                        }
+                                        //for sks-587
+                                        if (ViewState["DailyDelivery"] != null)
+                                        {
+                                            imeBL.SetUnsetDailyDelivery(ItemCode, Convert.ToInt32(ViewState["DailyDelivery"]));
+                                        }
+                                        SaveTemplateDetail(ItemCode); // Insert or Update Template_Detail
+                                    }
+                                }
+                                MessageBox("Data Complete ! ");
+                                //if (chkActive.Checked == true)
+                                //{
+                                //    Page.ClientScript.RegisterStartupScript(this.GetType(), "myScript", "OnCheckedChanged(true);", true);
+                                //}
+                                //else
+                                //{
+                                //    Page.ClientScript.RegisterStartupScript(this.GetType(), "myScript", "OnCheckedChanged(false);", true);
+                                //}
+                                ime = new Item_Master_Entity();
+                                ime = imeBL.SelectByID(ItemID);
+                                if (!string.IsNullOrWhiteSpace(ime.Release_Date.ToString()))
+                                {
+                                    txtRelease_Date.Text = String.Format("{0:yyyy/MM/dd}", ime.Release_Date);
+                                }
+                                else
+                                {
+                                    txtRelease_Date.Text = "";
+                                }
+                                if (!string.IsNullOrWhiteSpace(ime.Post_Available_Date.ToString()))   //updated by nandar 05/01/2016
+                                {
+                                    txtPost_Available_Date.Text = String.Format("{0:yyyy/MM/dd}", ime.Post_Available_Date);
+                                }
+                                else
+                                {
+                                    txtPost_Available_Date.Text = "";
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Session["Exception"] = ex.ToString();
+                Response.Redirect("~/CustomErrorPage.aspx?");
+            }
+        }
+
+        public DataTable CheckConditon(int itemID, string itemcode)
+        {
+            try
+            {
+
+                DataTable dt = new DataTable();
+                dt.Columns.Add("ItemID", typeof(int));
+                dt.Columns.Add("ShopID", typeof(int));
+                dt.Columns.Add("ItemCode", typeof(string));
+
+                foreach (DataListItem li in dlShop1.Items)
+                {
+                    Label lbl = li.FindControl("lblMall1ShopID") as Label;
+                    CheckBox cb = li.FindControl("ckbMall1Shop") as CheckBox;
+                    if (cb != null)
+                    {
+                        if (cb.Checked)
+                        {
+                            DataRow dr = dt.NewRow();
+                            dr["ItemID"] = itemID;
+                            dr["ShopID"] = Convert.ToInt32(lbl.Text);
+                            dr["ItemCode"] = itemcode;
+                            dt.Rows.Add(dr);
+                        }
+                    }
+                }                       
+          
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public String CheckCategoryID(DataTable dtshop, DataTable dtImage)
+        {
+            String errorMsg = string.Empty;
+            DataRow[] rowRakuten = dtshop.Select("ShopID=1 OR ShopID=5 OR ShopID=8 OR ShopID=12 ");
+            if (rowRakuten.Count() > 0 && txtRakuten_CategoryID.Text == "")
+            {
+                errorMsg += "楽天ディレクトリIDを設定してください。, ";
+            }
+            DataRow[] rowYahoo = dtshop.Select("ShopID=2 OR ShopID=6 OR ShopID=9 OR ShopID=13  OR ShopID=17");
+            if (rowYahoo.Count() > 0 && txtYahoo_CategoryID.Text == "")
+            {
+                errorMsg += "YahooスペックIDを設定してください。, ";
+            }
+            DataRow[] rowWomma = dtshop.Select("ShopID = 4");
+            if (rowWomma.Count() > 0 && txtWowma_CategoryID.Text == "")
+            {
+                errorMsg += "WommaカテゴリIDを設定してください。, ";
+            }
+            DataRow[] rowTennis = dtshop.Select("ShopID = 6");
+            //if (rowTennis.Count() > 0 && txtTennis_CategoryID.Text == "")
+            //{
+            //    errorMsg += "ORS自社カテゴリIDを設定してください。, ";
+            //}
+            if (dtImage != null && dtImage.Rows.Count > 0)
+            {
+                DataRow[] rowImage = dtImage.Select("Image_Type='0'");
+                if (rowImage.Count() == 0)
+                {
+                    errorMsg += "Image is Empty  ";
+                    btnComplete.Visible = true;
+                }
+            }
+            else
+            {
+                errorMsg += "Image is Empty  ";
+                btnComplete.Visible = true;
+            }
+            return errorMsg;
+        }
+
+        public bool ValidationComplete()
+        {
+            try
+            {
+                #region html field
+                int length = Encoding.GetEncoding(932).GetByteCount(txtItem_Description_PC.Text);
+                if (length > 5120)
+                {
+                    MessageBox("PC用商品説明文は5120文字までです。");
+                    return false;
+                }
+                length = Encoding.GetEncoding(932).GetByteCount(txtSale_Description_PC.Text);
+                if (length > 5120)
+                {
+                    MessageBox("PC用販売説明文は5120文字までです。");
+                    return false;
+                }
+                #endregion
+             
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Session["Exception"] = ex.ToString();
+                Response.Redirect("~/CustomErrorPage.aspx?");
+                return false;
+            }
+        }
+
+        protected void btnDelete_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string confirmValue = Request.Form["confirm_value"];
+                if (confirmValue == "はい")
+                {
+                    imeBL = new Item_Master_BL();
+                    imeBL.DeleteItem(ItemCode);
+                    MessageBox("Delete Successful ! ");
+                }
+            }
+            catch (Exception ex)
+            {
+                Session["Exception"] = ex.ToString();
+                Response.Redirect("~/CustomErrorPage.aspx?");
+            }
+        }
+
+        public void MessageBox(string message)
+        {
+            try
+            {
+                if (message == "Saving Successful ! " || message == "Updating Successful ! " || message == "Data Complete ! ")
+                {
+                    string script = "<script type=\"text/javascript\">alert('" + message + "');</script>";
+                    Page page = HttpContext.Current.CurrentHandler as Page;
+                    if (page != null && !page.ClientScript.IsClientScriptBlockRegistered("alert"))
+                    {
+                        page.ClientScript.RegisterClientScriptBlock(this.GetType(), "alert", script);
+                    }
+                }
+                else if (message == "Delete Successful ! ")
+                {
+                    object referrer = ViewState["UrlReferrer"];
+                    string url = (string)referrer;
+                    string script = "window.onload = function(){ alert('";
+                    script += message;
+                    script += "');";
+                    script += "window.location = '";
+                    script += url;
+                    script += "'; }";
+                    ClientScript.RegisterStartupScript(this.GetType(), "alert", script, true);
+                }
+                else
+                {
+                    string cleanMessage = message.Replace("'", "\\'");
+                    string script = "<script type=\"text/javascript\">alert('" + cleanMessage + "');</script>";
+                    Page page = HttpContext.Current.CurrentHandler as Page;
+                    if (page != null && !page.ClientScript.IsClientScriptBlockRegistered("alert"))
+                    {
+                        page.ClientScript.RegisterClientScriptBlock(this.GetType(), "alert", script, false);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Session["Exception"] = ex.ToString();
+                Response.Redirect("~/CustomErrorPage.aspx?", false);
+            }
+        }
+
         protected void ChangeNUll_To_Space()
         {
-            
+            Image1.ImageUrl = imagePath + "no_image.jpg";
+            hlImage1.NavigateUrl = imagePath + "no_image.jpg";
+
+            Image2.ImageUrl = imagePath + "no_image.jpg";
+            hlImage2.NavigateUrl = imagePath + "no_image.jpg";
+
+            Image3.ImageUrl = imagePath + "no_image.jpg";
+            hlImage3.NavigateUrl = imagePath + "no_image.jpg";
+
+            Image4.ImageUrl = imagePath + "no_image.jpg";
+            hlImage4.NavigateUrl = imagePath + "no_image.jpg";
+
+            Image5.ImageUrl = imagePath + "no_image.jpg";
+            hlImage5.NavigateUrl = imagePath + "no_image.jpg";
+
+            Image6.ImageUrl = imagePath + "no_image.jpg";
+            hlImage6.NavigateUrl = imagePath + "no_image.jpg";
+
+            Image7.ImageUrl = imagePath + "no_image.jpg";
+            hlImage7.NavigateUrl = imagePath + "no_image.jpg";
+
+            Image8.ImageUrl = imagePath + "no_image.jpg";
+            hlImage8.NavigateUrl = imagePath + "no_image.jpg";
+
+            Image9.ImageUrl = imagePath + "no_image.jpg";
+            hlImage9.NavigateUrl = imagePath + "no_image.jpg";
+
+            Image10.ImageUrl = imagePath + "no_image.jpg";
+            hlImage10.NavigateUrl = imagePath + "no_image.jpg";
+
+            Image11.ImageUrl = imagePath + "no_image.jpg";
+            hlImage11.NavigateUrl = imagePath + "no_image.jpg";
+
+            Image12.ImageUrl = imagePath + "no_image.jpg";
+            hlImage12.NavigateUrl = imagePath + "no_image.jpg";
+
+            Image13.ImageUrl = imagePath + "no_image.jpg";
+            hlImage13.NavigateUrl = imagePath + "no_image.jpg";
+
+            Image14.ImageUrl = imagePath + "no_image.jpg";
+            hlImage14.NavigateUrl = imagePath + "no_image.jpg";
+
+            Image15.ImageUrl = imagePath + "no_image.jpg";
+            hlImage15.NavigateUrl = imagePath + "no_image.jpg";
+
+            Image17.ImageUrl = imagePath + "no_image.jpg";
+            hlImage17.NavigateUrl = imagePath + "no_image.jpg";
+
+            Image18.ImageUrl = imagePath + "no_image.jpg";
+            hlImage18.NavigateUrl = imagePath + "no_image.jpg";
+
+            Image16.ImageUrl = imagePath + "no_image.jpg";
+            hlImage16.NavigateUrl = imagePath + "no_image.jpg";
+
+            Image19.ImageUrl = imagePath + "no_image.jpg";
+            hlImage19.NavigateUrl = imagePath + "no_image.jpg";
+
+            Image20.ImageUrl = imagePath + "no_image.jpg";
+            hlImage20.NavigateUrl = imagePath + "no_image.jpg";
+
             if (txtRelated1.Text.ToLower().Equals("null"))
                 txtRelated1.Text = String.Empty;
             if (txtRelated2.Text.ToLower().Equals("null"))
@@ -857,24 +3652,26 @@ namespace Capital_SKS.WebForms.Item
         {
             try
             {
-                DataTable dtskucolor = item.SelectSKUColor(ItemCode);
+                DataTable dtskucolor = item.SelectSKUItemCode(ItemCode);
                 //gvSKUColor.DataSource = item.SelectSKUColor(ItemCode); //Select From Item Table
                 //gvSKUColor.DataBind();
                 DataTable dtsku = new DataTable();
                 DataTable dt = new DataTable();
                 if (dtskucolor.Rows.Count > 0)
                 {
-                    dtsku = item.SelectSKU(ItemCode);
-                    gvSKU.DataSource = item.SelectSKU(ItemCode); //Select From Item Table
+                    //dtsku = item.SelectSKU(ItemCode);
+                    gvSKU.DataSource = dtskucolor;//item.SelectSKU(ItemCode); //Select From Item Table
                     gvSKU.DataBind();
                     //dt = item.SelectSKUSize(ItemCode); //Select From Item Table
                     //gvSKUSize.DataSource = dt;
                     //gvSKUSize.DataBind();
-                    //rdb1.Checked = true;
+                    rdb1.Checked = true;
+                    rdb2.Checked = false;
                 }
                 else
                 {
-                    //rdb2.Checked = true;
+                    rdb1.Checked = false;
+                    rdb2.Checked = true;
                 }
             }
             catch (Exception ex)
@@ -1829,6 +4626,10 @@ namespace Capital_SKS.WebForms.Item
         {
             try
             {
+                Shop_BL shopBL = new Shop_BL();
+                DataTable dt1 = shopBL.SelectShop_Data();
+                dlShop1.DataSource = dt1;
+                dlShop1.DataBind();
                 Item_Shop_BL itemShopBL = new Item_Shop_BL();
                 DataTable dt = itemShopBL.SelectByItemID(itemID);
                 if (dt != null && dt.Rows.Count > 0)
@@ -1837,15 +4638,15 @@ namespace Capital_SKS.WebForms.Item
                     {
                         foreach (DataListItem li in dlShop1.Items)
                         {
-                            Label lbl = li.FindControl("lblMall1ShopID") as Label;
-                            CheckBox cb = li.FindControl("ckbMall1Shop") as CheckBox;
+                            Label lbl = li.FindControl("lblShopID") as Label;
+                            CheckBox cb = li.FindControl("ckbShopName") as CheckBox;
                             if (lbl.Text == dt.Rows[i]["Shop_ID"].ToString())
                             {
                                 cb.Checked = true;
                                 break;
                             }
                         }
-                        
+
                     }
                 }
             }
@@ -1854,6 +4655,41 @@ namespace Capital_SKS.WebForms.Item
                 Session["Exception"] = ex.ToString();
                 Response.Redirect("~/CustomErrorPage.aspx?", false);
             }
+        }
+
+        public void SetItemCodeURL()
+        {
+
+            Item_Shop_BL isbl = new Item_Shop_BL();
+            DataTable dt = isbl.SelectItemCodeURL(ItemCode);
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    foreach (DataListItem li in dlShop.Items)
+                    {
+                        TextBox txtitemcode = li.FindControl("txtItem_CodeList") as TextBox;
+                        Label shopid = li.FindControl("lblShopID") as Label;
+                        CheckBox cb = li.FindControl("ckbShop") as CheckBox;
+                        if (shopid.Text == dt.Rows[i]["Shop_ID"].ToString())
+                        {
+                            cb.Checked = true;
+                            txtitemcode.Text = dt.Rows[i]["Item_Code_URL"].ToString();
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+
+        public void BindOption()
+        {
+            Option_BL opBL = new Option_BL();
+            DataTable dt = opBL.BindOption();
+            ddlOption.DataSource = dt;
+            ddlOption.DataTextField = "Option_GroupName";
+            ddlOption.DataValueField = "Option_GroupName";
+            ddlOption.DataBind();
         }
 
         public void BindSaleUnit()
@@ -1874,6 +4710,22 @@ namespace Capital_SKS.WebForms.Item
                 hdfCtrl_ID.Value = ime.Ctrl_ID;
                 txtItem_Code.Text = ime.Item_Code;
                 txtItem_Name.Text = ime.Item_Name;
+                txtJanCD.Text = ime.JanCode;
+                txtmemo.Text = ime.Memo;
+                if (!string.IsNullOrWhiteSpace(ime.NormalLargeKBN.ToString()))
+                {
+                    int normallargeKBN = 0;
+                    if (Convert.ToInt32(ime.NormalLargeKBN) == 0)
+                    {
+                        normallargeKBN = 1;
+                    }
+                    else if (Convert.ToInt32(ime.NormalLargeKBN) == 1)
+                    {
+                        normallargeKBN = 2;
+                    }
+                    ddNormalLargeKBN.SelectedIndex = normallargeKBN;
+                }
+                txtsiiresaki.Text = ime.Siiresaki;
                 txtProduct_Code.Text = ime.Product_Code;
                 if (!string.IsNullOrWhiteSpace(ime.Release_Date.ToString()))
                 {
@@ -1920,10 +4772,33 @@ namespace Capital_SKS.WebForms.Item
                     txtJishaPrice.Text = string.Format("{0:#,#}", ime.JishaPrice);
                     //txtTennisPrice.Text = string.Format("{0:#,#}", ime.TennisPrice); hhw
                 }
+
+
                 else
                 {
                     //priceDiv.Visible = false;
                 }
+
+                if (ime.Monoprice != 0 )
+                {
+                    txtmonoprice.Text = string.Format("{0:#,#}", ime.Monoprice);
+                }
+
+                if (ime.Diteprice != 0)
+                {
+                    txtditeprice.Text = string.Format("{0:#,#}", ime.Diteprice);
+                }
+
+                if (ime.Japanmprice != 0)
+                {
+                    txtjapanmprice.Text = string.Format("{0:#,#}", ime.Japanmprice);
+                }
+
+                if (ime.Kashiwagikoukiprice != 0)
+                {
+                    txtkashiwagi.Text = string.Format("{0:#,#}", ime.Kashiwagikoukiprice);
+                }
+
 
                 if (!String.IsNullOrWhiteSpace(txtSale_Price.Text))
                     btnComplete.Enabled = true;
@@ -2030,6 +4905,92 @@ namespace Capital_SKS.WebForms.Item
                     txtsellby.Text = string.Empty;
                 else
                     txtsellby.Text = ime.SellBy.ToString();
+                if (!String.IsNullOrWhiteSpace(ime.PublicationType.ToString()))
+                {
+                    ddlPublicationType.SelectedIndex = Convert.ToInt32(ime.PublicationType);
+                }
+                else
+                {
+                    ddlPublicationType.SelectedIndex = 0;
+                }
+
+                txtminimumorderquantity.Text = ime.MinimumOrderSuu.ToString() ;
+                txtminimumorderunit.Text = ime.MinimumOrderUnit.ToString();
+
+                if (!String.IsNullOrWhiteSpace(ime.DirectDelivery.ToString()))
+                {
+                    ddlDirectDelivery.SelectedIndex = Convert.ToInt32(ime.DirectDelivery);
+                }
+                else
+                {
+                    ddlDirectDelivery.SelectedIndex = 0;
+                }
+
+                if (!string.IsNullOrWhiteSpace(ime.ScheduleReleaseDate.ToString()))
+                {
+                    txtreleasedatemonotaro.Text = String.Format("{0:yyyy/MM/dd}", ime.ScheduleReleaseDate);
+                }
+                else
+                {
+                    txtreleasedatemonotaro.Text = "";
+                }
+
+                txtmonocategory.Text = ime.Categorymonotaro.ToString();
+                txtcolour.Text = ime.Colormonotaro.ToString();
+
+                if (!String.IsNullOrWhiteSpace(ime.Procurement_Goods.ToString()))
+                {
+                    ddlSpecifiedprocurementitem.SelectedIndex = Convert.ToInt32(ime.Procurement_Goods);
+                }
+                else
+                {
+                    ddlSpecifiedprocurementitem.SelectedIndex = 0;
+                }
+
+                if (!String.IsNullOrWhiteSpace(ime.EcoMarkCertifiedGoods.ToString()))
+                {
+                    ddlecomartcertifiedproduct.SelectedIndex = Convert.ToInt32(ime.EcoMarkCertifiedGoods);
+                }
+                else
+                {
+                    ddlecomartcertifiedproduct.SelectedIndex = 0;
+                }
+
+                if (!String.IsNullOrWhiteSpace(ime.GreenPurchasingLaw.ToString()))
+                {
+                    ddlgreenpurchasemethod.SelectedIndex = Convert.ToInt32(ime.GreenPurchasingLaw);
+                }
+                else
+                {
+                    ddlgreenpurchasemethod.SelectedIndex = 0;
+                }
+
+                if (!String.IsNullOrWhiteSpace(ime.EcoMarkCertifiedNo.ToString()))
+                {
+                    txtecomartcertifiednumber.Text = ime.EcoMarkCertifiedNo.ToString() ;
+                }
+                else
+                {
+                    txtecomartcertifiednumber.Text = "";
+                }
+
+                if (!String.IsNullOrWhiteSpace(ime.RoHS_Directive.ToString()))
+                {
+                    ddlRoHSdirective.SelectedIndex = Convert.ToInt32(ime.RoHS_Directive);
+                }
+                else
+                {
+                    ddlRoHSdirective.SelectedIndex = 0;
+                }
+
+                if (!String.IsNullOrWhiteSpace(ime.Medical_Supplies.ToString()))
+                {
+                    ddlPharmaceuticalsandmedicaldevices.SelectedIndex = Convert.ToInt32(ime.Medical_Supplies);
+                }
+                else
+                {
+                    ddlPharmaceuticalsandmedicaldevices.SelectedIndex = 0;
+                }
 
 
                 txtsellingrank.Text = ime.Selling_Rank;
@@ -2083,15 +5044,121 @@ namespace Capital_SKS.WebForms.Item
                 ddlfirelaw.SelectedValue = Convert.ToString(ime.Fire_Law);
                 if (!String.IsNullOrWhiteSpace(ime.CostRate))
                 {
-                   // lblcostrate.Text = ime.CostRate + "%";
+                    txtcostrate.Text = ime.CostRate ;
                 }
                 if (!String.IsNullOrWhiteSpace(ime.ProfitRate))
                 {
-                   // lblprofitrate.Text = ime.ProfitRate + "%";
+                    txtprofitrate.Text = ime.ProfitRate ;
                 }
                 if (!String.IsNullOrWhiteSpace(ime.DiscountRate))
                 {
-                    //lbldiscountrate.Text = ime.DiscountRate + "%";
+                    txtdiscountrate.Text = ime.DiscountRate ;
+                }
+
+                if (!String.IsNullOrWhiteSpace(ime.Jisha_costrate))
+                {
+                    txtjishaCostrate.Text = ime.Jisha_costrate;
+                }
+                if (!String.IsNullOrWhiteSpace(ime.Jisha_profitrate))
+                {
+                    txtjishaProfitrate.Text = ime.Jisha_profitrate;
+                }
+                if (!String.IsNullOrWhiteSpace(ime.Jisha_discountRate))
+                {
+                    txtjishaDiscountrate.Text = ime.Jisha_discountRate;
+                }
+
+                if (!String.IsNullOrWhiteSpace(ime.Rakuten_costrate))
+                {
+                    txtrakutenCostrate.Text = ime.Rakuten_costrate;
+                }
+                if (!String.IsNullOrWhiteSpace(ime.Rakuten_profitrate))
+                {
+                    txtrakutenProfitrate.Text = ime.Rakuten_profitrate;
+                }
+                if (!String.IsNullOrWhiteSpace(ime.Rakuten_discountRate))
+                {
+                    txtrakutenDiscountrate.Text = ime.Rakuten_discountRate;
+                }
+
+                if (!String.IsNullOrWhiteSpace(ime.Yahoo_costrate))
+                {
+                    txtyahooCostrate.Text = ime.Yahoo_costrate;
+                }
+                if (!String.IsNullOrWhiteSpace(ime.Yahoo_profitrate))
+                {
+                    txtyahooProfitrate.Text = ime.Yahoo_profitrate;
+                }
+                if (!String.IsNullOrWhiteSpace(ime.Yahoo_discountRate))
+                {
+                    txtyahooDiscountrate.Text = ime.Yahoo_discountRate;
+                }
+
+                if (!String.IsNullOrWhiteSpace(ime.Wowma_costrate))
+                {
+                    txtwowmaCostrate.Text = ime.Wowma_costrate;
+                }
+                if (!String.IsNullOrWhiteSpace(ime.Wowma_profitrate))
+                {
+                    txtwowmaProfitrate.Text = ime.Wowma_profitrate;
+                }
+                if (!String.IsNullOrWhiteSpace(ime.Wowma_discountRate))
+                {
+                    txtwowmaDiscountrate.Text = ime.Wowma_discountRate;
+                }
+
+                //monotaro
+
+                if (!String.IsNullOrWhiteSpace(ime.Monocostrate))
+                {
+                    txtmonoprice_costrate.Text = ime.Monocostrate;
+                }
+                if (!String.IsNullOrWhiteSpace(ime.MonoprofitRate))
+                {
+                    txtmonoprice_profitrate.Text = ime.MonoprofitRate;
+                }
+                if (!String.IsNullOrWhiteSpace(ime.Monodiscountrate))
+                {
+                    txtmonoprice_discountrate.Text = ime.Monodiscountrate;
+                }
+
+                if (!String.IsNullOrWhiteSpace(ime.Ditecostrate))
+                {
+                    txtditeprice_costrate.Text = ime.Ditecostrate;
+                }
+                if (!String.IsNullOrWhiteSpace(ime.DiteprofitRate))
+                {
+                    txtditeprice_profitrate.Text = ime.DiteprofitRate;
+                }
+                if (!String.IsNullOrWhiteSpace(ime.Ditediscountrate))
+                {
+                    txtditeprice_discountrate.Text = ime.Ditediscountrate;
+                }
+
+                if (!String.IsNullOrWhiteSpace(ime.Japanmcostrate))
+                {
+                    txtjapanmprice_costrate.Text = ime.Japanmcostrate;
+                }
+                if (!String.IsNullOrWhiteSpace(ime.Japanmprofitrate))
+                {
+                    txtjapanmprice_profitrate.Text = ime.Japanmprofitrate;
+                }
+                if (!String.IsNullOrWhiteSpace(ime.Japanmdiscountrate))
+                {
+                    txtjapanmprice_discountrate.Text = ime.Japanmdiscountrate;
+                }
+
+                if (!String.IsNullOrWhiteSpace(ime.Kawashigicostrate))
+                {
+                    txtkashiwagi_costrate.Text = ime.Kawashigicostrate;
+                }
+                if (!String.IsNullOrWhiteSpace(ime.Kashiwagiprofitrate))
+                {
+                    txtkashiwagi_profitrate.Text = ime.Kashiwagiprofitrate;
+                }
+                if (!String.IsNullOrWhiteSpace(ime.Kashiwagionodiscountrate))
+                {
+                    txtkashiwagi_discountrate.Text = ime.Kashiwagionodiscountrate;
                 }
                 if (ime.Day_Ship == 0)
                     txtday_ship.Text = string.Empty;
@@ -2145,6 +5212,70 @@ namespace Capital_SKS.WebForms.Item
             ddlcontentunit1.DataBind();
             ddlcontentunit1.Items.Insert(0, "");
         }
+
+        public void BindNormalLargeKBN()
+        {
+            //imeBL = new Item_Master_BL();
+            //DataTable dt = imeBL.BindContentunit1();
+            //ddlcontentunit1.DataSource = dt;
+            //ddlcontentunit1.DataTextField = "Contents_unit_1";
+            //ddlcontentunit1.DataValueField = "Contents_unit_1";
+            //ddlcontentunit1.DataBind();
+            ddNormalLargeKBN.Items.Insert(0, "");
+            ddNormalLargeKBN.Items.Insert(1, "通常品");
+            ddNormalLargeKBN.Items.Insert(2, "大型品");
+        }
+
+        public void BindddlPublicationType()
+        {         
+            ddlPublicationType.Items.Insert(0, "公開");
+            ddlPublicationType.Items.Insert(1, "非公開");
+        }
+
+        public void BindDDlDirectDelivery()
+        {
+            ddlDirectDelivery.Items.Insert(0, "可");
+            ddlDirectDelivery.Items.Insert(1, "不可");
+        }
+
+        public void Bindddlgreenpurchasemethod()
+        {
+            ddlgreenpurchasemethod.Items.Insert(0, "適合");
+            ddlgreenpurchasemethod.Items.Insert(1, "非適合");
+        }
+
+        public void BindSpecifiedprocurementitem()
+        {
+            ddlSpecifiedprocurementitem.Items.Insert(0, "コピー用紙");
+            ddlSpecifiedprocurementitem.Items.Insert(1, "フォーム用紙");
+            ddlSpecifiedprocurementitem.Items.Insert(2, "インクジェットカラープリンター用塗工紙");
+            ddlSpecifiedprocurementitem.Items.Insert(3, "塗工されていない印刷用紙");
+            ddlSpecifiedprocurementitem.Items.Insert(4, "塗工されている印刷用紙");
+            ddlSpecifiedprocurementitem.Items.Insert(5, "トイレットペーパー");
+            ddlSpecifiedprocurementitem.Items.Insert(6, "トイレットペーパー");
+            ddlSpecifiedprocurementitem.Items.Insert(7, "ティッシュペーパー");         
+        }
+
+        public void Bindddlecomartcertifiedproduct()
+        {
+            ddlecomartcertifiedproduct.Items.Insert(0, "認定");
+            ddlecomartcertifiedproduct.Items.Insert(1, "非認定");
+        }
+        public void BindddlRoHSdirective()
+        {
+            ddlRoHSdirective.Items.Insert(0, "10物質対応");
+            ddlRoHSdirective.Items.Insert(1, "6物質対応");
+            ddlRoHSdirective.Items.Insert(2, "対象外");
+        }
+
+        public void BindddlPharmaceuticalsandmedicaldevices()
+        {
+            ddlPharmaceuticalsandmedicaldevices.Items.Insert(0, " ");
+            ddlPharmaceuticalsandmedicaldevices.Items.Insert(1, "医薬品");
+            ddlPharmaceuticalsandmedicaldevices.Items.Insert(2, "医療機器");
+        }
+
+
 
         public void BindMonotaroddl()
         {

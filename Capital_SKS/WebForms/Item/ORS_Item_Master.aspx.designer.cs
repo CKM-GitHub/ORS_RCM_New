@@ -58,6 +58,15 @@ namespace Capital_SKS.WebForms.Item {
         protected global::System.Web.UI.WebControls.HiddenField hdfCatID;
         
         /// <summary>
+        /// hdfTab control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdfTab;
+        
+        /// <summary>
         /// txtItem_Code control.
         /// </summary>
         /// <remarks>
@@ -1282,15 +1291,6 @@ namespace Capital_SKS.WebForms.Item {
         protected global::System.Web.UI.WebControls.TextBox txtkashiwagi_costrate;
         
         /// <summary>
-        /// UpdatePaneimg1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePaneimg1;
-        
-        /// <summary>
         /// hlImage1 control.
         /// </summary>
         /// <remarks>
@@ -1327,22 +1327,13 @@ namespace Capital_SKS.WebForms.Item {
         protected global::System.Web.UI.WebControls.FileUpload FileUpload1;
         
         /// <summary>
-        /// imgbtn1 control.
+        /// hideButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button imgbtn1;
-        
-        /// <summary>
-        /// imgbtn1_1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button imgbtn1_1;
+        protected global::System.Web.UI.WebControls.Button hideButton;
         
         /// <summary>
         /// UpdatePanel1 control.
@@ -1388,15 +1379,6 @@ namespace Capital_SKS.WebForms.Item {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.FileUpload FileUpload2;
-        
-        /// <summary>
-        /// imgbtn2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button imgbtn2;
         
         /// <summary>
         /// imgbtn2_1 control.
@@ -1453,15 +1435,6 @@ namespace Capital_SKS.WebForms.Item {
         protected global::System.Web.UI.WebControls.FileUpload FileUpload3;
         
         /// <summary>
-        /// imgbtn3 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button imgbtn3;
-        
-        /// <summary>
         /// imgbtn3_1 control.
         /// </summary>
         /// <remarks>
@@ -1514,15 +1487,6 @@ namespace Capital_SKS.WebForms.Item {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.FileUpload FileUpload4;
-        
-        /// <summary>
-        /// imgbtn4 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button imgbtn4;
         
         /// <summary>
         /// imgbtn4_1 control.
@@ -1579,15 +1543,6 @@ namespace Capital_SKS.WebForms.Item {
         protected global::System.Web.UI.WebControls.FileUpload FileUpload5;
         
         /// <summary>
-        /// imgbtn5 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button imgbtn5;
-        
-        /// <summary>
         /// imgbtn5_1 control.
         /// </summary>
         /// <remarks>
@@ -1640,15 +1595,6 @@ namespace Capital_SKS.WebForms.Item {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.FileUpload FileUpload6;
-        
-        /// <summary>
-        /// imgbtn6 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button imgbtn6;
         
         /// <summary>
         /// imgbtn6_1 control.
@@ -1705,15 +1651,6 @@ namespace Capital_SKS.WebForms.Item {
         protected global::System.Web.UI.WebControls.FileUpload FileUpload7;
         
         /// <summary>
-        /// imgbtn7 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button imgbtn7;
-        
-        /// <summary>
         /// imgbtn7_1 control.
         /// </summary>
         /// <remarks>
@@ -1766,15 +1703,6 @@ namespace Capital_SKS.WebForms.Item {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.FileUpload FileUpload8;
-        
-        /// <summary>
-        /// imgbtn8 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button imgbtn8;
         
         /// <summary>
         /// imgbtn8_1 control.
@@ -1831,15 +1759,6 @@ namespace Capital_SKS.WebForms.Item {
         protected global::System.Web.UI.WebControls.FileUpload FileUpload9;
         
         /// <summary>
-        /// imgbtn9 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button imgbtn9;
-        
-        /// <summary>
         /// imgbtn9_1 control.
         /// </summary>
         /// <remarks>
@@ -1892,15 +1811,6 @@ namespace Capital_SKS.WebForms.Item {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.FileUpload FileUpload10;
-        
-        /// <summary>
-        /// imgbtn10 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button imgbtn10;
         
         /// <summary>
         /// imgbtn10_1 control.
@@ -1957,15 +1867,6 @@ namespace Capital_SKS.WebForms.Item {
         protected global::System.Web.UI.WebControls.FileUpload FileUpload11;
         
         /// <summary>
-        /// imgbtn11 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button imgbtn11;
-        
-        /// <summary>
         /// imgbtn11_1 control.
         /// </summary>
         /// <remarks>
@@ -2018,15 +1919,6 @@ namespace Capital_SKS.WebForms.Item {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.FileUpload FileUpload12;
-        
-        /// <summary>
-        /// imgbtn12 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button imgbtn12;
         
         /// <summary>
         /// imgbtn12_1 control.
@@ -2083,15 +1975,6 @@ namespace Capital_SKS.WebForms.Item {
         protected global::System.Web.UI.WebControls.FileUpload FileUpload13;
         
         /// <summary>
-        /// imgbtn13 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button imgbtn13;
-        
-        /// <summary>
         /// imgbtn13_1 control.
         /// </summary>
         /// <remarks>
@@ -2144,15 +2027,6 @@ namespace Capital_SKS.WebForms.Item {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.FileUpload FileUpload14;
-        
-        /// <summary>
-        /// imgbtn14 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button imgbtn14;
         
         /// <summary>
         /// imgbtn14_1 control.
@@ -2209,15 +2083,6 @@ namespace Capital_SKS.WebForms.Item {
         protected global::System.Web.UI.WebControls.FileUpload FileUpload15;
         
         /// <summary>
-        /// imgbtn15 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button imgbtn15;
-        
-        /// <summary>
         /// imgbtn15_1 control.
         /// </summary>
         /// <remarks>
@@ -2270,15 +2135,6 @@ namespace Capital_SKS.WebForms.Item {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.FileUpload FileUpload16;
-        
-        /// <summary>
-        /// imgbtn16 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button imgbtn16;
         
         /// <summary>
         /// imgbtn16_1 control.
@@ -2335,15 +2191,6 @@ namespace Capital_SKS.WebForms.Item {
         protected global::System.Web.UI.WebControls.FileUpload FileUpload17;
         
         /// <summary>
-        /// imgbtn17 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button imgbtn17;
-        
-        /// <summary>
         /// imgbtn17_1 control.
         /// </summary>
         /// <remarks>
@@ -2396,15 +2243,6 @@ namespace Capital_SKS.WebForms.Item {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.FileUpload FileUpload18;
-        
-        /// <summary>
-        /// imgbtn18 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button imgbtn18;
         
         /// <summary>
         /// imgbtn18_1 control.
@@ -2461,15 +2299,6 @@ namespace Capital_SKS.WebForms.Item {
         protected global::System.Web.UI.WebControls.FileUpload FileUpload19;
         
         /// <summary>
-        /// imgbtn19 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button imgbtn19;
-        
-        /// <summary>
         /// imgbtn19_1 control.
         /// </summary>
         /// <remarks>
@@ -2522,15 +2351,6 @@ namespace Capital_SKS.WebForms.Item {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.FileUpload FileUpload20;
-        
-        /// <summary>
-        /// imgbtn20 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button imgbtn20;
         
         /// <summary>
         /// imgbtn20_1 control.

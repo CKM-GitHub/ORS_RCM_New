@@ -195,6 +195,7 @@
     <Content Include="WebForms\Item\Item_Master_Copy_Data.aspx" />
     <Content Include="WebForms\Item\Item_Master_New.aspx" />
     <Content Include="WebForms\Item\Item_Status_Change.aspx" />
+    <Content Include="WebForms\Item\js\lightboxfororsitemmaster.js" />
     <Content Include="WebForms\Item\Monotaro_Item_Master.aspx" />
     <Content Include="WebForms\Item\Monotaro_Item_View.aspx" />
     <Content Include="WebForms\Item\New_ItemData_Create.aspx" />

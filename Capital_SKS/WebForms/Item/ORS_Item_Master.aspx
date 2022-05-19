@@ -1,27 +1,25 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ORS_Item_Master.aspx.cs" Inherits="Capital_SKS.WebForms.Item.ORS_Item_Master" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha3/dist/css/bootstrap.min.css" />
       <link href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" rel="stylesheet">
    <%--   <link href="assets/css/all.min.css" rel="stylesheet">
       <link href="assets/css/style.css?20220412" rel="stylesheet">--%>
-   <%--   <link href="css/lightbox.css" rel="stylesheet" />--%>
+      <link href="css/lightbox.css" rel="stylesheet" />
       <link rel="stylesheet" href="../../Styles/ors_item_master_style.css"  />
     <link href ="../../Styles/Calendarstyle.css" rel="Stylesheet" type="text/css" />
 
-
-<link href="css/lightbox.css" rel="stylesheet" />
-
-        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+      <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
         <script src="../../Scripts/calendar1.js" type="text/javascript"></script>
         <script src="../../Scripts/jquery.droppy.js" type="text/javascript"></script> 
         <script src="https://unpkg.com/vue@next"></script>
         <script src="https://kit.fontawesome.com/7c0c75e583.js" ></script>  
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+       <%-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>--%>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"></script>
-        <script src="js/lightbox.min.js" type="text/javascript"></script>
+        <script src="js/lightboxfororsitemmaster.js" type="text/javascript"></script>
 
         <script type="text/javascript">
     function pageLoad(sender, args) {
@@ -56,7 +54,7 @@
         <asp:HiddenField ID="hdfReleaseDate" runat="server"/>
         <asp:HiddenField  ID="hdfCtrl_ID" runat="server"/>
         <asp:HiddenField  ID="hdfCatID" runat="server"/>
-
+        <asp:HiddenField  ID="hdfTab" runat="server"/>
     <div style="height:55px;"></div>
     <div class="container">
         <div id="headdiv" class="row g-0">
@@ -123,7 +121,7 @@
                             <asp:Label  ID="lblmakername" runat="server" Text="">
                                  <span class="label label-md lbl greenlable">メーカー名</span>
                             </asp:Label>
-                            <asp:TextBox CssClass="txtbox" ID="txtmakername" runat="server"></asp:TextBox>
+                            <asp:TextBox CssClass="txtbox" ID="txtmakername" MaxLength="200" runat="server"></asp:TextBox>
                               </div>
                             </div>
                              <div class="rowfirst">
@@ -142,7 +140,7 @@
                             <asp:Label  ID="Label1" runat="server" Text="">
                                  <span class="label label-md lbl orangelable">メモ</span>
                             </asp:Label>
-                                 <asp:TextBox ID="txtmemo" CssClass="txtarea textamemo" runat="server" TextMode="MultiLine" MaxLength="1000"></asp:TextBox>
+                                 <asp:TextBox ID="txtmemo" CssClass="txtarea textamemo" runat="server" MaxLength="1000" TextMode="MultiLine"></asp:TextBox>
                             <%--<textarea class="txtarea textamemo" ID="txtmemo" cols="20" rows="2"></textarea>--%>
                                 </div>
                             </div>
@@ -164,10 +162,10 @@
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl greenlable">内容量</span>
                                         </asp:Label>
-                                        <asp:TextBox CssClass="txtbox" ID="txtcontentquantityunitno1"  runat="server" style="width: 100%;"></asp:TextBox>
+                                        <asp:TextBox CssClass="txtbox" ID="txtcontentquantityunitno1" MaxLength="50"  runat="server" style="width: 100%;"></asp:TextBox>
                                     </div>
                                  <div class="floaddiv" style="width:10%;">
-                                        <asp:Label CssClass=""  runat="server" >
+                                        <asp:Label CssClass=""  runat="server">
                                         <span class="label label-md lbl greenlable">内容量単位</span>
                                         </asp:Label>
                                          <asp:DropDownList ID="ddlcontentunit1" style="width:100%;" runat="server"></asp:DropDownList>
@@ -176,7 +174,7 @@
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl greenlable">まとめ販売数</span>
                                         </asp:Label>
-                                        <asp:TextBox CssClass="txtbox" ID="txtcontentquantityunitno2"  runat="server" style="width: 100%;"></asp:TextBox>
+                                        <asp:TextBox CssClass="txtbox" ID="txtcontentquantityunitno2" MaxLength="50"  runat="server" style="width: 100%;"></asp:TextBox>
                                     </div>
                                  <div class="floaddiv" style="width:10%;">
                                         <asp:Label CssClass=""  runat="server" >
@@ -194,7 +192,7 @@
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl greenlable">仕入先</span>
                                         </asp:Label>
-                                        <asp:TextBox CssClass="txtbox" ID="txtsiiresaki"  runat="server" style="width: 100%;"></asp:TextBox> 
+                                        <asp:TextBox CssClass="txtbox" ID="txtsiiresaki" MaxLength="100"  runat="server" style="width: 100%;"></asp:TextBox> 
                                 </div>      
                           </div>
                      </div>
@@ -533,13 +531,13 @@
                                    <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl orangelable">製品コード</span>
                                         </asp:Label>
-                                        <asp:TextBox CssClass="txtbox" ID="txtProduct_Code" onkeypress="return isNumberKeys(event)"  runat="server" style="width: 100%;"></asp:TextBox>
+                                        <asp:TextBox CssClass="txtbox" ID="txtProduct_Code" MaxLength="100" onkeypress="return isNumberKeys(event)"  runat="server" style="width: 100%;"></asp:TextBox>
                              </div>
                               <div class="floaddiv" style="width:50%;" >
                                    <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl orangelable">ブランドコード</span>
                                         </asp:Label>
-                                        <asp:TextBox CssClass="txtbox" ID="txtBrand_Code"  runat="server" style="width: 100%;"></asp:TextBox>
+                                        <asp:TextBox CssClass="txtbox" ID="txtBrand_Code" MaxLength="4"  runat="server" style="width: 100%;"></asp:TextBox>
                              </div>
                              </div>
                              </div>
@@ -576,7 +574,7 @@
                                    <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl orangelable">個別送料</span>
                                         </asp:Label>
-                                        <asp:TextBox CssClass="txtbox" ID="txtExtra_Shipping"  runat="server" style="width: 80%;"></asp:TextBox>
+                                        <asp:TextBox CssClass="txtbox" ID="txtExtra_Shipping" onkeypress="return isNumberKey(event)" MaxLength="8"  runat="server" style="width: 80%;"></asp:TextBox>
                                  <span> 円</span>
                              </div>
                               <div class="floaddiv" style="width:50%;" >
@@ -957,43 +955,50 @@
                            </asp:Label>
                            <ul class="image_list">
                                <li>
-                                
-                                   <asp:UpdatePanel runat="server" id="UpdatePaneimg1" updatemode="Conditional">
-                                       <ContentTemplate>
-                                       <asp:HyperLink rel="lightbox[roadtrip]" NavigateUrl="~/Item_Image/no_image.jpg" runat="server" ID="hlImage1">
-                                           <asp:Image runat="server" ID="Image1" ImageUrl="~/Item_Image/no_image.jpg"/>
 
+                                 
+                                 <%--  <asp:UpdatePanel runat="server" id="UpdatePaneimg1" updatemode="Conditional">
+                                       <ContentTemplate>--%>
+                                       <asp:HyperLink rel="lightbox"  runat="server" NavigateUrl ="~/Item_Image/no_image.jpg" ID="hlImage1">
+                                           <asp:Image runat="server" ID="Image1" ImageUrl="~/Item_Image/no_image.jpg" />
                                        </asp:HyperLink>
-                                                                      
+                                           
+                                           <%--<asp:FileUpload ID="FileUploadtest" runat="server" />
+                                           <asp:Label ID="lblMessage" runat="server" Text="File uploaded successfully." ForeColor="Green" Visible="false" />
+                                            <asp:Button ID="Button2" Text="Upload" runat="server" OnClick="Upload" Style="display: none" />--%>     
                                     <asp:TextBox ID="txtimg1" CssClass="txtbox" runat="server"></asp:TextBox> 
-                                
-                                    <asp:FileUpload ID="FileUpload1" Style="display: none" onchange="uploadtest()" runat="server" />
-                                    <asp:Button runat="server" CssClass="btn btn-default imgchoosebtn" ID="imgbtn1" Text ="ファイル選択" OnClientClick="showBrowseDialog()"   />
-                                       <asp:Button runat="server" Style="display: none" ID="imgbtn1_1" Text ="ファイル選択" OnClick="UploadButton_Click" />     
-                                </ContentTemplate> 
+                                <asp:FileUpload ID="FileUpload1" Style="display: none" runat="server" accept=".jpg" onchange="upload()" />
+                                <input type="button" class="btn btn-default imgchoosebtn" id ="imginput" value="ファイル選択"  onclick="showBrowseDialog()"/>
+                                <input type="button" class="btn btn-default imgchoosebtn" id ="imginputdelete" value="削除"  onclick="Delete()" hidden/>
+                                <asp:Button runat="server" ID="hideButton" Text="" Style="display: none;"  OnClick="UploadButton_Click" />
+                            
+                                <%--</ContentTemplate> 
                                 <Triggers>              
-                                   <asp:PostBackTrigger controlid="imgbtn1"/>
-                                    <asp:PostBackTrigger controlid="imgbtn1_1"/>                           
+                                   <asp:PostBackTrigger controlid="hideButton"/>                 
                                 </Triggers>
-                                </asp:UpdatePanel>
+                                </asp:UpdatePanel>--%>
                                    
                              
                                </li>
                                <li>
                                  <asp:UpdatePanel runat="server" id="UpdatePanel1" updatemode="Conditional">
                                  <ContentTemplate>
-                                   <asp:HyperLink rel="lightbox[roadtrip]" NavigateUrl ="~/Item_Image/no_image.jpg" runat="server" ID="hlImage2">
+                                   <asp:HyperLink rel="lightbox" NavigateUrl ="~/Item_Image/no_image.jpg" runat="server" ID="hlImage2">
                                    <asp:Image runat="server" ID="Image2" ImageUrl ="~/Item_Image/no_image.jpg" /></asp:HyperLink>
                                    <asp:TextBox ID="txtimg2" CssClass="txtbox" runat="server"></asp:TextBox>                                                           
-                                   <asp:FileUpload ID="FileUpload2" Style="display: none" runat="server" onchange="upload2()" />
-                                   <asp:Button runat="server" CssClass="btn btn-default imgchoosebtn" ID="imgbtn2" Text ="ファイル選択" OnClientClick="showBrowseDialog2()" />
+                                  <%-- <asp:FileUpload ID="FileUpload2" Style="display: none" runat="server" onchange="upload2()" />
+                                   <asp:Button runat="server" CssClass="btn btn-default imgchoosebtn" ID="imgbtn2" Text ="ファイル選択" OnClientClick="showBrowseDialog2()" />--%>
+                                <asp:FileUpload ID="FileUpload2" Style="display: none" runat="server" accept=".jpg" onchange="upload2()" />
+                                <input type="button" class="btn btn-default imgchoosebtn" id ="imginput2" value="ファイル選択"  onclick="showBrowseDialog2()"/>
+                                 <input type="button" class="btn btn-default imgchoosebtn" id ="imginputdelete2" value="削除"  onclick="Delete2()" hidden/>
+                                <asp:Button runat="server" ID="imgbtn2_1" Text="" Style="display: none;" OnClick="UploadButton2_Click" />
                                 </ContentTemplate> 
                                 <Triggers>              
-                                   <asp:PostBackTrigger controlid="imgbtn2"/>
-                                    <asp:PostBackTrigger controlid="imgbtn2_1"/>                           
+                                   <asp:PostBackTrigger controlid="imgbtn2_1"/>
+                                    <%--<asp:PostBackTrigger controlid="imgbtn2_1"/>--%>                           
                                 </Triggers>
                                 </asp:UpdatePanel>
-                                <asp:Button runat="server" Style="display: none" ID="imgbtn2_1" Text ="ファイル選択" OnClick="UploadButton2_Click" />     
+                               
                                
                                </li>
                                <li>
@@ -1001,295 +1006,277 @@
                                  <asp:UpdatePanel runat="server" id="UpdatePanel3" updatemode="Conditional">
                                  <ContentTemplate>    
 
-                                   <asp:HyperLink rel="lightbox[roadtrip]" runat="server" ID="hlImage3"><asp:Image runat="server" ID="Image3" ImageUrl="~/Item_Image/no_image.jpg"/></asp:HyperLink>                
+                                   <asp:HyperLink rel="lightbox" runat="server" ID="hlImage3"><asp:Image runat="server" ID="Image3" ImageUrl="~/Item_Image/no_image.jpg"/></asp:HyperLink>                
                                    <asp:TextBox ID="txtimg3" CssClass="txtbox" runat="server"></asp:TextBox>                                                                                             
-                                   <asp:FileUpload ID="FileUpload3" Style="display: none" runat="server" onchange="upload3()" />
-                                   <asp:Button runat="server" CssClass="btn btn-default imgchoosebtn" ID="imgbtn3" Text ="ファイル選択" OnClientClick="showBrowseDialog3()" />
+                                <asp:FileUpload ID="FileUpload3" Style="display: none" accept=".jpg" runat="server" onchange="upload3()" />
+                                <input type="button" class="btn btn-default imgchoosebtn" id ="imginput3" value="ファイル選択"  onclick="showBrowseDialog3()"/>
+                                 <input type="button" class="btn btn-default imgchoosebtn" id ="imginputdelete3" value="削除"  onclick="Delete3()" hidden/>
+                                 <asp:Button runat="server" ID="imgbtn3_1" Text="" Style="display: none;" OnClick="UploadButton3_Click" />
                                 </ContentTemplate> 
-                                <Triggers>              
-                                   <asp:PostBackTrigger controlid="imgbtn3"/>
+                                <Triggers>                                  
                                    <asp:PostBackTrigger controlid="imgbtn3_1"/>                           
                                 </Triggers>
                                 </asp:UpdatePanel>
-                                <asp:Button runat="server" Style="display: none" ID="imgbtn3_1" Text ="ファイル選択" OnClick="UploadButton3_Click" />     
-                               
+                                
                                </li>
                                <li>
                                <asp:UpdatePanel runat="server" id="UpdatePanel4" updatemode="Conditional">
                                  <ContentTemplate>  
-                                    <asp:HyperLink rel="lightbox[roadtrip]" runat="server" ID="hlImage4"><asp:Image runat="server" ID="Image4" ImageUrl="~/Item_Image/no_image.jpg"/></asp:HyperLink>
+                                    <asp:HyperLink rel="lightbox" runat="server" ID="hlImage4"><asp:Image runat="server" ID="Image4" ImageUrl="~/Item_Image/no_image.jpg"/></asp:HyperLink>
                                  
                                     <asp:TextBox ID="txtimg4" CssClass="txtbox" runat="server"></asp:TextBox>                                                                
-                                    <asp:FileUpload ID="FileUpload4" Style="display: none" runat="server" onchange="upload4()" />
-                                    <asp:Button runat="server" CssClass="btn btn-default imgchoosebtn" ID="imgbtn4" Text ="ファイル選択" OnClientClick="showBrowseDialog4()" />
-                                 </ContentTemplate> 
-                                <Triggers>              
-                                   <asp:PostBackTrigger controlid="imgbtn4"/>
+                                <asp:FileUpload ID="FileUpload4" Style="display: none" runat="server" accept=".jpg" onchange="upload4()" />                   
+                                <input type="button" class="btn btn-default imgchoosebtn" id ="imginput4" value="ファイル選択"  onclick="showBrowseDialog4()"/>
+                                 <input type="button" class="btn btn-default imgchoosebtn" id ="imginputdelete4" value="削除"  onclick="Delete4()" hidden/>
+                                <asp:Button runat="server" ID="imgbtn4_1" Text="" Style="display: none;" OnClick="UploadButton4_Click" />
+                                </ContentTemplate> 
+                                <Triggers>                                  
                                    <asp:PostBackTrigger controlid="imgbtn4_1"/>                           
                                 </Triggers>
                                 </asp:UpdatePanel>
-                                <asp:Button runat="server" Style="display: none" ID="imgbtn4_1" Text ="ファイル選択" OnClick="UploadButton4_Click" />     
-                               
                                </li>
                                <li>
                                  
                                 <asp:UpdatePanel runat="server" id="UpdatePanel5" updatemode="Conditional">
                                  <ContentTemplate> 
-                                   <asp:HyperLink rel="lightbox[roadtrip]" runat="server" ID="hlImage5"><asp:Image runat="server" ID="Image5" ImageUrl="~/Item_Image/no_image.jpg"/></asp:HyperLink>
+                                   <asp:HyperLink rel="lightbox" runat="server" ID="hlImage5"><asp:Image runat="server" ID="Image5" ImageUrl="~/Item_Image/no_image.jpg"/></asp:HyperLink>
                                   
                                    <asp:TextBox ID="txtimg5" CssClass="txtbox" runat="server"></asp:TextBox>                                                                
-                                     <asp:FileUpload ID="FileUpload5" Style="display: none" runat="server" onchange="upload5()" />
-                                  <asp:Button runat="server" CssClass="btn btn-default imgchoosebtn" ID="imgbtn5" Text ="ファイル選択" OnClientClick="showBrowseDialog5()" />
-                               </ContentTemplate> 
-                                <Triggers>              
-                                   <asp:PostBackTrigger controlid="imgbtn5"/>
+                                    <asp:FileUpload ID="FileUpload5" Style="display: none" accept=".jpg" runat="server" onchange="upload5()" />
+                                <input type="button" class="btn btn-default imgchoosebtn" id ="imginput5" value="ファイル選択"  onclick="showBrowseDialog5()"/>
+                                 <input type="button" class="btn btn-default imgchoosebtn" id ="imginputdelete5" value="削除"  onclick="Delete5()" hidden/>
+                                <asp:Button runat="server" ID="imgbtn5_1" Text="" Style="display: none;" OnClick="UploadButton5_Click" />
+                                </ContentTemplate> 
+                                <Triggers>                                  
                                    <asp:PostBackTrigger controlid="imgbtn5_1"/>                           
                                 </Triggers>
                                 </asp:UpdatePanel>
-                                <asp:Button runat="server" Style="display: none" ID="imgbtn5_1" Text ="ファイル選択" OnClick="UploadButton5_Click" />     
-                               
                                </li>
                                 <li>
                                  <asp:UpdatePanel runat="server" id="UpdatePanel6" updatemode="Conditional">
                                  <ContentTemplate>  
-                                   <asp:HyperLink rel="lightbox[roadtrip]" runat="server" ID="hlImage6"><asp:Image runat="server" ID="Image6" ImageUrl="~/Item_Image/no_image.jpg"/></asp:HyperLink>                             
+                                   <asp:HyperLink rel="lightbox" runat="server" ID="hlImage6"><asp:Image runat="server" ID="Image6" ImageUrl="~/Item_Image/no_image.jpg"/></asp:HyperLink>                             
                                    <asp:TextBox ID="txtimg6" CssClass="txtbox" runat="server"></asp:TextBox>                                                                
-                                   <asp:FileUpload ID="FileUpload6" Style="display: none" runat="server" onchange="upload6()" />
-                                  <asp:Button runat="server" CssClass="btn btn-default imgchoosebtn" ID="imgbtn6" Text ="ファイル選択" OnClientClick="showBrowseDialog6()"  />
-                                </ContentTemplate>
-                                 <Triggers>              
-                                   <asp:PostBackTrigger controlid="imgbtn6"/>
+                                  <asp:FileUpload ID="FileUpload6" Style="display: none" accept=".jpg" runat="server" onchange="upload6()" />
+                                <input type="button" class="btn btn-default imgchoosebtn" id ="imginput6" value="ファイル選択"  onclick="showBrowseDialog6()"/>
+                                 <input type="button" class="btn btn-default imgchoosebtn" id ="imginputdelete6" value="削除"  onclick="Delete6()" hidden/>
+                                <asp:Button runat="server" ID="imgbtn6_1" Text="" Style="display: none;" OnClick="UploadButton6_Click" />
+                                </ContentTemplate> 
+                                <Triggers>                                  
                                    <asp:PostBackTrigger controlid="imgbtn6_1"/>                           
                                 </Triggers>
                                 </asp:UpdatePanel>
-                                <asp:Button runat="server" Style="display: none" ID="imgbtn6_1" Text ="ファイル選択" OnClick="UploadButton6_Click" />     
-                               
                                </li>
                                 <li>
                                  <asp:UpdatePanel runat="server" id="UpdatePanel7" updatemode="Conditional">
                                  <ContentTemplate>  
-                                   <asp:HyperLink rel="lightbox[roadtrip]" runat="server" ID="hlImage7"><asp:Image runat="server" ID="Image7" ImageUrl="~/Item_Image/no_image.jpg"/></asp:HyperLink>                               
+                                   <asp:HyperLink rel="lightbox" runat="server" ID="hlImage7"><asp:Image runat="server" ID="Image7" ImageUrl="~/Item_Image/no_image.jpg"/></asp:HyperLink>                               
                                    <asp:TextBox ID="txtimg7" CssClass="txtbox" runat="server"></asp:TextBox>                                                                
-                                   <asp:FileUpload ID="FileUpload7" Style="display: none" runat="server" onchange="upload7()" />
-                                   <asp:Button runat="server" CssClass="btn btn-default imgchoosebtn" ID="imgbtn7" Text ="ファイル選択" OnClientClick="showBrowseDialog7()"   />
-                                   </ContentTemplate>
-                                 <Triggers>              
-                                   <asp:PostBackTrigger controlid="imgbtn7"/>
+                                   <asp:FileUpload ID="FileUpload7" Style="display: none" accept=".jpg" runat="server" onchange="upload7()" />
+                                <input type="button" class="btn btn-default imgchoosebtn" id ="imginput7" value="ファイル選択"  onclick="showBrowseDialog7()"/>
+                                <input type="button" class="btn btn-default imgchoosebtn" id ="imginputdelete7" value="削除"  onclick="Delete7()" hidden/>
+                                <asp:Button runat="server" ID="imgbtn7_1" Text="" Style="display: none;" OnClick="UploadButton7_Click" />
+                                </ContentTemplate> 
+                                <Triggers>                                  
                                    <asp:PostBackTrigger controlid="imgbtn7_1"/>                           
                                 </Triggers>
                                 </asp:UpdatePanel>
-                                <asp:Button runat="server" Style="display: none" ID="imgbtn7_1" Text ="ファイル選択" OnClick="UploadButton7_Click" />     
-                               
                                </li>
                                 <li>
                                  <asp:UpdatePanel runat="server" id="UpdatePanel8" updatemode="Conditional">
                                  <ContentTemplate>    
-                                    <asp:HyperLink rel="lightbox[roadtrip]" runat="server" ID="hlImage8"><asp:Image runat="server" ID="Image8" ImageUrl="~/Item_Image/no_image.jpg"/></asp:HyperLink>
+                                    <asp:HyperLink rel="lightbox" runat="server" ID="hlImage8"><asp:Image runat="server" ID="Image8" ImageUrl="~/Item_Image/no_image.jpg"/></asp:HyperLink>
                                     <asp:TextBox ID="txtimg8" CssClass="txtbox" runat="server"></asp:TextBox> 
-                                    <asp:FileUpload ID="FileUpload8" Style="display: none" runat="server" onchange="upload8()" />
-                                    <asp:Button runat="server" CssClass="btn btn-default imgchoosebtn" ID="imgbtn8" Text ="ファイル選択" OnClientClick="showBrowseDialog8()" />
-                                 </ContentTemplate>
-                                 <Triggers>              
-                                   <asp:PostBackTrigger controlid="imgbtn8"/>
+                                   <asp:FileUpload ID="FileUpload8" Style="display: none" accept=".jpg" runat="server" onchange="upload8()" />
+                                <input type="button" class="btn btn-default imgchoosebtn" id ="imginput8" value="ファイル選択"  onclick="showBrowseDialog8()"/>
+                                <input type="button" class="btn btn-default imgchoosebtn" id ="imginputdelete8" value="削除"  onclick="Delete8()" hidden/>
+                                <asp:Button runat="server" ID="imgbtn8_1" Text="" Style="display: none;" OnClick="UploadButton8_Click" />
+                                </ContentTemplate> 
+                                <Triggers>                                  
                                    <asp:PostBackTrigger controlid="imgbtn8_1"/>                           
                                 </Triggers>
                                 </asp:UpdatePanel>
-                                <asp:Button runat="server" Style="display: none" ID="imgbtn8_1" Text ="ファイル選択" OnClick="UploadButton8_Click" />     
-                               
                                </li>
                                 <li>
                                  <asp:UpdatePanel runat="server" id="UpdatePanel9" updatemode="Conditional">
                                  <ContentTemplate>   
-                                   <asp:HyperLink rel="lightbox[roadtrip]" runat="server" ID="hlImage9"><asp:Image runat="server" ID="Image9" ImageUrl="~/Item_Image/no_image.jpg"/></asp:HyperLink>
+                                   <asp:HyperLink rel="lightbox" runat="server" ID="hlImage9"><asp:Image runat="server" ID="Image9" ImageUrl="~/Item_Image/no_image.jpg"/></asp:HyperLink>
                                    <asp:TextBox ID="txtimg9" CssClass="txtbox" runat="server"></asp:TextBox> 
-                                   <asp:FileUpload ID="FileUpload9" Style="display: none" runat="server" onchange="upload9()" />
-                                   <asp:Button runat="server" CssClass="btn btn-default imgchoosebtn" ID="imgbtn9" Text ="ファイル選択" OnClientClick="showBrowseDialog9()"  />
-                                </ContentTemplate>
-                                 <Triggers>              
-                                   <asp:PostBackTrigger controlid="imgbtn9"/>
+                                   <asp:FileUpload ID="FileUpload9" Style="display: none" runat="server" accept=".jpg" onchange="upload9()" />
+                                <input type="button" class="btn btn-default imgchoosebtn" id ="imginput9" value="ファイル選択"  onclick="showBrowseDialog9()"/>
+                                 <input type="button" class="btn btn-default imgchoosebtn" id ="imginputdelete9" value="削除"  onclick="Delete9()" hidden/>
+                                <asp:Button runat="server" ID="imgbtn9_1" Text="" Style="display: none;" OnClick="UploadButton9_Click" />
+                                </ContentTemplate> 
+                                <Triggers>                                  
                                    <asp:PostBackTrigger controlid="imgbtn9_1"/>                           
                                 </Triggers>
                                 </asp:UpdatePanel>
-                                <asp:Button runat="server" Style="display: none" ID="imgbtn9_1" Text ="ファイル選択" OnClick="UploadButton9_Click" />     
-                               
                                </li>
                                 <li>
 
                                  <asp:UpdatePanel runat="server" id="UpdatePanel10" updatemode="Conditional">
                                  <ContentTemplate>  
-                                    <asp:HyperLink rel="lightbox[roadtrip]" runat="server" ID="hlImage10"><asp:Image runat="server" ID="Image10" ImageUrl="~/Item_Image/no_image.jpg"/></asp:HyperLink>
+                                    <asp:HyperLink rel="lightbox" runat="server" ID="hlImage10"><asp:Image runat="server" ID="Image10" ImageUrl="~/Item_Image/no_image.jpg"/></asp:HyperLink>
                                     <asp:TextBox ID="txtimg10" CssClass="txtbox" runat="server"></asp:TextBox> 
-                                    <asp:FileUpload ID="FileUpload10" Style="display: none" runat="server" onchange="upload10()" />
-                                    <asp:Button runat="server" CssClass="btn btn-default imgchoosebtn" ID="imgbtn10" Text ="ファイル選択" OnClientClick="showBrowseDialog10()" />
-                                </ContentTemplate>
-                                 <Triggers>              
-                                   <asp:PostBackTrigger controlid="imgbtn10"/>
+                                   <asp:FileUpload ID="FileUpload10" Style="display: none" accept=".jpg" runat="server" onchange="upload10()" />
+                                <input type="button" class="btn btn-default imgchoosebtn" id ="imginput10" value="ファイル選択"  onclick="showBrowseDialog10()"/>
+                                 <input type="button" class="btn btn-default imgchoosebtn" id ="imginputdelete10" value="削除"  onclick="Delete10()" hidden/>
+                                <asp:Button runat="server" ID="imgbtn10_1" Text="" Style="display: none;" OnClick="UploadButton10_Click" />
+                                </ContentTemplate> 
+                                <Triggers>                                  
                                    <asp:PostBackTrigger controlid="imgbtn10_1"/>                           
                                 </Triggers>
                                 </asp:UpdatePanel>
-                                <asp:Button runat="server" Style="display: none" ID="imgbtn10_1" Text ="ファイル選択" OnClick="UploadButton10_Click" />     
-                               
                                </li>
                                 <li>
                                <asp:UpdatePanel runat="server" id="UpdatePanel11" updatemode="Conditional">
                                <ContentTemplate> 
-                                 <asp:HyperLink rel="lightbox[roadtrip]" runat="server" ID="hlImage11"><asp:Image runat="server" ID="Image11" ImageUrl="~/Item_Image/no_image.jpg"/></asp:HyperLink>
+                                 <asp:HyperLink rel="lightbox" runat="server" ID="hlImage11"><asp:Image runat="server" ID="Image11" ImageUrl="~/Item_Image/no_image.jpg"/></asp:HyperLink>
                                  <asp:TextBox ID="txtimg11" CssClass="txtbox" runat="server"></asp:TextBox>                           
-                                 <asp:FileUpload ID="FileUpload11" Style="display: none" runat="server" onchange="upload11()" />
-                                 <asp:Button runat="server" CssClass="btn btn-default imgchoosebtn" ID="imgbtn11" Text ="ファイル選択" OnClientClick="showBrowseDialog11()"   />
-                                </ContentTemplate>
-                                 <Triggers>              
-                                   <asp:PostBackTrigger controlid="imgbtn11"/>
+                                 <asp:FileUpload ID="FileUpload11" Style="display: none" accept=".jpg" runat="server" onchange="upload11()" />
+                                <input type="button" class="btn btn-default imgchoosebtn" id ="imginput11" value="ファイル選択"  onclick="showBrowseDialog11()"/>
+                                 <input type="button" class="btn btn-default imgchoosebtn" id ="imginputdelete11" value="削除"  onclick="Delete11()" hidden/>
+                                <asp:Button runat="server" ID="imgbtn11_1" Text="" Style="display: none;" OnClick="UploadButton11_Click" />
+                                </ContentTemplate> 
+                                <Triggers>                                  
                                    <asp:PostBackTrigger controlid="imgbtn11_1"/>                           
                                 </Triggers>
                                 </asp:UpdatePanel>
-                                <asp:Button runat="server" Style="display: none" ID="imgbtn11_1" Text ="ファイル選択" OnClick="UploadButton11_Click" />     
-                               
                                </li>
                                 <li>
                                <asp:UpdatePanel runat="server" id="UpdatePanel12" updatemode="Conditional">
                                <ContentTemplate> 
-                                   <asp:HyperLink rel="lightbox[roadtrip]" runat="server" ID="hlImage12"><asp:Image runat="server" ID="Image12" ImageUrl="~/Item_Image/no_image.jpg"/></asp:HyperLink>                                 
+                                   <asp:HyperLink rel="lightbox" runat="server" ID="hlImage12"><asp:Image runat="server" ID="Image12" ImageUrl="~/Item_Image/no_image.jpg"/></asp:HyperLink>                                 
                                    <asp:TextBox ID="txtimg12" CssClass="txtbox" runat="server"></asp:TextBox> 
-                                   <asp:FileUpload ID="FileUpload12" Style="display: none" runat="server" onchange="upload12()" />
-                                   <asp:Button runat="server" CssClass="btn btn-default imgchoosebtn" ID="imgbtn12" Text ="ファイル選択" OnClientClick="showBrowseDialog12()"   />
-                                </ContentTemplate>
-                                 <Triggers>              
-                                   <asp:PostBackTrigger controlid="imgbtn12"/>
+                                  <asp:FileUpload ID="FileUpload12" Style="display: none" runat="server" accept=".jpg" onchange="upload12()" />
+                                <input type="button" class="btn btn-default imgchoosebtn" id ="imginput12" value="ファイル選択"  onclick="showBrowseDialog12()"/>
+                                <input type="button" class="btn btn-default imgchoosebtn" id ="imginputdelete12" value="削除"  onclick="Delete12()" hidden/>
+                                <asp:Button runat="server" ID="imgbtn12_1" Text="" Style="display: none;" OnClick="UploadButton12_Click" />
+                                </ContentTemplate> 
+                                <Triggers>                                  
                                    <asp:PostBackTrigger controlid="imgbtn12_1"/>                           
                                 </Triggers>
                                 </asp:UpdatePanel>
-                                <asp:Button runat="server" Style="display: none" ID="imgbtn12_1" Text ="ファイル選択" OnClick="UploadButton12_Click" />     
-                               
                                </li>
                                 <li>
                                 <asp:UpdatePanel runat="server" id="UpdatePanel13" updatemode="Conditional">
                                 <ContentTemplate>
-                                   <asp:HyperLink rel="lightbox[roadtrip]" runat="server" ID="hlImage13"><asp:Image runat="server" ID="Image13" ImageUrl="~/Item_Image/no_image.jpg"/></asp:HyperLink>
+                                   <asp:HyperLink rel="lightbox" runat="server" ID="hlImage13"><asp:Image runat="server" ID="Image13" ImageUrl="~/Item_Image/no_image.jpg"/></asp:HyperLink>
                                    <asp:TextBox ID="txtimg13" CssClass="txtbox" runat="server"></asp:TextBox> 
-                                   <asp:FileUpload ID="FileUpload13" Style="display: none" runat="server" onchange="upload13()" />
-                                   <asp:Button runat="server" CssClass="btn btn-default imgchoosebtn" ID="imgbtn13" Text ="ファイル選択" OnClientClick="showBrowseDialog13()" />
-                                </ContentTemplate>
-                                 <Triggers>              
-                                   <asp:PostBackTrigger controlid="imgbtn13"/>
+                                   <asp:FileUpload ID="FileUpload13" Style="display: none" runat="server" accept=".jpg" onchange="upload13()" />
+                                <input type="button" class="btn btn-default imgchoosebtn" id ="imginput13" value="ファイル選択"  onclick="showBrowseDialog13()"/>
+                                 <input type="button" class="btn btn-default imgchoosebtn" id ="imginputdelete13" value="削除"  onclick="Delete13()" hidden/>
+                                <asp:Button runat="server" ID="imgbtn13_1" Text="" Style="display: none;" OnClick="UploadButton13_Click" />
+                                </ContentTemplate> 
+                                <Triggers>                                  
                                    <asp:PostBackTrigger controlid="imgbtn13_1"/>                           
                                 </Triggers>
                                 </asp:UpdatePanel>
-                                <asp:Button runat="server" Style="display: none" ID="imgbtn13_1" Text ="ファイル選択" OnClick="UploadButton13_Click" />     
-                               
                                </li>
                                 <li>
                                 <asp:UpdatePanel runat="server" id="UpdatePanel14" updatemode="Conditional">
                                 <ContentTemplate>
-                                   <asp:HyperLink rel="lightbox[roadtrip]" runat="server" ID="hlImage14"><asp:Image runat="server" ID="Image14" ImageUrl="~/Item_Image/no_image.jpg"/></asp:HyperLink>                   
+                                   <asp:HyperLink rel="lightbox" runat="server" ID="hlImage14"><asp:Image runat="server" ID="Image14" ImageUrl="~/Item_Image/no_image.jpg"/></asp:HyperLink>                   
                                    <asp:TextBox ID="txtimg14" CssClass="txtbox" runat="server"></asp:TextBox> 
-                                   <asp:FileUpload ID="FileUpload14" Style="display: none" runat="server" onchange="upload14()" />
-                                   <asp:Button runat="server" CssClass="btn btn-default imgchoosebtn" ID="imgbtn14" Text ="ファイル選択" OnClientClick="showBrowseDialog14()" />
-                                </ContentTemplate>
-                                 <Triggers>              
-                                   <asp:PostBackTrigger controlid="imgbtn14"/>
+                                   <asp:FileUpload ID="FileUpload14" Style="display: none" accept=".jpg" runat="server" onchange="upload14()" />
+                                <input type="button" class="btn btn-default imgchoosebtn" id ="imginput14" value="ファイル選択"  onclick="showBrowseDialog14()"/>
+                                 <input type="button" class="btn btn-default imgchoosebtn" id ="imginputdelete14" value="削除"  onclick="Delete14()" hidden/>
+                                 <asp:Button runat="server" ID="imgbtn14_1" Text="" Style="display: none;" OnClick="UploadButton14_Click" />
+                                </ContentTemplate> 
+                                <Triggers>                                  
                                    <asp:PostBackTrigger controlid="imgbtn14_1"/>                           
                                 </Triggers>
                                 </asp:UpdatePanel>
-                                <asp:Button runat="server" Style="display: none" ID="imgbtn14_1" Text ="ファイル選択" OnClick="UploadButton14_Click" />     
-                               
                                </li>
                                 <li>
                                 <asp:UpdatePanel runat="server" id="UpdatePanel15" updatemode="Conditional">
                                 <ContentTemplate>
-                                   <asp:HyperLink rel="lightbox[roadtrip]" runat="server" ID="hlImage15"><asp:Image runat="server" ID="Image15" ImageUrl="~/Item_Image/no_image.jpg"/></asp:HyperLink>
+                                   <asp:HyperLink rel="lightbox" runat="server" ID="hlImage15"><asp:Image runat="server" ID="Image15" ImageUrl="~/Item_Image/no_image.jpg"/></asp:HyperLink>
                                    <asp:TextBox ID="txtimg15" CssClass="txtbox" runat="server"></asp:TextBox> 
-                                   <asp:FileUpload ID="FileUpload15" Style="display: none" runat="server" onchange="upload15()" />
-                                   <asp:Button runat="server" CssClass="btn btn-default imgchoosebtn" ID="imgbtn15" Text ="ファイル選択" OnClientClick="showBrowseDialog15()" />
-                                 </ContentTemplate>
-                                 <Triggers>              
-                                   <asp:PostBackTrigger controlid="imgbtn15"/>
+                                  <asp:FileUpload ID="FileUpload15" Style="display: none" runat="server" accept=".jpg" onchange="upload15()" />
+                                <input type="button" class="btn btn-default imgchoosebtn" id ="imginput15" value="ファイル選択"  onclick="showBrowseDialog15()"/>
+                                <input type="button" class="btn btn-default imgchoosebtn" id ="imginputdelete15" value="削除"  onclick="Delete15()" hidden/>
+                                <asp:Button runat="server" ID="imgbtn15_1" Text="" Style="display: none;" OnClick="UploadButton15_Click" />
+                                </ContentTemplate> 
+                                <Triggers>                                  
                                    <asp:PostBackTrigger controlid="imgbtn15_1"/>                           
                                 </Triggers>
                                 </asp:UpdatePanel>
-                                <asp:Button runat="server" Style="display: none" ID="imgbtn15_1" Text ="ファイル選択" OnClick="UploadButton15_Click" />     
-                               
                                </li>
                                 <li>
                                 <asp:UpdatePanel runat="server" id="UpdatePanel16" updatemode="Conditional">
                                 <ContentTemplate>
-                                   <asp:HyperLink rel="lightbox[roadtrip]" runat="server" ID="hlImage16"><asp:Image runat="server" ID="Image16" ImageUrl="~/Item_Image/no_image.jpg"/></asp:HyperLink>             
+                                   <asp:HyperLink rel="lightbox" runat="server" ID="hlImage16"><asp:Image runat="server" ID="Image16" ImageUrl="~/Item_Image/no_image.jpg"/></asp:HyperLink>             
                                    <asp:TextBox ID="txtimg16" CssClass="txtbox" runat="server"></asp:TextBox> 
-                                   <asp:FileUpload ID="FileUpload16" Style="display: none" runat="server" onchange="upload16()" />
-                                   <asp:Button runat="server" CssClass="btn btn-default imgchoosebtn" ID="imgbtn16" Text ="ファイル選択" OnClientClick="showBrowseDialog16()"  />
-                                </ContentTemplate>
-                                 <Triggers>              
-                                   <asp:PostBackTrigger controlid="imgbtn16"/>
+                                  <asp:FileUpload ID="FileUpload16" Style="display: none" runat="server" accept=".jpg" onchange="upload16()" />
+                                <input type="button" class="btn btn-default imgchoosebtn" id ="imginput16" value="ファイル選択"  onclick="showBrowseDialog16()"/>
+                                 <input type="button" class="btn btn-default imgchoosebtn" id ="imginputdelete16" value="削除"  onclick="Delete16()" hidden/>
+                                <asp:Button runat="server" ID="imgbtn16_1" Text="" Style="display: none;" OnClick="UploadButton16_Click" />
+                                </ContentTemplate> 
+                                <Triggers>                                  
                                    <asp:PostBackTrigger controlid="imgbtn16_1"/>                           
                                 </Triggers>
                                 </asp:UpdatePanel>
-                                <asp:Button runat="server" Style="display: none" ID="imgbtn16_1" Text ="ファイル選択" OnClick="UploadButton16_Click" />     
-                               
                                </li>
                                 <li>
                                 <asp:UpdatePanel runat="server" id="UpdatePanel17" updatemode="Conditional">
                                 <ContentTemplate>
-                                   <asp:HyperLink rel="lightbox[roadtrip]" runat="server" ID="hlImage17"><asp:Image runat="server" ID="Image17" ImageUrl="~/Item_Image/no_image.jpg"/></asp:HyperLink>              
+                                   <asp:HyperLink rel="lightbox" runat="server" ID="hlImage17"><asp:Image runat="server" ID="Image17" ImageUrl="~/Item_Image/no_image.jpg"/></asp:HyperLink>              
                                    <asp:TextBox ID="txtimg17" CssClass="txtbox" runat="server"></asp:TextBox> 
-                                   <asp:FileUpload ID="FileUpload17" Style="display: none" runat="server" onchange="upload17()" />
-                                   <asp:Button runat="server" CssClass="btn btn-default imgchoosebtn" ID="imgbtn17" Text ="ファイル選択" OnClientClick="showBrowseDialog17()" />
-                                </ContentTemplate>
-                                 <Triggers>              
-                                   <asp:PostBackTrigger controlid="imgbtn17"/>
+                                   <asp:FileUpload ID="FileUpload17" Style="display: none" runat="server" accept=".jpg" onchange="upload17()" />
+                                <input type="button" class="btn btn-default imgchoosebtn" id ="imginput17" value="ファイル選択"  onclick="showBrowseDialog17()"/>
+                                 <input type="button" class="btn btn-default imgchoosebtn" id ="imginputdelete17" value="削除"  onclick="Delete17()" hidden/>
+                                <asp:Button runat="server" ID="imgbtn17_1" Text="" Style="display: none;" OnClick="UploadButton17_Click" />
+                                </ContentTemplate> 
+                                <Triggers>                                  
                                    <asp:PostBackTrigger controlid="imgbtn17_1"/>                           
                                 </Triggers>
                                 </asp:UpdatePanel>
-                                <asp:Button runat="server" Style="display: none" ID="imgbtn17_1" Text ="ファイル選択" OnClick="UploadButton17_Click" />     
-                               
                                </li>
                                 <li>
                                 <asp:UpdatePanel runat="server" id="UpdatePanel18" updatemode="Conditional">
                                 <ContentTemplate>
-                                    <asp:HyperLink rel="lightbox[roadtrip]" runat="server" ID="hlImage18"><asp:Image runat="server" ID="Image18" ImageUrl="~/Item_Image/no_image.jpg"/></asp:HyperLink>
+                                    <asp:HyperLink rel="lightbox" runat="server" ID="hlImage18"><asp:Image runat="server" ID="Image18" ImageUrl="~/Item_Image/no_image.jpg"/></asp:HyperLink>
                                     <asp:TextBox ID="txtimg18" CssClass="txtbox" runat="server"></asp:TextBox> 
-                                    <asp:FileUpload ID="FileUpload18" Style="display: none" runat="server" onchange="upload18()" />
-                                    <asp:Button runat="server" CssClass="btn btn-default imgchoosebtn" ID="imgbtn18" Text ="ファイル選択" OnClientClick="showBrowseDialog18()"  />
-                                 </ContentTemplate>
-                                 <Triggers>              
-                                   <asp:PostBackTrigger controlid="imgbtn18"/>
+                                    <asp:FileUpload ID="FileUpload18" Style="display: none" runat="server" accept=".jpg" onchange="upload18()" />
+                                <input type="button" class="btn btn-default imgchoosebtn" id ="imginput18" value="ファイル選択"  onclick="showBrowseDialog18()"/>
+                                 <input type="button" class="btn btn-default imgchoosebtn" id ="imginputdelete18" value="削除"  onclick="Delete18()" hidden/>
+                                <asp:Button runat="server" ID="imgbtn18_1" Text="" Style="display: none;" OnClick="UploadButton18_Click" />
+                                </ContentTemplate> 
+                                <Triggers>                                  
                                    <asp:PostBackTrigger controlid="imgbtn18_1"/>                           
                                 </Triggers>
                                 </asp:UpdatePanel>
-                                <asp:Button runat="server" Style="display: none" ID="imgbtn18_1" Text ="ファイル選択" OnClick="UploadButton18_Click" />     
-                               
                                </li>
                                 <li>
                                <asp:UpdatePanel runat="server" id="UpdatePanel19" updatemode="Conditional">
                                 <ContentTemplate>
-                                   <asp:HyperLink rel="lightbox[roadtrip]" runat="server" ID="hlImage19"><asp:Image runat="server" ID="Image19" ImageUrl="~/Item_Image/no_image.jpg"/></asp:HyperLink>
+                                   <asp:HyperLink rel="lightbox" runat="server" ID="hlImage19"><asp:Image runat="server" ID="Image19" ImageUrl="~/Item_Image/no_image.jpg"/></asp:HyperLink>
                                    <asp:TextBox ID="txtimg19" CssClass="txtbox" runat="server"></asp:TextBox> 
-                                   <asp:FileUpload ID="FileUpload19" Style="display: none" runat="server" onchange="upload19()" />
-                                   <asp:Button runat="server" CssClass="btn btn-default imgchoosebtn" ID="imgbtn19" Text ="ファイル選択" OnClientClick="showBrowseDialog19()"  />
-                                </ContentTemplate>
-                                 <Triggers>              
-                                   <asp:PostBackTrigger controlid="imgbtn19"/>
+                                  <asp:FileUpload ID="FileUpload19" Style="display: none" runat="server" accept=".jpg" onchange="upload19()" />
+                                <input type="button" class="btn btn-default imgchoosebtn" id ="imginput19" value="ファイル選択"  onclick="showBrowseDialog19()"/>
+                                 <input type="button" class="btn btn-default imgchoosebtn" id ="imginputdelete19" value="削除"  onclick="Delete19()" hidden/>
+                                <asp:Button runat="server" ID="imgbtn19_1" Text="" Style="display: none;" OnClick="UploadButton19_Click" />
+                                </ContentTemplate> 
+                                <Triggers>                                  
                                    <asp:PostBackTrigger controlid="imgbtn19_1"/>                           
                                 </Triggers>
                                 </asp:UpdatePanel>
-                                <asp:Button runat="server" Style="display: none" ID="imgbtn19_1" Text ="ファイル選択" OnClick="UploadButton19_Click" />     
-                               
                                </li>
                                 <li>
                                 <asp:UpdatePanel runat="server" id="UpdatePanel20" updatemode="Conditional">
                                 <ContentTemplate>
-                                   <asp:HyperLink rel="lightbox[roadtrip]" runat="server" ID="hlImage20"><asp:Image runat="server" ID="Image20" ImageUrl="~/Item_Image/no_image.jpg"/></asp:HyperLink>                
+                                   <asp:HyperLink rel="lightbox" runat="server" ID="hlImage20"><asp:Image runat="server" ID="Image20" ImageUrl="~/Item_Image/no_image.jpg"/></asp:HyperLink>                
                                    <asp:TextBox ID="txtimg20" CssClass="txtbox" runat="server"></asp:TextBox> 
-                                   <asp:FileUpload ID="FileUpload20" Style="display: none" runat="server" onchange="upload20()" />
-                                   
-                               </ContentTemplate>
-                                 <Triggers>              
-                                   <asp:PostBackTrigger controlid="imgbtn20"/>
+                                  <asp:FileUpload ID="FileUpload20" Style="display: none" runat="server" accept=".jpg" onchange="upload20()" />
+                                <input type="button" class="btn btn-default imgchoosebtn" id ="imginput20" value="ファイル選択"  onclick="showBrowseDialog20()"/>
+                                 <input type="button" class="btn btn-default imgchoosebtn" id ="imginputdelete20" value="削除"  onclick="Delete20()" hidden/>
+                                <asp:Button runat="server" ID="imgbtn20_1" Text="" Style="display: none;" OnClick="UploadButton20_Click" />
+                                </ContentTemplate> 
+                                <Triggers>                                  
                                    <asp:PostBackTrigger controlid="imgbtn20_1"/>                           
                                 </Triggers>
                                 </asp:UpdatePanel>
-                                <asp:Button runat="server" CssClass="btn btn-default imgchoosebtn" ID="imgbtn20" Text ="ファイル選択" OnClientClick="showBrowseDialog20()"  />
-                                <asp:Button runat="server" Style="display: none" ID="imgbtn20_1" Text ="ファイル選択" OnClick="UploadButton20_Click" />     
-                               
                               </li>
                            </ul>
                           </div>
@@ -1337,35 +1324,7 @@
                                     </div>
                                    </div>
 
-                             <%-- <div class="columnItemcode" >
-                              <asp:Label CssClass="lblitemcode"  runat="server" >
-                               <span class="label label-md lbl greenlable lblrequired">商品番号</span>
-                           </asp:Label>
-                            <asp:TextBox CssClass="txtbox" ID="TextBox101"  runat="server"></asp:TextBox>
-                              </div>
-                              <div class="columnJanCD" >
-                              <asp:Label  runat="server" Text="">
-                                 <span class="label label-md lbl greenlable">JANCD</span>
-                            </asp:Label>
-                            <asp:TextBox CssClass="txtbox" ID="TextBox102"  runat="server"></asp:TextBox>
-                            
-                              </div>
-                              <div class="columnmaker" >
-                                      
-                            <asp:Label  ID="Label2" runat="server" Text="">
-                                 <span class="label label-md lbl greenlable">メーカー名</span>
-                            </asp:Label>
-                            <asp:TextBox CssClass="txtbox" ID="TextBox105" runat="server"></asp:TextBox>
-                              </div>--%>
-                          <%--  </div>--%>
-                           <%--  <div class="rowfirst">
-                              <div class="" style="padding:5px;">      
-                            <asp:Label  ID="Label3" runat="server" Text="">
-                                 <span class="label label-md lbl greenlable lblrequired">商品名</span>
-                            </asp:Label>   <br />                       
-                            <textarea class="txtarea textamemo" ID="" cols="20" rows="2"></textarea>
-                                   </div> 
-                                  </div>--%> 
+                       
                           </div>             
                       </div>
                         <div class=" col-md-5">
@@ -1377,10 +1336,7 @@
                              <asp:Label CssClass=""  runat="server" >
                                <span class="label label-md lbl orangelable">カテゴリ</span>
                            </asp:Label>
-                                  <%--  <asp:TextBox CssClass="txtbox" ID="TextBox101"  runat="server" style="width: 100%; margin-bottom:10px;"></asp:TextBox>
-                                    <asp:TextBox CssClass="txtbox" ID="TextBox107"  runat="server" style="width: 100%; margin-bottom:10px;"></asp:TextBox>
-                                    <asp:TextBox CssClass="txtbox" ID="TextBox111"  runat="server" style="width: 100%; margin-bottom:10px;"></asp:TextBox>
-                                    <asp:TextBox CssClass="txtbox" ID="TextBox112"  runat="server" style="width: 100%; margin-bottom:10px;"></asp:TextBox>    --%>
+                                 
                                  <asp:GridView ID="gvCatagories" runat="server" AutoGenerateColumns="False" ShowHeader="False" GridLines="None">
                                 <Columns>
                                 <asp:TemplateField HeaderText="ID" Visible="false">
@@ -1464,9 +1420,7 @@
                                         <asp:Label runat="server" ID="lblShopID" Text='<%# Bind("ID")%>' Visible="false"/>
                                         <asp:CheckBox runat="server" class="label label-md lbl orangelable" ID="ckbShopName" Text='<%# Bind("ORS_Shop_Name")%>'/>
                                     </p>
-                                  <%--<asp:CheckBox runat="server" ID="ckbMall1Shop" EnableViewState="true" Text='<%# Bind("Mall_Name")%>' />--%>
-                                     <%--   <asp:Label runat="server" ID="lblMall1ShopID" Text='<%# Bind("ID")%>' Visible="false" /></p>--%>
-                                </ItemTemplate>
+                                  </ItemTemplate>
                              </asp:DataList>
                              </div>
                          </div>
@@ -1484,34 +1438,7 @@
                                      <asp:TextBox ID="txtItem_CodeList" runat="server" Text='<%# Bind("Item_Code_URL")%>' style="width: 100%; margin-bottom:10px;"/>
                                  </ItemTemplate>
                              </asp:DataList>
-                            <%--  <div class="floaddiv" style="width:23%;">
-                                      <asp:Label CssClass=""  runat="server" >
-                                        <span class="label label-md lbl orangelable">楽天 ペイントアンドツール</span>
-                                        </asp:Label><br />
-                                        <asp:TextBox CssClass="txtbox" ID="TextBox124"  runat="server" style="width: 100%; margin-bottom:10px;"></asp:TextBox>
-                                     <br />
-                                  </div>
-                              <div class="floaddiv" style="width:23%;">
-                                      <asp:Label CssClass=""  runat="server" >
-                                        <span class="label label-md lbl orangelable">Yahoo ペイントアンドツール</span>
-                                        </asp:Label><br />
-                                        <asp:TextBox CssClass="txtbox" ID="TextBox125"  runat="server" style="width: 100%; margin-bottom:10px;"></asp:TextBox>
-                                     <br />
-                                  </div>
-                              <div class="floaddiv" style="width:23%;">
-                                      <asp:Label CssClass=""  runat="server" >
-                                        <span class="label label-md lbl orangelable">Wowma ペイントアンドツール</span>
-                                        </asp:Label><br />
-                                        <asp:TextBox CssClass="txtbox" ID="TextBox126"  runat="server" style="width: 100%; margin-bottom:10px;"></asp:TextBox>
-                                     <br />
-                                  </div>
-                              <div class="floaddiv" style="width:23%;">
-                                      <asp:Label CssClass=""  runat="server" >
-                                        <span class="label label-md lbl orangelable"> 自社 ペイントアンドツール</span>
-                                        </asp:Label><br />
-                                        <asp:TextBox CssClass="txtbox" ID="TextBox127"  runat="server" style="width: 100%; margin-bottom:10px;"></asp:TextBox>
-                                     <br />
-                                  </div>--%>
+                           
                              </div>
                          </div>
                 </section>
@@ -1929,28 +1856,9 @@
         </div>
         </div>
   
-
+ <%--<script src="js/lightbox.min.js" type="text/javascript"></script>--%>
  <script>
-     function pageLoad() {
-         // $('#master').show();
-         //$('#sku').hide();
-         //$('#price').hide();
-         //$('#image').hide();
-         //$('#option').hide();
-         //$('#malldata').hide();
-         //$('#setting').hide(); 
-         //$('#tohide').hide();
-         //$('#tohide1').hide();
-         //$('#tohide2').hide();
-         //$('#tohide3').hide();
-         //$('#tohide4').hide();
-         //$('#tohidet').hide();
-         //$('#tohidet1').hide();
-         //$('#tohidet2').hide();
-         //$('#tohidet3').hide();
-         //$('#tohidet4').hide();
-         // alert("jspageload")
-     }
+    
      $(document).ready(function () {
          //$('#master').show();
          //$('#sku').hide();
@@ -1969,234 +1877,407 @@
          $('#tohidet2').hide();
          $('#tohidet3').hide();
          $('#tohidet4').hide();
-       //  document.getElementById("amaster").focus();
-        // alert("jsready")
 
+
+         var tab = document.getElementById('<%= hdfTab.ClientID%>').value;
+         if (tab != "") {
+             //alert(tab);
+             refreshTab(tab);
+         }
 
          var img1 = document.getElementById('<%= txtimg1.ClientID %>')
         
          if (img1.value != '' && img1.value != null) {
 
-             document.getElementById('<%= imgbtn1.ClientID %>').value = "削除";
-             var elem = document.getElementById('<%= imgbtn1.ClientID %>');
-             elem.addEvent("click", "imgbtn1Delete_Click");
+             document.getElementById("imginputdelete").hidden = false;
+             document.getElementById("imginput").hidden = true;
+            
          }
          else {
-            
-             document.getElementById('<%= imgbtn1.ClientID %>').value = "ファイル選択";        
+             document.getElementById("imginputdelete").hidden = true;
+             document.getElementById("imginput").hidden = false;              
          }
 
          var img2 = document.getElementById('<%= txtimg2.ClientID %>')
         
          if (img2.value != '' && img2.value != null) {
             
-             document.getElementById('<%= imgbtn2.ClientID %>').value = "削除";
+             document.getElementById("imginputdelete2").hidden = false;
+             document.getElementById("imginput2").hidden = true;
+            
          }
          else {
-            
-             document.getElementById('<%= imgbtn2.ClientID %>').value = "ファイル選択";        
+             document.getElementById("imginputdelete2").hidden = true;
+             document.getElementById("imginput2").hidden = false;              
          }
 
          var img3 = document.getElementById('<%= txtimg3.ClientID %>')
         
          if (img3.value != '' && img3.value != null) {
            
-             document.getElementById('<%= imgbtn3.ClientID %>').value = "削除";
+             document.getElementById("imginputdelete3").hidden = false;
+             document.getElementById("imginput3").hidden = true;
+            
          }
          else {
-            
-             document.getElementById('<%= imgbtn3.ClientID %>').value = "ファイル選択";        
+             document.getElementById("imginputdelete3").hidden = true;
+             document.getElementById("imginput3").hidden = false;              
          }
 
          var img4 = document.getElementById('<%= txtimg4.ClientID %>')
         
          if (img4.value != '' && img4.value != null) {
           
-             document.getElementById('<%= imgbtn4.ClientID %>').value = "削除";
+            document.getElementById("imginputdelete4").hidden = false;
+             document.getElementById("imginput4").hidden = true;
+            
          }
          else {
-            
-             document.getElementById('<%= imgbtn4.ClientID %>').value = "ファイル選択";        
+             document.getElementById("imginputdelete4").hidden = true;
+             document.getElementById("imginput4").hidden = false;              
          }
-
          var img5 = document.getElementById('<%= txtimg5.ClientID %>')
         
          if (img5.value != '' && img5.value != null) {
          
-             document.getElementById('<%= imgbtn5.ClientID %>').value = "削除";
+             document.getElementById("imginputdelete5").hidden = false;
+             document.getElementById("imginput5").hidden = true;
+            
          }
          else {
-            
-             document.getElementById('<%= imgbtn5.ClientID %>').value = "ファイル選択";        
+             document.getElementById("imginputdelete5").hidden = true;
+             document.getElementById("imginput5").hidden = false;              
          }
 
          var img6 = document.getElementById('<%= txtimg6.ClientID %>')
         
          if (img6.value != '' && img6.value != null) {
            
-             document.getElementById('<%= imgbtn6.ClientID %>').value = "削除";
+             document.getElementById("imginputdelete6").hidden = false;
+             document.getElementById("imginput6").hidden = true;
+            
          }
          else {
-            
-             document.getElementById('<%= imgbtn6.ClientID %>').value = "ファイル選択";        
-         }        
+             document.getElementById("imginputdelete6").hidden = true;
+             document.getElementById("imginput6").hidden = false;              
+         }  
 
          var img7 = document.getElementById('<%= txtimg7.ClientID %>')
         
          if (img7.value != '' && img7.value != null) {
            
-             document.getElementById('<%= imgbtn7.ClientID %>').value = "削除";
+            document.getElementById("imginputdelete7").hidden = false;
+             document.getElementById("imginput7").hidden = true;
+            
          }
          else {
-            
-             document.getElementById('<%= imgbtn7.ClientID %>').value = "ファイル選択";        
+             document.getElementById("imginputdelete7").hidden = true;
+             document.getElementById("imginput7").hidden = false;              
          }
 
          var img8 = document.getElementById('<%= txtimg8.ClientID %>')
         
          if (img8.value != '' && img8.value != null) {
          
-             document.getElementById('<%= imgbtn8.ClientID %>').value = "削除";
+            document.getElementById("imginputdelete8").hidden = false;
+             document.getElementById("imginput8").hidden = true;
+            
          }
          else {
-            
-             document.getElementById('<%= imgbtn8.ClientID %>').value = "ファイル選択";        
+             document.getElementById("imginputdelete8").hidden = true;
+             document.getElementById("imginput8").hidden = false;              
          }
 
          var img9 = document.getElementById('<%= txtimg9.ClientID %>')
         
          if (img9.value != '' && img9.value != null) {
          
-             document.getElementById('<%= imgbtn9.ClientID %>').value = "削除";
+             document.getElementById("imginputdelete9").hidden = false;
+             document.getElementById("imginput9").hidden = true;
+            
          }
          else {
-            
-             document.getElementById('<%= imgbtn9.ClientID %>').value = "ファイル選択";        
+             document.getElementById("imginputdelete9").hidden = true;
+             document.getElementById("imginput9").hidden = false;              
          }
 
          var img10 = document.getElementById('<%= txtimg10.ClientID %>')
         
          if (img10.value != '' && img10.value != null) {
          
-             document.getElementById('<%= imgbtn10.ClientID %>').value = "削除";
+             document.getElementById("imginputdelete10").hidden = false;
+             document.getElementById("imginput10").hidden = true;
+            
          }
          else {
-            
-             document.getElementById('<%= imgbtn10.ClientID %>').value = "ファイル選択";        
+             document.getElementById("imginputdelete10").hidden = true;
+             document.getElementById("imginput10").hidden = false;              
          }
 
          var img11 = document.getElementById('<%= txtimg11.ClientID %>')
         
          if (img11.value != '' && img11.value != null) {
          
-             document.getElementById('<%= imgbtn11.ClientID %>').value = "削除";
+             document.getElementById("imginputdelete11").hidden = false;
+             document.getElementById("imginput11").hidden = true;
+            
          }
          else {
-            
-             document.getElementById('<%= imgbtn11.ClientID %>').value = "ファイル選択";        
+             document.getElementById("imginputdelete11").hidden = true;
+             document.getElementById("imginput11").hidden = false;              
          }
 
          var img12 = document.getElementById('<%= txtimg12.ClientID %>')
         
          if (img12.value != '' && img12.value != null) {
          
-             document.getElementById('<%= imgbtn12.ClientID %>').value = "削除";
+            document.getElementById("imginputdelete12").hidden = false;
+             document.getElementById("imginput12").hidden = true;
+            
          }
          else {
-            
-             document.getElementById('<%= imgbtn12.ClientID %>').value = "ファイル選択";        
+             document.getElementById("imginputdelete12").hidden = true;
+             document.getElementById("imginput12").hidden = false;              
          }
 
          var img13 = document.getElementById('<%= txtimg13.ClientID %>')
         
          if (img13.value != '' && img13.value != null) {
          
-             document.getElementById('<%= imgbtn13.ClientID %>').value = "削除";
+            document.getElementById("imginputdelete13").hidden = false;
+             document.getElementById("imginput13").hidden = true;
+            
          }
          else {
-            
-             document.getElementById('<%= imgbtn13.ClientID %>').value = "ファイル選択";        
+             document.getElementById("imginputdelete13").hidden = true;
+             document.getElementById("imginput13").hidden = false;              
          }
 
          var img14 = document.getElementById('<%= txtimg14.ClientID %>')
         
          if (img14.value != '' && img14.value != null) {
          
-             document.getElementById('<%= imgbtn14.ClientID %>').value = "削除";
+             document.getElementById("imginputdelete14").hidden = false;
+             document.getElementById("imginput14").hidden = true;
+            
          }
          else {
-            
-             document.getElementById('<%= imgbtn14.ClientID %>').value = "ファイル選択";        
+             document.getElementById("imginputdelete14").hidden = true;
+             document.getElementById("imginput14").hidden = false;              
          }
 
          var img15 = document.getElementById('<%= txtimg15.ClientID %>')
         
          if (img15.value != '' && img15.value != null) {
          
-             document.getElementById('<%= imgbtn15.ClientID %>').value = "削除";
+            document.getElementById("imginputdelete15").hidden = false;
+             document.getElementById("imginput15").hidden = true;
+            
          }
          else {
-            
-             document.getElementById('<%= imgbtn15.ClientID %>').value = "ファイル選択";        
+             document.getElementById("imginputdelete15").hidden = true;
+             document.getElementById("imginput15").hidden = false;              
          }
 
          var img16 = document.getElementById('<%= txtimg16.ClientID %>')
         
          if (img16.value != '' && img16.value != null) {
          
-             document.getElementById('<%= imgbtn16.ClientID %>').value = "削除";
+            document.getElementById("imginputdelete16").hidden = false;
+             document.getElementById("imginput16").hidden = true;
+            
          }
          else {
-            
-             document.getElementById('<%= imgbtn16.ClientID %>').value = "ファイル選択";        
+             document.getElementById("imginputdelete16").hidden = true;
+             document.getElementById("imginput16").hidden = false;              
          }
 
          var img17 = document.getElementById('<%= txtimg17.ClientID %>')
         
          if (img17.value != '' && img17.value != null) {
          
-             document.getElementById('<%= imgbtn17.ClientID %>').value = "削除";
+             document.getElementById("imginputdelete17").hidden = false;
+             document.getElementById("imginput17").hidden = true;
+            
          }
          else {
-            
-             document.getElementById('<%= imgbtn17.ClientID %>').value = "ファイル選択";        
+             document.getElementById("imginputdelete17").hidden = true;
+             document.getElementById("imginput17").hidden = false;              
          }
 
          var img18 = document.getElementById('<%= txtimg18.ClientID %>')
         
          if (img18.value != '' && img18.value != null) {
          
-             document.getElementById('<%= imgbtn18.ClientID %>').value = "削除";
+             document.getElementById("imginputdelete18").hidden = false;
+             document.getElementById("imginput18").hidden = true;
+            
          }
          else {
-            
-             document.getElementById('<%= imgbtn18.ClientID %>').value = "ファイル選択";        
+             document.getElementById("imginputdelete18").hidden = true;
+             document.getElementById("imginput18").hidden = false;              
          }
 
          var img19 = document.getElementById('<%= txtimg19.ClientID %>')
         
          if (img19.value != '' && img19.value != null) {
          
-             document.getElementById('<%= imgbtn19.ClientID %>').value = "削除";
+             document.getElementById("imginputdelete19").hidden = false;
+             document.getElementById("imginput19").hidden = true;
+            
          }
          else {
-            
-             document.getElementById('<%= imgbtn19.ClientID %>').value = "ファイル選択";        
+             document.getElementById("imginputdelete19").hidden = true;
+             document.getElementById("imginput19").hidden = false;              
          }
 
          var img20 = document.getElementById('<%= txtimg20.ClientID %>')
         
          if (img20.value != '' && img20.value != null) {
          
-             document.getElementById('<%= imgbtn20.ClientID %>').value = "削除";
+             document.getElementById("imginputdelete20").hidden = false;
+             document.getElementById("imginput20").hidden = true;
+            
          }
          else {
-            
-             document.getElementById('<%= imgbtn20.ClientID %>').value = "ファイル選択";        
+             document.getElementById("imginputdelete20").hidden = true;
+             document.getElementById("imginput20").hidden = false;              
          }
     
 
      });
+
+ function refreshTab(id)
+ {
+         if (id == 'amaster') {
+             var anchorsArray = document.querySelectorAll('.aitem');
+             for (var i = 0; i < anchorsArray.length; i++) {
+                 anchorsArray[i].classList.remove("act");
+
+             }
+             var ele = document.getElementById("amaster");
+             ele.classList.add("act")
+             $('#master').show();
+             $('#sku').hide();
+             $('#price').hide();
+             $('#image').hide();
+             $('#option').hide();
+             $('#malldata').hide();
+             $('#setting').hide();
+         }
+         if (id == 'asku') {
+             var anchorsArray = document.querySelectorAll('.aitem');
+             for (var i = 0; i < anchorsArray.length; i++) {
+                 anchorsArray[i].classList.remove("act");
+
+             }
+             var ele = document.getElementById("asku");
+             ele.classList.add("act")
+             $('#master').hide();
+             $('#sku').show();
+             $('#price').hide();
+             $('#image').hide();
+             $('#option').hide();
+             $('#malldata').hide();
+             $('#setting').hide();
+             var sec = document.getElementById('sku');
+             sec.removeAttribute("hidden");
+         }
+         if (id == 'aprice') {
+             var anchorsArray = document.querySelectorAll('.aitem');
+             for (var i = 0; i < anchorsArray.length; i++) {
+                 anchorsArray[i].classList.remove("act");
+
+             }
+             var ele = document.getElementById("aprice");
+             ele.classList.add("act")
+             $('#master').hide();
+             $('#sku').hide();
+             $('#price').show();
+             $('#image').hide();
+             $('#option').hide();
+             $('#malldata').hide();
+             $('#setting').hide();
+             var sec = document.getElementById('price');
+             sec.removeAttribute("hidden");
+         }
+         if (id == 'aimage') {
+             var anchorsArray = document.querySelectorAll('.aitem');
+             for (var i = 0; i < anchorsArray.length; i++) {
+                 anchorsArray[i].classList.remove("act");
+
+             }
+             var ele = document.getElementById("aimage");
+             ele.classList.add("act")
+             $('#master').hide();
+             $('#sku').hide();
+             $('#price').hide();
+             $('#image').show();
+             $('#option').hide();
+             $('#malldata').hide();
+             $('#setting').hide();
+             var sec = document.getElementById('image');
+             sec.removeAttribute("hidden");
+
+         }
+         if (id == 'aoption') {
+             var anchorsArray = document.querySelectorAll('.aitem');
+             for (var i = 0; i < anchorsArray.length; i++) {
+                 anchorsArray[i].classList.remove("act");
+
+             }
+             var ele = document.getElementById("aoption");
+             ele.classList.add("act")
+             $('#master').hide();
+             $('#sku').hide();
+             $('#price').hide();
+             $('#image').hide();
+             $('#option').show();
+             $('#malldata').hide();
+             $('#setting').hide();
+             var sec = document.getElementById('option');
+             sec.removeAttribute("hidden");
+         }
+         if (id == 'amalldata') {
+             var anchorsArray = document.querySelectorAll('.aitem');
+             for (var i = 0; i < anchorsArray.length; i++) {
+                 anchorsArray[i].classList.remove("act");
+
+             }
+             var ele = document.getElementById("amalldata");
+             ele.classList.add("act")
+             $('#master').hide();
+             $('#sku').hide();
+             $('#price').hide();
+             $('#image').hide();
+             $('#option').hide();
+             $('#malldata').show();
+             $('#setting').hide();
+             var sec = document.getElementById('malldata');
+             sec.removeAttribute("hidden");
+         }
+         if (id == 'asetting') {
+             var anchorsArray = document.querySelectorAll('.aitem');
+             for (var i = 0; i < anchorsArray.length; i++) {
+                 anchorsArray[i].classList.remove("act");
+
+             }
+             var ele = document.getElementById("asetting");
+             ele.classList.add("act")
+             $('#master').hide();
+             $('#sku').hide();
+             $('#price').hide();
+             $('#image').hide();
+             $('#option').hide();
+             $('#malldata').hide();
+             $('#setting').show();
+             var sec = document.getElementById('setting');
+             sec.removeAttribute("hidden");
+         }
+
+         eventRef.preventDefault();
+         return true;
+     }
 
      $(document).keydown(function (event) {
          var id = $('.act').attr('id');
@@ -2220,7 +2301,8 @@
          $('#image').hide();
          $('#option').hide();
          $('#malldata').hide();
-         $('#setting').hide();  
+         $('#setting').hide(); 
+         document.getElementById('<%=hdfTab.ClientID %>').value = "amaster";
           //var sec = document.getElementById('malldata');
           //sec.removeAttribute("hidden"); 
      });
@@ -2234,7 +2316,8 @@
          $('#malldata').hide();
           $('#setting').hide();  
            var sec = document.getElementById('sku');
-          sec.removeAttribute("hidden"); 
+          sec.removeAttribute("hidden");
+          document.getElementById('<%=hdfTab.ClientID %>').value = "asku";
      });
 
       $('#aprice').click(function() {
@@ -2247,6 +2330,7 @@
           $('#setting').hide(); 
            var sec = document.getElementById('price');
           sec.removeAttribute("hidden"); 
+          document.getElementById('<%=hdfTab.ClientID %>').value = "aprice";
      });
 
       $('#aimage').click(function() {
@@ -2259,6 +2343,7 @@
           $('#setting').hide(); 
            var sec = document.getElementById('image');
           sec.removeAttribute("hidden"); 
+          document.getElementById('<%=hdfTab.ClientID %>').value = "aimage";
      });
 
       $('#aoption').click(function() {
@@ -2271,6 +2356,7 @@
           $('#setting').hide(); 
            var sec = document.getElementById('option');
           sec.removeAttribute("hidden"); 
+          document.getElementById('<%=hdfTab.ClientID %>').value = "aoption";
      });
 
       $('#amalldata').click(function() {
@@ -2283,6 +2369,7 @@
           $('#setting').hide(); 
           var sec = document.getElementById('malldata');
           sec.removeAttribute("hidden"); 
+          document.getElementById('<%=hdfTab.ClientID %>').value = "amalldata";
      });
 
       $('#asetting').click(function() {
@@ -2296,6 +2383,7 @@
           var sec = document.getElementById('setting');
           sec.removeAttribute("hidden"); 
           $('#setting').show(); 
+          document.getElementById('<%=hdfTab.ClientID %>').value = "asetting";
 
      });
 
@@ -2384,7 +2472,7 @@
          $('#setting').show(); 
            var sec = document.getElementById('setting');
           sec.removeAttribute("hidden"); 
-     
+     document.getElementById('<%=hdfTab.ClientID %>').value = "asetting";
      }
      if (id == 'asku')
      {
@@ -2403,6 +2491,7 @@
          $('#option').hide();
          $('#malldata').hide();
          $('#setting').hide(); 
+         document.getElementById('<%=hdfTab.ClientID %>').value = "amaster";
        
      }
      if (id == 'aprice')
@@ -2422,7 +2511,8 @@
          $('#malldata').hide();
          $('#setting').hide(); 
            var sec = document.getElementById('sku');
-          sec.removeAttribute("hidden"); 
+         sec.removeAttribute("hidden"); 
+         document.getElementById('<%=hdfTab.ClientID %>').value = "asku";
      }
      if (id == 'aimage')
      {
@@ -2442,7 +2532,8 @@
          $('#malldata').hide();
          $('#setting').hide(); 
            var sec = document.getElementById('price');
-          sec.removeAttribute("hidden"); 
+         sec.removeAttribute("hidden"); 
+         document.getElementById('<%=hdfTab.ClientID %>').value = "aprice";
 
      }
      if (id == 'aoption')
@@ -2462,7 +2553,8 @@
          $('#malldata').hide();
          $('#setting').hide(); 
            var sec = document.getElementById('image');
-          sec.removeAttribute("hidden"); 
+         sec.removeAttribute("hidden");
+         document.getElementById('<%=hdfTab.ClientID %>').value = "aimage";
      }
      if (id == 'amalldata')
      {
@@ -2481,7 +2573,8 @@
          $('#malldata').hide();
          $('#setting').hide(); 
            var sec = document.getElementById('option');
-          sec.removeAttribute("hidden"); 
+         sec.removeAttribute("hidden");
+         document.getElementById('<%=hdfTab.ClientID %>').value = "aoption";
      }
      if(id == 'asetting')
      {
@@ -2500,7 +2593,8 @@
          $('#malldata').show();
          $('#setting').hide(); 
            var sec = document.getElementById('malldata');
-          sec.removeAttribute("hidden"); 
+         sec.removeAttribute("hidden"); 
+         document.getElementById('<%=hdfTab.ClientID %>').value = "amalldata";
 
      }
    
@@ -2525,7 +2619,8 @@
          $('#malldata').hide();
          $('#setting').hide(); 
            var sec = document.getElementById('sku');
-          sec.removeAttribute("hidden"); 
+         sec.removeAttribute("hidden"); 
+         document.getElementById('<%=hdfTab.ClientID %>').value = "asku";
      
      }
      if (id == 'asku')
@@ -2545,7 +2640,8 @@
          $('#malldata').hide();
          $('#setting').hide(); 
             var sec = document.getElementById('price');
-          sec.removeAttribute("hidden"); 
+         sec.removeAttribute("hidden"); 
+         document.getElementById('<%=hdfTab.ClientID %>').value = "aprice";
      }
      if (id == 'aprice')
      {
@@ -2564,7 +2660,8 @@
          $('#malldata').hide();
          $('#setting').hide(); 
             var sec = document.getElementById('image');
-          sec.removeAttribute("hidden"); 
+         sec.removeAttribute("hidden"); 
+         document.getElementById('<%=hdfTab.ClientID %>').value = "aimage";
      }
      if (id == 'aimage')
      {
@@ -2583,7 +2680,8 @@
          $('#malldata').hide();
          $('#setting').hide(); 
             var sec = document.getElementById('option');
-          sec.removeAttribute("hidden"); 
+         sec.removeAttribute("hidden"); 
+         document.getElementById('<%=hdfTab.ClientID %>').value = "aoption";
 
      }
      if (id == 'aoption')
@@ -2603,7 +2701,8 @@
          $('#malldata').show();
          $('#setting').hide(); 
             var sec = document.getElementById('malldata');
-          sec.removeAttribute("hidden"); 
+         sec.removeAttribute("hidden"); 
+         document.getElementById('<%=hdfTab.ClientID %>').value = "amalldata";
      }
      if (id == 'amalldata')
      {
@@ -2622,7 +2721,8 @@
          $('#malldata').hide();
          $('#setting').show(); 
             var sec = document.getElementById('setting');
-          sec.removeAttribute("hidden"); 
+         sec.removeAttribute("hidden"); 
+         document.getElementById('<%=hdfTab.ClientID %>').value = "asetting";
      }
      if(id == 'asetting')
      {
@@ -2640,6 +2740,7 @@
          $('#option').hide();
          $('#malldata').hide();
          $('#setting').hide(); 
+         document.getElementById('<%=hdfTab.ClientID %>').value = "amaster";
 
      }
     
@@ -2683,28 +2784,11 @@
 </script>
 
     <script type="text/javascript" >
-        function showBrowseDialog() {
-            var fileuploadctrl = document.getElementById('<%= FileUpload1.ClientID %>');
-            fileuploadctrl.click();
-          
-            return true;
-        }
-
-
-        function uploadtest() {
-            var fileuploadctrl = document.getElementById('<%= FileUpload1.ClientID %>');
-            var btn = document.getElementById('<%= imgbtn1_1.ClientID %>');
-            btn.click();
-            alert(fileuploadctrl.value)
-             alert("finish")
-            
-                
-        }
-
+       
         function showBrowseDialog2() {
         var fileuploadctrl = document.getElementById('<%= FileUpload2.ClientID %>');
             fileuploadctrl.click();
-         return true;
+       
         }
        
 
@@ -2716,7 +2800,7 @@
         function showBrowseDialog3() {
         var fileuploadctrl = document.getElementById('<%= FileUpload3.ClientID %>');
             fileuploadctrl.click();
-             return true;
+            
         }
        
 
@@ -2728,7 +2812,7 @@
         function showBrowseDialog4() {
         var fileuploadctrl = document.getElementById('<%= FileUpload4.ClientID %>');
             fileuploadctrl.click();
-         return true;
+        
         }
        
 
@@ -2740,7 +2824,7 @@
        function showBrowseDialog5() {
         var fileuploadctrl = document.getElementById('<%= FileUpload5.ClientID %>');
            fileuploadctrl.click();
-            return true;
+            
         }
        
 
@@ -2752,7 +2836,7 @@
       function showBrowseDialog6() {
         var fileuploadctrl = document.getElementById('<%= FileUpload6.ClientID %>');
           fileuploadctrl.click();
-           return true;
+           
         }
        
 
@@ -2764,7 +2848,7 @@
     function showBrowseDialog7() {
         var fileuploadctrl = document.getElementById('<%= FileUpload7.ClientID %>');
         fileuploadctrl.click();
-         return true;
+        
         }
        
 
@@ -2776,7 +2860,7 @@
         function showBrowseDialog8() {
         var fileuploadctrl = document.getElementById('<%= FileUpload8.ClientID %>');
             fileuploadctrl.click();
-             return true;
+            
         }
        
 
@@ -2788,7 +2872,7 @@
       function showBrowseDialog9() {
         var fileuploadctrl = document.getElementById('<%= FileUpload9.ClientID %>');
           fileuploadctrl.click();
-           return true;
+         
         }
        
 
@@ -2800,7 +2884,7 @@
        function showBrowseDialog10() {
         var fileuploadctrl = document.getElementById('<%= FileUpload10.ClientID %>');
            fileuploadctrl.click();
-         return true;
+        
         }
        
 
@@ -2812,7 +2896,7 @@
      function showBrowseDialog11() {
         var fileuploadctrl = document.getElementById('<%= FileUpload11.ClientID %>');
          fileuploadctrl.click();
-          return true;
+       
         }
        
 
@@ -2824,7 +2908,7 @@
         function showBrowseDialog12() {
         var fileuploadctrl = document.getElementById('<%= FileUpload12.ClientID %>');
             fileuploadctrl.click();
-             return true;
+           
         }
        
 
@@ -2836,7 +2920,7 @@
         function showBrowseDialog13() {
         var fileuploadctrl = document.getElementById('<%= FileUpload13.ClientID %>');
             fileuploadctrl.click();
-             return true;
+             
         }
        
 
@@ -2848,7 +2932,7 @@
         function showBrowseDialog14() {
         var fileuploadctrl = document.getElementById('<%= FileUpload14.ClientID %>');
             fileuploadctrl.click();
-             return true;
+           
         }
        
 
@@ -2860,7 +2944,7 @@
        function showBrowseDialog15() {
         var fileuploadctrl = document.getElementById('<%= FileUpload15.ClientID %>');
            fileuploadctrl.click();
-            return true;
+           
         }
        
 
@@ -2872,7 +2956,7 @@
       function showBrowseDialog16() {
         var fileuploadctrl = document.getElementById('<%= FileUpload16.ClientID %>');
           fileuploadctrl.click();
-         return true;
+         
         }
        
 
@@ -2884,7 +2968,7 @@
     function showBrowseDialog17() {
         var fileuploadctrl = document.getElementById('<%= FileUpload17.ClientID %>');
         fileuploadctrl.click();
-         return true;
+        
         }
        
 
@@ -2896,7 +2980,7 @@
     function showBrowseDialog18() {
         var fileuploadctrl = document.getElementById('<%= FileUpload18.ClientID %>');
         fileuploadctrl.click();
-         return true;
+        
         }
        
 
@@ -2908,7 +2992,7 @@
       function showBrowseDialog19() {
         var fileuploadctrl = document.getElementById('<%= FileUpload19.ClientID %>');
           fileuploadctrl.click();
-           return true;
+         
         }
        
 
@@ -2920,7 +3004,7 @@
        function showBrowseDialog20() {
         var fileuploadctrl = document.getElementById('<%= FileUpload20.ClientID %>');
            fileuploadctrl.click();
-            return true;
+            
         }
        
 
@@ -2929,13 +3013,7 @@
         btn.click();
     }
 </script>
-<script>
-  function openfileDialog() {
-      //$("#FileUpload1").click();
-      var btn = document.getElementById('<%= FileUpload1.ClientID %>');
-        btn.click();
-   }
-</script>
+
 <script type="text/javascript">
     function ShowYahooSpecValue(ctrl) {
         var width = 600;
@@ -3084,5 +3162,239 @@
     }
 </script>
 
+
+    <script type="text/javascript" >
+    function showBrowseDialog() {
+        var fileuploadctrl = document.getElementById('<%= FileUpload1.ClientID %>');
+        fileuploadctrl.click();
+    }
+
+    function upload() {
+        var btn = document.getElementById('<%= hideButton.ClientID %>');
+        btn.click();
+        }
+
+        function Delete() {
+            alert("delete")
+            var hlImage1 = document.getElementById('<%= hlImage1.ClientID %>');
+            var image1 = document.getElementById('<%= Image1.ClientID %>');
+            var txtimg1 = document.getElementById('<%= txtimg1.ClientID %>');
+            hlImage1.href = '../../Item_Image/no_image.jpg';
+            image1.src = '../../Item_Image/no_image.jpg';
+            txtimg1.value = "";
+            document.getElementById("imginputdelete").hidden = true;
+            document.getElementById("imginput").hidden = false;   
+        }
+
+        function Delete2() {
+            var hlImage1 = document.getElementById('<%= hlImage2.ClientID %>');
+            var image1 = document.getElementById('<%= Image2.ClientID %>');
+            var txtimg1 = document.getElementById('<%= txtimg2.ClientID %>');
+            hlImage1.href = '../../Item_Image/no_image.jpg';
+            image1.src = '../../Item_Image/no_image.jpg';
+            txtimg1.value = "";
+            document.getElementById("imginputdelete2").hidden = true;
+            document.getElementById("imginput2").hidden = false;   
+        }
+
+        function Delete3() {
+            var hlImage1 = document.getElementById('<%= hlImage3.ClientID %>');
+            var image1 = document.getElementById('<%= Image3.ClientID %>');
+            var txtimg1 = document.getElementById('<%= txtimg3.ClientID %>');
+            hlImage1.href = '../../Item_Image/no_image.jpg';
+            image1.src = '../../Item_Image/no_image.jpg';
+            txtimg1.value = "";
+            document.getElementById("imginputdelete3").hidden = true;
+            document.getElementById("imginput3").hidden = false;   
+        }
+
+        function Delete4() {
+            var hlImage1 = document.getElementById('<%= hlImage4.ClientID %>');
+            var image1 = document.getElementById('<%= Image4.ClientID %>');
+            var txtimg1 = document.getElementById('<%= txtimg4.ClientID %>');
+            hlImage1.href = '../../Item_Image/no_image.jpg';
+            image1.src = '../../Item_Image/no_image.jpg';
+            txtimg1.value = "";
+            document.getElementById("imginputdelete4").hidden = true;
+            document.getElementById("imginput4").hidden = false;   
+        }
+
+        function Delete5() {
+            var hlImage1 = document.getElementById('<%= hlImage5.ClientID %>');
+            var image1 = document.getElementById('<%= Image5.ClientID %>');
+            var txtimg1 = document.getElementById('<%= txtimg5.ClientID %>');
+            hlImage1.href = '../../Item_Image/no_image.jpg';
+            image1.src = '../../Item_Image/no_image.jpg';
+            txtimg1.value = "";
+            document.getElementById("imginputdelete5").hidden = true;
+            document.getElementById("imginput5").hidden = false;   
+        }
+
+        function Delete6() {
+            var hlImage1 = document.getElementById('<%= hlImage6.ClientID %>');
+            var image1 = document.getElementById('<%= Image6.ClientID %>');
+            var txtimg1 = document.getElementById('<%= txtimg6.ClientID %>');
+            hlImage1.href = '../../Item_Image/no_image.jpg';
+            image1.src = '../../Item_Image/no_image.jpg';
+            txtimg1.value = "";
+            document.getElementById("imginputdelete6").hidden = true;
+            document.getElementById("imginput6").hidden = false;   
+        }
+
+        function Delete7() {
+            var hlImage1 = document.getElementById('<%= hlImage7.ClientID %>');
+            var image1 = document.getElementById('<%= Image7.ClientID %>');
+            var txtimg1 = document.getElementById('<%= txtimg7.ClientID %>');
+            hlImage1.href = '../../Item_Image/no_image.jpg';
+            image1.src = '../../Item_Image/no_image.jpg';
+            txtimg1.value = "";
+            document.getElementById("imginputdelete7").hidden = true;
+            document.getElementById("imginput7").hidden = false;   
+        }
+
+       function Delete8() {
+            var hlImage1 = document.getElementById('<%= hlImage8.ClientID %>');
+            var image1 = document.getElementById('<%= Image8.ClientID %>');
+            var txtimg1 = document.getElementById('<%= txtimg8.ClientID %>');
+            hlImage1.href = '../../Item_Image/no_image.jpg';
+            image1.src = '../../Item_Image/no_image.jpg';
+            txtimg1.value = "";
+            document.getElementById("imginputdelete8").hidden = true;
+            document.getElementById("imginput8").hidden = false;   
+        }
+
+       function Delete9() {
+            var hlImage1 = document.getElementById('<%= hlImage9.ClientID %>');
+            var image1 = document.getElementById('<%= Image9.ClientID %>');
+            var txtimg1 = document.getElementById('<%= txtimg9.ClientID %>');
+            hlImage1.href = '../../Item_Image/no_image.jpg';
+            image1.src = '../../Item_Image/no_image.jpg';
+            txtimg1.value = "";
+            document.getElementById("imginputdelete9").hidden = true;
+            document.getElementById("imginput9").hidden = false;   
+        }
+
+       function Delete10() {
+            var hlImage1 = document.getElementById('<%= hlImage10.ClientID %>');
+            var image1 = document.getElementById('<%= Image10.ClientID %>');
+            var txtimg1 = document.getElementById('<%= txtimg10.ClientID %>');
+            hlImage1.href = '../../Item_Image/no_image.jpg';
+            image1.src = '../../Item_Image/no_image.jpg';
+            txtimg1.value = "";
+            document.getElementById("imginputdelete10").hidden = true;
+            document.getElementById("imginput10").hidden = false;   
+        }
+
+        function Delete11() {
+            var hlImage1 = document.getElementById('<%= hlImage11.ClientID %>');
+            var image1 = document.getElementById('<%= Image11.ClientID %>');
+            var txtimg1 = document.getElementById('<%= txtimg11.ClientID %>');
+            hlImage1.href = '../../Item_Image/no_image.jpg';
+            image1.src = '../../Item_Image/no_image.jpg';
+            txtimg1.value = "";
+            document.getElementById("imginputdelete11").hidden = true;
+            document.getElementById("imginput11").hidden = false;   
+        }
+
+        function Delete12() {
+            var hlImage1 = document.getElementById('<%= hlImage12.ClientID %>');
+            var image1 = document.getElementById('<%= Image12.ClientID %>');
+            var txtimg1 = document.getElementById('<%= txtimg12.ClientID %>');
+            hlImage1.href = '../../Item_Image/no_image.jpg';
+            image1.src = '../../Item_Image/no_image.jpg';
+            txtimg1.value = "";
+            document.getElementById("imginputdelete12").hidden = true;
+            document.getElementById("imginput12").hidden = false;   
+        }
+
+        function Delete13() {
+            var hlImage1 = document.getElementById('<%= hlImage13.ClientID %>');
+            var image1 = document.getElementById('<%= Image13.ClientID %>');
+            var txtimg1 = document.getElementById('<%= txtimg13.ClientID %>');
+            hlImage1.href = '../../Item_Image/no_image.jpg';
+            image1.src = '../../Item_Image/no_image.jpg';
+            txtimg1.value = "";
+            document.getElementById("imginputdelete13").hidden = true;
+            document.getElementById("imginput13").hidden = false;   
+        }
+
+        function Delete14() {
+            var hlImage1 = document.getElementById('<%= hlImage14.ClientID %>');
+            var image1 = document.getElementById('<%= Image14.ClientID %>');
+            var txtimg1 = document.getElementById('<%= txtimg14.ClientID %>');
+            hlImage1.href = '../../Item_Image/no_image.jpg';
+            image1.src = '../../Item_Image/no_image.jpg';
+            txtimg1.value = "";
+            document.getElementById("imginputdelete14").hidden = true;
+            document.getElementById("imginput14").hidden = false;   
+        }
+
+        function Delete15() {
+            var hlImage1 = document.getElementById('<%= hlImage15.ClientID %>');
+            var image1 = document.getElementById('<%= Image15.ClientID %>');
+            var txtimg1 = document.getElementById('<%= txtimg15.ClientID %>');
+            hlImage1.href = '../../Item_Image/no_image.jpg';
+            image1.src = '../../Item_Image/no_image.jpg';
+            txtimg1.value = "";
+            document.getElementById("imginputdelete15").hidden = true;
+            document.getElementById("imginput15").hidden = false;   
+        }
+
+        function Delete16() {
+            var hlImage1 = document.getElementById('<%= hlImage16.ClientID %>');
+            var image1 = document.getElementById('<%= Image16.ClientID %>');
+            var txtimg1 = document.getElementById('<%= txtimg16.ClientID %>');
+            hlImage1.href = '../../Item_Image/no_image.jpg';
+            image1.src = '../../Item_Image/no_image.jpg';
+            txtimg1.value = "";
+            document.getElementById("imginputdelete16").hidden = true;
+            document.getElementById("imginput16").hidden = false;   
+        }
+
+        function Delete17() {
+            var hlImage1 = document.getElementById('<%= hlImage17.ClientID %>');
+            var image1 = document.getElementById('<%= Image17.ClientID %>');
+            var txtimg1 = document.getElementById('<%= txtimg17.ClientID %>');
+            hlImage1.href = '../../Item_Image/no_image.jpg';
+            image1.src = '../../Item_Image/no_image.jpg';
+            txtimg1.value = "";
+            document.getElementById("imginputdelete17").hidden = true;
+            document.getElementById("imginput17").hidden = false;   
+        }
+
+        function Delete18() {
+            var hlImage1 = document.getElementById('<%= hlImage18.ClientID %>');
+            var image1 = document.getElementById('<%= Image18.ClientID %>');
+            var txtimg1 = document.getElementById('<%= txtimg18.ClientID %>');
+            hlImage1.href = '../../Item_Image/no_image.jpg';
+            image1.src = '../../Item_Image/no_image.jpg';
+            txtimg1.value = "";
+            document.getElementById("imginputdelete18").hidden = true;
+            document.getElementById("imginput18").hidden = false;   
+        }
+
+        function Delete19() {
+            var hlImage1 = document.getElementById('<%= hlImage19.ClientID %>');
+            var image1 = document.getElementById('<%= Image19.ClientID %>');
+            var txtimg1 = document.getElementById('<%= txtimg19.ClientID %>');
+            hlImage1.href = '../../Item_Image/no_image.jpg';
+            image1.src = '../../Item_Image/no_image.jpg';
+            txtimg1.value = "";
+            document.getElementById("imginputdelete19").hidden = true;
+            document.getElementById("imginput19").hidden = false;   
+        }
+
+       function Delete20() {
+            var hlImage1 = document.getElementById('<%= hlImage20.ClientID %>');
+            var image1 = document.getElementById('<%= Image20.ClientID %>');
+            var txtimg1 = document.getElementById('<%= txtimg20.ClientID %>');
+            hlImage1.href = '../../Item_Image/no_image.jpg';
+            image1.src = '../../Item_Image/no_image.jpg';
+            txtimg1.value = "";
+            document.getElementById("imginputdelete20").hidden = true;
+            document.getElementById("imginput20").hidden = false;   
+        }
+
+</script>
 
 </asp:Content>

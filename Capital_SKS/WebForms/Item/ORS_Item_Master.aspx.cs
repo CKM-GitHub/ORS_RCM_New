@@ -13,7 +13,7 @@ using System.Configuration;
 using System.Web.UI.HtmlControls;
 using System.Text.RegularExpressions;
 using ORS_RCM;
-
+using System.IO;
 
 namespace Capital_SKS.WebForms.Item
 {
@@ -167,6 +167,7 @@ namespace Capital_SKS.WebForms.Item
         {
             try
             {
+
                 string ControlID = string.Empty;
                 UserRoleBL user = new UserRoleBL();
                 bool resultRead = user.CanRead(UserID, "099");
@@ -356,6 +357,12 @@ namespace Capital_SKS.WebForms.Item
             }
 
         }
+
+        //protected void Upload(object sender, EventArgs e)
+        //{
+        //    FileUploadtest.SaveAs(Server.MapPath("~/Uploads/" + Path.GetFileName(FileUpload1.FileName)));
+        //    lblMessage.Visible = true;
+        //}
 
         #region RelatedItem
         public void DisplayRelatedItem()
@@ -2619,8 +2626,8 @@ namespace Capital_SKS.WebForms.Item
                 dt.Columns.Add("ItemCode", typeof(string));
                 foreach (DataListItem li in dlShop1.Items)
                 {
-                    Label lbl = li.FindControl("lblMall1ShopID") as Label;
-                    CheckBox cb = li.FindControl("ckbMall1Shop") as CheckBox;
+                    Label lbl = li.FindControl("lblShopID") as Label;
+                    CheckBox cb = li.FindControl("ckbShopName") as CheckBox;
                     if (cb != null)
                     {
                         if (cb.Checked)
@@ -2895,8 +2902,8 @@ namespace Capital_SKS.WebForms.Item
 
                 foreach (DataListItem li in dlShop1.Items)
                 {
-                    Label lbl = li.FindControl("lblMall1ShopID") as Label;
-                    CheckBox cb = li.FindControl("ckbMall1Shop") as CheckBox;
+                    Label lbl = li.FindControl("lblShopID") as Label;
+                    CheckBox cb = li.FindControl("ckbShopName") as CheckBox;
                     if (cb != null)
                     {
                         if (cb.Checked)
@@ -3051,65 +3058,65 @@ namespace Capital_SKS.WebForms.Item
 
         protected void ChangeNUll_To_Space()
         {
-            Image1.ImageUrl = imagePath + "no_image.jpg";
-            hlImage1.NavigateUrl = imagePath + "no_image.jpg";
+            //Image1.ImageUrl = imagePath + "no_image.jpg";
+            //hlImage1.NavigateUrl = imagePath + "no_image.jpg";
 
-            Image2.ImageUrl = imagePath + "no_image.jpg";
-            hlImage2.NavigateUrl = imagePath + "no_image.jpg";
+            //Image2.ImageUrl = imagePath + "no_image.jpg";
+            //hlImage2.NavigateUrl = imagePath + "no_image.jpg";
 
-            Image3.ImageUrl = imagePath + "no_image.jpg";
-            hlImage3.NavigateUrl = imagePath + "no_image.jpg";
+            //Image3.ImageUrl = imagePath + "no_image.jpg";
+            //hlImage3.NavigateUrl = imagePath + "no_image.jpg";
 
-            Image4.ImageUrl = imagePath + "no_image.jpg";
-            hlImage4.NavigateUrl = imagePath + "no_image.jpg";
+            //Image4.ImageUrl = imagePath + "no_image.jpg";
+            //hlImage4.NavigateUrl = imagePath + "no_image.jpg";
 
-            Image5.ImageUrl = imagePath + "no_image.jpg";
-            hlImage5.NavigateUrl = imagePath + "no_image.jpg";
+            //Image5.ImageUrl = imagePath + "no_image.jpg";
+            //hlImage5.NavigateUrl = imagePath + "no_image.jpg";
 
-            Image6.ImageUrl = imagePath + "no_image.jpg";
-            hlImage6.NavigateUrl = imagePath + "no_image.jpg";
+            //Image6.ImageUrl = imagePath + "no_image.jpg";
+            //hlImage6.NavigateUrl = imagePath + "no_image.jpg";
 
-            Image7.ImageUrl = imagePath + "no_image.jpg";
-            hlImage7.NavigateUrl = imagePath + "no_image.jpg";
+            //Image7.ImageUrl = imagePath + "no_image.jpg";
+            //hlImage7.NavigateUrl = imagePath + "no_image.jpg";
 
-            Image8.ImageUrl = imagePath + "no_image.jpg";
-            hlImage8.NavigateUrl = imagePath + "no_image.jpg";
+            //Image8.ImageUrl = imagePath + "no_image.jpg";
+            //hlImage8.NavigateUrl = imagePath + "no_image.jpg";
 
-            Image9.ImageUrl = imagePath + "no_image.jpg";
-            hlImage9.NavigateUrl = imagePath + "no_image.jpg";
+            //Image9.ImageUrl = imagePath + "no_image.jpg";
+            //hlImage9.NavigateUrl = imagePath + "no_image.jpg";
 
-            Image10.ImageUrl = imagePath + "no_image.jpg";
-            hlImage10.NavigateUrl = imagePath + "no_image.jpg";
+            //Image10.ImageUrl = imagePath + "no_image.jpg";
+            //hlImage10.NavigateUrl = imagePath + "no_image.jpg";
 
-            Image11.ImageUrl = imagePath + "no_image.jpg";
-            hlImage11.NavigateUrl = imagePath + "no_image.jpg";
+            //Image11.ImageUrl = imagePath + "no_image.jpg";
+            //hlImage11.NavigateUrl = imagePath + "no_image.jpg";
 
-            Image12.ImageUrl = imagePath + "no_image.jpg";
-            hlImage12.NavigateUrl = imagePath + "no_image.jpg";
+            //Image12.ImageUrl = imagePath + "no_image.jpg";
+            //hlImage12.NavigateUrl = imagePath + "no_image.jpg";
 
-            Image13.ImageUrl = imagePath + "no_image.jpg";
-            hlImage13.NavigateUrl = imagePath + "no_image.jpg";
+            //Image13.ImageUrl = imagePath + "no_image.jpg";
+            //hlImage13.NavigateUrl = imagePath + "no_image.jpg";
 
-            Image14.ImageUrl = imagePath + "no_image.jpg";
-            hlImage14.NavigateUrl = imagePath + "no_image.jpg";
+            //Image14.ImageUrl = imagePath + "no_image.jpg";
+            //hlImage14.NavigateUrl = imagePath + "no_image.jpg";
 
-            Image15.ImageUrl = imagePath + "no_image.jpg";
-            hlImage15.NavigateUrl = imagePath + "no_image.jpg";
+            //Image15.ImageUrl = imagePath + "no_image.jpg";
+            //hlImage15.NavigateUrl = imagePath + "no_image.jpg";
 
-            Image17.ImageUrl = imagePath + "no_image.jpg";
-            hlImage17.NavigateUrl = imagePath + "no_image.jpg";
+            //Image17.ImageUrl = imagePath + "no_image.jpg";
+            //hlImage17.NavigateUrl = imagePath + "no_image.jpg";
 
-            Image18.ImageUrl = imagePath + "no_image.jpg";
-            hlImage18.NavigateUrl = imagePath + "no_image.jpg";
+            //Image18.ImageUrl = imagePath + "no_image.jpg";
+            //hlImage18.NavigateUrl = imagePath + "no_image.jpg";
 
-            Image16.ImageUrl = imagePath + "no_image.jpg";
-            hlImage16.NavigateUrl = imagePath + "no_image.jpg";
+            //Image16.ImageUrl = imagePath + "no_image.jpg";
+            //hlImage16.NavigateUrl = imagePath + "no_image.jpg";
 
-            Image19.ImageUrl = imagePath + "no_image.jpg";
-            hlImage19.NavigateUrl = imagePath + "no_image.jpg";
+            //Image19.ImageUrl = imagePath + "no_image.jpg";
+            //hlImage19.NavigateUrl = imagePath + "no_image.jpg";
 
-            Image20.ImageUrl = imagePath + "no_image.jpg";
-            hlImage20.NavigateUrl = imagePath + "no_image.jpg";
+            //Image20.ImageUrl = imagePath + "no_image.jpg";
+            //hlImage20.NavigateUrl = imagePath + "no_image.jpg";
 
             if (txtRelated1.Text.ToLower().Equals("null"))
                 txtRelated1.Text = String.Empty;
@@ -3716,11 +3723,13 @@ namespace Capital_SKS.WebForms.Item
                                     {
                                         Image1.ImageUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "";
                                         hlImage1.NavigateUrl = imagePath + dtImage.Rows[m]["Image_Name"];
+                                        txtimg1.Text = dtImage.Rows[m]["Image_Name"].ToString();
                                     }
                                     else
                                     {
                                         Image1.ImageUrl = "";
                                         hlImage1.NavigateUrl = "";
+                                        txtimg1.Text = "";
                                     }
                                     break;
                                 case "2":
@@ -3728,11 +3737,13 @@ namespace Capital_SKS.WebForms.Item
                                     {
                                         Image2.ImageUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "";
                                         hlImage2.NavigateUrl = imagePath + dtImage.Rows[m]["Image_Name"];
+                                        txtimg2.Text = dtImage.Rows[m]["Image_Name"].ToString();
                                     }
                                     else
                                     {
                                         Image2.ImageUrl = "";
                                         hlImage2.NavigateUrl = "";
+                                        txtimg2.Text = "";
                                     }
                                     break;
                                 case "3":
@@ -3740,11 +3751,13 @@ namespace Capital_SKS.WebForms.Item
                                     {
                                         Image3.ImageUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "";
                                         hlImage3.NavigateUrl = imagePath + dtImage.Rows[m]["Image_Name"];
+                                        txtimg3.Text = dtImage.Rows[m]["Image_Name"].ToString();
                                     }
                                     else
                                     {
                                         Image3.ImageUrl = "";
                                         hlImage3.NavigateUrl = "";
+                                        txtimg3.Text = "";
                                     }
                                     break;
                                 case "4":
@@ -3752,11 +3765,13 @@ namespace Capital_SKS.WebForms.Item
                                     {
                                         Image4.ImageUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "";
                                         hlImage4.NavigateUrl = imagePath + dtImage.Rows[m]["Image_Name"];
+                                        txtimg4.Text = dtImage.Rows[m]["Image_Name"].ToString();
                                     }
                                     else
                                     {
                                         Image4.ImageUrl = "";
                                         hlImage4.NavigateUrl = "";
+                                        txtimg4.Text = "";
                                     }
                                     break;
                                 case "5":
@@ -3764,11 +3779,13 @@ namespace Capital_SKS.WebForms.Item
                                     {
                                         Image5.ImageUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "";
                                         hlImage5.NavigateUrl = imagePath + dtImage.Rows[m]["Image_Name"];
+                                        txtimg5.Text = dtImage.Rows[m]["Image_Name"].ToString();
                                     }
                                     else
                                     {
                                         Image5.ImageUrl = "";
                                         hlImage5.NavigateUrl = "";
+                                        txtimg5.Text = "";
                                     }
                                     break;
                                 case "6":
@@ -3776,11 +3793,13 @@ namespace Capital_SKS.WebForms.Item
                                     {
                                         Image6.ImageUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "";
                                         hlImage6.NavigateUrl = imagePath + dtImage.Rows[m]["Image_Name"];
+                                        txtimg6.Text = dtImage.Rows[m]["Image_Name"].ToString();
                                     }
                                     else
                                     {
                                         Image6.ImageUrl = "";
                                         hlImage6.NavigateUrl = "";
+                                        txtimg6.Text = "";
                                     }
                                     break;
                                 case "7":
@@ -3788,11 +3807,13 @@ namespace Capital_SKS.WebForms.Item
                                     {
                                         Image7.ImageUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "";
                                         hlImage7.NavigateUrl = imagePath + dtImage.Rows[m]["Image_Name"];
+                                        txtimg7.Text = dtImage.Rows[m]["Image_Name"].ToString();
                                     }
                                     else
                                     {
                                         Image7.ImageUrl = "";
                                         hlImage7.NavigateUrl = "";
+                                        txtimg7.Text = "";
                                     }
                                     break;
                                 case "8":
@@ -3800,11 +3821,13 @@ namespace Capital_SKS.WebForms.Item
                                     {
                                         Image8.ImageUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "";
                                         hlImage8.NavigateUrl = imagePath + dtImage.Rows[m]["Image_Name"];
+                                        txtimg8.Text = dtImage.Rows[m]["Image_Name"].ToString();
                                     }
                                     else
                                     {
                                         Image8.ImageUrl = "";
                                         hlImage8.NavigateUrl = "";
+                                        txtimg8.Text = "";
                                     }
                                     break;
                                 case "9":
@@ -3812,11 +3835,13 @@ namespace Capital_SKS.WebForms.Item
                                     {
                                         Image9.ImageUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "";
                                         hlImage9.NavigateUrl = imagePath + dtImage.Rows[m]["Image_Name"];
+                                        txtimg9.Text = dtImage.Rows[m]["Image_Name"].ToString();
                                     }
                                     else
                                     {
                                         Image9.ImageUrl = "";
                                         hlImage9.NavigateUrl = "";
+                                        txtimg9.Text = "";
                                     }
                                     break;
                                 case "10":
@@ -3824,11 +3849,13 @@ namespace Capital_SKS.WebForms.Item
                                     {
                                         Image10.ImageUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "";
                                         hlImage10.NavigateUrl = imagePath + dtImage.Rows[m]["Image_Name"];
+                                        txtimg10.Text = dtImage.Rows[m]["Image_Name"].ToString();
                                     }
                                     else
                                     {
                                         Image10.ImageUrl = "";
                                         hlImage10.NavigateUrl = "";
+                                        txtimg10.Text = "";
                                     }
                                     break;
                                 case "11":
@@ -3836,11 +3863,13 @@ namespace Capital_SKS.WebForms.Item
                                     {
                                         Image11.ImageUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "";
                                         hlImage11.NavigateUrl = imagePath + dtImage.Rows[m]["Image_Name"];
+                                        txtimg11.Text = dtImage.Rows[m]["Image_Name"].ToString();
                                     }
                                     else
                                     {
                                         Image11.ImageUrl = "";
                                         hlImage11.NavigateUrl = "";
+                                        txtimg11.Text = "";
                                     }
                                     break;
                                 case "12":
@@ -3848,11 +3877,13 @@ namespace Capital_SKS.WebForms.Item
                                     {
                                         Image12.ImageUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "";
                                         hlImage12.NavigateUrl = imagePath + dtImage.Rows[m]["Image_Name"];
+                                        txtimg12.Text = dtImage.Rows[m]["Image_Name"].ToString();
                                     }
                                     else
                                     {
                                         Image12.ImageUrl = "";
                                         hlImage12.NavigateUrl = "";
+                                        txtimg12.Text = "";
                                     }
                                     break;
                                 case "13":
@@ -3860,11 +3891,13 @@ namespace Capital_SKS.WebForms.Item
                                     {
                                         Image13.ImageUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "";
                                         hlImage13.NavigateUrl = imagePath + dtImage.Rows[m]["Image_Name"];
+                                        txtimg13.Text = dtImage.Rows[m]["Image_Name"].ToString();
                                     }
                                     else
                                     {
                                         Image13.ImageUrl = "";
                                         hlImage13.NavigateUrl = "";
+                                        txtimg13.Text = "";
                                     }
                                     break;
                                 case "14":
@@ -3872,11 +3905,13 @@ namespace Capital_SKS.WebForms.Item
                                     {
                                         Image14.ImageUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "";
                                         hlImage14.NavigateUrl = imagePath + dtImage.Rows[m]["Image_Name"];
+                                        txtimg14.Text = dtImage.Rows[m]["Image_Name"].ToString();
                                     }
                                     else
                                     {
                                         Image14.ImageUrl = "";
                                         hlImage14.NavigateUrl = "";
+                                        txtimg14.Text = "";
                                     }
                                     break;
                                 case "15":
@@ -3884,11 +3919,13 @@ namespace Capital_SKS.WebForms.Item
                                     {
                                         Image15.ImageUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "";
                                         hlImage15.NavigateUrl = imagePath + dtImage.Rows[m]["Image_Name"];
+                                        txtimg15.Text = dtImage.Rows[m]["Image_Name"].ToString();
                                     }
                                     else
                                     {
                                         Image15.ImageUrl = "";
                                         hlImage15.NavigateUrl = "";
+                                        txtimg15.Text = "";
                                     }
                                     break;
                                 case "16":
@@ -3896,11 +3933,13 @@ namespace Capital_SKS.WebForms.Item
                                     {
                                         Image16.ImageUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "";
                                         hlImage16.NavigateUrl = imagePath + dtImage.Rows[m]["Image_Name"];
+                                        txtimg16.Text = dtImage.Rows[m]["Image_Name"].ToString();
                                     }
                                     else
                                     {
                                         Image16.ImageUrl = "";
                                         hlImage16.NavigateUrl = "";
+                                        txtimg16.Text = "";
                                     }
                                     break;
                                 case "17":
@@ -3908,11 +3947,13 @@ namespace Capital_SKS.WebForms.Item
                                     {
                                         Image17.ImageUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "";
                                         hlImage17.NavigateUrl = imagePath + dtImage.Rows[m]["Image_Name"];
+                                        txtimg17.Text = dtImage.Rows[m]["Image_Name"].ToString();
                                     }
                                     else
                                     {
                                         Image17.ImageUrl = "";
                                         hlImage17.NavigateUrl = "";
+                                        txtimg17.Text = "";
                                     }
                                     break;
                                 case "18":
@@ -3920,11 +3961,13 @@ namespace Capital_SKS.WebForms.Item
                                     {
                                         Image18.ImageUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "";
                                         hlImage18.NavigateUrl = imagePath + dtImage.Rows[m]["Image_Name"];
+                                        txtimg18.Text = dtImage.Rows[m]["Image_Name"].ToString();
                                     }
                                     else
                                     {
                                         Image18.ImageUrl = "";
                                         hlImage18.NavigateUrl = "";
+                                        txtimg18.Text = "";
                                     }
                                     break;
                                 case "19":
@@ -3932,11 +3975,13 @@ namespace Capital_SKS.WebForms.Item
                                     {
                                         Image19.ImageUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "";
                                         hlImage19.NavigateUrl = imagePath + dtImage.Rows[m]["Image_Name"];
+                                        txtimg19.Text = dtImage.Rows[m]["Image_Name"].ToString();
                                     }
                                     else
                                     {
                                         Image19.ImageUrl = "";
                                         hlImage19.NavigateUrl = "";
+                                        txtimg19.Text = "";
                                     }
                                     break;
                                 case "20":
@@ -3944,11 +3989,13 @@ namespace Capital_SKS.WebForms.Item
                                     {
                                         Image20.ImageUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "";
                                         hlImage20.NavigateUrl = imagePath + dtImage.Rows[m]["Image_Name"];
+                                        txtimg20.Text = dtImage.Rows[m]["Image_Name"].ToString();
                                     }
                                     else
                                     {
                                         Image20.ImageUrl = "";
                                         hlImage20.NavigateUrl = "";
+                                        txtimg20.Text = "";
                                     }
                                     break;
 
@@ -4424,9 +4471,199 @@ namespace Capital_SKS.WebForms.Item
         {
             try
             {
-                DataTable dtImage = ImageList as DataTable;
+
+                DataTable dtImage = new DataTable();
+                dtImage.Columns.Add(new DataColumn("Item_ID", typeof(int)));
+                dtImage.Columns.Add(new DataColumn("Image_Name", typeof(string)));
+                dtImage.Columns.Add(new DataColumn("Image_Type", typeof(int)));
+                dtImage.Columns.Add(new DataColumn("SN", typeof(int)));
+                if (!String.IsNullOrWhiteSpace(txtimg1.Text.ToString()))
+                {
+                    DataRow dr = dtImage.NewRow();
+                    dr["Item_ID"] = itemID;
+                    dr["Image_Name"] = txtimg1.Text.ToString();
+                    dr["Image_Type"] = 0;
+                    dr["SN"] = 1;
+                    dtImage.Rows.Add(dr);
+                }
+                if (!String.IsNullOrWhiteSpace(txtimg2.Text.ToString()))
+                {
+                    DataRow dr = dtImage.NewRow();
+                    dr["Item_ID"] = itemID;
+                    dr["Image_Name"] = txtimg2.Text.ToString();
+                    dr["Image_Type"] = 0;
+                    dr["SN"] = 2;
+                    dtImage.Rows.Add(dr);
+                }
+                if (!String.IsNullOrWhiteSpace(txtimg3.Text.ToString()))
+                {
+                    DataRow dr = dtImage.NewRow();
+                    dr["Item_ID"] = itemID;
+                    dr["Image_Name"] = txtimg3.Text.ToString();
+                    dr["Image_Type"] = 0;
+                    dr["SN"] = 3;
+                    dtImage.Rows.Add(dr);
+                }
+                if (!String.IsNullOrWhiteSpace(txtimg4.Text.ToString()))
+                {
+                    DataRow dr = dtImage.NewRow();
+                    dr["Item_ID"] = itemID;
+                    dr["Image_Name"] = txtimg4.Text.ToString();
+                    dr["Image_Type"] = 0;
+                    dr["SN"] = 4;
+                    dtImage.Rows.Add(dr);
+                }
+                if (!String.IsNullOrWhiteSpace(txtimg5.Text.ToString()))
+                {
+                    DataRow dr = dtImage.NewRow();
+                    dr["Item_ID"] = itemID;
+                    dr["Image_Name"] = txtimg5.Text.ToString();
+                    dr["Image_Type"] = 0;
+                    dr["SN"] = 5;
+                    dtImage.Rows.Add(dr);
+                }
+                if (!String.IsNullOrWhiteSpace(txtimg6.Text.ToString()))
+                {
+                    DataRow dr = dtImage.NewRow();
+                    dr["Item_ID"] = itemID;
+                    dr["Image_Name"] = txtimg6.Text.ToString();
+                    dr["Image_Type"] = 0;
+                    dr["SN"] = 6;
+                    dtImage.Rows.Add(dr);
+                }
+                if (!String.IsNullOrWhiteSpace(txtimg7.Text.ToString()))
+                {
+                    DataRow dr = dtImage.NewRow();
+                    dr["Item_ID"] = itemID;
+                    dr["Image_Name"] = txtimg7.Text.ToString();
+                    dr["Image_Type"] = 0;
+                    dr["SN"] = 7;
+                    dtImage.Rows.Add(dr);
+                }
+                if (!String.IsNullOrWhiteSpace(txtimg8.Text.ToString()))
+                {
+                    DataRow dr = dtImage.NewRow();
+                    dr["Item_ID"] = itemID;
+                    dr["Image_Name"] = txtimg8.Text.ToString();
+                    dr["Image_Type"] = 0;
+                    dr["SN"] = 8;
+                    dtImage.Rows.Add(dr);
+                }
+                if (!String.IsNullOrWhiteSpace(txtimg9.Text.ToString()))
+                {
+                    DataRow dr = dtImage.NewRow();
+                    dr["Item_ID"] = itemID;
+                    dr["Image_Name"] = txtimg9.Text.ToString();
+                    dr["Image_Type"] = 0;
+                    dr["SN"] = 9;
+                    dtImage.Rows.Add(dr);
+                }
+
+                if (!String.IsNullOrWhiteSpace(txtimg10.Text.ToString()))
+                {
+                    DataRow dr = dtImage.NewRow();
+                    dr["Item_ID"] = itemID;
+                    dr["Image_Name"] = txtimg10.Text.ToString();
+                    dr["Image_Type"] = 0;
+                    dr["SN"] = 10;
+                    dtImage.Rows.Add(dr);
+                }
+
+                if (!String.IsNullOrWhiteSpace(txtimg11.Text.ToString()))
+                {
+                    DataRow dr = dtImage.NewRow();
+                    dr["Item_ID"] = itemID;
+                    dr["Image_Name"] = txtimg11.Text.ToString();
+                    dr["Image_Type"] = 0;
+                    dr["SN"] = 11;
+                    dtImage.Rows.Add(dr);
+                }
+
+                if (!String.IsNullOrWhiteSpace(txtimg12.Text.ToString()))
+                {
+                    DataRow dr = dtImage.NewRow();
+                    dr["Item_ID"] = itemID;
+                    dr["Image_Name"] = txtimg12.Text.ToString();
+                    dr["Image_Type"] = 0;
+                    dr["SN"] = 12;
+                    dtImage.Rows.Add(dr);
+                }
+
+                if (!String.IsNullOrWhiteSpace(txtimg13.Text.ToString()))
+                {
+                    DataRow dr = dtImage.NewRow();
+                    dr["Item_ID"] = itemID;
+                    dr["Image_Name"] = txtimg13.Text.ToString();
+                    dr["Image_Type"] = 0;
+                    dr["SN"] = 13;
+                    dtImage.Rows.Add(dr);
+                }
+
+                if (!String.IsNullOrWhiteSpace(txtimg14.Text.ToString()))
+                {
+                    DataRow dr = dtImage.NewRow();
+                    dr["Item_ID"] = itemID;
+                    dr["Image_Name"] = txtimg14.Text.ToString();
+                    dr["Image_Type"] = 0;
+                    dr["SN"] = 14;
+                    dtImage.Rows.Add(dr);
+                }
+
+                if (!String.IsNullOrWhiteSpace(txtimg15.Text.ToString()))
+                {
+                    DataRow dr = dtImage.NewRow();
+                    dr["Item_ID"] = itemID;
+                    dr["Image_Name"] = txtimg15.Text.ToString();
+                    dr["Image_Type"] = 0;
+                    dr["SN"] = 15;
+                    dtImage.Rows.Add(dr);
+                }
+
+                if (!String.IsNullOrWhiteSpace(txtimg16.Text.ToString()))
+                {
+                    DataRow dr = dtImage.NewRow();
+                    dr["Item_ID"] = itemID;
+                    dr["Image_Name"] = txtimg16.Text.ToString();
+                    dr["Image_Type"] = 0;
+                    dr["SN"] = 16;
+                    dtImage.Rows.Add(dr);
+                }
+
+                if (!String.IsNullOrWhiteSpace(txtimg17.Text.ToString()))
+                {
+                    DataRow dr = dtImage.NewRow();
+                    dr["Item_ID"] = itemID;
+                    dr["Image_Name"] = txtimg17.Text.ToString();
+                    dr["Image_Type"] = 0;
+                    dr["SN"] = 17;
+                    dtImage.Rows.Add(dr);
+                }
+
+                if (!String.IsNullOrWhiteSpace(txtimg19.Text.ToString()))
+                {
+                    DataRow dr = dtImage.NewRow();
+                    dr["Item_ID"] = itemID;
+                    dr["Image_Name"] = txtimg19.Text.ToString();
+                    dr["Image_Type"] = 0;
+                    dr["SN"] = 19;
+                    dtImage.Rows.Add(dr);
+                }
+
+                if (!String.IsNullOrWhiteSpace(txtimg20.Text.ToString()))
+                {
+                    DataRow dr = dtImage.NewRow();
+                    dr["Item_ID"] = itemID;
+                    dr["Image_Name"] = txtimg20.Text.ToString();
+                    dr["Image_Type"] = 0;
+                    dr["SN"] = 20;
+                    dtImage.Rows.Add(dr);
+                }
+
+
+
+                //DataTable dtImage = ImageList as DataTable;
                 Item_Image_BL itemImageBL = new Item_Image_BL();
-                dtImage = SetLibraryPhoto(dtImage);
+               // dtImage = SetLibraryPhoto(dtImage);
                 if (dtImage.Rows.Count > 0)
                 {
                     DataRow[] dr = dtImage.Select("Image_Type='0'");

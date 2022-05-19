@@ -1,7 +1,7 @@
 /* Preload images */
 body:after {
-  content: url(../img/close.png) url(../img/loading.gif) url(../img/prev.png) url(../img/next.png);
-  display: none;
+    content: url(../../../images/close.png) url(../../../images/loading.gif) url(../../../images/prev.png) url(../../../images/next.png);
+    display: none;
 }
 
 .lightboxOverlay {
@@ -76,11 +76,11 @@ body:after {
 }
 
 .lb-cancel {
-  display: block;
-  width: 32px;
-  height: 32px;
-  margin: 0 auto;
-  background: url(../img/loading.gif) no-repeat;
+    display: block;
+    width: 32px;
+    height: 32px;
+    margin: 0 auto;
+    background: url(../../../images/loading.gif) no-repeat;
 }
 
 .lb-nav {
@@ -108,16 +108,16 @@ body:after {
 }
 
 .lb-nav a.lb-prev {
-  width: 34%;
-  left: 0;
-  float: left;
-  background: url(../img/prev.png) left 48% no-repeat;
-  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
-  opacity: 0;
-  -webkit-transition: opacity 0.6s;
-  -moz-transition: opacity 0.6s;
-  -o-transition: opacity 0.6s;
-  transition: opacity 0.6s;
+    width: 34%;
+    left: 0;
+    float: left;
+    background: url(../../../images/prev.png) left 48% no-repeat;
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+    opacity: 0;
+    -webkit-transition: opacity 0.6s;
+    -moz-transition: opacity 0.6s;
+    -o-transition: opacity 0.6s;
+    transition: opacity 0.6s;
 }
 
 .lb-nav a.lb-prev:hover {
@@ -126,16 +126,16 @@ body:after {
 }
 
 .lb-nav a.lb-next {
-  width: 64%;
-  right: 0;
-  float: right;
-  background: url(../img/next.png) right 48% no-repeat;
-  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
-  opacity: 0;
-  -webkit-transition: opacity 0.6s;
-  -moz-transition: opacity 0.6s;
-  -o-transition: opacity 0.6s;
-  transition: opacity 0.6s;
+    width: 64%;
+    right: 0;
+    float: right;
+    background: url(../../../images/next.png) right 48% no-repeat;
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+    opacity: 0;
+    -webkit-transition: opacity 0.6s;
+    -moz-transition: opacity 0.6s;
+    -o-transition: opacity 0.6s;
+    transition: opacity 0.6s;
 }
 
 .lb-nav a.lb-next:hover {
@@ -188,21 +188,21 @@ body:after {
   color: #999999;
 }
 
-.lb-data .lb-close {
-  display: block;
-  float: right;
-  width: 30px;
-  height: 30px;
-  background: url(../img/close.png) top right no-repeat;
-  text-align: right;
-  outline: none;
-  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=70);
-  opacity: 0.7;
-  -webkit-transition: opacity 0.2s;
-  -moz-transition: opacity 0.2s;
-  -o-transition: opacity 0.2s;
-  transition: opacity 0.2s;
-}
+    .lb-data .lb-close {
+        display: block;
+        float: right;
+        width: 30px;
+        height: 30px;
+        background: url(../../../images/close.png) top right no-repeat;
+        text-align: right;
+        outline: none;
+        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=70);
+        opacity: 0.7;
+        -webkit-transition: opacity 0.2s;
+        -moz-transition: opacity 0.2s;
+        -o-transition: opacity 0.2s;
+        transition: opacity 0.2s;
+    }
 
 .lb-data .lb-close:hover {
   cursor: pointer;

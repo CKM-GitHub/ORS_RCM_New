@@ -276,6 +276,26 @@ namespace Capital_SKS.WebForms.Item
 
                     if (Session["btnRelatedbtn_" + ItemCode] != null && Session["btnRelatedbtn_" + ItemCode].ToString() == "ok")
                     {
+                        txtRelated1.Text = "";
+                        txtRelated2.Text = "";
+                        txtRelated3.Text = "";
+                        txtRelated4.Text = "";
+                        txtRelated5.Text = "";
+                        txtRelated6.Text = "";
+                        txtRelated7.Text = "";
+                        txtRelated8.Text = "";
+                        txtRelated9.Text = "";
+                        txtRelated10.Text = "";
+                        txtRelated11.Text = "";
+                        txtRelated12.Text = "";
+                        txtRelated13.Text = "";
+                        txtRelated14.Text = "";
+                        txtRelated15.Text = "";
+                        txtRelated16.Text = "";
+                        txtRelated17.Text = "";
+                        txtRelated18.Text = "";
+                        txtRelated19.Text = "";
+                        txtRelated20.Text = "";
                         DisplayRelatedItem();
                         Session.Remove("btnRelatedbtn_" + ItemCode);
                     }
@@ -2080,10 +2100,10 @@ namespace Capital_SKS.WebForms.Item
                 ime.MinimumOrderUnit = txtminimumorderunit.Text.ToString();
                 
                 ime.DirectDelivery = ddlDirectDelivery.SelectedIndex;
-
-                if (!string.IsNullOrWhiteSpace(txtreleasedatemonotaro.Text))
+                string schedule = Request.Form[txtreleasedatemonotaro.UniqueID];
+                if (!string.IsNullOrWhiteSpace(schedule))
                 {
-                    ime.ScheduleReleaseDate = Convert.ToDateTime(txtreleasedatemonotaro.Text.ToString());
+                    ime.ScheduleReleaseDate = Convert.ToDateTime(schedule);
                 }
                 ime.Categorymonotaro = txtmonocategory.Text.ToString();
                 ime.Colormonotaro = txtcolour.Text.ToString();
@@ -2343,6 +2363,15 @@ namespace Capital_SKS.WebForms.Item
                                     else
                                     {
                                         txtPost_Available_Date.Text = "";
+                                    }
+
+                                    if (!string.IsNullOrWhiteSpace(ime.ScheduleReleaseDate.ToString()))   //updated by nandar 05/01/2016
+                                    {
+                                        txtreleasedatemonotaro.Text = String.Format("{0:yyyy/MM/dd}", ime.ScheduleReleaseDate);
+                                    }
+                                    else
+                                    {
+                                        txtreleasedatemonotaro.Text = "";
                                     }
                                 }
                             }
@@ -2877,6 +2906,15 @@ namespace Capital_SKS.WebForms.Item
                                 else
                                 {
                                     txtPost_Available_Date.Text = "";
+                                }
+
+                                if (!string.IsNullOrWhiteSpace(ime.ScheduleReleaseDate.ToString()))   //updated by nandar 05/01/2016
+                                {
+                                    txtreleasedatemonotaro.Text = String.Format("{0:yyyy/MM/dd}", ime.ScheduleReleaseDate);
+                                }
+                                else
+                                {
+                                    txtreleasedatemonotaro.Text = "";
                                 }
                             }
                         }

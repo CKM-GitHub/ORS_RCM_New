@@ -11,7 +11,7 @@
       <link rel="stylesheet" href="../../Styles/ors_item_master_style.css"  />
     <link href ="../../Styles/Calendarstyle.css" rel="Stylesheet" type="text/css" />
 
-      <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+     <%-- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>--%>
         <script src="../../Scripts/calendar1.js" type="text/javascript"></script>
         <script src="../../Scripts/jquery.droppy.js" type="text/javascript"></script> 
         <script src="https://unpkg.com/vue@next"></script>
@@ -21,7 +21,60 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"></script>
         <script src="js/lightboxfororsitemmaster.js" type="text/javascript"></script>
 
+     <style type="text/css">
+      
+.mycheckBig input {width:25px; height:25px;}
+.mycheckSmall input {width:10px; height:10px;} 
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.table th {
+	height: 0px;
+}
+table td {
+	padding: 2px 5px;
+	height:	0px;
+}
+#ui-datepicker-div{
+        font-size: 0.8em !important;
+}
+.h{
+    margin-top:10px !important;
+}
+
+.lblstyle dl, dt{
+    font-weight: bold;
+    display: block;
+    text-align: left;
+    padding: 1px 4px;
+    border-left: 3px solid #3D3A35;
+    border-bottom: 1px solid #73c5ff;
+    background: #73C5FF;
+    box-sizing: border-box;
+    font-size: 10px;
+}
+    .rdostyleclass input[type=radio]:checked + label
+    {
+        -webkit-border-before-style: none;
+        border-right: 0px solid #ddd;
+        border-left: 0px solid #ddd;
+    }
+
+    .tag{
+        position:relative;
+        left:20px;
+    } 
+</style>
+<style type="text/css">
+         a:hover{
+             cursor:default !important;
+             color:black !important;
+         }
+     </style>
+
         <script type="text/javascript">
+       
     function pageLoad(sender, args) {
         $(function () {
 
@@ -33,15 +86,22 @@
                 yearRange: "2013:2030"
             });
         });
-       /* $(function () {
-            $("[id$=txtPost_Available_Date]").datepicker({
-                showOn: 'button',
-                buttonImageOnly: true,
-                buttonImage: '../../images/calendar.gif',
-                dateFormat: 'dd/M/yy',
-                yearRange: "2013:2030"
+
+         $("#<%=txtreleasedatemonotaro.ClientID %>").datepicker(
+            { 
+            showOn: 'button',
+            dateFormat: 'yy/mm/dd ',
+            buttonImageOnly: true,
+            buttonImage:'../../images/calendar.gif',
+            changeMonth: true,
+            changeYear: true,
+            yearRange: "1900:2030" ,
+            }
+            );
+            $(".ui-datepicker-trigger").mouseover(function () {
+            $(this).css('cursor', 'pointer');
             });
-        });*/
+        
     }
 	</script>
 
@@ -52,6 +112,7 @@
         <asp:HiddenField ID="CustomHiddenField" runat="server" />
         <asp:HiddenField ID="hdfPostDate" runat="server" />
         <asp:HiddenField ID="hdfReleaseDate" runat="server"/>
+        <asp:HiddenField ID="hdfScheduleDatemono" runat="server"/>
         <asp:HiddenField  ID="hdfCtrl_ID" runat="server"/>
         <asp:HiddenField  ID="hdfCatID" runat="server"/>
         <asp:HiddenField  ID="hdfTab" runat="server"/>
@@ -1499,7 +1560,7 @@
                                   <%-- </div> --%>
                                 </div>
                           </div>
-                             <div class="row">
+                             <div class="row" style="padding-left: 5px;padding-right: 5px;">
                                  <div class="floaddiv" style="width:10%;">
                                     <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl yellowlable">公開種別</span>
@@ -1526,11 +1587,13 @@
                                          <asp:DropDownList ID="ddlDirectDelivery" style="width:100%;" runat="server"></asp:DropDownList>
                                         
                                  </div>
-                                   <div class="floaddiv" style="width:12%;">
+                                   <div class="floaddiv" style="width:13%;">
                                     <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl yellowlable">公開予定日</span>
                                         </asp:Label>
-                                        <asp:TextBox CssClass="txtbox" ID="txtreleasedatemonotaro"  runat="server" style="width: 100%;"></asp:TextBox>
+                                       
+                                        <asp:TextBox CssClass="txtbox" ReadOnly="true" ID="txtreleasedatemonotaro"  runat="server" style="width: 67%; margin-right: 3px;"></asp:TextBox>
+                                        <asp:Image ID="Image21" runat="server" Width="15px" Height="15px" ImageUrl="~/Styles/clear.png"  ImageAlign="AbsBottom"  Onclick="clrCtrlmono()"/>
                                  </div>
                                    <div class="floaddiv" style="width:24%;">
                                     <asp:Label CssClass=""  runat="server" >
@@ -1538,7 +1601,7 @@
                                         </asp:Label>
                                         <asp:TextBox CssClass="txtbox" ID="txtmonocategory" MaxLength="200"  runat="server" style="width: 100%;"></asp:TextBox>
                                  </div>
-                                   <div class="floaddiv" style="width:24%;">
+                                   <div class="floaddiv" style="width:23%;">
                                     <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl yellowlable">カラー</span>
                                         </asp:Label>
@@ -1840,7 +1903,7 @@
                         <asp:Button CssClass="mainbtnbox btndecoraction" runat="server" ID="Button3" Text="プレビュー"  />                                 
                     </div>
                     <div class="col-md-2 btncolum">      
-                        <asp:Button CssClass="mainbtnbox btndecoraction" OnClick="btnSave_Click" runat="server" ID="btnSave" Text="登 録" />               
+                        <asp:Button CssClass="mainbtnbox btndecoraction" OnClientClick="SaveClick()" OnClick="btnSave_Click" runat="server" ID="btnSave" Text="登 録" />               
                     </div>
                     <div class="col-md-2 btncolum">      
                         <asp:Button CssClass="mainbtnbox btndecoraction" OnClick="btnComplete_Click" runat="server" ID="btnComplete" Text="出品待ち"  />               
@@ -2143,6 +2206,21 @@
              document.getElementById("imginputdelete20").hidden = true;
              document.getElementById("imginput20").hidden = false;              
          }
+
+          $("#<%=txtreleasedatemonotaro.ClientID %>").datepicker(
+            { 
+            showOn: 'button',
+            dateFormat: 'yy/mm/dd ',
+            buttonImageOnly: true,
+            buttonImage:'../../images/calendar.gif',
+            changeMonth: true,
+            changeYear: true,
+            yearRange: "1900:2030" ,
+            }
+            );
+            $(".ui-datepicker-trigger").mouseover(function () {
+            $(this).css('cursor', 'pointer');
+            });
     
 
      });
@@ -2776,6 +2854,8 @@
         document.getElementById('<%=hdfPostDate.ClientID %>').value = postdate;
         var releasedate = document.getElementById("<%=txtRelease_Date.ClientID%>").value;
         document.getElementById('<%=hdfReleaseDate.ClientID %>').value = releasedate;
+         var scheduledate = document.getElementById("<%=txtreleasedatemonotaro.ClientID%>").value;
+        document.getElementById('<%=hdfScheduleDatemono.ClientID %>').value = scheduledate;
         if (window.focus) {
             newwin.focus()
         }
@@ -3038,6 +3118,8 @@
         document.getElementById('<%=hdfPostDate.ClientID %>').value = postdate;
         var releasedate = document.getElementById("<%=txtRelease_Date.ClientID%>").value;
         document.getElementById('<%=hdfReleaseDate.ClientID %>').value = releasedate;
+         var scheduledate = document.getElementById("<%=txtreleasedatemonotaro.ClientID%>").value;
+        document.getElementById('<%=hdfScheduleDatemono.ClientID %>').value = scheduledate;
         if (window.focus) {
             newwin.focus()
         }
@@ -3067,6 +3149,8 @@
         document.getElementById('<%=hdfPostDate.ClientID %>').value = postdate;
         var releasedate = document.getElementById("<%=txtRelease_Date.ClientID%>").value;
         document.getElementById('<%=hdfReleaseDate.ClientID %>').value = releasedate;
+         var scheduledate = document.getElementById("<%=txtreleasedatemonotaro.ClientID%>").value;
+        document.getElementById('<%=hdfScheduleDatemono.ClientID %>').value = scheduledate;
             if (window.focus) {
                 newwin.focus()
             }
@@ -3125,6 +3209,8 @@
         document.getElementById('<%=hdfPostDate.ClientID %>').value = postdate;
         var releasedate = document.getElementById("<%=txtRelease_Date.ClientID%>").value;
         document.getElementById('<%=hdfReleaseDate.ClientID %>').value = releasedate;
+         var scheduledate = document.getElementById("<%=txtreleasedatemonotaro.ClientID%>").value;
+        document.getElementById('<%=hdfScheduleDatemono.ClientID %>').value = scheduledate;
             if (window.focus) {
                 newwin.focus()
             }
@@ -3154,7 +3240,9 @@
         var postdate = document.getElementById("<%=txtPost_Available_Date.ClientID%>").value;
     document.getElementById('<%=hdfPostDate.ClientID %>').value = postdate;
         var releasedate = document.getElementById("<%=txtRelease_Date.ClientID%>").value;
-    document.getElementById('<%=hdfReleaseDate.ClientID %>').value = releasedate;
+        document.getElementById('<%=hdfReleaseDate.ClientID %>').value = releasedate;
+        var scheduledate = document.getElementById("<%=txtreleasedatemonotaro.ClientID%>").value;
+    document.getElementById('<%=hdfScheduleDatemono.ClientID %>').value = scheduledate;
         if (window.focus) {
             newwin.focus()
         }
@@ -3395,6 +3483,19 @@
             document.getElementById("imginput20").hidden = false;   
         }
 
+        function clrCtrlmono() {
+        document.getElementById('<%=txtreleasedatemonotaro.ClientID %>').value = "";
+    }
+
+</script>
+
+    <script type="text/javascript">
+    function SaveClick() {
+        document.getElementById("<%=CustomHiddenField.ClientID%>").value = "";
+        document.getElementById("<%=hdfPostDate.ClientID%>").value = "";
+        document.getElementById("<%=hdfReleaseDate.ClientID%>").value = "";
+        document.getElementById("<%=hdfScheduleDatemono.ClientID%>").value = "";
+    }
 </script>
 
 </asp:Content>

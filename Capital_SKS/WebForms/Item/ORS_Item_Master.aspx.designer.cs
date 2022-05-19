@@ -40,6 +40,15 @@ namespace Capital_SKS.WebForms.Item {
         protected global::System.Web.UI.WebControls.HiddenField hdfReleaseDate;
         
         /// <summary>
+        /// hdfScheduleDatemono control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdfScheduleDatemono;
+        
+        /// <summary>
         /// hdfCtrl_ID control.
         /// </summary>
         /// <remarks>
@@ -2702,6 +2711,15 @@ namespace Capital_SKS.WebForms.Item {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtreleasedatemonotaro;
+        
+        /// <summary>
+        /// Image21 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image Image21;
         
         /// <summary>
         /// txtmonocategory control.

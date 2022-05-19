@@ -17,6 +17,7 @@ using System.Text;
 using ORS_RCM_Common;
 using System.Data.SqlClient;
 using System.Data;
+using System.Globalization;
 
 namespace ORS_RCM_DL
 {
@@ -26,26 +27,26 @@ namespace ORS_RCM_DL
         { 
         
         }
-        public DataTable SelectByItemCode()
-        {
-            try
-            {
-                SqlConnection connection = new SqlConnection(DataConfig.connectionString);
-                DataTable dt = new DataTable();
-                string query = "Select Item_Code,Item_Name from Item_Master ";
-                SqlDataAdapter sda = new SqlDataAdapter(query, connection);
-                sda.SelectCommand.CommandType = CommandType.Text;
-                sda.SelectCommand.CommandTimeout = 0;
-                sda.SelectCommand.Connection.Open();
-                sda.Fill(dt);
-                sda.SelectCommand.Connection.Close();
-                return dt;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
+        //public DataTable SelectByItemCode()
+        //{
+        //    try
+        //    {
+        //        SqlConnection connection = new SqlConnection(DataConfig.connectionString);
+        //        DataTable dt = new DataTable();
+        //        string query = "Select Item_Code,Item_Name from Item_Master ";
+        //        SqlDataAdapter sda = new SqlDataAdapter(query, connection);
+        //        sda.SelectCommand.CommandType = CommandType.Text;
+        //        sda.SelectCommand.CommandTimeout = 0;
+        //        sda.SelectCommand.Connection.Open();
+        //        sda.Fill(dt);
+        //        sda.SelectCommand.Connection.Close();
+        //        return dt;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw ex;
+        //    }
+        //}
 
         public DataTable SearchRelatedItem(string itemcode, string itemname)
         {
@@ -415,7 +416,19 @@ namespace ORS_RCM_DL
                 cmd.Parameters.AddWithValue("@MinimumOrderSuu", ime.MinimumOrderSuu);
                 cmd.Parameters.AddWithValue("@MinimumOrderUnit", ime.MinimumOrderUnit);
                 cmd.Parameters.AddWithValue("@DirectDelivery", ime.DirectDelivery);
-                cmd.Parameters.AddWithValue("@ScheduleReleaseDate", ime.ScheduleReleaseDate);
+                if (!String.IsNullOrWhiteSpace(ime.ScheduleReleaseDate.ToString()))
+                {
+
+                    DateTime dt = DateTime.ParseExact(ime.ScheduleReleaseDate.ToString(), "yyyy/MM/dd hh:mm:ss tt", CultureInfo.InvariantCulture);
+
+                    string s = dt.ToString("yyyy/MM/dd", CultureInfo.InvariantCulture);
+                    cmd.Parameters.AddWithValue("@ScheduleReleaseDate", s);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@ScheduleReleaseDate", DBNull.Value);
+                }
+                
                 cmd.Parameters.AddWithValue("@Categorymonotaro", ime.Categorymonotaro);
                 cmd.Parameters.AddWithValue("@Colormonotaro", ime.Colormonotaro);
                 cmd.Parameters.AddWithValue("@Medical_Supplies", ime.Medical_Supplies);

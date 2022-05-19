@@ -2465,7 +2465,7 @@ namespace Capital_SKS.WebForms.Item
                                         ime = imeBL.SelectByID(ItemID);
                                         if (!string.IsNullOrWhiteSpace(ime.Release_Date.ToString()))
                                         {
-                                            txtRelease_Date.Text = String.Format("{0:yyyy/MM/dd}", ime.Release_Date);
+                                            txtRelease_Date.Text = String.Format("{0:yyyy/MM/dd}", ime.Release_Date).Replace('-', '/').ToString();
                                         }
                                         else
                                         {
@@ -2473,7 +2473,7 @@ namespace Capital_SKS.WebForms.Item
                                         }
                                         if (!string.IsNullOrWhiteSpace(ime.Post_Available_Date.ToString()))   //updated by nandar 05/01/2016
                                         {
-                                            txtPost_Available_Date.Text = String.Format("{0:yyyy/MM/dd}", ime.Post_Available_Date);
+                                            txtPost_Available_Date.Text = String.Format("{0:yyyy/MM/dd}", ime.Post_Available_Date).Replace('-', '/').ToString(); ;
                                         }
                                         else
                                         {
@@ -2572,7 +2572,7 @@ namespace Capital_SKS.WebForms.Item
                                         ime = imeBL.SelectByID(ItemID);
                                         if (!string.IsNullOrWhiteSpace(ime.Release_Date.ToString()))
                                         {
-                                            txtRelease_Date.Text = String.Format("{0:yyyy/MM/dd}", ime.Release_Date);
+                                            txtRelease_Date.Text = String.Format("{0:yyyy/MM/dd}", ime.Release_Date).Replace('-', '/').ToString(); ;
                                         }
                                         else
                                         {
@@ -2580,7 +2580,7 @@ namespace Capital_SKS.WebForms.Item
                                         }
                                         if (!string.IsNullOrWhiteSpace(ime.Post_Available_Date.ToString()))   //updated by nandar 05/01/2016
                                         {
-                                            txtPost_Available_Date.Text = String.Format("{0:yyyy/MM/dd}", ime.Post_Available_Date);
+                                            txtPost_Available_Date.Text = String.Format("{0:yyyy/MM/dd}", ime.Post_Available_Date).Replace('-', '/').ToString(); ;
                                         }
                                         else
                                         {
@@ -2669,7 +2669,7 @@ namespace Capital_SKS.WebForms.Item
                                     ime = imeBL.SelectByID(ItemID);
                                     if (!string.IsNullOrWhiteSpace(ime.Release_Date.ToString()))
                                     {
-                                        txtRelease_Date.Text = String.Format("{0:yyyy/MM/dd}", ime.Release_Date);
+                                        txtRelease_Date.Text = String.Format("{0:yyyy/MM/dd}", ime.Release_Date).Replace('-', '/').ToString(); ;
                                     }
                                     else
                                     {
@@ -2677,7 +2677,7 @@ namespace Capital_SKS.WebForms.Item
                                     }
                                     if (!string.IsNullOrWhiteSpace(ime.Post_Available_Date.ToString()))   //updated by nandar 05/01/2016
                                     {
-                                        txtPost_Available_Date.Text = String.Format("{0:yyyy/MM/dd}", ime.Post_Available_Date);
+                                        txtPost_Available_Date.Text = String.Format("{0:yyyy/MM/dd}", ime.Post_Available_Date).Replace('-', '/').ToString(); ;
                                     }
                                     else
                                     {
@@ -3214,7 +3214,7 @@ namespace Capital_SKS.WebForms.Item
                                 ime = imeBL.SelectByID(ItemID);
                                 if (!string.IsNullOrWhiteSpace(ime.Release_Date.ToString()))
                                 {
-                                    txtRelease_Date.Text = String.Format("{0:yyyy/MM/dd}", ime.Release_Date);
+                                    txtRelease_Date.Text = String.Format("{0:yyyy/MM/dd}", ime.Release_Date).Replace('-', '/').ToString(); ;
                                 }
                                 else
                                 {
@@ -3222,7 +3222,7 @@ namespace Capital_SKS.WebForms.Item
                                 }
                                 if (!string.IsNullOrWhiteSpace(ime.Post_Available_Date.ToString()))   //updated by nandar 05/01/2016
                                 {
-                                    txtPost_Available_Date.Text = String.Format("{0:yyyy/MM/dd}", ime.Post_Available_Date);
+                                    txtPost_Available_Date.Text = String.Format("{0:yyyy/MM/dd}", ime.Post_Available_Date).Replace('-', '/').ToString(); ;
                                 }
                                 else
                                 {
@@ -5327,7 +5327,7 @@ namespace Capital_SKS.WebForms.Item
                 txtProduct_Code.Text = ime.Product_Code;
                 if (!string.IsNullOrWhiteSpace(ime.Release_Date.ToString()))
                 {
-                    txtRelease_Date.Text = String.Format("{0:yyyy/MM/dd}", ime.Release_Date);
+                    txtRelease_Date.Text = String.Format("{0:yyyy/MM/dd}", ime.Release_Date).Replace('-', '/').ToString(); ;
                 }
                 else
                 {
@@ -5335,7 +5335,7 @@ namespace Capital_SKS.WebForms.Item
                 }
                 if (!string.IsNullOrWhiteSpace(ime.Post_Available_Date.ToString()))   //updated by nandar 05/01/2016
                 {
-                    txtPost_Available_Date.Text = String.Format("{0:yyyy/MM/dd}", ime.Post_Available_Date);
+                    txtPost_Available_Date.Text = String.Format("{0:yyyy/MM/dd}", ime.Post_Available_Date).Replace('-', '/').ToString(); ;
                 }
                 else
                 {

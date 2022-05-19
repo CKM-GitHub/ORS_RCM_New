@@ -419,10 +419,8 @@ namespace ORS_RCM_DL
                 if (!String.IsNullOrWhiteSpace(ime.ScheduleReleaseDate.ToString()))
                 {
 
-                    DateTime dt = DateTime.ParseExact(ime.ScheduleReleaseDate.ToString(), "yyyy/MM/dd hh:mm:ss tt", CultureInfo.InvariantCulture);
-
-                    string s = dt.ToString("yyyy/MM/dd", CultureInfo.InvariantCulture);
-                    cmd.Parameters.AddWithValue("@ScheduleReleaseDate", s);
+                   
+                    cmd.Parameters.AddWithValue("@ScheduleReleaseDate", ime.ScheduleReleaseDate);
                 }
                 else
                 {

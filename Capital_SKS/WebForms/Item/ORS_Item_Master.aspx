@@ -82,7 +82,17 @@ table td {
                 showOn: 'button',
                 buttonImageOnly: true,
                 buttonImage: '../../images/calendar.gif',
-                dateFormat: 'dd/M/yy',
+                dateFormat: 'yy/mm/dd',
+                yearRange: "2013:2030"
+            });
+        });
+
+        $(function () {
+            $("[id$=txtPost_Available_Date]").datepicker({
+                showOn: 'button',
+                buttonImageOnly: true,
+                buttonImage: '../../images/calendar.gif',
+                dateFormat: 'yy/mm/dd',
                 yearRange: "2013:2030"
             });
         });
@@ -90,7 +100,7 @@ table td {
          $("#<%=txtreleasedatemonotaro.ClientID %>").datepicker(
             { 
             showOn: 'button',
-            dateFormat: 'yy/mm/dd ',
+            dateFormat: 'yy/mm/dd',
             buttonImageOnly: true,
             buttonImage:'../../images/calendar.gif',
             changeMonth: true,
@@ -566,27 +576,28 @@ table td {
                      </div>
                     <div class="row" style=" width:100%; margin-left: 0px !important;">
                         
-                         <div class="floaddiv containerbox" style="width:18%; margin-right:10px;"> 
+                         <div class="floaddiv containerbox" style="width:26%; margin-right:10px;"> 
                              <div class="row" style="width:100%; margin-left:2px;">
                              <div class="floaddiv" style="width:50%;" >
                                    <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl orangelable">販売日</span>
                                         
                                         </asp:Label>
-                                        <asp:TextBox CssClass="txtbox"  ID="txtRelease_Date" ReadOnly="true" style="width: 100%;" runat="server" ></asp:TextBox>
+                                        <asp:TextBox CssClass="txtbox"  ID="txtRelease_Date" ReadOnly="true" style="width: 77px;" runat="server" ></asp:TextBox>
                                  <asp:Image ID="ImageButton1" runat="server" Width="15px" Height="15px" ImageUrl="~/Styles/clear.png"  ImageAlign="AbsBottom"  Onclick="clrCtrl()"/>
                              </div>
                                <div class="floaddiv" style="width:50%;" >
                                    <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl orangelable">掲載可能日</span>
-                                        <asp:Image ID="ImageButton2" runat="server" Width="15px" Height="15px" ImageUrl="~/Styles/clear.png"  ImageAlign="AbsBottom"  Onclick="clrCtrl()"/>
+                                     
                                         </asp:Label>
-                                        <asp:TextBox CssClass="txtbox" ID="txtPost_Available_Date" ReadOnly="true" runat="server" style="width: 100%;"></asp:TextBox>
-                             </div>
+                                        <asp:TextBox CssClass="txtbox" ID="txtPost_Available_Date" ReadOnly="true" runat="server" style="width: 77px;"></asp:TextBox>
+                                   <asp:Image ID="ImageButton2" runat="server" Width="15px" Height="15px" ImageUrl="~/Styles/clear.png"  ImageAlign="AbsBottom"  Onclick="clrCtrl1()"/>
+                             </div>            
                              </div>
                              </div>
                      
-                         <div class="floaddiv containerbox" style="width:24%; margin-right:10px;"> 
+                         <div class="floaddiv containerbox" style="width:23%; margin-right:10px;"> 
                               <div class="row" style="width:100%; margin-left:2px;">
                              <div class="floaddiv" style="width:50%;" >
                                    <asp:Label CssClass=""  runat="server" >
@@ -603,7 +614,7 @@ table td {
                              </div>
                              </div>
 
-                         <div class="floaddiv containerbox" style="width:24%; margin-right:10px;"> 
+                         <div class="floaddiv containerbox" style="width:21%; margin-right:10px;"> 
                               <div class="row" style="width:100%; margin-left:2px;">
                              <div class="floaddiv" style="width:50%;" >
                                    <asp:Label CssClass=""  runat="server" >
@@ -629,7 +640,7 @@ table td {
 
                              </div>
 
-                         <div class="floaddiv containerbox" style="width:31%;"> 
+                         <div class="floaddiv containerbox" style="width:27%;"> 
                              <div class="row" style="width:100%; margin-left:2px;">
                              <div class="floaddiv" style="width:50%;" >
                                    <asp:Label CssClass=""  runat="server" >
@@ -1897,19 +1908,19 @@ table td {
                 </section>
                 <div class="row rowbtn">
                     <div class="col-md-2 btncolum">      
-                        <asp:Button CssClass="mainbtnbox btndecoraction" runat="server" ID="Button1" Text="複製コピー"  />               
+                        <asp:Button CssClass="mainbtnbox btndecoraction" runat="server" ID="btnCopy" OnClientClick="ShowCopy(this)" Text="複製コピー"  />               
                     </div>
                     <div class="col-md-2 btncolum">                             
-                        <asp:Button CssClass="mainbtnbox btndecoraction" runat="server" ID="Button3" Text="プレビュー"  />                                 
+                        <asp:Button CssClass="mainbtnbox btndecoraction" runat="server" ID="btnPreview" Text="プレビュー" onclick="btnPreview_Click"  />                                 
                     </div>
                     <div class="col-md-2 btncolum">      
                         <asp:Button CssClass="mainbtnbox btndecoraction" OnClientClick="SaveClick()" OnClick="btnSave_Click" runat="server" ID="btnSave" Text="登 録" />               
                     </div>
                     <div class="col-md-2 btncolum">      
-                        <asp:Button CssClass="mainbtnbox btndecoraction" OnClick="btnComplete_Click" runat="server" ID="btnComplete" Text="出品待ち"  />               
+                        <asp:Button CssClass="mainbtnbox btndecoraction" OnClick="btnComplete_Click"  runat="server" ID="btnComplete" Text="出品待ち"  />               
                     </div>
                     <div class="col-md-2 btncolum">      
-                        <asp:Button CssClass="mainbtnbox btndecoraction" runat="server" ID="Button9" Text="出品待ち取消し" />              
+                        <asp:Button CssClass="mainbtnbox btndecoraction" runat="server" ID="btnToCancelExhibit"  OnClientClick ="Confirm()" onclick="btnToCancelExhibit_Click" Text="出品待ち取消し" />              
                     </div>
                     <div class="col-md-2 btncolum">      
                         <asp:Button CssClass="mainbtnbox btndecoraction" OnClick="btnDelete_Click" runat="server" ID="btnDelete" Text="削除" />                
@@ -3488,6 +3499,14 @@ table td {
     }
 
 </script>
+    <script type="text/javascript">
+    function clrCtrl() {
+        document.getElementById('<%=txtRelease_Date.ClientID %>').value = "";
+    }
+    function clrCtrl1() {
+        document.getElementById('<%=txtPost_Available_Date.ClientID %>').value = "";
+    }
+</script>
 
     <script type="text/javascript">
     function SaveClick() {
@@ -3497,5 +3516,32 @@ table td {
         document.getElementById("<%=hdfScheduleDatemono.ClientID%>").value = "";
     }
 </script>
+
+    <script type="text/javascript">	
+         function ShowCopy(ctrl) {
+             var width = 600;
+             var height = 300;
+             var left = (screen.width - width) / 2;
+             var top = (screen.height - height) / 2;
+             var params = 'width=' + width + ', height=' + height;
+             params += ', top=' + top + ', left=' + left;
+             params += ', toolbar=no';
+             params += ', menubar=no';
+             params += ', resizable=yes';
+             params += ', directories=no';
+             params += ', scrollbars=yes';
+             params += ', status=no';
+             params += ', location=no';
+             var itemcode = document.getElementById("<%=txtItem_Code.ClientID %>").value;
+             var itemname = document.getElementById("<%=txtItem_Name.ClientID %>").value;
+            var retval = window.open('../Item/Item_Master_Copy_Data.aspx?Item_Code=' + itemcode + "&Item_Name=" + itemname, window, params);	
+            var hidSourceID = document.getElementById("<%=CustomHiddenField.ClientID%>");
+             hidSourceID.value = ctrl.id;
+             if (window.focus) {
+                 newwin.focus()
+             }
+             return false;
+         }
+     </script>
 
 </asp:Content>

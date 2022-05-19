@@ -850,15 +850,6 @@ namespace Capital_SKS.WebForms.Item {
         protected global::System.Web.UI.WebControls.Image ImageButton1;
         
         /// <summary>
-        /// ImageButton2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Image ImageButton2;
-        
-        /// <summary>
         /// txtPost_Available_Date control.
         /// </summary>
         /// <remarks>
@@ -866,6 +857,15 @@ namespace Capital_SKS.WebForms.Item {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtPost_Available_Date;
+        
+        /// <summary>
+        /// ImageButton2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image ImageButton2;
         
         /// <summary>
         /// txtProduct_Code control.
@@ -3064,22 +3064,22 @@ namespace Capital_SKS.WebForms.Item {
         protected global::System.Web.UI.WebControls.DropDownList ddlPharmaceuticalsandmedicaldevices;
         
         /// <summary>
-        /// Button1 control.
+        /// btnCopy control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.Button btnCopy;
         
         /// <summary>
-        /// Button3 control.
+        /// btnPreview control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button3;
+        protected global::System.Web.UI.WebControls.Button btnPreview;
         
         /// <summary>
         /// btnSave control.
@@ -3100,13 +3100,13 @@ namespace Capital_SKS.WebForms.Item {
         protected global::System.Web.UI.WebControls.Button btnComplete;
         
         /// <summary>
-        /// Button9 control.
+        /// btnToCancelExhibit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button9;
+        protected global::System.Web.UI.WebControls.Button btnToCancelExhibit;
         
         /// <summary>
         /// btnDelete control.

@@ -14,6 +14,7 @@ using System.Web.UI.HtmlControls;
 using System.Text.RegularExpressions;
 using ORS_RCM;
 using System.IO;
+using System.Globalization;
 
 namespace Capital_SKS.WebForms.Item
 {
@@ -67,7 +68,22 @@ namespace Capital_SKS.WebForms.Item
             }
         }
 
-       
+        public DataTable CopyItemCodeList
+        {
+            get
+            {
+                if (Session["Item_Code_Copy"] != null)
+                {
+                    DataTable dt = (DataTable)Session["Item_Code_Copy"];
+                    return dt;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+        }
+
 
         public DataTable CategoryList
         {
@@ -336,6 +352,10 @@ namespace Capital_SKS.WebForms.Item
                             Session.Remove("btnPopClick_" + ItemCode);
                         }
                     }
+                    else if (ControlID.Contains("btnCopy"))
+                    {
+                        ReBindNewItemCode();
+                    }
                     else if (ControlID.Contains("btnRakuten_CategoryID"))
                     {
                         DisplayMallCategory(); // for display Mall_Category from popup form
@@ -383,6 +403,99 @@ namespace Capital_SKS.WebForms.Item
         //    FileUploadtest.SaveAs(Server.MapPath("~/Uploads/" + Path.GetFileName(FileUpload1.FileName)));
         //    lblMessage.Visible = true;
         //}
+
+        protected void btnPreview_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ArrayList myData = new ArrayList();
+                myData.Add(txtItem_Code.Text);
+                myData.Add(txtItem_Name.Text);
+                myData.Add(txtItem_Name.Text);
+                myData.Add(txtItem_Name.Text);
+                myData.Add(txtList_Price.Text);
+                myData.Add(txtSale_Price.Text);
+                myData.Add(txtItem_Description_PC.Text);
+                myData.Add(txtSale_Description_PC.Text);
+                myData.Add(txtRelated1.Text);
+                myData.Add(txtRelated2.Text);
+                myData.Add(txtRelated3.Text);
+                myData.Add(txtRelated4.Text);
+                myData.Add(txtRelated5.Text);
+               
+                Session["myDatatable"] = myData;
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "OpenWindow", "window.open('../Item/Item_Preview_Edit.aspx?Item_Code=" + ItemCode + "','_blank');", true);
+            }
+            catch (Exception ex)
+            {
+                Session["Exception"] = ex.ToString();
+                Response.Redirect("~/CustomErrorPage.aspx?");
+            }
+        }
+
+        protected void btnToCancelExhibit_Click(object sender, EventArgs e)
+        {
+            string confirmValue = Request.Form["confirm_value"];
+            imeBL = new Item_Master_BL();
+            itemCategoryBL = new Item_Category_BL();
+            int ItemID = imeBL.SelectItemID(ItemCode);
+            DataTable dtshop = CheckConditon(ItemID, ItemCode);
+            DataTable dt = itemCategoryBL.SelectByItemID(ItemID);
+            DataTable dtImage = ImageList as DataTable;
+            DataRow[] rowRakuten = dtshop.Select("ShopID=1 OR ShopID=5 OR ShopID=8 OR ShopID=12 ");
+            DataRow[] rowYahoo = dtshop.Select("ShopID=2 OR ShopID=6 OR ShopID=9 OR ShopID=13  OR ShopID=17");
+            DataRow[] rowWowma = dtshop.Select("ShopID=4 ");
+            DataRow[] rowTennis = dtshop.Select("ShopID=6 ");
+            DataRow[] rowImage = dtImage.Select("Image_Type='0'");
+            if (confirmValue == "はい")
+            {
+                if (dt.Rows.Count <= 0 || (rowRakuten.Count() > 0 && txtRakuten_CategoryID.Text == "") || (rowYahoo.Count() > 0 && txtYahoo_CategoryID.Text == "") ||
+                    (rowWowma.Count() > 0 && txtWowma_CategoryID.Text == "") ||/* (rowTennis.Count() > 0 && txtTennis_CategoryID.Text == "") ||*/ (rowImage.Count() == 0))
+                {
+                    imeBL.ChangeExportStatusToPink(ItemCode, 0);
+                }
+            }
+        }
+
+        public void ReBindNewItemCode()
+        {
+            try
+            {
+                if (Session["Item_Code_Copy"] != null)
+                {
+                    DataTable dt = CopyItemCodeList;
+                    if (dt.Rows.Count > 0)
+                    {
+                        txtItem_Code.Text = dt.Rows[0]["Item_Code"].ToString();
+                        txtItem_Name.Text = dt.Rows[0]["Item_Name"].ToString();
+
+                        DataTable dtskucolor = item.SelectSKUItemCode(dt.Rows[0]["Item_Code"].ToString()); //Select From Item Table
+                        if (dtskucolor.Rows.Count > 0)
+                        {
+                            gvSKU.DataSource = dtskucolor;
+                            gvSKU.DataBind();
+
+                            rdb1.Checked = true;
+                            rdb2.Checked = false;
+                        }
+                        else
+                        {
+                            gvSKU.DataSource = dtskucolor;
+                            gvSKU.DataBind();
+
+                            rdb1.Checked = false;
+                            rdb2.Checked = true;
+                        }
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Session["Exception"] = ex.ToString();
+                Response.Redirect("~/CustomErrorPage.aspx?");
+            }
+        }
 
         #region RelatedItem
         public void DisplayRelatedItem()
@@ -2283,7 +2396,213 @@ namespace Capital_SKS.WebForms.Item
                 String[] colName = { "Template" };
                 if (!Check_SpecialCharacter(colName, templatedt))
                 {
-                    if (ItemCode != null)
+                    if (Session["Item_Code_Copy"] != null)
+                    {
+                        string itemcode = txtItem_Code.Text;
+                        ime.Item_Name = txtItem_Name.Text;
+                        int ItemID = imeBL.SelectItemID(itemcode);
+                        if (ItemID == 0)
+                        {
+                            ime.ID = ItemID;
+                            ime.Updated_By = UserID;
+                            ime = GetItemData();
+                            string str = CheckLength(ime);
+                            if (!String.IsNullOrWhiteSpace(str)) { GlobalUI.MessageBox(str + "greater than length bytes!"); }
+                            else
+                            {
+                                if (ValidationUpdate())
+                                {
+                                    string option = null;
+                                    option = "Save";
+                                    if (imeBL.SaveEdit(ime, option) > 0)    //btnsave
+                                    {
+                                        ItemID = imeBL.SelectItemID(itemcode);
+                                        ime.ID = ItemID;
+                                        //Insert Category List
+                                        GetCategoryValueFromTextBox(ItemID, CategoryList);
+                                        //Delete previous shop from Item_Shop table and then insert new shop or not
+                                        InsertShopList(ItemID, itemcode);
+                                        //Delete previous photo from Item_Image table and then insert new photo or not
+                                        InsertPhoto(ItemID);
+                                        //Insert Item table when Itemcode is not exits in ItemTable
+                                        InsertItem(itemcode);
+                                        //Insert into Item_Code_URL
+                                        InsertItemCodeURL(ItemID);
+                                        //Change Shop Status To Gray
+                                        //if (chkActive.Checked == true)
+                                        //{
+                                        //    imeBL.ChangeExportStatusToPink(itemcode, 1);
+                                        //}
+                                        //else
+                                        //{
+                                        //    imeBL.ChangeExportStatusToPink(itemcode, 2);
+                                        //}
+                                        //Delete previous related item from Item_RelatedItem table and then insert new related item or not
+                                        InsertRelatedItem(ItemID);
+                                        //Delete previous option from Item_Option table and then insert new option or not
+                                        InsertOption(ItemID);
+                                        //Delete previous yahoo specific from Item_YahooSpecificValue table and then insert new yahoo specific or not
+                                        if (YahooSpecificValue != null)
+                                        {
+                                            InsertYahooSpecificValue(ItemID);
+                                        }
+                                        //For sks-587
+                                        if (ViewState["DailyDelivery"] != null)
+                                        {
+                                            imeBL.SetUnsetDailyDelivery(itemcode, Convert.ToInt32(ViewState["DailyDelivery"]));
+                                        }
+                                        SaveTemplateDetail(itemcode); // Insert or Update Template_Detail
+                                        //MessageBox("Save Successful ! ");
+                                        //if (chkActive.Checked == true)
+                                        //{
+                                        //    Page.ClientScript.RegisterStartupScript(this.GetType(), "myScript", "OnCheckedChanged(true);", true);
+                                        //}
+                                        //else
+                                        //{
+                                        //    Page.ClientScript.RegisterStartupScript(this.GetType(), "myScript", "OnCheckedChanged(false);", true);
+                                        //}
+                                        ime = new Item_Master_Entity();
+                                        ime = imeBL.SelectByID(ItemID);
+                                        if (!string.IsNullOrWhiteSpace(ime.Release_Date.ToString()))
+                                        {
+                                            txtRelease_Date.Text = String.Format("{0:yyyy/MM/dd}", ime.Release_Date);
+                                        }
+                                        else
+                                        {
+                                            txtRelease_Date.Text = "";
+                                        }
+                                        if (!string.IsNullOrWhiteSpace(ime.Post_Available_Date.ToString()))   //updated by nandar 05/01/2016
+                                        {
+                                            txtPost_Available_Date.Text = String.Format("{0:yyyy/MM/dd}", ime.Post_Available_Date);
+                                        }
+                                        else
+                                        {
+                                            txtPost_Available_Date.Text = "";
+                                        }
+                                        if (!string.IsNullOrWhiteSpace(ime.ScheduleReleaseDate.ToString()))
+                                        {
+
+                                            String datemono = String.Format("{0:yyyy/MM/dd}", ime.ScheduleReleaseDate);
+                                            txtreleasedatemonotaro.Text = datemono.Replace('-', '/').ToString();
+                                        }
+                                        else
+                                        {
+                                            txtreleasedatemonotaro.Text = "";
+                                        }
+                                    }
+                                }
+                            }
+                            //Response.Redirect("Item_Master.aspx?Item_Code=" + itemcode, false);
+                            Session.Remove("Item_Code_Copy");
+                            ViewState["UrlReferrer"] = "ORS_Item_Master.aspx?Item_Code=" + itemcode;
+                            string result = "Save Successful!";
+                            if (result == "Save Successful!")
+                            {
+                                object referrer = ViewState["UrlReferrer"];
+                                string url = (string)referrer;
+                                string script = "window.onload = function(){ alert('";
+                                script += result;
+                                script += "');";
+                                script += "window.location.href = '";
+                                script += url;
+                                script += "'; }";
+                                ClientScript.RegisterStartupScript(this.GetType(), "Redirect", script, true);
+                            }
+                        }
+                        else
+                        {
+                            ime.ID = ItemID;
+
+                            ime.Updated_By = UserID;
+                            ime = GetItemData();
+                            string str = CheckLength(ime);
+                            if (!String.IsNullOrWhiteSpace(str)) { GlobalUI.MessageBox(str + "greater than length bytes!"); }
+                            else
+                            {
+                                if (ValidationUpdate())
+                                {
+                                    string option = null;
+                                    option = "Update";
+                                    if (imeBL.SaveEdit(ime, option) > 0)    //btnsave
+                                    {
+                                        //Insert Category List
+                                        GetCategoryValueFromTextBox(ItemID, CategoryList);
+                                        //Delete previous shop from Item_Shop table and then insert new shop or not
+                                        InsertShopList(ItemID, itemcode);
+                                        //Delete previous photo from Item_Image table and then insert new photo or not
+                                        InsertPhoto(ItemID);
+                                        //Insert Item table when Itemcode is not exits in ItemTable
+                                        InsertItem(itemcode);
+                                        //Insert into Item_Code_URL
+                                        InsertItemCodeURL(ItemID);
+                                        //Change Shop Status To Gray
+                                        //if (chkActive.Checked == true)
+                                        //{
+                                        //    imeBL.ChangeExportStatusToPink(itemcode, 1);
+                                        //}
+                                        //else
+                                        //{
+                                        //    imeBL.ChangeExportStatusToPink(itemcode, 2);
+                                        //}
+                                        //Delete previous related item from Item_RelatedItem table and then insert new related item or not
+                                        InsertRelatedItem(ItemID);
+                                        //Delete previous option from Item_Option table and then insert new option or not
+                                        InsertOption(ItemID);
+                                        //Delete previous yahoo specific from Item_YahooSpecificValue table and then insert new yahoo specific or not
+                                        if (YahooSpecificValue != null)
+                                        {
+                                            InsertYahooSpecificValue(ItemID);
+                                        }
+                                        //For sks-587
+                                        if (ViewState["DailyDelivery"] != null)
+                                        {
+                                            imeBL.SetUnsetDailyDelivery(itemcode, Convert.ToInt32(ViewState["DailyDelivery"]));
+                                        }
+                                        SaveTemplateDetail(itemcode); // Insert or Update Template_Detail
+                                        MessageBox("Updating Successful ! ");
+                                        //if (chkActive.Checked == true)
+                                        //{
+                                        //    Page.ClientScript.RegisterStartupScript(this.GetType(), "myScript", "OnCheckedChanged(true);", true);
+                                        //}
+                                        //else
+                                        //{
+                                        //    Page.ClientScript.RegisterStartupScript(this.GetType(), "myScript", "OnCheckedChanged(false);", true);
+                                        //}
+                                        ime = new Item_Master_Entity();
+                                        ime = imeBL.SelectByID(ItemID);
+                                        if (!string.IsNullOrWhiteSpace(ime.Release_Date.ToString()))
+                                        {
+                                            txtRelease_Date.Text = String.Format("{0:yyyy/MM/dd}", ime.Release_Date);
+                                        }
+                                        else
+                                        {
+                                            txtRelease_Date.Text = "";
+                                        }
+                                        if (!string.IsNullOrWhiteSpace(ime.Post_Available_Date.ToString()))   //updated by nandar 05/01/2016
+                                        {
+                                            txtPost_Available_Date.Text = String.Format("{0:yyyy/MM/dd}", ime.Post_Available_Date);
+                                        }
+                                        else
+                                        {
+                                            txtPost_Available_Date.Text = "";
+                                        }
+
+                                        if (!string.IsNullOrWhiteSpace(ime.ScheduleReleaseDate.ToString()))
+                                        {
+
+                                            String datemono = String.Format("{0:yyyy/MM/dd}", ime.ScheduleReleaseDate);
+                                            txtreleasedatemonotaro.Text = datemono.Replace('-', '/').ToString();
+                                        }
+                                        else
+                                        {
+                                            txtreleasedatemonotaro.Text = "";
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    else if (ItemCode != null)
                     {
                         int ItemID = imeBL.SelectItemID(ItemCode);
                         ime.ID = ItemID;
@@ -2365,9 +2684,11 @@ namespace Capital_SKS.WebForms.Item
                                         txtPost_Available_Date.Text = "";
                                     }
 
-                                    if (!string.IsNullOrWhiteSpace(ime.ScheduleReleaseDate.ToString()))   //updated by nandar 05/01/2016
+                                    if (!string.IsNullOrWhiteSpace(ime.ScheduleReleaseDate.ToString()))
                                     {
-                                        txtreleasedatemonotaro.Text = String.Format("{0:yyyy/MM/dd}", ime.ScheduleReleaseDate);
+
+                                        String datemono = String.Format("{0:yyyy/MM/dd}", ime.ScheduleReleaseDate);
+                                        txtreleasedatemonotaro.Text = datemono.Replace('-', '/').ToString();
                                     }
                                     else
                                     {
@@ -2908,9 +3229,11 @@ namespace Capital_SKS.WebForms.Item
                                     txtPost_Available_Date.Text = "";
                                 }
 
-                                if (!string.IsNullOrWhiteSpace(ime.ScheduleReleaseDate.ToString()))   //updated by nandar 05/01/2016
+                                if (!string.IsNullOrWhiteSpace(ime.ScheduleReleaseDate.ToString()))
                                 {
-                                    txtreleasedatemonotaro.Text = String.Format("{0:yyyy/MM/dd}", ime.ScheduleReleaseDate);
+
+                                    String datemono = String.Format("{0:yyyy/MM/dd}", ime.ScheduleReleaseDate);
+                                    txtreleasedatemonotaro.Text = datemono.Replace('-', '/').ToString();
                                 }
                                 else
                                 {
@@ -5202,8 +5525,10 @@ namespace Capital_SKS.WebForms.Item
                 }
 
                 if (!string.IsNullOrWhiteSpace(ime.ScheduleReleaseDate.ToString()))
-                {
-                    txtreleasedatemonotaro.Text = String.Format("{0:yyyy/MM/dd}", ime.ScheduleReleaseDate);
+                {                  
+                  
+                     String datemono= String.Format("{0:yyyy/MM/dd}", ime.ScheduleReleaseDate);
+                    txtreleasedatemonotaro.Text = datemono.Replace('-','/').ToString();
                 }
                 else
                 {

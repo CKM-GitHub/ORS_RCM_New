@@ -38,6 +38,9 @@
                 margin-left:247px !important;
                 color:red !important;
             }
+           .emrow{
+               display: none !important;
+           }
         </style>
     </head>
     <body class="clNon">
@@ -61,11 +64,24 @@
                         </p>
 	                     <div style="height:405px;width:998px;">
 		                    <table>
-			                    <asp:GridView ID="gvMallCategory" runat="server" AutoGenerateColumns="False"
+			                    <asp:GridView ID="gvMallCategory" runat="server" AutoGenerateColumns="False" 
                                 AllowPaging="True" PageSize="14" CellPadding="4" ForeColor="#333333" GridLines="None" onpageindexchanging="gvMallCategory_PageIndexChanging" >
                                      <AlternatingRowStyle BackColor="White"  />
                                         <HeaderStyle ForeColor="White" Font-Bold="True"  Font-Size="18px" BackColor="#555555"></HeaderStyle>
-                                    
+                                    <EmptyDataRowStyle CssClass="hide emrow"/>
+                                      <EmptyDataTemplate>
+                                           <thead>
+                                                <tr style="background-color: #555555; color: white; font-size: 18px; font-weight:bold " >
+                                                    <th>商品番号</th>
+                                                    <th>商品名</th>
+                                                </tr>
+                                           </thead>
+                                          <tbody>
+                                              <tr>
+                                                   <td colspan="2" style="text-align: center">There is no data to display.</td>
+                                                </tr>
+                                          </tbody>
+                                        </EmptyDataTemplate>
                                     <Columns>
                                         <asp:TemplateField>
                                             <ItemTemplate>

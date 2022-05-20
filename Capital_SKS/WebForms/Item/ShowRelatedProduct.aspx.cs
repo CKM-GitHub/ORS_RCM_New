@@ -26,38 +26,50 @@ namespace Capital_SKS.WebForms.Item
                 }
             }
         }
+        public DataTable Related_Item_Code
+        {
+            get
+            {
+                if (Session["Related_Item_Code" + Item_Code] != null)
+                {
+                    DataTable dt = (DataTable)Session["Related_Item_Code" + Item_Code];
+                    return dt;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+        }
+        public DataTable relItem_Code
+        {
+            get
+            {
+                if (Session["relItem_Code" + Item_Code] != null)
+                {
+                    DataTable dt = (DataTable)Session["relItem_Code" + Item_Code];
+                    return dt;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
-
             try
             {
                 if (!IsPostBack)
                 {
-                    gvMallCategory.DataSource = SelectByItemCode();
+                   
                     gvMallCategory.DataBind();
-                }
-
+                }                
             }
             catch (Exception ex)
             {
                 Session["Exception"] = ex.ToString();
                 Response.Redirect("~/CustomErrorPage.aspx?");
-            }
-        }
-        public DataTable SelectByItemCode()
-        {
-            try
-            {
-                DataTable dt = new DataTable();
-                Item_Master_BL ItemMasterBL = new Item_Master_BL();
-                dt = ItemMasterBL.SelectByItemCode();
-                return dt;
-            }
-            catch (Exception ex)
-            {
-                Session["Exception"] = ex.ToString();
-                Response.Redirect("~/CustomErrorPage.aspx?");
-                return new DataTable();
             }
         }
         protected void gvMallCategory_PageIndexChanging(object sender, GridViewPageEventArgs e)
@@ -67,6 +79,7 @@ namespace Capital_SKS.WebForms.Item
                 gvMallCategory.DataSource = Search();
                 gvMallCategory.PageIndex = e.NewPageIndex;
                 gvMallCategory.DataBind();
+                ItemCheck_Change();
             }
             catch (Exception ex)
             {
@@ -74,39 +87,116 @@ namespace Capital_SKS.WebForms.Item
                 Response.Redirect("~/CustomErrorPage.aspx?");
             }
         }
-        protected void gvMallCategory_RowDataBound(object sender, GridViewRowEventArgs e)
+        protected void chkItem_CheckedChanged(object sender, EventArgs e)
         {
-            DataTable dt1 = (DataTable)Session["Related_Item_Code"];
-            DataTable dt = (DataTable)Session["Item_Code"];
-            if (dt == null)
+            try
             {
-                if (e.Row.RowType == DataControlRowType.DataRow)
+                CheckBox chk = sender as CheckBox;
+                GridViewRow row = chk.NamingContainer as GridViewRow;
+                int rowIndex = row.RowIndex;
+                Label lbl = gvMallCategory.Rows[rowIndex].FindControl("lblItem_Code") as Label;
+                ArrayList arrlst = ViewState["checkedValue"] as ArrayList;
+                
+                if (ViewState["checkedValue"] != null && arrlst != null)
                 {
-                    Label lbl = e.Row.FindControl("lblItem_Code") as Label;
-                    for (int m = 0; m < dt1.Rows.Count; m++)
+                    int c = 0;
+                    if (!unCheck.Checked)
                     {
-                        CheckBox chkbox = (CheckBox)e.Row.FindControl("ckItem");
-                        if (dt1.Rows[m]["Related_ItemCode"].ToString() == lbl.Text.ToString())
+                        if (relItem_Code == null)
+                            c = 20 - Related_Item_Code.Rows.Count;
+                        else
+                            c = 20 - relItem_Code.Rows.Count;
+                    }
+                    else 
+                        c = 20 ;
+
+                    if (arrlst.Count < c)
                         {
-                            chkbox.Checked = true;
+                            if (!chk.Checked)
+                            {
+                                //if one of check box is unchecked then header checkbox set to uncheck
+                                if (arrlst.Contains(lbl.Text))
+                                {
+                                    arrlst.Remove(lbl.Text);
+                                    ViewState["checkedValue"] = arrlst;
+                                    text.Text = "";
+                                }
+                            }
+                            else
+                            {
+                                arrlst.Add(lbl.Text);
+                                ViewState["checkedValue"] = arrlst;
+                            }
                         }
+                        else
+                        {
+                            if (!chk.Checked)
+                            {
+                                //if one of check box is unchecked then header checkbox set to uncheck
+                                if (arrlst.Contains(lbl.Text))
+                                {
+                                    arrlst.Remove(lbl.Text);
+                                    ViewState["checkedValue"] = arrlst;
+                                    text.Text = "";
+                                }
+                            }
+                            else
+                            {
+                                chk.Checked = false;
+                                text.Text = "関連商品の数が報大値を超えています。";
+                            }
+                        }
+                }
+                else
+                {
+                    ArrayList arrlst1 = new ArrayList();
+                    arrlst1.Add(lbl.Text);
+                    ViewState["checkedValue"] = arrlst1;
+                }
+            }
+            catch (Exception ex)
+            {
+                Session["Exception"] = ex.ToString();
+                Response.Redirect("~/CustomErrorPage.aspx?");
+            }
+        }
+        protected void chkboxUnSelectAll_CheckedChanged(object sender, EventArgs e)
+        {
+            try
+            {           
+                gvMallCategory.DataBind();
+            }
+            catch (Exception ex)
+            {
+                Session["Exception"] = ex.ToString();
+                Response.Redirect("~/CustomErrorPage.aspx?");
+            }
+        }
+        protected void ItemCheck_Change()
+        {
+            try
+            {
+                if (ViewState["checkedValue"] != null)
+                {
+                    ArrayList arrlst = ViewState["checkedValue"] as ArrayList;
+                    CheckBox chk;
+                    Label lbl;
+                    for (int i = 0; i < gvMallCategory.Rows.Count; i++)
+                    {
+                        chk = gvMallCategory.Rows[i].FindControl("ckItem") as CheckBox;
+                        lbl = gvMallCategory.Rows[i].FindControl("lblItem_Code") as Label;
+
+                        if (arrlst.Contains(lbl.Text))
+                            chk.Checked = true;
+                        else
+                            chk.Checked = false;
                     }
                 }
             }
-            if (dt != null && dt.Rows.Count > 0)
+            catch (Exception ex)
             {
-                if (e.Row.RowType == DataControlRowType.DataRow)
-                {
-                    Label lbl = e.Row.FindControl("lblItem_Code") as Label;
-                    for (int m = 0; m < dt.Rows.Count; m++)
-                    {
-                        CheckBox chkbox = (CheckBox)e.Row.FindControl("ckItem");
-                        if (dt.Rows[m]["Item_Code"].ToString() == lbl.Text.ToString())
-                        {
-                            chkbox.Checked = true;
-                        }
-                    }
-                }
+                Session["Exception"] = ex.ToString();
+                Response.Redirect("~/CustomErrorPage.aspx?");
             }
         }
         protected void btnSearch_Click(object sender, EventArgs e)
@@ -134,11 +224,6 @@ namespace Capital_SKS.WebForms.Item
                     dt = ItemMasterBL.SearchRelatedItem(txtSearch.Text.Trim(), txtSearch1.Text.Trim());
                     return dt;
                 }
-                else if ((string.IsNullOrWhiteSpace(txtSearch.Text)) || (string.IsNullOrWhiteSpace(txtSearch1.Text)))
-                {
-                    dt = ItemMasterBL.SelectByItemCode();
-                    return dt;
-                }
                 else
                 {
                     return dt;
@@ -151,33 +236,50 @@ namespace Capital_SKS.WebForms.Item
                 return new DataTable();
             }
         }
-
-
         protected void btn_Close(object sender, EventArgs e)
         {
             try
             {
                 DataTable dt = new DataTable();
                 dt.Columns.Add("Item_Code", typeof(String));
-                dt.Columns.Add("Item_Name", typeof(String));
                 DataRow dr = dt.NewRow();
-                foreach (GridViewRow row in gvMallCategory.Rows)
+                ArrayList arrlst = ViewState["checkedValue"] as ArrayList;                                
+                if (ViewState["checkedValue"] != null)
                 {
-                    if (row.RowType == DataControlRowType.DataRow)
+                    if (!unCheck.Checked)
                     {
-                        Label lblItem_Code = (Label)row.FindControl("lblItem_Code");
-                        Label lblItem_Name = (Label)row.FindControl("lblItem_Name");
-                        if (((CheckBox)row.FindControl("ckItem")).Checked)
+                        if (relItem_Code == null && Related_Item_Code != null)
                         {
-                            dr = dt.NewRow();
-                            dr["Item_Code"] = lblItem_Code.Text;
-                            dr["Item_Name"] = lblItem_Name.Text;
-                            dt.Rows.Add(dr);
+                            for (int i = 0; i < Related_Item_Code.Rows.Count; i++)
+                            {
+                                string Related_ItemCode = Related_Item_Code.Rows[i]["Related_ItemCode"].ToString();
+                                if (!arrlst.Contains(Related_ItemCode))
+                                    arrlst.Add(Related_ItemCode);
+                            }
+                            ViewState["checkedValue"] = arrlst;
                         }
-                        Session["Item_Code" + Item_Code] = dt;
-                        Session["btnRelatedbtn_" + Item_Code] = "ok";
+                        if (relItem_Code != null && relItem_Code.Rows.Count > 0)
+                        {
+                            for (int i = 0; i < relItem_Code.Rows.Count; i++)
+                            {
+                                string Item_Code = relItem_Code.Rows[i]["Item_Code"].ToString();
+                                if (!arrlst.Contains(Item_Code))
+                                    arrlst.Add(Item_Code);
+                                
+                            }
+                            ViewState["checkedValue"] = arrlst;
+                        }
                     }
-                }
+                    foreach (string item in arrlst)
+                    {
+                        dr = dt.NewRow();
+                        dr["Item_Code"] = item.ToString();
+                        dt.Rows.Add(dr);
+                    }
+                }                   
+                Session["relItem_Code" + Item_Code] = dt;
+                Session["btnRelatedbtn_" + Item_Code] = "ok";
+
                 this.ClientScript.RegisterClientScriptBlock(this.GetType(), "Close", "window.opener.__doPostBack();window.close()", true);
             }
             catch (Exception ex)

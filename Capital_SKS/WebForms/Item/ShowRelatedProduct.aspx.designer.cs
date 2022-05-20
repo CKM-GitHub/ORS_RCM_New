@@ -42,6 +42,33 @@ namespace Capital_SKS.WebForms.Item
         protected global::System.Web.UI.WebControls.Button btnSearch;
 
         /// <summary>
+        /// unCheck control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox unCheck;
+
+        /// <summary>
+        /// Label1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label1;
+
+        /// <summary>
+        /// text control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label text;
+
+        /// <summary>
         /// gvMallCategory control.
         /// </summary>
         /// <remarks>
@@ -51,15 +78,6 @@ namespace Capital_SKS.WebForms.Item
         protected global::System.Web.UI.WebControls.GridView gvMallCategory;
 
         /// <summary>
-        /// btnClose control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnClose;
-
-        /// <summary>
         /// btnCancel control.
         /// </summary>
         /// <remarks>
@@ -67,5 +85,14 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnCancel;
+
+        /// <summary>
+        /// btnClose control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnClose;
     }
 }

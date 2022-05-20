@@ -26,7 +26,7 @@
                 height: 40px !important;
                 border-radius:10px;float:left;
             }
-            #btnClose{
+            #btnCancel{
                 margin-left:450px !important;
                 margin-right:50px !important;
             }   
@@ -34,18 +34,11 @@
                 overflow:hidden!important;
                 height:550px !important;
             }
-        </style>
-        <script type="text/javascript">
-            function ckItem_Check(latestcheck) {
-                var dl = document.getElementById("<%=gvMallCategory.ClientID%>");
-                var inputs = dl.getElementsByTagName("input");
-                var checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
-                if (checkboxes.length > 5) {
-                    alert('The number of related products exceeds the maximun values.');
-                    latestcheck.checked = false;
-                }
+            #text{
+                margin-left:247px !important;
+                color:red !important;
             }
-        </script>
+        </style>
     </head>
     <body class="clNon">
         <div id="PopWrapper" style="margin-left:120px;">
@@ -53,25 +46,30 @@
 	            <div id="PopContents" class="pop4_Mcate">
 	                <form runat="server">
 
-	                    <p class="popSearch" style="margin-left:150px;margin-bottom:35px; width:800px">
+	                    <p class="popSearch" style="margin-left:150px;margin-bottom:20px; width:800px">
                             商品番号
 				            <asp:TextBox ID="txtSearch" runat="server" Height="32px" Font-Bold="True" Width="210px" MaxLength="50"  onkeypress="return isNumberKeys(event)" ></asp:TextBox>
                             商品名
 				            <asp:TextBox ID="txtSearch1" runat="server" Height="32px" Font-Bold="True" Width="210px" MaxLength="50" onkeypress="return isNumberKeys(event)"></asp:TextBox>
                             <asp:Button runat="server" ID="btnSearch" Text="検 索" Font-Bold="True" onclick="btnSearch_Click" />
 	                    </p>
-
-	                    <div style="height:405px;width:998px;">
+                            
+                        <p style="width:998px;font-size:15px">
+                             <asp:CheckBox runat="server" ID="unCheck" onCheckedChanged="chkboxUnSelectAll_CheckedChanged" AutoPostBack="true"  />
+                            <asp:Label ID="Label1"  runat="server" Text="商品口関連商品をクリアして追加する"></asp:Label>
+                            <asp:Label ID="text"  runat="server" Text=""></asp:Label>
+                        </p>
+	                     <div style="height:405px;width:998px;">
 		                    <table>
-			                    <asp:GridView ID="gvMallCategory" runat="server" AutoGenerateColumns="False" OnRowDataBound="gvMallCategory_RowDataBound" 
-                                AllowPaging="True" PageSize="15" CellPadding="4" ForeColor="#333333" GridLines="None" onpageindexchanging="gvMallCategory_PageIndexChanging" >
+			                    <asp:GridView ID="gvMallCategory" runat="server" AutoGenerateColumns="False"
+                                AllowPaging="True" PageSize="14" CellPadding="4" ForeColor="#333333" GridLines="None" onpageindexchanging="gvMallCategory_PageIndexChanging" >
                                      <AlternatingRowStyle BackColor="White"  />
                                         <HeaderStyle ForeColor="White" Font-Bold="True"  Font-Size="18px" BackColor="#555555"></HeaderStyle>
                                     
                                     <Columns>
                                         <asp:TemplateField>
                                             <ItemTemplate>
-                                                <asp:CheckBox runat="server" ID="ckItem" onclick ="ckItem_Check(this);"/>
+                                                <asp:CheckBox runat="server" ID="ckItem" OnCheckedChanged="chkItem_CheckedChanged" AutoPostBack="true"/>
                                             </ItemTemplate>
                                         </asp:TemplateField>
 
@@ -90,10 +88,9 @@
 
                                 </asp:GridView>
 		                    </table>
-	                    
                             <div class ="btn">
-                                <asp:Button runat="server" ID="btnClose" Text="決定" Width="150px" OnClick="btn_Close" />
                                 <asp:Button ID="btnCancel" runat="server" Text="キャンセル"  Width="150px" OnClick="btn_Cancel" />
+                                 <asp:Button runat="server" ID="btnClose" Text="決定" Width="150px" OnClick="btn_Close"/>
                             </div>
 
                        </div>

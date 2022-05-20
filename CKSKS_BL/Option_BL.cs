@@ -43,6 +43,14 @@ namespace ORS_RCM_BL
                 }
             }
         }
+        public DataTable BindOption()
+        {
+            return optdl.BindOption();
+        }
+        public DataTable SelectOptionByOption_GroupName(string optionGroupName)
+        {
+            return optdl.SelectOptionByOption_GroupName(optionGroupName);
+        }
 
         public String Edit(Option_Entity optentity)
         {

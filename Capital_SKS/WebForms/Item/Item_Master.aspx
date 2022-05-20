@@ -15,7 +15,7 @@
 <link href ="../../Styles/Calendarstyle.css" rel="Stylesheet" type="text/css" />
 <script src="../../Scripts/jquery.droppy.js" type="text/javascript"></script>  
 <style type="text/css">
-        #Relatedbtn {
+       /* #Relatedbtn {
             height: 24px;
             font-family: "Helvetica Neue",helvetica,sans-serif;
             font-weight: normal;
@@ -26,7 +26,7 @@
             background-color: rgb(255, 255, 255);
             box-shadow: 0px 1px 2px rgb(81, 184, 228) inset;
             border: 1px solid rgb(22, 71, 88);
-        }
+        }*/
 .mycheckBig input {width:25px; height:25px;}
 .mycheckSmall input {width:10px; height:10px;} 
 table {
@@ -40,7 +40,18 @@ table td {
 	padding: 2px 5px;
 	height:	0px;
 }
-
+.h{
+    margin-top:10px !important;
+}
+.relatedblock a{
+    font-size:13px !important;
+    letter-spacing: 1px;
+    float:right !important;
+    margin-right:319px !important;
+}
+.m {
+  margin-left: 3px !important;
+}
 .lblstyle dl, dt{
     font-weight: bold;
     display: block;
@@ -645,10 +656,12 @@ $(this).css('cursor', 'pointer');
 				<dd><asp:TextBox ID="txtCatalog_Information" runat="server" Width="278px" MaxLength="3000"></asp:TextBox></dd>
 		</dl>
 	</div>
-	<div class="dBlock">
-		<dl class="relatedProduct">
+    <div class="relatedblock">
+        <a href="#" id="Relatedbtn" class="fa fa-search" onclick="ShowRelatedProduct(this)"><span class="m" >関連商品を検索する</span></a>
+    </div>
+		<dl class="relatedProduct h">
             <dt>関連商品 
-                <button id="Relatedbtn" style="color:black;" onclick="ShowRelatedProduct(this);" CausesValidation="false" ><i class="fa fa-search" style="color:black"></i>&nbsp;関連商品を検索する</button>
+<%--<button id="Relatedbtn" style="color:black;" onclick="ShowRelatedProduct(this);" CausesValidation="false" ><i class="fa fa-search" style="color:black"></i>&nbsp;関連商品を検索する</button>--%>
             </dt>
 			<dd style="margin-right:0px;"><asp:TextBox runat="server" ID="txtRelated1" onkeypress="return isNumberKeys(event)"/>
                 <asp:TextBox runat="server" ID="txtRelated2" onkeypress="return isNumberKeys(event)"/>
@@ -1205,7 +1218,7 @@ $(this).css('cursor', 'pointer');
 </section>
 <div class="itemCmnSet editPage">
 			<div class="btn">	
-            <asp:Button runat="server" ID="btnCopy" OnClientClick ="ShowCopy(this)" Text="複製コピー" />
+            <input type="button" id = "btnCopy" onclick ="ShowCopy(this)" value="選複製コピー" runat="server"/>
             <asp:Button runat="server" ID="btnPreview" Text="プレビュー" onclick="btnPreview_Click" />
             <asp:Button runat="server" ID="btnSave" Text="登 録" OnClientClick="SaveClick()" onclick="btnSave_Click"/>
             <asp:Button runat="server" ID="btnComplete" Text="出品待ち" onclick="btnComplete_Click" />

@@ -161,6 +161,22 @@ namespace ORS_RCM.WebForms.Item
                 }
             }
         }
+
+        public DataTable relItem_Code
+        {
+            get
+            {
+                if (Session["relItem_Code" + ItemCode] != null)
+                {
+                    DataTable dt = (DataTable)Session["relItem_Code" + ItemCode];
+                    return dt;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+        }
         public DataTable Option
         {
             get
@@ -274,7 +290,6 @@ namespace ORS_RCM.WebForms.Item
                         BindShopName();
                         SetItemCodeURL();
                         SetSelectedRelatedItem(ItemID);   //Select From Item_Related_Item Table
-                        //DisplayRelatedItem();
                         #region EDITED BY T.Z.A 15-03-2019
 
                         SKU_BIND();
@@ -395,7 +410,17 @@ namespace ORS_RCM.WebForms.Item
                         txtRelated3.Text = "";
                         txtRelated4.Text = "";
                         txtRelated5.Text = "";
-                        DisplayRelatedItem();
+                        if (Session["btnRelatedbtn_" + ItemCode] != null && Session["btnRelatedbtn_" + ItemCode].ToString() == "ok")
+                        {
+                            DisplayRelatedItem();
+                            Session.Remove("btnRelatedbtn_" + ItemCode);
+                        }
+                        else
+                        {
+                            Session.Remove("btnRelatedbtn_" + ItemCode);
+                            //Session.Remove("Related_Item_Code");
+                            Session.Remove("relItem_Code");
+                        }
                     }
                     else if (ControlID.Contains("btnAdd"))
                     {
@@ -1070,6 +1095,7 @@ namespace ORS_RCM.WebForms.Item
                     }
 
                 }
+
             }
             catch (Exception ex)
             {
@@ -2616,32 +2642,32 @@ namespace ORS_RCM.WebForms.Item
         {
             try
             {
-                DataTable dt = RelatedItem as DataTable;
-                if (dt != null && dt.Rows.Count > 0)
+                DataTable dt1 = relItem_Code as DataTable;
+                if (dt1 != null && dt1.Rows.Count > 0)
                 {
-                    for (int i = 0; i < dt.Rows.Count; i++)
+                    for (int i = 0; i < dt1.Rows.Count; i++)
                     {
                         switch (i)
                         {
                             case 0:
-                                txtRelated1.Text = dt.Rows[i]["Item_Code"].ToString();
+                                txtRelated1.Text = dt1.Rows[i]["Item_Code"].ToString();
                                 break;
                             case 1:
-                                txtRelated2.Text = dt.Rows[i]["Item_Code"].ToString();
+                                txtRelated2.Text = dt1.Rows[i]["Item_Code"].ToString();
                                 break;
                             case 2:
-                                txtRelated3.Text = dt.Rows[i]["Item_Code"].ToString();
+                                txtRelated3.Text = dt1.Rows[i]["Item_Code"].ToString();
                                 break;
                             case 3:
-                                txtRelated4.Text = dt.Rows[i]["Item_Code"].ToString();
+                                txtRelated4.Text = dt1.Rows[i]["Item_Code"].ToString();
                                 break;
                             case 4:
-                                txtRelated5.Text = dt.Rows[i]["Item_Code"].ToString();
+                                txtRelated5.Text = dt1.Rows[i]["Item_Code"].ToString();
                                 break;
                         }
                     }
                 }
-
+                Session["relItem_Code" + ItemCode] = dt1;
             }
             catch (Exception ex)
             {
@@ -2685,7 +2711,7 @@ namespace ORS_RCM.WebForms.Item
                         }
                     }
                 }
-                Session["Related_Item_Code"] = dt;
+                Session["Related_Item_Code"+ItemCode] = dt;
             }
             catch (Exception ex)
             {

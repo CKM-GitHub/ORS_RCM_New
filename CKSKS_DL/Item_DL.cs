@@ -167,7 +167,7 @@ namespace ORS_RCM_DL
             try
             {
                 SqlConnection connectionString = new SqlConnection(DataConfig.connectionString);
-                SqlDataAdapter da = new SqlDataAdapter("Select * from Item_Master WITH (NOLOCK)", connectionString);
+                SqlDataAdapter da = new SqlDataAdapter("Select Item_Code from Item WITH (NOLOCK)", connectionString);
                 da.SelectCommand.CommandType = CommandType.Text;
                 da.SelectCommand.CommandTimeout = 0;
 

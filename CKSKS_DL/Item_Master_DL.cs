@@ -429,13 +429,16 @@ namespace ORS_RCM_DL
                 
                 cmd.Parameters.AddWithValue("@Categorymonotaro", ime.Categorymonotaro);
                 cmd.Parameters.AddWithValue("@Colormonotaro", ime.Colormonotaro);
+                cmd.Parameters.AddWithValue("@ReferenceURL", ime.ReferenceURL);
                 cmd.Parameters.AddWithValue("@Medical_Supplies", ime.Medical_Supplies);
                 cmd.Parameters.AddWithValue("@GreenPurchasingLaw", ime.GreenPurchasingLaw);
                 cmd.Parameters.AddWithValue("@Procurement_Goods", ime.Procurement_Goods);
                 cmd.Parameters.AddWithValue("@EcoMarkCertifiedGoods", ime.EcoMarkCertifiedGoods);
                 cmd.Parameters.AddWithValue("@EcoMarkCertifiedNo", ime.EcoMarkCertifiedNo);
                 cmd.Parameters.AddWithValue("@RoHS_Directive", ime.RoHS_Directive);
-              
+                cmd.Parameters.AddWithValue("@JISConform", ime.JISConform);
+                cmd.Parameters.AddWithValue("@ISOConform", ime.ISOConform);
+
 
 
                 cmd.Parameters.Add("@result", SqlDbType.Int).Direction = ParameterDirection.Output;
@@ -806,6 +809,7 @@ namespace ORS_RCM_DL
                     }
                     ime.Categorymonotaro = dt.Rows[0]["Category"].ToString();
                     ime.Colormonotaro = dt.Rows[0]["Color"].ToString();
+                    ime.ReferenceURL = dt.Rows[0]["ReferenceURL"].ToString();
 
                     if (!String.IsNullOrWhiteSpace(dt.Rows[0]["Procurement_Goods"].ToString()))
                     {
@@ -845,6 +849,22 @@ namespace ORS_RCM_DL
                     else
                     {
                         ime.RoHS_Directive = 0;
+                    }
+                    if (!String.IsNullOrWhiteSpace(dt.Rows[0]["JISConform"].ToString()))
+                    {
+                        ime.JISConform = Convert.ToInt32(dt.Rows[0]["JISConform"].ToString());
+                    }
+                    else
+                    {
+                        ime.JISConform = 0;
+                    }
+                    if (!String.IsNullOrWhiteSpace(dt.Rows[0]["ISOConform"].ToString()))
+                    {
+                        ime.ISOConform = Convert.ToInt32(dt.Rows[0]["ISOConform"].ToString());
+                    }
+                    else
+                    {
+                        ime.ISOConform = 0;
                     }
 
                     if (!String.IsNullOrWhiteSpace(dt.Rows[0]["Medical_Supplies"].ToString()))

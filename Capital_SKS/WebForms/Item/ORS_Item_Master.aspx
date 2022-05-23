@@ -1516,7 +1516,7 @@ table td {
                 </section>
                 <section id="setting" hidden> 
                     <div class="row" style="margin-top: 10px;margin-right: 1px; margin-bottom:10px">
-                         <div class="col-md-12 containerbox"> 
+                         <div class="col-md-12 containerbox" style="padding-left:16px;"> 
                            <asp:Label CssClass="lblitemcode"  runat="server" >
                                <span class="label label-md lbl" style=" font-weight:600;">商品情報</span>
                            </asp:Label>  
@@ -1617,6 +1617,14 @@ table td {
                                         <span class="label label-md lbl yellowlable">カラー</span>
                                         </asp:Label>
                                         <asp:TextBox CssClass="txtbox" ID="txtcolour" MaxLength="40"  runat="server" style="width: 100%;"></asp:TextBox>
+                                 </div>
+                             </div>
+                             <div class="row" style="padding-left: 5px;padding-right: 5px;">
+                                  <div class="floaddiv" style="width:100%;">
+                                    <asp:Label CssClass=""  runat="server" >
+                                        <span class="label label-md lbl yellowlable">参考URL</span>
+                                        </asp:Label>
+                                        <asp:TextBox CssClass="txtbox" ID="txtReferenceURL" MaxLength="500"  runat="server" style="width: 100%;"></asp:TextBox>
                                  </div>
                              </div>
                      </div>
@@ -1819,13 +1827,13 @@ table td {
                            </asp:Label>  
                              <br />
                              <div class="rowfirst">
-                              <div class="floaddiv" style="width:15%;" >
+                              <div class="floaddiv" style="width:11%;" >
                               <asp:Label CssClass="lblitemcode"  runat="server" >
                                <span class="label label-md lbl yellowlable ">グリーン購入法</span>
                            </asp:Label>
                           <asp:DropDownList ID="ddlgreenpurchasemethod" style="width:100%;" runat="server"></asp:DropDownList>
                               </div>
-                              <div class="floaddiv" style="width:25%;" >
+                              <div class="floaddiv" style="width:23%;" >
                               <asp:Label  runat="server" Text="">
                                  <span class="label label-md lbl yellowlable">特定調達品目</span>
                             </asp:Label>
@@ -1833,25 +1841,39 @@ table td {
                             
                               </div>
 
-                                  <div class="floaddiv" style="width:15%;">
+                                  <div class="floaddiv" style="width:13%;">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl yellowlable ">エコマーク認定品</span>
                                         </asp:Label>
                                         <asp:DropDownList ID="ddlecomartcertifiedproduct" style="width:100%;" runat="server"></asp:DropDownList>
                                     </div>
 
-                                  <div class="floaddiv" style="width:15%;">
+                                  <div class="floaddiv" style="width:14%;">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl yellowlable ">エコマーク認定番号</span>
                                         </asp:Label>
                                         <asp:TextBox CssClass="txtbox" ID="txtecomartcertifiednumber" onkeypress="return isNumberKey(event)"  runat="server" style="width: 100%;"></asp:TextBox>
                                     </div>
-                                <div class="floaddiv" style="width:`15%;">
+                                <div class="floaddiv" style="width:13%;">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl yellowlable ">RoHS指令</span>
                                         </asp:Label>
                                         <asp:DropDownList ID="ddlRoHSdirective" style="width:100%;" runat="server"></asp:DropDownList>
-                                    </div>               
+                                    </div>    
+                                  <div class="floaddiv" style="width:13%;">
+                                        <asp:Label CssClass=""  runat="server" >
+                                        <span class="label label-md lbl yellowlable ">JIS適合</span>
+                                        </asp:Label>
+                                        <asp:DropDownList ID="ddlJISConform" style="width:100%;" runat="server">
+                                        </asp:DropDownList>
+                                    </div>  
+                                  <div class="floaddiv" style="width:13%;">
+                                        <asp:Label CssClass=""  runat="server" >
+                                        <span class="label label-md lbl yellowlable ">ISO適合</span>
+                                        </asp:Label>
+                                        <asp:DropDownList ID="ddlISOConform" style="width:100%;" runat="server">
+                                        </asp:DropDownList>
+                                    </div>  
                             </div>
                           </div>
                      </div>

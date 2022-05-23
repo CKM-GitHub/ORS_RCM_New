@@ -751,7 +751,12 @@ namespace ORS_RCM_Common
             get { return colormonotaro; }
             set { colormonotaro = value; }
         }
-
+        private string referenceURL = string.Empty;
+        public string ReferenceURL
+        {
+            get { return referenceURL; }
+            set { referenceURL = value; }
+        }
         private int medical_Supplies = 0;
         public int Medical_Supplies
         {
@@ -793,7 +798,18 @@ namespace ORS_RCM_Common
             get { return roHS_Directive; }
             set { roHS_Directive = value; }
         }
-
+        private int jisConform = 0;
+        public int JISConform
+        {
+            get { return jisConform; }
+            set { jisConform = value; }
+        }
+        private int isoConform = 0;
+        public int ISOConform
+        {
+            get { return isoConform; }
+            set { isoConform = value; }
+        }
         public string Selling_Rank
         {
             get { return sellingrank ; }

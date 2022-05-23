@@ -1097,7 +1097,7 @@ $(this).css('cursor', 'pointer');
 		</dl>
 	</div>
 	
-</div><!-- /#block2 -->
+<%--</div>--%><!-- /#block2 -->
 </div><!-- /#scrollArea -->
 </div><!--/.itemCmnSet-->
 </section>

@@ -62,7 +62,6 @@ namespace Capital_SKS.WebForms.Item
             {
                 if (!IsPostBack)
                 {
-                   
                     gvMallCategory.DataBind();
                 }                
             }

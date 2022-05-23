@@ -27,15 +27,21 @@
  {
      background: #f2f2f2;
      }
-     
-  .itemView td
-  {
-     line-height:normal;
-    vertical-align: top;
-    height: inherit;
-    table-layout: fixed;
-    padding-top: 10px;
-  }
+
+	.itemView th.headRowSortable a {
+		display: block;
+		background: url(../images/sort.png) right center no-repeat;
+		background-size: 25px 25px;
+		
+	}
+
+	.itemView td {
+		line-height: normal;
+		vertical-align: top;
+		height: inherit;
+		table-layout: fixed;
+		padding-top: 10px;
+	}
   
   .itemView td:nth-of-type(8) p img
   {
@@ -624,7 +630,7 @@ div.setListBox .itemCmnSet.editPage .btn p {
 
 div.setListBox .itemCmnSet.editPage .btn input {
 	display: inline-block;
-	margin-right: 20px;
+	margin-right: 20px !important;
 }
 div.setListBox .itemCmnSet.editPage .btn input:last-of-type {
 	margin: 0px;

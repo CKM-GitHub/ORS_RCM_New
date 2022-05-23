@@ -92,6 +92,11 @@ namespace ORS_RCM_BL
             return imDL.SelectByID(id);
         }
 
+        public DataTable Item_Code_Sort(Item_Master_Entity ime, int pageIndex, int pageSize, int option, int search, string sortorder)
+        {
+            return imDL.Item_Code_Sort(ime, pageIndex, pageSize, option, search, sortorder);
+        }
+
         public DataTable SelectAll(Item_Master_Entity ime, int pageIndex, int pageSize, int option,int search)
         {
             return imDL.SelectAll(ime, pageIndex, pageSize, option,search);

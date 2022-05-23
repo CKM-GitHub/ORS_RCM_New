@@ -133,6 +133,7 @@ namespace ORS_RCM
                         }
                         ItemCheck_Change();
                     }
+                    refreshdata();
                 }
             }
             catch (Exception ex)
@@ -211,7 +212,7 @@ namespace ORS_RCM
                 else
                 {
                     ime.Item_Code = txtItem_Code.Text.TrimEnd(',').Trim();   // if Item_Code,
-                    string replaceWith = ",";string itemcode = string.Empty;
+                    string replaceWith = ","; string itemcode = string.Empty;
                     itemcode = txtItem_Code.Text.Trim();
                     ime.Item_Code = itemcode.Replace(",\r\n", replaceWith).Replace(",\n", replaceWith).Replace("\r\n", replaceWith).Replace("\n", replaceWith).Replace("\r", replaceWith);
                     if (ime.Item_Code.EndsWith(","))
@@ -277,7 +278,7 @@ namespace ORS_RCM
                 }
                 ime.ShopID = Convert.ToInt16(ddlExhibiton.SelectedValue);
                 return ime;
-               
+
             }
             catch (Exception ex)
             {
@@ -323,7 +324,80 @@ namespace ORS_RCM
                 Response.Redirect("~/CustomErrorPage.aspx?");
             }
         }
+        public void refreshdata()
+        {
+            //SqlConnection con = new SqlConnection(@"Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|\Database.mdf;Integrated Security=True;User Instance=True");
+            //SqlCommand cmd = new SqlCommand("select * from tbl_data", con);
+            //SqlDataAdapter sda = new SqlDataAdapter(cmd);
+            Item_Master_BL imbl = new Item_Master_BL();
+            Item_Master_Entity ime = GetData();
+            DataTable dt = new DataTable();
+            if (ViewState["sortdr"] != null)
+            {
+                string sortorder = ViewState["sortdr"].ToString();
+                dt = imbl.Item_Code_Sort(ime, 1, gvItem.PageSize, 1, 1, sortorder);
+            }
+            else
+            {
+                string sortorder = "Desc";
+                dt = imbl.Item_Code_Sort(ime, 1, gvItem.PageSize, 1, 1, sortorder);
+            }
+            //sda.Fill(dt);
+            gvItem.DataSource = dt;
+            gvItem.DataBind();
+            ViewState["dirState"] = dt;
+            ViewState["sortdr"] = "Asc";
+        }
+        protected void gvItem_OnSorting(object sender, GridViewSortEventArgs e)
+        {
+            DataTable dtrslt = (DataTable)ViewState["dirState"];
+            if (dtrslt.Rows.Count > 0)
+            {
+                if (Convert.ToString(ViewState["sortdr"]) == "Asc")
+                {
+                    dtrslt.DefaultView.Sort = e.SortExpression + " Desc";
+                    ViewState["sortdr"] = "Desc";
+                }
+                else
+                {
+                    dtrslt.DefaultView.Sort = e.SortExpression + " Asc";
+                    ViewState["sortdr"] = "Asc";
+                }
+                gvItem.DataSource = dtrslt;
+                gvItem.DataBind();
 
+
+            }
+        }
+
+
+        private string GetSortDirection(string column)
+        {
+
+            // By default, set the sort direction to ascending.
+            string sortDirection = "ASC";
+
+            // Retrieve the last column that was sorted.
+            string sortExpression = ViewState["SortExpression"] as string;
+
+            if (sortExpression != null)
+            {
+                // Check if the same column is being sorted.
+                // Otherwise, the default value can be returned.
+                if (sortExpression == column)
+                {
+                    string lastDirection = ViewState["SortDirection"] as string;
+                    if ((lastDirection != null) && (lastDirection == "ASC"))
+                    {
+                        sortDirection = "DESC";
+                    }
+                }
+            }  // Save new values in ViewState.
+            ViewState["SortDirection"] = sortDirection;
+            ViewState["SortExpression"] = column;
+
+            return sortDirection;
+        }
         protected void gvItem_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             try
@@ -452,7 +526,7 @@ namespace ORS_RCM
                                 Ppage.Visible = false;
                                 PWaitSt.Visible = false;
                                 PWaitL.Visible = false;
-                                POkSt.Visible = false; 
+                                POkSt.Visible = false;
                                 PExhibit.Visible = true;
                                 PNOk.Visible = false;
                                 break;
@@ -646,12 +720,12 @@ namespace ORS_RCM
                             DataTable dt = ItemShopBL.CheckItemCodeURL(Convert.ToInt32(CheckBoxArray[i].ToString()));
                             if (dt.Rows.Count < 1)
                             {
-                                
+
                                 p++;
                                 GlobalUI.MessageBox("There is no itemcode which dose not exist itemcode url cannot allow to exhibit!!");
                                 itemIDList = null;
                             }
-                           
+
                         }
                         else
                         {
@@ -666,7 +740,7 @@ namespace ORS_RCM
 
                         }
                     }
-                   
+
                     #region ConsoleWriteLineTofile
                     for (int i = 0; i < CheckBoxArray.Count; i++)
                     {
@@ -815,7 +889,7 @@ namespace ORS_RCM
                     gvItem.PageSize = int.Parse(ddlpage.SelectedValue.ToString());
                     DataTable dt = imbl.SelectAll(ime, 1, gvItem.PageSize, 2, 1);//(searchkey,pageIndex,pagesize,option(2=equal,1=like),1=search,0=select all)
                     int count = 0;
-                    if(dt.Rows.Count>0)
+                    if (dt.Rows.Count > 0)
                         count = Convert.ToInt32(dt.Rows[0]["Total_Count"].ToString());
                     gvItem.DataSource = dt;
                     gvItem.DataBind();
@@ -828,7 +902,7 @@ namespace ORS_RCM
                     gvItem.PageSize = int.Parse(ddlpage.SelectedValue.ToString());
                     DataTable dt = imbl.SelectAll(ime, 1, gvItem.PageSize, 1, 1);//(searchkey,pageIndex,pagesize,option(2=equal,1=like),1=search,0=select all)
                     int count = 0;
-                    if(dt.Rows.Count>0)
+                    if (dt.Rows.Count > 0)
                         count = Convert.ToInt32(dt.Rows[0]["Total_Count"].ToString());
                     gvItem.DataSource = dt;
                     gvItem.DataBind();
@@ -905,7 +979,7 @@ namespace ORS_RCM
                     {
                         dtfield = itfield_bl.STSelectAllData(ID);
                         str1 = dtfield.Rows[0]["Export_Fields"].ToString();
-                        exporttype=dtfield.Rows[0]["Export_Name"].ToString();
+                        exporttype = dtfield.Rows[0]["Export_Name"].ToString();
                         if (str1.Contains("商品番号")) { }
                         else str1 += "," + "商品番号";
                         string replaceWiths = "";
@@ -913,182 +987,182 @@ namespace ORS_RCM
                         str1 = Regex.Replace(str1, @"\r\n?|\n", replaceWiths);
                         str1 = Regex.Replace(str1, ",,", ",");
                         str1 = str1.TrimStart(',');
-                       str1= str1.TrimEnd(',');
+                        str1 = str1.TrimEnd(',');
 
-                       if (exporttype == "Xanax_Data")
-                       {
-                           #region Xanax_Data
-                           str1 = str1.Replace("商品番号", "i.Item_Code as '商品番号'").Replace("商品名", "i.Item_Name as '商品名'");
-                           str1 = str1.Replace("カタログ情報", "i.Catalog_Information as 'カタログ情報'").Replace("ブランド名", "i.Brand_Name as 'ブランド名'");
-                           str1 = str1.Replace("競技名", "i.Competition_Name as '競技名'").Replace("分類名", "i.Class_Name as '分類名'");
+                        if (exporttype == "Xanax_Data")
+                        {
+                            #region Xanax_Data
+                            str1 = str1.Replace("商品番号", "i.Item_Code as '商品番号'").Replace("商品名", "i.Item_Name as '商品名'");
+                            str1 = str1.Replace("カタログ情報", "i.Catalog_Information as 'カタログ情報'").Replace("ブランド名", "i.Brand_Name as 'ブランド名'");
+                            str1 = str1.Replace("競技名", "i.Competition_Name as '競技名'").Replace("分類名", "i.Class_Name as '分類名'");
 
-                           //  str1 = str1.Replace("カラー", "Color_Name_Official as 'カラー'").Replace("サイズ", "(SELECT STUFF((SELECT DISTINCT ',' + Size_Name_Official FROM Item WITH (NOLOCK) WHERE Item_Code=i.Item_Code  FOR XML PATH('')),1,1,'')) AS 'サイズ'");
-                           str1 = str1.Replace("カラー", "(SELECT STUFF((SELECT DISTINCT ',' + Color_Name_Official FROM Item WITH (NOLOCK) WHERE Item_Code=i.Item_Code  FOR XML PATH('')),1,1,'')) AS 'カラー'").Replace("サイズ", "(SELECT STUFF((SELECT DISTINCT ',' + Size_Name_Official FROM Item WITH (NOLOCK) WHERE Item_Code=i.Item_Code  FOR XML PATH('')),1,1,'')) AS 'サイズ'");
+                            //  str1 = str1.Replace("カラー", "Color_Name_Official as 'カラー'").Replace("サイズ", "(SELECT STUFF((SELECT DISTINCT ',' + Size_Name_Official FROM Item WITH (NOLOCK) WHERE Item_Code=i.Item_Code  FOR XML PATH('')),1,1,'')) AS 'サイズ'");
+                            str1 = str1.Replace("カラー", "(SELECT STUFF((SELECT DISTINCT ',' + Color_Name_Official FROM Item WITH (NOLOCK) WHERE Item_Code=i.Item_Code  FOR XML PATH('')),1,1,'')) AS 'カラー'").Replace("サイズ", "(SELECT STUFF((SELECT DISTINCT ',' + Size_Name_Official FROM Item WITH (NOLOCK) WHERE Item_Code=i.Item_Code  FOR XML PATH('')),1,1,'')) AS 'サイズ'");
 
-                           str1 = str1.Replace("基本情報1", "td.Template1 as '基本情報1'").Replace("基本情報内容1", "td.Template_Content1 as '基本情報内容1'");
-                           str1 = str1.Replace("基本情報2", "td.Template2 as '基本情報2'").Replace("基本情報内容2", "td.Template_Content2 as '基本情報内容2'");
-                           str1 = str1.Replace("基本情報3", "td.Template3 as '基本情報3'").Replace("基本情報内容3", "td.Template_Content3 as '基本情報内容3'");
-                           str1 = str1.Replace("基本情報4", "td.Template4 as '基本情報4'").Replace("基本情報内容4", "td.Template_Content4 as '基本情報内容4'");
-                           str1 = str1.Replace("基本情報5", "td.Template5 as '基本情報5'").Replace("基本情報内容5", "td.Template_Content5 as '基本情報内容5'");
-                           str1 = str1.Replace("基本情報6", "td.Template6 as '基本情報6'").Replace("基本情報内容6", "td.Template_Content6 as '基本情報内容6'");
-                           str1 = str1.Replace("基本情報7", "td.Template7 as '基本情報7'").Replace("基本情報内容7", "td.Template_Content7 as '基本情報内容7'");
-                           str1 = str1.Replace("基本情報8", "td.Template8 as '基本情報8'").Replace("基本情報内容8", "td.Template_Content8 as '基本情報内容8'");
-                           str1 = str1.Replace("基本情報9", "td.Template9 as '基本情報9'").Replace("基本情報内容9", "td.Template_Content9 as '基本情報内容9'");
-                           str1 = str1.Replace("基本情報10", "td.Template_Content10 as '基本情報10' ").Replace("基本情報内容10", "td.Template_Content10 as '基本情報内容10'");
-                           str1 = str1.Replace("基本情報11", "td.Template_Content11 as '基本情報11' ").Replace("基本情報内容11", "td.Template_Content11 as '基本情報内容11'");
-                           str1 = str1.Replace("基本情報12", "td.Template_Content12 as '基本情報12' ").Replace("基本情報内容12", "td.Template_Content12 as '基本情報内容12'");
-                           str1 = str1.Replace("基本情報13", "td.Template_Content13 as '基本情報13' ").Replace("基本情報内容13", "td.Template_Content13 as '基本情報内容13'");
-                           str1 = str1.Replace("基本情報14", "td.Template_Content14 as '基本情報14' ").Replace("基本情報内容14", "td.Template_Content14 as '基本情報内容14'");
-                           str1 = str1.Replace("基本情報15", "td.Template_Content15 as '基本情報15' ").Replace("基本情報内容15", "td.Template_Content15 as '基本情報内容15'");
-                           str1 = str1.Replace("基本情報16", "td.Template_Content16 as '基本情報16' ").Replace("基本情報内容16", "td.Template_Content16 as '基本情報内容16'");
-                           str1 = str1.Replace("基本情報17", "td.Template_Content17 as '基本情報17' ").Replace("基本情報内容17", "td.Template_Content17 as '基本情報内容17'");
-                           str1 = str1.Replace("基本情報18", "td.Template_Content18 as '基本情報18' ").Replace("基本情報内容18", "td.Template_Content18 as '基本情報内容18'");
-                           str1 = str1.Replace("基本情報19", "td.Template_Content19 as '基本情報19' ").Replace("基本情報内容19", "td.Template_Content19 as '基本情報内容19");
-                           str1 = str1.Replace("基本情報20", "td.Template_Content20 as '基本情報20' ").Replace("基本情報内容20", "td.Template_Content20 as '基本情報内容20'");
-                           str1 = str1.Replace("詳細情報1", "td.Detail_Template1 as '詳細情報1'").Replace("詳細情報内容1", "td.Detail_Template_Content1 as '詳細情報内容1'");
-                           str1 = str1.Replace("詳細情報2", "td.Detail_Template2 as '詳細情報2'").Replace("詳細情報内容2", "td.Detail_Template_Content2 as '詳細情報内容2'");
-                           str1 = str1.Replace("詳細情報3", "td.Detail_Template3 as '詳細情報3'").Replace("詳細情報内容3", "td.Detail_Template_Content3 as '詳細情報内容3'");
-                           str1 = str1.Replace("詳細情報4", "td.Detail_Template4 as '詳細情報4'").Replace("詳細情報内容4", "td.Detail_Template_Content4 as '詳細情報内容4'");
-                           str1 = str1.Replace("ゼット用項目（PC商品説明文）", "i.Zett_Item_Description as 'ゼット用項目（PC商品説明文）'").Replace("ゼット用項目（PC販売説明文）", "i.Zett_Sale_Description as 'ゼット用項目（PC販売説明文）'");
-                           str1 = str1.Replace("関連商品1", "(SELECT TOP(1) Related_ItemCode FROM Item_Related_Item  WITH (NOLOCK) WHERE Item_ID = i.ID AND  Item_Related_Item.SN =1) as '関連商品1'");
-                           str1 = str1.Replace("関連商品2", "(SELECT  TOP(1) Related_ItemCode FROM Item_Related_Item  WITH (NOLOCK) WHERE Item_ID = i.ID AND  Item_Related_Item.SN =2) as '関連商品2'");
-                           str1 = str1.Replace("関連商品3", "(SELECT TOP(1) Related_ItemCode FROM Item_Related_Item  WITH (NOLOCK) WHERE Item_ID = i.ID AND  Item_Related_Item.SN =3) as '関連商品3'");
-                           str1 = str1.Replace("関連商品4", "(SELECT TOP(1) Related_ItemCode FROM Item_Related_Item  WITH (NOLOCK) WHERE Item_ID = i.ID AND  Item_Related_Item.SN =4) as '関連商品4'");
-                           str1 = str1.Replace("関連商品5", "(SELECT  TOP(1) Related_ItemCode FROM Item_Related_Item  WITH (NOLOCK) WHERE Item_ID = i.ID AND  Item_Related_Item.SN =5) as '関連商品5'");
+                            str1 = str1.Replace("基本情報1", "td.Template1 as '基本情報1'").Replace("基本情報内容1", "td.Template_Content1 as '基本情報内容1'");
+                            str1 = str1.Replace("基本情報2", "td.Template2 as '基本情報2'").Replace("基本情報内容2", "td.Template_Content2 as '基本情報内容2'");
+                            str1 = str1.Replace("基本情報3", "td.Template3 as '基本情報3'").Replace("基本情報内容3", "td.Template_Content3 as '基本情報内容3'");
+                            str1 = str1.Replace("基本情報4", "td.Template4 as '基本情報4'").Replace("基本情報内容4", "td.Template_Content4 as '基本情報内容4'");
+                            str1 = str1.Replace("基本情報5", "td.Template5 as '基本情報5'").Replace("基本情報内容5", "td.Template_Content5 as '基本情報内容5'");
+                            str1 = str1.Replace("基本情報6", "td.Template6 as '基本情報6'").Replace("基本情報内容6", "td.Template_Content6 as '基本情報内容6'");
+                            str1 = str1.Replace("基本情報7", "td.Template7 as '基本情報7'").Replace("基本情報内容7", "td.Template_Content7 as '基本情報内容7'");
+                            str1 = str1.Replace("基本情報8", "td.Template8 as '基本情報8'").Replace("基本情報内容8", "td.Template_Content8 as '基本情報内容8'");
+                            str1 = str1.Replace("基本情報9", "td.Template9 as '基本情報9'").Replace("基本情報内容9", "td.Template_Content9 as '基本情報内容9'");
+                            str1 = str1.Replace("基本情報10", "td.Template_Content10 as '基本情報10' ").Replace("基本情報内容10", "td.Template_Content10 as '基本情報内容10'");
+                            str1 = str1.Replace("基本情報11", "td.Template_Content11 as '基本情報11' ").Replace("基本情報内容11", "td.Template_Content11 as '基本情報内容11'");
+                            str1 = str1.Replace("基本情報12", "td.Template_Content12 as '基本情報12' ").Replace("基本情報内容12", "td.Template_Content12 as '基本情報内容12'");
+                            str1 = str1.Replace("基本情報13", "td.Template_Content13 as '基本情報13' ").Replace("基本情報内容13", "td.Template_Content13 as '基本情報内容13'");
+                            str1 = str1.Replace("基本情報14", "td.Template_Content14 as '基本情報14' ").Replace("基本情報内容14", "td.Template_Content14 as '基本情報内容14'");
+                            str1 = str1.Replace("基本情報15", "td.Template_Content15 as '基本情報15' ").Replace("基本情報内容15", "td.Template_Content15 as '基本情報内容15'");
+                            str1 = str1.Replace("基本情報16", "td.Template_Content16 as '基本情報16' ").Replace("基本情報内容16", "td.Template_Content16 as '基本情報内容16'");
+                            str1 = str1.Replace("基本情報17", "td.Template_Content17 as '基本情報17' ").Replace("基本情報内容17", "td.Template_Content17 as '基本情報内容17'");
+                            str1 = str1.Replace("基本情報18", "td.Template_Content18 as '基本情報18' ").Replace("基本情報内容18", "td.Template_Content18 as '基本情報内容18'");
+                            str1 = str1.Replace("基本情報19", "td.Template_Content19 as '基本情報19' ").Replace("基本情報内容19", "td.Template_Content19 as '基本情報内容19");
+                            str1 = str1.Replace("基本情報20", "td.Template_Content20 as '基本情報20' ").Replace("基本情報内容20", "td.Template_Content20 as '基本情報内容20'");
+                            str1 = str1.Replace("詳細情報1", "td.Detail_Template1 as '詳細情報1'").Replace("詳細情報内容1", "td.Detail_Template_Content1 as '詳細情報内容1'");
+                            str1 = str1.Replace("詳細情報2", "td.Detail_Template2 as '詳細情報2'").Replace("詳細情報内容2", "td.Detail_Template_Content2 as '詳細情報内容2'");
+                            str1 = str1.Replace("詳細情報3", "td.Detail_Template3 as '詳細情報3'").Replace("詳細情報内容3", "td.Detail_Template_Content3 as '詳細情報内容3'");
+                            str1 = str1.Replace("詳細情報4", "td.Detail_Template4 as '詳細情報4'").Replace("詳細情報内容4", "td.Detail_Template_Content4 as '詳細情報内容4'");
+                            str1 = str1.Replace("ゼット用項目（PC商品説明文）", "i.Zett_Item_Description as 'ゼット用項目（PC商品説明文）'").Replace("ゼット用項目（PC販売説明文）", "i.Zett_Sale_Description as 'ゼット用項目（PC販売説明文）'");
+                            str1 = str1.Replace("関連商品1", "(SELECT TOP(1) Related_ItemCode FROM Item_Related_Item  WITH (NOLOCK) WHERE Item_ID = i.ID AND  Item_Related_Item.SN =1) as '関連商品1'");
+                            str1 = str1.Replace("関連商品2", "(SELECT  TOP(1) Related_ItemCode FROM Item_Related_Item  WITH (NOLOCK) WHERE Item_ID = i.ID AND  Item_Related_Item.SN =2) as '関連商品2'");
+                            str1 = str1.Replace("関連商品3", "(SELECT TOP(1) Related_ItemCode FROM Item_Related_Item  WITH (NOLOCK) WHERE Item_ID = i.ID AND  Item_Related_Item.SN =3) as '関連商品3'");
+                            str1 = str1.Replace("関連商品4", "(SELECT TOP(1) Related_ItemCode FROM Item_Related_Item  WITH (NOLOCK) WHERE Item_ID = i.ID AND  Item_Related_Item.SN =4) as '関連商品4'");
+                            str1 = str1.Replace("関連商品5", "(SELECT  TOP(1) Related_ItemCode FROM Item_Related_Item  WITH (NOLOCK) WHERE Item_ID = i.ID AND  Item_Related_Item.SN =5) as '関連商品5'");
 
-                           str1 = str1.Replace("テクノロジー画像1", "(SELECT TOP(1) Image_Name  FROM Item_Image WITH (NOLOCK) WHERE Item_ID = i.ID AND Item_Image.Image_Type = 1 AND Item_Image.SN = 1)as 'テクノロジー画像1'");
-                           str1 = str1.Replace("テクノロジー画像2", "(SELECT TOP(1) Image_Name  FROM Item_Image WITH (NOLOCK) WHERE Item_ID = i.ID AND Item_Image.Image_Type = 1 AND Item_Image.SN = 2)as 'テクノロジー画像2'");
-                           str1 = str1.Replace("テクノロジー画像3", "(SELECT TOP(1) Image_Name  FROM Item_Image WITH (NOLOCK) WHERE Item_ID = i.ID AND Item_Image.Image_Type = 1 AND Item_Image.SN = 3)as 'テクノロジー画像3'");
-                           str1 = str1.Replace("テクノロジー画像4", "(SELECT TOP(1) Image_Name  FROM Item_Image WITH (NOLOCK) WHERE Item_ID = i.ID AND Item_Image.Image_Type = 1 AND Item_Image.SN = 4)as 'テクノロジー画像4'");
-                           str1 = str1.Replace("テクノロジー画像5", "(SELECT TOP(1) Image_Name  FROM Item_Image WITH (NOLOCK) WHERE Item_ID = i.ID AND Item_Image.Image_Type = 1 AND Item_Image.SN = 5)as 'テクノロジー画像5'");
-                           str1 = str1.Replace("テクノロジー画像6", "(SELECT TOP(1) Image_Name  FROM Item_Image WITH (NOLOCK) WHERE Item_ID = i.ID AND Item_Image.Image_Type = 1 AND Item_Image.SN = 5)as 'テクノロジー画像6'");
+                            str1 = str1.Replace("テクノロジー画像1", "(SELECT TOP(1) Image_Name  FROM Item_Image WITH (NOLOCK) WHERE Item_ID = i.ID AND Item_Image.Image_Type = 1 AND Item_Image.SN = 1)as 'テクノロジー画像1'");
+                            str1 = str1.Replace("テクノロジー画像2", "(SELECT TOP(1) Image_Name  FROM Item_Image WITH (NOLOCK) WHERE Item_ID = i.ID AND Item_Image.Image_Type = 1 AND Item_Image.SN = 2)as 'テクノロジー画像2'");
+                            str1 = str1.Replace("テクノロジー画像3", "(SELECT TOP(1) Image_Name  FROM Item_Image WITH (NOLOCK) WHERE Item_ID = i.ID AND Item_Image.Image_Type = 1 AND Item_Image.SN = 3)as 'テクノロジー画像3'");
+                            str1 = str1.Replace("テクノロジー画像4", "(SELECT TOP(1) Image_Name  FROM Item_Image WITH (NOLOCK) WHERE Item_ID = i.ID AND Item_Image.Image_Type = 1 AND Item_Image.SN = 4)as 'テクノロジー画像4'");
+                            str1 = str1.Replace("テクノロジー画像5", "(SELECT TOP(1) Image_Name  FROM Item_Image WITH (NOLOCK) WHERE Item_ID = i.ID AND Item_Image.Image_Type = 1 AND Item_Image.SN = 5)as 'テクノロジー画像5'");
+                            str1 = str1.Replace("テクノロジー画像6", "(SELECT TOP(1) Image_Name  FROM Item_Image WITH (NOLOCK) WHERE Item_ID = i.ID AND Item_Image.Image_Type = 1 AND Item_Image.SN = 5)as 'テクノロジー画像6'");
 
-                           str1 = str1.Replace("キャンペーン画像1", "(SELECT TOP(1) Image_Name  FROM Item_Image WITH (NOLOCK) WHERE Item_ID = i.ID AND Item_Image.Image_Type = 2 AND Item_Image.SN = 1)as 'キャンペーン画像1'");
-                           str1 = str1.Replace("キャンペーン画像2", "(SELECT TOP(1) Image_Name  FROM Item_Image WITH (NOLOCK) WHERE Item_ID = i.ID AND Item_Image.Image_Type = 2 AND Item_Image.SN = 2)as 'キャンペーン画像2'");
-                           str1 = str1.Replace("キャンペーン画像3", "(SELECT TOP(1) Image_Name  FROM Item_Image WITH (NOLOCK) WHERE Item_ID = i.ID AND Item_Image.Image_Type = 2 AND Item_Image.SN = 3)as 'キャンペーン画像3'");
-                           str1 = str1.Replace("キャンペーン画像4", "(SELECT TOP(1) Image_Name  FROM Item_Image WITH (NOLOCK) WHERE Item_ID = i.ID AND Item_Image.Image_Type = 2 AND Item_Image.SN = 4)as 'キャンペーン画像4'");
-                           str1 = str1.Replace("キャンペーン画像5", "(SELECT TOP(1) Image_Name  FROM Item_Image WITH (NOLOCK) WHERE Item_ID = i.ID AND Item_Image.Image_Type = 2 AND Item_Image.SN = 5)as 'キャンペーン画像5'");
+                            str1 = str1.Replace("キャンペーン画像1", "(SELECT TOP(1) Image_Name  FROM Item_Image WITH (NOLOCK) WHERE Item_ID = i.ID AND Item_Image.Image_Type = 2 AND Item_Image.SN = 1)as 'キャンペーン画像1'");
+                            str1 = str1.Replace("キャンペーン画像2", "(SELECT TOP(1) Image_Name  FROM Item_Image WITH (NOLOCK) WHERE Item_ID = i.ID AND Item_Image.Image_Type = 2 AND Item_Image.SN = 2)as 'キャンペーン画像2'");
+                            str1 = str1.Replace("キャンペーン画像3", "(SELECT TOP(1) Image_Name  FROM Item_Image WITH (NOLOCK) WHERE Item_ID = i.ID AND Item_Image.Image_Type = 2 AND Item_Image.SN = 3)as 'キャンペーン画像3'");
+                            str1 = str1.Replace("キャンペーン画像4", "(SELECT TOP(1) Image_Name  FROM Item_Image WITH (NOLOCK) WHERE Item_ID = i.ID AND Item_Image.Image_Type = 2 AND Item_Image.SN = 4)as 'キャンペーン画像4'");
+                            str1 = str1.Replace("キャンペーン画像5", "(SELECT TOP(1) Image_Name  FROM Item_Image WITH (NOLOCK) WHERE Item_ID = i.ID AND Item_Image.Image_Type = 2 AND Item_Image.SN = 5)as 'キャンペーン画像5'");
 
-                           str1 = str1.Replace("td.Template1 as '基本情報1'0", "td.Template10 as  '基本情報10'").Replace("td.Template_Content1 as '基本情報内容1'0", "td.Template_Content10 as  '基本情報内容10'");
-                           str1 = str1.Replace("td.Template1 as '基本情報1'1", "td.Template11 as  '基本情報11'").Replace("td.Template_Content1 as '基本情報内容1'1", "td.Template_Content11 as  '基本情報内容11'");
-                           str1 = str1.Replace("td.Template1 as '基本情報1'2", "td.Template12 as  '基本情報12'").Replace("td.Template_Content1 as '基本情報内容1'2", "td.Template_Content12 as  '基本情報内容12'");
-                           str1 = str1.Replace("td.Template1 as '基本情報1'3", "td.Template13 as  '基本情報13'").Replace("td.Template_Content1 as '基本情報内容1'3", "td.Template_Content13 as  '基本情報内容13'");
-                           str1 = str1.Replace("td.Template1 as '基本情報1'4", "td.Template14 as  '基本情報14'").Replace("td.Template_Content1 as '基本情報内容1'4", "td.Template_Content14 as  '基本情報内容14'");
-                           str1 = str1.Replace("td.Template1 as '基本情報1'5", "td.Template15 as  '基本情報15'").Replace("td.Template_Content1 as '基本情報内容1'5", "td.Template_Content15 as  '基本情報内容15'");
-                           str1 = str1.Replace("td.Template1 as '基本情報1'6", "td.Template16 as  '基本情報16'").Replace("td.Template_Content1 as '基本情報内容1'6", "td.Template_Content16 as  '基本情報内容16'");
-                           str1 = str1.Replace("td.Template1 as '基本情報1'7", "td.Template17 as  '基本情報17'").Replace("td.Template_Content1 as '基本情報内容1'7", "td.Template_Content17 as  '基本情報内容17'");
-                           str1 = str1.Replace("td.Template1 as '基本情報1'8", "td.Template18 as  '基本情報18'").Replace("td.Template_Content1 as '基本情報内容1'8", "td.Template_Content18 as  '基本情報内容18'");
-                           str1 = str1.Replace("td.Template1 as '基本情報1'9", "td.Template19 as  '基本情報19'").Replace("td.Template_Content1 as '基本情報内容1'9", "td.Template_Content19 as  '基本情報内容19'");
-                           str1 = str1.Replace("td.Template2 as '基本情報2'0", "td.Template20 as  '基本情報20'").Replace("td.Template_Content2 as '基本情報内容2'0", "td.Template_Content20 as  '基本情報内容20'");
+                            str1 = str1.Replace("td.Template1 as '基本情報1'0", "td.Template10 as  '基本情報10'").Replace("td.Template_Content1 as '基本情報内容1'0", "td.Template_Content10 as  '基本情報内容10'");
+                            str1 = str1.Replace("td.Template1 as '基本情報1'1", "td.Template11 as  '基本情報11'").Replace("td.Template_Content1 as '基本情報内容1'1", "td.Template_Content11 as  '基本情報内容11'");
+                            str1 = str1.Replace("td.Template1 as '基本情報1'2", "td.Template12 as  '基本情報12'").Replace("td.Template_Content1 as '基本情報内容1'2", "td.Template_Content12 as  '基本情報内容12'");
+                            str1 = str1.Replace("td.Template1 as '基本情報1'3", "td.Template13 as  '基本情報13'").Replace("td.Template_Content1 as '基本情報内容1'3", "td.Template_Content13 as  '基本情報内容13'");
+                            str1 = str1.Replace("td.Template1 as '基本情報1'4", "td.Template14 as  '基本情報14'").Replace("td.Template_Content1 as '基本情報内容1'4", "td.Template_Content14 as  '基本情報内容14'");
+                            str1 = str1.Replace("td.Template1 as '基本情報1'5", "td.Template15 as  '基本情報15'").Replace("td.Template_Content1 as '基本情報内容1'5", "td.Template_Content15 as  '基本情報内容15'");
+                            str1 = str1.Replace("td.Template1 as '基本情報1'6", "td.Template16 as  '基本情報16'").Replace("td.Template_Content1 as '基本情報内容1'6", "td.Template_Content16 as  '基本情報内容16'");
+                            str1 = str1.Replace("td.Template1 as '基本情報1'7", "td.Template17 as  '基本情報17'").Replace("td.Template_Content1 as '基本情報内容1'7", "td.Template_Content17 as  '基本情報内容17'");
+                            str1 = str1.Replace("td.Template1 as '基本情報1'8", "td.Template18 as  '基本情報18'").Replace("td.Template_Content1 as '基本情報内容1'8", "td.Template_Content18 as  '基本情報内容18'");
+                            str1 = str1.Replace("td.Template1 as '基本情報1'9", "td.Template19 as  '基本情報19'").Replace("td.Template_Content1 as '基本情報内容1'9", "td.Template_Content19 as  '基本情報内容19'");
+                            str1 = str1.Replace("td.Template2 as '基本情報2'0", "td.Template20 as  '基本情報20'").Replace("td.Template_Content2 as '基本情報内容2'0", "td.Template_Content20 as  '基本情報内容20'");
 
-                           str1 = str1.Replace("基本情報1'0", "基本情報10'").Replace("基本情報内容1'0", "基本情報内容10'");
-                           str1 = str1.Replace("基本情報1'1", "基本情報11'").Replace("基本情報内容1'1", "基本情報内容11'");
-                           str1 = str1.Replace("基本情報1'2", "基本情報12'").Replace("基本情報内容1'2", "基本情報内容12'");
-                           str1 = str1.Replace("基本情報1'3", "基本情報13'").Replace("基本情報内容1'3", "基本情報内容13'");
-                           str1 = str1.Replace("基本情報1'4", "基本情報14'").Replace("基本情報内容1'4", "基本情報内容14'");
-                           str1 = str1.Replace("基本情報1'5", "基本情報15'").Replace("基本情報内容1'5", "基本情報内容15'");
-                           str1 = str1.Replace("基本情報1'6", "基本情報16'").Replace("基本情報内容1'6", "基本情報内容16'");
-                           str1 = str1.Replace("基本情報1'7", "基本情報17'").Replace("基本情報内容1'7", "基本情報内容17'");
-                           str1 = str1.Replace("基本情報1'8", "基本情報18'").Replace("基本情報内容1'8", "基本情報内容18'");
-                           str1 = str1.Replace("基本情報1'9", "基本情報19'").Replace("基本情報内容1'9", "基本情報内容19'");
-                           str1 = str1.Replace("基本情報2'0", "基本情報20'").Replace("基本情報内容2'0", "基本情報内容20'");
+                            str1 = str1.Replace("基本情報1'0", "基本情報10'").Replace("基本情報内容1'0", "基本情報内容10'");
+                            str1 = str1.Replace("基本情報1'1", "基本情報11'").Replace("基本情報内容1'1", "基本情報内容11'");
+                            str1 = str1.Replace("基本情報1'2", "基本情報12'").Replace("基本情報内容1'2", "基本情報内容12'");
+                            str1 = str1.Replace("基本情報1'3", "基本情報13'").Replace("基本情報内容1'3", "基本情報内容13'");
+                            str1 = str1.Replace("基本情報1'4", "基本情報14'").Replace("基本情報内容1'4", "基本情報内容14'");
+                            str1 = str1.Replace("基本情報1'5", "基本情報15'").Replace("基本情報内容1'5", "基本情報内容15'");
+                            str1 = str1.Replace("基本情報1'6", "基本情報16'").Replace("基本情報内容1'6", "基本情報内容16'");
+                            str1 = str1.Replace("基本情報1'7", "基本情報17'").Replace("基本情報内容1'7", "基本情報内容17'");
+                            str1 = str1.Replace("基本情報1'8", "基本情報18'").Replace("基本情報内容1'8", "基本情報内容18'");
+                            str1 = str1.Replace("基本情報1'9", "基本情報19'").Replace("基本情報内容1'9", "基本情報内容19'");
+                            str1 = str1.Replace("基本情報2'0", "基本情報20'").Replace("基本情報内容2'0", "基本情報内容20'");
 
-                           #endregion
-                       }
-                       else
-                       {
-                           #region
+                            #endregion
+                        }
+                        else
+                        {
+                            #region
 
-                           str1 = str1.Replace("商品番号", "i.Item_Code as '商品番号'").Replace("商品名", "i.Item_Name as '商品名'");
-                           str1 = str1.Replace("カタログ情報", "i.Catalog_Information as 'カタログ情報'").Replace("ブランド名", "i.Brand_Name as 'ブランド名'");
-                           str1 = str1.Replace("競技名", "i.Competition_Name as '競技名'").Replace("分類名", "i.Class_Name as '分類名'");
+                            str1 = str1.Replace("商品番号", "i.Item_Code as '商品番号'").Replace("商品名", "i.Item_Name as '商品名'");
+                            str1 = str1.Replace("カタログ情報", "i.Catalog_Information as 'カタログ情報'").Replace("ブランド名", "i.Brand_Name as 'ブランド名'");
+                            str1 = str1.Replace("競技名", "i.Competition_Name as '競技名'").Replace("分類名", "i.Class_Name as '分類名'");
 
-                           //  str1 = str1.Replace("カラー", "Color_Name_Official as 'カラー'").Replace("サイズ", "(SELECT STUFF((SELECT DISTINCT ',' + Size_Name_Official FROM Item WITH (NOLOCK) WHERE Item_Code=i.Item_Code  FOR XML PATH('')),1,1,'')) AS 'サイズ'");
-                           //str1 = str1.Replace("カラー", "(SELECT STUFF((SELECT DISTINCT ',' + Color_Name_Official FROM Item WITH (NOLOCK) WHERE Item_Code=i.Item_Code  FOR XML PATH('')),1,1,'')) AS 'カラー'").Replace("サイズ", "(SELECT STUFF((SELECT DISTINCT ',' + Size_Name_Official FROM Item WITH (NOLOCK) WHERE Item_Code=i.Item_Code  FOR XML PATH('')),1,1,'')) AS 'サイズ'");
+                            //  str1 = str1.Replace("カラー", "Color_Name_Official as 'カラー'").Replace("サイズ", "(SELECT STUFF((SELECT DISTINCT ',' + Size_Name_Official FROM Item WITH (NOLOCK) WHERE Item_Code=i.Item_Code  FOR XML PATH('')),1,1,'')) AS 'サイズ'");
+                            //str1 = str1.Replace("カラー", "(SELECT STUFF((SELECT DISTINCT ',' + Color_Name_Official FROM Item WITH (NOLOCK) WHERE Item_Code=i.Item_Code  FOR XML PATH('')),1,1,'')) AS 'カラー'").Replace("サイズ", "(SELECT STUFF((SELECT DISTINCT ',' + Size_Name_Official FROM Item WITH (NOLOCK) WHERE Item_Code=i.Item_Code  FOR XML PATH('')),1,1,'')) AS 'サイズ'");
 
-                           str1 = str1.Replace("基本情報1", "td.Template1 as '基本情報1'").Replace("基本情報内容1", "td.Template_Content1 as '基本情報内容1'");
-                           str1 = str1.Replace("基本情報2", "td.Template2 as '基本情報2'").Replace("基本情報内容2", "td.Template_Content2 as '基本情報内容2'");
-                           str1 = str1.Replace("基本情報3", "td.Template3 as '基本情報3'").Replace("基本情報内容3", "td.Template_Content3 as '基本情報内容3'");
-                           str1 = str1.Replace("基本情報4", "td.Template4 as '基本情報4'").Replace("基本情報内容4", "td.Template_Content4 as '基本情報内容4'");
-                           str1 = str1.Replace("基本情報5", "td.Template5 as '基本情報5'").Replace("基本情報内容5", "td.Template_Content5 as '基本情報内容5'");
-                           str1 = str1.Replace("基本情報6", "td.Template6 as '基本情報6'").Replace("基本情報内容6", "td.Template_Content6 as '基本情報内容6'");
-                           str1 = str1.Replace("基本情報7", "td.Template7 as '基本情報7'").Replace("基本情報内容7", "td.Template_Content7 as '基本情報内容7'");
-                           str1 = str1.Replace("基本情報8", "td.Template8 as '基本情報8'").Replace("基本情報内容8", "td.Template_Content8 as '基本情報内容8'");
-                           str1 = str1.Replace("基本情報9", "td.Template9 as '基本情報9'").Replace("基本情報内容9", "td.Template_Content9 as '基本情報内容9'");
-                           str1 = str1.Replace("基本情報10", "td.Template_Content10 as '基本情報10' ").Replace("基本情報内容10", "td.Template_Content10 as '基本情報内容10'");
-                           str1 = str1.Replace("基本情報11", "td.Template_Content11 as '基本情報11' ").Replace("基本情報内容11", "td.Template_Content11 as '基本情報内容11'");
-                           str1 = str1.Replace("基本情報12", "td.Template_Content12 as '基本情報12' ").Replace("基本情報内容12", "td.Template_Content12 as '基本情報内容12'");
-                           str1 = str1.Replace("基本情報13", "td.Template_Content13 as '基本情報13' ").Replace("基本情報内容13", "td.Template_Content13 as '基本情報内容13'");
-                           str1 = str1.Replace("基本情報14", "td.Template_Content14 as '基本情報14' ").Replace("基本情報内容14", "td.Template_Content14 as '基本情報内容14'");
-                           str1 = str1.Replace("基本情報15", "td.Template_Content15 as '基本情報15' ").Replace("基本情報内容15", "td.Template_Content15 as '基本情報内容15'");
-                           str1 = str1.Replace("基本情報16", "td.Template_Content16 as '基本情報16' ").Replace("基本情報内容16", "td.Template_Content16 as '基本情報内容16'");
-                           str1 = str1.Replace("基本情報17", "td.Template_Content17 as '基本情報17' ").Replace("基本情報内容17", "td.Template_Content17 as '基本情報内容17'");
-                           str1 = str1.Replace("基本情報18", "td.Template_Content18 as '基本情報18' ").Replace("基本情報内容18", "td.Template_Content18 as '基本情報内容18'");
-                           str1 = str1.Replace("基本情報19", "td.Template_Content19 as '基本情報19' ").Replace("基本情報内容19", "td.Template_Content19 as '基本情報内容19");
-                           str1 = str1.Replace("基本情報20", "td.Template_Content20 as '基本情報20' ").Replace("基本情報内容20", "td.Template_Content20 as '基本情報内容20'");
-                           str1 = str1.Replace("詳細情報1", "td.Detail_Template1 as '詳細情報1'").Replace("詳細情報内容1", "td.Detail_Template_Content1 as '詳細情報内容1'");
-                           str1 = str1.Replace("詳細情報2", "td.Detail_Template2 as '詳細情報2'").Replace("詳細情報内容2", "td.Detail_Template_Content2 as '詳細情報内容2'");
-                           str1 = str1.Replace("詳細情報3", "td.Detail_Template3 as '詳細情報3'").Replace("詳細情報内容3", "td.Detail_Template_Content3 as '詳細情報内容3'");
-                           str1 = str1.Replace("詳細情報4", "td.Detail_Template4 as '詳細情報4'").Replace("詳細情報内容4", "td.Detail_Template_Content4 as '詳細情報内容4'");
-                           str1 = str1.Replace("ゼット用項目（PC商品説明文）", "i.Zett_Item_Description as 'ゼット用項目（PC商品説明文）'").Replace("ゼット用項目（PC販売説明文）", "i.Zett_Sale_Description as 'ゼット用項目（PC販売説明文）'");
-                           str1 = str1.Replace("関連商品1", "(SELECT TOP(1) Related_ItemCode FROM Item_Related_Item  WITH (NOLOCK) WHERE Item_ID = i.ID AND  Item_Related_Item.SN =1) as '関連商品1'");
-                           str1 = str1.Replace("関連商品2", "(SELECT  TOP(1) Related_ItemCode FROM Item_Related_Item  WITH (NOLOCK) WHERE Item_ID = i.ID AND  Item_Related_Item.SN =2) as '関連商品2'");
-                           str1 = str1.Replace("関連商品3", "(SELECT TOP(1) Related_ItemCode FROM Item_Related_Item  WITH (NOLOCK) WHERE Item_ID = i.ID AND  Item_Related_Item.SN =3) as '関連商品3'");
-                           str1 = str1.Replace("関連商品4", "(SELECT TOP(1) Related_ItemCode FROM Item_Related_Item  WITH (NOLOCK) WHERE Item_ID = i.ID AND  Item_Related_Item.SN =4) as '関連商品4'");
-                           str1 = str1.Replace("関連商品5", "(SELECT  TOP(1) Related_ItemCode FROM Item_Related_Item  WITH (NOLOCK) WHERE Item_ID = i.ID AND  Item_Related_Item.SN =5) as '関連商品5'");
+                            str1 = str1.Replace("基本情報1", "td.Template1 as '基本情報1'").Replace("基本情報内容1", "td.Template_Content1 as '基本情報内容1'");
+                            str1 = str1.Replace("基本情報2", "td.Template2 as '基本情報2'").Replace("基本情報内容2", "td.Template_Content2 as '基本情報内容2'");
+                            str1 = str1.Replace("基本情報3", "td.Template3 as '基本情報3'").Replace("基本情報内容3", "td.Template_Content3 as '基本情報内容3'");
+                            str1 = str1.Replace("基本情報4", "td.Template4 as '基本情報4'").Replace("基本情報内容4", "td.Template_Content4 as '基本情報内容4'");
+                            str1 = str1.Replace("基本情報5", "td.Template5 as '基本情報5'").Replace("基本情報内容5", "td.Template_Content5 as '基本情報内容5'");
+                            str1 = str1.Replace("基本情報6", "td.Template6 as '基本情報6'").Replace("基本情報内容6", "td.Template_Content6 as '基本情報内容6'");
+                            str1 = str1.Replace("基本情報7", "td.Template7 as '基本情報7'").Replace("基本情報内容7", "td.Template_Content7 as '基本情報内容7'");
+                            str1 = str1.Replace("基本情報8", "td.Template8 as '基本情報8'").Replace("基本情報内容8", "td.Template_Content8 as '基本情報内容8'");
+                            str1 = str1.Replace("基本情報9", "td.Template9 as '基本情報9'").Replace("基本情報内容9", "td.Template_Content9 as '基本情報内容9'");
+                            str1 = str1.Replace("基本情報10", "td.Template_Content10 as '基本情報10' ").Replace("基本情報内容10", "td.Template_Content10 as '基本情報内容10'");
+                            str1 = str1.Replace("基本情報11", "td.Template_Content11 as '基本情報11' ").Replace("基本情報内容11", "td.Template_Content11 as '基本情報内容11'");
+                            str1 = str1.Replace("基本情報12", "td.Template_Content12 as '基本情報12' ").Replace("基本情報内容12", "td.Template_Content12 as '基本情報内容12'");
+                            str1 = str1.Replace("基本情報13", "td.Template_Content13 as '基本情報13' ").Replace("基本情報内容13", "td.Template_Content13 as '基本情報内容13'");
+                            str1 = str1.Replace("基本情報14", "td.Template_Content14 as '基本情報14' ").Replace("基本情報内容14", "td.Template_Content14 as '基本情報内容14'");
+                            str1 = str1.Replace("基本情報15", "td.Template_Content15 as '基本情報15' ").Replace("基本情報内容15", "td.Template_Content15 as '基本情報内容15'");
+                            str1 = str1.Replace("基本情報16", "td.Template_Content16 as '基本情報16' ").Replace("基本情報内容16", "td.Template_Content16 as '基本情報内容16'");
+                            str1 = str1.Replace("基本情報17", "td.Template_Content17 as '基本情報17' ").Replace("基本情報内容17", "td.Template_Content17 as '基本情報内容17'");
+                            str1 = str1.Replace("基本情報18", "td.Template_Content18 as '基本情報18' ").Replace("基本情報内容18", "td.Template_Content18 as '基本情報内容18'");
+                            str1 = str1.Replace("基本情報19", "td.Template_Content19 as '基本情報19' ").Replace("基本情報内容19", "td.Template_Content19 as '基本情報内容19");
+                            str1 = str1.Replace("基本情報20", "td.Template_Content20 as '基本情報20' ").Replace("基本情報内容20", "td.Template_Content20 as '基本情報内容20'");
+                            str1 = str1.Replace("詳細情報1", "td.Detail_Template1 as '詳細情報1'").Replace("詳細情報内容1", "td.Detail_Template_Content1 as '詳細情報内容1'");
+                            str1 = str1.Replace("詳細情報2", "td.Detail_Template2 as '詳細情報2'").Replace("詳細情報内容2", "td.Detail_Template_Content2 as '詳細情報内容2'");
+                            str1 = str1.Replace("詳細情報3", "td.Detail_Template3 as '詳細情報3'").Replace("詳細情報内容3", "td.Detail_Template_Content3 as '詳細情報内容3'");
+                            str1 = str1.Replace("詳細情報4", "td.Detail_Template4 as '詳細情報4'").Replace("詳細情報内容4", "td.Detail_Template_Content4 as '詳細情報内容4'");
+                            str1 = str1.Replace("ゼット用項目（PC商品説明文）", "i.Zett_Item_Description as 'ゼット用項目（PC商品説明文）'").Replace("ゼット用項目（PC販売説明文）", "i.Zett_Sale_Description as 'ゼット用項目（PC販売説明文）'");
+                            str1 = str1.Replace("関連商品1", "(SELECT TOP(1) Related_ItemCode FROM Item_Related_Item  WITH (NOLOCK) WHERE Item_ID = i.ID AND  Item_Related_Item.SN =1) as '関連商品1'");
+                            str1 = str1.Replace("関連商品2", "(SELECT  TOP(1) Related_ItemCode FROM Item_Related_Item  WITH (NOLOCK) WHERE Item_ID = i.ID AND  Item_Related_Item.SN =2) as '関連商品2'");
+                            str1 = str1.Replace("関連商品3", "(SELECT TOP(1) Related_ItemCode FROM Item_Related_Item  WITH (NOLOCK) WHERE Item_ID = i.ID AND  Item_Related_Item.SN =3) as '関連商品3'");
+                            str1 = str1.Replace("関連商品4", "(SELECT TOP(1) Related_ItemCode FROM Item_Related_Item  WITH (NOLOCK) WHERE Item_ID = i.ID AND  Item_Related_Item.SN =4) as '関連商品4'");
+                            str1 = str1.Replace("関連商品5", "(SELECT  TOP(1) Related_ItemCode FROM Item_Related_Item  WITH (NOLOCK) WHERE Item_ID = i.ID AND  Item_Related_Item.SN =5) as '関連商品5'");
 
-                           str1 = str1.Replace("テクノロジー画像1", "(SELECT TOP(1) Image_Name  FROM Item_Image WITH (NOLOCK) WHERE Item_ID = i.ID AND Item_Image.Image_Type = 1 AND Item_Image.SN = 1)as 'テクノロジー画像1'");
-                           str1 = str1.Replace("テクノロジー画像2", "(SELECT TOP(1) Image_Name  FROM Item_Image WITH (NOLOCK) WHERE Item_ID = i.ID AND Item_Image.Image_Type = 1 AND Item_Image.SN = 2)as 'テクノロジー画像2'");
-                           str1 = str1.Replace("テクノロジー画像3", "(SELECT TOP(1) Image_Name  FROM Item_Image WITH (NOLOCK) WHERE Item_ID = i.ID AND Item_Image.Image_Type = 1 AND Item_Image.SN = 3)as 'テクノロジー画像3'");
-                           str1 = str1.Replace("テクノロジー画像4", "(SELECT TOP(1) Image_Name  FROM Item_Image WITH (NOLOCK) WHERE Item_ID = i.ID AND Item_Image.Image_Type = 1 AND Item_Image.SN = 4)as 'テクノロジー画像4'");
-                           str1 = str1.Replace("テクノロジー画像5", "(SELECT TOP(1) Image_Name  FROM Item_Image WITH (NOLOCK) WHERE Item_ID = i.ID AND Item_Image.Image_Type = 1 AND Item_Image.SN = 5)as 'テクノロジー画像5'");
-                           str1 = str1.Replace("テクノロジー画像6", "(SELECT TOP(1) Image_Name  FROM Item_Image WITH (NOLOCK) WHERE Item_ID = i.ID AND Item_Image.Image_Type = 1 AND Item_Image.SN = 5)as 'テクノロジー画像6'");
+                            str1 = str1.Replace("テクノロジー画像1", "(SELECT TOP(1) Image_Name  FROM Item_Image WITH (NOLOCK) WHERE Item_ID = i.ID AND Item_Image.Image_Type = 1 AND Item_Image.SN = 1)as 'テクノロジー画像1'");
+                            str1 = str1.Replace("テクノロジー画像2", "(SELECT TOP(1) Image_Name  FROM Item_Image WITH (NOLOCK) WHERE Item_ID = i.ID AND Item_Image.Image_Type = 1 AND Item_Image.SN = 2)as 'テクノロジー画像2'");
+                            str1 = str1.Replace("テクノロジー画像3", "(SELECT TOP(1) Image_Name  FROM Item_Image WITH (NOLOCK) WHERE Item_ID = i.ID AND Item_Image.Image_Type = 1 AND Item_Image.SN = 3)as 'テクノロジー画像3'");
+                            str1 = str1.Replace("テクノロジー画像4", "(SELECT TOP(1) Image_Name  FROM Item_Image WITH (NOLOCK) WHERE Item_ID = i.ID AND Item_Image.Image_Type = 1 AND Item_Image.SN = 4)as 'テクノロジー画像4'");
+                            str1 = str1.Replace("テクノロジー画像5", "(SELECT TOP(1) Image_Name  FROM Item_Image WITH (NOLOCK) WHERE Item_ID = i.ID AND Item_Image.Image_Type = 1 AND Item_Image.SN = 5)as 'テクノロジー画像5'");
+                            str1 = str1.Replace("テクノロジー画像6", "(SELECT TOP(1) Image_Name  FROM Item_Image WITH (NOLOCK) WHERE Item_ID = i.ID AND Item_Image.Image_Type = 1 AND Item_Image.SN = 5)as 'テクノロジー画像6'");
 
-                           str1 = str1.Replace("キャンペーン画像1", "(SELECT TOP(1) Image_Name  FROM Item_Image WITH (NOLOCK) WHERE Item_ID = i.ID AND Item_Image.Image_Type = 2 AND Item_Image.SN = 1)as 'キャンペーン画像1'");
-                           str1 = str1.Replace("キャンペーン画像2", "(SELECT TOP(1) Image_Name  FROM Item_Image WITH (NOLOCK) WHERE Item_ID = i.ID AND Item_Image.Image_Type = 2 AND Item_Image.SN = 2)as 'キャンペーン画像2'");
-                           str1 = str1.Replace("キャンペーン画像3", "(SELECT TOP(1) Image_Name  FROM Item_Image WITH (NOLOCK) WHERE Item_ID = i.ID AND Item_Image.Image_Type = 2 AND Item_Image.SN = 3)as 'キャンペーン画像3'");
-                           str1 = str1.Replace("キャンペーン画像4", "(SELECT TOP(1) Image_Name  FROM Item_Image WITH (NOLOCK) WHERE Item_ID = i.ID AND Item_Image.Image_Type = 2 AND Item_Image.SN = 4)as 'キャンペーン画像4'");
-                           str1 = str1.Replace("キャンペーン画像5", "(SELECT TOP(1) Image_Name  FROM Item_Image WITH (NOLOCK) WHERE Item_ID = i.ID AND Item_Image.Image_Type = 2 AND Item_Image.SN = 5)as 'キャンペーン画像5'");
+                            str1 = str1.Replace("キャンペーン画像1", "(SELECT TOP(1) Image_Name  FROM Item_Image WITH (NOLOCK) WHERE Item_ID = i.ID AND Item_Image.Image_Type = 2 AND Item_Image.SN = 1)as 'キャンペーン画像1'");
+                            str1 = str1.Replace("キャンペーン画像2", "(SELECT TOP(1) Image_Name  FROM Item_Image WITH (NOLOCK) WHERE Item_ID = i.ID AND Item_Image.Image_Type = 2 AND Item_Image.SN = 2)as 'キャンペーン画像2'");
+                            str1 = str1.Replace("キャンペーン画像3", "(SELECT TOP(1) Image_Name  FROM Item_Image WITH (NOLOCK) WHERE Item_ID = i.ID AND Item_Image.Image_Type = 2 AND Item_Image.SN = 3)as 'キャンペーン画像3'");
+                            str1 = str1.Replace("キャンペーン画像4", "(SELECT TOP(1) Image_Name  FROM Item_Image WITH (NOLOCK) WHERE Item_ID = i.ID AND Item_Image.Image_Type = 2 AND Item_Image.SN = 4)as 'キャンペーン画像4'");
+                            str1 = str1.Replace("キャンペーン画像5", "(SELECT TOP(1) Image_Name  FROM Item_Image WITH (NOLOCK) WHERE Item_ID = i.ID AND Item_Image.Image_Type = 2 AND Item_Image.SN = 5)as 'キャンペーン画像5'");
 
-                           str1 = str1.Replace("td.Template1 as '基本情報1'0", "td.Template10 as  '基本情報10'").Replace("td.Template_Content1 as '基本情報内容1'0", "td.Template_Content10 as  '基本情報内容10'");
-                           str1 = str1.Replace("td.Template1 as '基本情報1'1", "td.Template11 as  '基本情報11'").Replace("td.Template_Content1 as '基本情報内容1'1", "td.Template_Content11 as  '基本情報内容11'");
-                           str1 = str1.Replace("td.Template1 as '基本情報1'2", "td.Template12 as  '基本情報12'").Replace("td.Template_Content1 as '基本情報内容1'2", "td.Template_Content12 as  '基本情報内容12'");
-                           str1 = str1.Replace("td.Template1 as '基本情報1'3", "td.Template13 as  '基本情報13'").Replace("td.Template_Content1 as '基本情報内容1'3", "td.Template_Content13 as  '基本情報内容13'");
-                           str1 = str1.Replace("td.Template1 as '基本情報1'4", "td.Template14 as  '基本情報14'").Replace("td.Template_Content1 as '基本情報内容1'4", "td.Template_Content14 as  '基本情報内容14'");
-                           str1 = str1.Replace("td.Template1 as '基本情報1'5", "td.Template15 as  '基本情報15'").Replace("td.Template_Content1 as '基本情報内容1'5", "td.Template_Content15 as  '基本情報内容15'");
-                           str1 = str1.Replace("td.Template1 as '基本情報1'6", "td.Template16 as  '基本情報16'").Replace("td.Template_Content1 as '基本情報内容1'6", "td.Template_Content16 as  '基本情報内容16'");
-                           str1 = str1.Replace("td.Template1 as '基本情報1'7", "td.Template17 as  '基本情報17'").Replace("td.Template_Content1 as '基本情報内容1'7", "td.Template_Content17 as  '基本情報内容17'");
-                           str1 = str1.Replace("td.Template1 as '基本情報1'8", "td.Template18 as  '基本情報18'").Replace("td.Template_Content1 as '基本情報内容1'8", "td.Template_Content18 as  '基本情報内容18'");
-                           str1 = str1.Replace("td.Template1 as '基本情報1'9", "td.Template19 as  '基本情報19'").Replace("td.Template_Content1 as '基本情報内容1'9", "td.Template_Content19 as  '基本情報内容19'");
-                           str1 = str1.Replace("td.Template2 as '基本情報2'0", "td.Template20 as  '基本情報20'").Replace("td.Template_Content2 as '基本情報内容2'0", "td.Template_Content20 as  '基本情報内容20'");
+                            str1 = str1.Replace("td.Template1 as '基本情報1'0", "td.Template10 as  '基本情報10'").Replace("td.Template_Content1 as '基本情報内容1'0", "td.Template_Content10 as  '基本情報内容10'");
+                            str1 = str1.Replace("td.Template1 as '基本情報1'1", "td.Template11 as  '基本情報11'").Replace("td.Template_Content1 as '基本情報内容1'1", "td.Template_Content11 as  '基本情報内容11'");
+                            str1 = str1.Replace("td.Template1 as '基本情報1'2", "td.Template12 as  '基本情報12'").Replace("td.Template_Content1 as '基本情報内容1'2", "td.Template_Content12 as  '基本情報内容12'");
+                            str1 = str1.Replace("td.Template1 as '基本情報1'3", "td.Template13 as  '基本情報13'").Replace("td.Template_Content1 as '基本情報内容1'3", "td.Template_Content13 as  '基本情報内容13'");
+                            str1 = str1.Replace("td.Template1 as '基本情報1'4", "td.Template14 as  '基本情報14'").Replace("td.Template_Content1 as '基本情報内容1'4", "td.Template_Content14 as  '基本情報内容14'");
+                            str1 = str1.Replace("td.Template1 as '基本情報1'5", "td.Template15 as  '基本情報15'").Replace("td.Template_Content1 as '基本情報内容1'5", "td.Template_Content15 as  '基本情報内容15'");
+                            str1 = str1.Replace("td.Template1 as '基本情報1'6", "td.Template16 as  '基本情報16'").Replace("td.Template_Content1 as '基本情報内容1'6", "td.Template_Content16 as  '基本情報内容16'");
+                            str1 = str1.Replace("td.Template1 as '基本情報1'7", "td.Template17 as  '基本情報17'").Replace("td.Template_Content1 as '基本情報内容1'7", "td.Template_Content17 as  '基本情報内容17'");
+                            str1 = str1.Replace("td.Template1 as '基本情報1'8", "td.Template18 as  '基本情報18'").Replace("td.Template_Content1 as '基本情報内容1'8", "td.Template_Content18 as  '基本情報内容18'");
+                            str1 = str1.Replace("td.Template1 as '基本情報1'9", "td.Template19 as  '基本情報19'").Replace("td.Template_Content1 as '基本情報内容1'9", "td.Template_Content19 as  '基本情報内容19'");
+                            str1 = str1.Replace("td.Template2 as '基本情報2'0", "td.Template20 as  '基本情報20'").Replace("td.Template_Content2 as '基本情報内容2'0", "td.Template_Content20 as  '基本情報内容20'");
 
-                           str1 = str1.Replace("基本情報1'0", "基本情報10'").Replace("基本情報内容1'0", "基本情報内容10'");
-                           str1 = str1.Replace("基本情報1'1", "基本情報11'").Replace("基本情報内容1'1", "基本情報内容11'");
-                           str1 = str1.Replace("基本情報1'2", "基本情報12'").Replace("基本情報内容1'2", "基本情報内容12'");
-                           str1 = str1.Replace("基本情報1'3", "基本情報13'").Replace("基本情報内容1'3", "基本情報内容13'");
-                           str1 = str1.Replace("基本情報1'4", "基本情報14'").Replace("基本情報内容1'4", "基本情報内容14'");
-                           str1 = str1.Replace("基本情報1'5", "基本情報15'").Replace("基本情報内容1'5", "基本情報内容15'");
-                           str1 = str1.Replace("基本情報1'6", "基本情報16'").Replace("基本情報内容1'6", "基本情報内容16'");
-                           str1 = str1.Replace("基本情報1'7", "基本情報17'").Replace("基本情報内容1'7", "基本情報内容17'");
-                           str1 = str1.Replace("基本情報1'8", "基本情報18'").Replace("基本情報内容1'8", "基本情報内容18'");
-                           str1 = str1.Replace("基本情報1'9", "基本情報19'").Replace("基本情報内容1'9", "基本情報内容19'");
-                           str1 = str1.Replace("基本情報2'0", "基本情報20'").Replace("基本情報内容2'0", "基本情報内容20'");
-                           #endregion
-                       }
+                            str1 = str1.Replace("基本情報1'0", "基本情報10'").Replace("基本情報内容1'0", "基本情報内容10'");
+                            str1 = str1.Replace("基本情報1'1", "基本情報11'").Replace("基本情報内容1'1", "基本情報内容11'");
+                            str1 = str1.Replace("基本情報1'2", "基本情報12'").Replace("基本情報内容1'2", "基本情報内容12'");
+                            str1 = str1.Replace("基本情報1'3", "基本情報13'").Replace("基本情報内容1'3", "基本情報内容13'");
+                            str1 = str1.Replace("基本情報1'4", "基本情報14'").Replace("基本情報内容1'4", "基本情報内容14'");
+                            str1 = str1.Replace("基本情報1'5", "基本情報15'").Replace("基本情報内容1'5", "基本情報内容15'");
+                            str1 = str1.Replace("基本情報1'6", "基本情報16'").Replace("基本情報内容1'6", "基本情報内容16'");
+                            str1 = str1.Replace("基本情報1'7", "基本情報17'").Replace("基本情報内容1'7", "基本情報内容17'");
+                            str1 = str1.Replace("基本情報1'8", "基本情報18'").Replace("基本情報内容1'8", "基本情報内容18'");
+                            str1 = str1.Replace("基本情報1'9", "基本情報19'").Replace("基本情報内容1'9", "基本情報内容19'");
+                            str1 = str1.Replace("基本情報2'0", "基本情報20'").Replace("基本情報内容2'0", "基本情報内容20'");
+                            #endregion
+                        }
                     }
 
-                   // if (ViewState["ExportField"] != null)
-                  if (!String.IsNullOrWhiteSpace(ddlname.SelectedItem.Value.ToString()))
+                    // if (ViewState["ExportField"] != null)
+                    if (!String.IsNullOrWhiteSpace(ddlname.SelectedItem.Value.ToString()))
                     {
                         ConsoleWriteLine_Tofile("Get Export data");
                         ConsoleWriteLine_Tofile("Start Time : " + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
                         DataTable dtsmart = null;
-                      if(exporttype == "Xanax_Data")
-                      {
-                          dtsmart = itfield_bl.SmartXanaxCSV(csv, str1); 
-                      }
-                      else
-                          dtsmart = itfield_bl.SmartCSV(csv, str1);
+                        if (exporttype == "Xanax_Data")
+                        {
+                            dtsmart = itfield_bl.SmartXanaxCSV(csv, str1);
+                        }
+                        else
+                            dtsmart = itfield_bl.SmartCSV(csv, str1);
                         ConsoleWriteLine_Tofile("End Time : " + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
                         if (dtsmart.Columns.Contains("Item_Description_PC"))
                         {
@@ -1103,10 +1177,10 @@ namespace ORS_RCM
                         ConsoleWriteLine_Tofile("End Time : " + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
                         DataTable dts = dtsmart.Copy();
                         dtsmart.Clear();
-                         DataTable dt = new DataTable();
-                         itfield_bl = new Item_ExportField_BL();
-                         string fieldid = ddlname.SelectedItem.Value.ToString();
-                         dtfield = itfield_bl.STSelectAllData(fieldid);
+                        DataTable dt = new DataTable();
+                        itfield_bl = new Item_ExportField_BL();
+                        string fieldid = ddlname.SelectedItem.Value.ToString();
+                        dtfield = itfield_bl.STSelectAllData(fieldid);
                         if (dtfield != null && dtfield.Rows.Count > 0)
                         {
                             ConsoleWriteLine_Tofile("Remove Duplicate");
@@ -1271,7 +1345,7 @@ namespace ORS_RCM
             }
         }
 
-        protected void Colnamereplace(DataTable dt) 
+        protected void Colnamereplace(DataTable dt)
         {
             if (dt.Columns.Contains("Item_Code"))
             {

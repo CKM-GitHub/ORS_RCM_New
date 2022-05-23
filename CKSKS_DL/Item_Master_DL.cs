@@ -82,6 +82,99 @@ namespace ORS_RCM_DL
                 throw ex;
             }
         }
+
+        public DataTable Item_Code_Sort(Item_Master_Entity ime, int pageIndex, int pageSize, int option, int search, string sortorder)
+        {
+            try
+            {
+                SqlConnection connectionString = new SqlConnection(DataConfig.connectionString);
+                DataTable dt = new DataTable();
+                SqlDataAdapter sda = new SqlDataAdapter("SP_Item_Code_Sort1", connectionString);
+                sda.SelectCommand.CommandTimeout = 0;
+                sda.SelectCommand.CommandType = CommandType.StoredProcedure;
+                //txtImageFileName field not found
+                //CategoryName field not found
+                if (!String.IsNullOrWhiteSpace(ime.Item_Name))
+                    sda.SelectCommand.Parameters.AddWithValue("@Item_Name", ime.Item_Name);
+                else sda.SelectCommand.Parameters.AddWithValue("@Item_Name", DBNull.Value);
+
+                if (!String.IsNullOrWhiteSpace(ime.Item_Code))
+                    sda.SelectCommand.Parameters.AddWithValue("@Item_Code", ime.Item_Code);
+                else sda.SelectCommand.Parameters.AddWithValue("@Item_Code", DBNull.Value);
+
+                if (!String.IsNullOrWhiteSpace(ime.Catalog_Information))
+                    sda.SelectCommand.Parameters.AddWithValue("@Catalog_Information", ime.Catalog_Information);
+                else sda.SelectCommand.Parameters.AddWithValue("@Catalog_Information", DBNull.Value);
+
+                if (!String.IsNullOrWhiteSpace(ime.Brand_Name))
+                    sda.SelectCommand.Parameters.AddWithValue("@Brand_Name", ime.Brand_Name);
+                else sda.SelectCommand.Parameters.AddWithValue("@Brand_Name", DBNull.Value);
+
+
+                if (!String.IsNullOrWhiteSpace(ime.Competition_Name))
+                    sda.SelectCommand.Parameters.AddWithValue("@Competition_Name", ime.Competition_Name);
+                else sda.SelectCommand.Parameters.AddWithValue("@Competition_Name", DBNull.Value);
+
+                if (!String.IsNullOrWhiteSpace(ime.Year))
+                    sda.SelectCommand.Parameters.AddWithValue("@Year", ime.Year);
+                else sda.SelectCommand.Parameters.AddWithValue("@Year", DBNull.Value);
+
+                if (!String.IsNullOrWhiteSpace(ime.Season))
+                    sda.SelectCommand.Parameters.AddWithValue("@Season", ime.Season);
+                else sda.SelectCommand.Parameters.AddWithValue("@Season", DBNull.Value);
+
+                sda.SelectCommand.Parameters.AddWithValue("@Special_Flag", ime.Special_Flag);
+                sda.SelectCommand.Parameters.AddWithValue("@Reservation_Flag", ime.Reservation_Flag);
+                sda.SelectCommand.Parameters.AddWithValue("@Export_Status", ime.Export_Status);
+                sda.SelectCommand.Parameters.AddWithValue("@Updated_By", ime.Updated_By);
+
+                if (!String.IsNullOrWhiteSpace(ime.Ctrl_ID))
+                    sda.SelectCommand.Parameters.AddWithValue("@Ctrl_ID", ime.Ctrl_ID);
+                else sda.SelectCommand.Parameters.AddWithValue("@Ctrl_ID", DBNull.Value);
+
+                if (!String.IsNullOrWhiteSpace(ime.Color_Name))
+                    sda.SelectCommand.Parameters.AddWithValue("@Color_Name", ime.Color_Name);
+                else sda.SelectCommand.Parameters.AddWithValue("@Color_Name", DBNull.Value);
+
+                if (!String.IsNullOrWhiteSpace(ime.Image_Name))
+                    sda.SelectCommand.Parameters.AddWithValue("@Image_Name", ime.Image_Name);
+                else sda.SelectCommand.Parameters.AddWithValue("@Image_Name", DBNull.Value);
+
+                if (!String.IsNullOrWhiteSpace(ime.Cate_Name))
+                    sda.SelectCommand.Parameters.AddWithValue("@Cate_Name", ime.Cate_Name);
+                else sda.SelectCommand.Parameters.AddWithValue("@Cate_Name", DBNull.Value);
+
+                if (!String.IsNullOrWhiteSpace(ime.IdList))
+                    sda.SelectCommand.Parameters.AddWithValue("@IdList", ime.IdList);
+                else sda.SelectCommand.Parameters.AddWithValue("@IdList", DBNull.Value);
+
+                if (!String.IsNullOrWhiteSpace(ime.RemoveList))
+                    sda.SelectCommand.Parameters.AddWithValue("@RemoveList", ime.RemoveList);
+                else sda.SelectCommand.Parameters.AddWithValue("@RemoveList", DBNull.Value);
+
+                if (!String.IsNullOrWhiteSpace(ime.MasterKeyword))
+                    sda.SelectCommand.Parameters.AddWithValue("@MasterKeyword", ime.MasterKeyword);
+                else sda.SelectCommand.Parameters.AddWithValue("@MasterKeyword", DBNull.Value);
+
+                sda.SelectCommand.Parameters.AddWithValue("@Price", ime.Price);
+                sda.SelectCommand.Parameters.AddWithValue("@PageIndex", pageIndex);
+                sda.SelectCommand.Parameters.AddWithValue("@PageSize", pageSize);
+                sda.SelectCommand.Parameters.AddWithValue("@Option", option);
+                sda.SelectCommand.Parameters.AddWithValue("@ShopID", ime.ShopID);
+                sda.SelectCommand.Parameters.AddWithValue("@sortorder", sortorder);
+
+                sda.SelectCommand.Connection.Open();
+                sda.Fill(dt);
+                sda.SelectCommand.Connection.Close();
+
+                return dt;
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
         public DataTable GetItemSaleDescription(String id)
         {
             try

@@ -116,7 +116,7 @@
 </script>
 
 <script type="text/javascript">
-    function ShowPreview(itemcode,strOpen, ctrl) {
+    function ShowPreview(itemcode, strOpen, ctrl) {
         var left = (screen.width / 2) - (600 / 2);
         var top = (screen.height / 2) - (500 / 2);
         var retval = "";
@@ -352,7 +352,7 @@
                             <asp:GridView ID="gvItem" runat="server" AutoGenerateColumns="False" EmptyDataText="There is no data to display."
                                 EnableTheming="False" ForeColor="#333333" GridLines="None" CssClass="itemView"
                                 ShowHeaderWhenEmpty="True" AllowPaging="true" OnRowCommand="gvItem_RowCommand"
-                                OnRowDataBound="gvItem_RowDataBound">
+                                OnRowDataBound="gvItem_RowDataBound" AllowSorting="true" OnSorting="gvItem_OnSorting">
                                 <Columns>
                                     <asp:TemplateField HeaderText="行">
                                         <ItemTemplate>
@@ -407,7 +407,7 @@
                                             <asp:Label ID="lblMStatus" runat="server" Text='<%#Bind("MCtrl_ID") %>' Visible="false"></asp:Label>
                                         </ItemTemplate>
                                     </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="商品番号">
+                                    <asp:TemplateField HeaderText="商品番号" HeaderStyle-CssClass="headRowSortable" SortExpression="Item_Code">
                                         <ItemTemplate>
                                             <asp:Label runat="server" ID="lnkItemNo" Text='<%#Eval("Item_Code") %>' CssClass="labelAsLink" onclick="NewTabPreview(this,event);"></asp:Label>
                                             <asp:Label runat="server" ID="LabelItem_Code" Text='<%# Eval("Item_Code") %>' Visible="false" />

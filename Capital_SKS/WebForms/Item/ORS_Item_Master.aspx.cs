@@ -216,8 +216,10 @@ namespace Capital_SKS.WebForms.Item
                     Bindddlecomartcertifiedproduct();
                     BindddlRoHSdirective();
                     BindddlPharmaceuticalsandmedicaldevices();
+                    BindddlJISConform();
+                    BindddlISOConform();
 
-                  // //// BindORSTag();//updated 3/6/2021
+                    // //// BindORSTag();//updated 3/6/2021
                     ime = new Item_Master_Entity();
                     imeBL = new Item_Master_BL();
                     Item_BL item = new Item_BL();
@@ -2220,6 +2222,7 @@ namespace Capital_SKS.WebForms.Item
                 }
                 ime.Categorymonotaro = txtmonocategory.Text.ToString();
                 ime.Colormonotaro = txtcolour.Text.ToString();
+                ime.ReferenceURL = txtReferenceURL.Text.ToString();
                 ime.Procurement_Goods = ddlSpecifiedprocurementitem.SelectedIndex;
                 ime.EcoMarkCertifiedGoods = ddlecomartcertifiedproduct.SelectedIndex;
                 ime.GreenPurchasingLaw = ddlgreenpurchasemethod.SelectedIndex;
@@ -2229,6 +2232,9 @@ namespace Capital_SKS.WebForms.Item
                     ime.EcoMarkCertifiedNo = Convert.ToInt32(txtecomartcertifiednumber.Text.ToString());
                 }
                 ime.RoHS_Directive = ddlRoHSdirective.SelectedIndex;
+                ime.JISConform = ddlJISConform.SelectedIndex;
+                ime.ISOConform = ddlISOConform.SelectedIndex;
+
                 ime.Medical_Supplies = ddlPharmaceuticalsandmedicaldevices.SelectedIndex;               
 
 
@@ -5537,6 +5543,7 @@ namespace Capital_SKS.WebForms.Item
 
                 txtmonocategory.Text = ime.Categorymonotaro.ToString();
                 txtcolour.Text = ime.Colormonotaro.ToString();
+                txtReferenceURL.Text = ime.ReferenceURL.ToString();
 
                 if (!String.IsNullOrWhiteSpace(ime.Procurement_Goods.ToString()))
                 {
@@ -5591,7 +5598,22 @@ namespace Capital_SKS.WebForms.Item
                 {
                     ddlPharmaceuticalsandmedicaldevices.SelectedIndex = 0;
                 }
-
+                if (!String.IsNullOrWhiteSpace(ime.JISConform.ToString()))
+                {
+                    ddlJISConform.SelectedIndex = Convert.ToInt32(ime.JISConform);
+                }
+                else
+                {
+                    ddlJISConform.SelectedIndex = 0;
+                }
+                if (!String.IsNullOrWhiteSpace(ime.ISOConform.ToString()))
+                {
+                    ddlISOConform.SelectedIndex = Convert.ToInt32(ime.ISOConform);
+                }
+                else
+                {
+                    ddlISOConform.SelectedIndex = 0;
+                }
 
                 txtsellingrank.Text = ime.Selling_Rank;
                 ddldeliverymethod.SelectedValue = Convert.ToString(ime.Delivery_Method);
@@ -5875,7 +5897,16 @@ namespace Capital_SKS.WebForms.Item
             ddlPharmaceuticalsandmedicaldevices.Items.Insert(2, "医療機器");
         }
 
-
+        public void BindddlJISConform()
+        {
+            ddlJISConform.Items.Insert(0, "非適合");
+            ddlJISConform.Items.Insert(1, "適合");
+        }
+        public void BindddlISOConform()
+        {
+            ddlISOConform.Items.Insert(0, "非適合");
+            ddlISOConform.Items.Insert(1, "適合");
+        }
 
         public void BindMonotaroddl()
         {

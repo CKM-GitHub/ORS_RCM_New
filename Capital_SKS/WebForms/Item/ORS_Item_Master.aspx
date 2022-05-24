@@ -3582,5 +3582,20 @@ table td {
              return false;
          }
      </script>
-
+    <script type="text/javascript">
+        function isNumberKeys(evt) {
+            var charCode = (evt.which) ? evt.which : event.keyCode;
+            if (charCode == 13 && charCode == 46)
+                return false;
+            else return true;
+        }
+        </script>
+    <script type="text/javascript">
+        function isNumberKey(evt) {
+            var charCode = (evt.which) ? evt.which : event.keyCode;
+            if ((charCode >= 48 && charCode <= 57) || charCode == 8)
+                return true;
+            else return false;
+        }
+    </script>
 </asp:Content>

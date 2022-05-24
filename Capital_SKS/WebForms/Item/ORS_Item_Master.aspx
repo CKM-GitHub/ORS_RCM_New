@@ -76,7 +76,7 @@ table td {
         <script type="text/javascript">
        
     function pageLoad(sender, args) {
-        $(function () {
+        //$(function () {
 
             $("[id$=txtRelease_Date]").datepicker({
                 showOn: 'button',
@@ -85,9 +85,9 @@ table td {
                 dateFormat: 'yy/mm/dd',
                 yearRange: "2013:2030"
             });
-        });
+        //});
 
-        $(function () {
+        //$(function () {
             $("[id$=txtPost_Available_Date]").datepicker({
                 showOn: 'button',
                 buttonImageOnly: true,
@@ -95,7 +95,7 @@ table td {
                 dateFormat: 'yy/mm/dd',
                 yearRange: "2013:2030"
             });
-        });
+        //});
 
          $("#<%=txtreleasedatemonotaro.ClientID %>").datepicker(
             { 
@@ -985,7 +985,7 @@ table td {
                           </div>             
                       </div>
 
-                          <div class="col-md-6" style="padding-left: 1px;padding-right: 1px;"> 
+                          <div class="col-md-6" > 
                          <div class="col-md-12 containerbox"> 
                               <p class="pprice">柏木工機</p>
                               <div class="row" style="width:100%;margin-left: 30px;margin-right: 50px;">
@@ -1976,9 +1976,19 @@ table td {
 
 
          var tab = document.getElementById('<%= hdfTab.ClientID%>').value;
-         if (tab != "") {
+         
+         if (tab != '' && tab != null) {
              //alert(tab);
-             refreshTab(tab);
+             if (tab == 'amaster' ||
+                 tab == 'asku' ||
+                 tab == 'aprice' ||
+                 tab == 'aimage' ||
+                 tab == 'aoption' ||
+                 tab == 'amalldata' ||
+                 tab == 'asetting') {
+                 refreshTab(tab);
+                 document.getElementById('<%= hdfTab.ClientID%>').value = "";
+             }
          }
 
          var img1 = document.getElementById('<%= txtimg1.ClientID %>')
@@ -2386,13 +2396,20 @@ table td {
              sec.removeAttribute("hidden");
          }
 
-         eventRef.preventDefault();
-         return true;
+       //  eventRef.preventDefault();
+      //   return true;
      }
 
-     $(document).keydown(function (event) {
-         var id = $('.act').attr('id');
-         handleKeyDownEvent(id, event);
+  $(document).keydown(function (event) {
+         var charCode = (window.event) ? event.keyCode : event.which;
+         if (charCode == 38 && event.ctrlKey) {
+             var id = $('.act').attr('id');
+             handleKeyDownEvent(id, event);
+         }
+         if (charCode == 40 && event.ctrlKey) {
+             var id = $('.act').attr('id');
+             handleKeyDownEvent(id, event);
+         }
      });
 
     function changeStyle(sender) {
@@ -3296,7 +3313,7 @@ table td {
         }
 
         function Delete() {
-            alert("delete")
+            //alert("delete")
             var hlImage1 = document.getElementById('<%= hlImage1.ClientID %>');
             var image1 = document.getElementById('<%= Image1.ClientID %>');
             var txtimg1 = document.getElementById('<%= txtimg1.ClientID %>');

@@ -333,11 +333,11 @@ namespace Capital_SKS.WebForms.Item
                     //{
                     //    BindShopName();
                     //}
-                    if (ControlID.Contains("lnkAddPhoto"))
-                    {
-                        ReBindPhotoList();
-                    }
-                    else if (ControlID.Contains("btnAddOption"))
+                    //if (ControlID.Contains("lnkAddPhoto"))
+                    //{
+                    //    ReBindPhotoList();
+                    //}
+                    if (ControlID.Contains("btnAddOption"))
                     {
                         ShowOption();
                     }
@@ -4094,8 +4094,8 @@ namespace Capital_SKS.WebForms.Item
                                     }
                                     else
                                     {
-                                        Image1.ImageUrl = "";
-                                        hlImage1.NavigateUrl = "";
+                                        Image1.ImageUrl = imagePath + "no_image.jpg"; ;
+                                        hlImage1.NavigateUrl = imagePath + "no_image.jpg"; ;
                                         txtimg1.Text = "";
                                     }
                                     break;
@@ -4108,8 +4108,8 @@ namespace Capital_SKS.WebForms.Item
                                     }
                                     else
                                     {
-                                        Image2.ImageUrl = "";
-                                        hlImage2.NavigateUrl = "";
+                                        Image2.ImageUrl = imagePath + "no_image.jpg"; ;
+                                        hlImage2.NavigateUrl = imagePath + "no_image.jpg"; ;
                                         txtimg2.Text = "";
                                     }
                                     break;
@@ -4122,8 +4122,8 @@ namespace Capital_SKS.WebForms.Item
                                     }
                                     else
                                     {
-                                        Image3.ImageUrl = "";
-                                        hlImage3.NavigateUrl = "";
+                                        Image3.ImageUrl = imagePath + "no_image.jpg"; ;
+                                        hlImage3.NavigateUrl = imagePath + "no_image.jpg"; ;
                                         txtimg3.Text = "";
                                     }
                                     break;
@@ -4136,8 +4136,8 @@ namespace Capital_SKS.WebForms.Item
                                     }
                                     else
                                     {
-                                        Image4.ImageUrl = "";
-                                        hlImage4.NavigateUrl = "";
+                                        Image4.ImageUrl = imagePath + "no_image.jpg"; ;
+                                        hlImage4.NavigateUrl = imagePath + "no_image.jpg"; ;
                                         txtimg4.Text = "";
                                     }
                                     break;
@@ -4150,8 +4150,8 @@ namespace Capital_SKS.WebForms.Item
                                     }
                                     else
                                     {
-                                        Image5.ImageUrl = "";
-                                        hlImage5.NavigateUrl = "";
+                                        Image5.ImageUrl = imagePath + "no_image.jpg"; ;
+                                        hlImage5.NavigateUrl = imagePath + "no_image.jpg"; ;
                                         txtimg5.Text = "";
                                     }
                                     break;
@@ -4164,8 +4164,8 @@ namespace Capital_SKS.WebForms.Item
                                     }
                                     else
                                     {
-                                        Image6.ImageUrl = "";
-                                        hlImage6.NavigateUrl = "";
+                                        Image6.ImageUrl = imagePath + "no_image.jpg"; ;
+                                        hlImage6.NavigateUrl = imagePath + "no_image.jpg"; ;
                                         txtimg6.Text = "";
                                     }
                                     break;
@@ -4178,8 +4178,8 @@ namespace Capital_SKS.WebForms.Item
                                     }
                                     else
                                     {
-                                        Image7.ImageUrl = "";
-                                        hlImage7.NavigateUrl = "";
+                                        Image7.ImageUrl = imagePath + "no_image.jpg"; 
+                                        hlImage7.NavigateUrl = imagePath + "no_image.jpg";
                                         txtimg7.Text = "";
                                     }
                                     break;
@@ -4192,8 +4192,8 @@ namespace Capital_SKS.WebForms.Item
                                     }
                                     else
                                     {
-                                        Image8.ImageUrl = "";
-                                        hlImage8.NavigateUrl = "";
+                                        Image8.ImageUrl = imagePath + "no_image.jpg";
+                                        hlImage8.NavigateUrl = imagePath + "no_image.jpg";
                                         txtimg8.Text = "";
                                     }
                                     break;
@@ -4206,8 +4206,8 @@ namespace Capital_SKS.WebForms.Item
                                     }
                                     else
                                     {
-                                        Image9.ImageUrl = "";
-                                        hlImage9.NavigateUrl = "";
+                                        Image9.ImageUrl = imagePath + "no_image.jpg";
+                                        hlImage9.NavigateUrl = imagePath + "no_image.jpg";
                                         txtimg9.Text = "";
                                     }
                                     break;
@@ -4220,8 +4220,8 @@ namespace Capital_SKS.WebForms.Item
                                     }
                                     else
                                     {
-                                        Image10.ImageUrl = "";
-                                        hlImage10.NavigateUrl = "";
+                                        Image10.ImageUrl = imagePath + "no_image.jpg";
+                                        hlImage10.NavigateUrl = imagePath + "no_image.jpg";
                                         txtimg10.Text = "";
                                     }
                                     break;
@@ -4234,8 +4234,8 @@ namespace Capital_SKS.WebForms.Item
                                     }
                                     else
                                     {
-                                        Image11.ImageUrl = "";
-                                        hlImage11.NavigateUrl = "";
+                                        Image11.ImageUrl = imagePath + "no_image.jpg";
+                                        hlImage11.NavigateUrl = imagePath + "no_image.jpg";
                                         txtimg11.Text = "";
                                     }
                                     break;
@@ -4248,8 +4248,8 @@ namespace Capital_SKS.WebForms.Item
                                     }
                                     else
                                     {
-                                        Image12.ImageUrl = "";
-                                        hlImage12.NavigateUrl = "";
+                                        Image12.ImageUrl = imagePath + "no_image.jpg";
+                                        hlImage12.NavigateUrl = imagePath + "no_image.jpg";
                                         txtimg12.Text = "";
                                     }
                                     break;
@@ -4262,8 +4262,8 @@ namespace Capital_SKS.WebForms.Item
                                     }
                                     else
                                     {
-                                        Image13.ImageUrl = "";
-                                        hlImage13.NavigateUrl = "";
+                                        Image13.ImageUrl = imagePath + "no_image.jpg";
+                                        hlImage13.NavigateUrl = imagePath + "no_image.jpg";
                                         txtimg13.Text = "";
                                     }
                                     break;
@@ -4276,8 +4276,8 @@ namespace Capital_SKS.WebForms.Item
                                     }
                                     else
                                     {
-                                        Image14.ImageUrl = "";
-                                        hlImage14.NavigateUrl = "";
+                                        Image14.ImageUrl = imagePath + "no_image.jpg";
+                                        hlImage14.NavigateUrl = imagePath + "no_image.jpg";
                                         txtimg14.Text = "";
                                     }
                                     break;
@@ -4290,8 +4290,8 @@ namespace Capital_SKS.WebForms.Item
                                     }
                                     else
                                     {
-                                        Image15.ImageUrl = "";
-                                        hlImage15.NavigateUrl = "";
+                                        Image15.ImageUrl = imagePath + "no_image.jpg";
+                                        hlImage15.NavigateUrl = imagePath + "no_image.jpg";
                                         txtimg15.Text = "";
                                     }
                                     break;
@@ -4304,8 +4304,8 @@ namespace Capital_SKS.WebForms.Item
                                     }
                                     else
                                     {
-                                        Image16.ImageUrl = "";
-                                        hlImage16.NavigateUrl = "";
+                                        Image16.ImageUrl = imagePath + "no_image.jpg";
+                                        hlImage16.NavigateUrl = imagePath + "no_image.jpg";
                                         txtimg16.Text = "";
                                     }
                                     break;
@@ -4318,8 +4318,8 @@ namespace Capital_SKS.WebForms.Item
                                     }
                                     else
                                     {
-                                        Image17.ImageUrl = "";
-                                        hlImage17.NavigateUrl = "";
+                                        Image17.ImageUrl = imagePath + "no_image.jpg";
+                                        hlImage17.NavigateUrl = imagePath + "no_image.jpg";
                                         txtimg17.Text = "";
                                     }
                                     break;
@@ -4332,8 +4332,8 @@ namespace Capital_SKS.WebForms.Item
                                     }
                                     else
                                     {
-                                        Image18.ImageUrl = "";
-                                        hlImage18.NavigateUrl = "";
+                                        Image18.ImageUrl = imagePath + "no_image.jpg";
+                                        hlImage18.NavigateUrl = imagePath + "no_image.jpg";
                                         txtimg18.Text = "";
                                     }
                                     break;
@@ -4346,8 +4346,8 @@ namespace Capital_SKS.WebForms.Item
                                     }
                                     else
                                     {
-                                        Image19.ImageUrl = "";
-                                        hlImage19.NavigateUrl = "";
+                                        Image19.ImageUrl = imagePath + "no_image.jpg";
+                                        hlImage19.NavigateUrl = imagePath + "no_image.jpg";
                                         txtimg19.Text = "";
                                     }
                                     break;
@@ -4360,8 +4360,8 @@ namespace Capital_SKS.WebForms.Item
                                     }
                                     else
                                     {
-                                        Image20.ImageUrl = "";
-                                        hlImage20.NavigateUrl = "";
+                                        Image20.ImageUrl = imagePath + "no_image.jpg";
+                                        hlImage20.NavigateUrl = imagePath + "no_image.jpg";
                                         txtimg20.Text = "";
                                     }
                                     break;
@@ -4371,47 +4371,47 @@ namespace Capital_SKS.WebForms.Item
                     }
                     else
                     {
-                        Image1.ImageUrl = "";
-                        Image2.ImageUrl = "";
-                        Image3.ImageUrl = "";
-                        Image4.ImageUrl = "";
-                        Image5.ImageUrl = "";
-                        Image6.ImageUrl = "";
-                        Image7.ImageUrl = "";
-                        Image8.ImageUrl = "";
-                        Image9.ImageUrl = "";
-                        Image10.ImageUrl = "";
-                        Image11.ImageUrl = "";
-                        Image12.ImageUrl = "";
-                        Image13.ImageUrl = "";
-                        Image14.ImageUrl = "";
-                        Image15.ImageUrl = "";
-                        Image16.ImageUrl = "";
-                        Image17.ImageUrl = "";
-                        Image18.ImageUrl = "";
-                        Image19.ImageUrl = "";
-                        Image20.ImageUrl = "";
+                        Image1.ImageUrl = imagePath + "no_image.jpg";
+                        Image2.ImageUrl = imagePath + "no_image.jpg";
+                        Image3.ImageUrl = imagePath + "no_image.jpg";
+                        Image4.ImageUrl = imagePath + "no_image.jpg";
+                        Image5.ImageUrl = imagePath + "no_image.jpg";
+                        Image6.ImageUrl = imagePath + "no_image.jpg";
+                        Image7.ImageUrl = imagePath + "no_image.jpg";
+                        Image8.ImageUrl = imagePath + "no_image.jpg";
+                        Image9.ImageUrl = imagePath + "no_image.jpg";
+                        Image10.ImageUrl = imagePath + "no_image.jpg";
+                        Image11.ImageUrl = imagePath + "no_image.jpg";
+                        Image12.ImageUrl = imagePath + "no_image.jpg";
+                        Image13.ImageUrl = imagePath + "no_image.jpg";
+                        Image14.ImageUrl = imagePath + "no_image.jpg";
+                        Image15.ImageUrl = imagePath + "no_image.jpg";
+                        Image16.ImageUrl = imagePath + "no_image.jpg";
+                        Image17.ImageUrl = imagePath + "no_image.jpg";
+                        Image18.ImageUrl = imagePath + "no_image.jpg";
+                        Image19.ImageUrl = imagePath + "no_image.jpg";
+                        Image20.ImageUrl = imagePath + "no_image.jpg";
 
-                        hlImage1.NavigateUrl = "";
-                        hlImage2.NavigateUrl = "";
-                        hlImage3.NavigateUrl = "";
-                        hlImage4.NavigateUrl = "";
-                        hlImage5.NavigateUrl = "";
-                        hlImage6.NavigateUrl = "";
-                        hlImage7.NavigateUrl = "";
-                        hlImage8.NavigateUrl = "";
-                        hlImage9.NavigateUrl = "";
-                        hlImage10.NavigateUrl = "";
-                        hlImage11.NavigateUrl = "";
-                        hlImage12.NavigateUrl = "";
-                        hlImage13.NavigateUrl = "";
-                        hlImage14.NavigateUrl = "";
-                        hlImage15.NavigateUrl = "";
-                        hlImage16.NavigateUrl = "";
-                        hlImage17.NavigateUrl = "";
-                        hlImage18.NavigateUrl = "";
-                        hlImage19.NavigateUrl = "";
-                        hlImage20.NavigateUrl = "";
+                        hlImage1.NavigateUrl = imagePath + "no_image.jpg";
+                        hlImage2.NavigateUrl = imagePath + "no_image.jpg";
+                        hlImage3.NavigateUrl = imagePath + "no_image.jpg";
+                        hlImage4.NavigateUrl = imagePath + "no_image.jpg";
+                        hlImage5.NavigateUrl = imagePath + "no_image.jpg";
+                        hlImage6.NavigateUrl = imagePath + "no_image.jpg";
+                        hlImage7.NavigateUrl = imagePath + "no_image.jpg";
+                        hlImage8.NavigateUrl = imagePath + "no_image.jpg";
+                        hlImage9.NavigateUrl = imagePath + "no_image.jpg";
+                        hlImage10.NavigateUrl = imagePath + "no_image.jpg";
+                        hlImage11.NavigateUrl = imagePath + "no_image.jpg";
+                        hlImage12.NavigateUrl = imagePath + "no_image.jpg";
+                        hlImage13.NavigateUrl = imagePath + "no_image.jpg";
+                        hlImage14.NavigateUrl = imagePath + "no_image.jpg";
+                        hlImage15.NavigateUrl = imagePath + "no_image.jpg";
+                        hlImage16.NavigateUrl = imagePath + "no_image.jpg";
+                        hlImage17.NavigateUrl = imagePath + "no_image.jpg";
+                        hlImage18.NavigateUrl = imagePath + "no_image.jpg";
+                        hlImage19.NavigateUrl = imagePath + "no_image.jpg";
+                        hlImage20.NavigateUrl = imagePath + "no_image.jpg";
                     }
                     #endregion
 
@@ -4419,47 +4419,47 @@ namespace Capital_SKS.WebForms.Item
                 }
                 else
                 {
-                    Image1.ImageUrl = "";
-                    Image2.ImageUrl = "";
-                    Image3.ImageUrl = "";
-                    Image4.ImageUrl = "";
-                    Image5.ImageUrl = "";
-                    Image6.ImageUrl = "";
-                    Image7.ImageUrl = "";
-                    Image8.ImageUrl = "";
-                    Image9.ImageUrl = "";
-                    Image10.ImageUrl = "";
-                    Image11.ImageUrl = "";
-                    Image12.ImageUrl = "";
-                    Image13.ImageUrl = "";
-                    Image14.ImageUrl = "";
-                    Image15.ImageUrl = "";
-                    Image16.ImageUrl = "";
-                    Image17.ImageUrl = "";
-                    Image18.ImageUrl = "";
-                    Image19.ImageUrl = "";
-                    Image20.ImageUrl = "";
+                    Image1.ImageUrl = imagePath + "no_image.jpg";
+                    Image2.ImageUrl = imagePath + "no_image.jpg";
+                    Image3.ImageUrl = imagePath + "no_image.jpg";
+                    Image4.ImageUrl = imagePath + "no_image.jpg";
+                    Image5.ImageUrl = imagePath + "no_image.jpg";
+                    Image6.ImageUrl = imagePath + "no_image.jpg";
+                    Image7.ImageUrl = imagePath + "no_image.jpg";
+                    Image8.ImageUrl = imagePath + "no_image.jpg";
+                    Image9.ImageUrl = imagePath + "no_image.jpg";
+                    Image10.ImageUrl = imagePath + "no_image.jpg";
+                    Image11.ImageUrl = imagePath + "no_image.jpg";
+                    Image12.ImageUrl = imagePath + "no_image.jpg";
+                    Image13.ImageUrl = imagePath + "no_image.jpg";
+                    Image14.ImageUrl = imagePath + "no_image.jpg";
+                    Image15.ImageUrl = imagePath + "no_image.jpg";
+                    Image16.ImageUrl = imagePath + "no_image.jpg";
+                    Image17.ImageUrl = imagePath + "no_image.jpg";
+                    Image18.ImageUrl = imagePath + "no_image.jpg";
+                    Image19.ImageUrl = imagePath + "no_image.jpg";
+                    Image20.ImageUrl = imagePath + "no_image.jpg";
 
-                    hlImage1.NavigateUrl = "";
-                    hlImage2.NavigateUrl = "";
-                    hlImage3.NavigateUrl = "";
-                    hlImage4.NavigateUrl = "";
-                    hlImage5.NavigateUrl = "";
-                    hlImage6.NavigateUrl = "";
-                    hlImage7.NavigateUrl = "";
-                    hlImage8.NavigateUrl = "";
-                    hlImage9.NavigateUrl = "";
-                    hlImage10.NavigateUrl = "";
-                    hlImage11.NavigateUrl = "";
-                    hlImage12.NavigateUrl = "";
-                    hlImage13.NavigateUrl = "";
-                    hlImage14.NavigateUrl = "";
-                    hlImage15.NavigateUrl = "";
-                    hlImage16.NavigateUrl = "";
-                    hlImage17.NavigateUrl = "";
-                    hlImage18.NavigateUrl = "";
-                    hlImage19.NavigateUrl = "";
-                    hlImage20.NavigateUrl = "";
+                    hlImage1.NavigateUrl = imagePath + "no_image.jpg";
+                    hlImage2.NavigateUrl = imagePath + "no_image.jpg";
+                    hlImage3.NavigateUrl = imagePath + "no_image.jpg";
+                    hlImage4.NavigateUrl = imagePath + "no_image.jpg";
+                    hlImage5.NavigateUrl = imagePath + "no_image.jpg";
+                    hlImage6.NavigateUrl = imagePath + "no_image.jpg";
+                    hlImage7.NavigateUrl = imagePath + "no_image.jpg";
+                    hlImage8.NavigateUrl = imagePath + "no_image.jpg";
+                    hlImage9.NavigateUrl = imagePath + "no_image.jpg";
+                    hlImage10.NavigateUrl = imagePath + "no_image.jpg";
+                    hlImage11.NavigateUrl = imagePath + "no_image.jpg";
+                    hlImage12.NavigateUrl = imagePath + "no_image.jpg";
+                    hlImage13.NavigateUrl = imagePath + "no_image.jpg";
+                    hlImage14.NavigateUrl = imagePath + "no_image.jpg";
+                    hlImage15.NavigateUrl = imagePath + "no_image.jpg";
+                    hlImage16.NavigateUrl = imagePath + "no_image.jpg";
+                    hlImage17.NavigateUrl = imagePath + "no_image.jpg";
+                    hlImage18.NavigateUrl = imagePath + "no_image.jpg";
+                    hlImage19.NavigateUrl = imagePath + "no_image.jpg";
+                    hlImage20.NavigateUrl = imagePath + "no_image.jpg";
                 }
             }
             catch (Exception ex)

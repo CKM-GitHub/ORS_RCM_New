@@ -1345,15 +1345,6 @@ namespace Capital_SKS.WebForms.Item {
         protected global::System.Web.UI.WebControls.Button hideButton;
         
         /// <summary>
-        /// UpdatePanel1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
-        
-        /// <summary>
         /// hlImage2 control.
         /// </summary>
         /// <remarks>
@@ -2740,6 +2731,15 @@ namespace Capital_SKS.WebForms.Item {
         protected global::System.Web.UI.WebControls.TextBox txtcolour;
         
         /// <summary>
+        /// txtReferenceURL control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtReferenceURL;
+        
+        /// <summary>
         /// ddldeliverymethod control.
         /// </summary>
         /// <remarks>
@@ -2999,6 +2999,24 @@ namespace Capital_SKS.WebForms.Item {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlRoHSdirective;
+        
+        /// <summary>
+        /// ddlJISConform control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlJISConform;
+        
+        /// <summary>
+        /// ddlISOConform control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlISOConform;
         
         /// <summary>
         /// ddlcustomerassembly control.

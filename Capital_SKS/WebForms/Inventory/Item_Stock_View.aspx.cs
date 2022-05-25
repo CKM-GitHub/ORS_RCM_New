@@ -35,8 +35,8 @@ namespace ORS_RCM
             if (!IsPostBack)
             {
                 hdfSearch.Value = "false";
-                BindGridViewItem();
-            }
+                    BindGridViewItem();
+                }
             else 
             {
                 String ctrl = getPostBackControlName();
@@ -301,9 +301,17 @@ namespace ORS_RCM
                 else
                 {
                     dt = Search(0, 1);
+                    
                     if (dt != null && dt.Rows.Count > 0)
                     {
-                        int count = Convert.ToInt32(dt.Rows[0]["Total_Count"].ToString());
+                        Item_BL imbl = new Item_BL();
+                        DataTable dt1 = imbl.SelectAll();
+                        int count = 0;
+                        if (!String.IsNullOrWhiteSpace(txtItemNumber.Text)){
+                            count = dt.Rows.Count;
+                        }
+                        else
+                            count = dt1.Rows.Count;
                         gvItem.PageSize = int.Parse(ddlpage.SelectedValue.ToString());
                         gvItem.DataSource = dt;
                         gvItem.DataBind();

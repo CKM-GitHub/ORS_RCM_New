@@ -76,7 +76,7 @@ table td {
         <script type="text/javascript">
        
     function pageLoad(sender, args) {
-        $(function () {
+        //$(function () {
 
             $("[id$=txtRelease_Date]").datepicker({
                 showOn: 'button',
@@ -85,9 +85,9 @@ table td {
                 dateFormat: 'yy/mm/dd',
                 yearRange: "2013:2030"
             });
-        });
+        //});
 
-        $(function () {
+        //$(function () {
             $("[id$=txtPost_Available_Date]").datepicker({
                 showOn: 'button',
                 buttonImageOnly: true,
@@ -95,7 +95,7 @@ table td {
                 dateFormat: 'yy/mm/dd',
                 yearRange: "2013:2030"
             });
-        });
+        //});
 
          $("#<%=txtreleasedatemonotaro.ClientID %>").datepicker(
             { 
@@ -574,7 +574,7 @@ table td {
                                 </div>
                           </div>
                      </div>
-                    <div class="row" style=" width:100%; margin-left: 0px !important;">
+                    <div class="row">
                         
                          <div class="floaddiv containerbox" style="width:26%; margin-right:10px;"> 
                              <div class="row" style="width:100%; margin-left:2px;">
@@ -640,7 +640,7 @@ table td {
 
                              </div>
 
-                         <div class="floaddiv containerbox" style="width:27%;"> 
+                         <div class="floaddiv containerbox" style="width:26%;"> 
                              <div class="row" style="width:100%; margin-left:2px;">
                              <div class="floaddiv" style="width:50%;" >
                                    <asp:Label CssClass=""  runat="server" >
@@ -985,7 +985,7 @@ table td {
                           </div>             
                       </div>
 
-                          <div class="col-md-6" style="padding-left: 1px;padding-right: 1px;"> 
+                          <div class="col-md-6" > 
                          <div class="col-md-12 containerbox"> 
                               <p class="pprice">柏木工機</p>
                               <div class="row" style="width:100%;margin-left: 30px;margin-right: 50px;">
@@ -1031,14 +1031,14 @@ table td {
                                  
                                  <%--  <asp:UpdatePanel runat="server" id="UpdatePaneimg1" updatemode="Conditional">
                                        <ContentTemplate>--%>
-                                       <asp:HyperLink rel="lightbox"  runat="server" NavigateUrl ="~/Item_Image/no_image.jpg" ID="hlImage1">
+                                       <asp:HyperLink rel="lightbox"  style="height: 180px;" runat="server" NavigateUrl ="~/Item_Image/no_image.jpg" ID="hlImage1">
                                            <asp:Image runat="server" ID="Image1" ImageUrl="~/Item_Image/no_image.jpg" />
                                        </asp:HyperLink>
                                            
                                            <%--<asp:FileUpload ID="FileUploadtest" runat="server" />
                                            <asp:Label ID="lblMessage" runat="server" Text="File uploaded successfully." ForeColor="Green" Visible="false" />
                                             <asp:Button ID="Button2" Text="Upload" runat="server" OnClick="Upload" Style="display: none" />--%>     
-                                    <asp:TextBox ID="txtimg1" CssClass="txtbox" runat="server"></asp:TextBox> 
+                                    <asp:TextBox ID="txtimg1" CssClass="txtbox" ReadOnly="true" runat="server"></asp:TextBox> 
                                 <asp:FileUpload ID="FileUpload1" Style="display: none" runat="server" accept=".jpg" onchange="upload()" />
                                 <input type="button" class="btn btn-default imgchoosebtn" id ="imginput" value="ファイル選択"  onclick="showBrowseDialog()"/>
                                 <input type="button" class="btn btn-default imgchoosebtn" id ="imginputdelete" value="削除"  onclick="Delete()" hidden/>
@@ -1053,23 +1053,23 @@ table td {
                              
                                </li>
                                <li>
-                                 <asp:UpdatePanel runat="server" id="UpdatePanel1" updatemode="Conditional">
-                                 <ContentTemplate>
-                                   <asp:HyperLink rel="lightbox" NavigateUrl ="~/Item_Image/no_image.jpg" runat="server" ID="hlImage2">
+                               <%--  <asp:UpdatePanel runat="server" id="UpdatePanel1" updatemode="Conditional">
+                                 <ContentTemplate>--%>
+                                   <asp:HyperLink rel="lightbox" style="height: 180px;" NavigateUrl ="~/Item_Image/no_image.jpg" runat="server" ID="hlImage2">
                                    <asp:Image runat="server" ID="Image2" ImageUrl ="~/Item_Image/no_image.jpg" /></asp:HyperLink>
-                                   <asp:TextBox ID="txtimg2" CssClass="txtbox" runat="server"></asp:TextBox>                                                           
+                                   <asp:TextBox ID="txtimg2" CssClass="txtbox" ReadOnly="true" runat="server"></asp:TextBox>                                                           
                                   <%-- <asp:FileUpload ID="FileUpload2" Style="display: none" runat="server" onchange="upload2()" />
                                    <asp:Button runat="server" CssClass="btn btn-default imgchoosebtn" ID="imgbtn2" Text ="ファイル選択" OnClientClick="showBrowseDialog2()" />--%>
                                 <asp:FileUpload ID="FileUpload2" Style="display: none" runat="server" accept=".jpg" onchange="upload2()" />
                                 <input type="button" class="btn btn-default imgchoosebtn" id ="imginput2" value="ファイル選択"  onclick="showBrowseDialog2()"/>
                                  <input type="button" class="btn btn-default imgchoosebtn" id ="imginputdelete2" value="削除"  onclick="Delete2()" hidden/>
                                 <asp:Button runat="server" ID="imgbtn2_1" Text="" Style="display: none;" OnClick="UploadButton2_Click" />
-                                </ContentTemplate> 
+                              <%--  </ContentTemplate> 
                                 <Triggers>              
-                                   <asp:PostBackTrigger controlid="imgbtn2_1"/>
+                                   <asp:PostBackTrigger controlid="imgbtn2_1"/>--%>
                                     <%--<asp:PostBackTrigger controlid="imgbtn2_1"/>--%>                           
-                                </Triggers>
-                                </asp:UpdatePanel>
+                               <%-- </Triggers>
+                                </asp:UpdatePanel>--%>
                                
                                
                                </li>
@@ -1078,8 +1078,8 @@ table td {
                                  <asp:UpdatePanel runat="server" id="UpdatePanel3" updatemode="Conditional">
                                  <ContentTemplate>    
 
-                                   <asp:HyperLink rel="lightbox" runat="server" ID="hlImage3"><asp:Image runat="server" ID="Image3" ImageUrl="~/Item_Image/no_image.jpg"/></asp:HyperLink>                
-                                   <asp:TextBox ID="txtimg3" CssClass="txtbox" runat="server"></asp:TextBox>                                                                                             
+                                   <asp:HyperLink rel="lightbox" runat="server" style="height: 180px;" ID="hlImage3"><asp:Image runat="server" ID="Image3" ImageUrl="~/Item_Image/no_image.jpg"/></asp:HyperLink>                
+                                   <asp:TextBox ID="txtimg3" CssClass="txtbox" ReadOnly="true" runat="server"></asp:TextBox>                                                                                             
                                 <asp:FileUpload ID="FileUpload3" Style="display: none" accept=".jpg" runat="server" onchange="upload3()" />
                                 <input type="button" class="btn btn-default imgchoosebtn" id ="imginput3" value="ファイル選択"  onclick="showBrowseDialog3()"/>
                                  <input type="button" class="btn btn-default imgchoosebtn" id ="imginputdelete3" value="削除"  onclick="Delete3()" hidden/>
@@ -1094,9 +1094,9 @@ table td {
                                <li>
                                <asp:UpdatePanel runat="server" id="UpdatePanel4" updatemode="Conditional">
                                  <ContentTemplate>  
-                                    <asp:HyperLink rel="lightbox" runat="server" ID="hlImage4"><asp:Image runat="server" ID="Image4" ImageUrl="~/Item_Image/no_image.jpg"/></asp:HyperLink>
+                                    <asp:HyperLink rel="lightbox" runat="server" style="height: 180px;" ID="hlImage4"><asp:Image runat="server" ID="Image4" ImageUrl="~/Item_Image/no_image.jpg"/></asp:HyperLink>
                                  
-                                    <asp:TextBox ID="txtimg4" CssClass="txtbox" runat="server"></asp:TextBox>                                                                
+                                    <asp:TextBox ID="txtimg4" ReadOnly="true" CssClass="txtbox" runat="server"></asp:TextBox>                                                                
                                 <asp:FileUpload ID="FileUpload4" Style="display: none" runat="server" accept=".jpg" onchange="upload4()" />                   
                                 <input type="button" class="btn btn-default imgchoosebtn" id ="imginput4" value="ファイル選択"  onclick="showBrowseDialog4()"/>
                                  <input type="button" class="btn btn-default imgchoosebtn" id ="imginputdelete4" value="削除"  onclick="Delete4()" hidden/>
@@ -1111,10 +1111,10 @@ table td {
                                  
                                 <asp:UpdatePanel runat="server" id="UpdatePanel5" updatemode="Conditional">
                                  <ContentTemplate> 
-                                   <asp:HyperLink rel="lightbox" runat="server" ID="hlImage5"><asp:Image runat="server" ID="Image5" ImageUrl="~/Item_Image/no_image.jpg"/></asp:HyperLink>
+                                   <asp:HyperLink rel="lightbox" runat="server" style="height: 180px;" ID="hlImage5"><asp:Image runat="server" ID="Image5" ImageUrl="~/Item_Image/no_image.jpg"/></asp:HyperLink>
                                   
                                    <asp:TextBox ID="txtimg5" CssClass="txtbox" runat="server"></asp:TextBox>                                                                
-                                    <asp:FileUpload ID="FileUpload5" Style="display: none" accept=".jpg" runat="server" onchange="upload5()" />
+                                    <asp:FileUpload ID="FileUpload5" Style="display: none" ReadOnly="true" accept=".jpg" runat="server" onchange="upload5()" />
                                 <input type="button" class="btn btn-default imgchoosebtn" id ="imginput5" value="ファイル選択"  onclick="showBrowseDialog5()"/>
                                  <input type="button" class="btn btn-default imgchoosebtn" id ="imginputdelete5" value="削除"  onclick="Delete5()" hidden/>
                                 <asp:Button runat="server" ID="imgbtn5_1" Text="" Style="display: none;" OnClick="UploadButton5_Click" />
@@ -1127,8 +1127,8 @@ table td {
                                 <li>
                                  <asp:UpdatePanel runat="server" id="UpdatePanel6" updatemode="Conditional">
                                  <ContentTemplate>  
-                                   <asp:HyperLink rel="lightbox" runat="server" ID="hlImage6"><asp:Image runat="server" ID="Image6" ImageUrl="~/Item_Image/no_image.jpg"/></asp:HyperLink>                             
-                                   <asp:TextBox ID="txtimg6" CssClass="txtbox" runat="server"></asp:TextBox>                                                                
+                                   <asp:HyperLink rel="lightbox" runat="server" style="height: 180px;" ID="hlImage6"><asp:Image runat="server" ID="Image6" ImageUrl="~/Item_Image/no_image.jpg"/></asp:HyperLink>                             
+                                   <asp:TextBox ID="txtimg6" CssClass="txtbox" ReadOnly="true" runat="server"></asp:TextBox>                                                                
                                   <asp:FileUpload ID="FileUpload6" Style="display: none" accept=".jpg" runat="server" onchange="upload6()" />
                                 <input type="button" class="btn btn-default imgchoosebtn" id ="imginput6" value="ファイル選択"  onclick="showBrowseDialog6()"/>
                                  <input type="button" class="btn btn-default imgchoosebtn" id ="imginputdelete6" value="削除"  onclick="Delete6()" hidden/>
@@ -1142,8 +1142,8 @@ table td {
                                 <li>
                                  <asp:UpdatePanel runat="server" id="UpdatePanel7" updatemode="Conditional">
                                  <ContentTemplate>  
-                                   <asp:HyperLink rel="lightbox" runat="server" ID="hlImage7"><asp:Image runat="server" ID="Image7" ImageUrl="~/Item_Image/no_image.jpg"/></asp:HyperLink>                               
-                                   <asp:TextBox ID="txtimg7" CssClass="txtbox" runat="server"></asp:TextBox>                                                                
+                                   <asp:HyperLink rel="lightbox" runat="server" style="height: 180px;" ID="hlImage7"><asp:Image runat="server" ID="Image7" ImageUrl="~/Item_Image/no_image.jpg"/></asp:HyperLink>                               
+                                   <asp:TextBox ID="txtimg7" CssClass="txtbox" ReadOnly="true" runat="server"></asp:TextBox>                                                                
                                    <asp:FileUpload ID="FileUpload7" Style="display: none" accept=".jpg" runat="server" onchange="upload7()" />
                                 <input type="button" class="btn btn-default imgchoosebtn" id ="imginput7" value="ファイル選択"  onclick="showBrowseDialog7()"/>
                                 <input type="button" class="btn btn-default imgchoosebtn" id ="imginputdelete7" value="削除"  onclick="Delete7()" hidden/>
@@ -1157,8 +1157,8 @@ table td {
                                 <li>
                                  <asp:UpdatePanel runat="server" id="UpdatePanel8" updatemode="Conditional">
                                  <ContentTemplate>    
-                                    <asp:HyperLink rel="lightbox" runat="server" ID="hlImage8"><asp:Image runat="server" ID="Image8" ImageUrl="~/Item_Image/no_image.jpg"/></asp:HyperLink>
-                                    <asp:TextBox ID="txtimg8" CssClass="txtbox" runat="server"></asp:TextBox> 
+                                    <asp:HyperLink rel="lightbox" runat="server" style="height: 180px;" ID="hlImage8"><asp:Image runat="server" ID="Image8" ImageUrl="~/Item_Image/no_image.jpg"/></asp:HyperLink>
+                                    <asp:TextBox ID="txtimg8" CssClass="txtbox" ReadOnly="true" runat="server"></asp:TextBox> 
                                    <asp:FileUpload ID="FileUpload8" Style="display: none" accept=".jpg" runat="server" onchange="upload8()" />
                                 <input type="button" class="btn btn-default imgchoosebtn" id ="imginput8" value="ファイル選択"  onclick="showBrowseDialog8()"/>
                                 <input type="button" class="btn btn-default imgchoosebtn" id ="imginputdelete8" value="削除"  onclick="Delete8()" hidden/>
@@ -1172,8 +1172,8 @@ table td {
                                 <li>
                                  <asp:UpdatePanel runat="server" id="UpdatePanel9" updatemode="Conditional">
                                  <ContentTemplate>   
-                                   <asp:HyperLink rel="lightbox" runat="server" ID="hlImage9"><asp:Image runat="server" ID="Image9" ImageUrl="~/Item_Image/no_image.jpg"/></asp:HyperLink>
-                                   <asp:TextBox ID="txtimg9" CssClass="txtbox" runat="server"></asp:TextBox> 
+                                   <asp:HyperLink rel="lightbox" runat="server" style="height: 180px;" ID="hlImage9"><asp:Image runat="server" ID="Image9" ImageUrl="~/Item_Image/no_image.jpg"/></asp:HyperLink>
+                                   <asp:TextBox ID="txtimg9" CssClass="txtbox" ReadOnly="true" runat="server"></asp:TextBox> 
                                    <asp:FileUpload ID="FileUpload9" Style="display: none" runat="server" accept=".jpg" onchange="upload9()" />
                                 <input type="button" class="btn btn-default imgchoosebtn" id ="imginput9" value="ファイル選択"  onclick="showBrowseDialog9()"/>
                                  <input type="button" class="btn btn-default imgchoosebtn" id ="imginputdelete9" value="削除"  onclick="Delete9()" hidden/>
@@ -1186,10 +1186,10 @@ table td {
                                </li>
                                 <li>
 
-                                 <asp:UpdatePanel runat="server" id="UpdatePanel10" updatemode="Conditional">
+                                 <asp:UpdatePanel runat="server" id="UpdatePanel10"  updatemode="Conditional">
                                  <ContentTemplate>  
-                                    <asp:HyperLink rel="lightbox" runat="server" ID="hlImage10"><asp:Image runat="server" ID="Image10" ImageUrl="~/Item_Image/no_image.jpg"/></asp:HyperLink>
-                                    <asp:TextBox ID="txtimg10" CssClass="txtbox" runat="server"></asp:TextBox> 
+                                    <asp:HyperLink rel="lightbox" runat="server" style="height: 180px;" ID="hlImage10"><asp:Image runat="server" ID="Image10" ImageUrl="~/Item_Image/no_image.jpg"/></asp:HyperLink>
+                                    <asp:TextBox ID="txtimg10" CssClass="txtbox" ReadOnly="true" runat="server"></asp:TextBox> 
                                    <asp:FileUpload ID="FileUpload10" Style="display: none" accept=".jpg" runat="server" onchange="upload10()" />
                                 <input type="button" class="btn btn-default imgchoosebtn" id ="imginput10" value="ファイル選択"  onclick="showBrowseDialog10()"/>
                                  <input type="button" class="btn btn-default imgchoosebtn" id ="imginputdelete10" value="削除"  onclick="Delete10()" hidden/>
@@ -1203,8 +1203,8 @@ table td {
                                 <li>
                                <asp:UpdatePanel runat="server" id="UpdatePanel11" updatemode="Conditional">
                                <ContentTemplate> 
-                                 <asp:HyperLink rel="lightbox" runat="server" ID="hlImage11"><asp:Image runat="server" ID="Image11" ImageUrl="~/Item_Image/no_image.jpg"/></asp:HyperLink>
-                                 <asp:TextBox ID="txtimg11" CssClass="txtbox" runat="server"></asp:TextBox>                           
+                                 <asp:HyperLink rel="lightbox" runat="server" style="height: 180px;" ID="hlImage11"><asp:Image runat="server" ID="Image11" ImageUrl="~/Item_Image/no_image.jpg"/></asp:HyperLink>
+                                 <asp:TextBox ID="txtimg11" CssClass="txtbox" ReadOnly="true" runat="server"></asp:TextBox>                           
                                  <asp:FileUpload ID="FileUpload11" Style="display: none" accept=".jpg" runat="server" onchange="upload11()" />
                                 <input type="button" class="btn btn-default imgchoosebtn" id ="imginput11" value="ファイル選択"  onclick="showBrowseDialog11()"/>
                                  <input type="button" class="btn btn-default imgchoosebtn" id ="imginputdelete11" value="削除"  onclick="Delete11()" hidden/>
@@ -1218,8 +1218,8 @@ table td {
                                 <li>
                                <asp:UpdatePanel runat="server" id="UpdatePanel12" updatemode="Conditional">
                                <ContentTemplate> 
-                                   <asp:HyperLink rel="lightbox" runat="server" ID="hlImage12"><asp:Image runat="server" ID="Image12" ImageUrl="~/Item_Image/no_image.jpg"/></asp:HyperLink>                                 
-                                   <asp:TextBox ID="txtimg12" CssClass="txtbox" runat="server"></asp:TextBox> 
+                                   <asp:HyperLink rel="lightbox" runat="server" style="height: 180px;" ID="hlImage12"><asp:Image runat="server" ID="Image12" ImageUrl="~/Item_Image/no_image.jpg"/></asp:HyperLink>                                 
+                                   <asp:TextBox ID="txtimg12" CssClass="txtbox" ReadOnly="true" runat="server"></asp:TextBox> 
                                   <asp:FileUpload ID="FileUpload12" Style="display: none" runat="server" accept=".jpg" onchange="upload12()" />
                                 <input type="button" class="btn btn-default imgchoosebtn" id ="imginput12" value="ファイル選択"  onclick="showBrowseDialog12()"/>
                                 <input type="button" class="btn btn-default imgchoosebtn" id ="imginputdelete12" value="削除"  onclick="Delete12()" hidden/>
@@ -1233,8 +1233,8 @@ table td {
                                 <li>
                                 <asp:UpdatePanel runat="server" id="UpdatePanel13" updatemode="Conditional">
                                 <ContentTemplate>
-                                   <asp:HyperLink rel="lightbox" runat="server" ID="hlImage13"><asp:Image runat="server" ID="Image13" ImageUrl="~/Item_Image/no_image.jpg"/></asp:HyperLink>
-                                   <asp:TextBox ID="txtimg13" CssClass="txtbox" runat="server"></asp:TextBox> 
+                                   <asp:HyperLink rel="lightbox" runat="server" style="height: 180px;" ID="hlImage13"><asp:Image runat="server" ID="Image13" ImageUrl="~/Item_Image/no_image.jpg"/></asp:HyperLink>
+                                   <asp:TextBox ID="txtimg13" CssClass="txtbox" ReadOnly="true" runat="server"></asp:TextBox> 
                                    <asp:FileUpload ID="FileUpload13" Style="display: none" runat="server" accept=".jpg" onchange="upload13()" />
                                 <input type="button" class="btn btn-default imgchoosebtn" id ="imginput13" value="ファイル選択"  onclick="showBrowseDialog13()"/>
                                  <input type="button" class="btn btn-default imgchoosebtn" id ="imginputdelete13" value="削除"  onclick="Delete13()" hidden/>
@@ -1248,8 +1248,8 @@ table td {
                                 <li>
                                 <asp:UpdatePanel runat="server" id="UpdatePanel14" updatemode="Conditional">
                                 <ContentTemplate>
-                                   <asp:HyperLink rel="lightbox" runat="server" ID="hlImage14"><asp:Image runat="server" ID="Image14" ImageUrl="~/Item_Image/no_image.jpg"/></asp:HyperLink>                   
-                                   <asp:TextBox ID="txtimg14" CssClass="txtbox" runat="server"></asp:TextBox> 
+                                   <asp:HyperLink rel="lightbox" runat="server" style="height: 180px;" ID="hlImage14"><asp:Image runat="server" ID="Image14" ImageUrl="~/Item_Image/no_image.jpg"/></asp:HyperLink>                   
+                                   <asp:TextBox ID="txtimg14" ReadOnly="true" CssClass="txtbox" runat="server"></asp:TextBox> 
                                    <asp:FileUpload ID="FileUpload14" Style="display: none" accept=".jpg" runat="server" onchange="upload14()" />
                                 <input type="button" class="btn btn-default imgchoosebtn" id ="imginput14" value="ファイル選択"  onclick="showBrowseDialog14()"/>
                                  <input type="button" class="btn btn-default imgchoosebtn" id ="imginputdelete14" value="削除"  onclick="Delete14()" hidden/>
@@ -1263,8 +1263,8 @@ table td {
                                 <li>
                                 <asp:UpdatePanel runat="server" id="UpdatePanel15" updatemode="Conditional">
                                 <ContentTemplate>
-                                   <asp:HyperLink rel="lightbox" runat="server" ID="hlImage15"><asp:Image runat="server" ID="Image15" ImageUrl="~/Item_Image/no_image.jpg"/></asp:HyperLink>
-                                   <asp:TextBox ID="txtimg15" CssClass="txtbox" runat="server"></asp:TextBox> 
+                                   <asp:HyperLink rel="lightbox" runat="server" style="height: 180px;" ID="hlImage15"><asp:Image runat="server" ID="Image15" ImageUrl="~/Item_Image/no_image.jpg"/></asp:HyperLink>
+                                   <asp:TextBox ID="txtimg15" CssClass="txtbox" ReadOnly="true" runat="server"></asp:TextBox> 
                                   <asp:FileUpload ID="FileUpload15" Style="display: none" runat="server" accept=".jpg" onchange="upload15()" />
                                 <input type="button" class="btn btn-default imgchoosebtn" id ="imginput15" value="ファイル選択"  onclick="showBrowseDialog15()"/>
                                 <input type="button" class="btn btn-default imgchoosebtn" id ="imginputdelete15" value="削除"  onclick="Delete15()" hidden/>
@@ -1278,8 +1278,8 @@ table td {
                                 <li>
                                 <asp:UpdatePanel runat="server" id="UpdatePanel16" updatemode="Conditional">
                                 <ContentTemplate>
-                                   <asp:HyperLink rel="lightbox" runat="server" ID="hlImage16"><asp:Image runat="server" ID="Image16" ImageUrl="~/Item_Image/no_image.jpg"/></asp:HyperLink>             
-                                   <asp:TextBox ID="txtimg16" CssClass="txtbox" runat="server"></asp:TextBox> 
+                                   <asp:HyperLink rel="lightbox" runat="server" style="height: 180px;" ID="hlImage16"><asp:Image runat="server" ID="Image16" ImageUrl="~/Item_Image/no_image.jpg"/></asp:HyperLink>             
+                                   <asp:TextBox ID="txtimg16" ReadOnly="true" CssClass="txtbox" runat="server"></asp:TextBox> 
                                   <asp:FileUpload ID="FileUpload16" Style="display: none" runat="server" accept=".jpg" onchange="upload16()" />
                                 <input type="button" class="btn btn-default imgchoosebtn" id ="imginput16" value="ファイル選択"  onclick="showBrowseDialog16()"/>
                                  <input type="button" class="btn btn-default imgchoosebtn" id ="imginputdelete16" value="削除"  onclick="Delete16()" hidden/>
@@ -1293,8 +1293,8 @@ table td {
                                 <li>
                                 <asp:UpdatePanel runat="server" id="UpdatePanel17" updatemode="Conditional">
                                 <ContentTemplate>
-                                   <asp:HyperLink rel="lightbox" runat="server" ID="hlImage17"><asp:Image runat="server" ID="Image17" ImageUrl="~/Item_Image/no_image.jpg"/></asp:HyperLink>              
-                                   <asp:TextBox ID="txtimg17" CssClass="txtbox" runat="server"></asp:TextBox> 
+                                   <asp:HyperLink rel="lightbox" runat="server" style="height: 180px;" ID="hlImage17"><asp:Image runat="server" ID="Image17" ImageUrl="~/Item_Image/no_image.jpg"/></asp:HyperLink>              
+                                   <asp:TextBox ID="txtimg17" CssClass="txtbox"  ReadOnly="true" runat="server"></asp:TextBox> 
                                    <asp:FileUpload ID="FileUpload17" Style="display: none" runat="server" accept=".jpg" onchange="upload17()" />
                                 <input type="button" class="btn btn-default imgchoosebtn" id ="imginput17" value="ファイル選択"  onclick="showBrowseDialog17()"/>
                                  <input type="button" class="btn btn-default imgchoosebtn" id ="imginputdelete17" value="削除"  onclick="Delete17()" hidden/>
@@ -1308,8 +1308,8 @@ table td {
                                 <li>
                                 <asp:UpdatePanel runat="server" id="UpdatePanel18" updatemode="Conditional">
                                 <ContentTemplate>
-                                    <asp:HyperLink rel="lightbox" runat="server" ID="hlImage18"><asp:Image runat="server" ID="Image18" ImageUrl="~/Item_Image/no_image.jpg"/></asp:HyperLink>
-                                    <asp:TextBox ID="txtimg18" CssClass="txtbox" runat="server"></asp:TextBox> 
+                                    <asp:HyperLink rel="lightbox" runat="server" style="height: 180px;" ID="hlImage18"><asp:Image runat="server" ID="Image18" ImageUrl="~/Item_Image/no_image.jpg"/></asp:HyperLink>
+                                    <asp:TextBox ID="txtimg18" CssClass="txtbox" ReadOnly="true" runat="server"></asp:TextBox> 
                                     <asp:FileUpload ID="FileUpload18" Style="display: none" runat="server" accept=".jpg" onchange="upload18()" />
                                 <input type="button" class="btn btn-default imgchoosebtn" id ="imginput18" value="ファイル選択"  onclick="showBrowseDialog18()"/>
                                  <input type="button" class="btn btn-default imgchoosebtn" id ="imginputdelete18" value="削除"  onclick="Delete18()" hidden/>
@@ -1323,8 +1323,8 @@ table td {
                                 <li>
                                <asp:UpdatePanel runat="server" id="UpdatePanel19" updatemode="Conditional">
                                 <ContentTemplate>
-                                   <asp:HyperLink rel="lightbox" runat="server" ID="hlImage19"><asp:Image runat="server" ID="Image19" ImageUrl="~/Item_Image/no_image.jpg"/></asp:HyperLink>
-                                   <asp:TextBox ID="txtimg19" CssClass="txtbox" runat="server"></asp:TextBox> 
+                                   <asp:HyperLink rel="lightbox" runat="server" style="height: 180px;" ID="hlImage19"><asp:Image runat="server" ID="Image19" ImageUrl="~/Item_Image/no_image.jpg"/></asp:HyperLink>
+                                   <asp:TextBox ID="txtimg19" CssClass="txtbox" ReadOnly="true" runat="server"></asp:TextBox> 
                                   <asp:FileUpload ID="FileUpload19" Style="display: none" runat="server" accept=".jpg" onchange="upload19()" />
                                 <input type="button" class="btn btn-default imgchoosebtn" id ="imginput19" value="ファイル選択"  onclick="showBrowseDialog19()"/>
                                  <input type="button" class="btn btn-default imgchoosebtn" id ="imginputdelete19" value="削除"  onclick="Delete19()" hidden/>
@@ -1338,8 +1338,8 @@ table td {
                                 <li>
                                 <asp:UpdatePanel runat="server" id="UpdatePanel20" updatemode="Conditional">
                                 <ContentTemplate>
-                                   <asp:HyperLink rel="lightbox" runat="server" ID="hlImage20"><asp:Image runat="server" ID="Image20" ImageUrl="~/Item_Image/no_image.jpg"/></asp:HyperLink>                
-                                   <asp:TextBox ID="txtimg20" CssClass="txtbox" runat="server"></asp:TextBox> 
+                                   <asp:HyperLink rel="lightbox" runat="server" style="height: 180px;" ID="hlImage20"><asp:Image runat="server" ID="Image20" ImageUrl="~/Item_Image/no_image.jpg"/></asp:HyperLink>                
+                                   <asp:TextBox ID="txtimg20" CssClass="txtbox" runat="server" ReadOnly="true" ></asp:TextBox> 
                                   <asp:FileUpload ID="FileUpload20" Style="display: none" runat="server" accept=".jpg" onchange="upload20()" />
                                 <input type="button" class="btn btn-default imgchoosebtn" id ="imginput20" value="ファイル選択"  onclick="showBrowseDialog20()"/>
                                  <input type="button" class="btn btn-default imgchoosebtn" id ="imginputdelete20" value="削除"  onclick="Delete20()" hidden/>
@@ -1516,7 +1516,7 @@ table td {
                 </section>
                 <section id="setting" hidden> 
                     <div class="row" style="margin-top: 10px;margin-right: 1px; margin-bottom:10px">
-                         <div class="col-md-12 containerbox"> 
+                         <div class="col-md-12 containerbox" style="padding-left:16px;"> 
                            <asp:Label CssClass="lblitemcode"  runat="server" >
                                <span class="label label-md lbl" style=" font-weight:600;">商品情報</span>
                            </asp:Label>  
@@ -1617,6 +1617,14 @@ table td {
                                         <span class="label label-md lbl yellowlable">カラー</span>
                                         </asp:Label>
                                         <asp:TextBox CssClass="txtbox" ID="txtcolour" MaxLength="40"  runat="server" style="width: 100%;"></asp:TextBox>
+                                 </div>
+                             </div>
+                             <div class="row" style="padding-left: 5px;padding-right: 5px;">
+                                  <div class="floaddiv" style="width:100%;">
+                                    <asp:Label CssClass=""  runat="server" >
+                                        <span class="label label-md lbl yellowlable">参考URL</span>
+                                        </asp:Label>
+                                        <asp:TextBox CssClass="txtbox" ID="txtReferenceURL" MaxLength="500"  runat="server" style="width: 100%;"></asp:TextBox>
                                  </div>
                              </div>
                      </div>
@@ -1819,13 +1827,13 @@ table td {
                            </asp:Label>  
                              <br />
                              <div class="rowfirst">
-                              <div class="floaddiv" style="width:15%;" >
+                              <div class="floaddiv" style="width:11%;" >
                               <asp:Label CssClass="lblitemcode"  runat="server" >
                                <span class="label label-md lbl yellowlable ">グリーン購入法</span>
                            </asp:Label>
                           <asp:DropDownList ID="ddlgreenpurchasemethod" style="width:100%;" runat="server"></asp:DropDownList>
                               </div>
-                              <div class="floaddiv" style="width:25%;" >
+                              <div class="floaddiv" style="width:23%;" >
                               <asp:Label  runat="server" Text="">
                                  <span class="label label-md lbl yellowlable">特定調達品目</span>
                             </asp:Label>
@@ -1833,25 +1841,39 @@ table td {
                             
                               </div>
 
-                                  <div class="floaddiv" style="width:15%;">
+                                  <div class="floaddiv" style="width:13%;">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl yellowlable ">エコマーク認定品</span>
                                         </asp:Label>
                                         <asp:DropDownList ID="ddlecomartcertifiedproduct" style="width:100%;" runat="server"></asp:DropDownList>
                                     </div>
 
-                                  <div class="floaddiv" style="width:15%;">
+                                  <div class="floaddiv" style="width:14%;">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl yellowlable ">エコマーク認定番号</span>
                                         </asp:Label>
                                         <asp:TextBox CssClass="txtbox" ID="txtecomartcertifiednumber" onkeypress="return isNumberKey(event)"  runat="server" style="width: 100%;"></asp:TextBox>
                                     </div>
-                                <div class="floaddiv" style="width:`15%;">
+                                <div class="floaddiv" style="width:13%;">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl yellowlable ">RoHS指令</span>
                                         </asp:Label>
                                         <asp:DropDownList ID="ddlRoHSdirective" style="width:100%;" runat="server"></asp:DropDownList>
-                                    </div>               
+                                    </div>    
+                                  <div class="floaddiv" style="width:13%;">
+                                        <asp:Label CssClass=""  runat="server" >
+                                        <span class="label label-md lbl yellowlable ">JIS適合</span>
+                                        </asp:Label>
+                                        <asp:DropDownList ID="ddlJISConform" style="width:100%;" runat="server">
+                                        </asp:DropDownList>
+                                    </div>  
+                                  <div class="floaddiv" style="width:13%;">
+                                        <asp:Label CssClass=""  runat="server" >
+                                        <span class="label label-md lbl yellowlable ">ISO適合</span>
+                                        </asp:Label>
+                                        <asp:DropDownList ID="ddlISOConform" style="width:100%;" runat="server">
+                                        </asp:DropDownList>
+                                    </div>  
                             </div>
                           </div>
                      </div>
@@ -1954,9 +1976,19 @@ table td {
 
 
          var tab = document.getElementById('<%= hdfTab.ClientID%>').value;
-         if (tab != "") {
+         
+         if (tab != '' && tab != null) {
              //alert(tab);
-             refreshTab(tab);
+             if (tab == 'amaster' ||
+                 tab == 'asku' ||
+                 tab == 'aprice' ||
+                 tab == 'aimage' ||
+                 tab == 'aoption' ||
+                 tab == 'amalldata' ||
+                 tab == 'asetting') {
+                 refreshTab(tab);
+               
+             }
          }
 
          var img1 = document.getElementById('<%= txtimg1.ClientID %>')
@@ -2364,13 +2396,20 @@ table td {
              sec.removeAttribute("hidden");
          }
 
-         eventRef.preventDefault();
-         return true;
+       //  eventRef.preventDefault();
+      //   return true;
      }
 
-     $(document).keydown(function (event) {
-         var id = $('.act').attr('id');
-         handleKeyDownEvent(id, event);
+  $(document).keydown(function (event) {
+         var charCode = (window.event) ? event.keyCode : event.which;
+         if (charCode == 38 && event.ctrlKey) {
+             var id = $('.act').attr('id');
+             handleKeyDownEvent(id, event);
+         }
+         if (charCode == 40 && event.ctrlKey) {
+             var id = $('.act').attr('id');
+             handleKeyDownEvent(id, event);
+         }
      });
 
     function changeStyle(sender) {
@@ -3274,7 +3313,7 @@ table td {
         }
 
         function Delete() {
-            alert("delete")
+            //alert("delete")
             var hlImage1 = document.getElementById('<%= hlImage1.ClientID %>');
             var image1 = document.getElementById('<%= Image1.ClientID %>');
             var txtimg1 = document.getElementById('<%= txtimg1.ClientID %>');
@@ -3543,5 +3582,20 @@ table td {
              return false;
          }
      </script>
-
+    <script type="text/javascript">
+        function isNumberKeys(evt) {
+            var charCode = (evt.which) ? evt.which : event.keyCode;
+            if (charCode == 13 && charCode == 46)
+                return false;
+            else return true;
+        }
+        </script>
+    <script type="text/javascript">
+        function isNumberKey(evt) {
+            var charCode = (evt.which) ? evt.which : event.keyCode;
+            if ((charCode >= 48 && charCode <= 57) || charCode == 8)
+                return true;
+            else return false;
+        }
+    </script>
 </asp:Content>

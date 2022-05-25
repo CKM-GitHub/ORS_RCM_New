@@ -85,6 +85,7 @@ namespace ORS_RCM
                     ddlname.DataValueField = "ID";
                     ddlname.DataBind();
                     ddlname.Items.Insert(0, "");
+                    ViewState["sortdr"] = null;
                 }
                 else
                 {
@@ -121,19 +122,63 @@ namespace ORS_RCM
                         Label lbl = gp.FindControl("lblCurrent") as Label;
                         int index = Convert.ToInt32(lbl.Text);
                         gvItem.PageIndex = Convert.ToInt32(index);
-                        if (chkCode.Checked)
+
+                        if (ViewState["sortdr"] != null)
                         {
-                            gvItem.DataSource = imbl.SelectAll(ime, index, gvItem.PageSize, 2, 1);
-                            gvItem.DataBind();
+                            if (chkCode.Checked)
+                            {
+                                string sortorder = ViewState["sortdr"].ToString();
+                                gvItem.DataSource = imbl.Item_Code_Sort(ime, index, gvItem.PageSize, 2, 1, sortorder);
+                                gvItem.DataBind();
+                            }
+                            else
+                            {
+                                string sortorder = ViewState["sortdr"].ToString();
+                                gvItem.DataSource = imbl.Item_Code_Sort(ime, index, gvItem.PageSize, 1, 1, sortorder);
+                                gvItem.DataBind();
+                            }
                         }
                         else
                         {
-                            gvItem.DataSource = imbl.SelectAll(ime, index, gvItem.PageSize, 1, 1);
-                            gvItem.DataBind();
+                            if (chkCode.Checked)
+                            {
+                                gvItem.DataSource = imbl.SelectAll(ime, index, gvItem.PageSize, 2, 1);
+                                gvItem.DataBind();
+                            }
+                            else
+                            {
+                                gvItem.DataSource = imbl.SelectAll(ime, index, gvItem.PageSize, 1, 1);
+                                gvItem.DataBind();
+                            }
                         }
+                       
+                        //gvItem.DataSource = dt;
+                        //gvItem.DataBind();
+                        //ViewState["dirState"] = dt;
+                        //ViewState["sortdr"] = "Asc";
+
+                        //if (chkCode.Checked)
+                        //{
+                        //    gvItem.DataSource = imbl.SelectAll(ime, index, gvItem.PageSize, 2, 1);
+                        //    gvItem.DataBind();
+                        //}
+                        //else
+                        //{
+                        //    gvItem.DataSource = imbl.SelectAll(ime, index, gvItem.PageSize, 1, 1);
+                        //    gvItem.DataBind();
+                        //}
                         ItemCheck_Change();
                     }
-                    refreshdata();
+                    else if (ctrl.Contains("gvItem"))
+                    {
+                        if (ViewState["sortdr"] == null)
+                        {
+                            ViewState["sortdr"] = "Asc";
+                        }
+                            
+                        Bind();
+                    }
+                   // refreshdata();
                 }
             }
             catch (Exception ex)
@@ -294,28 +339,68 @@ namespace ORS_RCM
             {
                 Item_Master_BL imbl = new Item_Master_BL();
                 Item_Master_Entity ime = GetData();
-                if (chkCode.Checked)
+                
+                if (ViewState["sortdr"] != null)
                 {
-                    gvItem.PageSize = int.Parse(ddlpage.SelectedValue.ToString());
-                    DataTable dt = imbl.SelectAll(ime, 1, gvItem.PageSize, 2, 1);//(searchkey,pageIndex,pagesize,option(2=equal,1=like),1=search,0=select all)
-                    int count = 0;
-                    if (dt.Rows.Count > 0)
-                        count = Convert.ToInt32(dt.Rows[0]["Total_Count"].ToString());
-                    gvItem.DataSource = dt;
-                    gvItem.DataBind();
-                    gp.CalculatePaging(count, gvItem.PageSize, 1);
+                    string sortorder = ViewState["sortdr"].ToString();
+                   
+
+                    if (chkCode.Checked)
+                    {
+                        gvItem.PageSize = int.Parse(ddlpage.SelectedValue.ToString());
+                        DataTable dt = imbl.Item_Code_Sort(ime, 1, gvItem.PageSize, 2, 1, sortorder);//(searchkey,pageIndex,pagesize,option(2=equal,1=like),1=search,0=select all)
+                        int count = 0;
+                        if (dt.Rows.Count > 0)
+                            count = Convert.ToInt32(dt.Rows[0]["Total_Count"].ToString());
+                        gvItem.DataSource = dt;
+                        gvItem.DataBind();
+                        gp.CalculatePaging(count, gvItem.PageSize, 1);
+
+                        ViewState["dirState"] = dt;
+                    }
+                    else
+                    {
+                        gvItem.PageSize = int.Parse(ddlpage.SelectedValue.ToString());
+                        DataTable dt = imbl.Item_Code_Sort(ime, 1, gvItem.PageSize, 1, 1, sortorder);//(searchkey,pageIndex,pagesize,option(2=equal,1=like),1=search,0=select all)
+                        int count = 0;
+                        if (dt.Rows.Count > 0)
+                            count = Convert.ToInt32(dt.Rows[0]["Total_Count"].ToString());
+                        gvItem.DataSource = dt;
+                        gvItem.DataBind();
+                        gp.CalculatePaging(count, gvItem.PageSize, 1);
+                        ViewState["dirState"] = dt;
+                    }
                 }
                 else
                 {
-                    gvItem.PageSize = int.Parse(ddlpage.SelectedValue.ToString());
-                    DataTable dt = imbl.SelectAll(ime, 1, gvItem.PageSize, 1, 1);//(searchkey,pageIndex,pagesize,option(2=equal,1=like),1=search,0=select all)
-                    int count = 0;
-                    if (dt.Rows.Count > 0)
-                        count = Convert.ToInt32(dt.Rows[0]["Total_Count"].ToString());
-                    gvItem.DataSource = dt;
-                    gvItem.DataBind();
-                    gp.CalculatePaging(count, gvItem.PageSize, 1);
+                    if (chkCode.Checked)
+                    {
+                        gvItem.PageSize = int.Parse(ddlpage.SelectedValue.ToString());
+                        DataTable dt = imbl.SelectAll(ime, 1, gvItem.PageSize, 2, 1);//(searchkey,pageIndex,pagesize,option(2=equal,1=like),1=search,0=select all)
+                        int count = 0;
+                        if (dt.Rows.Count > 0)
+                            count = Convert.ToInt32(dt.Rows[0]["Total_Count"].ToString());
+                        gvItem.DataSource = dt;
+                        gvItem.DataBind();
+                        gp.CalculatePaging(count, gvItem.PageSize, 1);
+
+                        ViewState["dirState"] = dt;
+                    }
+                    else
+                    {
+                        gvItem.PageSize = int.Parse(ddlpage.SelectedValue.ToString());
+                        DataTable dt = imbl.SelectAll(ime, 1, gvItem.PageSize, 1, 1);//(searchkey,pageIndex,pagesize,option(2=equal,1=like),1=search,0=select all)
+                        int count = 0;
+                        if (dt.Rows.Count > 0)
+                            count = Convert.ToInt32(dt.Rows[0]["Total_Count"].ToString());
+                        gvItem.DataSource = dt;
+                        gvItem.DataBind();
+                        gp.CalculatePaging(count, gvItem.PageSize, 1);
+                        ViewState["dirState"] = dt;
+                        
+                    }
                 }
+
 
             }
             catch (Exception ex)
@@ -326,9 +411,6 @@ namespace ORS_RCM
         }
         public void refreshdata()
         {
-            //SqlConnection con = new SqlConnection(@"Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|\Database.mdf;Integrated Security=True;User Instance=True");
-            //SqlCommand cmd = new SqlCommand("select * from tbl_data", con);
-            //SqlDataAdapter sda = new SqlDataAdapter(cmd);
             Item_Master_BL imbl = new Item_Master_BL();
             Item_Master_Entity ime = GetData();
             DataTable dt = new DataTable();
@@ -342,7 +424,6 @@ namespace ORS_RCM
                 string sortorder = "Desc";
                 dt = imbl.Item_Code_Sort(ime, 1, gvItem.PageSize, 1, 1, sortorder);
             }
-            //sda.Fill(dt);
             gvItem.DataSource = dt;
             gvItem.DataBind();
             ViewState["dirState"] = dt;
@@ -355,17 +436,12 @@ namespace ORS_RCM
             {
                 if (Convert.ToString(ViewState["sortdr"]) == "Asc")
                 {
-                    dtrslt.DefaultView.Sort = e.SortExpression + " Desc";
                     ViewState["sortdr"] = "Desc";
                 }
                 else
                 {
-                    dtrslt.DefaultView.Sort = e.SortExpression + " Asc";
-                    ViewState["sortdr"] = "Asc";
+                     ViewState["sortdr"] = "Asc";
                 }
-                gvItem.DataSource = dtrslt;
-                gvItem.DataBind();
-
 
             }
         }
@@ -373,7 +449,6 @@ namespace ORS_RCM
 
         private string GetSortDirection(string column)
         {
-
             // By default, set the sort direction to ascending.
             string sortDirection = "ASC";
 
@@ -391,6 +466,11 @@ namespace ORS_RCM
                     {
                         sortDirection = "DESC";
                     }
+                    else
+                    {
+                        sortDirection = "ASC";
+                    }
+                    
                 }
             }  // Save new values in ViewState.
             ViewState["SortDirection"] = sortDirection;

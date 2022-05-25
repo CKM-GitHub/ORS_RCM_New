@@ -32,7 +32,7 @@
 		display: block;
 		background: url(../images/sort.png) right center no-repeat;
 		background-size: 25px 25px;
-		
+		width: 120px;
 	}
 
 	.itemView td {

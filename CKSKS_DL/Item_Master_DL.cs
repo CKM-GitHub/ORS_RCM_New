@@ -89,7 +89,7 @@ namespace ORS_RCM_DL
             {
                 SqlConnection connectionString = new SqlConnection(DataConfig.connectionString);
                 DataTable dt = new DataTable();
-                SqlDataAdapter sda = new SqlDataAdapter("SP_Item_Code_Sort1", connectionString);
+                SqlDataAdapter sda = new SqlDataAdapter("SP_Item_Code_Sort", connectionString);
                 sda.SelectCommand.CommandTimeout = 0;
                 sda.SelectCommand.CommandType = CommandType.StoredProcedure;
                 //txtImageFileName field not found

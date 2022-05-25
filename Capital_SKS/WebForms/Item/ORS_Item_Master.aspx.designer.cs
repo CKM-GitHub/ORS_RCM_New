@@ -7,13 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Capital_SKS.WebForms.Item
-{
-
-
-    public partial class ORS_Item_Master
-    {
-
+namespace Capital_SKS.WebForms.Item {
+    
+    
+    public partial class ORS_Item_Master {
+        
         /// <summary>
         /// CustomHiddenField control.
         /// </summary>
@@ -22,7 +20,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField CustomHiddenField;
-
+        
         /// <summary>
         /// hdfPostDate control.
         /// </summary>
@@ -31,7 +29,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField hdfPostDate;
-
+        
         /// <summary>
         /// hdfReleaseDate control.
         /// </summary>
@@ -40,7 +38,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField hdfReleaseDate;
-
+        
         /// <summary>
         /// hdfScheduleDatemono control.
         /// </summary>
@@ -49,7 +47,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField hdfScheduleDatemono;
-
+        
         /// <summary>
         /// hdfCtrl_ID control.
         /// </summary>
@@ -58,7 +56,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField hdfCtrl_ID;
-
+        
         /// <summary>
         /// hdfCatID control.
         /// </summary>
@@ -67,7 +65,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField hdfCatID;
-
+        
         /// <summary>
         /// hdfTab control.
         /// </summary>
@@ -76,7 +74,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField hdfTab;
-
+        
         /// <summary>
         /// txtItem_Code control.
         /// </summary>
@@ -85,7 +83,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtItem_Code;
-
+        
         /// <summary>
         /// txtJanCD control.
         /// </summary>
@@ -94,7 +92,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtJanCD;
-
+        
         /// <summary>
         /// lblmakername control.
         /// </summary>
@@ -103,7 +101,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblmakername;
-
+        
         /// <summary>
         /// txtmakername control.
         /// </summary>
@@ -112,7 +110,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtmakername;
-
+        
         /// <summary>
         /// lblitemname control.
         /// </summary>
@@ -121,7 +119,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblitemname;
-
+        
         /// <summary>
         /// txtItem_Name control.
         /// </summary>
@@ -130,7 +128,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtItem_Name;
-
+        
         /// <summary>
         /// Label1 control.
         /// </summary>
@@ -139,7 +137,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label1;
-
+        
         /// <summary>
         /// txtmemo control.
         /// </summary>
@@ -148,7 +146,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtmemo;
-
+        
         /// <summary>
         /// ddlsalesunit control.
         /// </summary>
@@ -157,7 +155,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlsalesunit;
-
+        
         /// <summary>
         /// txtcontentquantityunitno1 control.
         /// </summary>
@@ -166,7 +164,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtcontentquantityunitno1;
-
+        
         /// <summary>
         /// ddlcontentunit1 control.
         /// </summary>
@@ -175,7 +173,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlcontentunit1;
-
+        
         /// <summary>
         /// txtcontentquantityunitno2 control.
         /// </summary>
@@ -184,7 +182,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtcontentquantityunitno2;
-
+        
         /// <summary>
         /// ddlcontentunit2 control.
         /// </summary>
@@ -193,7 +191,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlcontentunit2;
-
+        
         /// <summary>
         /// ddNormalLargeKBN control.
         /// </summary>
@@ -202,7 +200,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddNormalLargeKBN;
-
+        
         /// <summary>
         /// txtsiiresaki control.
         /// </summary>
@@ -211,7 +209,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtsiiresaki;
-
+        
         /// <summary>
         /// dis control.
         /// </summary>
@@ -220,7 +218,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton dis;
-
+        
         /// <summary>
         /// UpdatePanelrelative control.
         /// </summary>
@@ -229,7 +227,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel UpdatePanelrelative;
-
+        
         /// <summary>
         /// txtRelated1 control.
         /// </summary>
@@ -238,7 +236,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtRelated1;
-
+        
         /// <summary>
         /// txtRelated6 control.
         /// </summary>
@@ -247,7 +245,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtRelated6;
-
+        
         /// <summary>
         /// txtRelated11 control.
         /// </summary>
@@ -256,7 +254,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtRelated11;
-
+        
         /// <summary>
         /// txtRelated16 control.
         /// </summary>
@@ -265,7 +263,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtRelated16;
-
+        
         /// <summary>
         /// txtRelated2 control.
         /// </summary>
@@ -274,7 +272,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtRelated2;
-
+        
         /// <summary>
         /// txtRelated7 control.
         /// </summary>
@@ -283,7 +281,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtRelated7;
-
+        
         /// <summary>
         /// txtRelated12 control.
         /// </summary>
@@ -292,7 +290,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtRelated12;
-
+        
         /// <summary>
         /// txtRelated17 control.
         /// </summary>
@@ -301,7 +299,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtRelated17;
-
+        
         /// <summary>
         /// txtRelated3 control.
         /// </summary>
@@ -310,7 +308,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtRelated3;
-
+        
         /// <summary>
         /// txtRelated8 control.
         /// </summary>
@@ -319,7 +317,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtRelated8;
-
+        
         /// <summary>
         /// txtRelated13 control.
         /// </summary>
@@ -328,7 +326,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtRelated13;
-
+        
         /// <summary>
         /// txtRelated18 control.
         /// </summary>
@@ -337,7 +335,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtRelated18;
-
+        
         /// <summary>
         /// txtRelated4 control.
         /// </summary>
@@ -346,7 +344,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtRelated4;
-
+        
         /// <summary>
         /// txtRelated9 control.
         /// </summary>
@@ -355,7 +353,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtRelated9;
-
+        
         /// <summary>
         /// txtRelated14 control.
         /// </summary>
@@ -364,7 +362,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtRelated14;
-
+        
         /// <summary>
         /// txtRelated19 control.
         /// </summary>
@@ -373,7 +371,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtRelated19;
-
+        
         /// <summary>
         /// txtRelated5 control.
         /// </summary>
@@ -382,7 +380,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtRelated5;
-
+        
         /// <summary>
         /// txtRelated10 control.
         /// </summary>
@@ -391,7 +389,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtRelated10;
-
+        
         /// <summary>
         /// txtRelated15 control.
         /// </summary>
@@ -400,7 +398,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtRelated15;
-
+        
         /// <summary>
         /// txtRelated20 control.
         /// </summary>
@@ -409,7 +407,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtRelated20;
-
+        
         /// <summary>
         /// template control.
         /// </summary>
@@ -418,7 +416,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton template;
-
+        
         /// <summary>
         /// UpdatePanel2 control.
         /// </summary>
@@ -427,7 +425,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel UpdatePanel2;
-
+        
         /// <summary>
         /// txtTemplate1 control.
         /// </summary>
@@ -436,7 +434,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtTemplate1;
-
+        
         /// <summary>
         /// txtTemplate_Content1 control.
         /// </summary>
@@ -445,7 +443,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtTemplate_Content1;
-
+        
         /// <summary>
         /// txtTemplate6 control.
         /// </summary>
@@ -454,7 +452,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtTemplate6;
-
+        
         /// <summary>
         /// txtTemplate_Content6 control.
         /// </summary>
@@ -463,7 +461,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtTemplate_Content6;
-
+        
         /// <summary>
         /// txtTemplate11 control.
         /// </summary>
@@ -472,7 +470,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtTemplate11;
-
+        
         /// <summary>
         /// txtTemplate_Content11 control.
         /// </summary>
@@ -481,7 +479,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtTemplate_Content11;
-
+        
         /// <summary>
         /// txtTemplate16 control.
         /// </summary>
@@ -490,7 +488,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtTemplate16;
-
+        
         /// <summary>
         /// txtTemplate_Content16 control.
         /// </summary>
@@ -499,7 +497,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtTemplate_Content16;
-
+        
         /// <summary>
         /// txtTemplate2 control.
         /// </summary>
@@ -508,7 +506,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtTemplate2;
-
+        
         /// <summary>
         /// txtTemplate_Content2 control.
         /// </summary>
@@ -517,7 +515,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtTemplate_Content2;
-
+        
         /// <summary>
         /// txtTemplate7 control.
         /// </summary>
@@ -526,7 +524,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtTemplate7;
-
+        
         /// <summary>
         /// txtTemplate_Content7 control.
         /// </summary>
@@ -535,7 +533,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtTemplate_Content7;
-
+        
         /// <summary>
         /// txtTemplate12 control.
         /// </summary>
@@ -544,7 +542,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtTemplate12;
-
+        
         /// <summary>
         /// txtTemplate_Content12 control.
         /// </summary>
@@ -553,7 +551,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtTemplate_Content12;
-
+        
         /// <summary>
         /// txtTemplate17 control.
         /// </summary>
@@ -562,7 +560,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtTemplate17;
-
+        
         /// <summary>
         /// txtTemplate_Content17 control.
         /// </summary>
@@ -571,7 +569,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtTemplate_Content17;
-
+        
         /// <summary>
         /// txtTemplate3 control.
         /// </summary>
@@ -580,7 +578,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtTemplate3;
-
+        
         /// <summary>
         /// txtTemplate_Content3 control.
         /// </summary>
@@ -589,7 +587,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtTemplate_Content3;
-
+        
         /// <summary>
         /// txtTemplate8 control.
         /// </summary>
@@ -598,7 +596,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtTemplate8;
-
+        
         /// <summary>
         /// txtTemplate_Content8 control.
         /// </summary>
@@ -607,7 +605,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtTemplate_Content8;
-
+        
         /// <summary>
         /// txtTemplate13 control.
         /// </summary>
@@ -616,7 +614,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtTemplate13;
-
+        
         /// <summary>
         /// txtTemplate_Content13 control.
         /// </summary>
@@ -625,7 +623,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtTemplate_Content13;
-
+        
         /// <summary>
         /// txtTemplate18 control.
         /// </summary>
@@ -634,7 +632,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtTemplate18;
-
+        
         /// <summary>
         /// txtTemplate_Content18 control.
         /// </summary>
@@ -643,7 +641,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtTemplate_Content18;
-
+        
         /// <summary>
         /// txtTemplate4 control.
         /// </summary>
@@ -652,7 +650,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtTemplate4;
-
+        
         /// <summary>
         /// txtTemplate_Content4 control.
         /// </summary>
@@ -661,7 +659,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtTemplate_Content4;
-
+        
         /// <summary>
         /// txtTemplate9 control.
         /// </summary>
@@ -670,7 +668,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtTemplate9;
-
+        
         /// <summary>
         /// txtTemplate_Content9 control.
         /// </summary>
@@ -679,7 +677,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtTemplate_Content9;
-
+        
         /// <summary>
         /// txtTemplate14 control.
         /// </summary>
@@ -688,7 +686,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtTemplate14;
-
+        
         /// <summary>
         /// txtTemplate_Content14 control.
         /// </summary>
@@ -697,7 +695,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtTemplate_Content14;
-
+        
         /// <summary>
         /// txtTemplate19 control.
         /// </summary>
@@ -706,7 +704,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtTemplate19;
-
+        
         /// <summary>
         /// txtTemplate_Content19 control.
         /// </summary>
@@ -715,7 +713,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtTemplate_Content19;
-
+        
         /// <summary>
         /// txtTemplate5 control.
         /// </summary>
@@ -724,7 +722,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtTemplate5;
-
+        
         /// <summary>
         /// txtTemplate_Content5 control.
         /// </summary>
@@ -733,7 +731,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtTemplate_Content5;
-
+        
         /// <summary>
         /// txtTemplate10 control.
         /// </summary>
@@ -742,7 +740,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtTemplate10;
-
+        
         /// <summary>
         /// txtTemplate_Content10 control.
         /// </summary>
@@ -751,7 +749,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtTemplate_Content10;
-
+        
         /// <summary>
         /// txtTemplate15 control.
         /// </summary>
@@ -760,7 +758,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtTemplate15;
-
+        
         /// <summary>
         /// txtTemplate_Content15 control.
         /// </summary>
@@ -769,7 +767,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtTemplate_Content15;
-
+        
         /// <summary>
         /// txtTemplate20 control.
         /// </summary>
@@ -778,7 +776,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtTemplate20;
-
+        
         /// <summary>
         /// txtTemplate_Content20 control.
         /// </summary>
@@ -787,7 +785,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtTemplate_Content20;
-
+        
         /// <summary>
         /// txtSale_Description_PC control.
         /// </summary>
@@ -796,7 +794,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtSale_Description_PC;
-
+        
         /// <summary>
         /// txtMerchandise_Information control.
         /// </summary>
@@ -805,7 +803,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtMerchandise_Information;
-
+        
         /// <summary>
         /// txtItem_Description_PC control.
         /// </summary>
@@ -814,7 +812,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtItem_Description_PC;
-
+        
         /// <summary>
         /// txtSmart_Template control.
         /// </summary>
@@ -823,7 +821,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtSmart_Template;
-
+        
         /// <summary>
         /// txtCatchCopy control.
         /// </summary>
@@ -832,7 +830,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtCatchCopy;
-
+        
         /// <summary>
         /// txtRelease_Date control.
         /// </summary>
@@ -841,7 +839,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtRelease_Date;
-
+        
         /// <summary>
         /// ImageButton1 control.
         /// </summary>
@@ -850,7 +848,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Image ImageButton1;
-
+        
         /// <summary>
         /// txtPost_Available_Date control.
         /// </summary>
@@ -859,7 +857,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtPost_Available_Date;
-
+        
         /// <summary>
         /// ImageButton2 control.
         /// </summary>
@@ -868,7 +866,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Image ImageButton2;
-
+        
         /// <summary>
         /// txtProduct_Code control.
         /// </summary>
@@ -877,7 +875,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtProduct_Code;
-
+        
         /// <summary>
         /// txtBrand_Code control.
         /// </summary>
@@ -886,7 +884,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtBrand_Code;
-
+        
         /// <summary>
         /// ddlShipping_Flag control.
         /// </summary>
@@ -895,7 +893,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlShipping_Flag;
-
+        
         /// <summary>
         /// ddlDelivery_Charges control.
         /// </summary>
@@ -904,7 +902,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlDelivery_Charges;
-
+        
         /// <summary>
         /// txtExtra_Shipping control.
         /// </summary>
@@ -913,7 +911,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtExtra_Shipping;
-
+        
         /// <summary>
         /// txtmaker_code control.
         /// </summary>
@@ -922,7 +920,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtmaker_code;
-
+        
         /// <summary>
         /// btnAddSKU control.
         /// </summary>
@@ -931,7 +929,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputButton btnAddSKU;
-
+        
         /// <summary>
         /// rdb1 control.
         /// </summary>
@@ -940,7 +938,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RadioButton rdb1;
-
+        
         /// <summary>
         /// rdb2 control.
         /// </summary>
@@ -949,7 +947,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RadioButton rdb2;
-
+        
         /// <summary>
         /// gvSKU control.
         /// </summary>
@@ -958,7 +956,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView gvSKU;
-
+        
         /// <summary>
         /// txtList_Price control.
         /// </summary>
@@ -967,7 +965,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtList_Price;
-
+        
         /// <summary>
         /// txtcost control.
         /// </summary>
@@ -976,7 +974,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtcost;
-
+        
         /// <summary>
         /// txtSale_Price control.
         /// </summary>
@@ -985,7 +983,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtSale_Price;
-
+        
         /// <summary>
         /// txtprofitrate control.
         /// </summary>
@@ -994,7 +992,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtprofitrate;
-
+        
         /// <summary>
         /// txtdiscountrate control.
         /// </summary>
@@ -1003,7 +1001,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtdiscountrate;
-
+        
         /// <summary>
         /// txtcostrate control.
         /// </summary>
@@ -1012,7 +1010,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtcostrate;
-
+        
         /// <summary>
         /// txtJishaPrice control.
         /// </summary>
@@ -1021,7 +1019,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtJishaPrice;
-
+        
         /// <summary>
         /// txtjishaProfitrate control.
         /// </summary>
@@ -1030,7 +1028,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtjishaProfitrate;
-
+        
         /// <summary>
         /// txtjishaDiscountrate control.
         /// </summary>
@@ -1039,7 +1037,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtjishaDiscountrate;
-
+        
         /// <summary>
         /// txtjishaCostrate control.
         /// </summary>
@@ -1048,7 +1046,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtjishaCostrate;
-
+        
         /// <summary>
         /// txtRakutenPrice control.
         /// </summary>
@@ -1057,7 +1055,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtRakutenPrice;
-
+        
         /// <summary>
         /// txtrakutenProfitrate control.
         /// </summary>
@@ -1066,7 +1064,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtrakutenProfitrate;
-
+        
         /// <summary>
         /// txtrakutenDiscountrate control.
         /// </summary>
@@ -1075,7 +1073,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtrakutenDiscountrate;
-
+        
         /// <summary>
         /// txtrakutenCostrate control.
         /// </summary>
@@ -1084,7 +1082,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtrakutenCostrate;
-
+        
         /// <summary>
         /// txtYahooPrice control.
         /// </summary>
@@ -1093,7 +1091,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtYahooPrice;
-
+        
         /// <summary>
         /// txtyahooProfitrate control.
         /// </summary>
@@ -1102,7 +1100,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtyahooProfitrate;
-
+        
         /// <summary>
         /// txtyahooDiscountrate control.
         /// </summary>
@@ -1111,7 +1109,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtyahooDiscountrate;
-
+        
         /// <summary>
         /// txtyahooCostrate control.
         /// </summary>
@@ -1120,7 +1118,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtyahooCostrate;
-
+        
         /// <summary>
         /// txtWowmaPrice control.
         /// </summary>
@@ -1129,7 +1127,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtWowmaPrice;
-
+        
         /// <summary>
         /// txtwowmaProfitrate control.
         /// </summary>
@@ -1138,7 +1136,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtwowmaProfitrate;
-
+        
         /// <summary>
         /// txtwowmaDiscountrate control.
         /// </summary>
@@ -1147,7 +1145,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtwowmaDiscountrate;
-
+        
         /// <summary>
         /// txtwowmaCostrate control.
         /// </summary>
@@ -1156,7 +1154,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtwowmaCostrate;
-
+        
         /// <summary>
         /// txtmonoprice control.
         /// </summary>
@@ -1165,7 +1163,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtmonoprice;
-
+        
         /// <summary>
         /// txtmonoprice_profitrate control.
         /// </summary>
@@ -1174,7 +1172,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtmonoprice_profitrate;
-
+        
         /// <summary>
         /// txtmonoprice_discountrate control.
         /// </summary>
@@ -1183,7 +1181,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtmonoprice_discountrate;
-
+        
         /// <summary>
         /// txtmonoprice_costrate control.
         /// </summary>
@@ -1192,7 +1190,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtmonoprice_costrate;
-
+        
         /// <summary>
         /// txtditeprice control.
         /// </summary>
@@ -1201,7 +1199,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtditeprice;
-
+        
         /// <summary>
         /// txtditeprice_profitrate control.
         /// </summary>
@@ -1210,7 +1208,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtditeprice_profitrate;
-
+        
         /// <summary>
         /// txtditeprice_discountrate control.
         /// </summary>
@@ -1219,7 +1217,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtditeprice_discountrate;
-
+        
         /// <summary>
         /// txtditeprice_costrate control.
         /// </summary>
@@ -1228,7 +1226,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtditeprice_costrate;
-
+        
         /// <summary>
         /// txtjapanmprice control.
         /// </summary>
@@ -1237,7 +1235,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtjapanmprice;
-
+        
         /// <summary>
         /// txtjapanmprice_profitrate control.
         /// </summary>
@@ -1246,7 +1244,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtjapanmprice_profitrate;
-
+        
         /// <summary>
         /// txtjapanmprice_discountrate control.
         /// </summary>
@@ -1255,7 +1253,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtjapanmprice_discountrate;
-
+        
         /// <summary>
         /// txtjapanmprice_costrate control.
         /// </summary>
@@ -1264,7 +1262,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtjapanmprice_costrate;
-
+        
         /// <summary>
         /// txtkashiwagi control.
         /// </summary>
@@ -1273,7 +1271,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtkashiwagi;
-
+        
         /// <summary>
         /// txtkashiwagi_profitrate control.
         /// </summary>
@@ -1282,7 +1280,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtkashiwagi_profitrate;
-
+        
         /// <summary>
         /// txtkashiwagi_discountrate control.
         /// </summary>
@@ -1291,7 +1289,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtkashiwagi_discountrate;
-
+        
         /// <summary>
         /// txtkashiwagi_costrate control.
         /// </summary>
@@ -1300,7 +1298,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtkashiwagi_costrate;
-
+        
         /// <summary>
         /// hlImage1 control.
         /// </summary>
@@ -1309,7 +1307,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink hlImage1;
-
+        
         /// <summary>
         /// Image1 control.
         /// </summary>
@@ -1318,7 +1316,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Image Image1;
-
+        
         /// <summary>
         /// txtimg1 control.
         /// </summary>
@@ -1327,7 +1325,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtimg1;
-
+        
         /// <summary>
         /// FileUpload1 control.
         /// </summary>
@@ -1336,7 +1334,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.FileUpload FileUpload1;
-
+        
         /// <summary>
         /// hideButton control.
         /// </summary>
@@ -1345,16 +1343,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button hideButton;
-
-        /// <summary>
-        /// UpdatePanel1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
-
+        
         /// <summary>
         /// hlImage2 control.
         /// </summary>
@@ -1363,7 +1352,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink hlImage2;
-
+        
         /// <summary>
         /// Image2 control.
         /// </summary>
@@ -1372,7 +1361,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Image Image2;
-
+        
         /// <summary>
         /// txtimg2 control.
         /// </summary>
@@ -1381,7 +1370,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtimg2;
-
+        
         /// <summary>
         /// FileUpload2 control.
         /// </summary>
@@ -1390,7 +1379,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.FileUpload FileUpload2;
-
+        
         /// <summary>
         /// imgbtn2_1 control.
         /// </summary>
@@ -1399,7 +1388,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button imgbtn2_1;
-
+        
         /// <summary>
         /// UpdatePanel3 control.
         /// </summary>
@@ -1408,7 +1397,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel UpdatePanel3;
-
+        
         /// <summary>
         /// hlImage3 control.
         /// </summary>
@@ -1417,7 +1406,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink hlImage3;
-
+        
         /// <summary>
         /// Image3 control.
         /// </summary>
@@ -1426,7 +1415,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Image Image3;
-
+        
         /// <summary>
         /// txtimg3 control.
         /// </summary>
@@ -1435,7 +1424,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtimg3;
-
+        
         /// <summary>
         /// FileUpload3 control.
         /// </summary>
@@ -1444,7 +1433,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.FileUpload FileUpload3;
-
+        
         /// <summary>
         /// imgbtn3_1 control.
         /// </summary>
@@ -1453,7 +1442,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button imgbtn3_1;
-
+        
         /// <summary>
         /// UpdatePanel4 control.
         /// </summary>
@@ -1462,7 +1451,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel UpdatePanel4;
-
+        
         /// <summary>
         /// hlImage4 control.
         /// </summary>
@@ -1471,7 +1460,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink hlImage4;
-
+        
         /// <summary>
         /// Image4 control.
         /// </summary>
@@ -1480,7 +1469,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Image Image4;
-
+        
         /// <summary>
         /// txtimg4 control.
         /// </summary>
@@ -1489,7 +1478,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtimg4;
-
+        
         /// <summary>
         /// FileUpload4 control.
         /// </summary>
@@ -1498,7 +1487,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.FileUpload FileUpload4;
-
+        
         /// <summary>
         /// imgbtn4_1 control.
         /// </summary>
@@ -1507,7 +1496,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button imgbtn4_1;
-
+        
         /// <summary>
         /// UpdatePanel5 control.
         /// </summary>
@@ -1516,7 +1505,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel UpdatePanel5;
-
+        
         /// <summary>
         /// hlImage5 control.
         /// </summary>
@@ -1525,7 +1514,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink hlImage5;
-
+        
         /// <summary>
         /// Image5 control.
         /// </summary>
@@ -1534,7 +1523,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Image Image5;
-
+        
         /// <summary>
         /// txtimg5 control.
         /// </summary>
@@ -1543,7 +1532,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtimg5;
-
+        
         /// <summary>
         /// FileUpload5 control.
         /// </summary>
@@ -1552,7 +1541,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.FileUpload FileUpload5;
-
+        
         /// <summary>
         /// imgbtn5_1 control.
         /// </summary>
@@ -1561,7 +1550,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button imgbtn5_1;
-
+        
         /// <summary>
         /// UpdatePanel6 control.
         /// </summary>
@@ -1570,7 +1559,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel UpdatePanel6;
-
+        
         /// <summary>
         /// hlImage6 control.
         /// </summary>
@@ -1579,7 +1568,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink hlImage6;
-
+        
         /// <summary>
         /// Image6 control.
         /// </summary>
@@ -1588,7 +1577,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Image Image6;
-
+        
         /// <summary>
         /// txtimg6 control.
         /// </summary>
@@ -1597,7 +1586,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtimg6;
-
+        
         /// <summary>
         /// FileUpload6 control.
         /// </summary>
@@ -1606,7 +1595,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.FileUpload FileUpload6;
-
+        
         /// <summary>
         /// imgbtn6_1 control.
         /// </summary>
@@ -1615,7 +1604,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button imgbtn6_1;
-
+        
         /// <summary>
         /// UpdatePanel7 control.
         /// </summary>
@@ -1624,7 +1613,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel UpdatePanel7;
-
+        
         /// <summary>
         /// hlImage7 control.
         /// </summary>
@@ -1633,7 +1622,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink hlImage7;
-
+        
         /// <summary>
         /// Image7 control.
         /// </summary>
@@ -1642,7 +1631,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Image Image7;
-
+        
         /// <summary>
         /// txtimg7 control.
         /// </summary>
@@ -1651,7 +1640,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtimg7;
-
+        
         /// <summary>
         /// FileUpload7 control.
         /// </summary>
@@ -1660,7 +1649,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.FileUpload FileUpload7;
-
+        
         /// <summary>
         /// imgbtn7_1 control.
         /// </summary>
@@ -1669,7 +1658,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button imgbtn7_1;
-
+        
         /// <summary>
         /// UpdatePanel8 control.
         /// </summary>
@@ -1678,7 +1667,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel UpdatePanel8;
-
+        
         /// <summary>
         /// hlImage8 control.
         /// </summary>
@@ -1687,7 +1676,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink hlImage8;
-
+        
         /// <summary>
         /// Image8 control.
         /// </summary>
@@ -1696,7 +1685,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Image Image8;
-
+        
         /// <summary>
         /// txtimg8 control.
         /// </summary>
@@ -1705,7 +1694,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtimg8;
-
+        
         /// <summary>
         /// FileUpload8 control.
         /// </summary>
@@ -1714,7 +1703,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.FileUpload FileUpload8;
-
+        
         /// <summary>
         /// imgbtn8_1 control.
         /// </summary>
@@ -1723,7 +1712,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button imgbtn8_1;
-
+        
         /// <summary>
         /// UpdatePanel9 control.
         /// </summary>
@@ -1732,7 +1721,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel UpdatePanel9;
-
+        
         /// <summary>
         /// hlImage9 control.
         /// </summary>
@@ -1741,7 +1730,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink hlImage9;
-
+        
         /// <summary>
         /// Image9 control.
         /// </summary>
@@ -1750,7 +1739,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Image Image9;
-
+        
         /// <summary>
         /// txtimg9 control.
         /// </summary>
@@ -1759,7 +1748,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtimg9;
-
+        
         /// <summary>
         /// FileUpload9 control.
         /// </summary>
@@ -1768,7 +1757,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.FileUpload FileUpload9;
-
+        
         /// <summary>
         /// imgbtn9_1 control.
         /// </summary>
@@ -1777,7 +1766,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button imgbtn9_1;
-
+        
         /// <summary>
         /// UpdatePanel10 control.
         /// </summary>
@@ -1786,7 +1775,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel UpdatePanel10;
-
+        
         /// <summary>
         /// hlImage10 control.
         /// </summary>
@@ -1795,7 +1784,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink hlImage10;
-
+        
         /// <summary>
         /// Image10 control.
         /// </summary>
@@ -1804,7 +1793,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Image Image10;
-
+        
         /// <summary>
         /// txtimg10 control.
         /// </summary>
@@ -1813,7 +1802,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtimg10;
-
+        
         /// <summary>
         /// FileUpload10 control.
         /// </summary>
@@ -1822,7 +1811,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.FileUpload FileUpload10;
-
+        
         /// <summary>
         /// imgbtn10_1 control.
         /// </summary>
@@ -1831,7 +1820,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button imgbtn10_1;
-
+        
         /// <summary>
         /// UpdatePanel11 control.
         /// </summary>
@@ -1840,7 +1829,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel UpdatePanel11;
-
+        
         /// <summary>
         /// hlImage11 control.
         /// </summary>
@@ -1849,7 +1838,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink hlImage11;
-
+        
         /// <summary>
         /// Image11 control.
         /// </summary>
@@ -1858,7 +1847,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Image Image11;
-
+        
         /// <summary>
         /// txtimg11 control.
         /// </summary>
@@ -1867,7 +1856,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtimg11;
-
+        
         /// <summary>
         /// FileUpload11 control.
         /// </summary>
@@ -1876,7 +1865,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.FileUpload FileUpload11;
-
+        
         /// <summary>
         /// imgbtn11_1 control.
         /// </summary>
@@ -1885,7 +1874,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button imgbtn11_1;
-
+        
         /// <summary>
         /// UpdatePanel12 control.
         /// </summary>
@@ -1894,7 +1883,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel UpdatePanel12;
-
+        
         /// <summary>
         /// hlImage12 control.
         /// </summary>
@@ -1903,7 +1892,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink hlImage12;
-
+        
         /// <summary>
         /// Image12 control.
         /// </summary>
@@ -1912,7 +1901,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Image Image12;
-
+        
         /// <summary>
         /// txtimg12 control.
         /// </summary>
@@ -1921,7 +1910,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtimg12;
-
+        
         /// <summary>
         /// FileUpload12 control.
         /// </summary>
@@ -1930,7 +1919,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.FileUpload FileUpload12;
-
+        
         /// <summary>
         /// imgbtn12_1 control.
         /// </summary>
@@ -1939,7 +1928,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button imgbtn12_1;
-
+        
         /// <summary>
         /// UpdatePanel13 control.
         /// </summary>
@@ -1948,7 +1937,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel UpdatePanel13;
-
+        
         /// <summary>
         /// hlImage13 control.
         /// </summary>
@@ -1957,7 +1946,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink hlImage13;
-
+        
         /// <summary>
         /// Image13 control.
         /// </summary>
@@ -1966,7 +1955,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Image Image13;
-
+        
         /// <summary>
         /// txtimg13 control.
         /// </summary>
@@ -1975,7 +1964,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtimg13;
-
+        
         /// <summary>
         /// FileUpload13 control.
         /// </summary>
@@ -1984,7 +1973,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.FileUpload FileUpload13;
-
+        
         /// <summary>
         /// imgbtn13_1 control.
         /// </summary>
@@ -1993,7 +1982,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button imgbtn13_1;
-
+        
         /// <summary>
         /// UpdatePanel14 control.
         /// </summary>
@@ -2002,7 +1991,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel UpdatePanel14;
-
+        
         /// <summary>
         /// hlImage14 control.
         /// </summary>
@@ -2011,7 +2000,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink hlImage14;
-
+        
         /// <summary>
         /// Image14 control.
         /// </summary>
@@ -2020,7 +2009,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Image Image14;
-
+        
         /// <summary>
         /// txtimg14 control.
         /// </summary>
@@ -2029,7 +2018,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtimg14;
-
+        
         /// <summary>
         /// FileUpload14 control.
         /// </summary>
@@ -2038,7 +2027,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.FileUpload FileUpload14;
-
+        
         /// <summary>
         /// imgbtn14_1 control.
         /// </summary>
@@ -2047,7 +2036,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button imgbtn14_1;
-
+        
         /// <summary>
         /// UpdatePanel15 control.
         /// </summary>
@@ -2056,7 +2045,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel UpdatePanel15;
-
+        
         /// <summary>
         /// hlImage15 control.
         /// </summary>
@@ -2065,7 +2054,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink hlImage15;
-
+        
         /// <summary>
         /// Image15 control.
         /// </summary>
@@ -2074,7 +2063,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Image Image15;
-
+        
         /// <summary>
         /// txtimg15 control.
         /// </summary>
@@ -2083,7 +2072,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtimg15;
-
+        
         /// <summary>
         /// FileUpload15 control.
         /// </summary>
@@ -2092,7 +2081,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.FileUpload FileUpload15;
-
+        
         /// <summary>
         /// imgbtn15_1 control.
         /// </summary>
@@ -2101,7 +2090,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button imgbtn15_1;
-
+        
         /// <summary>
         /// UpdatePanel16 control.
         /// </summary>
@@ -2110,7 +2099,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel UpdatePanel16;
-
+        
         /// <summary>
         /// hlImage16 control.
         /// </summary>
@@ -2119,7 +2108,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink hlImage16;
-
+        
         /// <summary>
         /// Image16 control.
         /// </summary>
@@ -2128,7 +2117,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Image Image16;
-
+        
         /// <summary>
         /// txtimg16 control.
         /// </summary>
@@ -2137,7 +2126,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtimg16;
-
+        
         /// <summary>
         /// FileUpload16 control.
         /// </summary>
@@ -2146,7 +2135,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.FileUpload FileUpload16;
-
+        
         /// <summary>
         /// imgbtn16_1 control.
         /// </summary>
@@ -2155,7 +2144,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button imgbtn16_1;
-
+        
         /// <summary>
         /// UpdatePanel17 control.
         /// </summary>
@@ -2164,7 +2153,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel UpdatePanel17;
-
+        
         /// <summary>
         /// hlImage17 control.
         /// </summary>
@@ -2173,7 +2162,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink hlImage17;
-
+        
         /// <summary>
         /// Image17 control.
         /// </summary>
@@ -2182,7 +2171,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Image Image17;
-
+        
         /// <summary>
         /// txtimg17 control.
         /// </summary>
@@ -2191,7 +2180,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtimg17;
-
+        
         /// <summary>
         /// FileUpload17 control.
         /// </summary>
@@ -2200,7 +2189,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.FileUpload FileUpload17;
-
+        
         /// <summary>
         /// imgbtn17_1 control.
         /// </summary>
@@ -2209,7 +2198,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button imgbtn17_1;
-
+        
         /// <summary>
         /// UpdatePanel18 control.
         /// </summary>
@@ -2218,7 +2207,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel UpdatePanel18;
-
+        
         /// <summary>
         /// hlImage18 control.
         /// </summary>
@@ -2227,7 +2216,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink hlImage18;
-
+        
         /// <summary>
         /// Image18 control.
         /// </summary>
@@ -2236,7 +2225,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Image Image18;
-
+        
         /// <summary>
         /// txtimg18 control.
         /// </summary>
@@ -2245,7 +2234,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtimg18;
-
+        
         /// <summary>
         /// FileUpload18 control.
         /// </summary>
@@ -2254,7 +2243,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.FileUpload FileUpload18;
-
+        
         /// <summary>
         /// imgbtn18_1 control.
         /// </summary>
@@ -2263,7 +2252,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button imgbtn18_1;
-
+        
         /// <summary>
         /// UpdatePanel19 control.
         /// </summary>
@@ -2272,7 +2261,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel UpdatePanel19;
-
+        
         /// <summary>
         /// hlImage19 control.
         /// </summary>
@@ -2281,7 +2270,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink hlImage19;
-
+        
         /// <summary>
         /// Image19 control.
         /// </summary>
@@ -2290,7 +2279,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Image Image19;
-
+        
         /// <summary>
         /// txtimg19 control.
         /// </summary>
@@ -2299,7 +2288,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtimg19;
-
+        
         /// <summary>
         /// FileUpload19 control.
         /// </summary>
@@ -2308,7 +2297,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.FileUpload FileUpload19;
-
+        
         /// <summary>
         /// imgbtn19_1 control.
         /// </summary>
@@ -2317,7 +2306,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button imgbtn19_1;
-
+        
         /// <summary>
         /// UpdatePanel20 control.
         /// </summary>
@@ -2326,7 +2315,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel UpdatePanel20;
-
+        
         /// <summary>
         /// hlImage20 control.
         /// </summary>
@@ -2335,7 +2324,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink hlImage20;
-
+        
         /// <summary>
         /// Image20 control.
         /// </summary>
@@ -2344,7 +2333,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Image Image20;
-
+        
         /// <summary>
         /// txtimg20 control.
         /// </summary>
@@ -2353,7 +2342,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtimg20;
-
+        
         /// <summary>
         /// FileUpload20 control.
         /// </summary>
@@ -2362,7 +2351,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.FileUpload FileUpload20;
-
+        
         /// <summary>
         /// imgbtn20_1 control.
         /// </summary>
@@ -2371,7 +2360,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button imgbtn20_1;
-
+        
         /// <summary>
         /// ddlOption control.
         /// </summary>
@@ -2380,7 +2369,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlOption;
-
+        
         /// <summary>
         /// txtOptionName1 control.
         /// </summary>
@@ -2389,7 +2378,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtOptionName1;
-
+        
         /// <summary>
         /// txtOptionName2 control.
         /// </summary>
@@ -2398,7 +2387,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtOptionName2;
-
+        
         /// <summary>
         /// txtOptionName3 control.
         /// </summary>
@@ -2407,7 +2396,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtOptionName3;
-
+        
         /// <summary>
         /// txtOptionValue1 control.
         /// </summary>
@@ -2416,7 +2405,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtOptionValue1;
-
+        
         /// <summary>
         /// txtOptionValue2 control.
         /// </summary>
@@ -2425,7 +2414,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtOptionValue2;
-
+        
         /// <summary>
         /// txtOptionValue3 control.
         /// </summary>
@@ -2434,7 +2423,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtOptionValue3;
-
+        
         /// <summary>
         /// gvCatagories control.
         /// </summary>
@@ -2443,7 +2432,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView gvCatagories;
-
+        
         /// <summary>
         /// btnAddCatagories control.
         /// </summary>
@@ -2452,7 +2441,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputButton btnAddCatagories;
-
+        
         /// <summary>
         /// txtRakuten_CategoryID control.
         /// </summary>
@@ -2461,7 +2450,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtRakuten_CategoryID;
-
+        
         /// <summary>
         /// txtRakuten_CategoryPath control.
         /// </summary>
@@ -2470,7 +2459,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtRakuten_CategoryPath;
-
+        
         /// <summary>
         /// btnRakuten_CategoryID control.
         /// </summary>
@@ -2479,7 +2468,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputButton btnRakuten_CategoryID;
-
+        
         /// <summary>
         /// txtWowma_CategoryID control.
         /// </summary>
@@ -2488,7 +2477,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtWowma_CategoryID;
-
+        
         /// <summary>
         /// txtWowma_CategoryPath control.
         /// </summary>
@@ -2497,7 +2486,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtWowma_CategoryPath;
-
+        
         /// <summary>
         /// btnWowma_CategoryID control.
         /// </summary>
@@ -2506,7 +2495,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputButton btnWowma_CategoryID;
-
+        
         /// <summary>
         /// txtYahoo_CategoryID control.
         /// </summary>
@@ -2515,7 +2504,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtYahoo_CategoryID;
-
+        
         /// <summary>
         /// txtYahoo_CategoryPath control.
         /// </summary>
@@ -2524,7 +2513,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtYahoo_CategoryPath;
-
+        
         /// <summary>
         /// btnYahoo_CategoryID control.
         /// </summary>
@@ -2533,7 +2522,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputButton btnYahoo_CategoryID;
-
+        
         /// <summary>
         /// txtYahooValue1 control.
         /// </summary>
@@ -2542,7 +2531,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtYahooValue1;
-
+        
         /// <summary>
         /// txtYahooValue2 control.
         /// </summary>
@@ -2551,7 +2540,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtYahooValue2;
-
+        
         /// <summary>
         /// txtYahooValue3 control.
         /// </summary>
@@ -2560,7 +2549,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtYahooValue3;
-
+        
         /// <summary>
         /// txtYahooValue4 control.
         /// </summary>
@@ -2569,7 +2558,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtYahooValue4;
-
+        
         /// <summary>
         /// txtYahooValue5 control.
         /// </summary>
@@ -2578,7 +2567,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtYahooValue5;
-
+        
         /// <summary>
         /// imgbYahooSpecValue control.
         /// </summary>
@@ -2587,7 +2576,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputButton imgbYahooSpecValue;
-
+        
         /// <summary>
         /// dlShop1 control.
         /// </summary>
@@ -2596,7 +2585,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DataList dlShop1;
-
+        
         /// <summary>
         /// dlShop control.
         /// </summary>
@@ -2605,7 +2594,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DataList dlShop;
-
+        
         /// <summary>
         /// txtBrand_Name control.
         /// </summary>
@@ -2614,7 +2603,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtBrand_Name;
-
+        
         /// <summary>
         /// txtsellingprice control.
         /// </summary>
@@ -2623,7 +2612,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtsellingprice;
-
+        
         /// <summary>
         /// txtpurchaseprice control.
         /// </summary>
@@ -2632,7 +2621,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtpurchaseprice;
-
+        
         /// <summary>
         /// txtsellby control.
         /// </summary>
@@ -2641,7 +2630,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtsellby;
-
+        
         /// <summary>
         /// txtsellingrank control.
         /// </summary>
@@ -2650,7 +2639,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtsellingrank;
-
+        
         /// <summary>
         /// Label7 control.
         /// </summary>
@@ -2659,7 +2648,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label7;
-
+        
         /// <summary>
         /// txtcomment control.
         /// </summary>
@@ -2668,7 +2657,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtcomment;
-
+        
         /// <summary>
         /// ddlPublicationType control.
         /// </summary>
@@ -2677,7 +2666,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlPublicationType;
-
+        
         /// <summary>
         /// txtminimumorderquantity control.
         /// </summary>
@@ -2686,7 +2675,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtminimumorderquantity;
-
+        
         /// <summary>
         /// txtminimumorderunit control.
         /// </summary>
@@ -2695,7 +2684,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtminimumorderunit;
-
+        
         /// <summary>
         /// ddlDirectDelivery control.
         /// </summary>
@@ -2704,7 +2693,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlDirectDelivery;
-
+        
         /// <summary>
         /// txtreleasedatemonotaro control.
         /// </summary>
@@ -2713,7 +2702,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtreleasedatemonotaro;
-
+        
         /// <summary>
         /// Image21 control.
         /// </summary>
@@ -2722,7 +2711,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Image Image21;
-
+        
         /// <summary>
         /// txtmonocategory control.
         /// </summary>
@@ -2731,7 +2720,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtmonocategory;
-
+        
         /// <summary>
         /// txtcolour control.
         /// </summary>
@@ -2740,7 +2729,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtcolour;
-
+        
         /// <summary>
         /// txtReferenceURL control.
         /// </summary>
@@ -2749,7 +2738,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtReferenceURL;
-
+        
         /// <summary>
         /// ddldeliverymethod control.
         /// </summary>
@@ -2758,7 +2747,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddldeliverymethod;
-
+        
         /// <summary>
         /// ddldeliverytype control.
         /// </summary>
@@ -2767,7 +2756,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddldeliverytype;
-
+        
         /// <summary>
         /// Label2 control.
         /// </summary>
@@ -2776,7 +2765,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label2;
-
+        
         /// <summary>
         /// txtdeliverydays control.
         /// </summary>
@@ -2785,7 +2774,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtdeliverydays;
-
+        
         /// <summary>
         /// Label3 control.
         /// </summary>
@@ -2794,7 +2783,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label3;
-
+        
         /// <summary>
         /// ddldeliveryfees control.
         /// </summary>
@@ -2803,7 +2792,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddldeliveryfees;
-
+        
         /// <summary>
         /// Label4 control.
         /// </summary>
@@ -2812,7 +2801,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label4;
-
+        
         /// <summary>
         /// ddlreturnableitem control.
         /// </summary>
@@ -2821,7 +2810,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlreturnableitem;
-
+        
         /// <summary>
         /// ddlksmavaliable control.
         /// </summary>
@@ -2830,7 +2819,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlksmavaliable;
-
+        
         /// <summary>
         /// txtksmdeliverydays control.
         /// </summary>
@@ -2839,7 +2828,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtksmdeliverydays;
-
+        
         /// <summary>
         /// ddlnoapplicablelaw control.
         /// </summary>
@@ -2848,7 +2837,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlnoapplicablelaw;
-
+        
         /// <summary>
         /// ddlsalespermission control.
         /// </summary>
@@ -2857,7 +2846,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlsalespermission;
-
+        
         /// <summary>
         /// Label5 control.
         /// </summary>
@@ -2866,7 +2855,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label5;
-
+        
         /// <summary>
         /// ddllaw control.
         /// </summary>
@@ -2875,7 +2864,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddllaw;
-
+        
         /// <summary>
         /// txtnationwide control.
         /// </summary>
@@ -2884,7 +2873,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtnationwide;
-
+        
         /// <summary>
         /// txthokkaido control.
         /// </summary>
@@ -2893,7 +2882,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txthokkaido;
-
+        
         /// <summary>
         /// txtokinawa control.
         /// </summary>
@@ -2902,7 +2891,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtokinawa;
-
+        
         /// <summary>
         /// txtremoteisland control.
         /// </summary>
@@ -2911,7 +2900,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtremoteisland;
-
+        
         /// <summary>
         /// txtundeliveredarea control.
         /// </summary>
@@ -2920,7 +2909,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtundeliveredarea;
-
+        
         /// <summary>
         /// txtdangerousgoodscontents control.
         /// </summary>
@@ -2929,7 +2918,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtdangerousgoodscontents;
-
+        
         /// <summary>
         /// ddldanggoodsclass control.
         /// </summary>
@@ -2938,7 +2927,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddldanggoodsclass;
-
+        
         /// <summary>
         /// ddldanggoodsname control.
         /// </summary>
@@ -2947,7 +2936,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddldanggoodsname;
-
+        
         /// <summary>
         /// ddlriskrating control.
         /// </summary>
@@ -2956,7 +2945,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlriskrating;
-
+        
         /// <summary>
         /// ddldanggoodsnature control.
         /// </summary>
@@ -2965,7 +2954,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddldanggoodsnature;
-
+        
         /// <summary>
         /// ddlgreenpurchasemethod control.
         /// </summary>
@@ -2974,7 +2963,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlgreenpurchasemethod;
-
+        
         /// <summary>
         /// ddlSpecifiedprocurementitem control.
         /// </summary>
@@ -2983,7 +2972,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlSpecifiedprocurementitem;
-
+        
         /// <summary>
         /// ddlecomartcertifiedproduct control.
         /// </summary>
@@ -2992,7 +2981,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlecomartcertifiedproduct;
-
+        
         /// <summary>
         /// txtecomartcertifiednumber control.
         /// </summary>
@@ -3001,7 +2990,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtecomartcertifiednumber;
-
+        
         /// <summary>
         /// ddlRoHSdirective control.
         /// </summary>
@@ -3010,7 +2999,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlRoHSdirective;
-
+        
         /// <summary>
         /// ddlJISConform control.
         /// </summary>
@@ -3019,7 +3008,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlJISConform;
-
+        
         /// <summary>
         /// ddlISOConform control.
         /// </summary>
@@ -3028,7 +3017,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlISOConform;
-
+        
         /// <summary>
         /// ddlcustomerassembly control.
         /// </summary>
@@ -3037,7 +3026,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlcustomerassembly;
-
+        
         /// <summary>
         /// ddlfirelaw control.
         /// </summary>
@@ -3046,7 +3035,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlfirelaw;
-
+        
         /// <summary>
         /// txtwarehouse_code control.
         /// </summary>
@@ -3055,7 +3044,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtwarehouse_code;
-
+        
         /// <summary>
         /// txtday_ship control.
         /// </summary>
@@ -3064,7 +3053,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtday_ship;
-
+        
         /// <summary>
         /// txtreturn_necessary control.
         /// </summary>
@@ -3073,7 +3062,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtreturn_necessary;
-
+        
         /// <summary>
         /// Label6 control.
         /// </summary>
@@ -3082,7 +3071,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label6;
-
+        
         /// <summary>
         /// ddlPharmaceuticalsandmedicaldevices control.
         /// </summary>
@@ -3091,7 +3080,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlPharmaceuticalsandmedicaldevices;
-
+        
         /// <summary>
         /// btnCopy control.
         /// </summary>
@@ -3100,7 +3089,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnCopy;
-
+        
         /// <summary>
         /// btnPreview control.
         /// </summary>
@@ -3109,7 +3098,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnPreview;
-
+        
         /// <summary>
         /// btnSave control.
         /// </summary>
@@ -3118,7 +3107,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnSave;
-
+        
         /// <summary>
         /// btnComplete control.
         /// </summary>
@@ -3127,7 +3116,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnComplete;
-
+        
         /// <summary>
         /// btnToCancelExhibit control.
         /// </summary>
@@ -3136,7 +3125,7 @@ namespace Capital_SKS.WebForms.Item
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnToCancelExhibit;
-
+        
         /// <summary>
         /// btnDelete control.
         /// </summary>

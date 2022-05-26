@@ -26,9 +26,9 @@ namespace ORS_RCM_BL
             return imDL.SearchRelatedItem(itemcode, itemname);
         }
 
-        public DataTable Item_Code_Sort(Item_Master_Entity ime, int pageIndex, int pageSize, int option, int search)
+        public DataTable Item_Code_Sort(Item_Master_Entity ime, int pageIndex, int pageSize, int option, int search, string sortorder)
         {
-            return imDL.Item_Code_Sort(ime, pageIndex, pageSize, option, search);
+            return imDL.Item_Code_Sort(ime, pageIndex, pageSize, option, search, sortorder);
         }
 
         public DataTable GetItemSaleDescription(String id)
@@ -90,11 +90,6 @@ namespace ORS_RCM_BL
         public Item_Master_Entity SelectByID(int id)
         {
             return imDL.SelectByID(id);
-        }
-
-        public DataTable Item_Code_Sort(Item_Master_Entity ime, int pageIndex, int pageSize, int option, int search, string sortorder)
-        {
-            return imDL.Item_Code_Sort(ime, pageIndex, pageSize, option, search, sortorder);
         }
 
         public DataTable SelectAll(Item_Master_Entity ime, int pageIndex, int pageSize, int option,int search)

@@ -21,6 +21,11 @@ img {
     width:180px;
 }
 
+.highlight {
+    color: red;
+    font-weight: bold;
+}
+
 table {
     border-collapse: collapse;
 }

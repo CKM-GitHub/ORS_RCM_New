@@ -754,14 +754,18 @@ namespace Capital_SKS.WebForms.Item
                     txtimg1.Text = FileUpload1.FileName;
                     if (!System.Text.RegularExpressions.Regex.IsMatch(txtimg1.Text, ItemCode + "-[0-1]?[0-9]|20.jpg"))
                     {
-                        txtimg1.Text = "先に登録されていた場合";
-                        GlobalUI.MessageBox("Invalid Image Name");
+                        txtimg1.Text = "";                     
+                        Image1.ImageUrl = imagePath + "no_image.jpg";
+                        hlImage1.NavigateUrl = imagePath + "no_image.jpg";
+                        GlobalUI.MessageBox("無効画像名");
                         return;
                     }
 
                     if (txtimg1.Text.Length > 24)
                     {
-                        txtimg1.Text = "先に登録されていた場合";
+                        txtimg1.Text = "";
+                        Image1.ImageUrl = imagePath + "no_image.jpg";
+                        hlImage1.NavigateUrl = imagePath + "no_image.jpg";
                         GlobalUI.MessageBox("画像ファイル名は20文字までです");
                         return;
                     }
@@ -778,7 +782,9 @@ namespace Capital_SKS.WebForms.Item
                 }
                 else
                 {
-
+                    Image1.ImageUrl = imagePath + "no_image.jpg";
+                    hlImage1.NavigateUrl = imagePath + "no_image.jpg";
+                    txtimg1.Text = "";
                 }
 
             }
@@ -800,14 +806,14 @@ namespace Capital_SKS.WebForms.Item
                     txtimg2.Text = FileUpload2.FileName;
                     if (!System.Text.RegularExpressions.Regex.IsMatch(txtimg2.Text, ItemCode + "-[0-1]?[0-9]|20.jpg"))
                     {
-                        txtimg2.Text = "先に登録されていた場合";
-                        GlobalUI.MessageBox("Invalid Image Name");
+                        txtimg2.Text = "";
+                        GlobalUI.MessageBox("無効画像名");
                         return;
                     }
 
                     if (txtimg2.Text.Length > 24)
                     {
-                        txtimg2.Text = "先に登録されていた場合";
+                        txtimg2.Text = "";
                         GlobalUI.MessageBox("画像ファイル名は20文字までです");
                         return;
                     }
@@ -846,14 +852,14 @@ namespace Capital_SKS.WebForms.Item
                     txtimg3.Text = FileUpload3.FileName;
                     if (!System.Text.RegularExpressions.Regex.IsMatch(txtimg3.Text, ItemCode + "-[0-1]?[0-9]|20.jpg"))
                     {
-                        txtimg3.Text = "先に登録されていた場合";
-                        GlobalUI.MessageBox("Invalid Image Name");
+                        txtimg3.Text = "";
+                        GlobalUI.MessageBox("無効画像名");
                         return;
                     }
 
                     if (txtimg3.Text.Length > 24)
                     {
-                        txtimg3.Text = "先に登録されていた場合";
+                        txtimg3.Text = "";
                         GlobalUI.MessageBox("画像ファイル名は20文字までです");
                         return;
                     }
@@ -892,14 +898,14 @@ namespace Capital_SKS.WebForms.Item
                     txtimg4.Text = FileUpload4.FileName;
                     if (!System.Text.RegularExpressions.Regex.IsMatch(txtimg4.Text, ItemCode + "-[0-1]?[0-9]|20.jpg"))
                     {
-                        txtimg4.Text = "先に登録されていた場合";
-                        GlobalUI.MessageBox("Invalid Image Name");
+                        txtimg4.Text = "";
+                        GlobalUI.MessageBox("無効画像名");
                         return;
                     }
 
                     if (txtimg4.Text.Length > 24)
                     {
-                        txtimg4.Text = "先に登録されていた場合";
+                        txtimg4.Text = "";
                         GlobalUI.MessageBox("画像ファイル名は20文字までです");
                         return;
                     }
@@ -938,14 +944,14 @@ namespace Capital_SKS.WebForms.Item
                     txtimg5.Text = FileUpload5.FileName;
                     if (!System.Text.RegularExpressions.Regex.IsMatch(txtimg5.Text, ItemCode + "-[0-1]?[0-9]|20.jpg"))
                     {
-                        txtimg5.Text = "先に登録されていた場合";
-                        GlobalUI.MessageBox("Invalid Image Name");
+                        txtimg5.Text = "";
+                        GlobalUI.MessageBox("無効画像名");
                         return;
                     }
 
                     if (txtimg5.Text.Length > 24)
                     {
-                        txtimg5.Text = "先に登録されていた場合";
+                        txtimg5.Text = "";
                         GlobalUI.MessageBox("画像ファイル名は20文字までです");
                         return;
                     }
@@ -984,14 +990,14 @@ namespace Capital_SKS.WebForms.Item
                     txtimg6.Text = FileUpload6.FileName;
                     if (!System.Text.RegularExpressions.Regex.IsMatch(txtimg6.Text, ItemCode + "-[0-1]?[0-9]|20.jpg"))
                     {
-                        txtimg6.Text = "先に登録されていた場合";
-                        GlobalUI.MessageBox("Invalid Image Name");
+                        txtimg6.Text = "";
+                        GlobalUI.MessageBox("無効画像名");
                         return;
                     }
 
                     if (txtimg6.Text.Length > 24)
                     {
-                        txtimg6.Text = "先に登録されていた場合";
+                        txtimg6.Text = "";
                         GlobalUI.MessageBox("画像ファイル名は20文字までです");
                         return;
                     }
@@ -1030,14 +1036,14 @@ namespace Capital_SKS.WebForms.Item
                     txtimg7.Text = FileUpload7.FileName;
                     if (!System.Text.RegularExpressions.Regex.IsMatch(txtimg7.Text, ItemCode + "-[0-1]?[0-9]|20.jpg"))
                     {
-                        txtimg7.Text = "先に登録されていた場合";
-                        GlobalUI.MessageBox("Invalid Image Name");
+                        txtimg7.Text = "";
+                        GlobalUI.MessageBox("無効画像名");
                         return;
                     }
 
                     if (txtimg7.Text.Length > 24)
                     {
-                        txtimg7.Text = "先に登録されていた場合";
+                        txtimg7.Text = "";
                         GlobalUI.MessageBox("画像ファイル名は20文字までです");
                         return;
                     }
@@ -1076,14 +1082,14 @@ namespace Capital_SKS.WebForms.Item
                     txtimg8.Text = FileUpload8.FileName;
                     if (!System.Text.RegularExpressions.Regex.IsMatch(txtimg8.Text, ItemCode + "-[0-1]?[0-9]|20.jpg"))
                     {
-                        txtimg8.Text = "先に登録されていた場合";
-                        GlobalUI.MessageBox("Invalid Image Name");
+                        txtimg8.Text = "";
+                        GlobalUI.MessageBox("無効画像名");
                         return;
                     }
 
                     if (txtimg8.Text.Length > 24)
                     {
-                        txtimg8.Text = "先に登録されていた場合";
+                        txtimg8.Text = "";
                         GlobalUI.MessageBox("画像ファイル名は20文字までです");
                         return;
                     }
@@ -1122,14 +1128,14 @@ namespace Capital_SKS.WebForms.Item
                     txtimg9.Text = FileUpload9.FileName;
                     if (!System.Text.RegularExpressions.Regex.IsMatch(txtimg9.Text, ItemCode + "-[0-1]?[0-9]|20.jpg"))
                     {
-                        txtimg9.Text = "先に登録されていた場合";
-                        GlobalUI.MessageBox("Invalid Image Name");
+                        txtimg9.Text = "";
+                        GlobalUI.MessageBox("無効画像名");
                         return;
                     }
 
                     if (txtimg9.Text.Length > 24)
                     {
-                        txtimg9.Text = "先に登録されていた場合";
+                        txtimg9.Text = "";
                         GlobalUI.MessageBox("画像ファイル名は20文字までです");
                         return;
                     }
@@ -1168,14 +1174,14 @@ namespace Capital_SKS.WebForms.Item
                     txtimg10.Text = FileUpload10.FileName;
                     if (!System.Text.RegularExpressions.Regex.IsMatch(txtimg10.Text, ItemCode + "-[0-1]?[0-9]|20.jpg"))
                     {
-                        txtimg10.Text = "先に登録されていた場合";
-                        GlobalUI.MessageBox("Invalid Image Name");
+                        txtimg10.Text = "";
+                        GlobalUI.MessageBox("無効画像名");
                         return;
                     }
 
                     if (txtimg10.Text.Length > 24)
                     {
-                        txtimg10.Text = "先に登録されていた場合";
+                        txtimg10.Text = "";
                         GlobalUI.MessageBox("画像ファイル名は20文字までです");
                         return;
                     }
@@ -1214,14 +1220,14 @@ namespace Capital_SKS.WebForms.Item
                     txtimg11.Text = FileUpload11.FileName;
                     if (!System.Text.RegularExpressions.Regex.IsMatch(txtimg11.Text, ItemCode + "-[0-1]?[0-9]|20.jpg"))
                     {
-                        txtimg11.Text = "先に登録されていた場合";
-                        GlobalUI.MessageBox("Invalid Image Name");
+                        txtimg11.Text = "";
+                        GlobalUI.MessageBox("無効画像名");
                         return;
                     }
 
                     if (txtimg11.Text.Length > 24)
                     {
-                        txtimg11.Text = "先に登録されていた場合";
+                        txtimg11.Text = "";
                         GlobalUI.MessageBox("画像ファイル名は20文字までです");
                         return;
                     }
@@ -1260,14 +1266,14 @@ namespace Capital_SKS.WebForms.Item
                     txtimg12.Text = FileUpload12.FileName;
                     if (!System.Text.RegularExpressions.Regex.IsMatch(txtimg12.Text, ItemCode + "-[0-1]?[0-9]|20.jpg"))
                     {
-                        txtimg12.Text = "先に登録されていた場合";
-                        GlobalUI.MessageBox("Invalid Image Name");
+                        txtimg12.Text = "";
+                        GlobalUI.MessageBox("無効画像名");
                         return;
                     }
 
                     if (txtimg12.Text.Length > 24)
                     {
-                        txtimg12.Text = "先に登録されていた場合";
+                        txtimg12.Text = "";
                         GlobalUI.MessageBox("画像ファイル名は20文字までです");
                         return;
                     }
@@ -1306,14 +1312,14 @@ namespace Capital_SKS.WebForms.Item
                     txtimg13.Text = FileUpload13.FileName;
                     if (!System.Text.RegularExpressions.Regex.IsMatch(txtimg13.Text, ItemCode + "-[0-1]?[0-9]|20.jpg"))
                     {
-                        txtimg13.Text = "先に登録されていた場合";
-                        GlobalUI.MessageBox("Invalid Image Name");
+                        txtimg13.Text = "";
+                        GlobalUI.MessageBox("無効画像名");
                         return;
                     }
 
                     if (txtimg13.Text.Length > 24)
                     {
-                        txtimg13.Text = "先に登録されていた場合";
+                        txtimg13.Text = "";
                         GlobalUI.MessageBox("画像ファイル名は20文字までです");
                         return;
                     }
@@ -1352,14 +1358,14 @@ namespace Capital_SKS.WebForms.Item
                     txtimg14.Text = FileUpload14.FileName;
                     if (!System.Text.RegularExpressions.Regex.IsMatch(txtimg14.Text, ItemCode + "-[0-1]?[0-9]|20.jpg"))
                     {
-                        txtimg14.Text = "先に登録されていた場合";
-                        GlobalUI.MessageBox("Invalid Image Name");
+                        txtimg14.Text = "";
+                        GlobalUI.MessageBox("無効画像名");
                         return;
                     }
 
                     if (txtimg14.Text.Length > 24)
                     {
-                        txtimg14.Text = "先に登録されていた場合";
+                        txtimg14.Text = "";
                         GlobalUI.MessageBox("画像ファイル名は20文字までです");
                         return;
                     }
@@ -1398,14 +1404,14 @@ namespace Capital_SKS.WebForms.Item
                     txtimg15.Text = FileUpload15.FileName;
                     if (!System.Text.RegularExpressions.Regex.IsMatch(txtimg15.Text, ItemCode + "-[0-1]?[0-9]|20.jpg"))
                     {
-                        txtimg15.Text = "先に登録されていた場合";
-                        GlobalUI.MessageBox("Invalid Image Name");
+                        txtimg15.Text = "";
+                        GlobalUI.MessageBox("無効画像名");
                         return;
                     }
 
                     if (txtimg15.Text.Length > 24)
                     {
-                        txtimg15.Text = "先に登録されていた場合";
+                        txtimg15.Text = "";
                         GlobalUI.MessageBox("画像ファイル名は20文字までです");
                         return;
                     }
@@ -1444,14 +1450,14 @@ namespace Capital_SKS.WebForms.Item
                     txtimg16.Text = FileUpload16.FileName;
                     if (!System.Text.RegularExpressions.Regex.IsMatch(txtimg16.Text, ItemCode + "-[0-1]?[0-9]|20.jpg"))
                     {
-                        txtimg16.Text = "先に登録されていた場合";
-                        GlobalUI.MessageBox("Invalid Image Name");
+                        txtimg16.Text = "";
+                        GlobalUI.MessageBox("無効画像名");
                         return;
                     }
 
                     if (txtimg16.Text.Length > 24)
                     {
-                        txtimg16.Text = "先に登録されていた場合";
+                        txtimg16.Text = "";
                         GlobalUI.MessageBox("画像ファイル名は20文字までです");
                         return;
                     }
@@ -1490,14 +1496,14 @@ namespace Capital_SKS.WebForms.Item
                     txtimg17.Text = FileUpload17.FileName;
                     if (!System.Text.RegularExpressions.Regex.IsMatch(txtimg17.Text, ItemCode + "-[0-1]?[0-9]|20.jpg"))
                     {
-                        txtimg17.Text = "先に登録されていた場合";
-                        GlobalUI.MessageBox("Invalid Image Name");
+                        txtimg17.Text = "";
+                        GlobalUI.MessageBox("無効画像名");
                         return;
                     }
 
                     if (txtimg17.Text.Length > 24)
                     {
-                        txtimg17.Text = "先に登録されていた場合";
+                        txtimg17.Text = "";
                         GlobalUI.MessageBox("画像ファイル名は20文字までです");
                         return;
                     }
@@ -1536,14 +1542,14 @@ namespace Capital_SKS.WebForms.Item
                     txtimg18.Text = FileUpload18.FileName;
                     if (!System.Text.RegularExpressions.Regex.IsMatch(txtimg18.Text, ItemCode + "-[0-1]?[0-9]|20.jpg"))
                     {
-                        txtimg18.Text = "先に登録されていた場合";
-                        GlobalUI.MessageBox("Invalid Image Name");
+                        txtimg18.Text = "";
+                        GlobalUI.MessageBox("無効画像名");
                         return;
                     }
 
                     if (txtimg18.Text.Length > 24)
                     {
-                        txtimg18.Text = "先に登録されていた場合";
+                        txtimg18.Text = "";
                         GlobalUI.MessageBox("画像ファイル名は20文字までです");
                         return;
                     }
@@ -1582,14 +1588,14 @@ namespace Capital_SKS.WebForms.Item
                     txtimg19.Text = FileUpload19.FileName;
                     if (!System.Text.RegularExpressions.Regex.IsMatch(txtimg19.Text, ItemCode + "-[0-1]?[0-9]|20.jpg"))
                     {
-                        txtimg19.Text = "先に登録されていた場合";
-                        GlobalUI.MessageBox("Invalid Image Name");
+                        txtimg19.Text = "";
+                        GlobalUI.MessageBox("無効画像名");
                         return;
                     }
 
                     if (txtimg19.Text.Length > 24)
                     {
-                        txtimg19.Text = "先に登録されていた場合";
+                        txtimg19.Text = "";
                         GlobalUI.MessageBox("画像ファイル名は20文字までです");
                         return;
                     }
@@ -1628,14 +1634,14 @@ namespace Capital_SKS.WebForms.Item
                     txtimg20.Text = FileUpload20.FileName;
                     if (!System.Text.RegularExpressions.Regex.IsMatch(txtimg20.Text, ItemCode + "-[0-1]?[0-9]|20.jpg"))
                     {
-                        txtimg20.Text = "先に登録されていた場合";
-                        GlobalUI.MessageBox("Invalid Image Name");
+                        txtimg20.Text = "";
+                        GlobalUI.MessageBox("無効画像名");
                         return;
                     }
 
                     if (txtimg20.Text.Length > 24)
                     {
-                        txtimg20.Text = "先に登録されていた場合";
+                        txtimg20.Text = "";
                         GlobalUI.MessageBox("画像ファイル名は20文字までです");
                         return;
                     }
@@ -2495,6 +2501,122 @@ namespace Capital_SKS.WebForms.Item
                                         {
                                             txtreleasedatemonotaro.Text = "";
                                         }
+
+                                        if (!String.IsNullOrWhiteSpace(ime.CostRate))
+                                        {
+                                            txtcostrate.Text = ime.CostRate;
+                                        }
+                                        if (!String.IsNullOrWhiteSpace(ime.ProfitRate))
+                                        {
+                                            txtprofitrate.Text = ime.ProfitRate;
+                                        }
+                                        if (!String.IsNullOrWhiteSpace(ime.DiscountRate))
+                                        {
+                                            txtdiscountrate.Text = ime.DiscountRate;
+                                        }
+
+                                        if (!String.IsNullOrWhiteSpace(ime.Jisha_costrate))
+                                        {
+                                            txtjishaCostrate.Text = ime.Jisha_costrate;
+                                        }
+                                        if (!String.IsNullOrWhiteSpace(ime.Jisha_profitrate))
+                                        {
+                                            txtjishaProfitrate.Text = ime.Jisha_profitrate;
+                                        }
+                                        if (!String.IsNullOrWhiteSpace(ime.Jisha_discountRate))
+                                        {
+                                            txtjishaDiscountrate.Text = ime.Jisha_discountRate;
+                                        }
+
+                                        if (!String.IsNullOrWhiteSpace(ime.Rakuten_costrate))
+                                        {
+                                            txtrakutenCostrate.Text = ime.Rakuten_costrate;
+                                        }
+                                        if (!String.IsNullOrWhiteSpace(ime.Rakuten_profitrate))
+                                        {
+                                            txtrakutenProfitrate.Text = ime.Rakuten_profitrate;
+                                        }
+                                        if (!String.IsNullOrWhiteSpace(ime.Rakuten_discountRate))
+                                        {
+                                            txtrakutenDiscountrate.Text = ime.Rakuten_discountRate;
+                                        }
+
+                                        if (!String.IsNullOrWhiteSpace(ime.Yahoo_costrate))
+                                        {
+                                            txtyahooCostrate.Text = ime.Yahoo_costrate;
+                                        }
+                                        if (!String.IsNullOrWhiteSpace(ime.Yahoo_profitrate))
+                                        {
+                                            txtyahooProfitrate.Text = ime.Yahoo_profitrate;
+                                        }
+                                        if (!String.IsNullOrWhiteSpace(ime.Yahoo_discountRate))
+                                        {
+                                            txtyahooDiscountrate.Text = ime.Yahoo_discountRate;
+                                        }
+
+                                        if (!String.IsNullOrWhiteSpace(ime.Wowma_costrate))
+                                        {
+                                            txtwowmaCostrate.Text = ime.Wowma_costrate;
+                                        }
+                                        if (!String.IsNullOrWhiteSpace(ime.Wowma_profitrate))
+                                        {
+                                            txtwowmaProfitrate.Text = ime.Wowma_profitrate;
+                                        }
+                                        if (!String.IsNullOrWhiteSpace(ime.Wowma_discountRate))
+                                        {
+                                            txtwowmaDiscountrate.Text = ime.Wowma_discountRate;
+                                        }
+                                        if (!String.IsNullOrWhiteSpace(ime.Monocostrate))
+                                        {
+                                            txtmonoprice_costrate.Text = ime.Monocostrate;
+                                        }
+                                        if (!String.IsNullOrWhiteSpace(ime.MonoprofitRate))
+                                        {
+                                            txtmonoprice_profitrate.Text = ime.MonoprofitRate;
+                                        }
+                                        if (!String.IsNullOrWhiteSpace(ime.Monodiscountrate))
+                                        {
+                                            txtmonoprice_discountrate.Text = ime.Monodiscountrate;
+                                        }
+
+                                        if (!String.IsNullOrWhiteSpace(ime.Ditecostrate))
+                                        {
+                                            txtditeprice_costrate.Text = ime.Ditecostrate;
+                                        }
+                                        if (!String.IsNullOrWhiteSpace(ime.DiteprofitRate))
+                                        {
+                                            txtditeprice_profitrate.Text = ime.DiteprofitRate;
+                                        }
+                                        if (!String.IsNullOrWhiteSpace(ime.Ditediscountrate))
+                                        {
+                                            txtditeprice_discountrate.Text = ime.Ditediscountrate;
+                                        }
+
+                                        if (!String.IsNullOrWhiteSpace(ime.Japanmcostrate))
+                                        {
+                                            txtjapanmprice_costrate.Text = ime.Japanmcostrate;
+                                        }
+                                        if (!String.IsNullOrWhiteSpace(ime.Japanmprofitrate))
+                                        {
+                                            txtjapanmprice_profitrate.Text = ime.Japanmprofitrate;
+                                        }
+                                        if (!String.IsNullOrWhiteSpace(ime.Japanmdiscountrate))
+                                        {
+                                            txtjapanmprice_discountrate.Text = ime.Japanmdiscountrate;
+                                        }
+
+                                        if (!String.IsNullOrWhiteSpace(ime.Kawashigicostrate))
+                                        {
+                                            txtkashiwagi_costrate.Text = ime.Kawashigicostrate;
+                                        }
+                                        if (!String.IsNullOrWhiteSpace(ime.Kashiwagiprofitrate))
+                                        {
+                                            txtkashiwagi_profitrate.Text = ime.Kashiwagiprofitrate;
+                                        }
+                                        if (!String.IsNullOrWhiteSpace(ime.Kashiwagionodiscountrate))
+                                        {
+                                            txtkashiwagi_discountrate.Text = ime.Kashiwagionodiscountrate;
+                                        }
                                     }
                                 }
                             }
@@ -2603,6 +2725,121 @@ namespace Capital_SKS.WebForms.Item
                                         {
                                             txtreleasedatemonotaro.Text = "";
                                         }
+                                        if (!String.IsNullOrWhiteSpace(ime.CostRate))
+                                        {
+                                            txtcostrate.Text = ime.CostRate;
+                                        }
+                                        if (!String.IsNullOrWhiteSpace(ime.ProfitRate))
+                                        {
+                                            txtprofitrate.Text = ime.ProfitRate;
+                                        }
+                                        if (!String.IsNullOrWhiteSpace(ime.DiscountRate))
+                                        {
+                                            txtdiscountrate.Text = ime.DiscountRate;
+                                        }
+
+                                        if (!String.IsNullOrWhiteSpace(ime.Jisha_costrate))
+                                        {
+                                            txtjishaCostrate.Text = ime.Jisha_costrate;
+                                        }
+                                        if (!String.IsNullOrWhiteSpace(ime.Jisha_profitrate))
+                                        {
+                                            txtjishaProfitrate.Text = ime.Jisha_profitrate;
+                                        }
+                                        if (!String.IsNullOrWhiteSpace(ime.Jisha_discountRate))
+                                        {
+                                            txtjishaDiscountrate.Text = ime.Jisha_discountRate;
+                                        }
+
+                                        if (!String.IsNullOrWhiteSpace(ime.Rakuten_costrate))
+                                        {
+                                            txtrakutenCostrate.Text = ime.Rakuten_costrate;
+                                        }
+                                        if (!String.IsNullOrWhiteSpace(ime.Rakuten_profitrate))
+                                        {
+                                            txtrakutenProfitrate.Text = ime.Rakuten_profitrate;
+                                        }
+                                        if (!String.IsNullOrWhiteSpace(ime.Rakuten_discountRate))
+                                        {
+                                            txtrakutenDiscountrate.Text = ime.Rakuten_discountRate;
+                                        }
+
+                                        if (!String.IsNullOrWhiteSpace(ime.Yahoo_costrate))
+                                        {
+                                            txtyahooCostrate.Text = ime.Yahoo_costrate;
+                                        }
+                                        if (!String.IsNullOrWhiteSpace(ime.Yahoo_profitrate))
+                                        {
+                                            txtyahooProfitrate.Text = ime.Yahoo_profitrate;
+                                        }
+                                        if (!String.IsNullOrWhiteSpace(ime.Yahoo_discountRate))
+                                        {
+                                            txtyahooDiscountrate.Text = ime.Yahoo_discountRate;
+                                        }
+
+                                        if (!String.IsNullOrWhiteSpace(ime.Wowma_costrate))
+                                        {
+                                            txtwowmaCostrate.Text = ime.Wowma_costrate;
+                                        }
+                                        if (!String.IsNullOrWhiteSpace(ime.Wowma_profitrate))
+                                        {
+                                            txtwowmaProfitrate.Text = ime.Wowma_profitrate;
+                                        }
+                                        if (!String.IsNullOrWhiteSpace(ime.Wowma_discountRate))
+                                        {
+                                            txtwowmaDiscountrate.Text = ime.Wowma_discountRate;
+                                        }
+                                        if (!String.IsNullOrWhiteSpace(ime.Monocostrate))
+                                        {
+                                            txtmonoprice_costrate.Text = ime.Monocostrate;
+                                        }
+                                        if (!String.IsNullOrWhiteSpace(ime.MonoprofitRate))
+                                        {
+                                            txtmonoprice_profitrate.Text = ime.MonoprofitRate;
+                                        }
+                                        if (!String.IsNullOrWhiteSpace(ime.Monodiscountrate))
+                                        {
+                                            txtmonoprice_discountrate.Text = ime.Monodiscountrate;
+                                        }
+
+                                        if (!String.IsNullOrWhiteSpace(ime.Ditecostrate))
+                                        {
+                                            txtditeprice_costrate.Text = ime.Ditecostrate;
+                                        }
+                                        if (!String.IsNullOrWhiteSpace(ime.DiteprofitRate))
+                                        {
+                                            txtditeprice_profitrate.Text = ime.DiteprofitRate;
+                                        }
+                                        if (!String.IsNullOrWhiteSpace(ime.Ditediscountrate))
+                                        {
+                                            txtditeprice_discountrate.Text = ime.Ditediscountrate;
+                                        }
+
+                                        if (!String.IsNullOrWhiteSpace(ime.Japanmcostrate))
+                                        {
+                                            txtjapanmprice_costrate.Text = ime.Japanmcostrate;
+                                        }
+                                        if (!String.IsNullOrWhiteSpace(ime.Japanmprofitrate))
+                                        {
+                                            txtjapanmprice_profitrate.Text = ime.Japanmprofitrate;
+                                        }
+                                        if (!String.IsNullOrWhiteSpace(ime.Japanmdiscountrate))
+                                        {
+                                            txtjapanmprice_discountrate.Text = ime.Japanmdiscountrate;
+                                        }
+
+                                        if (!String.IsNullOrWhiteSpace(ime.Kawashigicostrate))
+                                        {
+                                            txtkashiwagi_costrate.Text = ime.Kawashigicostrate;
+                                        }
+                                        if (!String.IsNullOrWhiteSpace(ime.Kashiwagiprofitrate))
+                                        {
+                                            txtkashiwagi_profitrate.Text = ime.Kashiwagiprofitrate;
+                                        }
+                                        if (!String.IsNullOrWhiteSpace(ime.Kashiwagionodiscountrate))
+                                        {
+                                            txtkashiwagi_discountrate.Text = ime.Kashiwagionodiscountrate;
+                                        }
                                     }
                                 }
                             }
@@ -2699,6 +2936,122 @@ namespace Capital_SKS.WebForms.Item
                                     else
                                     {
                                         txtreleasedatemonotaro.Text = "";
+                                    }
+
+                                    if (!String.IsNullOrWhiteSpace(ime.CostRate))
+                                    {
+                                        txtcostrate.Text = ime.CostRate;
+                                    }
+                                    if (!String.IsNullOrWhiteSpace(ime.ProfitRate))
+                                    {
+                                        txtprofitrate.Text = ime.ProfitRate;
+                                    }
+                                    if (!String.IsNullOrWhiteSpace(ime.DiscountRate))
+                                    {
+                                        txtdiscountrate.Text = ime.DiscountRate;
+                                    }
+
+                                    if (!String.IsNullOrWhiteSpace(ime.Jisha_costrate))
+                                    {
+                                        txtjishaCostrate.Text = ime.Jisha_costrate;
+                                    }
+                                    if (!String.IsNullOrWhiteSpace(ime.Jisha_profitrate))
+                                    {
+                                        txtjishaProfitrate.Text = ime.Jisha_profitrate;
+                                    }
+                                    if (!String.IsNullOrWhiteSpace(ime.Jisha_discountRate))
+                                    {
+                                        txtjishaDiscountrate.Text = ime.Jisha_discountRate;
+                                    }
+
+                                    if (!String.IsNullOrWhiteSpace(ime.Rakuten_costrate))
+                                    {
+                                        txtrakutenCostrate.Text = ime.Rakuten_costrate;
+                                    }
+                                    if (!String.IsNullOrWhiteSpace(ime.Rakuten_profitrate))
+                                    {
+                                        txtrakutenProfitrate.Text = ime.Rakuten_profitrate;
+                                    }
+                                    if (!String.IsNullOrWhiteSpace(ime.Rakuten_discountRate))
+                                    {
+                                        txtrakutenDiscountrate.Text = ime.Rakuten_discountRate;
+                                    }
+
+                                    if (!String.IsNullOrWhiteSpace(ime.Yahoo_costrate))
+                                    {
+                                        txtyahooCostrate.Text = ime.Yahoo_costrate;
+                                    }
+                                    if (!String.IsNullOrWhiteSpace(ime.Yahoo_profitrate))
+                                    {
+                                        txtyahooProfitrate.Text = ime.Yahoo_profitrate;
+                                    }
+                                    if (!String.IsNullOrWhiteSpace(ime.Yahoo_discountRate))
+                                    {
+                                        txtyahooDiscountrate.Text = ime.Yahoo_discountRate;
+                                    }
+
+                                    if (!String.IsNullOrWhiteSpace(ime.Wowma_costrate))
+                                    {
+                                        txtwowmaCostrate.Text = ime.Wowma_costrate;
+                                    }
+                                    if (!String.IsNullOrWhiteSpace(ime.Wowma_profitrate))
+                                    {
+                                        txtwowmaProfitrate.Text = ime.Wowma_profitrate;
+                                    }
+                                    if (!String.IsNullOrWhiteSpace(ime.Wowma_discountRate))
+                                    {
+                                        txtwowmaDiscountrate.Text = ime.Wowma_discountRate;
+                                    }
+                                    if (!String.IsNullOrWhiteSpace(ime.Monocostrate))
+                                    {
+                                        txtmonoprice_costrate.Text = ime.Monocostrate;
+                                    }
+                                    if (!String.IsNullOrWhiteSpace(ime.MonoprofitRate))
+                                    {
+                                        txtmonoprice_profitrate.Text = ime.MonoprofitRate;
+                                    }
+                                    if (!String.IsNullOrWhiteSpace(ime.Monodiscountrate))
+                                    {
+                                        txtmonoprice_discountrate.Text = ime.Monodiscountrate;
+                                    }
+
+                                    if (!String.IsNullOrWhiteSpace(ime.Ditecostrate))
+                                    {
+                                        txtditeprice_costrate.Text = ime.Ditecostrate;
+                                    }
+                                    if (!String.IsNullOrWhiteSpace(ime.DiteprofitRate))
+                                    {
+                                        txtditeprice_profitrate.Text = ime.DiteprofitRate;
+                                    }
+                                    if (!String.IsNullOrWhiteSpace(ime.Ditediscountrate))
+                                    {
+                                        txtditeprice_discountrate.Text = ime.Ditediscountrate;
+                                    }
+
+                                    if (!String.IsNullOrWhiteSpace(ime.Japanmcostrate))
+                                    {
+                                        txtjapanmprice_costrate.Text = ime.Japanmcostrate;
+                                    }
+                                    if (!String.IsNullOrWhiteSpace(ime.Japanmprofitrate))
+                                    {
+                                        txtjapanmprice_profitrate.Text = ime.Japanmprofitrate;
+                                    }
+                                    if (!String.IsNullOrWhiteSpace(ime.Japanmdiscountrate))
+                                    {
+                                        txtjapanmprice_discountrate.Text = ime.Japanmdiscountrate;
+                                    }
+
+                                    if (!String.IsNullOrWhiteSpace(ime.Kawashigicostrate))
+                                    {
+                                        txtkashiwagi_costrate.Text = ime.Kawashigicostrate;
+                                    }
+                                    if (!String.IsNullOrWhiteSpace(ime.Kashiwagiprofitrate))
+                                    {
+                                        txtkashiwagi_profitrate.Text = ime.Kashiwagiprofitrate;
+                                    }
+                                    if (!String.IsNullOrWhiteSpace(ime.Kashiwagionodiscountrate))
+                                    {
+                                        txtkashiwagi_discountrate.Text = ime.Kashiwagionodiscountrate;
                                     }
                                 }
                             }
@@ -5290,10 +5643,12 @@ namespace Capital_SKS.WebForms.Item
         {
             Option_BL opBL = new Option_BL();
             DataTable dt = opBL.BindOption();
+          
             ddlOption.DataSource = dt;
             ddlOption.DataTextField = "Option_GroupName";
             ddlOption.DataValueField = "Option_GroupName";
             ddlOption.DataBind();
+            ddlOption.Items.Insert(0, "");
         }
 
         public void BindSaleUnit()

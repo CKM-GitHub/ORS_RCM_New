@@ -64,10 +64,7 @@ namespace Capital_SKS.WebForms.Item
                 {
                     gvMallCategory.DataBind();
                 }
-                else
-                {
-                    gvMallCategory.DataSource = Search();
-                }
+                
             }
             catch (Exception ex)
             {

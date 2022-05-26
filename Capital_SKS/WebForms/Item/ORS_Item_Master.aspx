@@ -223,43 +223,43 @@ table td {
                    <div class="row" style="margin-top: 10px;margin-right: 1px; margin-bottom:10px">
                          <div class="col-md-12 containerbox"> 
                            <div class="row" style="width:100%;margin-left: 3px;margin-right: 50px;">
-                                    <div class="floaddiv" style="width:10%;">
+                                    <div class="floaddiv" style="width:100.81px;">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl greenlable">販売単位</span>
                                         </asp:Label>
                                         <asp:DropDownList ID="ddlsalesunit" style="width:100%;" runat="server"></asp:DropDownList>
                                     </div>
-                                    <div class="floaddiv" style="width:15%;">
+                                    <div class="floaddiv" style="width:151.23px;">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl greenlable">内容量</span>
                                         </asp:Label>
                                         <asp:TextBox CssClass="txtbox" ID="txtcontentquantityunitno1" MaxLength="50"  runat="server" style="width: 100%;"></asp:TextBox>
                                     </div>
-                                 <div class="floaddiv" style="width:10%;">
+                                 <div class="floaddiv" style="width:100.81px;">
                                         <asp:Label CssClass=""  runat="server">
                                         <span class="label label-md lbl greenlable">内容量単位</span>
                                         </asp:Label>
                                          <asp:DropDownList ID="ddlcontentunit1" style="width:100%;" runat="server"></asp:DropDownList>
                                     </div>
-                                 <div class="floaddiv" style="width:15%;">
+                                 <div class="floaddiv" style="width:151.23px;">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl greenlable">まとめ販売数</span>
                                         </asp:Label>
                                         <asp:TextBox CssClass="txtbox" ID="txtcontentquantityunitno2" MaxLength="50"  runat="server" style="width: 100%;"></asp:TextBox>
                                     </div>
-                                 <div class="floaddiv" style="width:10%;">
+                                 <div class="floaddiv" style="width:100.81px;">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl greenlable">まとめ単位</span>
                                         </asp:Label>
                                         <asp:DropDownList ID="ddlcontentunit2" style="width:100%;" runat="server"></asp:DropDownList>
                                     </div>
-                                <div class="floaddiv" style="width:15%;">
+                                <div class="floaddiv" style="width:151.23px;">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl greenlable">通常・大型</span>
                                         </asp:Label>
                                          <asp:DropDownList ID="ddNormalLargeKBN" style="width:100%;" runat="server"></asp:DropDownList>
                                     </div>
-                                <div class="floaddiv" style="width:20%;">
+                                <div class="floaddiv" style="width:201.64px;">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl greenlable">仕入先</span>
                                         </asp:Label>
@@ -576,7 +576,7 @@ table td {
                      </div>
                     <div class="row">
                         
-                         <div class="floaddiv containerbox" style="width:26%; margin-right:10px;"> 
+                         <div class="floaddiv containerbox" style="width:270.19px; margin-right:10px;"> 
                              <div class="row" style="width:100%; margin-left:2px;">
                              <div class="floaddiv" style="width:50%;" >
                                    <asp:Label CssClass=""  runat="server" >
@@ -597,7 +597,7 @@ table td {
                              </div>
                              </div>
                      
-                         <div class="floaddiv containerbox" style="width:23%; margin-right:10px;"> 
+                         <div class="floaddiv containerbox" style="width:239.01px; margin-right:10px;"> 
                               <div class="row" style="width:100%; margin-left:2px;">
                              <div class="floaddiv" style="width:50%;" >
                                    <asp:Label CssClass=""  runat="server" >
@@ -614,7 +614,7 @@ table td {
                              </div>
                              </div>
 
-                         <div class="floaddiv containerbox" style="width:21%; margin-right:10px;"> 
+                         <div class="floaddiv containerbox" style="width:218.23px; margin-right:10px;"> 
                               <div class="row" style="width:100%; margin-left:2px;">
                              <div class="floaddiv" style="width:50%;" >
                                    <asp:Label CssClass=""  runat="server" >
@@ -640,7 +640,7 @@ table td {
 
                              </div>
 
-                         <div class="floaddiv containerbox" style="width:26%;"> 
+                         <div class="floaddiv containerbox" style="width:270.19px;"> 
                              <div class="row" style="width:100%; margin-left:2px;">
                              <div class="floaddiv" style="width:50%;" >
                                    <asp:Label CssClass=""  runat="server" >

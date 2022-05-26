@@ -666,6 +666,7 @@ namespace Capital_SKS.WebForms.Item
                     }
                 }
                 Session["Related_Item_Code" + ItemCode] = dt;
+                Session["relItem_Code" + ItemCode] = dt;
             }
             catch (Exception ex)
             {

@@ -99,7 +99,6 @@ namespace Capital_SKS.WebForms.Item
                 int rowIndex = row.RowIndex;
                 Label lbl = gvMallCategory.Rows[rowIndex].FindControl("lblItem_Code") as Label;
                 ArrayList arrlst = ViewState["checkedValue"] as ArrayList;
-                
                 if (ViewState["checkedValue"] != null && arrlst != null)
                 {
                     int c = 0;
@@ -196,6 +195,9 @@ namespace Capital_SKS.WebForms.Item
             {
                 gvMallCategory.DataSource = Search();
                 gvMallCategory.DataBind();
+                ArrayList arrlst = ViewState["checkedValue"] as ArrayList;
+                arrlst = null;
+                ViewState["checkedValue"] = arrlst;
             }
             catch (Exception ex)
             {

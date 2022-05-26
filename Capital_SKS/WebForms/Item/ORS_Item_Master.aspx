@@ -685,8 +685,8 @@ table td {
                                       <input type="button" id = "btnAddSKU" onclick ="AddSKU(this)" value="AddSKU" runat="server"/>
                                       <br/>
                                       <dl style="margin-top:10px;">
-                                          <dt>SKU</dt>
-                                          <dd style="margin-top:3px;">
+                                          <dt style="padding-top: 4px;width: 80px;">SKU</dt>
+                                          <dd style="margin-top:10px;">
                                               <asp:RadioButton runat="server" ID="rdb1" Text="あり" GroupName="groupsku" Enabled="false" CssClass="rdostyleclass"/>
                                               <asp:RadioButton runat="server" ID="rdb2" Text="なし" GroupName="groupsku" Enabled="false" CssClass="rdostyleclass"/>
                                           </dd>

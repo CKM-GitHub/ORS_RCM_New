@@ -24,16 +24,20 @@
             }
             #btnClose,#btnCancel{
                 height: 40px !important;
-                border-radius:10px;float:left;
+                border-radius:10px;float:left;background:white!important;
             }
             #btnCancel{
                 margin-left:450px !important;
                 margin-right:50px !important;
             }   
-            .clNon{
+            /*.clNon{
                 overflow:hidden!important;
                 height:550px !important;
-            }
+            }*/
+
+            /*.clNon{
+                overflow:auto!important;
+            }*/
             #text{
                 margin-left:247px !important;
                 color:red !important;
@@ -49,7 +53,7 @@
 	            <div id="PopContents" class="pop4_Mcate">
 	                <form runat="server">
 
-	                    <p class="popSearch" style="margin-left:150px;margin-bottom:20px; width:800px">
+	                    <p class="popSearch" style="margin-left:150px;margin-bottom:28px; width:800px">
                             商品番号
 				            <asp:TextBox ID="txtSearch" runat="server" Height="32px" Font-Bold="True" Width="210px" MaxLength="50"  onkeypress="return isNumberKeys(event)" ></asp:TextBox>
                             商品名
@@ -58,20 +62,20 @@
 	                    </p>
                             
                         <p style="width:998px;font-size:15px">
-                             <asp:CheckBox runat="server" ID="unCheck" onCheckedChanged="chkboxUnSelectAll_CheckedChanged" AutoPostBack="true"  />
+                             <asp:CheckBox runat="server" ID="unCheck" AutoPostBack="true"  />
                             <asp:Label ID="Label1"  runat="server" Text="商品口関連商品をクリアして追加する"></asp:Label>
                             <asp:Label ID="text"  runat="server" Text=""></asp:Label>
                         </p>
-	                     <div style="height:405px;width:998px;">
+	                     <div style="width:998px;margin-bottom:40px!important">
 		                    <table>
 			                    <asp:GridView ID="gvMallCategory" runat="server" AutoGenerateColumns="False" 
-                                AllowPaging="True" PageSize="14" CellPadding="4" ForeColor="#333333" GridLines="None" onpageindexchanging="gvMallCategory_PageIndexChanging" >
+                                AllowPaging="True" PageSize="30" CellPadding="4" ForeColor="#333333" GridLines="None" onpageindexchanging="gvMallCategory_PageIndexChanging" >
                                      <AlternatingRowStyle BackColor="White"  />
                                         <HeaderStyle ForeColor="White" Font-Bold="True"  Font-Size="18px" BackColor="#555555"></HeaderStyle>
                                     <EmptyDataRowStyle CssClass="hide emrow"/>
                                       <EmptyDataTemplate>
                                            <thead>
-                                                <tr style="background-color: #555555; color: white; font-size: 18px; font-weight:bold " >
+                                                <tr style="background-color: #555555; color: white; font-size: 20px; font-weight:bold " >
                                                     <th>商品番号</th>
                                                     <th>商品名</th>
                                                 </tr>
@@ -104,12 +108,11 @@
 
                                 </asp:GridView>
 		                    </table>
-                            <div class ="btn">
+                         </div>
+                         <div class="btn">
                                 <asp:Button ID="btnCancel" runat="server" Text="キャンセル"  Width="150px" OnClick="btn_Cancel" />
                                  <asp:Button runat="server" ID="btnClose" Text="決定" Width="150px" OnClick="btn_Close"/>
-                            </div>
-
-                       </div>
+                        </div>
 	                </form>
 	            </div>
             </section>

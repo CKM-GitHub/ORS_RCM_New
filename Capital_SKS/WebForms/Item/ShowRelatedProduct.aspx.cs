@@ -63,7 +63,11 @@ namespace Capital_SKS.WebForms.Item
                 if (!IsPostBack)
                 {
                     gvMallCategory.DataBind();
-                }                
+                }
+                else
+                {
+                    gvMallCategory.DataSource = Search();
+                }
             }
             catch (Exception ex)
             {
@@ -95,7 +99,6 @@ namespace Capital_SKS.WebForms.Item
                 int rowIndex = row.RowIndex;
                 Label lbl = gvMallCategory.Rows[rowIndex].FindControl("lblItem_Code") as Label;
                 ArrayList arrlst = ViewState["checkedValue"] as ArrayList;
-                
                 if (ViewState["checkedValue"] != null && arrlst != null)
                 {
                     int c = 0;
@@ -159,18 +162,6 @@ namespace Capital_SKS.WebForms.Item
                 Response.Redirect("~/CustomErrorPage.aspx?");
             }
         }
-        protected void chkboxUnSelectAll_CheckedChanged(object sender, EventArgs e)
-        {
-            try
-            {           
-                gvMallCategory.DataBind();
-            }
-            catch (Exception ex)
-            {
-                Session["Exception"] = ex.ToString();
-                Response.Redirect("~/CustomErrorPage.aspx?");
-            }
-        }
         protected void ItemCheck_Change()
         {
             try
@@ -204,6 +195,9 @@ namespace Capital_SKS.WebForms.Item
             {
                 gvMallCategory.DataSource = Search();
                 gvMallCategory.DataBind();
+                ArrayList arrlst = ViewState["checkedValue"] as ArrayList;
+                arrlst = null;
+                ViewState["checkedValue"] = arrlst;
             }
             catch (Exception ex)
             {

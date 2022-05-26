@@ -3279,8 +3279,7 @@ table td {
         params += ', menubar=no';
         params += ', resizable=yes';
         params += ', directories=no';
-        params += ', overflow-y= hidden';
-        params += ', overflow= hidden';
+        params += ', scrollbars=yes';       
         params += ', status=no';
         params += ', location=no';
         var itemcode = document.getElementById("<%=txtItem_Code.ClientID %>").value;
@@ -3298,7 +3297,7 @@ table td {
         }
         return false;
     }
-</script>
+  </script>
 
 
     <script type="text/javascript" >

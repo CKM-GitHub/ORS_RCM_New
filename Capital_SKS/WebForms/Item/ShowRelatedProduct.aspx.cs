@@ -63,7 +63,11 @@ namespace Capital_SKS.WebForms.Item
                 if (!IsPostBack)
                 {
                     gvMallCategory.DataBind();
-                }                
+                }
+                else
+                {
+                    gvMallCategory.DataSource = Search();
+                }
             }
             catch (Exception ex)
             {
@@ -152,18 +156,6 @@ namespace Capital_SKS.WebForms.Item
                     arrlst1.Add(lbl.Text);
                     ViewState["checkedValue"] = arrlst1;
                 }
-            }
-            catch (Exception ex)
-            {
-                Session["Exception"] = ex.ToString();
-                Response.Redirect("~/CustomErrorPage.aspx?");
-            }
-        }
-        protected void chkboxUnSelectAll_CheckedChanged(object sender, EventArgs e)
-        {
-            try
-            {           
-                gvMallCategory.DataBind();
             }
             catch (Exception ex)
             {

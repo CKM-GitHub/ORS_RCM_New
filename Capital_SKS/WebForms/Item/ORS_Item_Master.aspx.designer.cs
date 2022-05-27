@@ -2362,6 +2362,15 @@ namespace Capital_SKS.WebForms.Item {
         protected global::System.Web.UI.WebControls.Button imgbtn20_1;
         
         /// <summary>
+        /// UpdatePanel1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
+        
+        /// <summary>
         /// ddlOption control.
         /// </summary>
         /// <remarks>
@@ -2425,6 +2434,15 @@ namespace Capital_SKS.WebForms.Item {
         protected global::System.Web.UI.WebControls.TextBox txtOptionValue3;
         
         /// <summary>
+        /// UpdatePanel21 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanel21;
+        
+        /// <summary>
         /// gvCatagories control.
         /// </summary>
         /// <remarks>
@@ -2441,6 +2459,15 @@ namespace Capital_SKS.WebForms.Item {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputButton btnAddCatagories;
+        
+        /// <summary>
+        /// UpdatePanel22 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanel22;
         
         /// <summary>
         /// txtRakuten_CategoryID control.
@@ -2470,6 +2497,15 @@ namespace Capital_SKS.WebForms.Item {
         protected global::System.Web.UI.HtmlControls.HtmlInputButton btnRakuten_CategoryID;
         
         /// <summary>
+        /// UpdatePanel23 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanel23;
+        
+        /// <summary>
         /// txtWowma_CategoryID control.
         /// </summary>
         /// <remarks>
@@ -2497,6 +2533,15 @@ namespace Capital_SKS.WebForms.Item {
         protected global::System.Web.UI.HtmlControls.HtmlInputButton btnWowma_CategoryID;
         
         /// <summary>
+        /// UpdatePanel24 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanel24;
+        
+        /// <summary>
         /// txtYahoo_CategoryID control.
         /// </summary>
         /// <remarks>
@@ -2522,6 +2567,15 @@ namespace Capital_SKS.WebForms.Item {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputButton btnYahoo_CategoryID;
+        
+        /// <summary>
+        /// UpdatePanel25 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanel25;
         
         /// <summary>
         /// txtYahooValue1 control.

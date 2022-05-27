@@ -1370,12 +1370,16 @@ table td {
                                <span class="label label-md lbl" style="margin-left:3px;font-weight:600;">オプション</span>
                            </asp:Label>
                              <br />
+                              <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                                <ContentTemplate>
                              <asp:Label CssClass="" style="margin-left:3px;" runat="server" >
                                <span class="label label-md lbl orangelable">テンプレート選択</span>
                            </asp:Label>
                              <br />
                              <asp:DropDownList ID="ddlOption" style="width:300px;margin-left:3px;" runat="server" OnSelectedIndexChanged="ddlOption_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
                              <br />
+
+                            
                                <div class="row" style="width:100%;margin-left: 3px;margin-right: 5px; margin-top:10px;">
                                 <div class="floaddiv" style="width:30%;">
                                      <asp:Label CssClass=""  runat="server" >
@@ -1395,8 +1399,8 @@ table td {
                                     <asp:TextBox CssClass="txtbox" ID="txtOptionValue3" onkeypress="return isNumberKeys(event)"  runat="server" style="width: 100%; margin-bottom:10px;"></asp:TextBox>
                                     </div>
                                    </div>
-
-                       
+                       </ContentTemplate>
+                    </asp:UpdatePanel>
                           </div>             
                       </div>
                         <div class=" col-md-5">
@@ -1408,7 +1412,8 @@ table td {
                              <asp:Label CssClass=""  runat="server" >
                                <span class="label label-md lbl orangelable">カテゴリ</span>
                            </asp:Label>
-                                 
+                                <asp:UpdatePanel ID="UpdatePanel21" updatemode="Conditional" runat="server">
+                                <ContentTemplate>
                                  <asp:GridView ID="gvCatagories" runat="server" AutoGenerateColumns="False" ShowHeader="False" GridLines="None">
                                 <Columns>
                                 <asp:TemplateField HeaderText="ID" Visible="false">
@@ -1424,8 +1429,14 @@ table td {
                                 </asp:TemplateField>
                                 </Columns>
                                 </asp:GridView>
+                                 </ContentTemplate>
+                                <Triggers>
+                                    <asp:postbacktrigger ControlID="btnAddCatagories"/>
+                                </Triggers>
+                                </asp:UpdatePanel>
                                 <input type="button" id = "btnAddCatagories" onclick ="ShowCatagoryList(this)" value="選択" runat="server" style="width:100px;margin-left:6px;"/>
-                            </div>
+                            
+                                    </div>
                             </div>
                         
                 </div>
@@ -1442,40 +1453,69 @@ table td {
                                         <span class="label label-md lbl orangelable">楽天</span>
                                         </asp:Label>
                                      <br />
+                                <asp:UpdatePanel ID="UpdatePanel22" updatemode="Conditional" runat="server">
+                                <ContentTemplate>
                                     <asp:TextBox CssClass="txtbox" ID="txtRakuten_CategoryID" ReadOnly="true" onkeypress="return isNumberKeys(event)"  runat="server" style="width: 100px; margin-bottom:10px;"></asp:TextBox>
                                     <asp:TextBox CssClass="txtbox" ID="txtRakuten_CategoryPath" ReadOnly="true" onkeypress="return isNumberKeys(event)"  runat="server" style="width: 300px; margin-bottom:10px;"></asp:TextBox>                                   
-                                    
+                                 
                                      <input type="button" id ="btnRakuten_CategoryID" onclick ="ShowMallCategory(1, this)" runat="server" value="選択" style="width:50px;" />
-                                     <br />
+                                    </ContentTemplate>
+                                <Triggers>
+                                    <asp:postbacktrigger ControlID="btnRakuten_CategoryID"/>
+                                </Triggers>
+                                </asp:UpdatePanel>  
+                                    <br />
                                       <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl orangelable">Wowma</span>
                                         </asp:Label>
                                    <br />
+                                <asp:UpdatePanel ID="UpdatePanel23" updatemode="Conditional" runat="server">
+                                <ContentTemplate>
                                     <asp:TextBox CssClass="txtbox" ID="txtWowma_CategoryID" ReadOnly="true" onkeypress="return isNumberKeys(event)"  runat="server" style="width: 100px; margin-bottom:10px;"></asp:TextBox>
                                     <asp:TextBox CssClass="txtbox" ID="txtWowma_CategoryPath" ReadOnly="true" onkeypress="return isNumberKeys(event)"  runat="server" style="width: 300px; margin-bottom:10px;"></asp:TextBox>                                   
+                                 
                                     <input type="button" id ="btnWowma_CategoryID" onclick ="ShowMallCategory(4,this)" runat="server" value="選択" style="width:50px;" />
-                                 </div>
+                                </ContentTemplate>
+                                <Triggers>
+                                    <asp:postbacktrigger ControlID="btnWowma_CategoryID"/>
+                                </Triggers>
+                                </asp:UpdatePanel>  
+                                    </div>
                                  <div class="floaddiv" style="width:50%;">
                                       <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl orangelable">Yahoo</span>
                                         </asp:Label>
                                      <br />
+                                 <asp:UpdatePanel ID="UpdatePanel24" updatemode="Conditional" runat="server">
+                                <ContentTemplate>
                                     <asp:TextBox CssClass="txtbox" ID="txtYahoo_CategoryID" ReadOnly="true" onkeypress="return isNumberKeys(event)"  runat="server" style="width: 100px; margin-bottom:10px;"></asp:TextBox>
                                     <asp:TextBox CssClass="txtbox" ID="txtYahoo_CategoryPath" ReadOnly="true" onkeypress="return isNumberKeys(event)"  runat="server" style="width: 304px; margin-bottom:10px;"></asp:TextBox>                                   
+                                     
                                     <input type="button" id ="btnYahoo_CategoryID" onclick ="ShowMallCategory(2,this)" runat="server" value="選択" style="width:50px;" />
-                                     <br />
+                                     </ContentTemplate>
+                                <Triggers>
+                                    <asp:postbacktrigger ControlID="btnYahoo_CategoryID"/>
+                                </Triggers>
+                                </asp:UpdatePanel> 
+                                    <br />
                                       <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl orangelable">ヤフースペック値</span>
                                         </asp:Label>
                                    <br />
+                                <asp:UpdatePanel ID="UpdatePanel25" updatemode="Conditional" runat="server">
+                                <ContentTemplate>
                                     <asp:TextBox CssClass="txtbox" ID="txtYahooValue1" ReadOnly="true" onkeypress="return isNumberKeys(event)"  runat="server" style="width: 79px; margin-bottom:10px;"></asp:TextBox>
                                     <asp:TextBox CssClass="txtbox" ID="txtYahooValue2" ReadOnly="true" onkeypress="return isNumberKeys(event)"  runat="server" style="width: 79px; margin-bottom:10px;"></asp:TextBox>  
                                      <asp:TextBox CssClass="txtbox" ID="txtYahooValue3"  ReadOnly="true" onkeypress="return isNumberKeys(event)" runat="server" style="width: 79px; margin-bottom:10px;"></asp:TextBox>
                                     <asp:TextBox CssClass="txtbox" ID="txtYahooValue4" ReadOnly="true" onkeypress="return isNumberKeys(event)"  runat="server" style="width: 79px; margin-bottom:10px;"></asp:TextBox>     
                                      <asp:TextBox CssClass="txtbox" ID="txtYahooValue5" ReadOnly="true" onkeypress="return isNumberKeys(event)"  runat="server" style="width: 79px; margin-bottom:10px;"></asp:TextBox>
-                                       
+                                      
                                     <input type="button" id = "imgbYahooSpecValue" onclick ="ShowYahooSpecValue(this)" runat="server" value="選択" style="width:50px;" />
-
+                                      </ContentTemplate>
+                                <Triggers>
+                                    <asp:postbacktrigger ControlID="imgbYahooSpecValue"/>
+                                </Triggers>
+                                </asp:UpdatePanel>  
                                  </div>
                              </div>
                           </div>
@@ -1525,19 +1565,19 @@ table td {
                             <div class="rowfirst">
                                  <div class="floaddiv" style="width:60%;" >
                                      <div class="row">
-                                          <div class="floaddiv" style="width:50%;">
+                                          <div class="floaddiv" style="width: 307.05px;">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl yellowlable">ブランド名</span>
                                         </asp:Label>
                                         <asp:TextBox CssClass="txtbox" ID="txtBrand_Name" MaxLength="40"  runat="server" style="width: 100%;"></asp:TextBox>
                                     </div>
-                                            <div class="floaddiv" style="width:23%;">
+                                            <div class="floaddiv" style="width:141.24px;">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl yellowlable">市場売価</span>
                                         </asp:Label>
                                         <asp:TextBox CssClass="txtbox" ID="txtsellingprice" MaxLength="40" onkeypress="return isNumberKey(event)"  runat="server" style="width: 80%;"></asp:TextBox><span> 円</span>
                                     </div>
-                                    <div class="floaddiv" style="width:23%;">
+                                    <div class="floaddiv" style="width:141.24px;">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl yellowlable">仕入価格</span>
                                         </asp:Label>
@@ -1546,13 +1586,13 @@ table td {
 
                                      </div>
                                      <div class="row">
-                                         <div class="floaddiv" style="width:50%;">
+                                         <div class="floaddiv" style="width:307.06px;">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl yellowlable">賞味期限</span>
                                         </asp:Label>
                                         <asp:TextBox CssClass="txtbox" ID="txtsellby" MaxLength="40" onkeypress="return isNumberKey(event)"  runat="server" style="width: 100%;"></asp:TextBox>
                                     </div>
-                                            <div class="floaddiv" style="width:48%;">
+                                            <div class="floaddiv" style="width:294.77px;">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl yellowlable">年間出荷数もしくは売れ筋A～Dランク</span>
                                         </asp:Label>
@@ -1561,7 +1601,7 @@ table td {
                                      </div>
                               
                               </div>
-                              <div class="floaddiv" style="width:40%;" >
+                              <div class="floaddiv" style="width:400.08px;" >
                              <%--  <div class="" style="padding:5px;">    --%>  
                             <asp:Label  ID="Label7" runat="server" Text="">
                                  <span class="label label-md lbl yellowlable ">商品詳細登録コメント</span>
@@ -1572,33 +1612,33 @@ table td {
                                 </div>
                           </div>
                              <div class="row" style="padding-left: 5px;padding-right: 5px;">
-                                 <div class="floaddiv" style="width:10%;">
+                                 <div class="floaddiv" style="width:101.41px;">
                                     <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl yellowlable">公開種別</span>
                                         </asp:Label>
                                       <asp:DropDownList ID="ddlPublicationType" style="width:100%;" runat="server"></asp:DropDownList>
                                         
                                  </div>
-                                   <div class="floaddiv" style="width:10%;">
+                                   <div class="floaddiv" style="width:101.41px;">
                                     <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl yellowlable">最低発注数量</span>
                                         </asp:Label>
                                         <asp:TextBox CssClass="txtbox" ID="txtminimumorderquantity" onkeypress="return isNumberKey(event)"  runat="server" style="width: 100%;"></asp:TextBox>
                                  </div>
-                                   <div class="floaddiv" style="width:10%;">
+                                   <div class="floaddiv" style="width:101.41px;">
                                     <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl yellowlable">最低発注単位</span>
                                         </asp:Label>
                                         <asp:TextBox CssClass="txtbox" ID="txtminimumorderunit" MaxLength="20"  runat="server" style="width: 100%;"></asp:TextBox>
                                  </div>
-                                   <div class="floaddiv" style="width:10%;">
+                                   <div class="floaddiv" style="width:101.41px;">
                                     <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl yellowlable">直送可否</span>
                                         </asp:Label>
                                          <asp:DropDownList ID="ddlDirectDelivery" style="width:100%;" runat="server"></asp:DropDownList>
                                         
                                  </div>
-                                   <div class="floaddiv" style="width:13%;">
+                                   <div class="floaddiv" style="width:131.84px;">
                                     <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl yellowlable">公開予定日</span>
                                         </asp:Label>
@@ -1606,13 +1646,13 @@ table td {
                                         <asp:TextBox CssClass="txtbox" ReadOnly="true" ID="txtreleasedatemonotaro"  runat="server" style="width: 67%; margin-right: 3px;"></asp:TextBox>
                                         <asp:Image ID="Image21" runat="server" Width="15px" Height="15px" ImageUrl="~/Styles/clear.png"  ImageAlign="AbsBottom"  Onclick="clrCtrlmono()"/>
                                  </div>
-                                   <div class="floaddiv" style="width:24%;">
+                                   <div class="floaddiv" style="width:234.4px;">
                                     <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl yellowlable">カテゴリ</span>
                                         </asp:Label>
                                         <asp:TextBox CssClass="txtbox" ID="txtmonocategory" MaxLength="200"  runat="server" style="width: 100%;"></asp:TextBox>
                                  </div>
-                                   <div class="floaddiv" style="width:23%;">
+                                   <div class="floaddiv" style="width:233.26px;">
                                     <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl yellowlable">カラー</span>
                                         </asp:Label>
@@ -1622,7 +1662,7 @@ table td {
                              <div class="row" style="padding-left: 5px;padding-right: 5px;">
                                   <div class="floaddiv" style="width:100%;">
                                     <asp:Label CssClass=""  runat="server" >
-                                        <span class="label label-md lbl yellowlable">参考URL</span>
+                                        <span class="label label-md lbl yellowlable" style="width:54.09px">参考URL</span>
                                         </asp:Label>
                                         <asp:TextBox CssClass="txtbox" ID="txtReferenceURL" MaxLength="500"  runat="server" style="width: 100%;"></asp:TextBox>
                                  </div>
@@ -1637,20 +1677,20 @@ table td {
                            </asp:Label>  
                              <br />
                             <div class="rowfirst">
-                              <div class="floaddiv" style="width:20%;" >
+                              <div class="floaddiv" style="width:117.24px;" >
                               <asp:Label CssClass="lblitemcode"  runat="server" >
                                <span class="label label-md lbl yellowlable ">引取方法</span>
                            </asp:Label>
                           <asp:DropDownList ID="ddldeliverymethod" style="width:100%;" runat="server"></asp:DropDownList>
                               </div>
-                              <div class="floaddiv" style="width:15%;" >
+                              <div class="floaddiv" style="width:87.93px;" >
                               <asp:Label  runat="server" Text="">
                                  <span class="label label-md lbl yellowlable">配送種別</span>
                             </asp:Label>
                           <asp:DropDownList ID="ddldeliverytype" style="width:100%;" runat="server"></asp:DropDownList>
                             
                               </div>
-                              <div class="floaddiv" style="width:15%;">
+                              <div class="floaddiv" style="width:87.93px;">
                                       
                             <asp:Label  ID="Label2" runat="server" Text="">
                                  <span class="label label-md lbl yellowlable">入荷日数</span>
@@ -1658,7 +1698,7 @@ table td {
                             <asp:TextBox CssClass="txtbox" ID="txtdeliverydays" MaxLength="40" onkeypress="return isNumberKey(event)" runat="server"></asp:TextBox>
                               </div>
 
-                                       <div class="floaddiv" style="width:20%;">
+                                       <div class="floaddiv" style="width:117.24px;">
                                       
                             <asp:Label  ID="Label3" runat="server" Text="">
                                  <span class="label label-md lbl yellowlable">代引可否</span>
@@ -1666,7 +1706,7 @@ table td {
                           <asp:DropDownList ID="ddldeliveryfees" style="width:100%;" runat="server"></asp:DropDownList>
                               </div>
 
-                                       <div class="floaddiv" style="width:20%;">
+                                       <div class="floaddiv" style="width:117.24px;">
                                       
                             <asp:Label  ID="Label4" runat="server" Text="">
                                  <span class="label label-md lbl yellowlable">返品可否</span>
@@ -1681,14 +1721,14 @@ table td {
                             <div class=" col-md-12 containerboxmemo" style="padding-left: 10px;padding-right: 10px;">
                             <p class="pprice">笠間納品</p>
                                 <div class="row" style="width:100%;margin-left: 30px;margin-right: 50px;">
-                                    <div class="listpricediv">
+                                    <div class="listpricediv" style="width:174.15px">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl yellowlable ">可否</span>
                                         </asp:Label>
                                          <asp:DropDownList ID="ddlksmavaliable" style="width:100%;" runat="server"></asp:DropDownList>
 
                                     </div>
-                                    <div class="salepricediv">
+                                    <div class="salepricediv" style="width:174.15px">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl yellowlable ">入荷日数</span>
                                         </asp:Label>
@@ -1708,20 +1748,20 @@ table td {
                            </asp:Label>  
                              <br />
                             <div class="rowfirst">
-                              <div class="floaddiv" style="width:30%;" >
+                              <div class="floaddiv" style="width:302.46px;" >
                               <asp:Label CssClass="lblitemcode"  runat="server" >
                                <span class="label label-md lbl yellowlable ">該当法令</span>
                            </asp:Label>
                           <asp:DropDownList ID="ddlnoapplicablelaw" style="width:100%;" runat="server"></asp:DropDownList>
                               </div>
-                              <div class="floaddiv" style="width:30%;" >
+                              <div class="floaddiv" style="width:302.46px;" >
                               <asp:Label  runat="server" Text="">
                                  <span class="label label-md lbl yellowlable">販売許可・認可・届出</span>
                             </asp:Label>
                           <asp:DropDownList ID="ddlsalespermission" style="width:100%;" runat="server"></asp:DropDownList>
                             
                               </div>
-                              <div class="floaddiv" style="width:30%;">
+                              <div class="floaddiv" style="width:302.46px;">
                                       
                             <asp:Label  ID="Label5" runat="server" Text="">
                                  <span class="label label-md lbl yellowlable">法令・規格</span>
@@ -1741,13 +1781,13 @@ table td {
                            </asp:Label>  
                              <br />
                              <div class="rowfirst">
-                              <div class="floaddiv" style="width:17%;" >
+                              <div class="floaddiv" style="width:171.39px;" >
                               <asp:Label CssClass="lblitemcode"  runat="server" >
                                <span class="label label-md lbl yellowlable ">全国</span>
                            </asp:Label>
                           <asp:TextBox CssClass="txtbox" ID="txtnationwide" MaxLength="40" onkeypress="return isNumberKey(event)"  runat="server" style="width: 100%;"></asp:TextBox>
                               </div>
-                              <div class="floaddiv" style="width:17%;" >
+                              <div class="floaddiv" style="width:171.39px;" >
                               <asp:Label  runat="server" Text="">
                                  <span class="label label-md lbl yellowlable">北海道</span>
                             </asp:Label>
@@ -1755,20 +1795,20 @@ table td {
                             
                               </div>
 
-                                  <div class="floaddiv" style="width:17%;">
+                                  <div class="floaddiv" style="width:171.39px;">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl yellowlable ">沖縄</span>
                                         </asp:Label>
                                        <asp:TextBox CssClass="txtbox" ID="txtokinawa" MaxLength="40" onkeypress="return isNumberKey(event)"  runat="server" style="width: 100%;"></asp:TextBox>
                                     </div>
 
-                                  <div class="floaddiv" style="width:17%;">
+                                  <div class="floaddiv" style="width:171.39px;">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl yellowlable ">離島</span>
                                         </asp:Label>
                                     <asp:TextBox CssClass="txtbox" ID="txtremoteisland" MaxLength="40" onkeypress="return isNumberKey(event)"  runat="server" style="width: 100%;"></asp:TextBox>
                                     </div>
-                                <div class="floaddiv" style="width:31%;">
+                                <div class="floaddiv" style="width:312.54px;">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl yellowlable ">直送時配送不可地域</span>
                                         </asp:Label>
@@ -1784,13 +1824,13 @@ table td {
                            </asp:Label>  
                              <br />
                              <div class="rowfirst">
-                              <div class="floaddiv" style="width:19%;" >
+                              <div class="floaddiv" style="width:191.55px;" >
                               <asp:Label CssClass="lblitemcode"  runat="server" >
                                <span class="label label-md lbl yellowlable ">危険物の含有量</span>
                            </asp:Label>
                           <asp:TextBox CssClass="txtbox" ID="txtdangerousgoodscontents" MaxLength="40" runat="server" style="width: 100%;"></asp:TextBox>
                               </div>
-                              <div class="floaddiv" style="width:19%;" >
+                              <div class="floaddiv" style="width:191.55px;" >
                               <asp:Label  runat="server" Text="">
                                  <span class="label label-md lbl yellowlable">危険物の種別</span>
                             </asp:Label>
@@ -1798,20 +1838,20 @@ table td {
                             
                               </div>
 
-                                  <div class="floaddiv" style="width:20%;">
+                                  <div class="floaddiv" style="width:201.64px;">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl yellowlable ">危険物の品名</span>
                                         </asp:Label>
                                         <asp:DropDownList ID="ddldanggoodsname" style="width:100%;" runat="server"></asp:DropDownList>
                                     </div>
 
-                                  <div class="floaddiv" style="width:20%;">
+                                  <div class="floaddiv" style="width:201.64px;">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl yellowlable ">危険等級</span>
                                         </asp:Label>
                                         <asp:DropDownList ID="ddlriskrating" style="width:100%;" runat="server"></asp:DropDownList>
                                     </div>
-                                <div class="floaddiv" style="width:20%;">
+                                <div class="floaddiv" style="width:201.64px;">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl yellowlable ">危険物の性質</span>
                                         </asp:Label>
@@ -1827,13 +1867,13 @@ table td {
                            </asp:Label>  
                              <br />
                              <div class="rowfirst">
-                              <div class="floaddiv" style="width:11%;" >
+                              <div class="floaddiv" style="width:110.9px;" >
                               <asp:Label CssClass="lblitemcode"  runat="server" >
                                <span class="label label-md lbl yellowlable ">グリーン購入法</span>
                            </asp:Label>
                           <asp:DropDownList ID="ddlgreenpurchasemethod" style="width:100%;" runat="server"></asp:DropDownList>
                               </div>
-                              <div class="floaddiv" style="width:23%;" >
+                              <div class="floaddiv" style="width:231.89px;" >
                               <asp:Label  runat="server" Text="">
                                  <span class="label label-md lbl yellowlable">特定調達品目</span>
                             </asp:Label>
@@ -1841,33 +1881,33 @@ table td {
                             
                               </div>
 
-                                  <div class="floaddiv" style="width:13%;">
+                                  <div class="floaddiv" style="width:131.06px;">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl yellowlable ">エコマーク認定品</span>
                                         </asp:Label>
                                         <asp:DropDownList ID="ddlecomartcertifiedproduct" style="width:100%;" runat="server"></asp:DropDownList>
                                     </div>
 
-                                  <div class="floaddiv" style="width:14%;">
+                                  <div class="floaddiv" style="width:141.14px;">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl yellowlable ">エコマーク認定番号</span>
                                         </asp:Label>
                                         <asp:TextBox CssClass="txtbox" ID="txtecomartcertifiednumber" onkeypress="return isNumberKey(event)"  runat="server" style="width: 100%;"></asp:TextBox>
                                     </div>
-                                <div class="floaddiv" style="width:13%;">
+                                <div class="floaddiv" style="width:131.06px;">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl yellowlable ">RoHS指令</span>
                                         </asp:Label>
                                         <asp:DropDownList ID="ddlRoHSdirective" style="width:100%;" runat="server"></asp:DropDownList>
                                     </div>    
-                                  <div class="floaddiv" style="width:13%;">
+                                  <div class="floaddiv" style="width:131.06px;">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl yellowlable ">JIS適合</span>
                                         </asp:Label>
                                         <asp:DropDownList ID="ddlJISConform" style="width:100%;" runat="server">
                                         </asp:DropDownList>
                                     </div>  
-                                  <div class="floaddiv" style="width:13%;">
+                                  <div class="floaddiv" style="width:131.06px;">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl yellowlable ">ISO適合</span>
                                         </asp:Label>
@@ -1881,13 +1921,13 @@ table td {
                          <div class="col-md-12 containerbox"> 
                                                  
                             <div class="rowfirst">
-                              <div class="floaddiv" style="width:20%;" >
+                              <div class="floaddiv" style="width:201.64px;" >
                               <asp:Label CssClass="lblitemcode"  runat="server" >
                                <span class="label label-md lbl yellowlable ">お客様組立て</span>
                            </asp:Label>
                           <asp:DropDownList ID="ddlcustomerassembly" style="width:100%;" runat="server"></asp:DropDownList>
                               </div>
-                              <div class="floaddiv" style="width:25%;" >
+                              <div class="floaddiv" style="width:252.05px;" >
                               <asp:Label  runat="server" Text="">
                                  <span class="label label-md lbl yellowlable">消防法上、届出を必要とする物質</span>
                             </asp:Label>
@@ -1895,27 +1935,27 @@ table td {
                             
                               </div>
 
-                                  <div class="floaddiv" style="width:10%;">
+                                  <div class="floaddiv" style="width:100.81px;">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl yellowlable ">倉庫コード</span>
                                         </asp:Label>
                                         <asp:TextBox CssClass="txtbox" ID="txtwarehouse_code" MaxLength="40" onkeypress="return isNumberKey(event)"  runat="server" style="width: 100%;"></asp:TextBox>
                                     </div>
 
-                                  <div class="floaddiv" style="width:10%;">
+                                  <div class="floaddiv" style="width:100.81px;">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl yellowlable ">出荷日数</span>
                                         </asp:Label>
                                         <asp:TextBox CssClass="txtbox" ID="txtday_ship" MaxLength="40" onkeypress="return isNumberKey(event)"  runat="server" style="width: 100%;"></asp:TextBox>
                                     </div>
-                                <div class="floaddiv" style="width:10%;">
+                                <div class="floaddiv" style="width:100.81px;">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl yellowlable ">返品承認要否</span>
                                         </asp:Label>
                                         <asp:TextBox CssClass="txtbox" ID="txtreturn_necessary" MaxLength="40" onkeypress="return isNumberKey(event)"  runat="server" style="width: 100%;"></asp:TextBox>
                                     </div>
 
-                              <div class="floaddiv" style="width:15%;">
+                              <div class="floaddiv" style="width:151.23px;">
                                       
                             <asp:Label  ID="Label6" runat="server" Text="">
                                  <span class="label label-md lbl yellowlable">医薬品・医療機器</span>

@@ -146,11 +146,48 @@ namespace Capital_SKS.WebForms.Item
                             }
                         }
                 }
+                //else if( Related_Item_Code.Rows.Count == 20 )
+                //{
+                //    chk.Checked = false;
+                //    text.Text = "関連商品の数が報大値を超えています。";
+                //}
+
                 else
                 {
+                    int c = 0;
+                    if (!unCheck.Checked)
+                    {
+                        if (relItem_Code == null)
+                            c = 20 - Related_Item_Code.Rows.Count;
+                        else
+                            c = 20 - relItem_Code.Rows.Count;
+                    }
+                    else
+                        c = 20;
                     ArrayList arrlst1 = new ArrayList();
-                    arrlst1.Add(lbl.Text);
-                    ViewState["checkedValue"] = arrlst1;
+                    if (chk.Checked)
+                    {
+                        if (c <= 0)
+                        {
+                            chk.Checked = false;
+                            text.Text = "関連商品の数が報大値を超えています。";
+                        }
+                        else
+                        {
+                            arrlst1.Add(lbl.Text);
+                            ViewState["checkedValue"] = arrlst1;
+                            text.Text = "";
+                        }
+
+                    }
+                    else
+                    {
+                        arrlst1.Add(lbl.Text);
+                        ViewState["checkedValue"] = arrlst1;
+                    }
+                    //ArrayList arrlst1 = new ArrayList();
+                    //arrlst1.Add(lbl.Text);
+                    //ViewState["checkedValue"] = arrlst1;
                 }
             }
             catch (Exception ex)
@@ -233,7 +270,7 @@ namespace Capital_SKS.WebForms.Item
                 DataTable dt = new DataTable();
                 dt.Columns.Add("Item_Code", typeof(String));
                 DataRow dr = dt.NewRow();
-                ArrayList arrlst = ViewState["checkedValue"] as ArrayList;                                
+                ArrayList arrlst = ViewState["checkedValue"] as ArrayList;
                 if (ViewState["checkedValue"] != null)
                 {
                     if (!unCheck.Checked)
@@ -255,7 +292,7 @@ namespace Capital_SKS.WebForms.Item
                                 string Item_Code = relItem_Code.Rows[i]["Item_Code"].ToString();
                                 if (!arrlst.Contains(Item_Code))
                                     arrlst.Add(Item_Code);
-                                
+
                             }
                             ViewState["checkedValue"] = arrlst;
                         }
@@ -266,7 +303,31 @@ namespace Capital_SKS.WebForms.Item
                         dr["Item_Code"] = item.ToString();
                         dt.Rows.Add(dr);
                     }
-                }                   
+                }
+                else
+                {
+                    if (!unCheck.Checked)
+                    {
+                        if (Related_Item_Code != null && relItem_Code == null)
+                        {
+                            for (int i = 0; i < Related_Item_Code.Rows.Count; i++)
+                            {
+                                string Related_ItemCode = Related_Item_Code.Rows[i]["Related_ItemCode"].ToString();
+                                dt.Rows.Add(Related_ItemCode);
+                            }
+                        }
+
+                        if (relItem_Code != null && relItem_Code.Rows.Count > 0)
+                        {
+                            for (int i = 0; i < relItem_Code.Rows.Count; i++)
+                            {
+                                string Related_ItemCode = relItem_Code.Rows[i]["Item_Code"].ToString();
+                                dt.Rows.Add(Related_ItemCode);
+
+                            }
+                        }
+                    }
+                }
                 Session["relItem_Code" + Item_Code] = dt;
                 Session["btnRelatedbtn_" + Item_Code] = "ok";
 

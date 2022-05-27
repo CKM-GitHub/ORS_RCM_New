@@ -52,16 +52,18 @@
             <section runat="server">
 	            <div id="PopContents" class="pop4_Mcate">
 	                <form runat="server">
+                        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
 
-	                    <p class="popSearch" style="margin-left:150px;margin-bottom:28px; width:800px">
+	                    <p class="popSearch" style="margin-left:150px;margin-bottom:7px; width:800px">
                             商品番号
 				            <asp:TextBox ID="txtSearch" runat="server" Height="32px" Font-Bold="True" Width="210px" MaxLength="50"  onkeypress="return isNumberKeys(event)" ></asp:TextBox>
                             商品名
 				            <asp:TextBox ID="txtSearch1" runat="server" Height="32px" Font-Bold="True" Width="210px" MaxLength="50" onkeypress="return isNumberKeys(event)"></asp:TextBox>
                             <asp:Button runat="server" ID="btnSearch" Text="検 索" Font-Bold="True" onclick="btnSearch_Click" />
 	                    </p>
-                            
-                        <p style="width:998px;font-size:15px">
+                           <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                        <ContentTemplate>  
+                        <p style="width:998px;font-size:15px;margin-bottom:-5px;">
                              <asp:CheckBox runat="server" ID="unCheck" AutoPostBack="true"  />
                             <asp:Label ID="Label1"  runat="server" Text="商品口関連商品をクリアして追加する"></asp:Label>
                             <asp:Label ID="text"  runat="server" Text=""></asp:Label>
@@ -69,7 +71,7 @@
 	                     <div style="width:998px;margin-bottom:40px!important">
 		                    <table>
 			                    <asp:GridView ID="gvMallCategory" runat="server" AutoGenerateColumns="False" 
-                                AllowPaging="True" PageSize="30" CellPadding="4" ForeColor="#333333" GridLines="None" onpageindexchanging="gvMallCategory_PageIndexChanging" >
+                                AllowPaging="True" PageSize="20" CellPadding="4" ForeColor="#333333" GridLines="None" onpageindexchanging="gvMallCategory_PageIndexChanging" >
                                      <AlternatingRowStyle BackColor="White"  />
                                         <HeaderStyle ForeColor="White" Font-Bold="True"  Font-Size="18px" BackColor="#555555"></HeaderStyle>
                                     <EmptyDataRowStyle CssClass="hide emrow"/>
@@ -113,6 +115,8 @@
                                 <asp:Button ID="btnCancel" runat="server" Text="キャンセル"  Width="150px" OnClick="btn_Cancel" />
                                  <asp:Button runat="server" ID="btnClose" Text="決定" Width="150px" OnClick="btn_Close"/>
                         </div>
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
 	                </form>
 	            </div>
             </section>

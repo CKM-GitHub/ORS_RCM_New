@@ -705,13 +705,13 @@ table td {
                              <div class="col-md-12 containerbox"> 
                                  <p class="pprice">基本価格</p>
                                 <div class="row" style="width:100%;margin-left: 30px;margin-right: 50px;">
-                                    <div class="listpricediv">
+                                    <div class="listpricediv" style="width:146.88px">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl greenlable lblrequired">定価（税抜）</span>
                                         </asp:Label>
                                         <asp:TextBox CssClass="txtbox" ID="txtList_Price" onkeypress="return isNumberKey(event)"  runat="server" style="width: 80%;"></asp:TextBox><span> 円</span>
                                     </div>
-                                    <div class="salepricediv">
+                                    <div class="salepricediv" style="width:146.88px">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl greenlable lblrequired">原価（税抜）</span>
                                         </asp:Label>
@@ -727,25 +727,25 @@ table td {
                          <div class="col-md-12 containerbox"> 
                              <p class="pprice">WEB</p>
                             <div class="row" style="width:100%;margin-left: 30px;margin-right: 50px;">
-                                    <div class="web1">
+                                    <div class="web1" style="width:174.85px">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl orangelable lblrequired">販売価格（税抜）</span>
                                         </asp:Label>
                                         <asp:TextBox CssClass="txtbox" ID="txtSale_Price" onkeypress="return isNumberKey(event)"  runat="server" style="width:70%;"></asp:TextBox><span> 円</span>
                                     </div>
-                                    <div class="web2">
+                                    <div class="web2" style="width:99.91px">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl orangelable ">利益率</span>
                                         </asp:Label>
                                         <asp:TextBox CssClass="txtbox" ID="txtprofitrate" ReadOnly="true"  runat="server" style="width:60%;"></asp:TextBox> <span> %</span>
                                     </div>
-                                <div class="web2">
+                                <div class="web2" style="width:99.91px">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl orangelable ">割引率</span>
                                         </asp:Label>
                                         <asp:TextBox CssClass="txtbox" ID="txtdiscountrate" ReadOnly="true"  runat="server" style="width:60%;"></asp:TextBox> <span> %</span>
                                     </div>
-                                <div class="web2">
+                                <div class="web2" style="width:99.91px">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl orangelable ">原価率</span>
                                         </asp:Label>
@@ -758,25 +758,25 @@ table td {
                             <div class="col-md-12 containerbox"> 
                              <p class="pprice">自社</p>
                               <div class="row" style="width:100%;margin-left: 30px;margin-right: 50px;">
-                                    <div class="web1">
+                                    <div class="web1" style="width:167.15px">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl orangelable">価格（税抜）</span>
                                         </asp:Label>
                                         <asp:TextBox CssClass="txtbox" ID="txtJishaPrice" onkeypress="return isNumberKey(event)"  runat="server" style="width:70%;"></asp:TextBox><span> 円</span>
                                     </div>
-                                    <div class="web2">
+                                    <div class="web2" style="width:95.91px">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl orangelable ">利益率</span>
                                         </asp:Label>
                                         <asp:TextBox CssClass="txtbox" ID="txtjishaProfitrate"  ReadOnly="true" runat="server" style="width:60%;"></asp:TextBox> <span> %</span>
                                     </div>
-                                <div class="web2">
+                                <div class="web2" style="width:95.91px">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl orangelable ">割引率</span>
                                         </asp:Label>
                                         <asp:TextBox CssClass="txtbox" ID="txtjishaDiscountrate" ReadOnly="true"  runat="server" style="width:60%;"></asp:TextBox> <span> %</span>
                                     </div>
-                                <div class="web2">
+                                <div class="web2" style="width:95.91px">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl orangelable ">原価率</span>
                                         </asp:Label>
@@ -792,25 +792,25 @@ table td {
                          <div class="col-md-12 containerbox"> 
                               <p class="pprice">楽天</p>
                               <div class="row" style="width:100%;margin-left: 30px;margin-right: 50px;">
-                                    <div class="web1">
+                                    <div class="web1" style="width:174.85px">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl orangelable">価格（税抜）</span>
                                         </asp:Label>
                                         <asp:TextBox CssClass="txtbox" ID="txtRakutenPrice" onkeypress="return isNumberKey(event)" runat="server" style="width:70%;"></asp:TextBox><span> 円</span>
                                     </div>
-                                    <div class="web2">
+                                    <div class="web2" style="width:99.91px">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl orangelable ">利益率</span>
                                         </asp:Label>
                                         <asp:TextBox CssClass="txtbox" ID="txtrakutenProfitrate" ReadOnly="true"  runat="server" style="width:60%;"></asp:TextBox> <span> %</span>
                                     </div>
-                                <div class="web2">
+                                <div class="web2" style="width:99.91px">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl orangelable ">割引率</span>
                                         </asp:Label>
                                         <asp:TextBox CssClass="txtbox" ID="txtrakutenDiscountrate" ReadOnly="true"  runat="server" style="width:60%;"></asp:TextBox> <span> %</span>
                                     </div>
-                                <div class="web2">
+                                <div class="web2" style="width:99.91px">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl orangelable ">原価率</span>
                                         </asp:Label>
@@ -823,25 +823,25 @@ table td {
                             <div class="col-md-12 containerbox"> 
                               <p class="pprice">Yahoo</p>
                               <div class="row" style="width:100%;margin-left: 30px;margin-right: 50px;">
-                                    <div class="web1">
+                                    <div class="web1" style="width:167.15px">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl orangelable">価格（税抜）</span>
                                         </asp:Label>
                                         <asp:TextBox CssClass="txtbox" ID="txtYahooPrice" onkeypress="return isNumberKey(event)"  runat="server" style="width:70%;"></asp:TextBox><span> 円</span>
                                     </div>
-                                    <div class="web2">
+                                    <div class="web2" style="width:95.51px">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl orangelable ">利益率</span>
                                         </asp:Label>
                                         <asp:TextBox CssClass="txtbox" ID="txtyahooProfitrate" ReadOnly="true"  runat="server" style="width:60%;"></asp:TextBox> <span> %</span>
                                     </div>
-                                <div class="web2">
+                                <div class="web2" style="width:95.51px">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl orangelable ">割引率</span>
                                         </asp:Label>
                                         <asp:TextBox CssClass="txtbox" ID="txtyahooDiscountrate" ReadOnly="true"  runat="server" style="width:60%;"></asp:TextBox> <span> %</span>
                                     </div>
-                                <div class="web2">
+                                <div class="web2" style="width:95.51px">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl orangelable ">原価率</span>
                                         </asp:Label>
@@ -857,25 +857,25 @@ table td {
                          <div class="col-md-12 containerbox"> 
                                 <p class="pprice">Wowma</p>
                               <div class="row" style="width:100%;margin-left: 30px;margin-right: 50px;">
-                                    <div class="web1">
+                                    <div class="web1" style="width:174.85px">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl orangelable">価格（税抜）</span>
                                         </asp:Label>
                                         <asp:TextBox CssClass="txtbox" ID="txtWowmaPrice" onkeypress="return isNumberKey(event)"  runat="server" style="width:70%;"></asp:TextBox><span> 円</span>
                                     </div>
-                                    <div class="web2">
+                                    <div class="web2" style="width:99.91px">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl orangelable ">利益率</span>
                                         </asp:Label>
                                         <asp:TextBox CssClass="txtbox" ID="txtwowmaProfitrate" ReadOnly="true"  runat="server" style="width:60%;"></asp:TextBox> <span> %</span>
                                     </div>
-                                <div class="web2">
+                                <div class="web2" style="width:99.91px">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl orangelable ">割引率</span>
                                         </asp:Label>
                                         <asp:TextBox CssClass="txtbox" ID="txtwowmaDiscountrate" ReadOnly="true"  runat="server" style="width:60%;"></asp:TextBox> <span> %</span>
                                     </div>
-                                <div class="web2">
+                                <div class="web2" style="width:99.91px">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl orangelable ">原価率</span>
                                         </asp:Label>
@@ -892,25 +892,25 @@ table td {
                          <div class="col-md-12 containerbox"> 
                                <p class="pprice">モノタロウ</p>
                               <div class="row" style="width:100%;margin-left: 30px;margin-right: 50px;">
-                                    <div class="web1">
+                                    <div class="web1" style="width:174.85px">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl yellowlable">価格（税抜）</span>
                                         </asp:Label>
                                         <asp:TextBox CssClass="txtbox" ID="txtmonoprice" onkeypress="return isNumberKey(event)"  runat="server" style="width:70%;"></asp:TextBox><span> 円</span>
                                     </div>
-                                    <div class="web2">
+                                    <div class="web2" style="width:99.91px">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl yellowlable ">利益率</span>
                                         </asp:Label>
                                         <asp:TextBox CssClass="txtbox" ID="txtmonoprice_profitrate" ReadOnly="true"  runat="server" style="width:60%;"></asp:TextBox> <span> %</span>
                                     </div>
-                                <div class="web2">
+                                <div class="web2" style="width:99.91px">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl yellowlable ">割引率</span>
                                         </asp:Label>
                                         <asp:TextBox CssClass="txtbox" ID="txtmonoprice_discountrate" ReadOnly="true"  runat="server" style="width:60%;"></asp:TextBox> <span> %</span>
                                     </div>
-                                <div class="web2">
+                                <div class="web2" style="width:99.91px">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl yellowlable ">原価率</span>
                                         </asp:Label>
@@ -923,25 +923,25 @@ table td {
                           <div class="col-md-12 containerbox"> 
                                <p class="pprice">ダイト</p>
                               <div class="row" style="width:100%;margin-left: 30px;margin-right: 50px;">
-                                    <div class="web1">
+                                    <div class="web1" style="width:167.15px">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl yellowlable">価格（税抜）</span>
                                         </asp:Label>
                                         <asp:TextBox CssClass="txtbox" ID="txtditeprice" onkeypress="return isNumberKey(event)"  runat="server" style="width:70%;"></asp:TextBox><span> 円</span>
                                     </div>
-                                    <div class="web2">
+                                    <div class="web2" style="width:95.51px">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl yellowlable ">利益率</span>
                                         </asp:Label>
                                         <asp:TextBox CssClass="txtbox" ID="txtditeprice_profitrate" ReadOnly="true"  runat="server" style="width:60%;"></asp:TextBox> <span> %</span>
                                     </div>
-                                <div class="web2">
+                                <div class="web2" style="width:95.51px">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl yellowlable ">割引率</span>
                                         </asp:Label>
                                         <asp:TextBox CssClass="txtbox" ID="txtditeprice_discountrate" ReadOnly="true"  runat="server" style="width:60%;"></asp:TextBox> <span> %</span>
                                     </div>
-                                <div class="web2">
+                                <div class="web2" style="width:95.51px">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl yellowlable ">原価率</span>
                                         </asp:Label>
@@ -957,25 +957,25 @@ table td {
                          <div class="col-md-12 containerbox"> 
                               <p class="pprice">日本モーターパーツ</p>
                               <div class="row" style="width:100%;margin-left: 30px;margin-right: 50px;">
-                                    <div class="web1">
+                                    <div class="web1" style="width:174.8px">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl yellowlable">価格（税抜）</span>
                                         </asp:Label>
                                         <asp:TextBox CssClass="txtbox" ID="txtjapanmprice" onkeypress="return isNumberKey(event)"  runat="server" style="width:70%;"></asp:TextBox><span> 円</span>
                                     </div>
-                                    <div class="web2">
+                                    <div class="web2" style="width:99.91px">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl yellowlable ">利益率</span>
                                         </asp:Label>
                                         <asp:TextBox CssClass="txtbox" ID="txtjapanmprice_profitrate" ReadOnly="true"  runat="server" style="width:60%;"></asp:TextBox> <span> %</span>
                                     </div>
-                                <div class="web2">
+                                <div class="web2" style="width:99.91px">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl yellowlable ">割引率</span>
                                         </asp:Label>
                                         <asp:TextBox CssClass="txtbox" ID="txtjapanmprice_discountrate" ReadOnly="true"  runat="server" style="width:60%;"></asp:TextBox> <span> %</span>
                                     </div>
-                                <div class="web2">
+                                <div class="web2" style="width:99.91px">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl yellowlable ">原価率</span>
                                         </asp:Label>
@@ -989,25 +989,25 @@ table td {
                          <div class="col-md-12 containerbox"> 
                               <p class="pprice">柏木工機</p>
                               <div class="row" style="width:100%;margin-left: 30px;margin-right: 50px;">
-                                    <div class="web1">
+                                    <div class="web1" style="width:167.15px">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl yellowlable">価格（税抜）</span>
                                         </asp:Label>
                                         <asp:TextBox CssClass="txtbox" ID="txtkashiwagi" onkeypress="return isNumberKey(event)"  runat="server" style="width:70%;"></asp:TextBox><span> 円</span>
                                     </div>
-                                    <div class="web2">
+                                    <div class="web2" style="width:95.51px">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl yellowlable ">利益率</span>
                                         </asp:Label>
                                         <asp:TextBox CssClass="txtbox" ID="txtkashiwagi_profitrate" ReadOnly="true"  runat="server" style="width:60%;"></asp:TextBox> <span> %</span>
                                     </div>
-                                <div class="web2">
+                                <div class="web2" style="width:95.51px">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl yellowlable ">割引率</span>
                                         </asp:Label>
                                         <asp:TextBox CssClass="txtbox" ID="txtkashiwagi_discountrate" ReadOnly="true"  runat="server" style="width:60%;"></asp:TextBox> <span> %</span>
                                     </div>
-                                <div class="web2">
+                                <div class="web2" style="width:95.51px">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl yellowlable ">原価率</span>
                                         </asp:Label>

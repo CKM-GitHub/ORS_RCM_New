@@ -125,6 +125,7 @@ namespace Capital_SKS.WebForms.Item
                             {
                                 arrlst.Add(lbl.Text);
                                 ViewState["checkedValue"] = arrlst;
+                                text.Text = "";
                             }
                         }
                         else

@@ -320,7 +320,7 @@ namespace Capital_SKS.WebForms.Item
                     else
                     {
                         Session.Remove("btnRelatedbtn_" + ItemCode);
-                        Session.Remove("relItem_Code");
+                        Session.Remove("relItem_Code"+ItemCode);
                     }
                 
 
@@ -666,6 +666,7 @@ namespace Capital_SKS.WebForms.Item
                     }
                 }
                 Session["Related_Item_Code" + ItemCode] = dt;
+                Session["relItem_Code" + ItemCode] = null;
             }
             catch (Exception ex)
             {
@@ -2473,6 +2474,7 @@ namespace Capital_SKS.WebForms.Item
                                         //{
                                         //    Page.ClientScript.RegisterStartupScript(this.GetType(), "myScript", "OnCheckedChanged(false);", true);
                                         //}
+                                        SetSelectedRelatedItem(ItemID);
                                         ime = new Item_Master_Entity();
                                         ime = imeBL.SelectByID(ItemID);
                                         if (!string.IsNullOrWhiteSpace(ime.Release_Date.ToString()))
@@ -3281,6 +3283,7 @@ namespace Capital_SKS.WebForms.Item
                 }
                 Item_Related_Item_BL ItemRelatedBL = new Item_Related_Item_BL();
                 ItemRelatedBL.Insert(itemID, dtRelated);
+                Session["Related_Item_Code" + ItemCode] = dtRelated;
             }
             catch (Exception ex)
             {
@@ -3569,6 +3572,7 @@ namespace Capital_SKS.WebForms.Item
                                 //{
                                 //    Page.ClientScript.RegisterStartupScript(this.GetType(), "myScript", "OnCheckedChanged(false);", true);
                                 //}
+                                SetSelectedRelatedItem(ItemID);
                                 ime = new Item_Master_Entity();
                                 ime = imeBL.SelectByID(ItemID);
                                 if (!string.IsNullOrWhiteSpace(ime.Release_Date.ToString()))

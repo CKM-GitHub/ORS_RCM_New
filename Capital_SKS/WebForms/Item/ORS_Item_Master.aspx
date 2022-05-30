@@ -726,63 +726,75 @@ table td {
                      <div class="col-md-6" style="padding-left: 1px;padding-right: 1px;"> 
                          <div class="col-md-12 containerbox"> 
                              <p class="pprice">WEB</p>
+                             <asp:UpdatePanel runat="server" id="UpdatePanel26" updatemode="Conditional"><ContentTemplate>
                             <div class="row" style="width:100%;margin-left: 30px;margin-right: 50px;">
                                     <div class="web1" style="width:174.85px">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl orangelable lblrequired">販売価格（税抜）</span>
                                         </asp:Label>
-                                        <asp:TextBox CssClass="txtbox" ID="txtSale_Price" onkeypress="return isNumberKey(event)"  runat="server" style="width:70%;"></asp:TextBox><span> 円</span>
+                                        <asp:TextBox CssClass="txtbox" ID="txtSale_Price" onchange="Web_calcuteTax(this)" AutoPostBack="true" onkeypress="return isNumberKey(event)"  runat="server" style="width:70%;"></asp:TextBox><span> 円</span>
                                     </div>
                                     <div class="web2" style="width:99.91px">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl orangelable ">利益率</span>
                                         </asp:Label>
-                                        <asp:TextBox CssClass="txtbox" ID="txtprofitrate" ReadOnly="true"  runat="server" style="width:60%;"></asp:TextBox> <span> %</span>
+                                        <asp:TextBox CssClass="txtbox" ID="txtprofitrate" Enabled="false"  runat="server" style="width:60%;"></asp:TextBox> <span> %</span>
                                     </div>
                                 <div class="web2" style="width:99.91px">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl orangelable ">割引率</span>
                                         </asp:Label>
-                                        <asp:TextBox CssClass="txtbox" ID="txtdiscountrate" ReadOnly="true"  runat="server" style="width:60%;"></asp:TextBox> <span> %</span>
+                                        <asp:TextBox CssClass="txtbox" ID="txtdiscountrate" Enabled="false"  runat="server" style="width:60%;"></asp:TextBox> <span> %</span>
                                     </div>
                                 <div class="web2" style="width:99.91px">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl orangelable ">原価率</span>
                                         </asp:Label>
-                                        <asp:TextBox CssClass="txtbox" ID="txtcostrate" ReadOnly="true"  runat="server" style="width:60%;"></asp:TextBox> <span> %</span>
+                                        <asp:TextBox CssClass="txtbox" ID="txtcostrate" Enabled="false"  runat="server" style="width:60%;"></asp:TextBox> <span> %</span>
                                     </div>
-                                </div>                             
+                                </div>   
+                                 </ContentTemplate> 
+                                 <Triggers>
+                                     <asp:Asyncpostbacktrigger controlid="txtSale_Price"/>
+                                 </Triggers>
+                             </asp:UpdatePanel>
                           </div>             
                       </div>
                       <div class=" col-md-6">
                             <div class="col-md-12 containerbox"> 
                              <p class="pprice">自社</p>
+                            <asp:UpdatePanel runat="server" id="UpdatePanel27" updatemode="Conditional"><ContentTemplate>
                               <div class="row" style="width:100%;margin-left: 30px;margin-right: 50px;">
                                     <div class="web1" style="width:167.15px">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl orangelable">価格（税抜）</span>
                                         </asp:Label>
-                                        <asp:TextBox CssClass="txtbox" ID="txtJishaPrice" onkeypress="return isNumberKey(event)"  runat="server" style="width:70%;"></asp:TextBox><span> 円</span>
+                                        <asp:TextBox CssClass="txtbox" ID="txtJishaPrice" onchange="Jisha_calcuteTax(this)" AutoPostBack="true" onkeypress="return isNumberKey(event)"  runat="server" style="width:70%;"></asp:TextBox><span> 円</span>
                                     </div>
                                     <div class="web2" style="width:95.91px">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl orangelable ">利益率</span>
                                         </asp:Label>
-                                        <asp:TextBox CssClass="txtbox" ID="txtjishaProfitrate"  ReadOnly="true" runat="server" style="width:60%;"></asp:TextBox> <span> %</span>
+                                        <asp:TextBox CssClass="txtbox" ID="txtjishaProfitrate"  Enabled="false" runat="server" style="width:60%;"></asp:TextBox> <span> %</span>
                                     </div>
                                 <div class="web2" style="width:95.91px">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl orangelable ">割引率</span>
                                         </asp:Label>
-                                        <asp:TextBox CssClass="txtbox" ID="txtjishaDiscountrate" ReadOnly="true"  runat="server" style="width:60%;"></asp:TextBox> <span> %</span>
+                                        <asp:TextBox CssClass="txtbox" ID="txtjishaDiscountrate" Enabled="false"  runat="server" style="width:60%;"></asp:TextBox> <span> %</span>
                                     </div>
                                 <div class="web2" style="width:95.91px">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl orangelable ">原価率</span>
                                         </asp:Label>
-                                        <asp:TextBox CssClass="txtbox" ID="txtjishaCostrate" ReadOnly="true"  runat="server" style="width:60%;"></asp:TextBox> <span> %</span>
+                                        <asp:TextBox CssClass="txtbox" ID="txtjishaCostrate" Enabled="false"  runat="server" style="width:60%;"></asp:TextBox> <span> %</span>
                                     </div>
-                                </div>                             
+                                </div>   
+                                </ContentTemplate> 
+                                 <Triggers>
+                                     <asp:Asyncpostbacktrigger controlid="txtJishaPrice"/>
+                                 </Triggers>
+                             </asp:UpdatePanel>
                           </div>
                        </div>            
                 </div>
@@ -791,63 +803,75 @@ table td {
                      <div class="col-md-6" style="padding-left: 1px;padding-right: 1px;"> 
                          <div class="col-md-12 containerbox"> 
                               <p class="pprice">楽天</p>
+                              <asp:UpdatePanel runat="server" id="UpdatePanel28" updatemode="Conditional"><ContentTemplate>
                               <div class="row" style="width:100%;margin-left: 30px;margin-right: 50px;">
                                     <div class="web1" style="width:174.85px">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl orangelable">価格（税抜）</span>
                                         </asp:Label>
-                                        <asp:TextBox CssClass="txtbox" ID="txtRakutenPrice" onkeypress="return isNumberKey(event)" runat="server" style="width:70%;"></asp:TextBox><span> 円</span>
+                                        <asp:TextBox CssClass="txtbox" ID="txtRakutenPrice" onchange="Rakuten_calcuteTax(this)" AutoPostBack="true" onkeypress="return isNumberKey(event)" runat="server" style="width:70%;"></asp:TextBox><span> 円</span>
                                     </div>
                                     <div class="web2" style="width:99.91px">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl orangelable ">利益率</span>
                                         </asp:Label>
-                                        <asp:TextBox CssClass="txtbox" ID="txtrakutenProfitrate" ReadOnly="true"  runat="server" style="width:60%;"></asp:TextBox> <span> %</span>
+                                        <asp:TextBox CssClass="txtbox" ID="txtrakutenProfitrate" Enabled="false"  runat="server" style="width:60%;"></asp:TextBox> <span> %</span>
                                     </div>
                                 <div class="web2" style="width:99.91px">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl orangelable ">割引率</span>
                                         </asp:Label>
-                                        <asp:TextBox CssClass="txtbox" ID="txtrakutenDiscountrate" ReadOnly="true"  runat="server" style="width:60%;"></asp:TextBox> <span> %</span>
+                                        <asp:TextBox CssClass="txtbox" ID="txtrakutenDiscountrate" Enabled="false"  runat="server" style="width:60%;"></asp:TextBox> <span> %</span>
                                     </div>
                                 <div class="web2" style="width:99.91px">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl orangelable ">原価率</span>
                                         </asp:Label>
-                                        <asp:TextBox CssClass="txtbox" ID="txtrakutenCostrate" ReadOnly="true"  runat="server" style="width:60%;"></asp:TextBox> <span> %</span>
+                                        <asp:TextBox CssClass="txtbox" ID="txtrakutenCostrate" Enabled="false"  runat="server" style="width:60%;"></asp:TextBox> <span> %</span>
                                     </div>
-                                </div>                         
+                                </div>     
+                                  </ContentTemplate> 
+                                 <Triggers>
+                                     <asp:Asyncpostbacktrigger controlid="txtRakutenPrice"/>
+                                 </Triggers>
+                             </asp:UpdatePanel>
                           </div>             
                       </div>
                       <div class=" col-md-6">
                             <div class="col-md-12 containerbox"> 
                               <p class="pprice">Yahoo</p>
+                                <asp:UpdatePanel runat="server" id="UpdatePanel29" updatemode="Conditional"><ContentTemplate>
                               <div class="row" style="width:100%;margin-left: 30px;margin-right: 50px;">
                                     <div class="web1" style="width:167.15px">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl orangelable">価格（税抜）</span>
                                         </asp:Label>
-                                        <asp:TextBox CssClass="txtbox" ID="txtYahooPrice" onkeypress="return isNumberKey(event)"  runat="server" style="width:70%;"></asp:TextBox><span> 円</span>
+                                        <asp:TextBox CssClass="txtbox" ID="txtYahooPrice" onchange="Yahoo_calcuteTax(this)" AutoPostBack="true"  onkeypress="return isNumberKey(event)"  runat="server" style="width:70%;"></asp:TextBox><span> 円</span>
                                     </div>
                                     <div class="web2" style="width:95.51px">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl orangelable ">利益率</span>
                                         </asp:Label>
-                                        <asp:TextBox CssClass="txtbox" ID="txtyahooProfitrate" ReadOnly="true"  runat="server" style="width:60%;"></asp:TextBox> <span> %</span>
+                                        <asp:TextBox CssClass="txtbox" ID="txtyahooProfitrate" Enabled="false"  runat="server" style="width:60%;"></asp:TextBox> <span> %</span>
                                     </div>
                                 <div class="web2" style="width:95.51px">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl orangelable ">割引率</span>
                                         </asp:Label>
-                                        <asp:TextBox CssClass="txtbox" ID="txtyahooDiscountrate" ReadOnly="true"  runat="server" style="width:60%;"></asp:TextBox> <span> %</span>
+                                        <asp:TextBox CssClass="txtbox" ID="txtyahooDiscountrate" Enabled="false" runat="server" style="width:60%;"></asp:TextBox> <span> %</span>
                                     </div>
                                 <div class="web2" style="width:95.51px">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl orangelable ">原価率</span>
                                         </asp:Label>
-                                        <asp:TextBox CssClass="txtbox" ID="txtyahooCostrate" ReadOnly="true"  runat="server" style="width:60%;"></asp:TextBox> <span> %</span>
+                                        <asp:TextBox CssClass="txtbox" ID="txtyahooCostrate" Enabled="false"  runat="server" style="width:60%;"></asp:TextBox> <span> %</span>
                                     </div>
-                                </div>                               
+                                </div> 
+                                    </ContentTemplate> 
+                                 <Triggers>
+                                     <asp:Asyncpostbacktrigger controlid="txtYahooPrice"/>
+                                 </Triggers>
+                             </asp:UpdatePanel>
                           </div>   
                        </div>            
                 </div>
@@ -856,32 +880,38 @@ table td {
                      <div class="col-md-6" style="padding-left: 1px;padding-right: 1px;"> 
                          <div class="col-md-12 containerbox"> 
                                 <p class="pprice">Wowma</p>
+                             <asp:UpdatePanel runat="server" id="UpdatePanel30" updatemode="Conditional"><ContentTemplate>
                               <div class="row" style="width:100%;margin-left: 30px;margin-right: 50px;">
                                     <div class="web1" style="width:174.85px">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl orangelable">価格（税抜）</span>
                                         </asp:Label>
-                                        <asp:TextBox CssClass="txtbox" ID="txtWowmaPrice" onkeypress="return isNumberKey(event)"  runat="server" style="width:70%;"></asp:TextBox><span> 円</span>
+                                        <asp:TextBox CssClass="txtbox" ID="txtWowmaPrice" onchange="Wowma_calcuteTax(this)" AutoPostBack="true" onkeypress="return isNumberKey(event)"  runat="server" style="width:70%;"></asp:TextBox><span> 円</span>
                                     </div>
                                     <div class="web2" style="width:99.91px">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl orangelable ">利益率</span>
                                         </asp:Label>
-                                        <asp:TextBox CssClass="txtbox" ID="txtwowmaProfitrate" ReadOnly="true"  runat="server" style="width:60%;"></asp:TextBox> <span> %</span>
+                                        <asp:TextBox CssClass="txtbox" ID="txtwowmaProfitrate" Enabled="false"  runat="server" style="width:60%;"></asp:TextBox> <span> %</span>
                                     </div>
                                 <div class="web2" style="width:99.91px">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl orangelable ">割引率</span>
                                         </asp:Label>
-                                        <asp:TextBox CssClass="txtbox" ID="txtwowmaDiscountrate" ReadOnly="true"  runat="server" style="width:60%;"></asp:TextBox> <span> %</span>
+                                        <asp:TextBox CssClass="txtbox" ID="txtwowmaDiscountrate" Enabled="false"  runat="server" style="width:60%;"></asp:TextBox> <span> %</span>
                                     </div>
                                 <div class="web2" style="width:99.91px">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl orangelable ">原価率</span>
                                         </asp:Label>
-                                        <asp:TextBox CssClass="txtbox" ID="txtwowmaCostrate" ReadOnly="true"  runat="server" style="width:60%;"></asp:TextBox> <span> %</span>
+                                        <asp:TextBox CssClass="txtbox" ID="txtwowmaCostrate" Enabled="false"  runat="server" style="width:60%;"></asp:TextBox> <span> %</span>
                                     </div>
-                                </div>                               
+                                </div>  
+                                 </ContentTemplate> 
+                                 <Triggers>
+                                     <asp:Asyncpostbacktrigger controlid="txtWowmaPrice"/>
+                                 </Triggers>
+                             </asp:UpdatePanel>
                           </div>             
                       </div>
                          
@@ -891,63 +921,75 @@ table td {
                      <div class="col-md-6" style="padding-left: 1px;padding-right: 1px;"> 
                          <div class="col-md-12 containerbox"> 
                                <p class="pprice">モノタロウ</p>
+                             <asp:UpdatePanel runat="server" id="UpdatePanel31" updatemode="Conditional"><ContentTemplate>
                               <div class="row" style="width:100%;margin-left: 30px;margin-right: 50px;">
                                     <div class="web1" style="width:174.85px">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl yellowlable">価格（税抜）</span>
                                         </asp:Label>
-                                        <asp:TextBox CssClass="txtbox" ID="txtmonoprice" onkeypress="return isNumberKey(event)"  runat="server" style="width:70%;"></asp:TextBox><span> 円</span>
+                                        <asp:TextBox CssClass="txtbox" ID="txtmonoprice" onchange="Monotarou_calcuteTax(this)" AutoPostBack="true"  onkeypress="return isNumberKey(event)"  runat="server" style="width:70%;"></asp:TextBox><span> 円</span>
                                     </div>
                                     <div class="web2" style="width:99.91px">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl yellowlable ">利益率</span>
                                         </asp:Label>
-                                        <asp:TextBox CssClass="txtbox" ID="txtmonoprice_profitrate" ReadOnly="true"  runat="server" style="width:60%;"></asp:TextBox> <span> %</span>
+                                        <asp:TextBox CssClass="txtbox" ID="txtmonoprice_profitrate" Enabled="false"  runat="server" style="width:60%;"></asp:TextBox> <span> %</span>
                                     </div>
                                 <div class="web2" style="width:99.91px">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl yellowlable ">割引率</span>
                                         </asp:Label>
-                                        <asp:TextBox CssClass="txtbox" ID="txtmonoprice_discountrate" ReadOnly="true"  runat="server" style="width:60%;"></asp:TextBox> <span> %</span>
+                                        <asp:TextBox CssClass="txtbox" ID="txtmonoprice_discountrate" Enabled="false"  runat="server" style="width:60%;"></asp:TextBox> <span> %</span>
                                     </div>
                                 <div class="web2" style="width:99.91px">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl yellowlable ">原価率</span>
                                         </asp:Label>
-                                        <asp:TextBox CssClass="txtbox" ID="txtmonoprice_costrate" ReadOnly="true"  runat="server" style="width:60%;"></asp:TextBox> <span> %</span>
+                                        <asp:TextBox CssClass="txtbox" ID="txtmonoprice_costrate" Enabled="false"  runat="server" style="width:60%;"></asp:TextBox> <span> %</span>
                                     </div>
-                                </div>                               
+                                </div> 
+                                 </ContentTemplate> 
+                                 <Triggers>
+                                     <asp:Asyncpostbacktrigger controlid="txtmonoprice"/>
+                                 </Triggers>
+                             </asp:UpdatePanel>
                           </div>             
                       </div>
                       <div class=" col-md-6">
                           <div class="col-md-12 containerbox"> 
                                <p class="pprice">ダイト</p>
+                              <asp:UpdatePanel runat="server" id="UpdatePanel32" updatemode="Conditional"><ContentTemplate>
                               <div class="row" style="width:100%;margin-left: 30px;margin-right: 50px;">
                                     <div class="web1" style="width:167.15px">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl yellowlable">価格（税抜）</span>
                                         </asp:Label>
-                                        <asp:TextBox CssClass="txtbox" ID="txtditeprice" onkeypress="return isNumberKey(event)"  runat="server" style="width:70%;"></asp:TextBox><span> 円</span>
+                                        <asp:TextBox CssClass="txtbox" ID="txtditeprice" onchange="Daito_calcuteTax(this)" AutoPostBack="true"  onkeypress="return isNumberKey(event)"  runat="server" style="width:70%;"></asp:TextBox><span> 円</span>
                                     </div>
                                     <div class="web2" style="width:95.51px">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl yellowlable ">利益率</span>
                                         </asp:Label>
-                                        <asp:TextBox CssClass="txtbox" ID="txtditeprice_profitrate" ReadOnly="true"  runat="server" style="width:60%;"></asp:TextBox> <span> %</span>
+                                        <asp:TextBox CssClass="txtbox" ID="txtditeprice_profitrate" Enabled="false"  runat="server" style="width:60%;"></asp:TextBox> <span> %</span>
                                     </div>
                                 <div class="web2" style="width:95.51px">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl yellowlable ">割引率</span>
                                         </asp:Label>
-                                        <asp:TextBox CssClass="txtbox" ID="txtditeprice_discountrate" ReadOnly="true"  runat="server" style="width:60%;"></asp:TextBox> <span> %</span>
+                                        <asp:TextBox CssClass="txtbox" ID="txtditeprice_discountrate" Enabled="false"  runat="server" style="width:60%;"></asp:TextBox> <span> %</span>
                                     </div>
                                 <div class="web2" style="width:95.51px">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl yellowlable ">原価率</span>
                                         </asp:Label>
-                                        <asp:TextBox CssClass="txtbox" ID="txtditeprice_costrate"  ReadOnly="true" runat="server" style="width:60%;"></asp:TextBox> <span> %</span>
+                                        <asp:TextBox CssClass="txtbox" ID="txtditeprice_costrate"  Enabled="false" runat="server" style="width:60%;"></asp:TextBox> <span> %</span>
                                     </div>
-                                </div>                               
+                                </div>    
+                                  </ContentTemplate> 
+                                 <Triggers>
+                                     <asp:Asyncpostbacktrigger controlid="txtditeprice"/>
+                                 </Triggers>
+                             </asp:UpdatePanel>
                           </div>     
                        </div>            
                 </div>
@@ -956,64 +998,76 @@ table td {
                      <div class="col-md-6" style="padding-left: 1px;padding-right: 1px;"> 
                          <div class="col-md-12 containerbox"> 
                               <p class="pprice">日本モーターパーツ</p>
+                              <asp:UpdatePanel runat="server" id="UpdatePanel33" updatemode="Conditional"><ContentTemplate>
                               <div class="row" style="width:100%;margin-left: 30px;margin-right: 50px;">
                                     <div class="web1" style="width:174.8px">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl yellowlable">価格（税抜）</span>
                                         </asp:Label>
-                                        <asp:TextBox CssClass="txtbox" ID="txtjapanmprice" onkeypress="return isNumberKey(event)"  runat="server" style="width:70%;"></asp:TextBox><span> 円</span>
+                                        <asp:TextBox CssClass="txtbox" ID="txtjapanmprice" onchange="Japanmotorpart_calcuteTax(this)" AutoPostBack="true"  onkeypress="return isNumberKey(event)"  runat="server" style="width:70%;"></asp:TextBox><span> 円</span>
                                     </div>
                                     <div class="web2" style="width:99.91px">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl yellowlable ">利益率</span>
                                         </asp:Label>
-                                        <asp:TextBox CssClass="txtbox" ID="txtjapanmprice_profitrate" ReadOnly="true"  runat="server" style="width:60%;"></asp:TextBox> <span> %</span>
+                                        <asp:TextBox CssClass="txtbox" ID="txtjapanmprice_profitrate" Enabled="false"  runat="server" style="width:60%;"></asp:TextBox> <span> %</span>
                                     </div>
                                 <div class="web2" style="width:99.91px">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl yellowlable ">割引率</span>
                                         </asp:Label>
-                                        <asp:TextBox CssClass="txtbox" ID="txtjapanmprice_discountrate" ReadOnly="true"  runat="server" style="width:60%;"></asp:TextBox> <span> %</span>
+                                        <asp:TextBox CssClass="txtbox" ID="txtjapanmprice_discountrate" Enabled="false"  runat="server" style="width:60%;"></asp:TextBox> <span> %</span>
                                     </div>
                                 <div class="web2" style="width:99.91px">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl yellowlable ">原価率</span>
                                         </asp:Label>
-                                        <asp:TextBox CssClass="txtbox" ID="txtjapanmprice_costrate" ReadOnly="true"  runat="server" style="width:60%;"></asp:TextBox> <span> %</span>
+                                        <asp:TextBox CssClass="txtbox" ID="txtjapanmprice_costrate" Enabled="false"  runat="server" style="width:60%;"></asp:TextBox> <span> %</span>
                                     </div>
-                                </div>                             
+                                </div>  
+                                  </ContentTemplate> 
+                                 <Triggers>
+                                     <asp:Asyncpostbacktrigger controlid="txtjapanmprice"/>
+                                 </Triggers>
+                             </asp:UpdatePanel>
                           </div>             
                       </div>
 
                           <div class="col-md-6" > 
                          <div class="col-md-12 containerbox"> 
                               <p class="pprice">柏木工機</p>
+                                <asp:UpdatePanel runat="server" id="UpdatePanel34" updatemode="Conditional"><ContentTemplate>
                               <div class="row" style="width:100%;margin-left: 30px;margin-right: 50px;">
                                     <div class="web1" style="width:167.15px">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl yellowlable">価格（税抜）</span>
                                         </asp:Label>
-                                        <asp:TextBox CssClass="txtbox" ID="txtkashiwagi" onkeypress="return isNumberKey(event)"  runat="server" style="width:70%;"></asp:TextBox><span> 円</span>
+                                        <asp:TextBox CssClass="txtbox" ID="txtkashiwagi" onchange="KashiwagiPrice_calcuteTax(this)" AutoPostBack="true"  onkeypress="return isNumberKey(event)"  runat="server" style="width:70%;"></asp:TextBox><span> 円</span>
                                     </div>
                                     <div class="web2" style="width:95.51px">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl yellowlable ">利益率</span>
                                         </asp:Label>
-                                        <asp:TextBox CssClass="txtbox" ID="txtkashiwagi_profitrate" ReadOnly="true"  runat="server" style="width:60%;"></asp:TextBox> <span> %</span>
+                                        <asp:TextBox CssClass="txtbox" ID="txtkashiwagi_profitrate" Enabled="false"  runat="server" style="width:60%;"></asp:TextBox> <span> %</span>
                                     </div>
                                 <div class="web2" style="width:95.51px">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl yellowlable ">割引率</span>
                                         </asp:Label>
-                                        <asp:TextBox CssClass="txtbox" ID="txtkashiwagi_discountrate" ReadOnly="true"  runat="server" style="width:60%;"></asp:TextBox> <span> %</span>
+                                        <asp:TextBox CssClass="txtbox" ID="txtkashiwagi_discountrate" Enabled="false"  runat="server" style="width:60%;"></asp:TextBox> <span> %</span>
                                     </div>
                                 <div class="web2" style="width:95.51px">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl yellowlable ">原価率</span>
                                         </asp:Label>
-                                        <asp:TextBox CssClass="txtbox" ID="txtkashiwagi_costrate"  runat="server" style="width:60%;"></asp:TextBox> <span> %</span>
+                                        <asp:TextBox CssClass="txtbox" ID="txtkashiwagi_costrate" Enabled="false"  runat="server" style="width:60%;"></asp:TextBox> <span> %</span>
                                     </div>
-                                </div>                             
+                                </div>
+                                    </ContentTemplate> 
+                                 <Triggers>
+                                     <asp:Asyncpostbacktrigger controlid="txtkashiwagi"/>
+                                 </Triggers>
+                             </asp:UpdatePanel>
                           </div>             
                       </div>
                           
@@ -3637,4 +3691,287 @@ table td {
             else return false;
         }
     </script>
+    <script type="text/javascript">
+          function Web_calcuteTax(txt) {
+              var sale_Price = txt.value.replace(/,/g, '');
+              var cost = document.getElementById("<%=txtcost.ClientID %>").value.replace(/,/g, '');
+              var list_Price = document.getElementById("<%=txtList_Price.ClientID %>").value.replace(/,/g, '');
+              if (sale_Price.trim().length == 0) {
+                  sale_Price = 0;
+              }
+              if (cost.trim().length == 0) {
+                  cost = 0;
+              }
+              if (list_Price.trim().length == 0) {
+                  list_Price = 0;
+              }
+              var discount_rate = Math.round((parseFloat(list_Price - sale_Price).toFixed(2) / parseFloat(list_Price).toFixed(2)) * 100).toFixed(2);
+              var profit_rate = Math.round((parseFloat(sale_Price - cost).toFixed(2) / parseFloat(sale_Price).toFixed(2)) * 100).toFixed(2);
+              var cost_rate = Math.round((parseFloat(cost).toFixed(2) / parseFloat(sale_Price).toFixed(2)) * 100).toFixed(2);
+              if (!isFinite(discount_rate)) {
+                  discount_rate = 0;
+              }
+              if (!isFinite(profit_rate)) {
+                  profit_rate = 0;
+              }
+              if (!isFinite(cost_rate)) {
+                  cost_rate = 0;
+              }
+              document.getElementById("<%=txtprofitrate.ClientID %>").value = profit_rate;
+              document.getElementById("<%=txtdiscountrate.ClientID %>").value = discount_rate;
+              document.getElementById("<%=txtcostrate.ClientID %>").value = cost_rate;
+          }
+
+          function Rakuten_calcuteTax(txt) {
+              var RakutenPrice = txt.value.replace(/,/g, '');
+              var cost = document.getElementById("<%=txtcost.ClientID %>").value.replace(/,/g, '');
+              var list_Price = document.getElementById("<%=txtList_Price.ClientID %>").value.replace(/,/g, '');
+              if (RakutenPrice.trim().length == 0) {
+                  RakutenPrice = 0;
+              }
+              if (cost.trim().length == 0) {
+                  cost = 0;
+              }
+              if (list_Price.trim().length == 0) {
+                  list_Price = 0;
+              }
+
+              var rakuten_discount_rate = Math.round((parseFloat(list_Price - RakutenPrice).toFixed(2) / parseFloat(list_Price).toFixed(2)) * 100).toFixed(2);
+              var rakuten_profit_rate = Math.round((parseFloat(RakutenPrice - cost).toFixed(2) / parseFloat(RakutenPrice).toFixed(2)) * 100).toFixed(2);
+              var rakuten_cost_rate = Math.round((parseFloat(cost).toFixed(2) / parseFloat(RakutenPrice).toFixed(2)) * 100).toFixed(2);
+              if (!isFinite(rakuten_discount_rate)) {
+                  rakuten_discount_rate = 0;
+              }
+              if (!isFinite(rakuten_profit_rate)) {
+                  rakuten_profit_rate = 0;
+              }
+              if (!isFinite(rakuten_cost_rate)) {
+                  rakuten_cost_rate = 0;
+              }
+              document.getElementById("<%=txtrakutenProfitrate.ClientID %>").value = rakuten_profit_rate;
+              document.getElementById("<%=txtrakutenDiscountrate.ClientID %>").value = rakuten_discount_rate;
+              document.getElementById("<%=txtrakutenCostrate.ClientID %>").value = rakuten_cost_rate;
+          }
+          function Yahoo_calcuteTax(txt) {
+              var YahooPrice = txt.value.replace(/,/g, '');
+              var cost = document.getElementById("<%=txtcost.ClientID %>").value.replace(/,/g, '');
+              var list_Price = document.getElementById("<%=txtList_Price.ClientID %>").value.replace(/,/g, '');
+              if (YahooPrice.trim().length == 0) {
+                  YahooPrice = 0;
+              }
+              if (cost.trim().length == 0) {
+                  cost = 0;
+              }
+              if (list_Price.trim().length == 0) {
+                  list_Price = 0;
+              }
+
+              var yahoo_discount_rate = Math.round((parseFloat(list_Price - YahooPrice).toFixed(2) / parseFloat(list_Price).toFixed(2)) * 100).toFixed(2);
+              var yahoo_profit_rate = Math.round((parseFloat(YahooPrice - cost).toFixed(2) / parseFloat(YahooPrice).toFixed(2)) * 100).toFixed(2);
+              var yahoo_cost_rate = Math.round((parseFloat(cost).toFixed(2) / parseFloat(YahooPrice).toFixed(2)) * 100).toFixed(2);
+              if (!isFinite(yahoo_discount_rate)) {
+                  yahoo_discount_rate = 0;
+              }
+              if (!isFinite(yahoo_profit_rate)) {
+                  yahoo_profit_rate = 0;
+              }
+              if (!isFinite(yahoo_cost_rate)) {
+                  yahoo_cost_rate = 0;
+              }
+
+              document.getElementById("<%=txtyahooProfitrate.ClientID %>").value = yahoo_profit_rate;
+              document.getElementById("<%=txtyahooDiscountrate.ClientID %>").value = yahoo_discount_rate;
+              document.getElementById("<%=txtyahooCostrate.ClientID %>").value = yahoo_cost_rate;
+          }
+          function Wowma_calcuteTax(txt) {
+              var WowmaPrice = txt.value.replace(/,/g, '');
+              var cost = document.getElementById("<%=txtcost.ClientID %>").value.replace(/,/g, '');
+              var list_Price = document.getElementById("<%=txtList_Price.ClientID %>").value.replace(/,/g, '');
+              if (WowmaPrice.trim().length == 0) {
+                  WowmaPrice = 0;
+              }
+              if (cost.trim().length == 0) {
+                  cost = 0;
+              }
+              if (list_Price.trim().length == 0) {
+                  list_Price = 0;
+              }
+
+              var wowma_discount_rate = Math.round((parseFloat(list_Price - WowmaPrice).toFixed(2) / parseFloat(list_Price).toFixed(2)) * 100).toFixed(2);
+              var wowma_profit_rate = Math.round((parseFloat(WowmaPrice - cost).toFixed(2) / parseFloat(WowmaPrice).toFixed(2)) * 100).toFixed(2);
+              var wowma_cost_rate = Math.round((parseFloat(cost).toFixed(2) / parseFloat(WowmaPrice).toFixed(2)) * 100).toFixed(2);
+              if (!isFinite(wowma_discount_rate)) {
+                  wowma_discount_rate = 0;
+              }
+              if (!isFinite(wowma_profit_rate)) {
+                  wowma_profit_rate = 0;
+              }
+              if (!isFinite(wowma_cost_rate)) {
+                  wowma_cost_rate = 0;
+              }
+
+              document.getElementById("<%=txtwowmaProfitrate.ClientID %>").value = wowma_profit_rate;
+              document.getElementById("<%=txtwowmaDiscountrate.ClientID %>").value = wowma_discount_rate;
+              document.getElementById("<%=txtwowmaCostrate.ClientID %>").value = wowma_cost_rate;
+          }
+          function Jisha_calcuteTax(txt) {
+              var JishaPrice = txt.value.replace(/,/g, '');
+              var cost = document.getElementById("<%=txtcost.ClientID %>").value.replace(/,/g, '');
+              var list_Price = document.getElementById("<%=txtList_Price.ClientID %>").value.replace(/,/g, '');
+              if (JishaPrice.trim().length == 0) {
+                  JishaPrice = 0;
+              }
+              if (cost.trim().length == 0) {
+                  cost = 0;
+              }
+              if (list_Price.trim().length == 0) {
+                  list_Price = 0;
+              }
+
+              var jisha_discount_rate = Math.round((parseFloat(list_Price - JishaPrice).toFixed(2) / parseFloat(list_Price).toFixed(2)) * 100).toFixed(2);
+              var jisha_profit_rate = Math.round((parseFloat(JishaPrice - cost).toFixed(2) / parseFloat(JishaPrice).toFixed(2)) * 100).toFixed(2);
+              var jisha_cost_rate = Math.round((parseFloat(cost).toFixed(2) / parseFloat(JishaPrice).toFixed(2)) * 100).toFixed(2);
+              if (!isFinite(jisha_discount_rate)) {
+                  jisha_discount_rate = 0;
+              }
+              if (!isFinite(jisha_profit_rate)) {
+                  jisha_profit_rate = 0;
+
+              }
+              if (!isFinite(jisha_cost_rate)) {
+                  jisha_cost_rate = 0;
+              }
+
+              document.getElementById("<%=txtjishaProfitrate.ClientID %>").value = jisha_profit_rate;
+              document.getElementById("<%=txtjishaDiscountrate.ClientID %>").value = jisha_discount_rate;
+              document.getElementById("<%=txtjishaCostrate.ClientID %>").value = jisha_cost_rate;
+          }
+          function Monotarou_calcuteTax(txt) {
+              var MonotaroPrice = txt.value.replace(/,/g, '');
+              var cost = document.getElementById("<%=txtcost.ClientID %>").value.replace(/,/g, '');
+              var list_Price = document.getElementById("<%=txtList_Price.ClientID %>").value.replace(/,/g, '');
+              if (MonotaroPrice.trim().length == 0) {
+                  MonotaroPrice = 0;
+              }
+              if (cost.trim().length == 0) {
+                  cost = 0;
+              }
+              if (list_Price.trim().length == 0) {
+                  list_Price = 0;
+              }
+
+              var monotaro_discount_rate = Math.round((parseFloat(list_Price - MonotaroPrice).toFixed(2) / parseFloat(list_Price).toFixed(2)) * 100).toFixed(2);
+              var monotaro_profit_rate = Math.round((parseFloat(MonotaroPrice - cost).toFixed(2) / parseFloat(MonotaroPrice).toFixed(2)) * 100).toFixed(2);
+              var monotaro_cost_rate = Math.round((parseFloat(cost).toFixed(2) / parseFloat(MonotaroPrice).toFixed(2)) * 100).toFixed(2);
+              if (!isFinite(monotaro_discount_rate)) {
+                  monotaro_discount_rate = 0;
+              }
+              if (!isFinite(monotaro_profit_rate)) {
+                  monotaro_profit_rate = 0;
+              }
+              if (!isFinite(monotaro_cost_rate)) {
+                  monotaro_cost_rate = 0;
+              }
+
+              document.getElementById("<%=txtmonoprice_profitrate.ClientID %>").value = monotaro_profit_rate;
+              document.getElementById("<%=txtmonoprice_discountrate.ClientID %>").value = monotaro_discount_rate;
+              document.getElementById("<%=txtmonoprice_costrate.ClientID %>").value = monotaro_cost_rate;
+          }
+          function Daito_calcuteTax(txt) {
+              var DaitoPrice = txt.value.replace(/,/g, '');
+              var cost = document.getElementById("<%=txtcost.ClientID %>").value.replace(/,/g, '');
+              var list_Price = document.getElementById("<%=txtList_Price.ClientID %>").value.replace(/,/g, '');
+              if (DaitoPrice.trim().length == 0) {
+                  DaitoPrice = 0;
+              }
+              if (cost.trim().length == 0) {
+                  cost = 0;
+              }
+              if (list_Price.trim().length == 0) {
+                  list_Price = 0;
+              }
+
+              var dite_discount_rate = Math.round((parseFloat(list_Price - DaitoPrice).toFixed(2) / parseFloat(list_Price).toFixed(2)) * 100).toFixed(2);
+              var dite_profit_rate = Math.round((parseFloat(DaitoPrice - cost).toFixed(2) / parseFloat(DaitoPrice).toFixed(2)) * 100).toFixed(2);
+              var dite_cost_rate = Math.round((parseFloat(cost).toFixed(2) / parseFloat(DaitoPrice).toFixed(2)) * 100).toFixed(2);
+              if (!isFinite(dite_discount_rate)) {
+                  dite_discount_rate = 0;
+
+              }
+              if (!isFinite(dite_profit_rate)) {
+                  dite_profit_rate =0;
+
+              }
+              if (!isFinite(dite_cost_rate)) {
+                  dite_cost_rate = 0;
+              }
+
+              document.getElementById("<%=txtditeprice_profitrate.ClientID %>").value = dite_profit_rate;
+              document.getElementById("<%=txtditeprice_discountrate.ClientID %>").value = dite_discount_rate;
+              document.getElementById("<%=txtditeprice_costrate.ClientID %>").value = dite_cost_rate;
+          }
+          function Japanmotorpart_calcuteTax(txt) {
+              var JapanMotorPrice = txt.value.replace(/,/g, '');
+              var cost = document.getElementById("<%=txtcost.ClientID %>").value.replace(/,/g, '');
+              var list_Price = document.getElementById("<%=txtList_Price.ClientID %>").value.replace(/,/g, '');
+              if (JapanMotorPrice.trim().length == 0) {
+                  JapanMotorPrice = 0;
+              }
+              if (cost.trim().length == 0) {
+                  cost = 0;
+              }
+              if (list_Price.trim().length == 0) {
+                  list_Price = 0;
+              }
+
+              var japanm_discount_rate = Math.round((parseFloat(list_Price - JapanMotorPrice).toFixed(2) / parseFloat(list_Price).toFixed(2)) * 100).toFixed(2);
+              var japanm_profit_rate = Math.round((parseFloat(JapanMotorPrice - cost).toFixed(2) / parseFloat(JapanMotorPrice).toFixed(2)) * 100).toFixed(2);
+              var japanm_cost_rate = Math.round((parseFloat(cost).toFixed(2) / parseFloat(JapanMotorPrice)) * 100).toFixed(2);
+              if (!isFinite(japanm_discount_rate)) {
+                  japanm_discount_rate = 0;
+              }
+              if (!isFinite(japanm_profit_rate)) {
+                  japanm_profit_rate = 0;
+              }
+              if (!isFinite(japanm_cost_rate)) {
+                  japanm_cost_rate = 0;
+              }
+
+              document.getElementById("<%=txtjapanmprice_profitrate.ClientID %>").value = japanm_profit_rate;
+              document.getElementById("<%=txtjapanmprice_discountrate.ClientID %>").value = japanm_discount_rate;
+              document.getElementById("<%=txtjapanmprice_costrate.ClientID %>").value = japanm_cost_rate;
+          }
+          function KashiwagiPrice_calcuteTax(txt) {
+              var KashiwagiPrice = txt.value.replace(/,/g, '');
+              var cost = document.getElementById("<%=txtcost.ClientID %>").value.replace(/,/g, '');
+              var list_Price = document.getElementById("<%=txtList_Price.ClientID %>").value.replace(/,/g, '');
+              if (KashiwagiPrice.trim().length == 0) {
+                  KashiwagiPrice = 0;
+              }
+              if (cost.trim().length == 0) {
+                  cost = 0;
+              }
+              if (list_Price.trim().length == 0) {
+                  list_Price = 0;
+              }
+
+              var kashiwagi_discount_rate = Math.round((parseFloat(list_Price - KashiwagiPrice).toFixed(2) / parseFloat(list_Price).toFixed(2)) * 100).toFixed(2);
+              var kashiwagi_profit_rate = Math.round((parseFloat(KashiwagiPrice - cost).toFixed(2) / parseFloat(KashiwagiPrice).toFixed(2)) * 100).toFixed(2);
+              var kashiwagi_cost_rate = Math.round((parseFloat(cost).toFixed(2) / parseFloat(KashiwagiPrice).toFixed(2)) * 100).toFixed(2);
+              if (!isFinite(kashiwagi_discount_rate)) {
+                  kashiwagi_discount_rate = 0;
+              }
+              if (!isFinite(kashiwagi_profit_rate)) {
+                  kashiwagi_profit_rate = 0;
+              }
+              if (!isFinite(kashiwagi_cost_rate)) {
+                  kashiwagi_cost_rate = 0;
+              }
+
+              document.getElementById("<%=txtkashiwagi_profitrate.ClientID %>").value = kashiwagi_profit_rate;
+              document.getElementById("<%=txtkashiwagi_discountrate.ClientID %>").value = kashiwagi_discount_rate;
+              document.getElementById("<%=txtkashiwagi_costrate.ClientID %>").value = kashiwagi_cost_rate;
+          }
+
+      </script>
 </asp:Content>

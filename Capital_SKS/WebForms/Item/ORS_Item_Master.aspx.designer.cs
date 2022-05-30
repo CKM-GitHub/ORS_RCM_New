@@ -976,6 +976,15 @@ namespace Capital_SKS.WebForms.Item {
         protected global::System.Web.UI.WebControls.TextBox txtcost;
         
         /// <summary>
+        /// UpdatePanel26 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanel26;
+        
+        /// <summary>
         /// txtSale_Price control.
         /// </summary>
         /// <remarks>
@@ -1010,6 +1019,15 @@ namespace Capital_SKS.WebForms.Item {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtcostrate;
+        
+        /// <summary>
+        /// UpdatePanel27 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanel27;
         
         /// <summary>
         /// txtJishaPrice control.
@@ -1048,6 +1066,15 @@ namespace Capital_SKS.WebForms.Item {
         protected global::System.Web.UI.WebControls.TextBox txtjishaCostrate;
         
         /// <summary>
+        /// UpdatePanel28 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanel28;
+        
+        /// <summary>
         /// txtRakutenPrice control.
         /// </summary>
         /// <remarks>
@@ -1082,6 +1109,15 @@ namespace Capital_SKS.WebForms.Item {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtrakutenCostrate;
+        
+        /// <summary>
+        /// UpdatePanel29 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanel29;
         
         /// <summary>
         /// txtYahooPrice control.
@@ -1120,6 +1156,15 @@ namespace Capital_SKS.WebForms.Item {
         protected global::System.Web.UI.WebControls.TextBox txtyahooCostrate;
         
         /// <summary>
+        /// UpdatePanel30 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanel30;
+        
+        /// <summary>
         /// txtWowmaPrice control.
         /// </summary>
         /// <remarks>
@@ -1154,6 +1199,15 @@ namespace Capital_SKS.WebForms.Item {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtwowmaCostrate;
+        
+        /// <summary>
+        /// UpdatePanel31 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanel31;
         
         /// <summary>
         /// txtmonoprice control.
@@ -1192,6 +1246,15 @@ namespace Capital_SKS.WebForms.Item {
         protected global::System.Web.UI.WebControls.TextBox txtmonoprice_costrate;
         
         /// <summary>
+        /// UpdatePanel32 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanel32;
+        
+        /// <summary>
         /// txtditeprice control.
         /// </summary>
         /// <remarks>
@@ -1228,6 +1291,15 @@ namespace Capital_SKS.WebForms.Item {
         protected global::System.Web.UI.WebControls.TextBox txtditeprice_costrate;
         
         /// <summary>
+        /// UpdatePanel33 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanel33;
+        
+        /// <summary>
         /// txtjapanmprice control.
         /// </summary>
         /// <remarks>
@@ -1262,6 +1334,15 @@ namespace Capital_SKS.WebForms.Item {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtjapanmprice_costrate;
+        
+        /// <summary>
+        /// UpdatePanel34 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanel34;
         
         /// <summary>
         /// txtkashiwagi control.

@@ -1076,7 +1076,7 @@ table td {
                 <section id="image" hidden> 
                     <div class="row" style="margin-top: 10px;margin-right: 1px; margin-bottom:10px">
                          <div class="col-md-12 containerbox"> 
-                              <asp:Label CssClass=""  runat="server" >
+                              <asp:Label CssClass=""  style="padding: 5px;" runat="server" >
                                <span class="label label-md lbl greenlable">商品画像</span>
                            </asp:Label>
                            <ul class="image_list">

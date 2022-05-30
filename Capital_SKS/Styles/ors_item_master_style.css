@@ -425,7 +425,8 @@ div.row {
 ul.image_list {
     display: flex;
     flex-wrap: wrap;
-    margin: 10px;
+    /*margin: 10px;*/
+    padding-left:0px;
 }
     ul.image_list li {
         max-width: 180px;

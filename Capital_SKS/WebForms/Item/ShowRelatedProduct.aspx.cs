@@ -84,7 +84,7 @@ namespace Capital_SKS.WebForms.Item
                 if (ViewState["checkedValue"] != null && arrlst != null)
                 {
                     int c = 0;
-                    if (!unCheck.Checked)
+                    if (!unCheck.Checked && relItem_Code != null)
                     {
                         c = 20 - relItem_Code.Rows.Count;
                     }
@@ -129,7 +129,7 @@ namespace Capital_SKS.WebForms.Item
                 else
                 {
                     int c = 0;
-                    if (!unCheck.Checked)
+                    if (!unCheck.Checked && relItem_Code != null)
                     {
                         c = 20 - relItem_Code.Rows.Count;
                     }

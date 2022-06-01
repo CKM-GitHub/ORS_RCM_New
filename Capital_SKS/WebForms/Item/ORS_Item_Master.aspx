@@ -184,7 +184,7 @@ table td {
                               <asp:Label  runat="server" Text="">
                                  <span class="label label-md lbl greenlable">JANCD</span>
                             </asp:Label>
-                            <asp:TextBox CssClass="txtbox" ID="txtJanCD" onkeypress="return isNumberKeys(event)"  MaxLength="13"  runat="server"></asp:TextBox>
+                            <asp:TextBox CssClass="txtbox" ID="txtJanCD" onkeypress="return isNumberKey(event)"  MaxLength="13"  runat="server"></asp:TextBox>
                             
                               </div>
                               <div class="columnmaker" >

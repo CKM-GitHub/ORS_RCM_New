@@ -59,6 +59,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ORS_RCM_Email_Reader", "Capital_SKS_Email_Reader\ORS_RCM_Email_Reader.csproj", "{819FFB5F-14B7-4F92-9538-84FB5967C9A2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Export_CSV", "Export_CSV\Export_CSV.csproj", "{946A77CA-E12E-4BBD-B81A-2BAD0616048E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -373,6 +375,22 @@ Global
 		{819FFB5F-14B7-4F92-9538-84FB5967C9A2}.Release|x64.ActiveCfg = Release|x86
 		{819FFB5F-14B7-4F92-9538-84FB5967C9A2}.Release|x86.ActiveCfg = Release|x86
 		{819FFB5F-14B7-4F92-9538-84FB5967C9A2}.Release|x86.Build.0 = Release|x86
+		{946A77CA-E12E-4BBD-B81A-2BAD0616048E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{946A77CA-E12E-4BBD-B81A-2BAD0616048E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{946A77CA-E12E-4BBD-B81A-2BAD0616048E}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{946A77CA-E12E-4BBD-B81A-2BAD0616048E}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{946A77CA-E12E-4BBD-B81A-2BAD0616048E}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{946A77CA-E12E-4BBD-B81A-2BAD0616048E}.Debug|x64.Build.0 = Debug|Any CPU
+		{946A77CA-E12E-4BBD-B81A-2BAD0616048E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{946A77CA-E12E-4BBD-B81A-2BAD0616048E}.Debug|x86.Build.0 = Debug|Any CPU
+		{946A77CA-E12E-4BBD-B81A-2BAD0616048E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{946A77CA-E12E-4BBD-B81A-2BAD0616048E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{946A77CA-E12E-4BBD-B81A-2BAD0616048E}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{946A77CA-E12E-4BBD-B81A-2BAD0616048E}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{946A77CA-E12E-4BBD-B81A-2BAD0616048E}.Release|x64.ActiveCfg = Release|Any CPU
+		{946A77CA-E12E-4BBD-B81A-2BAD0616048E}.Release|x64.Build.0 = Release|Any CPU
+		{946A77CA-E12E-4BBD-B81A-2BAD0616048E}.Release|x86.ActiveCfg = Release|Any CPU
+		{946A77CA-E12E-4BBD-B81A-2BAD0616048E}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

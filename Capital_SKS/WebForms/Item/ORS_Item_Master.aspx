@@ -184,7 +184,7 @@ table td {
                               <asp:Label  runat="server" Text="">
                                  <span class="label label-md lbl greenlable">JANCD</span>
                             </asp:Label>
-                            <asp:TextBox CssClass="txtbox" ID="txtJanCD" MaxLength="13"  runat="server"></asp:TextBox>
+                            <asp:TextBox CssClass="txtbox" ID="txtJanCD" onkeypress="return isNumberKeys(event)"  MaxLength="13"  runat="server"></asp:TextBox>
                             
                               </div>
                               <div class="columnmaker" >
@@ -288,11 +288,18 @@ table td {
                                   <i id="iplus" class="fa-solid fa-square-plus"></i>
                                   <i id="iminus" class="fa-solid fa-square-minus nonactive"></i>
                              </asp:LinkButton>
-
-                             <a class="fr_btn" onclick="ShowRelatedProduct(this)">
+                         
+                             <asp:UpdatePanel ID="UpdatePanel36" runat="server">
+                                 <ContentTemplate>
+                                     <asp:LinkButton ID="LinkButton1" CssClass="fr_btn" OnClientClick ="ShowRelatedProduct(this)" runat="server">
+                                         <i class="fa-solid fa-magnifying-glass"></i>
+                                         関連商品を検索する</asp:LinkButton>
+                              </ContentTemplate>
+                             </asp:UpdatePanel>
+                          <%--   <a class="fr_btn" onclick="ShowRelatedProduct(this)">
                                  <i class="fa-solid fa-magnifying-glass"></i>
                                  関連商品を検索する
-                             </a>
+                             </a>--%>
                        <asp:UpdatePanel runat="server" id="UpdatePanelrelative" updatemode="Conditional">
                                   <ContentTemplate>
                             <div class="row" style="width:100%;margin-left: 3px;margin-right: 5px;">
@@ -1079,12 +1086,14 @@ table td {
                               <asp:Label CssClass=""  style="padding: 5px;" runat="server" >
                                <span class="label label-md lbl greenlable">商品画像</span>
                            </asp:Label>
+                             <asp:UpdatePanel ID="UpdatePanel35" runat="server">
+                            <ContentTemplate>
                            <ul class="image_list">
                                <li>
 
                                  
-                                 <%--  <asp:UpdatePanel runat="server" id="UpdatePaneimg1" updatemode="Conditional">
-                                       <ContentTemplate>--%>
+                                   <asp:UpdatePanel runat="server" id="UpdatePaneimg1" updatemode="Conditional">
+                                       <ContentTemplate>
                                        <asp:HyperLink rel="lightbox"  style="height: 180px;" runat="server" NavigateUrl ="~/Item_Image/no_image.jpg" ID="hlImage1">
                                            <asp:Image runat="server" ID="Image1" ImageUrl="~/Item_Image/no_image.jpg" />
                                        </asp:HyperLink>
@@ -1098,17 +1107,17 @@ table td {
                                 <input type="button" class="btn btn-default imgchoosebtn" id ="imginputdelete" value="削除"  onclick="Delete()" hidden/>
                                 <asp:Button runat="server" ID="hideButton" Text="" Style="display: none;"  OnClick="UploadButton_Click" />
                             
-                                <%--</ContentTemplate> 
+                                </ContentTemplate> 
                                 <Triggers>              
                                    <asp:PostBackTrigger controlid="hideButton"/>                 
                                 </Triggers>
-                                </asp:UpdatePanel>--%>
+                                </asp:UpdatePanel>
                                    
                              
                                </li>
                                <li>
-                               <%--  <asp:UpdatePanel runat="server" id="UpdatePanel1" updatemode="Conditional">
-                                 <ContentTemplate>--%>
+                                 <asp:UpdatePanel runat="server" id="UpdatePane2" updatemode="Conditional">
+                                 <ContentTemplate>
                                    <asp:HyperLink rel="lightbox" style="height: 180px;" NavigateUrl ="~/Item_Image/no_image.jpg" runat="server" ID="hlImage2">
                                    <asp:Image runat="server" ID="Image2" ImageUrl ="~/Item_Image/no_image.jpg" /></asp:HyperLink>
                                    <asp:TextBox ID="txtimg2" CssClass="txtbox" ReadOnly="true" runat="server"></asp:TextBox>                                                           
@@ -1118,12 +1127,12 @@ table td {
                                 <input type="button" class="btn btn-default imgchoosebtn" id ="imginput2" value="ファイル選択"  onclick="showBrowseDialog2()"/>
                                  <input type="button" class="btn btn-default imgchoosebtn" id ="imginputdelete2" value="削除"  onclick="Delete2()" hidden/>
                                 <asp:Button runat="server" ID="imgbtn2_1" Text="" Style="display: none;" OnClick="UploadButton2_Click" />
-                              <%--  </ContentTemplate> 
+                               </ContentTemplate> 
                                 <Triggers>              
-                                   <asp:PostBackTrigger controlid="imgbtn2_1"/>--%>
+                                   <asp:PostBackTrigger controlid="imgbtn2_1"/>
                                     <%--<asp:PostBackTrigger controlid="imgbtn2_1"/>--%>                           
-                               <%-- </Triggers>
-                                </asp:UpdatePanel>--%>
+                               </Triggers>
+                                </asp:UpdatePanel>
                                
                                
                                </li>
@@ -1405,6 +1414,8 @@ table td {
                                 </asp:UpdatePanel>
                               </li>
                            </ul>
+                                </ContentTemplate>
+                    </asp:UpdatePanel>
                           </div>
                      </div>
 
@@ -1661,7 +1672,7 @@ table td {
                                  <span class="label label-md lbl yellowlable ">商品詳細登録コメント</span>
                             </asp:Label>   <br />                       
                            <%-- <textarea class="txtarea textamemo" style="height: 95px;" ID="txtcomment" cols="20" rows="2"></textarea>--%>
-                           <asp:TextBox ID="txtcomment" class="txtarea textamemo" style="height: 95px;" runat="server" Width="290px" MaxLength="40" TextMode="MultiLine"></asp:TextBox>
+                           <asp:TextBox ID="txtcomment" class="txtarea textamemo" style="height: 95px;" runat="server" Width="388px" MaxLength="40" TextMode="MultiLine"></asp:TextBox>
                                   <%-- </div> --%>
                                 </div>
                           </div>
@@ -1718,7 +1729,7 @@ table td {
                                     <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl yellowlable" style="width:54.09px">参考URL</span>
                                         </asp:Label>
-                                        <asp:TextBox CssClass="txtbox" ID="txtReferenceURL" MaxLength="500"  runat="server" style="width: 100%;"></asp:TextBox>
+                                        <asp:TextBox CssClass="txtbox" ID="txtReferenceURL" MaxLength="500"  runat="server" style="width: 990px;"></asp:TextBox>
                                  </div>
                              </div>
                      </div>
@@ -2024,7 +2035,8 @@ table td {
                 </section>
                 <div class="row rowbtn">
                     <div class="col-md-2 btncolum">      
-                        <asp:Button CssClass="mainbtnbox btndecoraction" runat="server" ID="btnCopy" OnClientClick="ShowCopy(this)" Text="複製コピー"  />               
+                        <input type="button" class="mainbtnbox btndecoraction" id="btnCopy" onclick="ShowCopy(this)" value="選複製コピー" runat="server"  />
+
                     </div>
                     <div class="col-md-2 btncolum">                             
                         <asp:Button CssClass="mainbtnbox btndecoraction" runat="server" ID="btnPreview" Text="プレビュー" onclick="btnPreview_Click"  />                                 

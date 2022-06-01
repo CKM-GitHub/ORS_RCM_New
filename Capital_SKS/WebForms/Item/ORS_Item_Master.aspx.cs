@@ -291,36 +291,138 @@ namespace Capital_SKS.WebForms.Item
                 #region IsPostBack
                 else if (IsPostBack)
                 {
-
+                    DataTable dt1 = new DataTable();
                     if (Session["btnRelatedbtn_" + ItemCode] != null && Session["btnRelatedbtn_" + ItemCode].ToString() == "ok")
-                    {
-                        txtRelated1.Text = "";
-                        txtRelated2.Text = "";
-                        txtRelated3.Text = "";
-                        txtRelated4.Text = "";
-                        txtRelated5.Text = "";
-                        txtRelated6.Text = "";
-                        txtRelated7.Text = "";
-                        txtRelated8.Text = "";
-                        txtRelated9.Text = "";
-                        txtRelated10.Text = "";
-                        txtRelated11.Text = "";
-                        txtRelated12.Text = "";
-                        txtRelated13.Text = "";
-                        txtRelated14.Text = "";
-                        txtRelated15.Text = "";
-                        txtRelated16.Text = "";
-                        txtRelated17.Text = "";
-                        txtRelated18.Text = "";
-                        txtRelated19.Text = "";
-                        txtRelated20.Text = "";
+                    {                 
                         DisplayRelatedItem();
                         Session.Remove("btnRelatedbtn_" + ItemCode);
                     }
                     else
                     {
+                        dt1.Columns.Add("Related_ItemCode", typeof(String));
+                        DataRow dr = dt1.NewRow();
+                        if (!String.IsNullOrWhiteSpace(txtRelated1.Text))
+                        {
+                            dr = dt1.NewRow();
+                            dr["Related_ItemCode"] = txtRelated1.Text;
+                            dt1.Rows.Add(dr);
+                        }
+                        if (!String.IsNullOrWhiteSpace(txtRelated2.Text))
+                        {
+                            dr = dt1.NewRow();
+                            dr["Related_ItemCode"] = txtRelated2.Text;
+                            dt1.Rows.Add(dr);
+                        }
+                        if (!String.IsNullOrWhiteSpace(txtRelated3.Text))
+                        {
+                            dr = dt1.NewRow();
+                            dr["Related_ItemCode"] = txtRelated3.Text;
+                            dt1.Rows.Add(dr);
+                        }
+                        if (!String.IsNullOrWhiteSpace(txtRelated4.Text))
+                        {
+                            dr = dt1.NewRow();
+                            dr["Related_ItemCode"] = txtRelated4.Text;
+                            dt1.Rows.Add(dr);
+                        }
+                        if (!String.IsNullOrWhiteSpace(txtRelated5.Text))
+                        {
+                            dr = dt1.NewRow();
+                            dr["Related_ItemCode"] = txtRelated5.Text;
+                            dt1.Rows.Add(dr);
+                        }
+                        if (!String.IsNullOrWhiteSpace(txtRelated6.Text))
+                        {
+                            dr = dt1.NewRow();
+                            dr["Related_ItemCode"] = txtRelated6.Text;
+                            dt1.Rows.Add(dr);
+                        }
+                        if (!String.IsNullOrWhiteSpace(txtRelated7.Text))
+                        {
+                            dr = dt1.NewRow();
+                            dr["Related_ItemCode"] = txtRelated7.Text;
+                            dt1.Rows.Add(dr);
+                        }
+                        if (!String.IsNullOrWhiteSpace(txtRelated8.Text))
+                        {
+                            dr = dt1.NewRow();
+                            dr["Related_ItemCode"] = txtRelated8.Text;
+                            dt1.Rows.Add(dr);
+                        }
+                        if (!String.IsNullOrWhiteSpace(txtRelated9.Text))
+                        {
+                            dr = dt1.NewRow();
+                            dr["Related_ItemCode"] = txtRelated9.Text;
+                            dt1.Rows.Add(dr);
+                        }
+                        if (!String.IsNullOrWhiteSpace(txtRelated10.Text))
+                        {
+                            dr = dt1.NewRow();
+                            dr["Related_ItemCode"] = txtRelated10.Text;
+                            dt1.Rows.Add(dr);
+                        }
+                        if (!String.IsNullOrWhiteSpace(txtRelated11.Text))
+                        {
+                            dr = dt1.NewRow();
+                            dr["Related_ItemCode"] = txtRelated11.Text;
+                            dt1.Rows.Add(dr);
+                        }
+                        if (!String.IsNullOrWhiteSpace(txtRelated12.Text))
+                        {
+                            dr = dt1.NewRow();
+                            dr["Related_ItemCode"] = txtRelated12.Text;
+                            dt1.Rows.Add(dr);
+                        }
+                        if (!String.IsNullOrWhiteSpace(txtRelated13.Text))
+                        {
+                            dr = dt1.NewRow();
+                            dr["Related_ItemCode"] = txtRelated13.Text;
+                            dt1.Rows.Add(dr);
+                        }
+                        if (!String.IsNullOrWhiteSpace(txtRelated14.Text))
+                        {
+                            dr = dt1.NewRow();
+                            dr["Related_ItemCode"] = txtRelated14.Text;
+                            dt1.Rows.Add(dr);
+                        }
+                        if (!String.IsNullOrWhiteSpace(txtRelated15.Text))
+                        {
+                            dr = dt1.NewRow();
+                            dr["Related_ItemCode"] = txtRelated15.Text;
+                            dt1.Rows.Add(dr);
+                        }
+                        if (!String.IsNullOrWhiteSpace(txtRelated16.Text))
+                        {
+                            dr = dt1.NewRow();
+                            dr["Related_ItemCode"] = txtRelated16.Text;
+                            dt1.Rows.Add(dr);
+                        }
+                        if (!String.IsNullOrWhiteSpace(txtRelated17.Text))
+                        {
+                            dr = dt1.NewRow();
+                            dr["Related_ItemCode"] = txtRelated17.Text;
+                            dt1.Rows.Add(dr);
+                        }
+                        if (!String.IsNullOrWhiteSpace(txtRelated18.Text))
+                        {
+                            dr = dt1.NewRow();
+                            dr["Related_ItemCode"] = txtRelated18.Text;
+                            dt1.Rows.Add(dr);
+                        }
+                        if (!String.IsNullOrWhiteSpace(txtRelated19.Text))
+                        {
+                            dr = dt1.NewRow();
+                            dr["Related_ItemCode"] = txtRelated19.Text;
+                            dt1.Rows.Add(dr);
+                        }
+                        if (!String.IsNullOrWhiteSpace(txtRelated20.Text))
+                        {
+                            dr = dt1.NewRow();
+                            dr["Related_ItemCode"] = txtRelated20.Text;
+                            dt1.Rows.Add(dr);
+                        }
+                        Session["relItem_Code" + ItemCode] = dt1;
                         Session.Remove("btnRelatedbtn_" + ItemCode);
-                        Session.Remove("relItem_Code"+ItemCode);
                     }
                 
 
@@ -504,6 +606,26 @@ namespace Capital_SKS.WebForms.Item
         {
             try
             {
+                txtRelated1.Text = "";
+                txtRelated2.Text = "";
+                txtRelated3.Text = "";
+                txtRelated4.Text = "";
+                txtRelated5.Text = "";
+                txtRelated6.Text = "";
+                txtRelated7.Text = "";
+                txtRelated8.Text = "";
+                txtRelated9.Text = "";
+                txtRelated10.Text = "";
+                txtRelated11.Text = "";
+                txtRelated12.Text = "";
+                txtRelated13.Text = "";
+                txtRelated14.Text = "";
+                txtRelated15.Text = "";
+                txtRelated16.Text = "";
+                txtRelated17.Text = "";
+                txtRelated18.Text = "";
+                txtRelated19.Text = "";
+                txtRelated20.Text = "";
                 DataTable dt1 = relItem_Code as DataTable;
                 if (dt1 != null && dt1.Rows.Count > 0)
                 {
@@ -575,7 +697,7 @@ namespace Capital_SKS.WebForms.Item
                         }
                     }
                 }
-                Session["relItem_Code" + ItemCode] = dt1;
+               // Session["relItem_Code" + ItemCode] = dt1;
             }
             catch (Exception ex)
             {
@@ -665,8 +787,8 @@ namespace Capital_SKS.WebForms.Item
                         }
                     }
                 }
-                Session["Related_Item_Code" + ItemCode] = dt;
-                Session["relItem_Code" + ItemCode] = null;
+                //Session["Related_Item_Code" + ItemCode] = dt;
+                //Session["relItem_Code" + ItemCode] = null;
             }
             catch (Exception ex)
             {
@@ -3402,7 +3524,7 @@ namespace Capital_SKS.WebForms.Item
                 }
                 Item_Related_Item_BL ItemRelatedBL = new Item_Related_Item_BL();
                 ItemRelatedBL.Insert(itemID, dtRelated);
-                Session["Related_Item_Code" + ItemCode] = dtRelated;
+                //Session["Related_Item_Code" + ItemCode] = dtRelated;
             }
             catch (Exception ex)
             {

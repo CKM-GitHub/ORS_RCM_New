@@ -78,7 +78,7 @@ GridLines="None" style="text-align:justify;  font-size:11px">
 
 <!-- 05:詳細 -->
 <br/>
-<table cellspacing="0" cellpadding="0" border="0">
+<table cellspacing="0" cellpadding="0" border="0" >
 <tbody><tr>
 <td><span class="sale_desc">
 
@@ -124,7 +124,7 @@ GridLines="None" style="text-align:justify;  font-size:11px">
 
 
 <!-- 06:買い物かごエリア -->
-<table cellspacing="0" cellpadding="0" border="0">
+<table cellspacing="0" cellpadding="0" border="0" style="padding-left: 150px;padding-right: 150px;">
 <tbody>
 <tr>
 <!-- ★左側：サムネ -->

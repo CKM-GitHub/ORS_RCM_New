@@ -220,6 +220,24 @@ namespace Capital_SKS.WebForms.Item {
         protected global::System.Web.UI.WebControls.LinkButton dis;
         
         /// <summary>
+        /// UpdatePanel36 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanel36;
+        
+        /// <summary>
+        /// LinkButton1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton LinkButton1;
+        
+        /// <summary>
         /// UpdatePanelrelative control.
         /// </summary>
         /// <remarks>
@@ -1381,6 +1399,24 @@ namespace Capital_SKS.WebForms.Item {
         protected global::System.Web.UI.WebControls.TextBox txtkashiwagi_costrate;
         
         /// <summary>
+        /// UpdatePanel35 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanel35;
+        
+        /// <summary>
+        /// UpdatePaneimg1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePaneimg1;
+        
+        /// <summary>
         /// hlImage1 control.
         /// </summary>
         /// <remarks>
@@ -1424,6 +1460,15 @@ namespace Capital_SKS.WebForms.Item {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button hideButton;
+        
+        /// <summary>
+        /// UpdatePane2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePane2;
         
         /// <summary>
         /// hlImage2 control.

@@ -26,21 +26,6 @@ namespace Capital_SKS.WebForms.Item
                 }
             }
         }
-        public DataTable Related_Item_Code
-        {
-            get
-            {
-                if (Session["Related_Item_Code" + Item_Code] != null)
-                {
-                    DataTable dt = (DataTable)Session["Related_Item_Code" + Item_Code];
-                    return dt;
-                }
-                else
-                {
-                    return null;
-                }
-            }
-        }
         public DataTable relItem_Code
         {
             get
@@ -101,19 +86,14 @@ namespace Capital_SKS.WebForms.Item
                     int c = 0;
                     if (!unCheck.Checked)
                     {
-                        if (relItem_Code == null)
-                            c = 20 - Related_Item_Code.Rows.Count;
-                        else
-                            c = 20 - relItem_Code.Rows.Count;
+                        c = 20 - relItem_Code.Rows.Count;
                     }
                     else 
                         c = 20 ;
-
                     if (arrlst.Count < c)
                         {
                             if (!chk.Checked)
                             {
-                                //if one of check box is unchecked then header checkbox set to uncheck
                                 if (arrlst.Contains(lbl.Text))
                                 {
                                     arrlst.Remove(lbl.Text);
@@ -127,41 +107,31 @@ namespace Capital_SKS.WebForms.Item
                                 ViewState["checkedValue"] = arrlst;
                                 text.Text = "";
                             }
+                    }
+                    else
+                    {
+                        if (!chk.Checked)
+                        {
+                            if (arrlst.Contains(lbl.Text))
+                            {
+                                arrlst.Remove(lbl.Text);
+                                ViewState["checkedValue"] = arrlst;
+                                text.Text = "";
+                            }
                         }
                         else
                         {
-                            if (!chk.Checked)
-                            {
-                                //if one of check box is unchecked then header checkbox set to uncheck
-                                if (arrlst.Contains(lbl.Text))
-                                {
-                                    arrlst.Remove(lbl.Text);
-                                    ViewState["checkedValue"] = arrlst;
-                                    text.Text = "";
-                                }
-                            }
-                            else
-                            {
-                                chk.Checked = false;
-                                text.Text = "関連商品の数が報大値を超えています。";
-                            }
+                            chk.Checked = false;
+                            text.Text = "関連商品の数が報大値を超えています。";
                         }
+                    }
                 }
-                //else if( Related_Item_Code.Rows.Count == 20 )
-                //{
-                //    chk.Checked = false;
-                //    text.Text = "関連商品の数が報大値を超えています。";
-                //}
-
                 else
                 {
                     int c = 0;
                     if (!unCheck.Checked)
                     {
-                        if (relItem_Code == null)
-                            c = 20 - Related_Item_Code.Rows.Count;
-                        else
-                            c = 20 - relItem_Code.Rows.Count;
+                        c = 20 - relItem_Code.Rows.Count;
                     }
                     else
                         c = 20;
@@ -179,16 +149,12 @@ namespace Capital_SKS.WebForms.Item
                             ViewState["checkedValue"] = arrlst1;
                             text.Text = "";
                         }
-
                     }
                     else
                     {
                         arrlst1.Add(lbl.Text);
                         ViewState["checkedValue"] = arrlst1;
                     }
-                    //ArrayList arrlst1 = new ArrayList();
-                    //arrlst1.Add(lbl.Text);
-                    //ViewState["checkedValue"] = arrlst1;
                 }
             }
             catch (Exception ex)
@@ -276,24 +242,13 @@ namespace Capital_SKS.WebForms.Item
                 {
                     if (!unCheck.Checked)
                     {
-                        if (relItem_Code == null && Related_Item_Code != null)
-                        {
-                            for (int i = 0; i < Related_Item_Code.Rows.Count; i++)
-                            {
-                                string Related_ItemCode = Related_Item_Code.Rows[i]["Related_ItemCode"].ToString();
-                                if (!arrlst.Contains(Related_ItemCode))
-                                    arrlst.Add(Related_ItemCode);
-                            }
-                            ViewState["checkedValue"] = arrlst;
-                        }
                         if (relItem_Code != null && relItem_Code.Rows.Count > 0)
                         {
                             for (int i = 0; i < relItem_Code.Rows.Count; i++)
                             {
-                                string Item_Code = relItem_Code.Rows[i]["Item_Code"].ToString();
+                                string Item_Code = relItem_Code.Rows[i]["Related_ItemCode"].ToString();
                                 if (!arrlst.Contains(Item_Code))
                                     arrlst.Add(Item_Code);
-
                             }
                             ViewState["checkedValue"] = arrlst;
                         }
@@ -309,20 +264,11 @@ namespace Capital_SKS.WebForms.Item
                 {
                     if (!unCheck.Checked)
                     {
-                        if (Related_Item_Code != null && relItem_Code == null)
-                        {
-                            for (int i = 0; i < Related_Item_Code.Rows.Count; i++)
-                            {
-                                string Related_ItemCode = Related_Item_Code.Rows[i]["Related_ItemCode"].ToString();
-                                dt.Rows.Add(Related_ItemCode);
-                            }
-                        }
-
                         if (relItem_Code != null && relItem_Code.Rows.Count > 0)
                         {
                             for (int i = 0; i < relItem_Code.Rows.Count; i++)
                             {
-                                string Related_ItemCode = relItem_Code.Rows[i]["Item_Code"].ToString();
+                                string Related_ItemCode = relItem_Code.Rows[i]["Related_ItemCode"].ToString();
                                 dt.Rows.Add(Related_ItemCode);
 
                             }

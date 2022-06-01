@@ -1655,7 +1655,7 @@ table td {
                                      </div>
                               
                               </div>
-                              <div class="floaddiv" style="width:400.08px;" >
+                              <div class="floaddiv" style="min-width:398px;max-width:400px;" >
                              <%--  <div class="" style="padding:5px;">    --%>  
                             <asp:Label  ID="Label7" runat="server" Text="">
                                  <span class="label label-md lbl yellowlable ">商品詳細登録コメント</span>
@@ -1927,7 +1927,7 @@ table td {
                            </asp:Label>
                           <asp:DropDownList ID="ddlgreenpurchasemethod" style="width:100%;" runat="server"></asp:DropDownList>
                               </div>
-                              <div class="floaddiv" style="width:231.89px;" >
+                              <div class="floaddiv" style="max-width: 227.89px;min-width: 220px;" >
                               <asp:Label  runat="server" Text="">
                                  <span class="label label-md lbl yellowlable">特定調達品目</span>
                             </asp:Label>

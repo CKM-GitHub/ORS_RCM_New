@@ -808,6 +808,8 @@ namespace Capital_SKS.WebForms.Item
                     if (!System.Text.RegularExpressions.Regex.IsMatch(txtimg2.Text, ItemCode + "-[0-1]?[0-9]|20.jpg"))
                     {
                         txtimg2.Text = "";
+                        Image2.ImageUrl = imagePath + "no_image.jpg";
+                        hlImage2.NavigateUrl = imagePath + "no_image.jpg";
                         GlobalUI.MessageBox("無効画像名");
                         return;
                     }
@@ -815,6 +817,8 @@ namespace Capital_SKS.WebForms.Item
                     if (txtimg2.Text.Length > 24)
                     {
                         txtimg2.Text = "";
+                        Image2.ImageUrl = imagePath + "no_image.jpg";
+                        hlImage2.NavigateUrl = imagePath + "no_image.jpg";
                         GlobalUI.MessageBox("画像ファイル名は20文字までです");
                         return;
                     }
@@ -831,6 +835,9 @@ namespace Capital_SKS.WebForms.Item
                 }
                 else
                 {
+                    txtimg2.Text = "";
+                    Image2.ImageUrl = imagePath + "no_image.jpg";
+                    hlImage2.NavigateUrl = imagePath + "no_image.jpg";
 
                 }
 
@@ -854,6 +861,8 @@ namespace Capital_SKS.WebForms.Item
                     if (!System.Text.RegularExpressions.Regex.IsMatch(txtimg3.Text, ItemCode + "-[0-1]?[0-9]|20.jpg"))
                     {
                         txtimg3.Text = "";
+                        Image3.ImageUrl = imagePath + "no_image.jpg";
+                        hlImage3.NavigateUrl = imagePath + "no_image.jpg";
                         GlobalUI.MessageBox("無効画像名");
                         return;
                     }
@@ -861,6 +870,8 @@ namespace Capital_SKS.WebForms.Item
                     if (txtimg3.Text.Length > 24)
                     {
                         txtimg3.Text = "";
+                        Image3.ImageUrl = imagePath + "no_image.jpg";
+                        hlImage3.NavigateUrl = imagePath + "no_image.jpg";
                         GlobalUI.MessageBox("画像ファイル名は20文字までです");
                         return;
                     }
@@ -877,7 +888,9 @@ namespace Capital_SKS.WebForms.Item
                 }
                 else
                 {
-
+                    txtimg3.Text = "";
+                    Image3.ImageUrl = imagePath + "no_image.jpg";
+                    hlImage3.NavigateUrl = imagePath + "no_image.jpg";
                 }
 
             }
@@ -900,6 +913,8 @@ namespace Capital_SKS.WebForms.Item
                     if (!System.Text.RegularExpressions.Regex.IsMatch(txtimg4.Text, ItemCode + "-[0-1]?[0-9]|20.jpg"))
                     {
                         txtimg4.Text = "";
+                        Image4.ImageUrl = imagePath + "no_image.jpg";
+                        hlImage4.NavigateUrl = imagePath + "no_image.jpg";
                         GlobalUI.MessageBox("無効画像名");
                         return;
                     }
@@ -907,6 +922,8 @@ namespace Capital_SKS.WebForms.Item
                     if (txtimg4.Text.Length > 24)
                     {
                         txtimg4.Text = "";
+                        Image4.ImageUrl = imagePath + "no_image.jpg";
+                        hlImage4.NavigateUrl = imagePath + "no_image.jpg";
                         GlobalUI.MessageBox("画像ファイル名は20文字までです");
                         return;
                     }
@@ -923,7 +940,9 @@ namespace Capital_SKS.WebForms.Item
                 }
                 else
                 {
-
+                    txtimg4.Text = "";
+                    Image4.ImageUrl = imagePath + "no_image.jpg";
+                    hlImage4.NavigateUrl = imagePath + "no_image.jpg";
                 }
 
             }
@@ -946,6 +965,8 @@ namespace Capital_SKS.WebForms.Item
                     if (!System.Text.RegularExpressions.Regex.IsMatch(txtimg5.Text, ItemCode + "-[0-1]?[0-9]|20.jpg"))
                     {
                         txtimg5.Text = "";
+                        Image5.ImageUrl = imagePath + "no_image.jpg";
+                        hlImage5.NavigateUrl = imagePath + "no_image.jpg";
                         GlobalUI.MessageBox("無効画像名");
                         return;
                     }
@@ -953,6 +974,8 @@ namespace Capital_SKS.WebForms.Item
                     if (txtimg5.Text.Length > 24)
                     {
                         txtimg5.Text = "";
+                        Image5.ImageUrl = imagePath + "no_image.jpg";
+                        hlImage5.NavigateUrl = imagePath + "no_image.jpg";
                         GlobalUI.MessageBox("画像ファイル名は20文字までです");
                         return;
                     }
@@ -969,7 +992,9 @@ namespace Capital_SKS.WebForms.Item
                 }
                 else
                 {
-
+                    txtimg5.Text = "";
+                    Image5.ImageUrl = imagePath + "no_image.jpg";
+                    hlImage5.NavigateUrl = imagePath + "no_image.jpg";
                 }
 
             }
@@ -992,6 +1017,8 @@ namespace Capital_SKS.WebForms.Item
                     if (!System.Text.RegularExpressions.Regex.IsMatch(txtimg6.Text, ItemCode + "-[0-1]?[0-9]|20.jpg"))
                     {
                         txtimg6.Text = "";
+                        Image6.ImageUrl = imagePath + "no_image.jpg";
+                        hlImage6.NavigateUrl = imagePath + "no_image.jpg";
                         GlobalUI.MessageBox("無効画像名");
                         return;
                     }
@@ -999,6 +1026,8 @@ namespace Capital_SKS.WebForms.Item
                     if (txtimg6.Text.Length > 24)
                     {
                         txtimg6.Text = "";
+                        Image6.ImageUrl = imagePath + "no_image.jpg";
+                        hlImage6.NavigateUrl = imagePath + "no_image.jpg";
                         GlobalUI.MessageBox("画像ファイル名は20文字までです");
                         return;
                     }
@@ -1015,6 +1044,9 @@ namespace Capital_SKS.WebForms.Item
                 }
                 else
                 {
+                    txtimg6.Text = "";
+                    Image6.ImageUrl = imagePath + "no_image.jpg";
+                    hlImage6.NavigateUrl = imagePath + "no_image.jpg";
 
                 }
 
@@ -1038,6 +1070,8 @@ namespace Capital_SKS.WebForms.Item
                     if (!System.Text.RegularExpressions.Regex.IsMatch(txtimg7.Text, ItemCode + "-[0-1]?[0-9]|20.jpg"))
                     {
                         txtimg7.Text = "";
+                        Image7.ImageUrl = imagePath + "no_image.jpg";
+                        hlImage7.NavigateUrl = imagePath + "no_image.jpg";
                         GlobalUI.MessageBox("無効画像名");
                         return;
                     }
@@ -1045,6 +1079,8 @@ namespace Capital_SKS.WebForms.Item
                     if (txtimg7.Text.Length > 24)
                     {
                         txtimg7.Text = "";
+                        Image7.ImageUrl = imagePath + "no_image.jpg";
+                        hlImage7.NavigateUrl = imagePath + "no_image.jpg";
                         GlobalUI.MessageBox("画像ファイル名は20文字までです");
                         return;
                     }
@@ -1061,7 +1097,9 @@ namespace Capital_SKS.WebForms.Item
                 }
                 else
                 {
-
+                    txtimg7.Text = "";
+                    Image7.ImageUrl = imagePath + "no_image.jpg";
+                    hlImage7.NavigateUrl = imagePath + "no_image.jpg";
                 }
 
             }
@@ -1084,6 +1122,8 @@ namespace Capital_SKS.WebForms.Item
                     if (!System.Text.RegularExpressions.Regex.IsMatch(txtimg8.Text, ItemCode + "-[0-1]?[0-9]|20.jpg"))
                     {
                         txtimg8.Text = "";
+                        Image8.ImageUrl = imagePath + "no_image.jpg";
+                        hlImage8.NavigateUrl = imagePath + "no_image.jpg";
                         GlobalUI.MessageBox("無効画像名");
                         return;
                     }
@@ -1091,6 +1131,8 @@ namespace Capital_SKS.WebForms.Item
                     if (txtimg8.Text.Length > 24)
                     {
                         txtimg8.Text = "";
+                        Image8.ImageUrl = imagePath + "no_image.jpg";
+                        hlImage8.NavigateUrl = imagePath + "no_image.jpg";
                         GlobalUI.MessageBox("画像ファイル名は20文字までです");
                         return;
                     }
@@ -1107,7 +1149,9 @@ namespace Capital_SKS.WebForms.Item
                 }
                 else
                 {
-
+                    txtimg8.Text = "";
+                    Image8.ImageUrl = imagePath + "no_image.jpg";
+                    hlImage8.NavigateUrl = imagePath + "no_image.jpg";
                 }
 
             }
@@ -1130,6 +1174,8 @@ namespace Capital_SKS.WebForms.Item
                     if (!System.Text.RegularExpressions.Regex.IsMatch(txtimg9.Text, ItemCode + "-[0-1]?[0-9]|20.jpg"))
                     {
                         txtimg9.Text = "";
+                        Image9.ImageUrl = imagePath + "no_image.jpg";
+                        hlImage9.NavigateUrl = imagePath + "no_image.jpg";
                         GlobalUI.MessageBox("無効画像名");
                         return;
                     }
@@ -1137,6 +1183,8 @@ namespace Capital_SKS.WebForms.Item
                     if (txtimg9.Text.Length > 24)
                     {
                         txtimg9.Text = "";
+                        Image9.ImageUrl = imagePath + "no_image.jpg";
+                        hlImage9.NavigateUrl = imagePath + "no_image.jpg";
                         GlobalUI.MessageBox("画像ファイル名は20文字までです");
                         return;
                     }
@@ -1153,7 +1201,9 @@ namespace Capital_SKS.WebForms.Item
                 }
                 else
                 {
-
+                    txtimg9.Text = "";
+                    Image9.ImageUrl = imagePath + "no_image.jpg";
+                    hlImage9.NavigateUrl = imagePath + "no_image.jpg";
                 }
 
             }
@@ -1176,6 +1226,8 @@ namespace Capital_SKS.WebForms.Item
                     if (!System.Text.RegularExpressions.Regex.IsMatch(txtimg10.Text, ItemCode + "-[0-1]?[0-9]|20.jpg"))
                     {
                         txtimg10.Text = "";
+                        Image10.ImageUrl = imagePath + "no_image.jpg";
+                        hlImage10.NavigateUrl = imagePath + "no_image.jpg";
                         GlobalUI.MessageBox("無効画像名");
                         return;
                     }
@@ -1183,6 +1235,8 @@ namespace Capital_SKS.WebForms.Item
                     if (txtimg10.Text.Length > 24)
                     {
                         txtimg10.Text = "";
+                        Image10.ImageUrl = imagePath + "no_image.jpg";
+                        hlImage10.NavigateUrl = imagePath + "no_image.jpg";
                         GlobalUI.MessageBox("画像ファイル名は20文字までです");
                         return;
                     }
@@ -1199,7 +1253,9 @@ namespace Capital_SKS.WebForms.Item
                 }
                 else
                 {
-
+                    txtimg10.Text = "";
+                    Image10.ImageUrl = imagePath + "no_image.jpg";
+                    hlImage10.NavigateUrl = imagePath + "no_image.jpg";
                 }
 
             }
@@ -1222,6 +1278,8 @@ namespace Capital_SKS.WebForms.Item
                     if (!System.Text.RegularExpressions.Regex.IsMatch(txtimg11.Text, ItemCode + "-[0-1]?[0-9]|20.jpg"))
                     {
                         txtimg11.Text = "";
+                        Image11.ImageUrl = imagePath + "no_image.jpg";
+                        hlImage11.NavigateUrl = imagePath + "no_image.jpg";
                         GlobalUI.MessageBox("無効画像名");
                         return;
                     }
@@ -1229,6 +1287,8 @@ namespace Capital_SKS.WebForms.Item
                     if (txtimg11.Text.Length > 24)
                     {
                         txtimg11.Text = "";
+                        Image11.ImageUrl = imagePath + "no_image.jpg";
+                        hlImage11.NavigateUrl = imagePath + "no_image.jpg";
                         GlobalUI.MessageBox("画像ファイル名は20文字までです");
                         return;
                     }
@@ -1245,7 +1305,9 @@ namespace Capital_SKS.WebForms.Item
                 }
                 else
                 {
-
+                    txtimg11.Text = "";
+                    Image11.ImageUrl = imagePath + "no_image.jpg";
+                    hlImage11.NavigateUrl = imagePath + "no_image.jpg";
                 }
 
             }
@@ -1268,6 +1330,8 @@ namespace Capital_SKS.WebForms.Item
                     if (!System.Text.RegularExpressions.Regex.IsMatch(txtimg12.Text, ItemCode + "-[0-1]?[0-9]|20.jpg"))
                     {
                         txtimg12.Text = "";
+                        Image12.ImageUrl = imagePath + "no_image.jpg";
+                        hlImage12.NavigateUrl = imagePath + "no_image.jpg";
                         GlobalUI.MessageBox("無効画像名");
                         return;
                     }
@@ -1275,6 +1339,8 @@ namespace Capital_SKS.WebForms.Item
                     if (txtimg12.Text.Length > 24)
                     {
                         txtimg12.Text = "";
+                        Image12.ImageUrl = imagePath + "no_image.jpg";
+                        hlImage1.NavigateUrl = imagePath + "no_image.jpg";
                         GlobalUI.MessageBox("画像ファイル名は20文字までです");
                         return;
                     }
@@ -1291,7 +1357,9 @@ namespace Capital_SKS.WebForms.Item
                 }
                 else
                 {
-
+                    txtimg12.Text = "";
+                    Image12.ImageUrl = imagePath + "no_image.jpg";
+                    hlImage12.NavigateUrl = imagePath + "no_image.jpg";
                 }
 
             }
@@ -1314,6 +1382,8 @@ namespace Capital_SKS.WebForms.Item
                     if (!System.Text.RegularExpressions.Regex.IsMatch(txtimg13.Text, ItemCode + "-[0-1]?[0-9]|20.jpg"))
                     {
                         txtimg13.Text = "";
+                        Image13.ImageUrl = imagePath + "no_image.jpg";
+                        hlImage13.NavigateUrl = imagePath + "no_image.jpg";
                         GlobalUI.MessageBox("無効画像名");
                         return;
                     }
@@ -1321,6 +1391,8 @@ namespace Capital_SKS.WebForms.Item
                     if (txtimg13.Text.Length > 24)
                     {
                         txtimg13.Text = "";
+                        Image13.ImageUrl = imagePath + "no_image.jpg";
+                        hlImage13.NavigateUrl = imagePath + "no_image.jpg";
                         GlobalUI.MessageBox("画像ファイル名は20文字までです");
                         return;
                     }
@@ -1337,7 +1409,9 @@ namespace Capital_SKS.WebForms.Item
                 }
                 else
                 {
-
+                    txtimg13.Text = "";
+                    Image13.ImageUrl = imagePath + "no_image.jpg";
+                    hlImage13.NavigateUrl = imagePath + "no_image.jpg";
                 }
 
             }
@@ -1360,6 +1434,8 @@ namespace Capital_SKS.WebForms.Item
                     if (!System.Text.RegularExpressions.Regex.IsMatch(txtimg14.Text, ItemCode + "-[0-1]?[0-9]|20.jpg"))
                     {
                         txtimg14.Text = "";
+                        Image14.ImageUrl = imagePath + "no_image.jpg";
+                        hlImage14.NavigateUrl = imagePath + "no_image.jpg";
                         GlobalUI.MessageBox("無効画像名");
                         return;
                     }
@@ -1367,6 +1443,8 @@ namespace Capital_SKS.WebForms.Item
                     if (txtimg14.Text.Length > 24)
                     {
                         txtimg14.Text = "";
+                        Image14.ImageUrl = imagePath + "no_image.jpg";
+                        hlImage14.NavigateUrl = imagePath + "no_image.jpg";
                         GlobalUI.MessageBox("画像ファイル名は20文字までです");
                         return;
                     }
@@ -1383,7 +1461,9 @@ namespace Capital_SKS.WebForms.Item
                 }
                 else
                 {
-
+                    txtimg14.Text = "";
+                    Image14.ImageUrl = imagePath + "no_image.jpg";
+                    hlImage14.NavigateUrl = imagePath + "no_image.jpg";
                 }
 
             }
@@ -1406,6 +1486,8 @@ namespace Capital_SKS.WebForms.Item
                     if (!System.Text.RegularExpressions.Regex.IsMatch(txtimg15.Text, ItemCode + "-[0-1]?[0-9]|20.jpg"))
                     {
                         txtimg15.Text = "";
+                        Image15.ImageUrl = imagePath + "no_image.jpg";
+                        hlImage15.NavigateUrl = imagePath + "no_image.jpg";
                         GlobalUI.MessageBox("無効画像名");
                         return;
                     }
@@ -1413,6 +1495,8 @@ namespace Capital_SKS.WebForms.Item
                     if (txtimg15.Text.Length > 24)
                     {
                         txtimg15.Text = "";
+                        Image15.ImageUrl = imagePath + "no_image.jpg";
+                        hlImage15.NavigateUrl = imagePath + "no_image.jpg";
                         GlobalUI.MessageBox("画像ファイル名は20文字までです");
                         return;
                     }
@@ -1429,7 +1513,9 @@ namespace Capital_SKS.WebForms.Item
                 }
                 else
                 {
-
+                    txtimg15.Text = "";
+                    Image15.ImageUrl = imagePath + "no_image.jpg";
+                    hlImage15.NavigateUrl = imagePath + "no_image.jpg";
                 }
 
             }
@@ -1452,6 +1538,8 @@ namespace Capital_SKS.WebForms.Item
                     if (!System.Text.RegularExpressions.Regex.IsMatch(txtimg16.Text, ItemCode + "-[0-1]?[0-9]|20.jpg"))
                     {
                         txtimg16.Text = "";
+                        Image16.ImageUrl = imagePath + "no_image.jpg";
+                        hlImage16.NavigateUrl = imagePath + "no_image.jpg";
                         GlobalUI.MessageBox("無効画像名");
                         return;
                     }
@@ -1459,6 +1547,8 @@ namespace Capital_SKS.WebForms.Item
                     if (txtimg16.Text.Length > 24)
                     {
                         txtimg16.Text = "";
+                        Image16.ImageUrl = imagePath + "no_image.jpg";
+                        hlImage16.NavigateUrl = imagePath + "no_image.jpg";
                         GlobalUI.MessageBox("画像ファイル名は20文字までです");
                         return;
                     }
@@ -1475,6 +1565,9 @@ namespace Capital_SKS.WebForms.Item
                 }
                 else
                 {
+                    txtimg16.Text = "";
+                    Image16.ImageUrl = imagePath + "no_image.jpg";
+                    hlImage16.NavigateUrl = imagePath + "no_image.jpg";
 
                 }
 
@@ -1498,6 +1591,8 @@ namespace Capital_SKS.WebForms.Item
                     if (!System.Text.RegularExpressions.Regex.IsMatch(txtimg17.Text, ItemCode + "-[0-1]?[0-9]|20.jpg"))
                     {
                         txtimg17.Text = "";
+                        Image17.ImageUrl = imagePath + "no_image.jpg";
+                        hlImage17.NavigateUrl = imagePath + "no_image.jpg";
                         GlobalUI.MessageBox("無効画像名");
                         return;
                     }
@@ -1505,6 +1600,8 @@ namespace Capital_SKS.WebForms.Item
                     if (txtimg17.Text.Length > 24)
                     {
                         txtimg17.Text = "";
+                        Image17.ImageUrl = imagePath + "no_image.jpg";
+                        hlImage17.NavigateUrl = imagePath + "no_image.jpg";
                         GlobalUI.MessageBox("画像ファイル名は20文字までです");
                         return;
                     }
@@ -1521,6 +1618,9 @@ namespace Capital_SKS.WebForms.Item
                 }
                 else
                 {
+                    txtimg17.Text = "";
+                    Image17.ImageUrl = imagePath + "no_image.jpg";
+                    hlImage17.NavigateUrl = imagePath + "no_image.jpg";
 
                 }
 
@@ -1544,6 +1644,8 @@ namespace Capital_SKS.WebForms.Item
                     if (!System.Text.RegularExpressions.Regex.IsMatch(txtimg18.Text, ItemCode + "-[0-1]?[0-9]|20.jpg"))
                     {
                         txtimg18.Text = "";
+                        Image18.ImageUrl = imagePath + "no_image.jpg";
+                        hlImage18.NavigateUrl = imagePath + "no_image.jpg";
                         GlobalUI.MessageBox("無効画像名");
                         return;
                     }
@@ -1551,6 +1653,8 @@ namespace Capital_SKS.WebForms.Item
                     if (txtimg18.Text.Length > 24)
                     {
                         txtimg18.Text = "";
+                        Image18.ImageUrl = imagePath + "no_image.jpg";
+                        hlImage18.NavigateUrl = imagePath + "no_image.jpg";
                         GlobalUI.MessageBox("画像ファイル名は20文字までです");
                         return;
                     }
@@ -1567,7 +1671,9 @@ namespace Capital_SKS.WebForms.Item
                 }
                 else
                 {
-
+                    txtimg18.Text = "";
+                    Image18.ImageUrl = imagePath + "no_image.jpg";
+                    hlImage18.NavigateUrl = imagePath + "no_image.jpg";
                 }
 
             }
@@ -1590,6 +1696,8 @@ namespace Capital_SKS.WebForms.Item
                     if (!System.Text.RegularExpressions.Regex.IsMatch(txtimg19.Text, ItemCode + "-[0-1]?[0-9]|20.jpg"))
                     {
                         txtimg19.Text = "";
+                        Image19.ImageUrl = imagePath + "no_image.jpg";
+                        hlImage19.NavigateUrl = imagePath + "no_image.jpg";
                         GlobalUI.MessageBox("無効画像名");
                         return;
                     }
@@ -1597,6 +1705,8 @@ namespace Capital_SKS.WebForms.Item
                     if (txtimg19.Text.Length > 24)
                     {
                         txtimg19.Text = "";
+                        Image19.ImageUrl = imagePath + "no_image.jpg";
+                        hlImage19.NavigateUrl = imagePath + "no_image.jpg";
                         GlobalUI.MessageBox("画像ファイル名は20文字までです");
                         return;
                     }
@@ -1613,6 +1723,9 @@ namespace Capital_SKS.WebForms.Item
                 }
                 else
                 {
+                    txtimg19.Text = "";
+                    Image19.ImageUrl = imagePath + "no_image.jpg";
+                    hlImage19.NavigateUrl = imagePath + "no_image.jpg";
 
                 }
 
@@ -1636,6 +1749,8 @@ namespace Capital_SKS.WebForms.Item
                     if (!System.Text.RegularExpressions.Regex.IsMatch(txtimg20.Text, ItemCode + "-[0-1]?[0-9]|20.jpg"))
                     {
                         txtimg20.Text = "";
+                        Image20.ImageUrl = imagePath + "no_image.jpg";
+                        hlImage20.NavigateUrl = imagePath + "no_image.jpg";
                         GlobalUI.MessageBox("無効画像名");
                         return;
                     }
@@ -1643,6 +1758,8 @@ namespace Capital_SKS.WebForms.Item
                     if (txtimg20.Text.Length > 24)
                     {
                         txtimg20.Text = "";
+                        Image20.ImageUrl = imagePath + "no_image.jpg";
+                        hlImage20.NavigateUrl = imagePath + "no_image.jpg";
                         GlobalUI.MessageBox("画像ファイル名は20文字までです");
                         return;
                     }
@@ -1659,7 +1776,9 @@ namespace Capital_SKS.WebForms.Item
                 }
                 else
                 {
-
+                    txtimg20.Text = "";
+                    Image20.ImageUrl = imagePath + "no_image.jpg";
+                    hlImage20.NavigateUrl = imagePath + "no_image.jpg";
                 }
 
             }

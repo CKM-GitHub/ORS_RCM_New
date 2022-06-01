@@ -61,8 +61,8 @@
 				            <asp:TextBox ID="txtSearch1" runat="server" Height="32px" Font-Bold="True" Width="210px" MaxLength="50" onkeypress="return isNumberKeys(event)"></asp:TextBox>
                             <asp:Button runat="server" ID="btnSearch" Text="検 索" Font-Bold="True" onclick="btnSearch_Click" />
 	                    </p>
-                           <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-                        <ContentTemplate>  
+                        <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                            <ContentTemplate>  
                         <p style="width:998px;font-size:15px;margin-bottom:-5px;">
                              <asp:CheckBox runat="server" ID="unCheck" AutoPostBack="true"  />
                             <asp:Label ID="Label1"  runat="server" Text="商品口関連商品をクリアして追加する"></asp:Label>
@@ -116,7 +116,7 @@
                                  <asp:Button runat="server" ID="btnClose" Text="決定" Width="150px" OnClick="btn_Close"/>
                         </div>
                         </ContentTemplate>
-                    </asp:UpdatePanel>
+                        </asp:UpdatePanel>
 	                </form>
 	            </div>
             </section>

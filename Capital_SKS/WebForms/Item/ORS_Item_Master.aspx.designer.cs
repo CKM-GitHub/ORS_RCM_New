@@ -3268,7 +3268,7 @@ namespace Capital_SKS.WebForms.Item {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCopy;
+        protected global::System.Web.UI.HtmlControls.HtmlInputButton btnCopy;
         
         /// <summary>
         /// btnPreview control.

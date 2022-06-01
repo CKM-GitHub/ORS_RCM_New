@@ -184,7 +184,7 @@ table td {
                               <asp:Label  runat="server" Text="">
                                  <span class="label label-md lbl greenlable">JANCD</span>
                             </asp:Label>
-                            <asp:TextBox CssClass="txtbox" ID="txtJanCD" MaxLength="13"  runat="server"></asp:TextBox>
+                            <asp:TextBox CssClass="txtbox" ID="txtJanCD" onkeypress="return isNumberKeys(event)"  MaxLength="13"  runat="server"></asp:TextBox>
                             
                               </div>
                               <div class="columnmaker" >
@@ -1672,7 +1672,7 @@ table td {
                                  <span class="label label-md lbl yellowlable ">商品詳細登録コメント</span>
                             </asp:Label>   <br />                       
                            <%-- <textarea class="txtarea textamemo" style="height: 95px;" ID="txtcomment" cols="20" rows="2"></textarea>--%>
-                           <asp:TextBox ID="txtcomment" class="txtarea textamemo" style="height: 95px;" runat="server" Width="290px" MaxLength="40" TextMode="MultiLine"></asp:TextBox>
+                           <asp:TextBox ID="txtcomment" class="txtarea textamemo" style="height: 95px;" runat="server" Width="388px" MaxLength="40" TextMode="MultiLine"></asp:TextBox>
                                   <%-- </div> --%>
                                 </div>
                           </div>
@@ -1729,7 +1729,7 @@ table td {
                                     <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl yellowlable" style="width:54.09px">参考URL</span>
                                         </asp:Label>
-                                        <asp:TextBox CssClass="txtbox" ID="txtReferenceURL" MaxLength="500"  runat="server" style="width: 100%;"></asp:TextBox>
+                                        <asp:TextBox CssClass="txtbox" ID="txtReferenceURL" MaxLength="500"  runat="server" style="width: 990px;"></asp:TextBox>
                                  </div>
                              </div>
                      </div>
@@ -2035,7 +2035,8 @@ table td {
                 </section>
                 <div class="row rowbtn">
                     <div class="col-md-2 btncolum">      
-                        <asp:Button CssClass="mainbtnbox btndecoraction" runat="server" ID="btnCopy" OnClientClick="ShowCopy(this)" Text="複製コピー"  />               
+                        <input type="button" class="mainbtnbox btndecoraction" id="btnCopy" onclick="ShowCopy(this)" value="選複製コピー" runat="server"  />
+
                     </div>
                     <div class="col-md-2 btncolum">                             
                         <asp:Button CssClass="mainbtnbox btndecoraction" runat="server" ID="btnPreview" Text="プレビュー" onclick="btnPreview_Click"  />                                 

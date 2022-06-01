@@ -183,10 +183,10 @@ document.getElementById("<%=txtmanproductcode.ClientID%>").value = null;
         var itemcode = document.getElementById('MainContent_gvItem_lnkItemNo_' + rowNo).innerText;
         if (typeof itemcode === undefined) {
             itemcode = document.getElementById('MainContent_gvItem_lnkItemNo_' + rowNo).outerText;
-            window.open('Item_Master.aspx?Item_Code=' + itemcode, '_blank');
+            window.open('ORS_Item_Master.aspx?Item_Code=' + itemcode, '_blank');
         }
         else {
-            window.open('Item_Master.aspx?Item_Code=' + itemcode, '_blank');
+            window.open('ORS_Item_Master.aspx?Item_Code=' + itemcode, '_blank');
         }
         //document.forms[0].target = "_blank";
         //document.getElementById("<%=hfCtrl.ClientID%>").value = ctrl.id;

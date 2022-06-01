@@ -154,18 +154,18 @@ namespace ORS_RCM
                     {
                         if (Item_Code.Contains("/"))
                         {
-                            Response.Redirect("../Item/Item_Master.aspx?Item_Code=" + Item_Code.Substring(0, Item_Code.Length - (Item_Code.LastIndexOf("/") + 9)), false);
+                            Response.Redirect("../Item/ORS_Item_Master.aspx?Item_Code=" + Item_Code.Substring(0, Item_Code.Length - (Item_Code.LastIndexOf("/") + 9)), false);
                         }
                         else if (Item_Code.Contains("──"))
                         {
-                            Response.Redirect("../Item/Item_Master.aspx?Item_Code=" + Item_Code.Substring(0, Item_Code.Length - 2), false);
+                            Response.Redirect("../Item/ORS_Item_Master.aspx?Item_Code=" + Item_Code.Substring(0, Item_Code.Length - 2), false);
                         }
                         else
                         {
                             if (Item_Code.Length > 13)
-                                Response.Redirect("../Item/Item_Master.aspx?Item_Code=" + Item_Code.Substring(0, Item_Code.Length - 8), false);
+                                Response.Redirect("../Item/ORS_Item_Master.aspx?Item_Code=" + Item_Code.Substring(0, Item_Code.Length - 8), false);
                             else
-                                Response.Redirect("../Item/Item_Master.aspx?Item_Code=" + Item_Code, false);
+                                Response.Redirect("../Item/ORS_Item_Master.aspx?Item_Code=" + Item_Code, false);
                         }
                     }
                 }

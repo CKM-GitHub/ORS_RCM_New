@@ -485,7 +485,7 @@ namespace ORS_RCM
                 if (e.CommandName == "DataEdit")
                 {
                     string Item_Code = e.CommandArgument.ToString();
-                    Response.Redirect("Item_Master.aspx?Item_Code=" + Item_Code, false);
+                    Response.Redirect("ORS_Item_Master.aspx?Item_Code=" + Item_Code, false);
                 }
             }
             catch (Exception ex)
@@ -2015,7 +2015,7 @@ namespace ORS_RCM
                 int index = Convert.ToInt32(index1);
                 Label lnk = gvItem.Rows[index].FindControl("lnkItemNo") as Label;
                 //Page.ClientScript.RegisterStartupScript(GetType(), "MyKey1", "ShopPreview('" +  + "')", true);
-                Response.Redirect("Item_Master.aspx?Item_Code=" + lnk.Text, false);
+                Response.Redirect("ORS_Item_Master.aspx?Item_Code=" + lnk.Text, false);
             }
             catch (Exception ex)
             {

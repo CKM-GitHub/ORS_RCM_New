@@ -860,7 +860,7 @@ namespace ORS_RCM.WebForms.Item_Exhibition
             else if (e.CommandName == "Edit")
             {
                 string Item_Code = e.CommandArgument.ToString();
-                Response.Redirect("../Item/Item_Master.aspx?Item_Code=" + Item_Code);
+                Response.Redirect("../Item/ORS_Item_Master.aspx?Item_Code=" + Item_Code);
 
             }
 

@@ -277,7 +277,7 @@ namespace ORS_RCM
                 int index = Convert.ToInt32(index1);
                 Label lnk = gvItem.Rows[index].FindControl("lnkItemNo") as Label;
                 //Page.ClientScript.RegisterStartupScript(GetType(), "MyKey1", "ShopPreview('" +  + "')", true);
-                Response.Redirect("Item_Master.aspx?Item_Code=" + lnk.Text, false);
+                Response.Redirect("ORS_Item_Master.aspx?Item_Code=" + lnk.Text, false);
             }
             catch (Exception ex)
             {
@@ -994,7 +994,7 @@ namespace ORS_RCM
                 {
                     string Item_Code = e.CommandArgument.ToString();
                     // string url = "Item_Master.aspx?Item_Code=" + Item_Code;
-                    Response.Redirect("Item_Master.aspx?Item_Code=" + Item_Code, false);
+                    Response.Redirect("ORS_Item_Master.aspx?Item_Code=" + Item_Code, false);
                     // Response.Redirect(url);
 
                 }
@@ -1018,7 +1018,7 @@ namespace ORS_RCM
         {
             try
             {
-                Response.Redirect("Item_Master.aspx", false);
+                Response.Redirect("ORS_Item_Master.aspx", false);
             }
             catch (Exception ex)
             {

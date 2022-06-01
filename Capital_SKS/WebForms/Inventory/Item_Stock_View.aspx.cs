@@ -200,7 +200,7 @@ namespace ORS_RCM
                 if (e.CommandName == "Information")
                 {
                     string Item_Code = e.CommandArgument.ToString();
-                    Response.Redirect("../Item/Item_Master.aspx?Item_Code=" + Item_Code,false);
+                    Response.Redirect("../Item/ORS_Item_Master.aspx?Item_Code=" + Item_Code,false);
                 }
             }
             catch (Exception ex)

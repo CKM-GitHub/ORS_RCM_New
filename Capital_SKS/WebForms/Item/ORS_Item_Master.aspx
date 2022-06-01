@@ -184,7 +184,7 @@ table td {
                               <asp:Label  runat="server" Text="">
                                  <span class="label label-md lbl greenlable">JANCD</span>
                             </asp:Label>
-                            <asp:TextBox CssClass="txtbox" ID="txtJanCD" onkeypress="return isNumberKeys(event)"  MaxLength="13"  runat="server"></asp:TextBox>
+                            <asp:TextBox CssClass="txtbox" ID="txtJanCD" onkeypress="return isNumberKey(event)"  MaxLength="13"  runat="server"></asp:TextBox>
                             
                               </div>
                               <div class="columnmaker" >
@@ -201,7 +201,7 @@ table td {
                                  <span class="label label-md lbl greenlable lblrequired">商品名</span>
                             </asp:Label>   <br />                       
                            <%-- <textarea class="txtarea textamemo" ID="txtItem_Name" cols="20" rows="2"></textarea>--%>
-                                  <asp:TextBox ID="txtItem_Name" CssClass="txtarea textamemo" runat="server" TextMode="MultiLine" MaxLength="255"></asp:TextBox>
+                                  <asp:TextBox ID="txtItem_Name" CssClass="txtarea textamemo" runat="server" TextMode="MultiLine" style="width: 65%;" MaxLength="255"></asp:TextBox>
                                    </div> 
                                   </div> 
                           </div>             
@@ -2051,7 +2051,7 @@ table td {
                         <asp:Button CssClass="mainbtnbox btndecoraction" runat="server" ID="btnToCancelExhibit"  OnClientClick ="Confirm()" onclick="btnToCancelExhibit_Click" Text="出品待ち取消し" />              
                     </div>
                     <div class="col-md-2 btncolum">      
-                        <asp:Button CssClass="mainbtnbox btndecoraction" OnClick="btnDelete_Click" runat="server" ID="btnDelete" Text="削除" />                
+                        <asp:Button CssClass="mainbtnbox btndecoraction" OnClientClick ="Confirm()" OnClick="btnDelete_Click" runat="server" ID="btnDelete" Text="削除" />                
                     </div>
                  </div>
             </div>

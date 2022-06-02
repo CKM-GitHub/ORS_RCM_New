@@ -5635,6 +5635,7 @@ namespace Capital_SKS.WebForms.Item
 
 
                 //DataTable dtImage = ImageList as DataTable;
+                DataTable dtImage = GetImageList(ItemID);
                 Item_Image_BL itemImageBL = new Item_Image_BL();
                // dtImage = SetLibraryPhoto(dtImage);
                 if (dtImage.Rows.Count > 0)
@@ -5669,7 +5670,196 @@ namespace Capital_SKS.WebForms.Item
                 Response.Redirect("~/CustomErrorPage.aspx?", false);
             }
         }
+        public DataTable GetImageList(int itemID)
+        {
+            DataTable dtImage = new DataTable();
+            dtImage.Columns.Add(new DataColumn("Item_ID", typeof(int)));
+            dtImage.Columns.Add(new DataColumn("Image_Name", typeof(string)));
+            dtImage.Columns.Add(new DataColumn("Image_Type", typeof(int)));
+            dtImage.Columns.Add(new DataColumn("SN", typeof(int)));
+            if (!String.IsNullOrWhiteSpace(txtimg1.Text.ToString()))
+            {
+                DataRow dr = dtImage.NewRow();
+                dr["Item_ID"] = itemID;
+                dr["Image_Name"] = txtimg1.Text.ToString();
+                dr["Image_Type"] = 0;
+                dr["SN"] = 1;
+                dtImage.Rows.Add(dr);
+            }
+            if (!String.IsNullOrWhiteSpace(txtimg2.Text.ToString()))
+            {
+                DataRow dr = dtImage.NewRow();
+                dr["Item_ID"] = itemID;
+                dr["Image_Name"] = txtimg2.Text.ToString();
+                dr["Image_Type"] = 0;
+                dr["SN"] = 2;
+                dtImage.Rows.Add(dr);
+            }
+            if (!String.IsNullOrWhiteSpace(txtimg3.Text.ToString()))
+            {
+                DataRow dr = dtImage.NewRow();
+                dr["Item_ID"] = itemID;
+                dr["Image_Name"] = txtimg3.Text.ToString();
+                dr["Image_Type"] = 0;
+                dr["SN"] = 3;
+                dtImage.Rows.Add(dr);
+            }
+            if (!String.IsNullOrWhiteSpace(txtimg4.Text.ToString()))
+            {
+                DataRow dr = dtImage.NewRow();
+                dr["Item_ID"] = itemID;
+                dr["Image_Name"] = txtimg4.Text.ToString();
+                dr["Image_Type"] = 0;
+                dr["SN"] = 4;
+                dtImage.Rows.Add(dr);
+            }
+            if (!String.IsNullOrWhiteSpace(txtimg5.Text.ToString()))
+            {
+                DataRow dr = dtImage.NewRow();
+                dr["Item_ID"] = itemID;
+                dr["Image_Name"] = txtimg5.Text.ToString();
+                dr["Image_Type"] = 0;
+                dr["SN"] = 5;
+                dtImage.Rows.Add(dr);
+            }
+            if (!String.IsNullOrWhiteSpace(txtimg6.Text.ToString()))
+            {
+                DataRow dr = dtImage.NewRow();
+                dr["Item_ID"] = itemID;
+                dr["Image_Name"] = txtimg6.Text.ToString();
+                dr["Image_Type"] = 0;
+                dr["SN"] = 6;
+                dtImage.Rows.Add(dr);
+            }
+            if (!String.IsNullOrWhiteSpace(txtimg7.Text.ToString()))
+            {
+                DataRow dr = dtImage.NewRow();
+                dr["Item_ID"] = itemID;
+                dr["Image_Name"] = txtimg7.Text.ToString();
+                dr["Image_Type"] = 0;
+                dr["SN"] = 7;
+                dtImage.Rows.Add(dr);
+            }
+            if (!String.IsNullOrWhiteSpace(txtimg8.Text.ToString()))
+            {
+                DataRow dr = dtImage.NewRow();
+                dr["Item_ID"] = itemID;
+                dr["Image_Name"] = txtimg8.Text.ToString();
+                dr["Image_Type"] = 0;
+                dr["SN"] = 8;
+                dtImage.Rows.Add(dr);
+            }
+            if (!String.IsNullOrWhiteSpace(txtimg9.Text.ToString()))
+            {
+                DataRow dr = dtImage.NewRow();
+                dr["Item_ID"] = itemID;
+                dr["Image_Name"] = txtimg9.Text.ToString();
+                dr["Image_Type"] = 0;
+                dr["SN"] = 9;
+                dtImage.Rows.Add(dr);
+            }
+            if (!String.IsNullOrWhiteSpace(txtimg10.Text.ToString()))
+            {
+                DataRow dr = dtImage.NewRow();
+                dr["Item_ID"] = itemID;
+                dr["Image_Name"] = txtimg10.Text.ToString();
+                dr["Image_Type"] = 0;
+                dr["SN"] = 10;
+                dtImage.Rows.Add(dr);
+            }
+            if (!String.IsNullOrWhiteSpace(txtimg11.Text.ToString()))
+            {
+                DataRow dr = dtImage.NewRow();
+                dr["Item_ID"] = itemID;
+                dr["Image_Name"] = txtimg11.Text.ToString();
+                dr["Image_Type"] = 0;
+                dr["SN"] = 11;
+                dtImage.Rows.Add(dr);
+            }
+            if (!String.IsNullOrWhiteSpace(txtimg12.Text.ToString()))
+            {
+                DataRow dr = dtImage.NewRow();
+                dr["Item_ID"] = itemID;
+                dr["Image_Name"] = txtimg12.Text.ToString();
+                dr["Image_Type"] = 0;
+                dr["SN"] = 12;
+                dtImage.Rows.Add(dr);
+            }
+            if (!String.IsNullOrWhiteSpace(txtimg13.Text.ToString()))
+            {
+                DataRow dr = dtImage.NewRow();
+                dr["Item_ID"] = itemID;
+                dr["Image_Name"] = txtimg13.Text.ToString();
+                dr["Image_Type"] = 0;
+                dr["SN"] = 13;
+                dtImage.Rows.Add(dr);
+            }
+            if (!String.IsNullOrWhiteSpace(txtimg14.Text.ToString()))
+            {
+                DataRow dr = dtImage.NewRow();
+                dr["Item_ID"] = itemID;
+                dr["Image_Name"] = txtimg14.Text.ToString();
+                dr["Image_Type"] = 0;
+                dr["SN"] = 14;
+                dtImage.Rows.Add(dr);
+            }
+            if (!String.IsNullOrWhiteSpace(txtimg15.Text.ToString()))
+            {
+                DataRow dr = dtImage.NewRow();
+                dr["Item_ID"] = itemID;
+                dr["Image_Name"] = txtimg15.Text.ToString();
+                dr["Image_Type"] = 0;
+                dr["SN"] = 15;
+                dtImage.Rows.Add(dr);
+            }
+            if (!String.IsNullOrWhiteSpace(txtimg16.Text.ToString()))
+            {
+                DataRow dr = dtImage.NewRow();
+                dr["Item_ID"] = itemID;
+                dr["Image_Name"] = txtimg16.Text.ToString();
+                dr["Image_Type"] = 0;
+                dr["SN"] = 16;
+                dtImage.Rows.Add(dr);
+            }
+            if (!String.IsNullOrWhiteSpace(txtimg17.Text.ToString()))
+            {
+                DataRow dr = dtImage.NewRow();
+                dr["Item_ID"] = itemID;
+                dr["Image_Name"] = txtimg17.Text.ToString();
+                dr["Image_Type"] = 0;
+                dr["SN"] = 17;
+                dtImage.Rows.Add(dr);
+            }
+            if (!String.IsNullOrWhiteSpace(txtimg18.Text.ToString()))
+            {
+                DataRow dr = dtImage.NewRow();
+                dr["Item_ID"] = itemID;
+                dr["Image_Name"] = txtimg18.Text.ToString();
+                dr["Image_Type"] = 0;
+                dr["SN"] = 18;
+                dtImage.Rows.Add(dr);
+            }
+            if (!String.IsNullOrWhiteSpace(txtimg19.Text.ToString()))
+            {
+                DataRow dr = dtImage.NewRow();
+                dr["Item_ID"] = itemID;
+                dr["Image_Name"] = txtimg19.Text.ToString();
+                dr["Image_Type"] = 0;
+                dr["SN"] = 19;
+                dtImage.Rows.Add(dr);
+            }
+            if (!String.IsNullOrWhiteSpace(txtimg20.Text.ToString()))
+            {
+                DataRow dr = dtImage.NewRow();
+                dr["Item_ID"] = itemID;
+                dr["Image_Name"] = txtimg20.Text.ToString();
+                dr["Image_Type"] = 0;
+                dr["SN"] = 20;
+                dtImage.Rows.Add(dr);
+            }
 
+            return dtImage;
+        }
         //for new case if Item_Image exist or not
         public DataTable SetLibraryPhoto(DataTable dt)
         {

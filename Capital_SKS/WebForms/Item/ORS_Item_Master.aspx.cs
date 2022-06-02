@@ -5603,7 +5603,15 @@ namespace Capital_SKS.WebForms.Item
                     dr["SN"] = 17;
                     dtImage.Rows.Add(dr);
                 }
-
+                if (!String.IsNullOrWhiteSpace(txtimg18.Text.ToString()))
+                {
+                    DataRow dr = dtImage.NewRow();
+                    dr["Item_ID"] = itemID;
+                    dr["Image_Name"] = txtimg18.Text.ToString();
+                    dr["Image_Type"] = 0;
+                    dr["SN"] = 18;
+                    dtImage.Rows.Add(dr);
+                }
                 if (!String.IsNullOrWhiteSpace(txtimg19.Text.ToString()))
                 {
                     DataRow dr = dtImage.NewRow();

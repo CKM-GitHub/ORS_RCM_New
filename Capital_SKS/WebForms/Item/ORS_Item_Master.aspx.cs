@@ -297,7 +297,7 @@ namespace Capital_SKS.WebForms.Item
                         DisplayRelatedItem();
                         Session.Remove("btnRelatedbtn_" + ItemCode);
                     }
-                    else
+                    else 
                     {
                         dt1.Columns.Add("Related_ItemCode", typeof(String));
                         DataRow dr = dt1.NewRow();
@@ -5663,6 +5663,106 @@ namespace Capital_SKS.WebForms.Item
                     }
                 }
                 itemImageBL.Insert(itemID, dtImage);
+                if (String.IsNullOrWhiteSpace(txtimg1.Text.ToString()))
+                {
+                    Image1.ImageUrl = "../../Item_Image/no_image.jpg";
+                    hlImage1.NavigateUrl = "../../Item_Image/no_image.jpg";
+                }
+                if (String.IsNullOrWhiteSpace(txtimg2.Text.ToString()))
+                {
+                    Image2.ImageUrl = "../../Item_Image/no_image.jpg";
+                    hlImage2.NavigateUrl = "../../Item_Image/no_image.jpg";
+                }
+                if (String.IsNullOrWhiteSpace(txtimg3.Text.ToString()))
+                {
+                    Image3.ImageUrl = "../../Item_Image/no_image.jpg";
+                    hlImage3.NavigateUrl = "../../Item_Image/no_image.jpg";
+                }
+                if (String.IsNullOrWhiteSpace(txtimg4.Text.ToString()))
+                {
+                    Image4.ImageUrl = "../../Item_Image/no_image.jpg";
+                    hlImage4.NavigateUrl = "../../Item_Image/no_image.jpg";
+                }
+                if (String.IsNullOrWhiteSpace(txtimg5.Text.ToString()))
+                {
+                    Image5.ImageUrl = "../../Item_Image/no_image.jpg";
+                    hlImage5.NavigateUrl = "../../Item_Image/no_image.jpg";
+                }
+                if (String.IsNullOrWhiteSpace(txtimg6.Text.ToString()))
+                {
+                    Image6.ImageUrl = "../../Item_Image/no_image.jpg";
+                    hlImage6.NavigateUrl = "../../Item_Image/no_image.jpg";
+                }
+                if (String.IsNullOrWhiteSpace(txtimg7.Text.ToString()))
+                {
+                    Image7.ImageUrl = "../../Item_Image/no_image.jpg";
+                    hlImage7.NavigateUrl = "../../Item_Image/no_image.jpg";
+                }
+                if (String.IsNullOrWhiteSpace(txtimg8.Text.ToString()))
+                {
+                    Image8.ImageUrl = "../../Item_Image/no_image.jpg";
+                    hlImage8.NavigateUrl = "../../Item_Image/no_image.jpg";
+                }
+                if (String.IsNullOrWhiteSpace(txtimg9.Text.ToString()))
+                {
+                    Image9.ImageUrl = "../../Item_Image/no_image.jpg";
+                    hlImage9.NavigateUrl = "../../Item_Image/no_image.jpg";
+                }
+                if (String.IsNullOrWhiteSpace(txtimg10.Text.ToString()))
+                {
+                    Image10.ImageUrl = "../../Item_Image/no_image.jpg";
+                    hlImage10.NavigateUrl = "../../Item_Image/no_image.jpg";
+                }
+                if (String.IsNullOrWhiteSpace(txtimg11.Text.ToString()))
+                {
+                    Image11.ImageUrl = "../../Item_Image/no_image.jpg";
+                    hlImage11.NavigateUrl = "../../Item_Image/no_image.jpg";
+                }
+                if (String.IsNullOrWhiteSpace(txtimg12.Text.ToString()))
+                {
+                    Image12.ImageUrl = "../../Item_Image/no_image.jpg";
+                    hlImage12.NavigateUrl = "../../Item_Image/no_image.jpg";
+                }
+                if (String.IsNullOrWhiteSpace(txtimg13.Text.ToString()))
+                {
+                    Image13.ImageUrl = "../../Item_Image/no_image.jpg";
+                    hlImage13.NavigateUrl = "../../Item_Image/no_image.jpg";
+                }
+                if (String.IsNullOrWhiteSpace(txtimg14.Text.ToString()))
+                {
+                    Image14.ImageUrl = "../../Item_Image/no_image.jpg";
+                    hlImage14.NavigateUrl = "../../Item_Image/no_image.jpg";
+                }
+                if (String.IsNullOrWhiteSpace(txtimg15.Text.ToString()))
+                {
+                    Image15.ImageUrl = "../../Item_Image/no_image.jpg";
+                    hlImage15.NavigateUrl = "../../Item_Image/no_image.jpg";
+                }
+                if (String.IsNullOrWhiteSpace(txtimg16.Text.ToString()))
+                {
+                    Image16.ImageUrl = "../../Item_Image/no_image.jpg";
+                    hlImage16.NavigateUrl = "../../Item_Image/no_image.jpg";
+                }
+                if (String.IsNullOrWhiteSpace(txtimg17.Text.ToString()))
+                {
+                    Image17.ImageUrl = "../../Item_Image/no_image.jpg";
+                    hlImage17.NavigateUrl = "../../Item_Image/no_image.jpg";
+                }
+                if (String.IsNullOrWhiteSpace(txtimg18.Text.ToString()))
+                {
+                    Image18.ImageUrl = "../../Item_Image/no_image.jpg";
+                    hlImage18.NavigateUrl = "../../Item_Image/no_image.jpg";
+                }
+                if (String.IsNullOrWhiteSpace(txtimg19.Text.ToString()))
+                {
+                    Image19.ImageUrl = "../../Item_Image/no_image.jpg";
+                    hlImage19.NavigateUrl = "../../Item_Image/no_image.jpg";
+                }
+                if (String.IsNullOrWhiteSpace(txtimg20.Text.ToString()))
+                {
+                    Image20.ImageUrl = "../../Item_Image/no_image.jpg";
+                    hlImage20.NavigateUrl = "../../Item_Image/no_image.jpg";
+                }
             }
             catch (Exception ex)
             {

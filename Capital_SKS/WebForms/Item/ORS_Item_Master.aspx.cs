@@ -3744,7 +3744,8 @@ namespace Capital_SKS.WebForms.Item
                         int ItemID = imeBL.SelectItemID(ItemCode);
                         ime.ID = ItemID;
                         DataTable dtshop = CheckConditon(ItemID, ItemCode);
-                        DataTable dtImage = ImageList as DataTable;
+                        //DataTable dtImage = ImageList as DataTable;
+                        DataTable dtImage = GetImageList(ItemID);
                         string errMsg = CheckCategoryID(dtshop, dtImage);// check sku and Mall category
                         if (!String.IsNullOrWhiteSpace(errMsg))
                         {
@@ -5635,7 +5636,6 @@ namespace Capital_SKS.WebForms.Item
 
 
                 //DataTable dtImage = ImageList as DataTable;
-                DataTable dtImage = GetImageList(ItemID);
                 Item_Image_BL itemImageBL = new Item_Image_BL();
                // dtImage = SetLibraryPhoto(dtImage);
                 if (dtImage.Rows.Count > 0)

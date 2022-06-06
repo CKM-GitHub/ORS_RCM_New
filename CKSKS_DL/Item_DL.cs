@@ -826,7 +826,23 @@ namespace ORS_RCM_DL
                 }
             }
         }
-
+        public void DeleteUpdateSKU(string Item_Code)
+        {
+            try
+            {
+                SqlConnection sqlcon = new SqlConnection(DataConfig.connectionString);
+                SqlCommand cmd = new SqlCommand("SP_DeleteUpdateSKU", sqlcon);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@Item_Code", Item_Code);
+                cmd.Connection.Open();
+                cmd.ExecuteNonQuery();
+                cmd.Connection.Close();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
         public void DeleteSKUOption(string Item_Code)
         {
             try

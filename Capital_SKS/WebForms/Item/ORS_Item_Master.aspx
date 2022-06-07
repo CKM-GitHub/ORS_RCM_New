@@ -152,7 +152,7 @@ table td {
                 </a>
                  <a href="#" id="aoption" class="list-group-item aitem"  onclick="changeStyle(this);">
                 <i class="fa-solid fa-filter" style="margin-right: 5px;"></i>
-                <span class="d-none d-lg-inline">オプションカテゴリ</span>
+                <span class="d-none d-lg-inline">オプション<br/>カテゴリ</span>
                 </a>
                  <a href="#" id="amalldata" class="list-group-item aitem"  onclick="changeStyle(this);">
                 <i class="fa-solid fa-shop" style="margin-right: 5px;"></i>

@@ -162,10 +162,9 @@ table td {
                 <i class="fa-solid fa-building" style="margin-right: 5px;"></i>
                 <span class="d-none d-lg-inline">取引先設定</span>
                 </a>
-                <a href="#" class="list-group-item atxt" style="color:yellow;">
-               
+                 <asp:Label CssClass="list-group-item atxt" style="color:yellow; background-color: var(--left-column-bgcolor); height:400px; text-align:center;" runat="server"> 
                 <span class="d-none d-lg-inline">Ctrl + 上下で<br />メニューを<br />切り替えられます</span>
-                </a>
+                </asp:Label>
                    <%-- </div>--%>
             </div>
                         
@@ -2039,7 +2038,7 @@ table td {
                      </div>
 <%--</div>--%>
                 </section>
-                <div class="row rowbtn">
+                <div class="row rowbtn" style="margin-bottom: 40px;">
                     <div class="col-md-2 btncolum">      
                         <input type="button" class="mainbtnbox btndecoraction" id="btnCopy" onclick="ShowCopy(this)" value="選複製コピー" runat="server"  />
 

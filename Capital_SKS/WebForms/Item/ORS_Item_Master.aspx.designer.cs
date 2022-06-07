@@ -978,6 +978,15 @@ namespace Capital_SKS.WebForms.Item
         protected global::System.Web.UI.WebControls.GridView gvSKU;
 
         /// <summary>
+        /// UpdatePanel37 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanel37;
+
+        /// <summary>
         /// txtList_Price control.
         /// </summary>
         /// <remarks>

@@ -184,8 +184,7 @@ table td {
                               <asp:Label  runat="server" Text="">
                                  <span class="label label-md lbl greenlable">JANCD</span>
                             </asp:Label>
-                            <asp:TextBox CssClass="txtbox" ID="txtJanCD" onkeypress="return isNumberKey(event)"  MaxLength="13"  runat="server"></asp:TextBox>
-                            
+                            <asp:TextBox CssClass="txtbox" ID="txtJanCD" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"  MaxLength="13"  runat="server"></asp:TextBox>                           
                               </div>
                               <div class="columnmaker" >
                                       
@@ -653,7 +652,7 @@ table td {
                                    <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl orangelable">個別送料</span>
                                         </asp:Label>
-                                        <asp:TextBox CssClass="txtbox" ID="txtExtra_Shipping" onkeypress="return isNumberKey(event)" MaxLength="8"  runat="server" style="width: 80%;"></asp:TextBox>
+                                        <asp:TextBox CssClass="txtbox" ID="txtExtra_Shipping" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" MaxLength="8"  runat="server" style="width: 80%;"></asp:TextBox>
                                  <span> 円</span>
                              </div>
                               <div class="floaddiv" style="width:50%;" >
@@ -711,20 +710,27 @@ table td {
                          <div class="col-md-4" style="padding-left: 1px;padding-right: 1px;"> 
                              <div class="col-md-12 containerbox"> 
                                  <p class="pprice">基本価格</p>
+                                  <asp:UpdatePanel runat="server" id="UpdatePanel37" updatemode="Conditional"><ContentTemplate>
                                 <div class="row" style="width:100%;margin-left: 30px;margin-right: 50px;">
                                     <div class="listpricediv" style="width:146.88px">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl greenlable lblrequired">定価（税抜）</span>
                                         </asp:Label>
-                                        <asp:TextBox CssClass="txtbox" ID="txtList_Price" onkeypress="return isNumberKey(event)"  runat="server" style="width: 80%;"></asp:TextBox><span> 円</span>
+                                        <asp:TextBox CssClass="txtbox" ID="txtList_Price" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" AutoPostBack="true" onchange="list_price_change(this)" runat="server" style="width: 80%;"></asp:TextBox><span> 円</span>
                                     </div>
                                     <div class="salepricediv" style="width:146.88px">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl greenlable lblrequired">原価（税抜）</span>
                                         </asp:Label>
-                                        <asp:TextBox CssClass="txtbox" ID="txtcost" onkeypress="return isNumberKey(event)"  runat="server" style="width: 80%;"></asp:TextBox> <span> 円</span>
+                                        <asp:TextBox CssClass="txtbox" ID="txtcost" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" AutoPostBack="true" onchange="cost_change(this)" runat="server" style="width: 80%;"></asp:TextBox> <span> 円</span>
                                     </div>
-                                </div>                           
+                                </div> 
+                                  </ContentTemplate> 
+                                 <Triggers>
+                                     <asp:Asyncpostbacktrigger controlid="txtList_Price"/>
+                                     <asp:Asyncpostbacktrigger controlid="txtcost"/>
+                                 </Triggers>
+                             </asp:UpdatePanel>
                               </div>             
                           </div>
                         
@@ -739,7 +745,7 @@ table td {
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl orangelable lblrequired">販売価格（税抜）</span>
                                         </asp:Label>
-                                        <asp:TextBox CssClass="txtbox" ID="txtSale_Price" onchange="Web_calcuteTax(this)" AutoPostBack="true" onkeypress="return isNumberKey(event)"  runat="server" style="width:70%;"></asp:TextBox><span> 円</span>
+                                        <asp:TextBox CssClass="txtbox" ID="txtSale_Price" onchange="Web_calcuteTax(this)" AutoPostBack="true" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"  runat="server" style="width:70%;"></asp:TextBox><span> 円</span>
                                     </div>
                                     <div class="web2" style="width:99.91px">
                                         <asp:Label CssClass=""  runat="server" >
@@ -776,7 +782,7 @@ table td {
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl orangelable">価格（税抜）</span>
                                         </asp:Label>
-                                        <asp:TextBox CssClass="txtbox" ID="txtJishaPrice" onchange="Jisha_calcuteTax(this)" AutoPostBack="true" onkeypress="return isNumberKey(event)"  runat="server" style="width:70%;"></asp:TextBox><span> 円</span>
+                                        <asp:TextBox CssClass="txtbox" ID="txtJishaPrice" onchange="Jisha_calcuteTax(this)" AutoPostBack="true" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"  runat="server" style="width:70%;"></asp:TextBox><span> 円</span>
                                     </div>
                                     <div class="web2" style="width:95.91px">
                                         <asp:Label CssClass=""  runat="server" >
@@ -816,7 +822,7 @@ table td {
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl orangelable">価格（税抜）</span>
                                         </asp:Label>
-                                        <asp:TextBox CssClass="txtbox" ID="txtRakutenPrice" onchange="Rakuten_calcuteTax(this)" AutoPostBack="true" onkeypress="return isNumberKey(event)" runat="server" style="width:70%;"></asp:TextBox><span> 円</span>
+                                        <asp:TextBox CssClass="txtbox" ID="txtRakutenPrice" onchange="Rakuten_calcuteTax(this)" AutoPostBack="true" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" runat="server" style="width:70%;"></asp:TextBox><span> 円</span>
                                     </div>
                                     <div class="web2" style="width:99.91px">
                                         <asp:Label CssClass=""  runat="server" >
@@ -853,7 +859,7 @@ table td {
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl orangelable">価格（税抜）</span>
                                         </asp:Label>
-                                        <asp:TextBox CssClass="txtbox" ID="txtYahooPrice" onchange="Yahoo_calcuteTax(this)" AutoPostBack="true"  onkeypress="return isNumberKey(event)"  runat="server" style="width:70%;"></asp:TextBox><span> 円</span>
+                                        <asp:TextBox CssClass="txtbox" ID="txtYahooPrice" onchange="Yahoo_calcuteTax(this)" AutoPostBack="true"  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"  runat="server" style="width:70%;"></asp:TextBox><span> 円</span>
                                     </div>
                                     <div class="web2" style="width:95.51px">
                                         <asp:Label CssClass=""  runat="server" >
@@ -893,7 +899,7 @@ table td {
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl orangelable">価格（税抜）</span>
                                         </asp:Label>
-                                        <asp:TextBox CssClass="txtbox" ID="txtWowmaPrice" onchange="Wowma_calcuteTax(this)" AutoPostBack="true" onkeypress="return isNumberKey(event)"  runat="server" style="width:70%;"></asp:TextBox><span> 円</span>
+                                        <asp:TextBox CssClass="txtbox" ID="txtWowmaPrice" onchange="Wowma_calcuteTax(this)" AutoPostBack="true" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"  runat="server" style="width:70%;"></asp:TextBox><span> 円</span>
                                     </div>
                                     <div class="web2" style="width:99.91px">
                                         <asp:Label CssClass=""  runat="server" >
@@ -934,7 +940,7 @@ table td {
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl yellowlable">価格（税抜）</span>
                                         </asp:Label>
-                                        <asp:TextBox CssClass="txtbox" ID="txtmonoprice" onchange="Monotarou_calcuteTax(this)" AutoPostBack="true"  onkeypress="return isNumberKey(event)"  runat="server" style="width:70%;"></asp:TextBox><span> 円</span>
+                                        <asp:TextBox CssClass="txtbox" ID="txtmonoprice" onchange="Monotarou_calcuteTax(this)" AutoPostBack="true"  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"  runat="server" style="width:70%;"></asp:TextBox><span> 円</span>
                                     </div>
                                     <div class="web2" style="width:99.91px">
                                         <asp:Label CssClass=""  runat="server" >
@@ -971,7 +977,7 @@ table td {
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl yellowlable">価格（税抜）</span>
                                         </asp:Label>
-                                        <asp:TextBox CssClass="txtbox" ID="txtditeprice" onchange="Daito_calcuteTax(this)" AutoPostBack="true"  onkeypress="return isNumberKey(event)"  runat="server" style="width:70%;"></asp:TextBox><span> 円</span>
+                                        <asp:TextBox CssClass="txtbox" ID="txtditeprice" onchange="Daito_calcuteTax(this)" AutoPostBack="true"  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"  runat="server" style="width:70%;"></asp:TextBox><span> 円</span>
                                     </div>
                                     <div class="web2" style="width:95.51px">
                                         <asp:Label CssClass=""  runat="server" >
@@ -1011,7 +1017,7 @@ table td {
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl yellowlable">価格（税抜）</span>
                                         </asp:Label>
-                                        <asp:TextBox CssClass="txtbox" ID="txtjapanmprice" onchange="Japanmotorpart_calcuteTax(this)" AutoPostBack="true"  onkeypress="return isNumberKey(event)"  runat="server" style="width:70%;"></asp:TextBox><span> 円</span>
+                                        <asp:TextBox CssClass="txtbox" ID="txtjapanmprice" onchange="Japanmotorpart_calcuteTax(this)" AutoPostBack="true"  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"  runat="server" style="width:70%;"></asp:TextBox><span> 円</span>
                                     </div>
                                     <div class="web2" style="width:99.91px">
                                         <asp:Label CssClass=""  runat="server" >
@@ -1049,7 +1055,7 @@ table td {
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl yellowlable">価格（税抜）</span>
                                         </asp:Label>
-                                        <asp:TextBox CssClass="txtbox" ID="txtkashiwagi" onchange="KashiwagiPrice_calcuteTax(this)" AutoPostBack="true"  onkeypress="return isNumberKey(event)"  runat="server" style="width:70%;"></asp:TextBox><span> 円</span>
+                                        <asp:TextBox CssClass="txtbox" ID="txtkashiwagi" onchange="KashiwagiPrice_calcuteTax(this)" AutoPostBack="true"  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"  runat="server" style="width:70%;"></asp:TextBox><span> 円</span>
                                     </div>
                                     <div class="web2" style="width:95.51px">
                                         <asp:Label CssClass=""  runat="server" >
@@ -1640,13 +1646,13 @@ table td {
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl yellowlable">市場売価</span>
                                         </asp:Label>
-                                        <asp:TextBox CssClass="txtbox" ID="txtsellingprice" MaxLength="40" onkeypress="return isNumberKey(event)"  runat="server" style="width: 80%;"></asp:TextBox><span> 円</span>
+                                        <asp:TextBox CssClass="txtbox" ID="txtsellingprice" MaxLength="40" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"  runat="server" style="width: 80%;"></asp:TextBox><span> 円</span>
                                     </div>
                                     <div class="floaddiv" style="width:141.24px;">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl yellowlable">仕入価格</span>
                                         </asp:Label>
-                                        <asp:TextBox CssClass="txtbox" ID="txtpurchaseprice" MaxLength="40" onkeypress="return isNumberKey(event)"  runat="server" style="width: 80%;"></asp:TextBox> <span> 円</span>
+                                        <asp:TextBox CssClass="txtbox" ID="txtpurchaseprice" MaxLength="40" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"  runat="server" style="width: 80%;"></asp:TextBox> <span> 円</span>
                                     </div>
 
                                      </div>
@@ -1655,7 +1661,7 @@ table td {
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl yellowlable">賞味期限</span>
                                         </asp:Label>
-                                        <asp:TextBox CssClass="txtbox" ID="txtsellby" MaxLength="40" onkeypress="return isNumberKey(event)"  runat="server" style="width: 100%;"></asp:TextBox>
+                                        <asp:TextBox CssClass="txtbox" ID="txtsellby" MaxLength="40" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"  runat="server" style="width: 100%;"></asp:TextBox>
                                     </div>
                                             <div class="floaddiv" style="width:294.77px;">
                                         <asp:Label CssClass=""  runat="server" >
@@ -1688,7 +1694,7 @@ table td {
                                     <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl yellowlable">最低発注数量</span>
                                         </asp:Label>
-                                        <asp:TextBox CssClass="txtbox" ID="txtminimumorderquantity" onkeypress="return isNumberKey(event)"  runat="server" style="width: 100%;"></asp:TextBox>
+                                        <asp:TextBox CssClass="txtbox" ID="txtminimumorderquantity" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"  runat="server" style="width: 100%;"></asp:TextBox>
                                  </div>
                                    <div class="floaddiv" style="width:101.41px;">
                                     <asp:Label CssClass=""  runat="server" >
@@ -1760,7 +1766,7 @@ table td {
                             <asp:Label  ID="Label2" runat="server" Text="">
                                  <span class="label label-md lbl yellowlable">入荷日数</span>
                             </asp:Label>
-                            <asp:TextBox CssClass="txtbox" ID="txtdeliverydays" MaxLength="40" onkeypress="return isNumberKey(event)" runat="server"></asp:TextBox>
+                            <asp:TextBox CssClass="txtbox" ID="txtdeliverydays" MaxLength="40" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" runat="server"></asp:TextBox>
                               </div>
 
                                        <div class="floaddiv" style="width:117.24px;">
@@ -1797,7 +1803,7 @@ table td {
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl yellowlable ">入荷日数</span>
                                         </asp:Label>
-                                        <asp:TextBox CssClass="txtbox" ID="txtksmdeliverydays" MaxLength="40" onkeypress="return isNumberKey(event)"  runat="server" style="width: 80%;"></asp:TextBox>
+                                        <asp:TextBox CssClass="txtbox" ID="txtksmdeliverydays" MaxLength="40" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"  runat="server" style="width: 80%;"></asp:TextBox>
                                     </div>
                                 </div>                           
                               </div>             
@@ -1850,13 +1856,13 @@ table td {
                               <asp:Label CssClass="lblitemcode"  runat="server" >
                                <span class="label label-md lbl yellowlable ">全国</span>
                            </asp:Label>
-                          <asp:TextBox CssClass="txtbox" ID="txtnationwide" MaxLength="40" onkeypress="return isNumberKey(event)"  runat="server" style="width: 100%;"></asp:TextBox>
+                          <asp:TextBox CssClass="txtbox" ID="txtnationwide" MaxLength="40" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"  runat="server" style="width: 100%;"></asp:TextBox>
                               </div>
                               <div class="floaddiv" style="width:171.39px;" >
                               <asp:Label  runat="server" Text="">
                                  <span class="label label-md lbl yellowlable">北海道</span>
                             </asp:Label>
-                          <asp:TextBox CssClass="txtbox" ID="txthokkaido" MaxLength="40" onkeypress="return isNumberKey(event)"  runat="server" style="width: 100%;"></asp:TextBox>
+                          <asp:TextBox CssClass="txtbox" ID="txthokkaido" MaxLength="40" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"  runat="server" style="width: 100%;"></asp:TextBox>
                             
                               </div>
 
@@ -1864,14 +1870,14 @@ table td {
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl yellowlable ">沖縄</span>
                                         </asp:Label>
-                                       <asp:TextBox CssClass="txtbox" ID="txtokinawa" MaxLength="40" onkeypress="return isNumberKey(event)"  runat="server" style="width: 100%;"></asp:TextBox>
+                                       <asp:TextBox CssClass="txtbox" ID="txtokinawa" MaxLength="40" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"  runat="server" style="width: 100%;"></asp:TextBox>
                                     </div>
 
                                   <div class="floaddiv" style="width:171.39px;">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl yellowlable ">離島</span>
                                         </asp:Label>
-                                    <asp:TextBox CssClass="txtbox" ID="txtremoteisland" MaxLength="40" onkeypress="return isNumberKey(event)"  runat="server" style="width: 100%;"></asp:TextBox>
+                                    <asp:TextBox CssClass="txtbox" ID="txtremoteisland" MaxLength="40" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"  runat="server" style="width: 100%;"></asp:TextBox>
                                     </div>
                                 <div class="floaddiv" style="width:312.54px;">
                                         <asp:Label CssClass=""  runat="server" >
@@ -1957,7 +1963,7 @@ table td {
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl yellowlable ">エコマーク認定番号</span>
                                         </asp:Label>
-                                        <asp:TextBox CssClass="txtbox" ID="txtecomartcertifiednumber" onkeypress="return isNumberKey(event)"  runat="server" style="width: 100%;"></asp:TextBox>
+                                        <asp:TextBox CssClass="txtbox" ID="txtecomartcertifiednumber" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"  runat="server" style="width: 100%;"></asp:TextBox>
                                     </div>
                                 <div class="floaddiv" style="width:131.06px;">
                                         <asp:Label CssClass=""  runat="server" >
@@ -2004,20 +2010,20 @@ table td {
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl yellowlable ">倉庫コード</span>
                                         </asp:Label>
-                                        <asp:TextBox CssClass="txtbox" ID="txtwarehouse_code" MaxLength="40" onkeypress="return isNumberKey(event)"  runat="server" style="width: 100%;"></asp:TextBox>
+                                        <asp:TextBox CssClass="txtbox" ID="txtwarehouse_code" MaxLength="40" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"  runat="server" style="width: 100%;"></asp:TextBox>
                                     </div>
 
                                   <div class="floaddiv" style="width:100.81px;">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl yellowlable ">出荷日数</span>
                                         </asp:Label>
-                                        <asp:TextBox CssClass="txtbox" ID="txtday_ship" MaxLength="40" onkeypress="return isNumberKey(event)"  runat="server" style="width: 100%;"></asp:TextBox>
+                                        <asp:TextBox CssClass="txtbox" ID="txtday_ship" MaxLength="40" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"  runat="server" style="width: 100%;"></asp:TextBox>
                                     </div>
                                 <div class="floaddiv" style="width:100.81px;">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl yellowlable ">返品承認要否</span>
                                         </asp:Label>
-                                        <asp:TextBox CssClass="txtbox" ID="txtreturn_necessary" MaxLength="40" onkeypress="return isNumberKey(event)"  runat="server" style="width: 100%;"></asp:TextBox>
+                                        <asp:TextBox CssClass="txtbox" ID="txtreturn_necessary" MaxLength="40" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"  runat="server" style="width: 100%;"></asp:TextBox>
                                     </div>
 
                               <div class="floaddiv" style="width:151.23px;">
@@ -3703,7 +3709,11 @@ table td {
             else return false;
         }
     </script>
+   
     <script type="text/javascript">
+        function numberWithCommas(x) {
+            return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
           function Web_calcuteTax(txt) {
               var sale_Price = txt.value.replace(/,/g, '');
               var cost = document.getElementById("<%=txtcost.ClientID %>").value.replace(/,/g, '');
@@ -3732,8 +3742,8 @@ table td {
               document.getElementById("<%=txtprofitrate.ClientID %>").value = profit_rate;
               document.getElementById("<%=txtdiscountrate.ClientID %>").value = discount_rate;
               document.getElementById("<%=txtcostrate.ClientID %>").value = cost_rate;
+              document.getElementById("<%=txtSale_Price.ClientID %>").value = numberWithCommas(sale_Price);
           }
-
           function Rakuten_calcuteTax(txt) {
               var RakutenPrice = txt.value.replace(/,/g, '');
               var cost = document.getElementById("<%=txtcost.ClientID %>").value.replace(/,/g, '');
@@ -3763,6 +3773,7 @@ table td {
               document.getElementById("<%=txtrakutenProfitrate.ClientID %>").value = rakuten_profit_rate;
               document.getElementById("<%=txtrakutenDiscountrate.ClientID %>").value = rakuten_discount_rate;
               document.getElementById("<%=txtrakutenCostrate.ClientID %>").value = rakuten_cost_rate;
+              document.getElementById("<%=txtRakutenPrice.ClientID %>").value = numberWithCommas(RakutenPrice);
           }
           function Yahoo_calcuteTax(txt) {
               var YahooPrice = txt.value.replace(/,/g, '');
@@ -3794,6 +3805,7 @@ table td {
               document.getElementById("<%=txtyahooProfitrate.ClientID %>").value = yahoo_profit_rate;
               document.getElementById("<%=txtyahooDiscountrate.ClientID %>").value = yahoo_discount_rate;
               document.getElementById("<%=txtyahooCostrate.ClientID %>").value = yahoo_cost_rate;
+              document.getElementById("<%=txtYahooPrice.ClientID %>").value = numberWithCommas(YahooPrice);
           }
           function Wowma_calcuteTax(txt) {
               var WowmaPrice = txt.value.replace(/,/g, '');
@@ -3825,6 +3837,7 @@ table td {
               document.getElementById("<%=txtwowmaProfitrate.ClientID %>").value = wowma_profit_rate;
               document.getElementById("<%=txtwowmaDiscountrate.ClientID %>").value = wowma_discount_rate;
               document.getElementById("<%=txtwowmaCostrate.ClientID %>").value = wowma_cost_rate;
+              document.getElementById("<%=txtWowmaPrice.ClientID %>").value = numberWithCommas(WowmaPrice);
           }
           function Jisha_calcuteTax(txt) {
               var JishaPrice = txt.value.replace(/,/g, '');
@@ -3857,6 +3870,7 @@ table td {
               document.getElementById("<%=txtjishaProfitrate.ClientID %>").value = jisha_profit_rate;
               document.getElementById("<%=txtjishaDiscountrate.ClientID %>").value = jisha_discount_rate;
               document.getElementById("<%=txtjishaCostrate.ClientID %>").value = jisha_cost_rate;
+              document.getElementById("<%=txtJishaPrice.ClientID %>").value = numberWithCommas(JishaPrice);
           }
           function Monotarou_calcuteTax(txt) {
               var MonotaroPrice = txt.value.replace(/,/g, '');
@@ -3888,6 +3902,7 @@ table td {
               document.getElementById("<%=txtmonoprice_profitrate.ClientID %>").value = monotaro_profit_rate;
               document.getElementById("<%=txtmonoprice_discountrate.ClientID %>").value = monotaro_discount_rate;
               document.getElementById("<%=txtmonoprice_costrate.ClientID %>").value = monotaro_cost_rate;
+              document.getElementById("<%=txtmonoprice.ClientID %>").value = numberWithCommas(MonotaroPrice);
           }
           function Daito_calcuteTax(txt) {
               var DaitoPrice = txt.value.replace(/,/g, '');
@@ -3921,6 +3936,7 @@ table td {
               document.getElementById("<%=txtditeprice_profitrate.ClientID %>").value = dite_profit_rate;
               document.getElementById("<%=txtditeprice_discountrate.ClientID %>").value = dite_discount_rate;
               document.getElementById("<%=txtditeprice_costrate.ClientID %>").value = dite_cost_rate;
+              document.getElementById("<%=txtditeprice.ClientID %>").value = numberWithCommas(DaitoPrice);
           }
           function Japanmotorpart_calcuteTax(txt) {
               var JapanMotorPrice = txt.value.replace(/,/g, '');
@@ -3952,6 +3968,7 @@ table td {
               document.getElementById("<%=txtjapanmprice_profitrate.ClientID %>").value = japanm_profit_rate;
               document.getElementById("<%=txtjapanmprice_discountrate.ClientID %>").value = japanm_discount_rate;
               document.getElementById("<%=txtjapanmprice_costrate.ClientID %>").value = japanm_cost_rate;
+              document.getElementById("<%=txtjapanmprice.ClientID %>").value = numberWithCommas(JapanMotorPrice);
           }
           function KashiwagiPrice_calcuteTax(txt) {
               var KashiwagiPrice = txt.value.replace(/,/g, '');
@@ -3983,7 +4000,18 @@ table td {
               document.getElementById("<%=txtkashiwagi_profitrate.ClientID %>").value = kashiwagi_profit_rate;
               document.getElementById("<%=txtkashiwagi_discountrate.ClientID %>").value = kashiwagi_discount_rate;
               document.getElementById("<%=txtkashiwagi_costrate.ClientID %>").value = kashiwagi_cost_rate;
+              document.getElementById("<%=txtkashiwagi.ClientID %>").value = numberWithCommas(KashiwagiPrice);
           }
 
+    </script>
+      <script type="text/javascript">
+          function list_price_change(txt) {
+              var List_Price = txt.value.replace(/,/g, '');
+              document.getElementById("<%=txtList_Price.ClientID %>").value = numberWithCommas(List_Price);
+          }
+          function cost_change(txt) {
+              var cost = txt.value.replace(/,/g, '');
+              document.getElementById("<%=txtcost.ClientID %>").value = numberWithCommas(cost);
+          }
       </script>
 </asp:Content>

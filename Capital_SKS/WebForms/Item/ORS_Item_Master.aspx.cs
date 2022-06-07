@@ -2616,16 +2616,61 @@ namespace Capital_SKS.WebForms.Item
                     return false;
                 }
                 #endregion
-               
-               
-           
-               
+
+                int jan_length = txtJanCD.Text.Length;
+                if (jan_length <13)
+                {
+                    MessageBox("Please enter 13 digits in JANCD");
+                    return false;
+                }
+
+                length = Encoding.GetEncoding(932).GetByteCount(txtmemo.Text);
+                if (length > 1000)
+                {
+                    MessageBox("メモは1000文字までです。");
+                    return false;
+                }
+
+                length = Encoding.GetEncoding(932).GetByteCount(txtsiiresaki.Text);
+                if (length > 100)
+                {
+                    MessageBox("仕入先は100文字までです。");
+                    return false;
+                }
+
+                length = Encoding.GetEncoding(932).GetByteCount(txtminimumorderunit.Text);
+                if (length > 20)
+                {
+                    MessageBox("最低発注単位は20文字までです。");
+                    return false;
+                }
+
+                length = Encoding.GetEncoding(932).GetByteCount(txtmonocategory.Text);
+                if (length > 200)
+                {
+                    MessageBox("カテゴリは200文字までです。");
+                    return false;
+                }
+
+                length = Encoding.GetEncoding(932).GetByteCount(txtcolour.Text);
+                if (length > 40)
+                {
+                    MessageBox("カラーは40文字までです。");
+                    return false;
+                }
+
+                length = Encoding.GetEncoding(932).GetByteCount(txtReferenceURL.Text);
+                if (length > 500)
+                {
+                    MessageBox("参考URLは500文字までです。");
+                    return false;
+                }
                 //if (String.IsNullOrEmpty(txtInactive.Text) && chkActive.Checked == true)
                 //{
                 //    MessageBox("Write a comment for inactive! ");
                 //    return false;
                 //}
-               
+
                 return true;
             }
             catch (Exception ex)
@@ -3949,7 +3994,53 @@ namespace Capital_SKS.WebForms.Item
                     return false;
                 }
                 #endregion
-             
+                int jan_length = txtJanCD.Text.Length;
+                if (jan_length < 13)
+                {
+                    MessageBox("Please enter 13 digits in JANCD");
+                    return false;
+                }
+                length = Encoding.GetEncoding(932).GetByteCount(txtmemo.Text);
+                if (length > 1000)
+                {
+                    MessageBox("メモは1000文字までです。");
+                    return false;
+                }
+
+                length = Encoding.GetEncoding(932).GetByteCount(txtsiiresaki.Text);
+                if (length > 100)
+                {
+                    MessageBox("仕入先は100文字までです。");
+                    return false;
+                }
+
+                length = Encoding.GetEncoding(932).GetByteCount(txtminimumorderunit.Text);
+                if (length > 20)
+                {
+                    MessageBox("最低発注単位は20文字までです。");
+                    return false;
+                }
+
+                length = Encoding.GetEncoding(932).GetByteCount(txtmonocategory.Text);
+                if (length > 200)
+                {
+                    MessageBox("カテゴリは200文字までです。");
+                    return false;
+                }
+
+                length = Encoding.GetEncoding(932).GetByteCount(txtcolour.Text);
+                if (length > 40)
+                {
+                    MessageBox("カラーは40文字までです。");
+                    return false;
+                }
+
+                length = Encoding.GetEncoding(932).GetByteCount(txtReferenceURL.Text);
+                if (length > 500)
+                {
+                    MessageBox("参考URLは500文字までです。");
+                    return false;
+                }
                 return true;
             }
             catch (Exception ex)

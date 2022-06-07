@@ -163,6 +163,7 @@
     <Content Include="DLL\ionic.zip.dll" />
     <Content Include="DLL\Newtonsoft.Json.dll" />
     <Content Include="DLL\OpenPop.dll" />
+    <Content Include="images\close.png" />
     <Content Include="images\logo.jpg" />
     <Content Include="images\logo1.jpg" />
     <Content Include="images\logo2.png" />

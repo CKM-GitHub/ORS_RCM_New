@@ -277,8 +277,11 @@ namespace ORS_RCM.WebForms.Item
                 //    drr[j].Delete();
                 if (dtCurrentTable.Rows.Count == 1)
                 {
-
-                    this.ClientScript.RegisterClientScriptBlock(this.GetType(), "alertMessage", "alert('SKU must at least one row!!')", true);
+                    ibl.DeleteUpdateSKU(Item_Code);
+                    this.ClientScript.RegisterClientScriptBlock(this.GetType(), "alertMessage", "alert('Delete Successfully!')", true);
+                    DataTable dtItem = ibl.SelectItemData(Item_Code);
+                    gdvAddSku.DataSource = dtItem;
+                    gdvAddSku.DataBind();
                 }
                 if (dtCurrentTable.Rows.Count > 1 || drr.Length>=1)
                 {
@@ -286,7 +289,13 @@ namespace ORS_RCM.WebForms.Item
                         drr[j].Delete();
                     dtCurrentTable.AcceptChanges();
                     if (dtCurrentTable.Rows.Count == 1)
-                        this.ClientScript.RegisterClientScriptBlock(this.GetType(), "alertMessage", "alert('SKU must at least one row!!')", true);
+                    {
+                        ibl.DeleteUpdateSKU(Item_Code);
+                        this.ClientScript.RegisterClientScriptBlock(this.GetType(), "alertMessage", "alert('Delete Successfully!')", true);
+                        DataTable dtItem = ibl.SelectItemData(Item_Code);
+                        gdvAddSku.DataSource = dtItem;
+                        gdvAddSku.DataBind();
+                    }
                     else
                     {
                         DataRow[] drrdel = dtCurrentTable.Select("Size_Code='" + sizeCode + "'and Color_Code='" + colorCode + "'");

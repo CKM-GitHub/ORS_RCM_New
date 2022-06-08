@@ -181,7 +181,10 @@ namespace ORS_RCM_BL
             //string result = writer.ToString();
             itemDL.InsertUpdateSKU(dtSKU, Item_Code);
         }
-
+        public void DeleteUpdateSKU(String Item_Code)
+        {
+            itemDL.DeleteUpdateSKU(Item_Code);
+        }
         public void DeleteSKUOption(String Item_Code)
         {
             itemDL.DeleteSKUOption(Item_Code);

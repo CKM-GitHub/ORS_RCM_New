@@ -254,7 +254,7 @@ namespace ORS_RCM_DL
                 throw ex;
             }
         }
-
+        
         public DataTable BindContentUnit2()
         {
             try
@@ -275,6 +275,66 @@ namespace ORS_RCM_DL
             }
         }
 
+        public DataTable BindProcurement_Goods()
+        {
+            try
+            {
+                SqlConnection connectionString = new SqlConnection(DataConfig.connectionString);
+                DataTable dt = new DataTable();
+                SqlDataAdapter sda = new SqlDataAdapter("SP_Procurement_Goods", connectionString);
+                sda.SelectCommand.CommandTimeout = 0;
+                sda.SelectCommand.CommandType = CommandType.StoredProcedure;
+                sda.SelectCommand.Connection.Open();
+                sda.Fill(dt);
+                sda.SelectCommand.Connection.Close();
+
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public DataTable BindRoHS_Directive()
+        {
+            try
+            {
+                SqlConnection connectionString = new SqlConnection(DataConfig.connectionString);
+                DataTable dt = new DataTable();
+                SqlDataAdapter sda = new SqlDataAdapter("SP_RoHS_Directive", connectionString);
+                sda.SelectCommand.CommandTimeout = 0;
+                sda.SelectCommand.CommandType = CommandType.StoredProcedure;
+                sda.SelectCommand.Connection.Open();
+                sda.Fill(dt);
+                sda.SelectCommand.Connection.Close();
+
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public DataTable BindMedical_Supplies()
+        {
+            try
+            {
+                SqlConnection connectionString = new SqlConnection(DataConfig.connectionString);
+                DataTable dt = new DataTable();
+                SqlDataAdapter sda = new SqlDataAdapter("SP_Medical_Supplies", connectionString);
+                sda.SelectCommand.CommandTimeout = 0;
+                sda.SelectCommand.CommandType = CommandType.StoredProcedure;
+                sda.SelectCommand.Connection.Open();
+                sda.Fill(dt);
+                sda.SelectCommand.Connection.Close();
+
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
         public int SaveEdit(Item_Master_Entity ime, string option)
         {
             try

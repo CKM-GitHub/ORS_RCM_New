@@ -134,38 +134,37 @@ table td {
 
                <%-- <div class="list-group text-center text-lg-left">--%>
                 
-                <a href="#" id="amaster" class="list-group-item aitem act"   onclick="changeStyle(this);">
+                <a id="amaster" class="list-group-item aitem act"   onclick="changeStyle(this);">
                 <i class="fa-solid fa-brush " style="margin-right: 5px;"></i>
                 <span class="d-none d-lg-inline">商品情報</span>
                 </a>
-                 <a href="#" id="asku" class="list-group-item aitem"  onclick="changeStyle(this);">
+                 <a id="asku" class="list-group-item aitem"  onclick="changeStyle(this);">
                 <i class="fa-solid fa-list-check" style="margin-right: 5px;"></i>
                 <span class="d-none d-lg-inline">SKU情報</span>
                 </a>
-                 <a href="#" id="aprice" class="list-group-item aitem" onclick="changeStyle(this);">
+                 <a id="aprice" class="list-group-item aitem" onclick="changeStyle(this);">
                 <i class="fa-solid fa-circle-dollar-to-slot" style="margin-right: 5px;"></i>
                 <span class="d-none d-lg-inline">価格関連</span>
                 </a>
-                 <a href="#" id="aimage" class="list-group-item aitem" onclick="changeStyle(this);">
+                 <a id="aimage" class="list-group-item aitem" onclick="changeStyle(this);">
                 <i class="fa-solid fa-images" style="margin-right: 5px;"></i>
                 <span class="d-none d-lg-inline">画像関連</span>
                 </a>
-                 <a href="#" id="aoption" class="list-group-item aitem"  onclick="changeStyle(this);">
+                 <a id="aoption" class="list-group-item aitem"  onclick="changeStyle(this);">
                 <i class="fa-solid fa-filter" style="margin-right: 5px;"></i>
-                <span class="d-none d-lg-inline">オプションカテゴリ</span>
+                <span class="d-none d-lg-inline">オプション<br/>カテゴリ</span>
                 </a>
-                 <a href="#" id="amalldata" class="list-group-item aitem"  onclick="changeStyle(this);">
+                 <a id="amalldata" class="list-group-item aitem"  onclick="changeStyle(this);">
                 <i class="fa-solid fa-shop" style="margin-right: 5px;"></i>
                 <span class="d-none d-lg-inline">モール設定</span>
                 </a>
-                <a href="#" id="asetting" class="list-group-item aitem"  onclick="changeStyle(this);">
+                <a id="asetting" class="list-group-item aitem"  onclick="changeStyle(this);">
                 <i class="fa-solid fa-building" style="margin-right: 5px;"></i>
                 <span class="d-none d-lg-inline">取引先設定</span>
                 </a>
-                <a href="#" class="list-group-item atxt" style="color:yellow;">
-               
+                 <asp:Label CssClass="list-group-item atxt" style="color:yellow; background-color: var(--left-column-bgcolor); height:400px; text-align:center;" runat="server"> 
                 <span class="d-none d-lg-inline">Ctrl + 上下で<br />メニューを<br />切り替えられます</span>
-                </a>
+                </asp:Label>
                    <%-- </div>--%>
             </div>
                         
@@ -184,8 +183,7 @@ table td {
                               <asp:Label  runat="server" Text="">
                                  <span class="label label-md lbl greenlable">JANCD</span>
                             </asp:Label>
-                            <asp:TextBox CssClass="txtbox" ID="txtJanCD" onkeypress="return isNumberKey(event)"  MaxLength="13"  runat="server"></asp:TextBox>
-                            
+                            <asp:TextBox CssClass="txtbox" ID="txtJanCD" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"  MaxLength="13"  runat="server"></asp:TextBox>                           
                               </div>
                               <div class="columnmaker" >
                                       
@@ -653,7 +651,7 @@ table td {
                                    <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl orangelable">個別送料</span>
                                         </asp:Label>
-                                        <asp:TextBox CssClass="txtbox" ID="txtExtra_Shipping" onkeypress="return isNumberKey(event)" MaxLength="8"  runat="server" style="width: 80%;"></asp:TextBox>
+                                        <asp:TextBox CssClass="txtbox" ID="txtExtra_Shipping" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" MaxLength="8"  runat="server" style="width: 80%;"></asp:TextBox>
                                  <span> 円</span>
                              </div>
                               <div class="floaddiv" style="width:50%;" >
@@ -711,20 +709,27 @@ table td {
                          <div class="col-md-4" style="padding-left: 1px;padding-right: 1px;"> 
                              <div class="col-md-12 containerbox"> 
                                  <p class="pprice">基本価格</p>
+                                  <asp:UpdatePanel runat="server" id="UpdatePanel37" updatemode="Conditional"><ContentTemplate>
                                 <div class="row" style="width:100%;margin-left: 30px;margin-right: 50px;">
                                     <div class="listpricediv" style="width:146.88px">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl greenlable lblrequired">定価（税抜）</span>
                                         </asp:Label>
-                                        <asp:TextBox CssClass="txtbox" ID="txtList_Price" onkeypress="return isNumberKey(event)"  runat="server" style="width: 80%;"></asp:TextBox><span> 円</span>
+                                        <asp:TextBox CssClass="txtbox" ID="txtList_Price" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" AutoPostBack="true" onchange="list_price_change(this)" runat="server" style="width: 80%;"></asp:TextBox><span> 円</span>
                                     </div>
                                     <div class="salepricediv" style="width:146.88px">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl greenlable lblrequired">原価（税抜）</span>
                                         </asp:Label>
-                                        <asp:TextBox CssClass="txtbox" ID="txtcost" onkeypress="return isNumberKey(event)"  runat="server" style="width: 80%;"></asp:TextBox> <span> 円</span>
+                                        <asp:TextBox CssClass="txtbox" ID="txtcost" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" AutoPostBack="true" onchange="cost_change(this)" runat="server" style="width: 80%;"></asp:TextBox> <span> 円</span>
                                     </div>
-                                </div>                           
+                                </div> 
+                                  </ContentTemplate> 
+                                 <Triggers>
+                                     <asp:Asyncpostbacktrigger controlid="txtList_Price"/>
+                                     <asp:Asyncpostbacktrigger controlid="txtcost"/>
+                                 </Triggers>
+                             </asp:UpdatePanel>
                               </div>             
                           </div>
                         
@@ -739,7 +744,7 @@ table td {
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl orangelable lblrequired">販売価格（税抜）</span>
                                         </asp:Label>
-                                        <asp:TextBox CssClass="txtbox" ID="txtSale_Price" onchange="Web_calcuteTax(this)" AutoPostBack="true" onkeypress="return isNumberKey(event)"  runat="server" style="width:70%;"></asp:TextBox><span> 円</span>
+                                        <asp:TextBox CssClass="txtbox" ID="txtSale_Price" onchange="Web_calcuteTax(this)" AutoPostBack="true" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"  runat="server" style="width:70%;"></asp:TextBox><span> 円</span>
                                     </div>
                                     <div class="web2" style="width:99.91px">
                                         <asp:Label CssClass=""  runat="server" >
@@ -776,7 +781,7 @@ table td {
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl orangelable">価格（税抜）</span>
                                         </asp:Label>
-                                        <asp:TextBox CssClass="txtbox" ID="txtJishaPrice" onchange="Jisha_calcuteTax(this)" AutoPostBack="true" onkeypress="return isNumberKey(event)"  runat="server" style="width:70%;"></asp:TextBox><span> 円</span>
+                                        <asp:TextBox CssClass="txtbox" ID="txtJishaPrice" onchange="Jisha_calcuteTax(this)" AutoPostBack="true" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"  runat="server" style="width:70%;"></asp:TextBox><span> 円</span>
                                     </div>
                                     <div class="web2" style="width:95.91px">
                                         <asp:Label CssClass=""  runat="server" >
@@ -816,7 +821,7 @@ table td {
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl orangelable">価格（税抜）</span>
                                         </asp:Label>
-                                        <asp:TextBox CssClass="txtbox" ID="txtRakutenPrice" onchange="Rakuten_calcuteTax(this)" AutoPostBack="true" onkeypress="return isNumberKey(event)" runat="server" style="width:70%;"></asp:TextBox><span> 円</span>
+                                        <asp:TextBox CssClass="txtbox" ID="txtRakutenPrice" onchange="Rakuten_calcuteTax(this)" AutoPostBack="true" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" runat="server" style="width:70%;"></asp:TextBox><span> 円</span>
                                     </div>
                                     <div class="web2" style="width:99.91px">
                                         <asp:Label CssClass=""  runat="server" >
@@ -853,7 +858,7 @@ table td {
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl orangelable">価格（税抜）</span>
                                         </asp:Label>
-                                        <asp:TextBox CssClass="txtbox" ID="txtYahooPrice" onchange="Yahoo_calcuteTax(this)" AutoPostBack="true"  onkeypress="return isNumberKey(event)"  runat="server" style="width:70%;"></asp:TextBox><span> 円</span>
+                                        <asp:TextBox CssClass="txtbox" ID="txtYahooPrice" onchange="Yahoo_calcuteTax(this)" AutoPostBack="true"  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"  runat="server" style="width:70%;"></asp:TextBox><span> 円</span>
                                     </div>
                                     <div class="web2" style="width:95.51px">
                                         <asp:Label CssClass=""  runat="server" >
@@ -893,7 +898,7 @@ table td {
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl orangelable">価格（税抜）</span>
                                         </asp:Label>
-                                        <asp:TextBox CssClass="txtbox" ID="txtWowmaPrice" onchange="Wowma_calcuteTax(this)" AutoPostBack="true" onkeypress="return isNumberKey(event)"  runat="server" style="width:70%;"></asp:TextBox><span> 円</span>
+                                        <asp:TextBox CssClass="txtbox" ID="txtWowmaPrice" onchange="Wowma_calcuteTax(this)" AutoPostBack="true" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"  runat="server" style="width:70%;"></asp:TextBox><span> 円</span>
                                     </div>
                                     <div class="web2" style="width:99.91px">
                                         <asp:Label CssClass=""  runat="server" >
@@ -934,7 +939,7 @@ table td {
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl yellowlable">価格（税抜）</span>
                                         </asp:Label>
-                                        <asp:TextBox CssClass="txtbox" ID="txtmonoprice" onchange="Monotarou_calcuteTax(this)" AutoPostBack="true"  onkeypress="return isNumberKey(event)"  runat="server" style="width:70%;"></asp:TextBox><span> 円</span>
+                                        <asp:TextBox CssClass="txtbox" ID="txtmonoprice" onchange="Monotarou_calcuteTax(this)" AutoPostBack="true"  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"  runat="server" style="width:70%;"></asp:TextBox><span> 円</span>
                                     </div>
                                     <div class="web2" style="width:99.91px">
                                         <asp:Label CssClass=""  runat="server" >
@@ -971,7 +976,7 @@ table td {
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl yellowlable">価格（税抜）</span>
                                         </asp:Label>
-                                        <asp:TextBox CssClass="txtbox" ID="txtditeprice" onchange="Daito_calcuteTax(this)" AutoPostBack="true"  onkeypress="return isNumberKey(event)"  runat="server" style="width:70%;"></asp:TextBox><span> 円</span>
+                                        <asp:TextBox CssClass="txtbox" ID="txtditeprice" onchange="Daito_calcuteTax(this)" AutoPostBack="true"  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"  runat="server" style="width:70%;"></asp:TextBox><span> 円</span>
                                     </div>
                                     <div class="web2" style="width:95.51px">
                                         <asp:Label CssClass=""  runat="server" >
@@ -1011,7 +1016,7 @@ table td {
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl yellowlable">価格（税抜）</span>
                                         </asp:Label>
-                                        <asp:TextBox CssClass="txtbox" ID="txtjapanmprice" onchange="Japanmotorpart_calcuteTax(this)" AutoPostBack="true"  onkeypress="return isNumberKey(event)"  runat="server" style="width:70%;"></asp:TextBox><span> 円</span>
+                                        <asp:TextBox CssClass="txtbox" ID="txtjapanmprice" onchange="Japanmotorpart_calcuteTax(this)" AutoPostBack="true"  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"  runat="server" style="width:70%;"></asp:TextBox><span> 円</span>
                                     </div>
                                     <div class="web2" style="width:99.91px">
                                         <asp:Label CssClass=""  runat="server" >
@@ -1049,7 +1054,7 @@ table td {
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl yellowlable">価格（税抜）</span>
                                         </asp:Label>
-                                        <asp:TextBox CssClass="txtbox" ID="txtkashiwagi" onchange="KashiwagiPrice_calcuteTax(this)" AutoPostBack="true"  onkeypress="return isNumberKey(event)"  runat="server" style="width:70%;"></asp:TextBox><span> 円</span>
+                                        <asp:TextBox CssClass="txtbox" ID="txtkashiwagi" onchange="KashiwagiPrice_calcuteTax(this)" AutoPostBack="true"  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"  runat="server" style="width:70%;"></asp:TextBox><span> 円</span>
                                     </div>
                                     <div class="web2" style="width:95.51px">
                                         <asp:Label CssClass=""  runat="server" >
@@ -1101,7 +1106,7 @@ table td {
                                            <%--<asp:FileUpload ID="FileUploadtest" runat="server" />
                                            <asp:Label ID="lblMessage" runat="server" Text="File uploaded successfully." ForeColor="Green" Visible="false" />
                                             <asp:Button ID="Button2" Text="Upload" runat="server" OnClick="Upload" Style="display: none" />--%>     
-                                    <asp:TextBox ID="txtimg1" CssClass="txtbox" Enabled="false" runat="server"></asp:TextBox> 
+                                    <asp:TextBox ID="txtimg1" CssClass="txtbox" runat="server"></asp:TextBox> 
                                 <asp:FileUpload ID="FileUpload1" Style="display: none" runat="server" accept=".jpg" onchange="upload()" />
                                 <input type="button" class="btn btn-default imgchoosebtn" id ="imginput" value="ファイル選択"  onclick="showBrowseDialog()"/>
                                 <input type="button" class="btn btn-default imgchoosebtn" id ="imginputdelete" value="削除"  onclick="Delete()" hidden/>
@@ -1120,7 +1125,7 @@ table td {
                                  <ContentTemplate>
                                    <asp:HyperLink rel="lightbox" style="height: 180px;" NavigateUrl ="~/Item_Image/no_image.jpg" runat="server" ID="hlImage2">
                                    <asp:Image runat="server" ID="Image2" ImageUrl ="~/Item_Image/no_image.jpg" /></asp:HyperLink>
-                                   <asp:TextBox ID="txtimg2" CssClass="txtbox" Enabled="false" runat="server"></asp:TextBox>                                                           
+                                   <asp:TextBox ID="txtimg2" CssClass="txtbox"  runat="server"></asp:TextBox>                                                           
                                   <%-- <asp:FileUpload ID="FileUpload2" Style="display: none" runat="server" onchange="upload2()" />
                                    <asp:Button runat="server" CssClass="btn btn-default imgchoosebtn" ID="imgbtn2" Text ="ファイル選択" OnClientClick="showBrowseDialog2()" />--%>
                                 <asp:FileUpload ID="FileUpload2" Style="display: none" runat="server" accept=".jpg" onchange="upload2()" />
@@ -1142,7 +1147,7 @@ table td {
                                  <ContentTemplate>    
 
                                    <asp:HyperLink rel="lightbox" runat="server" style="height: 180px;" ID="hlImage3"><asp:Image runat="server" ID="Image3" ImageUrl="~/Item_Image/no_image.jpg"/></asp:HyperLink>                
-                                   <asp:TextBox ID="txtimg3" CssClass="txtbox" Enabled="false" runat="server"></asp:TextBox>                                                                                             
+                                   <asp:TextBox ID="txtimg3" CssClass="txtbox" runat="server"></asp:TextBox>                                                                                             
                                 <asp:FileUpload ID="FileUpload3" Style="display: none" accept=".jpg" runat="server" onchange="upload3()" />
                                 <input type="button" class="btn btn-default imgchoosebtn" id ="imginput3" value="ファイル選択"  onclick="showBrowseDialog3()"/>
                                  <input type="button" class="btn btn-default imgchoosebtn" id ="imginputdelete3" value="削除"  onclick="Delete3()" hidden/>
@@ -1159,7 +1164,7 @@ table td {
                                  <ContentTemplate>  
                                     <asp:HyperLink rel="lightbox" runat="server" style="height: 180px;" ID="hlImage4"><asp:Image runat="server" ID="Image4" ImageUrl="~/Item_Image/no_image.jpg"/></asp:HyperLink>
                                  
-                                    <asp:TextBox ID="txtimg4" Enabled="false" CssClass="txtbox" runat="server"></asp:TextBox>                                                                
+                                    <asp:TextBox ID="txtimg4" CssClass="txtbox" runat="server"></asp:TextBox>                                                                
                                 <asp:FileUpload ID="FileUpload4" Style="display: none" runat="server" accept=".jpg" onchange="upload4()" />                   
                                 <input type="button" class="btn btn-default imgchoosebtn" id ="imginput4" value="ファイル選択"  onclick="showBrowseDialog4()"/>
                                  <input type="button" class="btn btn-default imgchoosebtn" id ="imginputdelete4" value="削除"  onclick="Delete4()" hidden/>
@@ -1177,7 +1182,7 @@ table td {
                                    <asp:HyperLink rel="lightbox" runat="server" style="height: 180px;" ID="hlImage5"><asp:Image runat="server" ID="Image5" ImageUrl="~/Item_Image/no_image.jpg"/></asp:HyperLink>
                                   
                                    <asp:TextBox ID="txtimg5" CssClass="txtbox" runat="server"></asp:TextBox>                                                                
-                                    <asp:FileUpload ID="FileUpload5" Style="display: none" Enabled="false" accept=".jpg" runat="server" onchange="upload5()" />
+                                    <asp:FileUpload ID="FileUpload5" Style="display: none" accept=".jpg" runat="server" onchange="upload5()" />
                                 <input type="button" class="btn btn-default imgchoosebtn" id ="imginput5" value="ファイル選択"  onclick="showBrowseDialog5()"/>
                                  <input type="button" class="btn btn-default imgchoosebtn" id ="imginputdelete5" value="削除"  onclick="Delete5()" hidden/>
                                 <asp:Button runat="server" ID="imgbtn5_1" Text="" Style="display: none;" OnClick="UploadButton5_Click" />
@@ -1191,7 +1196,7 @@ table td {
                                  <asp:UpdatePanel runat="server" id="UpdatePanel6" updatemode="Conditional">
                                  <ContentTemplate>  
                                    <asp:HyperLink rel="lightbox" runat="server" style="height: 180px;" ID="hlImage6"><asp:Image runat="server" ID="Image6" ImageUrl="~/Item_Image/no_image.jpg"/></asp:HyperLink>                             
-                                   <asp:TextBox ID="txtimg6" CssClass="txtbox" Enabled="false" runat="server"></asp:TextBox>                                                                
+                                   <asp:TextBox ID="txtimg6" CssClass="txtbox" runat="server"></asp:TextBox>                                                                
                                   <asp:FileUpload ID="FileUpload6" Style="display: none" accept=".jpg" runat="server" onchange="upload6()" />
                                 <input type="button" class="btn btn-default imgchoosebtn" id ="imginput6" value="ファイル選択"  onclick="showBrowseDialog6()"/>
                                  <input type="button" class="btn btn-default imgchoosebtn" id ="imginputdelete6" value="削除"  onclick="Delete6()" hidden/>
@@ -1206,7 +1211,7 @@ table td {
                                  <asp:UpdatePanel runat="server" id="UpdatePanel7" updatemode="Conditional">
                                  <ContentTemplate>  
                                    <asp:HyperLink rel="lightbox" runat="server" style="height: 180px;" ID="hlImage7"><asp:Image runat="server" ID="Image7" ImageUrl="~/Item_Image/no_image.jpg"/></asp:HyperLink>                               
-                                   <asp:TextBox ID="txtimg7" CssClass="txtbox" Enabled="false" runat="server"></asp:TextBox>                                                                
+                                   <asp:TextBox ID="txtimg7" CssClass="txtbox"  runat="server"></asp:TextBox>                                                                
                                    <asp:FileUpload ID="FileUpload7" Style="display: none" accept=".jpg" runat="server" onchange="upload7()" />
                                 <input type="button" class="btn btn-default imgchoosebtn" id ="imginput7" value="ファイル選択"  onclick="showBrowseDialog7()"/>
                                 <input type="button" class="btn btn-default imgchoosebtn" id ="imginputdelete7" value="削除"  onclick="Delete7()" hidden/>
@@ -1221,7 +1226,7 @@ table td {
                                  <asp:UpdatePanel runat="server" id="UpdatePanel8" updatemode="Conditional">
                                  <ContentTemplate>    
                                     <asp:HyperLink rel="lightbox" runat="server" style="height: 180px;" ID="hlImage8"><asp:Image runat="server" ID="Image8" ImageUrl="~/Item_Image/no_image.jpg"/></asp:HyperLink>
-                                    <asp:TextBox ID="txtimg8" CssClass="txtbox" Enabled="false" runat="server"></asp:TextBox> 
+                                    <asp:TextBox ID="txtimg8" CssClass="txtbox"  runat="server"></asp:TextBox> 
                                    <asp:FileUpload ID="FileUpload8" Style="display: none" accept=".jpg" runat="server" onchange="upload8()" />
                                 <input type="button" class="btn btn-default imgchoosebtn" id ="imginput8" value="ファイル選択"  onclick="showBrowseDialog8()"/>
                                 <input type="button" class="btn btn-default imgchoosebtn" id ="imginputdelete8" value="削除"  onclick="Delete8()" hidden/>
@@ -1236,7 +1241,7 @@ table td {
                                  <asp:UpdatePanel runat="server" id="UpdatePanel9" updatemode="Conditional">
                                  <ContentTemplate>   
                                    <asp:HyperLink rel="lightbox" runat="server" style="height: 180px;" ID="hlImage9"><asp:Image runat="server" ID="Image9" ImageUrl="~/Item_Image/no_image.jpg"/></asp:HyperLink>
-                                   <asp:TextBox ID="txtimg9" CssClass="txtbox" Enabled="false" runat="server"></asp:TextBox> 
+                                   <asp:TextBox ID="txtimg9" CssClass="txtbox"  runat="server"></asp:TextBox> 
                                    <asp:FileUpload ID="FileUpload9" Style="display: none" runat="server" accept=".jpg" onchange="upload9()" />
                                 <input type="button" class="btn btn-default imgchoosebtn" id ="imginput9" value="ファイル選択"  onclick="showBrowseDialog9()"/>
                                  <input type="button" class="btn btn-default imgchoosebtn" id ="imginputdelete9" value="削除"  onclick="Delete9()" hidden/>
@@ -1252,7 +1257,7 @@ table td {
                                  <asp:UpdatePanel runat="server" id="UpdatePanel10"  updatemode="Conditional">
                                  <ContentTemplate>  
                                     <asp:HyperLink rel="lightbox" runat="server" style="height: 180px;" ID="hlImage10"><asp:Image runat="server" ID="Image10" ImageUrl="~/Item_Image/no_image.jpg"/></asp:HyperLink>
-                                    <asp:TextBox ID="txtimg10" CssClass="txtbox" Enabled="false" runat="server"></asp:TextBox> 
+                                    <asp:TextBox ID="txtimg10" CssClass="txtbox"  runat="server"></asp:TextBox> 
                                    <asp:FileUpload ID="FileUpload10" Style="display: none" accept=".jpg" runat="server" onchange="upload10()" />
                                 <input type="button" class="btn btn-default imgchoosebtn" id ="imginput10" value="ファイル選択"  onclick="showBrowseDialog10()"/>
                                  <input type="button" class="btn btn-default imgchoosebtn" id ="imginputdelete10" value="削除"  onclick="Delete10()" hidden/>
@@ -1267,7 +1272,7 @@ table td {
                                <asp:UpdatePanel runat="server" id="UpdatePanel11" updatemode="Conditional">
                                <ContentTemplate> 
                                  <asp:HyperLink rel="lightbox" runat="server" style="height: 180px;" ID="hlImage11"><asp:Image runat="server" ID="Image11" ImageUrl="~/Item_Image/no_image.jpg"/></asp:HyperLink>
-                                 <asp:TextBox ID="txtimg11" CssClass="txtbox" Enabled="false" runat="server"></asp:TextBox>                           
+                                 <asp:TextBox ID="txtimg11" CssClass="txtbox" runat="server"></asp:TextBox>                           
                                  <asp:FileUpload ID="FileUpload11" Style="display: none" accept=".jpg" runat="server" onchange="upload11()" />
                                 <input type="button" class="btn btn-default imgchoosebtn" id ="imginput11" value="ファイル選択"  onclick="showBrowseDialog11()"/>
                                  <input type="button" class="btn btn-default imgchoosebtn" id ="imginputdelete11" value="削除"  onclick="Delete11()" hidden/>
@@ -1282,7 +1287,7 @@ table td {
                                <asp:UpdatePanel runat="server" id="UpdatePanel12" updatemode="Conditional">
                                <ContentTemplate> 
                                    <asp:HyperLink rel="lightbox" runat="server" style="height: 180px;" ID="hlImage12"><asp:Image runat="server" ID="Image12" ImageUrl="~/Item_Image/no_image.jpg"/></asp:HyperLink>                                 
-                                   <asp:TextBox ID="txtimg12" CssClass="txtbox" Enabled="false" runat="server"></asp:TextBox> 
+                                   <asp:TextBox ID="txtimg12" CssClass="txtbox" runat="server"></asp:TextBox> 
                                   <asp:FileUpload ID="FileUpload12" Style="display: none" runat="server" accept=".jpg" onchange="upload12()" />
                                 <input type="button" class="btn btn-default imgchoosebtn" id ="imginput12" value="ファイル選択"  onclick="showBrowseDialog12()"/>
                                 <input type="button" class="btn btn-default imgchoosebtn" id ="imginputdelete12" value="削除"  onclick="Delete12()" hidden/>
@@ -1297,7 +1302,7 @@ table td {
                                 <asp:UpdatePanel runat="server" id="UpdatePanel13" updatemode="Conditional">
                                 <ContentTemplate>
                                    <asp:HyperLink rel="lightbox" runat="server" style="height: 180px;" ID="hlImage13"><asp:Image runat="server" ID="Image13" ImageUrl="~/Item_Image/no_image.jpg"/></asp:HyperLink>
-                                   <asp:TextBox ID="txtimg13" CssClass="txtbox" Enabled="false" runat="server"></asp:TextBox> 
+                                   <asp:TextBox ID="txtimg13" CssClass="txtbox" runat="server"></asp:TextBox> 
                                    <asp:FileUpload ID="FileUpload13" Style="display: none" runat="server" accept=".jpg" onchange="upload13()" />
                                 <input type="button" class="btn btn-default imgchoosebtn" id ="imginput13" value="ファイル選択"  onclick="showBrowseDialog13()"/>
                                  <input type="button" class="btn btn-default imgchoosebtn" id ="imginputdelete13" value="削除"  onclick="Delete13()" hidden/>
@@ -1312,7 +1317,7 @@ table td {
                                 <asp:UpdatePanel runat="server" id="UpdatePanel14" updatemode="Conditional">
                                 <ContentTemplate>
                                    <asp:HyperLink rel="lightbox" runat="server" style="height: 180px;" ID="hlImage14"><asp:Image runat="server" ID="Image14" ImageUrl="~/Item_Image/no_image.jpg"/></asp:HyperLink>                   
-                                   <asp:TextBox ID="txtimg14" Enabled="false" CssClass="txtbox" runat="server"></asp:TextBox> 
+                                   <asp:TextBox ID="txtimg14"  CssClass="txtbox" runat="server"></asp:TextBox> 
                                    <asp:FileUpload ID="FileUpload14" Style="display: none" accept=".jpg" runat="server" onchange="upload14()" />
                                 <input type="button" class="btn btn-default imgchoosebtn" id ="imginput14" value="ファイル選択"  onclick="showBrowseDialog14()"/>
                                  <input type="button" class="btn btn-default imgchoosebtn" id ="imginputdelete14" value="削除"  onclick="Delete14()" hidden/>
@@ -1327,7 +1332,7 @@ table td {
                                 <asp:UpdatePanel runat="server" id="UpdatePanel15" updatemode="Conditional">
                                 <ContentTemplate>
                                    <asp:HyperLink rel="lightbox" runat="server" style="height: 180px;" ID="hlImage15"><asp:Image runat="server" ID="Image15" ImageUrl="~/Item_Image/no_image.jpg"/></asp:HyperLink>
-                                   <asp:TextBox ID="txtimg15" CssClass="txtbox" Enabled="false" runat="server"></asp:TextBox> 
+                                   <asp:TextBox ID="txtimg15" CssClass="txtbox"  runat="server"></asp:TextBox> 
                                   <asp:FileUpload ID="FileUpload15" Style="display: none" runat="server" accept=".jpg" onchange="upload15()" />
                                 <input type="button" class="btn btn-default imgchoosebtn" id ="imginput15" value="ファイル選択"  onclick="showBrowseDialog15()"/>
                                 <input type="button" class="btn btn-default imgchoosebtn" id ="imginputdelete15" value="削除"  onclick="Delete15()" hidden/>
@@ -1342,7 +1347,7 @@ table td {
                                 <asp:UpdatePanel runat="server" id="UpdatePanel16" updatemode="Conditional">
                                 <ContentTemplate>
                                    <asp:HyperLink rel="lightbox" runat="server" style="height: 180px;" ID="hlImage16"><asp:Image runat="server" ID="Image16" ImageUrl="~/Item_Image/no_image.jpg"/></asp:HyperLink>             
-                                   <asp:TextBox ID="txtimg16" Enabled="false" CssClass="txtbox" runat="server"></asp:TextBox> 
+                                   <asp:TextBox ID="txtimg16"  CssClass="txtbox" runat="server"></asp:TextBox> 
                                   <asp:FileUpload ID="FileUpload16" Style="display: none" runat="server" accept=".jpg" onchange="upload16()" />
                                 <input type="button" class="btn btn-default imgchoosebtn" id ="imginput16" value="ファイル選択"  onclick="showBrowseDialog16()"/>
                                  <input type="button" class="btn btn-default imgchoosebtn" id ="imginputdelete16" value="削除"  onclick="Delete16()" hidden/>
@@ -1357,7 +1362,7 @@ table td {
                                 <asp:UpdatePanel runat="server" id="UpdatePanel17" updatemode="Conditional">
                                 <ContentTemplate>
                                    <asp:HyperLink rel="lightbox" runat="server" style="height: 180px;" ID="hlImage17"><asp:Image runat="server" ID="Image17" ImageUrl="~/Item_Image/no_image.jpg"/></asp:HyperLink>              
-                                   <asp:TextBox ID="txtimg17" CssClass="txtbox"  Enabled="false" runat="server"></asp:TextBox> 
+                                   <asp:TextBox ID="txtimg17" CssClass="txtbox" runat="server"></asp:TextBox> 
                                    <asp:FileUpload ID="FileUpload17" Style="display: none" runat="server" accept=".jpg" onchange="upload17()" />
                                 <input type="button" class="btn btn-default imgchoosebtn" id ="imginput17" value="ファイル選択"  onclick="showBrowseDialog17()"/>
                                  <input type="button" class="btn btn-default imgchoosebtn" id ="imginputdelete17" value="削除"  onclick="Delete17()" hidden/>
@@ -1372,7 +1377,7 @@ table td {
                                 <asp:UpdatePanel runat="server" id="UpdatePanel18" updatemode="Conditional">
                                 <ContentTemplate>
                                     <asp:HyperLink rel="lightbox" runat="server" style="height: 180px;" ID="hlImage18"><asp:Image runat="server" ID="Image18" ImageUrl="~/Item_Image/no_image.jpg"/></asp:HyperLink>
-                                    <asp:TextBox ID="txtimg18" CssClass="txtbox" Enabled="false" runat="server"></asp:TextBox> 
+                                    <asp:TextBox ID="txtimg18" CssClass="txtbox" runat="server"></asp:TextBox> 
                                     <asp:FileUpload ID="FileUpload18" Style="display: none" runat="server" accept=".jpg" onchange="upload18()" />
                                 <input type="button" class="btn btn-default imgchoosebtn" id ="imginput18" value="ファイル選択"  onclick="showBrowseDialog18()"/>
                                  <input type="button" class="btn btn-default imgchoosebtn" id ="imginputdelete18" value="削除"  onclick="Delete18()" hidden/>
@@ -1387,7 +1392,7 @@ table td {
                                <asp:UpdatePanel runat="server" id="UpdatePanel19" updatemode="Conditional">
                                 <ContentTemplate>
                                    <asp:HyperLink rel="lightbox" runat="server" style="height: 180px;" ID="hlImage19"><asp:Image runat="server" ID="Image19" ImageUrl="~/Item_Image/no_image.jpg"/></asp:HyperLink>
-                                   <asp:TextBox ID="txtimg19" CssClass="txtbox" Enabled="false" runat="server"></asp:TextBox> 
+                                   <asp:TextBox ID="txtimg19" CssClass="txtbox" runat="server"></asp:TextBox> 
                                   <asp:FileUpload ID="FileUpload19" Style="display: none" runat="server" accept=".jpg" onchange="upload19()" />
                                 <input type="button" class="btn btn-default imgchoosebtn" id ="imginput19" value="ファイル選択"  onclick="showBrowseDialog19()"/>
                                  <input type="button" class="btn btn-default imgchoosebtn" id ="imginputdelete19" value="削除"  onclick="Delete19()" hidden/>
@@ -1402,7 +1407,7 @@ table td {
                                 <asp:UpdatePanel runat="server" id="UpdatePanel20" updatemode="Conditional">
                                 <ContentTemplate>
                                    <asp:HyperLink rel="lightbox" runat="server" style="height: 180px;" ID="hlImage20"><asp:Image runat="server" ID="Image20" ImageUrl="~/Item_Image/no_image.jpg"/></asp:HyperLink>                
-                                   <asp:TextBox ID="txtimg20" CssClass="txtbox" runat="server" Enabled="false" ></asp:TextBox> 
+                                   <asp:TextBox ID="txtimg20" CssClass="txtbox" runat="server"  ></asp:TextBox> 
                                   <asp:FileUpload ID="FileUpload20" Style="display: none" runat="server" accept=".jpg" onchange="upload20()" />
                                 <input type="button" class="btn btn-default imgchoosebtn" id ="imginput20" value="ファイル選択"  onclick="showBrowseDialog20()"/>
                                  <input type="button" class="btn btn-default imgchoosebtn" id ="imginputdelete20" value="削除"  onclick="Delete20()" hidden/>
@@ -1640,13 +1645,13 @@ table td {
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl yellowlable">市場売価</span>
                                         </asp:Label>
-                                        <asp:TextBox CssClass="txtbox" ID="txtsellingprice" MaxLength="40" onkeypress="return isNumberKey(event)"  runat="server" style="width: 80%;"></asp:TextBox><span> 円</span>
+                                        <asp:TextBox CssClass="txtbox" ID="txtsellingprice" MaxLength="40" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"  runat="server" style="width: 80%;"></asp:TextBox><span> 円</span>
                                     </div>
                                     <div class="floaddiv" style="width:141.24px;">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl yellowlable">仕入価格</span>
                                         </asp:Label>
-                                        <asp:TextBox CssClass="txtbox" ID="txtpurchaseprice" MaxLength="40" onkeypress="return isNumberKey(event)"  runat="server" style="width: 80%;"></asp:TextBox> <span> 円</span>
+                                        <asp:TextBox CssClass="txtbox" ID="txtpurchaseprice" MaxLength="40" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"  runat="server" style="width: 80%;"></asp:TextBox> <span> 円</span>
                                     </div>
 
                                      </div>
@@ -1655,7 +1660,7 @@ table td {
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl yellowlable">賞味期限</span>
                                         </asp:Label>
-                                        <asp:TextBox CssClass="txtbox" ID="txtsellby" MaxLength="40" onkeypress="return isNumberKey(event)"  runat="server" style="width: 100%;"></asp:TextBox>
+                                        <asp:TextBox CssClass="txtbox" ID="txtsellby" MaxLength="40" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"  runat="server" style="width: 100%;"></asp:TextBox>
                                     </div>
                                             <div class="floaddiv" style="width:294.77px;">
                                         <asp:Label CssClass=""  runat="server" >
@@ -1688,7 +1693,7 @@ table td {
                                     <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl yellowlable">最低発注数量</span>
                                         </asp:Label>
-                                        <asp:TextBox CssClass="txtbox" ID="txtminimumorderquantity" onkeypress="return isNumberKey(event)"  runat="server" style="width: 100%;"></asp:TextBox>
+                                        <asp:TextBox CssClass="txtbox" ID="txtminimumorderquantity" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"  runat="server" style="width: 100%;"></asp:TextBox>
                                  </div>
                                    <div class="floaddiv" style="width:101.41px;">
                                     <asp:Label CssClass=""  runat="server" >
@@ -1760,7 +1765,7 @@ table td {
                             <asp:Label  ID="Label2" runat="server" Text="">
                                  <span class="label label-md lbl yellowlable">入荷日数</span>
                             </asp:Label>
-                            <asp:TextBox CssClass="txtbox" ID="txtdeliverydays" MaxLength="40" onkeypress="return isNumberKey(event)" runat="server"></asp:TextBox>
+                            <asp:TextBox CssClass="txtbox" ID="txtdeliverydays" MaxLength="40" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" runat="server"></asp:TextBox>
                               </div>
 
                                        <div class="floaddiv" style="width:117.24px;">
@@ -1797,7 +1802,7 @@ table td {
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl yellowlable ">入荷日数</span>
                                         </asp:Label>
-                                        <asp:TextBox CssClass="txtbox" ID="txtksmdeliverydays" MaxLength="40" onkeypress="return isNumberKey(event)"  runat="server" style="width: 80%;"></asp:TextBox>
+                                        <asp:TextBox CssClass="txtbox" ID="txtksmdeliverydays" MaxLength="40" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"  runat="server" style="width: 80%;"></asp:TextBox>
                                     </div>
                                 </div>                           
                               </div>             
@@ -1850,13 +1855,13 @@ table td {
                               <asp:Label CssClass="lblitemcode"  runat="server" >
                                <span class="label label-md lbl yellowlable ">全国</span>
                            </asp:Label>
-                          <asp:TextBox CssClass="txtbox" ID="txtnationwide" MaxLength="40" onkeypress="return isNumberKey(event)"  runat="server" style="width: 100%;"></asp:TextBox>
+                          <asp:TextBox CssClass="txtbox" ID="txtnationwide" MaxLength="40" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"  runat="server" style="width: 100%;"></asp:TextBox>
                               </div>
                               <div class="floaddiv" style="width:171.39px;" >
                               <asp:Label  runat="server" Text="">
                                  <span class="label label-md lbl yellowlable">北海道</span>
                             </asp:Label>
-                          <asp:TextBox CssClass="txtbox" ID="txthokkaido" MaxLength="40" onkeypress="return isNumberKey(event)"  runat="server" style="width: 100%;"></asp:TextBox>
+                          <asp:TextBox CssClass="txtbox" ID="txthokkaido" MaxLength="40" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"  runat="server" style="width: 100%;"></asp:TextBox>
                             
                               </div>
 
@@ -1864,14 +1869,14 @@ table td {
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl yellowlable ">沖縄</span>
                                         </asp:Label>
-                                       <asp:TextBox CssClass="txtbox" ID="txtokinawa" MaxLength="40" onkeypress="return isNumberKey(event)"  runat="server" style="width: 100%;"></asp:TextBox>
+                                       <asp:TextBox CssClass="txtbox" ID="txtokinawa" MaxLength="40" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"  runat="server" style="width: 100%;"></asp:TextBox>
                                     </div>
 
                                   <div class="floaddiv" style="width:171.39px;">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl yellowlable ">離島</span>
                                         </asp:Label>
-                                    <asp:TextBox CssClass="txtbox" ID="txtremoteisland" MaxLength="40" onkeypress="return isNumberKey(event)"  runat="server" style="width: 100%;"></asp:TextBox>
+                                    <asp:TextBox CssClass="txtbox" ID="txtremoteisland" MaxLength="40" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"  runat="server" style="width: 100%;"></asp:TextBox>
                                     </div>
                                 <div class="floaddiv" style="width:312.54px;">
                                         <asp:Label CssClass=""  runat="server" >
@@ -1957,7 +1962,7 @@ table td {
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl yellowlable ">エコマーク認定番号</span>
                                         </asp:Label>
-                                        <asp:TextBox CssClass="txtbox" ID="txtecomartcertifiednumber" onkeypress="return isNumberKey(event)"  runat="server" style="width: 100%;"></asp:TextBox>
+                                        <asp:TextBox CssClass="txtbox" ID="txtecomartcertifiednumber" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"  runat="server" style="width: 100%;"></asp:TextBox>
                                     </div>
                                 <div class="floaddiv" style="width:131.06px;">
                                         <asp:Label CssClass=""  runat="server" >
@@ -2004,20 +2009,20 @@ table td {
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl yellowlable ">倉庫コード</span>
                                         </asp:Label>
-                                        <asp:TextBox CssClass="txtbox" ID="txtwarehouse_code" MaxLength="40" onkeypress="return isNumberKey(event)"  runat="server" style="width: 100%;"></asp:TextBox>
+                                        <asp:TextBox CssClass="txtbox" ID="txtwarehouse_code" MaxLength="40" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"  runat="server" style="width: 100%;"></asp:TextBox>
                                     </div>
 
                                   <div class="floaddiv" style="width:100.81px;">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl yellowlable ">出荷日数</span>
                                         </asp:Label>
-                                        <asp:TextBox CssClass="txtbox" ID="txtday_ship" MaxLength="40" onkeypress="return isNumberKey(event)"  runat="server" style="width: 100%;"></asp:TextBox>
+                                        <asp:TextBox CssClass="txtbox" ID="txtday_ship" MaxLength="40" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"  runat="server" style="width: 100%;"></asp:TextBox>
                                     </div>
                                 <div class="floaddiv" style="width:100.81px;">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl yellowlable ">返品承認要否</span>
                                         </asp:Label>
-                                        <asp:TextBox CssClass="txtbox" ID="txtreturn_necessary" MaxLength="40" onkeypress="return isNumberKey(event)"  runat="server" style="width: 100%;"></asp:TextBox>
+                                        <asp:TextBox CssClass="txtbox" ID="txtreturn_necessary" MaxLength="40" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"  runat="server" style="width: 100%;"></asp:TextBox>
                                     </div>
 
                               <div class="floaddiv" style="width:151.23px;">
@@ -2033,7 +2038,7 @@ table td {
                      </div>
 <%--</div>--%>
                 </section>
-                <div class="row rowbtn">
+                <div class="row rowbtn" style="margin-bottom: 40px;">
                     <div class="col-md-2 btncolum">      
                         <input type="button" class="mainbtnbox btndecoraction" id="btnCopy" onclick="ShowCopy(this)" value="選複製コピー" runat="server"  />
 
@@ -3448,7 +3453,7 @@ table td {
             image1.src = '../../Item_Image/no_image.jpg';
             txtimg1.value = "";
             document.getElementById("imginputdelete3").hidden = true;
-            document.getElementById("imginput3").hidden = false;   
+            document.getElementById("imginput3").hidden = false;
         }
 
         function Delete4() {
@@ -3642,7 +3647,7 @@ table td {
         document.getElementById('<%=txtreleasedatemonotaro.ClientID %>').value = "";
     }
 
-</script>
+    </script>
     <script type="text/javascript">
     function clrCtrl() {
         document.getElementById('<%=txtRelease_Date.ClientID %>').value = "";
@@ -3703,7 +3708,11 @@ table td {
             else return false;
         }
     </script>
+   
     <script type="text/javascript">
+        function numberWithCommas(x) {
+            return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
           function Web_calcuteTax(txt) {
               var sale_Price = txt.value.replace(/,/g, '');
               var cost = document.getElementById("<%=txtcost.ClientID %>").value.replace(/,/g, '');
@@ -3732,8 +3741,8 @@ table td {
               document.getElementById("<%=txtprofitrate.ClientID %>").value = profit_rate;
               document.getElementById("<%=txtdiscountrate.ClientID %>").value = discount_rate;
               document.getElementById("<%=txtcostrate.ClientID %>").value = cost_rate;
+              document.getElementById("<%=txtSale_Price.ClientID %>").value = numberWithCommas(sale_Price);
           }
-
           function Rakuten_calcuteTax(txt) {
               var RakutenPrice = txt.value.replace(/,/g, '');
               var cost = document.getElementById("<%=txtcost.ClientID %>").value.replace(/,/g, '');
@@ -3763,6 +3772,7 @@ table td {
               document.getElementById("<%=txtrakutenProfitrate.ClientID %>").value = rakuten_profit_rate;
               document.getElementById("<%=txtrakutenDiscountrate.ClientID %>").value = rakuten_discount_rate;
               document.getElementById("<%=txtrakutenCostrate.ClientID %>").value = rakuten_cost_rate;
+              document.getElementById("<%=txtRakutenPrice.ClientID %>").value = numberWithCommas(RakutenPrice);
           }
           function Yahoo_calcuteTax(txt) {
               var YahooPrice = txt.value.replace(/,/g, '');
@@ -3794,6 +3804,7 @@ table td {
               document.getElementById("<%=txtyahooProfitrate.ClientID %>").value = yahoo_profit_rate;
               document.getElementById("<%=txtyahooDiscountrate.ClientID %>").value = yahoo_discount_rate;
               document.getElementById("<%=txtyahooCostrate.ClientID %>").value = yahoo_cost_rate;
+              document.getElementById("<%=txtYahooPrice.ClientID %>").value = numberWithCommas(YahooPrice);
           }
           function Wowma_calcuteTax(txt) {
               var WowmaPrice = txt.value.replace(/,/g, '');
@@ -3825,6 +3836,7 @@ table td {
               document.getElementById("<%=txtwowmaProfitrate.ClientID %>").value = wowma_profit_rate;
               document.getElementById("<%=txtwowmaDiscountrate.ClientID %>").value = wowma_discount_rate;
               document.getElementById("<%=txtwowmaCostrate.ClientID %>").value = wowma_cost_rate;
+              document.getElementById("<%=txtWowmaPrice.ClientID %>").value = numberWithCommas(WowmaPrice);
           }
           function Jisha_calcuteTax(txt) {
               var JishaPrice = txt.value.replace(/,/g, '');
@@ -3857,6 +3869,7 @@ table td {
               document.getElementById("<%=txtjishaProfitrate.ClientID %>").value = jisha_profit_rate;
               document.getElementById("<%=txtjishaDiscountrate.ClientID %>").value = jisha_discount_rate;
               document.getElementById("<%=txtjishaCostrate.ClientID %>").value = jisha_cost_rate;
+              document.getElementById("<%=txtJishaPrice.ClientID %>").value = numberWithCommas(JishaPrice);
           }
           function Monotarou_calcuteTax(txt) {
               var MonotaroPrice = txt.value.replace(/,/g, '');
@@ -3888,6 +3901,7 @@ table td {
               document.getElementById("<%=txtmonoprice_profitrate.ClientID %>").value = monotaro_profit_rate;
               document.getElementById("<%=txtmonoprice_discountrate.ClientID %>").value = monotaro_discount_rate;
               document.getElementById("<%=txtmonoprice_costrate.ClientID %>").value = monotaro_cost_rate;
+              document.getElementById("<%=txtmonoprice.ClientID %>").value = numberWithCommas(MonotaroPrice);
           }
           function Daito_calcuteTax(txt) {
               var DaitoPrice = txt.value.replace(/,/g, '');
@@ -3921,6 +3935,7 @@ table td {
               document.getElementById("<%=txtditeprice_profitrate.ClientID %>").value = dite_profit_rate;
               document.getElementById("<%=txtditeprice_discountrate.ClientID %>").value = dite_discount_rate;
               document.getElementById("<%=txtditeprice_costrate.ClientID %>").value = dite_cost_rate;
+              document.getElementById("<%=txtditeprice.ClientID %>").value = numberWithCommas(DaitoPrice);
           }
           function Japanmotorpart_calcuteTax(txt) {
               var JapanMotorPrice = txt.value.replace(/,/g, '');
@@ -3952,6 +3967,7 @@ table td {
               document.getElementById("<%=txtjapanmprice_profitrate.ClientID %>").value = japanm_profit_rate;
               document.getElementById("<%=txtjapanmprice_discountrate.ClientID %>").value = japanm_discount_rate;
               document.getElementById("<%=txtjapanmprice_costrate.ClientID %>").value = japanm_cost_rate;
+              document.getElementById("<%=txtjapanmprice.ClientID %>").value = numberWithCommas(JapanMotorPrice);
           }
           function KashiwagiPrice_calcuteTax(txt) {
               var KashiwagiPrice = txt.value.replace(/,/g, '');
@@ -3983,7 +3999,19 @@ table td {
               document.getElementById("<%=txtkashiwagi_profitrate.ClientID %>").value = kashiwagi_profit_rate;
               document.getElementById("<%=txtkashiwagi_discountrate.ClientID %>").value = kashiwagi_discount_rate;
               document.getElementById("<%=txtkashiwagi_costrate.ClientID %>").value = kashiwagi_cost_rate;
+              document.getElementById("<%=txtkashiwagi.ClientID %>").value = numberWithCommas(KashiwagiPrice);
           }
 
+    </script>
+      <script type="text/javascript">
+          function list_price_change(txt) {
+              var List_Price = txt.value.replace(/,/g, '');
+              document.getElementById("<%=txtList_Price.ClientID %>").value = numberWithCommas(List_Price);
+          }
+          function cost_change(txt) {
+              var cost = txt.value.replace(/,/g, '');
+              document.getElementById("<%=txtcost.ClientID %>").value = numberWithCommas(cost);
+          }
       </script>
+
 </asp:Content>

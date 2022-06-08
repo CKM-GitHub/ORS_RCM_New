@@ -6980,14 +6980,14 @@ namespace Capital_SKS.WebForms.Item
 
         public void BindddlPublicationType()
         {         
-            ddlPublicationType.Items.Insert(0, "公開");
-            ddlPublicationType.Items.Insert(1, "非公開");
+            ddlPublicationType.Items.Insert(0, "全て");
+            ddlPublicationType.Items.Insert(1, "B2Bのみ");
         }
 
         public void BindDDlDirectDelivery()
         {
-            ddlDirectDelivery.Items.Insert(0, "可");
-            ddlDirectDelivery.Items.Insert(1, "不可");
+            ddlDirectDelivery.Items.Insert(0, "直送不可");
+            ddlDirectDelivery.Items.Insert(1, "直送可");
         }
 
         public void Bindddlgreenpurchasemethod()

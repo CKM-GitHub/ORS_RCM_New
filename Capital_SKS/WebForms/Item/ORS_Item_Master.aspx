@@ -134,31 +134,31 @@ table td {
 
                <%-- <div class="list-group text-center text-lg-left">--%>
                 
-                <a href="#" id="amaster" class="list-group-item aitem act"   onclick="changeStyle(this);">
+                <a id="amaster" class="list-group-item aitem act"   onclick="changeStyle(this);">
                 <i class="fa-solid fa-brush " style="margin-right: 5px;"></i>
                 <span class="d-none d-lg-inline">商品情報</span>
                 </a>
-                 <a href="#" id="asku" class="list-group-item aitem"  onclick="changeStyle(this);">
+                 <a id="asku" class="list-group-item aitem"  onclick="changeStyle(this);">
                 <i class="fa-solid fa-list-check" style="margin-right: 5px;"></i>
                 <span class="d-none d-lg-inline">SKU情報</span>
                 </a>
-                 <a href="#" id="aprice" class="list-group-item aitem" onclick="changeStyle(this);">
+                 <a id="aprice" class="list-group-item aitem" onclick="changeStyle(this);">
                 <i class="fa-solid fa-circle-dollar-to-slot" style="margin-right: 5px;"></i>
                 <span class="d-none d-lg-inline">価格関連</span>
                 </a>
-                 <a href="#" id="aimage" class="list-group-item aitem" onclick="changeStyle(this);">
+                 <a id="aimage" class="list-group-item aitem" onclick="changeStyle(this);">
                 <i class="fa-solid fa-images" style="margin-right: 5px;"></i>
                 <span class="d-none d-lg-inline">画像関連</span>
                 </a>
-                 <a href="#" id="aoption" class="list-group-item aitem"  onclick="changeStyle(this);">
+                 <a id="aoption" class="list-group-item aitem"  onclick="changeStyle(this);">
                 <i class="fa-solid fa-filter" style="margin-right: 5px;"></i>
                 <span class="d-none d-lg-inline">オプション<br/>カテゴリ</span>
                 </a>
-                 <a href="#" id="amalldata" class="list-group-item aitem"  onclick="changeStyle(this);">
+                 <a id="amalldata" class="list-group-item aitem"  onclick="changeStyle(this);">
                 <i class="fa-solid fa-shop" style="margin-right: 5px;"></i>
                 <span class="d-none d-lg-inline">モール設定</span>
                 </a>
-                <a href="#" id="asetting" class="list-group-item aitem"  onclick="changeStyle(this);">
+                <a id="asetting" class="list-group-item aitem"  onclick="changeStyle(this);">
                 <i class="fa-solid fa-building" style="margin-right: 5px;"></i>
                 <span class="d-none d-lg-inline">取引先設定</span>
                 </a>
@@ -4013,4 +4013,5 @@ table td {
               document.getElementById("<%=txtcost.ClientID %>").value = numberWithCommas(cost);
           }
       </script>
+
 </asp:Content>

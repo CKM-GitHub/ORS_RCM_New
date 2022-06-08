@@ -60,6 +60,18 @@ namespace ORS_RCM_BL
         {
             return imDL.BindContentUnit2();
         }
+        public DataTable BindProcurement_Goods()
+        {
+            return imDL.BindProcurement_Goods();
+        }
+        public DataTable BindRoHS_Directive()
+        {
+            return imDL.BindRoHS_Directive();
+        }
+        public DataTable BindMedical_Supplies()
+        {
+            return imDL.BindMedical_Supplies();
+        }
 
         public int CheckExistsItemCode(string itemcode)
         {

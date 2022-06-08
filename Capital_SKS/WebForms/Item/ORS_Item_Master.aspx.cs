@@ -2616,14 +2616,20 @@ namespace Capital_SKS.WebForms.Item
                     return false;
                 }
                 #endregion
-
-                int jan_length = txtJanCD.Text.Length;
-                if (jan_length <13)
+                if (!string.IsNullOrWhiteSpace(txtJanCD.Text))
                 {
-                    MessageBox("Please enter 13 digits in JANCD");
+                    int jan_length = txtJanCD.Text.Length;
+                    if (jan_length < 13)
+                    {
+                        MessageBox("Please enter 13 digits in JANCD.");
+                        return false;
+                    }
+                }
+                if (string.IsNullOrWhiteSpace(txtItem_Name.Text))
+                {
+                    MessageBox("Please enter Item Name.");
                     return false;
                 }
-
                 length = Encoding.GetEncoding(932).GetByteCount(txtmemo.Text);
                 if (length > 1000)
                 {
@@ -3346,6 +3352,7 @@ namespace Capital_SKS.WebForms.Item
                         }
                     }
                 }
+                SetImagenull();
             }
             catch (Exception ex)
             {
@@ -3893,6 +3900,7 @@ namespace Capital_SKS.WebForms.Item
                         }
                     }
                 }
+                SetImagenull();
             }
             catch (Exception ex)
             {
@@ -3994,10 +4002,38 @@ namespace Capital_SKS.WebForms.Item
                     return false;
                 }
                 #endregion
-                int jan_length = txtJanCD.Text.Length;
-                if (jan_length < 13)
+                if (!string.IsNullOrWhiteSpace(txtJanCD.Text))
                 {
-                    MessageBox("Please enter 13 digits in JANCD");
+                    int jan_length = txtJanCD.Text.Length;
+                    if (jan_length < 13)
+                    {
+                        MessageBox("Please enter 13 digits in JANCD");
+                        return false;
+                    }
+                }
+                if (string.IsNullOrWhiteSpace(txtItem_Name.Text))
+                {
+                    MessageBox("Please enter Item Name.");
+                    return false;
+                }
+                if (string.IsNullOrWhiteSpace(txtSale_Price.Text))
+                {
+                    MessageBox("Please enter Sale Price.");
+                    return false;
+                }
+                else if (txtSale_Price.Text == "0")
+                {
+                    MessageBox("Please enter Sale Price.");
+                    return false;
+                }
+                if (string.IsNullOrWhiteSpace(txtList_Price.Text))
+                {
+                    MessageBox("Please enter List Price.");
+                    return false;
+                }
+                if (string.IsNullOrWhiteSpace(txtcost.Text))
+                {
+                    MessageBox("Please enter Cost.");
                     return false;
                 }
                 length = Encoding.GetEncoding(932).GetByteCount(txtmemo.Text);
@@ -5524,6 +5560,110 @@ namespace Capital_SKS.WebForms.Item
             }
         }
 
+        public void SetImagenull()
+        {
+            if (String.IsNullOrWhiteSpace(txtimg1.Text.ToString()))
+            {
+                Image1.ImageUrl = "../../Item_Image/no_image.jpg";
+                hlImage1.NavigateUrl = "../../Item_Image/no_image.jpg";
+            }
+            if (String.IsNullOrWhiteSpace(txtimg2.Text.ToString()))
+            {
+                Image2.ImageUrl = "../../Item_Image/no_image.jpg";
+                hlImage2.NavigateUrl = "../../Item_Image/no_image.jpg";
+            }
+            if (String.IsNullOrWhiteSpace(txtimg3.Text.ToString()))
+            {
+                Image3.ImageUrl = "../../Item_Image/no_image.jpg";
+                hlImage3.NavigateUrl = "../../Item_Image/no_image.jpg";
+            }
+            if (String.IsNullOrWhiteSpace(txtimg4.Text.ToString()))
+            {
+                Image4.ImageUrl = "../../Item_Image/no_image.jpg";
+                hlImage4.NavigateUrl = "../../Item_Image/no_image.jpg";
+            }
+            if (String.IsNullOrWhiteSpace(txtimg5.Text.ToString()))
+            {
+                Image5.ImageUrl = "../../Item_Image/no_image.jpg";
+                hlImage5.NavigateUrl = "../../Item_Image/no_image.jpg";
+            }
+            if (String.IsNullOrWhiteSpace(txtimg6.Text.ToString()))
+            {
+                Image6.ImageUrl = "../../Item_Image/no_image.jpg";
+                hlImage6.NavigateUrl = "../../Item_Image/no_image.jpg";
+            }
+            if (String.IsNullOrWhiteSpace(txtimg7.Text.ToString()))
+            {
+                Image7.ImageUrl = "../../Item_Image/no_image.jpg";
+                hlImage7.NavigateUrl = "../../Item_Image/no_image.jpg";
+            }
+            if (String.IsNullOrWhiteSpace(txtimg8.Text.ToString()))
+            {
+                Image8.ImageUrl = "../../Item_Image/no_image.jpg";
+                hlImage8.NavigateUrl = "../../Item_Image/no_image.jpg";
+            }
+            if (String.IsNullOrWhiteSpace(txtimg9.Text.ToString()))
+            {
+                Image9.ImageUrl = "../../Item_Image/no_image.jpg";
+                hlImage9.NavigateUrl = "../../Item_Image/no_image.jpg";
+            }
+            if (String.IsNullOrWhiteSpace(txtimg10.Text.ToString()))
+            {
+                Image10.ImageUrl = "../../Item_Image/no_image.jpg";
+                hlImage10.NavigateUrl = "../../Item_Image/no_image.jpg";
+            }
+            if (String.IsNullOrWhiteSpace(txtimg11.Text.ToString()))
+            {
+                Image11.ImageUrl = "../../Item_Image/no_image.jpg";
+                hlImage11.NavigateUrl = "../../Item_Image/no_image.jpg";
+            }
+            if (String.IsNullOrWhiteSpace(txtimg12.Text.ToString()))
+            {
+                Image12.ImageUrl = "../../Item_Image/no_image.jpg";
+                hlImage12.NavigateUrl = "../../Item_Image/no_image.jpg";
+            }
+            if (String.IsNullOrWhiteSpace(txtimg13.Text.ToString()))
+            {
+                Image13.ImageUrl = "../../Item_Image/no_image.jpg";
+                hlImage13.NavigateUrl = "../../Item_Image/no_image.jpg";
+            }
+            if (String.IsNullOrWhiteSpace(txtimg14.Text.ToString()))
+            {
+                Image14.ImageUrl = "../../Item_Image/no_image.jpg";
+                hlImage14.NavigateUrl = "../../Item_Image/no_image.jpg";
+            }
+            if (String.IsNullOrWhiteSpace(txtimg15.Text.ToString()))
+            {
+                Image15.ImageUrl = "../../Item_Image/no_image.jpg";
+                hlImage15.NavigateUrl = "../../Item_Image/no_image.jpg";
+            }
+            if (String.IsNullOrWhiteSpace(txtimg16.Text.ToString()))
+            {
+                Image16.ImageUrl = "../../Item_Image/no_image.jpg";
+                hlImage16.NavigateUrl = "../../Item_Image/no_image.jpg";
+            }
+            if (String.IsNullOrWhiteSpace(txtimg17.Text.ToString()))
+            {
+                Image17.ImageUrl = "../../Item_Image/no_image.jpg";
+                hlImage17.NavigateUrl = "../../Item_Image/no_image.jpg";
+            }
+            if (String.IsNullOrWhiteSpace(txtimg18.Text.ToString()))
+            {
+                Image18.ImageUrl = "../../Item_Image/no_image.jpg";
+                hlImage18.NavigateUrl = "../../Item_Image/no_image.jpg";
+            }
+            if (String.IsNullOrWhiteSpace(txtimg19.Text.ToString()))
+            {
+                Image19.ImageUrl = "../../Item_Image/no_image.jpg";
+                hlImage19.NavigateUrl = "../../Item_Image/no_image.jpg";
+            }
+            if (String.IsNullOrWhiteSpace(txtimg20.Text.ToString()))
+            {
+                Image20.ImageUrl = "../../Item_Image/no_image.jpg";
+                hlImage20.NavigateUrl = "../../Item_Image/no_image.jpg";
+            }
+        }
+
         public void InsertPhoto(int itemID)
         {
             try
@@ -6395,6 +6535,7 @@ namespace Capital_SKS.WebForms.Item
 
                 if (!String.IsNullOrWhiteSpace(txtSale_Price.Text))
                     btnComplete.Enabled = true;
+
                 //txtYear.Text = Convert.ToString(ime.Year);
                 ddlShipping_Flag.SelectedValue = Convert.ToString(ime.Shipping_Flag);
                 ddlDelivery_Charges.SelectedValue = Convert.ToString(ime.Delivery_Charges);
@@ -6857,14 +6998,21 @@ namespace Capital_SKS.WebForms.Item
 
         public void BindSpecifiedprocurementitem()
         {
-            ddlSpecifiedprocurementitem.Items.Insert(0, "コピー用紙");
-            ddlSpecifiedprocurementitem.Items.Insert(1, "フォーム用紙");
-            ddlSpecifiedprocurementitem.Items.Insert(2, "インクジェットカラープリンター用塗工紙");
-            ddlSpecifiedprocurementitem.Items.Insert(3, "塗工されていない印刷用紙");
-            ddlSpecifiedprocurementitem.Items.Insert(4, "塗工されている印刷用紙");
-            ddlSpecifiedprocurementitem.Items.Insert(5, "トイレットペーパー");
-            ddlSpecifiedprocurementitem.Items.Insert(6, "トイレットペーパー");
-            ddlSpecifiedprocurementitem.Items.Insert(7, "ティッシュペーパー");         
+            imeBL = new Item_Master_BL();
+            DataTable dtProcurement_Goods = imeBL.BindProcurement_Goods();
+            ddlSpecifiedprocurementitem.DataSource = dtProcurement_Goods;
+            ddlSpecifiedprocurementitem.DataTextField = "Procurement_Goods_Name";
+            ddlSpecifiedprocurementitem.DataValueField = "Procurement_Goods_ID";
+            ddlSpecifiedprocurementitem.DataBind();
+
+            //ddlSpecifiedprocurementitem.Items.Insert(0, "コピー用紙");
+            //ddlSpecifiedprocurementitem.Items.Insert(1, "フォーム用紙");
+            //ddlSpecifiedprocurementitem.Items.Insert(2, "インクジェットカラープリンター用塗工紙");
+            //ddlSpecifiedprocurementitem.Items.Insert(3, "塗工されていない印刷用紙");
+            //ddlSpecifiedprocurementitem.Items.Insert(4, "塗工されている印刷用紙");
+            //ddlSpecifiedprocurementitem.Items.Insert(5, "トイレットペーパー");
+            //ddlSpecifiedprocurementitem.Items.Insert(6, "トイレットペーパー");
+            //ddlSpecifiedprocurementitem.Items.Insert(7, "ティッシュペーパー");         
         }
 
         public void Bindddlecomartcertifiedproduct()
@@ -6874,16 +7022,31 @@ namespace Capital_SKS.WebForms.Item
         }
         public void BindddlRoHSdirective()
         {
-            ddlRoHSdirective.Items.Insert(0, "10物質対応");
-            ddlRoHSdirective.Items.Insert(1, "6物質対応");
-            ddlRoHSdirective.Items.Insert(2, "対象外");
+            imeBL = new Item_Master_BL();
+            DataTable dtRoHS_Directive = imeBL.BindRoHS_Directive();
+            ddlRoHSdirective.DataSource = dtRoHS_Directive;
+            ddlRoHSdirective.DataTextField = "RoHS_Directive_Name";
+            ddlRoHSdirective.DataValueField = "RoHS_Directive_ID";
+            ddlRoHSdirective.DataBind();
+
+            //ddlRoHSdirective.Items.Insert(0, "10物質対応");
+            //ddlRoHSdirective.Items.Insert(1, "6物質対応");
+            //ddlRoHSdirective.Items.Insert(2, "対象外");
         }
 
         public void BindddlPharmaceuticalsandmedicaldevices()
         {
-            ddlPharmaceuticalsandmedicaldevices.Items.Insert(0, " ");
-            ddlPharmaceuticalsandmedicaldevices.Items.Insert(1, "医薬品");
-            ddlPharmaceuticalsandmedicaldevices.Items.Insert(2, "医療機器");
+            imeBL = new Item_Master_BL();
+            DataTable dtMedical_Supplies = imeBL.BindMedical_Supplies();
+            ddlPharmaceuticalsandmedicaldevices.DataSource = dtMedical_Supplies;
+            ddlPharmaceuticalsandmedicaldevices.DataTextField = "Medical_Supplies_Name";
+            ddlPharmaceuticalsandmedicaldevices.DataValueField = "Medical_Supplies_ID";
+            ddlPharmaceuticalsandmedicaldevices.DataBind();
+            ddlPharmaceuticalsandmedicaldevices.Items.Insert(0, "");
+
+            //ddlPharmaceuticalsandmedicaldevices.Items.Insert(0, " ");
+            //ddlPharmaceuticalsandmedicaldevices.Items.Insert(1, "医薬品");
+            //ddlPharmaceuticalsandmedicaldevices.Items.Insert(2, "医療機器");
         }
 
         public void BindddlJISConform()

@@ -433,6 +433,7 @@ namespace ORS_RCM
         {
             DataTable dtrslt = (DataTable)ViewState["dirState"];
             if (dtrslt.Rows.Count > 0)
+
             {
                 if (Convert.ToString(ViewState["sortdr"]) == "Asc")
                 {
@@ -444,6 +445,7 @@ namespace ORS_RCM
                 }
 
             }
+            
         }
 
 

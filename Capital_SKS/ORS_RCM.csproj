@@ -163,6 +163,7 @@
     <Content Include="DLL\ionic.zip.dll" />
     <Content Include="DLL\Newtonsoft.Json.dll" />
     <Content Include="DLL\OpenPop.dll" />
+    <Content Include="images\loading1.gif" />
     <Content Include="images\logo.jpg" />
     <Content Include="images\logo1.jpg" />
     <Content Include="images\logo2.png" />
@@ -178,6 +179,7 @@
     <Content Include="Styles\bootstrap-datetimepicker.min.css" />
     <Content Include="Styles\bootstrap.min.css" />
     <Content Include="Styles\calendar-blue.css" />
+    <Content Include="Styles\loading.css" />
     <Content Include="Styles\nav-style.css" />
     <Content Include="Styles\ors_item_master_style.css" />
     <Content Include="Styles\tab-style.css" />

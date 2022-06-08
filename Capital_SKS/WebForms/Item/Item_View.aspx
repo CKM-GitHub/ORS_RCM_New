@@ -2,7 +2,38 @@
 <%@ Register src="../../UCGrid_Paging.ascx" tagname="UCGrid_Paging" tagprefix="uc1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 
+    <style type="text/css">
+            #overlay{
+             position: fixed;
+             z-index:99;
+             top:0px;
+             left:0px;
+             background-color:#FFFFFF;
+             width:100%;
+            height: 100%;
+            /*filter: Alpha(Opacity=80);*/
+            opacity: 0.80;
+            --moz-cpacity:0.80;
+            }
+            #theprogress{
+            background-color: blue;
+            width: 110px;
+            height: 24px;
+            text-align: center;
+            /*filter: Alpha(Opacity=100);*/
+            opacity: 1;
+            --moz-cpacity:1;
+            }
+            #modelprogress{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin: -11px 0 0 -55px; 
+            }
+    </style>
+
 <link href="../../Styles/item.css" rel="stylesheet" type="text/css" />
+<%--<link href="../../Styles/loading.css" rel="stylesheet" type="text/css" />--%>
 <script src="../../Scripts/jquery.page-scroller.js" type="text/javascript"></script>
 <script type="text/javascript">
     function isNumberKey(evt) {
@@ -115,6 +146,8 @@
     }
 </script>
 
+ 
+
 <script type="text/javascript">
     function ShowPreview(itemcode, strOpen, ctrl) {
         var left = (screen.width / 2) - (600 / 2);
@@ -128,11 +161,14 @@
         if (retval == undefined)
             retval = window.returnValue;
     }
+    
 </script>
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div>
+       <%--<div id="loadiong"><div class="cv-spinner"><span class="spinner"></span></div></div>--%>
+
         <div id="CmnContents">
             <div id="ComBlock">
                 <div class="setListBox inlineSet iconSet iconList">
@@ -470,5 +506,16 @@
         <asp:HiddenField ID="hfRefresh" runat="server" />
         <asp:HiddenField ID="hfCtrl" runat="server" Value="" />
     </div>
+    <asp:UpdateProgress ID="ppp1" runat="server" AssociatedUpdatePanelID="UpdatePanel1">
+        <ProgressTemplate>
+            <div id="overlay">
+                <div id="modalprogress">
+                    <div id="theprogress" style="margin-left:420px">
+                        <img alt="indicator" src="../../images/loading1.gif" />
+                    </div>
+                </div>
+            </div>
+        </ProgressTemplate>
+    </asp:UpdateProgress>
 
 </asp:Content>

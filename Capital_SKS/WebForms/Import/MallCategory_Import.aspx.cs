@@ -254,7 +254,7 @@ namespace ORS_RCM
                     if (result == "Save Successful!")
                     {
                         object referrer = ViewState["UrlReferrer"];
-                        string url = "/WebForms/Category/" + (string)referrer;
+                        string url = "RCM_ORS/WebForms/Category/" + (string)referrer;
                         string script = "window.onload = function(){ alert('";
                         script += result;
                         script += "');";

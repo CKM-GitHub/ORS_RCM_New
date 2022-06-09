@@ -246,23 +246,23 @@ namespace ORS_RCM
                     mbl.InsertMall_Category_XML(xml);
                     Cache.Remove("CategoryImport");
                    // Response.Write("<script>window.location.href='~/ WebForms/Category/Mall_Category.aspx?Mall=' + id;</script>");
-                    //Response.Redirect("~/WebForms/Category/Mall_Category.aspx?Mall=" + id, false);
-                    //ShowMsg("Save Successful!");
+                    Response.Redirect("~/WebForms/Category/Mall_Category.aspx?Mall=" + id, false);
+                    ShowMsg("Save Successful!");
 
-                    ViewState["UrlReferrer"] = "Mall_Category.aspx?Mall=" + id;
-                    string result = "Save Successful!";
-                    if (result == "Save Successful!")
-                    {
-                        object referrer = ViewState["UrlReferrer"];
-                        string url = "RCM_ORS/WebForms/Category/" + (string)referrer;
-                        string script = "window.onload = function(){ alert('";
-                        script += result;
-                        script += "');";
-                        script += "window.location.href = '";
-                        script += url;
-                        script += "'; }";
-                        ClientScript.RegisterStartupScript(this.GetType(), "Redirect", script, true);
-                    }
+                    //ViewState["UrlReferrer"] = "Mall_Category.aspx?Mall=" + id;
+                    //string result = "Save Successful!";
+                    //if (result == "Save Successful!")
+                    //{
+                    //    object referrer = ViewState["UrlReferrer"];
+                    //    string url = "RCM_ORS/WebForms/Category/" + (string)referrer;
+                    //    string script = "window.onload = function(){ alert('";
+                    //    script += result;
+                    //    script += "');";
+                    //    script += "window.location.href = '";
+                    //    script += url;
+                    //    script += "'; }";
+                    //    ClientScript.RegisterStartupScript(this.GetType(), "Redirect", script, true);
+                    //}
 
                 }
             }

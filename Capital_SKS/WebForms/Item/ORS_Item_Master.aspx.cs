@@ -195,10 +195,10 @@ namespace Capital_SKS.WebForms.Item
                 {
                     btnDelete.Visible = false;
                 }
-                if (String.IsNullOrWhiteSpace(txtSale_Price.Text))
-                {
-                    btnComplete.Enabled = false;
-                }
+                //if (String.IsNullOrWhiteSpace(txtSale_Price.Text))
+                //{
+                //    btnComplete.Enabled = false;
+                //}
                 #region !IsPostBack
                 if (!IsPostBack)
                 {
@@ -3784,10 +3784,10 @@ namespace Capital_SKS.WebForms.Item
                 DataTable templatedt = new DataTable();
                 templatedt = CreateTemplateTable();
                 String[] colName = { "Template" };
-                if (!String.IsNullOrEmpty(txtSale_Price.Text))
-                {
-                    btnComplete.Enabled = true;
-                }
+                //if (!String.IsNullOrEmpty(txtSale_Price.Text))
+                //{
+                //    btnComplete.Enabled = true;
+                //}
                 if (!Check_SpecialCharacter(colName, templatedt))
                 {
                     Item_BL item = new Item_BL();
@@ -6533,8 +6533,8 @@ namespace Capital_SKS.WebForms.Item
                 }
 
 
-                if (!String.IsNullOrWhiteSpace(txtSale_Price.Text))
-                    btnComplete.Enabled = true;
+                //if (!String.IsNullOrWhiteSpace(txtSale_Price.Text))
+                //    btnComplete.Enabled = true;
 
                 //txtYear.Text = Convert.ToString(ime.Year);
                 ddlShipping_Flag.SelectedValue = Convert.ToString(ime.Shipping_Flag);

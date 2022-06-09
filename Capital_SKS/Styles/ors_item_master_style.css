@@ -205,6 +205,7 @@ div.row {
     float: right;
     color: #333;
     text-decoration: none;
+    margin-top: -25px !important;
 }
 .txtarea {
     /*border: 1px solid #aaa;
@@ -529,5 +530,12 @@ ul.image_list li a img {
     width: 90%;
     float: left;
     padding: 1px;
-} 
+}
+.mycheckbox input[type="checkbox"] {
+    margin-right: 5px !important;
+}
 
+.mycheckbox label {
+    text-decoration: underline 4px orange !important;
+    text-underline-offset: 4px !important;
+}

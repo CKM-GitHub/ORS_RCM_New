@@ -1504,7 +1504,7 @@ table td {
                                     <asp:postbacktrigger ControlID="btnAddCatagories"/>
                                 </Triggers>
                                 </asp:UpdatePanel>
-                                <input type="button" id = "btnAddCatagories" onclick ="ShowCatagoryList(this)" value="選択" runat="server" style="width:100px;margin-left:6px;"/>
+                                <input type="button" id = "btnAddCatagories" onclick ="ShowCatagoryList(this)" value="選択" runat="server" style="width:100px;margin-left:6px;border-radius: 8px;"/>
                             
                                     </div>
                             </div>
@@ -1528,7 +1528,7 @@ table td {
                                     <asp:TextBox CssClass="txtbox" ID="txtRakuten_CategoryID" ReadOnly="true" onkeypress="return isNumberKeys(event)"  runat="server" style="width: 100px; margin-bottom:10px;"></asp:TextBox>
                                     <asp:TextBox CssClass="txtbox" ID="txtRakuten_CategoryPath" ReadOnly="true" onkeypress="return isNumberKeys(event)"  runat="server" style="width: 300px; margin-bottom:10px;"></asp:TextBox>                                   
                                  
-                                     <input type="button" id ="btnRakuten_CategoryID" onclick ="ShowMallCategory(1, this)" runat="server" value="選択" style="width:50px;" />
+                                     <input type="button" id ="btnRakuten_CategoryID" onclick ="ShowMallCategory(1, this)" runat="server" value="選択" style="width:50px;border-radius: 8px;" />
                                     </ContentTemplate>
                                 <Triggers>
                                     <asp:postbacktrigger ControlID="btnRakuten_CategoryID"/>
@@ -1544,7 +1544,7 @@ table td {
                                     <asp:TextBox CssClass="txtbox" ID="txtWowma_CategoryID" ReadOnly="true" onkeypress="return isNumberKeys(event)"  runat="server" style="width: 100px; margin-bottom:10px;"></asp:TextBox>
                                     <asp:TextBox CssClass="txtbox" ID="txtWowma_CategoryPath" ReadOnly="true" onkeypress="return isNumberKeys(event)"  runat="server" style="width: 300px; margin-bottom:10px;"></asp:TextBox>                                   
                                  
-                                    <input type="button" id ="btnWowma_CategoryID" onclick ="ShowMallCategory(4,this)" runat="server" value="選択" style="width:50px;" />
+                                    <input type="button" id ="btnWowma_CategoryID" onclick ="ShowMallCategory(4,this)" runat="server" value="選択" style="width:50px;border-radius: 8px;" />
                                 </ContentTemplate>
                                 <Triggers>
                                     <asp:postbacktrigger ControlID="btnWowma_CategoryID"/>
@@ -1561,7 +1561,7 @@ table td {
                                     <asp:TextBox CssClass="txtbox" ID="txtYahoo_CategoryID" ReadOnly="true" onkeypress="return isNumberKeys(event)"  runat="server" style="width: 100px; margin-bottom:10px;"></asp:TextBox>
                                     <asp:TextBox CssClass="txtbox" ID="txtYahoo_CategoryPath" ReadOnly="true" onkeypress="return isNumberKeys(event)"  runat="server" style="width: 304px; margin-bottom:10px;"></asp:TextBox>                                   
                                      
-                                    <input type="button" id ="btnYahoo_CategoryID" onclick ="ShowMallCategory(2,this)" runat="server" value="選択" style="width:50px;" />
+                                    <input type="button" id ="btnYahoo_CategoryID" onclick ="ShowMallCategory(2,this)" runat="server" value="選択" style="width:50px;border-radius: 8px;" />
                                      </ContentTemplate>
                                 <Triggers>
                                     <asp:postbacktrigger ControlID="btnYahoo_CategoryID"/>
@@ -1580,7 +1580,7 @@ table td {
                                     <asp:TextBox CssClass="txtbox" ID="txtYahooValue4" ReadOnly="true" onkeypress="return isNumberKeys(event)"  runat="server" style="width: 79px; margin-bottom:10px;"></asp:TextBox>     
                                      <asp:TextBox CssClass="txtbox" ID="txtYahooValue5" ReadOnly="true" onkeypress="return isNumberKeys(event)"  runat="server" style="width: 79px; margin-bottom:10px;"></asp:TextBox>
                                       
-                                    <input type="button" id = "imgbYahooSpecValue" onclick ="ShowYahooSpecValue(this)" runat="server" value="選択" style="width:50px;" />
+                                    <input type="button" id = "imgbYahooSpecValue" onclick ="ShowYahooSpecValue(this)" runat="server" value="選択" style="width:50px;border-radius: 8px;" />
                                       </ContentTemplate>
                                 <Triggers>
                                     <asp:postbacktrigger ControlID="imgbYahooSpecValue"/>
@@ -1600,7 +1600,7 @@ table td {
                                 <ItemTemplate>
                                     <p>
                                         <asp:Label runat="server" ID="lblShopID" Text='<%# Bind("ID")%>' Visible="false"/>
-                                        <asp:CheckBox runat="server" class="label label-md lbl orangelable" ID="ckbShopName" Text='<%# Bind("ORS_Shop_Name")%>'/>
+                                        <asp:CheckBox runat="server" CssClass="mycheckbox" ID="ckbShopName" Text='<%# Bind("ORS_Shop_Name")%>'/>
                                     </p>
                                   </ItemTemplate>
                              </asp:DataList>

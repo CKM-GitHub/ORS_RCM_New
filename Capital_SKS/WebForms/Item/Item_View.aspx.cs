@@ -151,31 +151,37 @@ namespace ORS_RCM
                                 gvItem.DataBind();
                             }
                         }
-                       
-                        //gvItem.DataSource = dt;
-                        //gvItem.DataBind();
-                        //ViewState["dirState"] = dt;
-                        //ViewState["sortdr"] = "Asc";
+                            //gvItem.DataSource = dt;
+                            //gvItem.DataBind();
+                            //ViewState["dirState"] = dt;
+                            //ViewState["sortdr"] = "Asc";
 
-                        //if (chkCode.Checked)
-                        //{
-                        //    gvItem.DataSource = imbl.SelectAll(ime, index, gvItem.PageSize, 2, 1);
-                        //    gvItem.DataBind();
-                        //}
-                        //else
-                        //{
-                        //    gvItem.DataSource = imbl.SelectAll(ime, index, gvItem.PageSize, 1, 1);
-                        //    gvItem.DataBind();
-                        //}
-                        ItemCheck_Change();
+                            //if (chkCode.Checked)
+                            //{
+                            //    gvItem.DataSource = imbl.SelectAll(ime, index, gvItem.PageSize, 2, 1);
+                            //    gvItem.DataBind();
+                            //}
+                            //else
+                            //{
+                            //    gvItem.DataSource = imbl.SelectAll(ime, index, gvItem.PageSize, 1, 1);
+                            //    gvItem.DataBind();
+                            //}
+                            ItemCheck_Change();
                     }
                     else if (ctrl.Contains("gvItem"))
                     {
-                        if (ViewState["sortdr"] == null)
+                        if (Convert.ToString(ViewState["sortdr"]) == "Asc" )
+                        {
+                            ViewState["sortdr"] = "Desc";
+                        }
+                        else if(Convert.ToString(ViewState["sortdr"]) == "Desc")
                         {
                             ViewState["sortdr"] = "Asc";
                         }
-                            
+                        else
+                        {
+                            ViewState["sortdr"] = "Asc";
+                        }
                         Bind();
                     }
                    // refreshdata();
@@ -433,17 +439,16 @@ namespace ORS_RCM
         {
             DataTable dtrslt = (DataTable)ViewState["dirState"];
             if (dtrslt.Rows.Count > 0)
-
+                
             {
-                if (Convert.ToString(ViewState["sortdr"]) == "Asc")
-                {
-                    ViewState["sortdr"] = "Desc";
-                }
-                else
-                {
-                     ViewState["sortdr"] = "Asc";
-                }
-
+                    if (Convert.ToString(ViewState["sortdr"]) == "Asc")
+                    {
+                        ViewState["sortdr"] = "Asc";
+                    }
+                    else
+                    {
+                        ViewState["sortdr"] = "Desc";
+                    }
             }
             
         }
@@ -991,6 +996,7 @@ namespace ORS_RCM
                     gp.CalculatePaging(count, gvItem.PageSize, 1);
                     ViewState["SearchDataID"] = null;
                     ViewState["SearchDataID"] = dt;
+                    ViewState["sortdr"] = "Asc";
                 }
                 ddlname.Enabled = true;
                 ViewState.Remove("checkedValue"); // After various search and check, clean previous check value.

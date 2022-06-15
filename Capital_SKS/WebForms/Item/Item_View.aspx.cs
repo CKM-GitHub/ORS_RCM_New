@@ -75,6 +75,8 @@ namespace ORS_RCM
             {
                 if (!IsPostBack)
                 {
+                    ViewState["sortdr"] = null;
+                    Session["sortdrtest"] = null;
                     itfield_bl = new Item_ExportField_BL();
                     Bind();
                     BindPerson();
@@ -85,7 +87,6 @@ namespace ORS_RCM
                     ddlname.DataValueField = "ID";
                     ddlname.DataBind();
                     ddlname.Items.Insert(0, "");
-                    ViewState["sortdr"] = null;
                 }
                 else
                 {
@@ -170,19 +171,29 @@ namespace ORS_RCM
                     }
                     else if (ctrl.Contains("gvItem"))
                     {
-                        if (Convert.ToString(ViewState["sortdr"]) == "Asc" )
+
+                        if (Session["sortdrtest"]  != null)
                         {
-                            ViewState["sortdr"] = "Desc";
+
+                            string sort = Session["sortdrtest"].ToString();
+                            ViewState["sortdr"] = sort;
                         }
-                        else if(Convert.ToString(ViewState["sortdr"]) == "Desc")
-                        {
-                            ViewState["sortdr"] = "Asc";
-                        }
-                        else
-                        {
-                            ViewState["sortdr"] = "Asc";
-                        }
-                        Bind();
+
+                       
+
+                        //if (Convert.ToString(ViewState["sortdr"]) == "Asc" )
+                        //{
+                        //    ViewState["sortdr"] = "Desc";
+                        //}
+                        //else if(Convert.ToString(ViewState["sortdr"]) == "Desc")
+                        //{
+                        //    ViewState["sortdr"] = "Asc";
+                        //}
+                        //else
+                        //{
+                        //    ViewState["sortdr"] = "Asc";
+                        //}
+                        //Bind();
                     }
                    // refreshdata();
                 }
@@ -376,6 +387,14 @@ namespace ORS_RCM
                         gp.CalculatePaging(count, gvItem.PageSize, 1);
                         ViewState["dirState"] = dt;
                     }
+
+                    if (ViewState["sortdr"] != null)
+                    {
+                       
+                        string sort = ViewState["sortdr"].ToString();
+                        Session["sortdrtest"] = sort;
+                    }
+                   
                 }
                 else
                 {
@@ -437,20 +456,28 @@ namespace ORS_RCM
         }
         protected void gvItem_OnSorting(object sender, GridViewSortEventArgs e)
         {
-            DataTable dtrslt = (DataTable)ViewState["dirState"];
-            if (dtrslt.Rows.Count > 0)
-                
+            try
             {
+                DataTable dtrslt = (DataTable)ViewState["dirState"];
+                if (dtrslt.Rows.Count > 0)
+                {                  
+
                     if (Convert.ToString(ViewState["sortdr"]) == "Asc")
-                    {
-                        ViewState["sortdr"] = "Asc";
-                    }
-                    else
                     {
                         ViewState["sortdr"] = "Desc";
                     }
+                    else
+                    {
+                        ViewState["sortdr"] = "Asc";
+                    }
+                }
+                Bind();
             }
-            
+            catch (Exception ex)
+            {
+                Session["Exception"] = ex.ToString();
+                Response.Redirect("~/CustomErrorPage.aspx?");
+            }
         }
 
 
@@ -969,6 +996,8 @@ namespace ORS_RCM
         {
             try
             {
+                ViewState["sortdr"] = null;
+                Session["sortdrtest"] = null;
                 Item_Master_BL imbl = new Item_Master_BL();
                 Item_Master_Entity ime = GetData();
                 if (chkCode.Checked)
@@ -981,8 +1010,9 @@ namespace ORS_RCM
                     gvItem.DataSource = dt;
                     gvItem.DataBind();
                     gp.CalculatePaging(count, gvItem.PageSize, 1);
-                    ViewState["SearchDataID"] = null;
-                    ViewState["SearchDataID"] = dt;
+                    //ViewState["SearchDataID"] = null;
+                    //ViewState["SearchDataID"] = dt;
+                    ViewState["dirState"] = dt;
                 }
                 else
                 {
@@ -994,9 +1024,10 @@ namespace ORS_RCM
                     gvItem.DataSource = dt;
                     gvItem.DataBind();
                     gp.CalculatePaging(count, gvItem.PageSize, 1);
-                    ViewState["SearchDataID"] = null;
-                    ViewState["SearchDataID"] = dt;
-                    ViewState["sortdr"] = "Asc";
+                    //ViewState["SearchDataID"] = null;
+                    //ViewState["SearchDataID"] = dt;
+                    ViewState["dirState"] = dt;
+                   // ViewState["sortdr"] = "Asc";
                 }
                 ddlname.Enabled = true;
                 ViewState.Remove("checkedValue"); // After various search and check, clean previous check value.
@@ -1022,7 +1053,8 @@ namespace ORS_RCM
                 DataTable dtCSV = new DataTable();
                 DataTable dtLibrary = new DataTable();
                 string stroption = ViewState["Option"] as string;
-                if (ViewState["SearchDataID"] != null)
+                //if (ViewState["SearchDataID"] != null)
+                if (ViewState["dirState"] != null)
                 {
                     dtExportdata = null;
                     Item_Master_Entity ime = GetData();

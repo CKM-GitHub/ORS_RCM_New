@@ -300,7 +300,7 @@
                                     </asp:DropDownList></dd>
                             </dl>
                             <p>
-                                <asp:Button ID="btnSearch" runat="server" Text="検索" OnClientClick="target=''" OnClick="btnSearch_Click" Width="150px" /></p>
+                                <asp:Button ID="btnSearch" runat="server" Text="検索" OnClick="btnSearch_Click" Width="150px" /></p>
                         </asp:Panel>
                     </div>
 
@@ -382,9 +382,11 @@
                 <!-- /heckbox allSET -->
 
                 <!-- exbition list -->
+             <!--     <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+                       <ContentTemplate> -->
                 <div class="itemCmnSet itemInfo">
-                    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-                        <ContentTemplate>
+                      <%--<asp:UpdatePanel ID="UpdatePanel1" runat="server"> 
+                        <ContentTemplate>--%>
                             <asp:GridView ID="gvItem" runat="server" AutoGenerateColumns="False" EmptyDataText="There is no data to display."
                                 EnableTheming="False" ForeColor="#333333" GridLines="None" CssClass="itemView"
                                 ShowHeaderWhenEmpty="True" AllowPaging="true" OnRowCommand="gvItem_RowCommand"
@@ -488,8 +490,8 @@
                                 <PagerSettings Visible="False" />
                             </asp:GridView>
                             <asp:Label runat="server" ID="hfNewTab" Text="1" Style="display: none;" />
-                        </ContentTemplate>
-                    </asp:UpdatePanel>
+                       <%--  </ContentTemplate>
+                    </asp:UpdatePanel>  --%>
 
                 </div>
                 <!-- /exbition list -->
@@ -497,6 +499,8 @@
                 <!-- List paging -->
 
                 <uc1:UCGrid_Paging runat="server" ID="gp" />
+         <!--    </ContentTemplate>
+                    </asp:UpdatePanel> -->
 
                 <!-- /List paging -->
             </div>
@@ -506,7 +510,7 @@
         <asp:HiddenField ID="hfRefresh" runat="server" />
         <asp:HiddenField ID="hfCtrl" runat="server" Value="" />
     </div>
-    <asp:UpdateProgress ID="ppp1" runat="server" AssociatedUpdatePanelID="UpdatePanel1">
+   <%-- <asp:UpdateProgress ID="ppp1" runat="server" AssociatedUpdatePanelID="UpdatePanel1">
         <ProgressTemplate>
             <div id="overlay">
                 <div id="modalprogress">
@@ -516,6 +520,6 @@
                 </div>
             </div>
         </ProgressTemplate>
-    </asp:UpdateProgress>
+    </asp:UpdateProgress>--%>
 
 </asp:Content>

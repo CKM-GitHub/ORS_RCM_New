@@ -2,7 +2,7 @@
 <%@ Register src="../../UCGrid_Paging.ascx" tagname="UCGrid_Paging" tagprefix="uc1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 
-    <style type="text/css">
+   <%-- <style type="text/css">
             #overlay{
              position: fixed;
              z-index:99;
@@ -30,7 +30,7 @@
             left: 50%;
             margin: -11px 0 0 -55px; 
             }
-    </style>
+    </style>--%>
 
 <link href="../../Styles/item.css" rel="stylesheet" type="text/css" />
 <%--<link href="../../Styles/loading.css" rel="stylesheet" type="text/css" />--%>

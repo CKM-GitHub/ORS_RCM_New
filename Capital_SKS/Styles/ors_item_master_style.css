@@ -451,7 +451,7 @@ ul.image_list li a img {
 
 .pprice {
     font-weight: bold;
-    font-size: 1.2em;
+    /*font-size: 1.2em;*/
     margin-bottom: 0.5rem !important;
 }
 /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */

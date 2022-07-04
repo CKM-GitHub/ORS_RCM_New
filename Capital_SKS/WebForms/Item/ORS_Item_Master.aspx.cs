@@ -254,8 +254,8 @@ namespace Capital_SKS.WebForms.Item
                      //   SetJishaCategoryData();
                         SelectByItemID(ItemID);                   
                         BindPhotoList();
-                        BindShopName();
-                        SetItemCodeURL();
+                        BindShopName(ItemID);
+                        SetItemCodeURL(ItemID);
                         //SetSelectedRelatedItem(ItemID);   //Select From Item_Related_Item Table
 
                         #region EDITED BY T.Z.A 15-03-2019
@@ -430,7 +430,7 @@ namespace Capital_SKS.WebForms.Item
                     {
                         ControlID = CustomHiddenField.Value;
                     }
-                    DataTable dt = RebindItemCodeURL(ControlID);
+                    //DataTable dt = RebindItemCodeURL(ControlID);
                     //if (dlShop.Items.Count == 0 || dt.Rows.Count == 0)
                     //{
                     //    BindShopName();
@@ -798,66 +798,7 @@ namespace Capital_SKS.WebForms.Item
         }
         #endregion
 
-        public void BindShopName()
-        {
-            try
-            {
-                Shop_BL shopBL = new Shop_BL();
-                Item_Shop_BL isbl = new Item_Shop_BL();
-                DataTable dt = shopBL.SelectShop_Data();
-                if (ItemCode != null)
-                {
-                    DataTable dtURL = isbl.SelectItemCodeURL(ItemCode);
-                    if (dt != null && dt.Rows.Count > 0)
-                    {
-                        dt.Columns.Add("Item_Code_URL");
-                        if (dtURL.Rows.Count <= 0 && !String.IsNullOrWhiteSpace(txtItem_Code.ToString()))
-                        {
-                            for (int i = 0; i < dt.Rows.Count; i++)
-                            { dt.Rows[i]["Item_Code_URL"] = txtItem_Code.Text; }
-                            if (!String.IsNullOrEmpty(txtItem_Code.Text))
-                            {
-                                btnComplete.Enabled = true;
-                            }
-
-                        }
-                        else
-                        {
-                            foreach (DataListItem li in dlShop.Items)
-                            {
-                                TextBox txtitemcode = li.FindControl("txtItem_CodeList") as TextBox;
-                                Label shopid = li.FindControl("lblShopID") as Label;
-                                CheckBox cb = li.FindControl("ckbShop") as CheckBox;
-                                if (dtURL != null && dtURL.Rows.Count > 0)
-                                {
-                                    for (int i = 0; i < dtURL.Rows.Count; i++)
-                                    {
-                                        if ((dtURL.Rows[i]["Item_Code"].ToString() == txtitemcode.Text) && (dtURL.Rows[i]["Shop_ID"].ToString()) == shopid.Text)
-                                        {
-                                            dt.Rows[i]["Item_Code_URL"] = ItemCode;
-                                        }
-                                        else
-                                        {
-                                            if ((dtURL.Rows[i]["Shop_ID"].ToString()) == shopid.Text)
-                                            {
-                                                dt.Rows[i]["Item_Code_URL"] = txtitemcode.Text;
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                        dlShop.DataSource = dt;
-                        dlShop.DataBind();
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                Session["Exception"] = ex.ToString();
-                Response.Redirect("~/CustomErrorPage.aspx?", false);
-            }
-        }
+        
 
         protected void UploadButton_Click(object sender, EventArgs e)
         {
@@ -1946,33 +1887,34 @@ namespace Capital_SKS.WebForms.Item
 
         #endregion
 
-        public DataTable RebindItemCodeURL(string ctrl)
+        public DataTable RebindItemCodeURL(int itemID)
         {
 
 
-            Item_Shop_BL isbl = new Item_Shop_BL();
-            DataTable dt = new DataTable();
-            dt.Columns.Add("Shop_ID", typeof(int));
-            dt.Columns.Add("Item_Code_URL", typeof(string));
-            //foreach (DataListItem li in dlShop.Items)
+            //Item_Shop_BL isbl = new Item_Shop_BL();
+            //DataTable dt = new DataTable();
+            //dt.Columns.Add("ID", typeof(int));
+            //dt.Columns.Add("ORS_Shop_Name", typeof(string));
+            //dt.Columns.Add("Item_Code_URL", typeof(string));
+            //foreach (DataListItem li in dlShop1.Items)
             //{
-            //    TextBox txtitemcode = li.FindControl("txtItem_CodeList") as TextBox;
-            //    Label shopid = li.FindControl("lblShopID") as Label;
-            //    CheckBox cb = li.FindControl("ckbShop") as CheckBox;
-            //    string icode = txtItem_Code.Text;
-            //    if (icode == txtitemcode.Text)
-            //    {
+            //    //TextBox txtitemcode = li.FindControl("txtItem_CodeList") as TextBox;
+            //    Label shopid = li.FindControl("lblShopID1") as Label;
+            //    CheckBox cb = li.FindControl("ckbShopName") as CheckBox;
+            //    //string icode = txtItem_Code.Text;
+            //    //if (icode == txtitemcode.Text)
+            //    //{
             //        if (cb != null)
             //        {
             //            if (cb.Checked)
             //            {
             //                DataRow dr = dt.NewRow();
-            //                dr["Item_Code_URL"] = txtitemcode.Text;
-            //                dr["Shop_ID"] = Convert.ToInt32(shopid.Text);
+            //                dr["Item_Code_URL"] = txtItem_Code.Text;
+            //                dr["ID"] = Convert.ToInt32(shopid.Text);
             //                dt.Rows.Add(dr);
             //            }
             //        }
-            //    }
+            //    //}
             //    else
             //    {
             //        if (cb != null)
@@ -1983,14 +1925,14 @@ namespace Capital_SKS.WebForms.Item
             //                {
             //                    DataRow dr = dt.NewRow();
             //                    dr["Item_Code_URL"] = txtItem_Code.Text;
-            //                    dr["Shop_ID"] = Convert.ToInt32(shopid.Text);
+            //                    dr["ID"] = Convert.ToInt32(shopid.Text);
             //                    dt.Rows.Add(dr);
             //                }
             //                else
             //                {
             //                    DataRow dr = dt.NewRow();
-            //                    dr["Item_Code_URL"] = txtitemcode.Text;
-            //                    dr["Shop_ID"] = Convert.ToInt32(shopid.Text);
+            //                    dr["Item_Code_URL"] = txtItem_Code.Text;
+            //                    dr["ID"] = Convert.ToInt32(shopid.Text);
             //                    dt.Rows.Add(dr);
             //                }
             //            }
@@ -2006,7 +1948,7 @@ namespace Capital_SKS.WebForms.Item
             //            TextBox txtitemcode = li.FindControl("txtItem_CodeList") as TextBox;
             //            Label shopid = li.FindControl("lblShopID") as Label;
             //            CheckBox cb = li.FindControl("ckbShop") as CheckBox;
-            //            if (shopid.Text == dt.Rows[i]["Shop_ID"].ToString())
+            //            if (shopid.Text == dt.Rows[i]["ID"].ToString())
             //            {
             //                cb.Checked = true;
             //                txtitemcode.Text = dt.Rows[i]["Item_Code_URL"].ToString();
@@ -2015,7 +1957,77 @@ namespace Capital_SKS.WebForms.Item
             //        }
             //    }
             //}
-            return dt;
+            //else
+            //{
+            //    Shop_BL shopBL = new Shop_BL();
+            //    DataTable dt1 = shopBL.SelectShop_Data();
+            //    for (int i = 0; i < dt1.Rows.Count; i++)
+            //    {
+            //        dt1.Rows[i]["Item_Code_URL"] = "";
+            //    }
+            //    dlShop.DataSource = dt1;
+            //    dlShop.DataBind();
+            //}
+                Shop_BL shopBL = new Shop_BL();
+                Item_Shop_BL isbl = new Item_Shop_BL();
+                DataTable dt = shopBL.SelectShop_Data();
+                if (ItemCode != null)
+                {
+                    DataTable dtURL = isbl.SelectItemCodeURL(ItemCode);
+                    if (dt != null && dt.Rows.Count > 0)
+                    {
+                        dt.Columns.Add("Item_Code_URL");
+                        if (dtURL.Rows.Count <= 0 && !String.IsNullOrWhiteSpace(txtItem_Code.ToString()))
+                        {
+                            for (int i = 0; i < dt.Rows.Count; i++)
+                            {
+                                Item_Shop_BL itemShopBL = new Item_Shop_BL();
+                                DataTable dtshop = itemShopBL.SelectByItemID(itemID);
+                                if (dtshop != null && dtshop.Rows.Count > 0)
+                                {
+                                    for (int j = 0; j < dtshop.Rows.Count; j++)
+                                    {
+                                        if (dtshop.Rows[j]["Shop_ID"].ToString() == dt.Rows[i]["ID"].ToString())
+                                        {
+                                            dt.Rows[i]["Item_Code_URL"] = txtItem_Code.Text;
+                                            break;
+                                        }
+                                    }
+                                }
+
+                            }
+
+                        }
+                        else
+                        {
+                        for (int i = 0; i < dt.Rows.Count; i++)
+                        {
+                            if (dtURL != null && dtURL.Rows.Count > 0)
+                            {
+                                for (int j = 0; j < dtURL.Rows.Count; j++)
+                                {
+                                    if ((dtURL.Rows[j]["Item_Code"].ToString() == txtItem_Code.Text) && (dtURL.Rows[j]["Shop_ID"].ToString()) == dt.Rows[i]["ID"].ToString())
+                                    {
+                                        dt.Rows[i]["Item_Code_URL"] = dtURL.Rows[j]["Item_Code_URL"].ToString();
+
+                                    }
+                                    else
+                                    {
+                                        if ((dtURL.Rows[j]["Shop_ID"].ToString()) == dt.Rows[i]["ID"].ToString())
+                                        {
+                                            dt.Rows[i]["Item_Code_URL"] = txtItem_Code.Text;
+
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                        dlShop.DataSource = dt;
+                        dlShop.DataBind();
+                    }
+                }
+                return dt;
         }
 
         public void SetMallCategoryData()
@@ -3353,6 +3365,7 @@ namespace Capital_SKS.WebForms.Item
                     }
                 }
                 SetImagenull();
+                RebindItemCodeURL(ime.ID);
             }
             catch (Exception ex)
             {
@@ -3595,23 +3608,23 @@ namespace Capital_SKS.WebForms.Item
             dt.Columns.Add("Shop_ID", typeof(int));
             dt.Columns.Add("Item_Code_URL", typeof(string));
 
-            //foreach (DataListItem li in dlShop.Items)
-            //{
-            //    //TextBox txtitemcode = li.FindControl("txtItem_CodeList") as TextBox;
-            //    Label shopid = li.FindControl("lblShopID") as Label;
-            //    CheckBox cb = li.FindControl("ckbShop") as CheckBox;
-            //    if (cb != null)
-            //    {
-            //        if (cb.Checked)
-            //        {
-            //            DataRow dr = dt.NewRow();
-            //            dr["Item_ID"] = ItemID;
-            //            dr["Item_Code_URL"] = txtItem_Code.Text;
-            //            dr["Shop_ID"] = Convert.ToInt32(shopid.Text);
-            //            dt.Rows.Add(dr);
-            //        }
-            //    }
-            //}
+            foreach (DataListItem li in dlShop1.Items)
+            {
+                //TextBox txtitemcode = li.FindControl("txtItem_CodeList") as TextBox;
+                Label shopid = li.FindControl("lblShopID1") as Label;
+                CheckBox cb = li.FindControl("ckbShopName") as CheckBox;
+                if (cb != null)
+                {
+                    if (cb.Checked)
+                    {
+                        DataRow dr = dt.NewRow();
+                        dr["Item_ID"] = ItemID;
+                        dr["Item_Code_URL"] = txtItem_Code.Text;
+                        dr["Shop_ID"] = Convert.ToInt32(shopid.Text);
+                        dt.Rows.Add(dr);
+                    }
+                }
+            }
             isbl.InsertItemCodeURL(dt, ItemID);
         }
 
@@ -3631,7 +3644,7 @@ namespace Capital_SKS.WebForms.Item
                 dt.Columns.Add("ItemCode", typeof(string));
                 foreach (DataListItem li in dlShop1.Items)
                 {
-                    Label lbl = li.FindControl("lblShopID") as Label;
+                    Label lbl = li.FindControl("lblShopID1") as Label;
                     CheckBox cb = li.FindControl("ckbShopName") as CheckBox;
                     if (cb != null)
                     {
@@ -3921,7 +3934,7 @@ namespace Capital_SKS.WebForms.Item
 
                 foreach (DataListItem li in dlShop1.Items)
                 {
-                    Label lbl = li.FindControl("lblShopID") as Label;
+                    Label lbl = li.FindControl("lblShopID1") as Label;
                     CheckBox cb = li.FindControl("ckbShopName") as CheckBox;
                     if (cb != null)
                     {
@@ -6369,15 +6382,15 @@ namespace Capital_SKS.WebForms.Item
                     {
                         foreach (DataListItem li in dlShop1.Items)
                         {
-                            Label lbl = li.FindControl("lblShopID") as Label;
+                            Label lbl = li.FindControl("lblShopID1") as Label;
                             CheckBox cb = li.FindControl("ckbShopName") as CheckBox;
                             if (lbl.Text == dt.Rows[i]["Shop_ID"].ToString())
                             {
                                 cb.Checked = true;
                                 break;
                             }
-                        }
 
+                        }
                     }
                 }
             }
@@ -6387,12 +6400,98 @@ namespace Capital_SKS.WebForms.Item
                 Response.Redirect("~/CustomErrorPage.aspx?", false);
             }
         }
+        public void BindShopName(int itemID)
+        {
+            try
+            {
+                Shop_BL shopBL = new Shop_BL();
+                Item_Shop_BL isbl = new Item_Shop_BL();
+                DataTable dt = shopBL.SelectShop_Data();
+                if (ItemCode != null)
+                {
+                    DataTable dtURL = isbl.SelectItemCodeURL(ItemCode);
+                    if (dt != null && dt.Rows.Count > 0)
+                    {
+                        dt.Columns.Add("Item_Code_URL");
+                        if (dtURL.Rows.Count <= 0 && !String.IsNullOrWhiteSpace(txtItem_Code.ToString()))
+                        {
+                            for (int i = 0; i < dt.Rows.Count; i++)
+                            {
+                                Item_Shop_BL itemShopBL = new Item_Shop_BL();
+                                DataTable dtshop = itemShopBL.SelectByItemID(itemID);
+                                if (dtshop != null && dtshop.Rows.Count > 0)
+                                {
+                                    for (int j = 0; j < dtshop.Rows.Count; j++)
+                                    {
+                                        if(dtshop.Rows[j]["Shop_ID"].ToString()== dt.Rows[i]["ID"].ToString())
+                                        {
+                                            dt.Rows[i]["Item_Code_URL"] = txtItem_Code.Text;
+                                            break;
+                                        }
+                                    }
+                                }
 
-        public void SetItemCodeURL()
+                            }
+                            
+                            if (!String.IsNullOrEmpty(txtItem_Code.Text))
+                            {
+                                btnComplete.Enabled = true;
+                            }
+
+                        }
+                        else
+                        {
+                            //foreach (DataListItem li in dlShop.Items)
+                            //{
+                            //    TextBox txtitemcode = li.FindControl("txtItem_CodeList") as TextBox;
+                            //    Label shopid = li.FindControl("lblShopID") as Label;
+                            //    CheckBox cb = li.FindControl("ckbShop") as CheckBox;
+                            for (int i = 0; i < dt.Rows.Count; i++)
+                            {
+                                if (dtURL != null && dtURL.Rows.Count > 0)
+                                {
+                                    for (int j = 0; j < dtURL.Rows.Count; j++)
+                                    {
+                                        if ((dtURL.Rows[j]["Item_Code"].ToString() == txtItem_Code.Text) && (dtURL.Rows[j]["Shop_ID"].ToString()) == dt.Rows[i]["ID"].ToString())
+                                        {
+                                            dt.Rows[i]["Item_Code_URL"] = dtURL.Rows[j]["Item_Code_URL"].ToString();
+                                            
+                                        }
+                                        else
+                                        {
+                                            if ((dtURL.Rows[j]["Shop_ID"].ToString()) == dt.Rows[i]["ID"].ToString())
+                                            {
+                                                dt.Rows[i]["Item_Code_URL"] = txtItem_Code.Text; 
+                                               
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                           // }
+                        }
+                        dlShop.DataSource = dt;
+                        dlShop.DataBind();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Session["Exception"] = ex.ToString();
+                Response.Redirect("~/CustomErrorPage.aspx?", false);
+            }
+        }
+        public void SetItemCodeURL(int itemID)
         {
 
-            Item_Shop_BL isbl = new Item_Shop_BL();
-            DataTable dt = isbl.SelectItemCodeURL(ItemCode);
+            //Item_Shop_BL isbl = new Item_Shop_BL();
+            //DataTable dt = isbl.SelectItemCodeURL(ItemCode);
+            //if (dt != null && dt.Rows.Count > 0)
+            //{
+            //    for (int i = 0; i < dt.Rows.Count; i++)
+            //    {
+            Item_Shop_BL itemShopBL = new Item_Shop_BL();
+            DataTable dt = itemShopBL.SelectByItemID(itemID);
             if (dt != null && dt.Rows.Count > 0)
             {
                 for (int i = 0; i < dt.Rows.Count; i++)
@@ -6405,7 +6504,7 @@ namespace Capital_SKS.WebForms.Item
                         if (shopid.Text == dt.Rows[i]["Shop_ID"].ToString())
                         {
                             cb.Checked = true;
-                            txtitemcode.Text = dt.Rows[i]["Item_Code_URL"].ToString();
+                            //txtitemcode.Text = dt.Rows[i]["Item_Code_URL"].ToString();
                             break;
                         }
                     }

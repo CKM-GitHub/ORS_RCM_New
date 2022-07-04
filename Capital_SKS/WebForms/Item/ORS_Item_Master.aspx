@@ -1599,7 +1599,7 @@ table td {
                               <asp:DataList ID="dlShop1" runat="server" RepeatDirection="Vertical" RepeatColumns="4">
                                 <ItemTemplate>
                                     <p>
-                                        <asp:Label runat="server" ID="lblShopID" Text='<%# Bind("ID")%>' Visible="false"/>
+                                        <asp:Label runat="server" ID="lblShopID1" Text='<%# Bind("ID")%>' Visible="false"/>
                                         <asp:CheckBox runat="server" CssClass="mycheckbox" ID="ckbShopName" Text='<%# Bind("ORS_Shop_Name")%>'/>
                                     </p>
                                   </ItemTemplate>
@@ -1614,7 +1614,7 @@ table td {
                              <br />
                              <asp:DataList ID="dlShop" runat="server" RepeatDirection="Vertical" RepeatColumns="4" >
                                  <ItemTemplate >
-                                     <asp:CheckBox runat="server" ID="ckbShop" EnableViewState="true" Visible="false" Checked="true"/>
+                                     <asp:CheckBox runat="server" ID="ckbShop" EnableViewState="true" Visible="false" />
                                      <asp:Label runat="server" ID="lblShopID" Text='<%# Bind("ID")%>' Visible="false"/>
                                      <asp:Label class="label label-md lbl orangelable" runat="server" ID="lblShopName" Text='<%# Bind("ORS_Shop_Name")%>'/>
                                      <asp:TextBox ID="txtItem_CodeList" runat="server" Text='<%# Bind("Item_Code_URL")%>' style="width: 100%; margin-bottom:10px;"/>

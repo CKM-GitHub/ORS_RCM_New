@@ -65,7 +65,7 @@
                             <ContentTemplate>  
                         <p style="width:998px;font-size:15px;margin-bottom:-5px;">
                              <asp:CheckBox runat="server" ID="unCheck" AutoPostBack="true"  />
-                            <asp:Label ID="Label1"  runat="server" Text="商品口関連商品をクリアして追加する"></asp:Label>
+                            <asp:Label ID="Label1"  runat="server" Text="関連商品をクリアして追加する"></asp:Label>
                             <asp:Label ID="text"  runat="server" Text=""></asp:Label>
                         </p>
 	                     <div style="width:998px;margin-bottom:40px!important">

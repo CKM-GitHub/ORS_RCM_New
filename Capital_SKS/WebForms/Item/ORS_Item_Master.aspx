@@ -651,7 +651,7 @@ table td {
                                    <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl orangelable">個別送料</span>
                                         </asp:Label>
-                                        <asp:TextBox CssClass="txtbox" ID="txtExtra_Shipping" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" MaxLength="8"  runat="server" style="width: 55%;"></asp:TextBox>
+                                        <asp:TextBox CssClass="txtbox" ID="txtExtra_Shipping" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" MaxLength="8"  runat="server" style="width: 56%;"></asp:TextBox>
                                  <span> 円</span>
                              </div>
                               <div class="floaddiv" style="width:50%;" >

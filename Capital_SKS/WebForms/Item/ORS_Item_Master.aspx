@@ -588,7 +588,7 @@ table td {
                                         <span class="label label-md lbl orangelable">販売日</span>
                                         
                                         </asp:Label>
-                                        <asp:TextBox CssClass="txtbox"  ID="txtRelease_Date" ReadOnly="true" style="width: 77px;" runat="server" ></asp:TextBox>
+                                        <asp:TextBox CssClass="txtbox"  ID="txtRelease_Date" ReadOnly="true" style="width: 90px;" runat="server" ></asp:TextBox>
                                  <asp:Image ID="ImageButton1" runat="server" Width="15px" Height="15px" ImageUrl="~/Styles/clear.png"  ImageAlign="AbsBottom"  Onclick="clrCtrl()"/>
                              </div>
                                <div class="floaddiv" style="width:50%;" >
@@ -596,7 +596,7 @@ table td {
                                         <span class="label label-md lbl orangelable">掲載可能日</span>
                                      
                                         </asp:Label>
-                                        <asp:TextBox CssClass="txtbox" ID="txtPost_Available_Date" ReadOnly="true" runat="server" style="width: 77px;"></asp:TextBox>
+                                        <asp:TextBox CssClass="txtbox" ID="txtPost_Available_Date" ReadOnly="true" runat="server" style="width: 90px;"></asp:TextBox>
                                    <asp:Image ID="ImageButton2" runat="server" Width="15px" Height="15px" ImageUrl="~/Styles/clear.png"  ImageAlign="AbsBottom"  Onclick="clrCtrl1()"/>
                              </div>            
                              </div>
@@ -651,7 +651,7 @@ table td {
                                    <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl orangelable">個別送料</span>
                                         </asp:Label>
-                                        <asp:TextBox CssClass="txtbox" ID="txtExtra_Shipping" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" MaxLength="8"  runat="server" style="width: 80%;"></asp:TextBox>
+                                        <asp:TextBox CssClass="txtbox" ID="txtExtra_Shipping" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" MaxLength="8"  runat="server" style="width: 55%;"></asp:TextBox>
                                  <span> 円</span>
                              </div>
                               <div class="floaddiv" style="width:50%;" >

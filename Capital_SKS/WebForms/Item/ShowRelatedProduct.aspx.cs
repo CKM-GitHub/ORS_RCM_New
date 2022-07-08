@@ -122,7 +122,7 @@ namespace Capital_SKS.WebForms.Item
                         else
                         {
                             chk.Checked = false;
-                            text.Text = "関連商品の数が報大値を超えています。";
+                            text.Text = "関連商品の数が最大値を超えています。";
                         }
                     }
                 }
@@ -141,7 +141,7 @@ namespace Capital_SKS.WebForms.Item
                         if (c <= 0)
                         {
                             chk.Checked = false;
-                            text.Text = "関連商品の数が報大値を超えています。";
+                            text.Text = "関連商品の数が最大値を超えています。";
                         }
                         else
                         {

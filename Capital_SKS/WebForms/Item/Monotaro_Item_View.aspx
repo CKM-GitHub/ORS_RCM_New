@@ -276,11 +276,11 @@ onrowdatabound="gvItem_RowDataBound" >
 </asp:TemplateField>
 <asp:TemplateField HeaderText="商品画像">
 <ItemTemplate>
-<p><asp:Image runat="server" ID="Image1" ImageUrl="~/Item_Image/no_image.jpg"/></p>
-<p><asp:Image runat="server" ID="Image2" ImageUrl="~/Item_Image/no_image.jpg"/></p>
-<p><asp:Image runat="server" ID="Image3" ImageUrl="~/Item_Image/no_image.jpg"/></p>
-<p><asp:Image runat="server" ID="Image4" ImageUrl="~/Item_Image/no_image.jpg"/></p>
-<p><asp:Image runat="server" ID="Image5" ImageUrl="~/Item_Image/no_image.jpg"/></p>
+<p><asp:Image runat="server" ID="Image1" ImageUrl="~/Item_Images/no_image.jpg"/></p>
+<p><asp:Image runat="server" ID="Image2" ImageUrl="~/Item_Images/no_image.jpg"/></p>
+<p><asp:Image runat="server" ID="Image3" ImageUrl="~/Item_Images/no_image.jpg"/></p>
+<p><asp:Image runat="server" ID="Image4" ImageUrl="~/Item_Images/no_image.jpg"/></p>
+<p><asp:Image runat="server" ID="Image5" ImageUrl="~/Item_Images/no_image.jpg"/></p>
 </ItemTemplate>
 </asp:TemplateField>
 <asp:TemplateField HeaderText="配送">

@@ -7103,7 +7103,7 @@ namespace Capital_SKS.WebForms.Item
             ddlSpecifiedprocurementitem.DataTextField = "Procurement_Goods_Name";
             ddlSpecifiedprocurementitem.DataValueField = "Procurement_Goods_ID";
             ddlSpecifiedprocurementitem.DataBind();
-
+            ddlSpecifiedprocurementitem.Items.Insert(0, "");
             //ddlSpecifiedprocurementitem.Items.Insert(0, "コピー用紙");
             //ddlSpecifiedprocurementitem.Items.Insert(1, "フォーム用紙");
             //ddlSpecifiedprocurementitem.Items.Insert(2, "インクジェットカラープリンター用塗工紙");

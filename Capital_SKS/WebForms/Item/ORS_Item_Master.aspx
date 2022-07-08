@@ -2040,7 +2040,7 @@ table td {
                 </section>
                 <div class="row rowbtn" style="margin-bottom: 40px;">
                     <div class="col-md-2 btncolum">      
-                        <input type="button" class="mainbtnbox btndecoraction" id="btnCopy" onclick="ShowCopy(this)" value="選複製コピー" runat="server"  />
+                        <input type="button" class="mainbtnbox btndecoraction" id="btnCopy" onclick="ShowCopy(this)" value="複製コピー" runat="server"  />
 
                     </div>
                     <div class="col-md-2 btncolum">                             

@@ -3726,9 +3726,9 @@ table td {
               if (list_Price.trim().length == 0) {
                   list_Price = 0;
               }
-              var discount_rate = Math.round((parseFloat(list_Price - sale_Price).toFixed(2) / parseFloat(list_Price).toFixed(2)) * 100).toFixed(2);
-              var profit_rate = Math.round((parseFloat(sale_Price - cost).toFixed(2) / parseFloat(sale_Price).toFixed(2)) * 100).toFixed(2);
-              var cost_rate = Math.round((parseFloat(cost).toFixed(2) / parseFloat(sale_Price).toFixed(2)) * 100).toFixed(2);
+              var discount_rate = ((parseFloat(list_Price - sale_Price).toFixed(1) / parseFloat(list_Price).toFixed(1)) * 100).toFixed(1);
+              var profit_rate = ((parseFloat(sale_Price - cost).toFixed(1) / parseFloat(sale_Price).toFixed(1)) * 100).toFixed(1);
+              var cost_rate = ((parseFloat(cost).toFixed(1) / parseFloat(sale_Price).toFixed(1)) * 100).toFixed(1);
               if (!isFinite(discount_rate)) {
                   discount_rate = 0;
               }
@@ -3757,9 +3757,9 @@ table td {
                   list_Price = 0;
               }
 
-              var rakuten_discount_rate = Math.round((parseFloat(list_Price - RakutenPrice).toFixed(2) / parseFloat(list_Price).toFixed(2)) * 100).toFixed(2);
-              var rakuten_profit_rate = Math.round((parseFloat(RakutenPrice - cost).toFixed(2) / parseFloat(RakutenPrice).toFixed(2)) * 100).toFixed(2);
-              var rakuten_cost_rate = Math.round((parseFloat(cost).toFixed(2) / parseFloat(RakutenPrice).toFixed(2)) * 100).toFixed(2);
+              var rakuten_discount_rate = ((parseFloat(list_Price - RakutenPrice).toFixed(1)/ parseFloat(list_Price).toFixed(1)) * 100).toFixed(1);
+              var rakuten_profit_rate = ((parseFloat(RakutenPrice - cost).toFixed(1) / parseFloat(RakutenPrice).toFixed(1)) * 100).toFixed(1);
+              var rakuten_cost_rate = ((parseFloat(cost).toFixed(1) / parseFloat(RakutenPrice).toFixed(1)) * 100).toFixed(1);
               if (!isFinite(rakuten_discount_rate)) {
                   rakuten_discount_rate = 0;
               }
@@ -3788,9 +3788,9 @@ table td {
                   list_Price = 0;
               }
 
-              var yahoo_discount_rate = Math.round((parseFloat(list_Price - YahooPrice).toFixed(2) / parseFloat(list_Price).toFixed(2)) * 100).toFixed(2);
-              var yahoo_profit_rate = Math.round((parseFloat(YahooPrice - cost).toFixed(2) / parseFloat(YahooPrice).toFixed(2)) * 100).toFixed(2);
-              var yahoo_cost_rate = Math.round((parseFloat(cost).toFixed(2) / parseFloat(YahooPrice).toFixed(2)) * 100).toFixed(2);
+              var yahoo_discount_rate = ((parseFloat(list_Price - YahooPrice).toFixed(1) / parseFloat(list_Price).toFixed(1)) * 100).toFixed(1);
+              var yahoo_profit_rate = ((parseFloat(YahooPrice - cost).toFixed(1) / parseFloat(YahooPrice).toFixed(1)) * 100).toFixed(1);
+              var yahoo_cost_rate = ((parseFloat(cost).toFixed(1) / parseFloat(YahooPrice).toFixed(1)) * 100).toFixed(1);
               if (!isFinite(yahoo_discount_rate)) {
                   yahoo_discount_rate = 0;
               }
@@ -3820,9 +3820,9 @@ table td {
                   list_Price = 0;
               }
 
-              var wowma_discount_rate = Math.round((parseFloat(list_Price - WowmaPrice).toFixed(2) / parseFloat(list_Price).toFixed(2)) * 100).toFixed(2);
-              var wowma_profit_rate = Math.round((parseFloat(WowmaPrice - cost).toFixed(2) / parseFloat(WowmaPrice).toFixed(2)) * 100).toFixed(2);
-              var wowma_cost_rate = Math.round((parseFloat(cost).toFixed(2) / parseFloat(WowmaPrice).toFixed(2)) * 100).toFixed(2);
+              var wowma_discount_rate = ((parseFloat(list_Price - WowmaPrice).toFixed(1) / parseFloat(list_Price).toFixed(1)) * 100).toFixed(1);
+              var wowma_profit_rate = ((parseFloat(WowmaPrice - cost).toFixed(1) / parseFloat(WowmaPrice).toFixed(1)) * 100).toFixed(1);
+              var wowma_cost_rate = ((parseFloat(cost).toFixed(1) / parseFloat(WowmaPrice).toFixed(1)) * 100).toFixed(1);
               if (!isFinite(wowma_discount_rate)) {
                   wowma_discount_rate = 0;
               }
@@ -3852,9 +3852,9 @@ table td {
                   list_Price = 0;
               }
 
-              var jisha_discount_rate = Math.round((parseFloat(list_Price - JishaPrice).toFixed(2) / parseFloat(list_Price).toFixed(2)) * 100).toFixed(2);
-              var jisha_profit_rate = Math.round((parseFloat(JishaPrice - cost).toFixed(2) / parseFloat(JishaPrice).toFixed(2)) * 100).toFixed(2);
-              var jisha_cost_rate = Math.round((parseFloat(cost).toFixed(2) / parseFloat(JishaPrice).toFixed(2)) * 100).toFixed(2);
+              var jisha_discount_rate = ((parseFloat(list_Price - JishaPrice).toFixed(1) / parseFloat(list_Price).toFixed(1)) * 100).toFixed(1);
+              var jisha_profit_rate = ((parseFloat(JishaPrice - cost).toFixed(1) / parseFloat(JishaPrice).toFixed(1)) * 100).toFixed(1);
+              var jisha_cost_rate = ((parseFloat(cost).toFixed(1) / parseFloat(JishaPrice).toFixed(1)) * 100).toFixed(1);
               if (!isFinite(jisha_discount_rate)) {
                   jisha_discount_rate = 0;
               }
@@ -3885,9 +3885,9 @@ table td {
                   list_Price = 0;
               }
 
-              var monotaro_discount_rate = Math.round((parseFloat(list_Price - MonotaroPrice).toFixed(2) / parseFloat(list_Price).toFixed(2)) * 100).toFixed(2);
-              var monotaro_profit_rate = Math.round((parseFloat(MonotaroPrice - cost).toFixed(2) / parseFloat(MonotaroPrice).toFixed(2)) * 100).toFixed(2);
-              var monotaro_cost_rate = Math.round((parseFloat(cost).toFixed(2) / parseFloat(MonotaroPrice).toFixed(2)) * 100).toFixed(2);
+              var monotaro_discount_rate = ((parseFloat(list_Price - MonotaroPrice).toFixed(1) / parseFloat(list_Price).toFixed(1)) * 100).toFixed(1);
+              var monotaro_profit_rate = ((parseFloat(MonotaroPrice - cost).toFixed(1) / parseFloat(MonotaroPrice).toFixed(1)) * 100).toFixed(1);
+              var monotaro_cost_rate = ((parseFloat(cost).toFixed(1) / parseFloat(MonotaroPrice).toFixed(1)) * 100).toFixed(1);
               if (!isFinite(monotaro_discount_rate)) {
                   monotaro_discount_rate = 0;
               }
@@ -3917,9 +3917,9 @@ table td {
                   list_Price = 0;
               }
 
-              var dite_discount_rate = Math.round((parseFloat(list_Price - DaitoPrice).toFixed(2) / parseFloat(list_Price).toFixed(2)) * 100).toFixed(2);
-              var dite_profit_rate = Math.round((parseFloat(DaitoPrice - cost).toFixed(2) / parseFloat(DaitoPrice).toFixed(2)) * 100).toFixed(2);
-              var dite_cost_rate = Math.round((parseFloat(cost).toFixed(2) / parseFloat(DaitoPrice).toFixed(2)) * 100).toFixed(2);
+              var dite_discount_rate = ((parseFloat(list_Price - DaitoPrice).toFixed(1) / parseFloat(list_Price).toFixed(1)) * 100).toFixed(1);
+              var dite_profit_rate = ((parseFloat(DaitoPrice - cost).toFixed(1) / parseFloat(DaitoPrice).toFixed(1)) * 100).toFixed(1);
+              var dite_cost_rate = ((parseFloat(cost).toFixed(1) / parseFloat(DaitoPrice).toFixed(1)) * 100).toFixed(1);
               if (!isFinite(dite_discount_rate)) {
                   dite_discount_rate = 0;
 
@@ -3951,9 +3951,9 @@ table td {
                   list_Price = 0;
               }
 
-              var japanm_discount_rate = Math.round((parseFloat(list_Price - JapanMotorPrice).toFixed(2) / parseFloat(list_Price).toFixed(2)) * 100).toFixed(2);
-              var japanm_profit_rate = Math.round((parseFloat(JapanMotorPrice - cost).toFixed(2) / parseFloat(JapanMotorPrice).toFixed(2)) * 100).toFixed(2);
-              var japanm_cost_rate = Math.round((parseFloat(cost).toFixed(2) / parseFloat(JapanMotorPrice)) * 100).toFixed(2);
+              var japanm_discount_rate = ((parseFloat(list_Price - JapanMotorPrice).toFixed(1) / parseFloat(list_Price).toFixed(1)) * 100).toFixed(1);
+              var japanm_profit_rate = ((parseFloat(JapanMotorPrice - cost).toFixed(1) / parseFloat(JapanMotorPrice).toFixed(1)) * 100).toFixed(1);
+              var japanm_cost_rate = ((parseFloat(cost).toFixed(1) / parseFloat(JapanMotorPrice)) * 100).toFixed(1);
               if (!isFinite(japanm_discount_rate)) {
                   japanm_discount_rate = 0;
               }
@@ -3983,9 +3983,9 @@ table td {
                   list_Price = 0;
               }
 
-              var kashiwagi_discount_rate = Math.round((parseFloat(list_Price - KashiwagiPrice).toFixed(2) / parseFloat(list_Price).toFixed(2)) * 100).toFixed(2);
-              var kashiwagi_profit_rate = Math.round((parseFloat(KashiwagiPrice - cost).toFixed(2) / parseFloat(KashiwagiPrice).toFixed(2)) * 100).toFixed(2);
-              var kashiwagi_cost_rate = Math.round((parseFloat(cost).toFixed(2) / parseFloat(KashiwagiPrice).toFixed(2)) * 100).toFixed(2);
+              var kashiwagi_discount_rate = ((parseFloat(list_Price - KashiwagiPrice).toFixed(1) / parseFloat(list_Price).toFixed(1)) * 100).toFixed(1);
+              var kashiwagi_profit_rate = ((parseFloat(KashiwagiPrice - cost).toFixed(1) / parseFloat(KashiwagiPrice).toFixed(1)) * 100).toFixed(1);
+              var kashiwagi_cost_rate = ((parseFloat(cost).toFixed(1) / parseFloat(KashiwagiPrice).toFixed(1)) * 100).toFixed(1);
               if (!isFinite(kashiwagi_discount_rate)) {
                   kashiwagi_discount_rate = 0;
               }

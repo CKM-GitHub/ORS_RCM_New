@@ -6887,7 +6887,7 @@ namespace Capital_SKS.WebForms.Item
                     txtremoteisland.Text = Convert.ToString(ime.Remote_Island);
 
                 txtundeliveredarea.Text = Convert.ToString(ime.Undelivered_Area);
-                txtdangerousgoodscontents.Text = ime.Undelivered_Area.ToString();
+                txtdangerousgoodscontents.Text = ime.Dangerous_Goods_Contents.ToString();
                 ddldanggoodsclass.SelectedValue = Convert.ToString(ime.Dangoods_Class);
                 ddldanggoodsname.SelectedValue = Convert.ToString(ime.Dangoods_Name);
                 ddlriskrating.SelectedValue = Convert.ToString(ime.Risk_Rating);

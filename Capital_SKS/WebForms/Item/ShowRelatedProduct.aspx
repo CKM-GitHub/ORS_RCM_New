@@ -30,14 +30,6 @@
                 margin-left:450px !important;
                 margin-right:50px !important;
             }   
-            /*.clNon{
-                overflow:hidden!important;
-                height:550px !important;
-            }*/
-
-            /*.clNon{
-                overflow:auto!important;
-            }*/
             #text{
                 margin-left:247px !important;
                 color:red !important;

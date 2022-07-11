@@ -3226,7 +3226,7 @@ namespace Capital_SKS.WebForms.Item
                                     }
                                     if (!string.IsNullOrWhiteSpace(ime.Post_Available_Date.ToString()))   //updated by nandar 05/01/2016
                                     {
-                                        txtPost_Available_Date.Text = String.Format("{0:yyyy/MM/dd}", ime.Post_Available_Date).Replace('-', '/').ToString(); ;
+                                        txtPost_Available_Date.Text = String.Format("{0:yyyy/MM/dd}", ime.Post_Available_Date).Replace('-', '/').ToString();
                                     }
                                     else
                                     {
@@ -3366,12 +3366,12 @@ namespace Capital_SKS.WebForms.Item
                 }
                 SetImagenull();
                 RebindItemCodeURL(ime.ID);
-            }
-            catch (Exception ex)
+            }catch (Exception ex)
             {
                 Session["Exception"] = ex.ToString();
                 Response.Redirect("~/CustomErrorPage.aspx?", false);
             }
+            
         }
 
      

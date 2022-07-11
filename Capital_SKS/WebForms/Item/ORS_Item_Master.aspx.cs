@@ -6893,6 +6893,7 @@ namespace Capital_SKS.WebForms.Item
                 ddlriskrating.SelectedValue = Convert.ToString(ime.Risk_Rating);
                 ddldanggoodsnature.SelectedValue = Convert.ToString(ime.Dangoods_Nature);
                 ddlfirelaw.SelectedValue = Convert.ToString(ime.Fire_Law);
+                ddlcustomerassembly.SelectedValue = Convert.ToString(ime.KSM_Avaliable);
                 if (!String.IsNullOrWhiteSpace(ime.CostRate))
                 {
                     txtcostrate.Text = ime.CostRate ;

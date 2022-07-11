@@ -242,7 +242,7 @@
                                         <%--<p><asp:Image runat="server" ID="Image"/></p>--%>
                                         <asp:Label ID="Label45" runat="server" Text='<%#Bind("ID") %>' Visible="false"></asp:Label>
                                         <asp:Label ID="Label46" runat="server" Text='<%#Bind("商品画像") %>' Visible="false"></asp:Label>
-                                        <asp:Image ID="imgitemimage" runat="server" ImageUrl='<%# Eval("商品画像").ToString().Length<3 ? "~/Item_Image/no_image.jpg": Eval("商品画像", "~/Item_Image/{0}")%>'
+                                        <asp:Image ID="imgitemimage" runat="server" ImageUrl='<%# Eval("商品画像").ToString().Length<3 ? "~/Item_Images/no_image.jpg": Eval("商品画像", "~/Item_Images/{0}")%>'
                                             onmouseover="this.style.cursor='hand'" onmouseout="this.style.cursor='default'" Width="100px" />
                                     </ItemTemplate>
                                 </asp:TemplateField>

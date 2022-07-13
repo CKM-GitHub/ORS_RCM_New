@@ -805,18 +805,11 @@ namespace Capital_SKS.WebForms.Item
 
             try
             {
-
-                //OpenFileDialog dialog = new OpenFileDialog();
-                //if (DialogResult.OK == dialog.ShowDialog())
-                //{
-                //    string path = dialog.FileName;
-                //}
-
                 if (FileUpload1.HasFile)
                 {
 
                     txtimg1.Text = FileUpload1.FileName;
-                    if (!System.Text.RegularExpressions.Regex.IsMatch(txtimg1.Text, ItemCode + "-[0-1]?[0-9]|20.jpg"))
+                    if (!System.Text.RegularExpressions.Regex.IsMatch(txtimg1.Text, txtItem_Code.Text + "-[0-1]?[0-9]|20.jpg"))
                     {
                         txtimg1.Text = "";                     
                         Image1.ImageUrl = imagePath + "no_image.jpg";
@@ -868,7 +861,7 @@ namespace Capital_SKS.WebForms.Item
                 {
 
                     txtimg2.Text = FileUpload2.FileName;
-                    if (!System.Text.RegularExpressions.Regex.IsMatch(txtimg2.Text, ItemCode + "-[0-1]?[0-9]|20.jpg"))
+                    if (!System.Text.RegularExpressions.Regex.IsMatch(txtimg2.Text, txtItem_Code.Text + "-[0-1]?[0-9]|20.jpg"))
                     {
                         txtimg2.Text = "";
                         Image2.ImageUrl = imagePath + "no_image.jpg";
@@ -921,7 +914,7 @@ namespace Capital_SKS.WebForms.Item
                 {
 
                     txtimg3.Text = FileUpload3.FileName;
-                    if (!System.Text.RegularExpressions.Regex.IsMatch(txtimg3.Text, ItemCode + "-[0-1]?[0-9]|20.jpg"))
+                    if (!System.Text.RegularExpressions.Regex.IsMatch(txtimg3.Text, txtItem_Code.Text + "-[0-1]?[0-9]|20.jpg"))
                     {
                         txtimg3.Text = "";
                         Image3.ImageUrl = imagePath + "no_image.jpg";
@@ -973,7 +966,7 @@ namespace Capital_SKS.WebForms.Item
                 {
 
                     txtimg4.Text = FileUpload4.FileName;
-                    if (!System.Text.RegularExpressions.Regex.IsMatch(txtimg4.Text, ItemCode + "-[0-1]?[0-9]|20.jpg"))
+                    if (!System.Text.RegularExpressions.Regex.IsMatch(txtimg4.Text, txtItem_Code.Text + "-[0-1]?[0-9]|20.jpg"))
                     {
                         txtimg4.Text = "";
                         Image4.ImageUrl = imagePath + "no_image.jpg";
@@ -1025,7 +1018,7 @@ namespace Capital_SKS.WebForms.Item
                 {
 
                     txtimg5.Text = FileUpload5.FileName;
-                    if (!System.Text.RegularExpressions.Regex.IsMatch(txtimg5.Text, ItemCode + "-[0-1]?[0-9]|20.jpg"))
+                    if (!System.Text.RegularExpressions.Regex.IsMatch(txtimg5.Text, txtItem_Code.Text + "-[0-1]?[0-9]|20.jpg"))
                     {
                         txtimg5.Text = "";
                         Image5.ImageUrl = imagePath + "no_image.jpg";
@@ -1077,7 +1070,7 @@ namespace Capital_SKS.WebForms.Item
                 {
 
                     txtimg6.Text = FileUpload6.FileName;
-                    if (!System.Text.RegularExpressions.Regex.IsMatch(txtimg6.Text, ItemCode + "-[0-1]?[0-9]|20.jpg"))
+                    if (!System.Text.RegularExpressions.Regex.IsMatch(txtimg6.Text, txtItem_Code.Text + "-[0-1]?[0-9]|20.jpg"))
                     {
                         txtimg6.Text = "";
                         Image6.ImageUrl = imagePath + "no_image.jpg";
@@ -1130,7 +1123,7 @@ namespace Capital_SKS.WebForms.Item
                 {
 
                     txtimg7.Text = FileUpload7.FileName;
-                    if (!System.Text.RegularExpressions.Regex.IsMatch(txtimg7.Text, ItemCode + "-[0-1]?[0-9]|20.jpg"))
+                    if (!System.Text.RegularExpressions.Regex.IsMatch(txtimg7.Text, txtItem_Code.Text + "-[0-1]?[0-9]|20.jpg"))
                     {
                         txtimg7.Text = "";
                         Image7.ImageUrl = imagePath + "no_image.jpg";
@@ -1182,7 +1175,7 @@ namespace Capital_SKS.WebForms.Item
                 {
 
                     txtimg8.Text = FileUpload8.FileName;
-                    if (!System.Text.RegularExpressions.Regex.IsMatch(txtimg8.Text, ItemCode + "-[0-1]?[0-9]|20.jpg"))
+                    if (!System.Text.RegularExpressions.Regex.IsMatch(txtimg8.Text, txtItem_Code.Text + "-[0-1]?[0-9]|20.jpg"))
                     {
                         txtimg8.Text = "";
                         Image8.ImageUrl = imagePath + "no_image.jpg";
@@ -1234,7 +1227,7 @@ namespace Capital_SKS.WebForms.Item
                 {
 
                     txtimg9.Text = FileUpload9.FileName;
-                    if (!System.Text.RegularExpressions.Regex.IsMatch(txtimg9.Text, ItemCode + "-[0-1]?[0-9]|20.jpg"))
+                    if (!System.Text.RegularExpressions.Regex.IsMatch(txtimg9.Text, txtItem_Code.Text + "-[0-1]?[0-9]|20.jpg"))
                     {
                         txtimg9.Text = "";
                         Image9.ImageUrl = imagePath + "no_image.jpg";
@@ -1286,7 +1279,7 @@ namespace Capital_SKS.WebForms.Item
                 {
 
                     txtimg10.Text = FileUpload10.FileName;
-                    if (!System.Text.RegularExpressions.Regex.IsMatch(txtimg10.Text, ItemCode + "-[0-1]?[0-9]|20.jpg"))
+                    if (!System.Text.RegularExpressions.Regex.IsMatch(txtimg10.Text, txtItem_Code.Text + "-[0-1]?[0-9]|20.jpg"))
                     {
                         txtimg10.Text = "";
                         Image10.ImageUrl = imagePath + "no_image.jpg";
@@ -1338,7 +1331,7 @@ namespace Capital_SKS.WebForms.Item
                 {
 
                     txtimg11.Text = FileUpload11.FileName;
-                    if (!System.Text.RegularExpressions.Regex.IsMatch(txtimg11.Text, ItemCode + "-[0-1]?[0-9]|20.jpg"))
+                    if (!System.Text.RegularExpressions.Regex.IsMatch(txtimg11.Text, txtItem_Code.Text + "-[0-1]?[0-9]|20.jpg"))
                     {
                         txtimg11.Text = "";
                         Image11.ImageUrl = imagePath + "no_image.jpg";
@@ -1390,7 +1383,7 @@ namespace Capital_SKS.WebForms.Item
                 {
 
                     txtimg12.Text = FileUpload12.FileName;
-                    if (!System.Text.RegularExpressions.Regex.IsMatch(txtimg12.Text, ItemCode + "-[0-1]?[0-9]|20.jpg"))
+                    if (!System.Text.RegularExpressions.Regex.IsMatch(txtimg12.Text, txtItem_Code.Text + "-[0-1]?[0-9]|20.jpg"))
                     {
                         txtimg12.Text = "";
                         Image12.ImageUrl = imagePath + "no_image.jpg";
@@ -1442,7 +1435,7 @@ namespace Capital_SKS.WebForms.Item
                 {
 
                     txtimg13.Text = FileUpload13.FileName;
-                    if (!System.Text.RegularExpressions.Regex.IsMatch(txtimg13.Text, ItemCode + "-[0-1]?[0-9]|20.jpg"))
+                    if (!System.Text.RegularExpressions.Regex.IsMatch(txtimg13.Text, txtItem_Code.Text + "-[0-1]?[0-9]|20.jpg"))
                     {
                         txtimg13.Text = "";
                         Image13.ImageUrl = imagePath + "no_image.jpg";
@@ -1494,7 +1487,7 @@ namespace Capital_SKS.WebForms.Item
                 {
 
                     txtimg14.Text = FileUpload14.FileName;
-                    if (!System.Text.RegularExpressions.Regex.IsMatch(txtimg14.Text, ItemCode + "-[0-1]?[0-9]|20.jpg"))
+                    if (!System.Text.RegularExpressions.Regex.IsMatch(txtimg14.Text, txtItem_Code.Text + "-[0-1]?[0-9]|20.jpg"))
                     {
                         txtimg14.Text = "";
                         Image14.ImageUrl = imagePath + "no_image.jpg";
@@ -1546,7 +1539,7 @@ namespace Capital_SKS.WebForms.Item
                 {
 
                     txtimg15.Text = FileUpload15.FileName;
-                    if (!System.Text.RegularExpressions.Regex.IsMatch(txtimg15.Text, ItemCode + "-[0-1]?[0-9]|20.jpg"))
+                    if (!System.Text.RegularExpressions.Regex.IsMatch(txtimg15.Text, txtItem_Code.Text + "-[0-1]?[0-9]|20.jpg"))
                     {
                         txtimg15.Text = "";
                         Image15.ImageUrl = imagePath + "no_image.jpg";
@@ -1598,7 +1591,7 @@ namespace Capital_SKS.WebForms.Item
                 {
 
                     txtimg16.Text = FileUpload16.FileName;
-                    if (!System.Text.RegularExpressions.Regex.IsMatch(txtimg16.Text, ItemCode + "-[0-1]?[0-9]|20.jpg"))
+                    if (!System.Text.RegularExpressions.Regex.IsMatch(txtimg16.Text, txtItem_Code.Text + "-[0-1]?[0-9]|20.jpg"))
                     {
                         txtimg16.Text = "";
                         Image16.ImageUrl = imagePath + "no_image.jpg";
@@ -1651,7 +1644,7 @@ namespace Capital_SKS.WebForms.Item
                 {
 
                     txtimg17.Text = FileUpload17.FileName;
-                    if (!System.Text.RegularExpressions.Regex.IsMatch(txtimg17.Text, ItemCode + "-[0-1]?[0-9]|20.jpg"))
+                    if (!System.Text.RegularExpressions.Regex.IsMatch(txtimg17.Text, txtItem_Code.Text + "-[0-1]?[0-9]|20.jpg"))
                     {
                         txtimg17.Text = "";
                         Image17.ImageUrl = imagePath + "no_image.jpg";
@@ -1704,7 +1697,7 @@ namespace Capital_SKS.WebForms.Item
                 {
 
                     txtimg18.Text = FileUpload18.FileName;
-                    if (!System.Text.RegularExpressions.Regex.IsMatch(txtimg18.Text, ItemCode + "-[0-1]?[0-9]|20.jpg"))
+                    if (!System.Text.RegularExpressions.Regex.IsMatch(txtimg18.Text, txtItem_Code.Text + "-[0-1]?[0-9]|20.jpg"))
                     {
                         txtimg18.Text = "";
                         Image18.ImageUrl = imagePath + "no_image.jpg";
@@ -1756,7 +1749,7 @@ namespace Capital_SKS.WebForms.Item
                 {
 
                     txtimg19.Text = FileUpload19.FileName;
-                    if (!System.Text.RegularExpressions.Regex.IsMatch(txtimg19.Text, ItemCode + "-[0-1]?[0-9]|20.jpg"))
+                    if (!System.Text.RegularExpressions.Regex.IsMatch(txtimg19.Text, txtItem_Code.Text + "-[0-1]?[0-9]|20.jpg"))
                     {
                         txtimg19.Text = "";
                         Image19.ImageUrl = imagePath + "no_image.jpg";
@@ -1809,7 +1802,7 @@ namespace Capital_SKS.WebForms.Item
                 {
 
                     txtimg20.Text = FileUpload20.FileName;
-                    if (!System.Text.RegularExpressions.Regex.IsMatch(txtimg20.Text, ItemCode + "-[0-1]?[0-9]|20.jpg"))
+                    if (!System.Text.RegularExpressions.Regex.IsMatch(txtimg20.Text, txtItem_Code.Text + "-[0-1]?[0-9]|20.jpg"))
                     {
                         txtimg20.Text = "";
                         Image20.ImageUrl = imagePath + "no_image.jpg";
@@ -5681,333 +5674,335 @@ namespace Capital_SKS.WebForms.Item
         {
             try
             {
-
-                DataTable dtImage = new DataTable();
-                dtImage.Columns.Add(new DataColumn("Item_ID", typeof(int)));
-                dtImage.Columns.Add(new DataColumn("Image_Name", typeof(string)));
-                dtImage.Columns.Add(new DataColumn("Image_Type", typeof(int)));
-                dtImage.Columns.Add(new DataColumn("SN", typeof(int)));
-                if (!String.IsNullOrWhiteSpace(txtimg1.Text.ToString()))
-                {
-                    DataRow dr = dtImage.NewRow();
-                    dr["Item_ID"] = itemID;
-                    dr["Image_Name"] = txtimg1.Text.ToString();
-                    dr["Image_Type"] = 0;
-                    dr["SN"] = 1;
-                    dtImage.Rows.Add(dr);
-                }
-                if (!String.IsNullOrWhiteSpace(txtimg2.Text.ToString()))
-                {
-                    DataRow dr = dtImage.NewRow();
-                    dr["Item_ID"] = itemID;
-                    dr["Image_Name"] = txtimg2.Text.ToString();
-                    dr["Image_Type"] = 0;
-                    dr["SN"] = 2;
-                    dtImage.Rows.Add(dr);
-                }
-                if (!String.IsNullOrWhiteSpace(txtimg3.Text.ToString()))
-                {
-                    DataRow dr = dtImage.NewRow();
-                    dr["Item_ID"] = itemID;
-                    dr["Image_Name"] = txtimg3.Text.ToString();
-                    dr["Image_Type"] = 0;
-                    dr["SN"] = 3;
-                    dtImage.Rows.Add(dr);
-                }
-                if (!String.IsNullOrWhiteSpace(txtimg4.Text.ToString()))
-                {
-                    DataRow dr = dtImage.NewRow();
-                    dr["Item_ID"] = itemID;
-                    dr["Image_Name"] = txtimg4.Text.ToString();
-                    dr["Image_Type"] = 0;
-                    dr["SN"] = 4;
-                    dtImage.Rows.Add(dr);
-                }
-                if (!String.IsNullOrWhiteSpace(txtimg5.Text.ToString()))
-                {
-                    DataRow dr = dtImage.NewRow();
-                    dr["Item_ID"] = itemID;
-                    dr["Image_Name"] = txtimg5.Text.ToString();
-                    dr["Image_Type"] = 0;
-                    dr["SN"] = 5;
-                    dtImage.Rows.Add(dr);
-                }
-                if (!String.IsNullOrWhiteSpace(txtimg6.Text.ToString()))
-                {
-                    DataRow dr = dtImage.NewRow();
-                    dr["Item_ID"] = itemID;
-                    dr["Image_Name"] = txtimg6.Text.ToString();
-                    dr["Image_Type"] = 0;
-                    dr["SN"] = 6;
-                    dtImage.Rows.Add(dr);
-                }
-                if (!String.IsNullOrWhiteSpace(txtimg7.Text.ToString()))
-                {
-                    DataRow dr = dtImage.NewRow();
-                    dr["Item_ID"] = itemID;
-                    dr["Image_Name"] = txtimg7.Text.ToString();
-                    dr["Image_Type"] = 0;
-                    dr["SN"] = 7;
-                    dtImage.Rows.Add(dr);
-                }
-                if (!String.IsNullOrWhiteSpace(txtimg8.Text.ToString()))
-                {
-                    DataRow dr = dtImage.NewRow();
-                    dr["Item_ID"] = itemID;
-                    dr["Image_Name"] = txtimg8.Text.ToString();
-                    dr["Image_Type"] = 0;
-                    dr["SN"] = 8;
-                    dtImage.Rows.Add(dr);
-                }
-                if (!String.IsNullOrWhiteSpace(txtimg9.Text.ToString()))
-                {
-                    DataRow dr = dtImage.NewRow();
-                    dr["Item_ID"] = itemID;
-                    dr["Image_Name"] = txtimg9.Text.ToString();
-                    dr["Image_Type"] = 0;
-                    dr["SN"] = 9;
-                    dtImage.Rows.Add(dr);
-                }
-
-                if (!String.IsNullOrWhiteSpace(txtimg10.Text.ToString()))
-                {
-                    DataRow dr = dtImage.NewRow();
-                    dr["Item_ID"] = itemID;
-                    dr["Image_Name"] = txtimg10.Text.ToString();
-                    dr["Image_Type"] = 0;
-                    dr["SN"] = 10;
-                    dtImage.Rows.Add(dr);
-                }
-
-                if (!String.IsNullOrWhiteSpace(txtimg11.Text.ToString()))
-                {
-                    DataRow dr = dtImage.NewRow();
-                    dr["Item_ID"] = itemID;
-                    dr["Image_Name"] = txtimg11.Text.ToString();
-                    dr["Image_Type"] = 0;
-                    dr["SN"] = 11;
-                    dtImage.Rows.Add(dr);
-                }
-
-                if (!String.IsNullOrWhiteSpace(txtimg12.Text.ToString()))
-                {
-                    DataRow dr = dtImage.NewRow();
-                    dr["Item_ID"] = itemID;
-                    dr["Image_Name"] = txtimg12.Text.ToString();
-                    dr["Image_Type"] = 0;
-                    dr["SN"] = 12;
-                    dtImage.Rows.Add(dr);
-                }
-
-                if (!String.IsNullOrWhiteSpace(txtimg13.Text.ToString()))
-                {
-                    DataRow dr = dtImage.NewRow();
-                    dr["Item_ID"] = itemID;
-                    dr["Image_Name"] = txtimg13.Text.ToString();
-                    dr["Image_Type"] = 0;
-                    dr["SN"] = 13;
-                    dtImage.Rows.Add(dr);
-                }
-
-                if (!String.IsNullOrWhiteSpace(txtimg14.Text.ToString()))
-                {
-                    DataRow dr = dtImage.NewRow();
-                    dr["Item_ID"] = itemID;
-                    dr["Image_Name"] = txtimg14.Text.ToString();
-                    dr["Image_Type"] = 0;
-                    dr["SN"] = 14;
-                    dtImage.Rows.Add(dr);
-                }
-
-                if (!String.IsNullOrWhiteSpace(txtimg15.Text.ToString()))
-                {
-                    DataRow dr = dtImage.NewRow();
-                    dr["Item_ID"] = itemID;
-                    dr["Image_Name"] = txtimg15.Text.ToString();
-                    dr["Image_Type"] = 0;
-                    dr["SN"] = 15;
-                    dtImage.Rows.Add(dr);
-                }
-
-                if (!String.IsNullOrWhiteSpace(txtimg16.Text.ToString()))
-                {
-                    DataRow dr = dtImage.NewRow();
-                    dr["Item_ID"] = itemID;
-                    dr["Image_Name"] = txtimg16.Text.ToString();
-                    dr["Image_Type"] = 0;
-                    dr["SN"] = 16;
-                    dtImage.Rows.Add(dr);
-                }
-
-                if (!String.IsNullOrWhiteSpace(txtimg17.Text.ToString()))
-                {
-                    DataRow dr = dtImage.NewRow();
-                    dr["Item_ID"] = itemID;
-                    dr["Image_Name"] = txtimg17.Text.ToString();
-                    dr["Image_Type"] = 0;
-                    dr["SN"] = 17;
-                    dtImage.Rows.Add(dr);
-                }
-                if (!String.IsNullOrWhiteSpace(txtimg18.Text.ToString()))
-                {
-                    DataRow dr = dtImage.NewRow();
-                    dr["Item_ID"] = itemID;
-                    dr["Image_Name"] = txtimg18.Text.ToString();
-                    dr["Image_Type"] = 0;
-                    dr["SN"] = 18;
-                    dtImage.Rows.Add(dr);
-                }
-                if (!String.IsNullOrWhiteSpace(txtimg19.Text.ToString()))
-                {
-                    DataRow dr = dtImage.NewRow();
-                    dr["Item_ID"] = itemID;
-                    dr["Image_Name"] = txtimg19.Text.ToString();
-                    dr["Image_Type"] = 0;
-                    dr["SN"] = 19;
-                    dtImage.Rows.Add(dr);
-                }
-
-                if (!String.IsNullOrWhiteSpace(txtimg20.Text.ToString()))
-                {
-                    DataRow dr = dtImage.NewRow();
-                    dr["Item_ID"] = itemID;
-                    dr["Image_Name"] = txtimg20.Text.ToString();
-                    dr["Image_Type"] = 0;
-                    dr["SN"] = 20;
-                    dtImage.Rows.Add(dr);
-                }
-
-
-
-                //DataTable dtImage = ImageList as DataTable;
-                Item_Image_BL itemImageBL = new Item_Image_BL();
-               // dtImage = SetLibraryPhoto(dtImage);
-                if (dtImage.Rows.Count > 0)
-                {
-                    DataRow[] dr = dtImage.Select("Image_Type='0'");
-                    if (dr.Length > 0)
+                //DataTable dt = CopyItemCodeList; dt.Rows[0]["Item_Code"].ToString() == txtimg1.Text.ToString() || dt == null ||
+                
+                    DataTable dtImage = new DataTable();
+                    dtImage.Columns.Add(new DataColumn("Item_ID", typeof(int)));
+                    dtImage.Columns.Add(new DataColumn("Image_Name", typeof(string)));
+                    dtImage.Columns.Add(new DataColumn("Image_Type", typeof(int)));
+                    dtImage.Columns.Add(new DataColumn("SN", typeof(int)));
+                    if (System.Text.RegularExpressions.Regex.IsMatch(txtimg1.Text, txtItem_Code.Text + "-[0-1]?[0-9]|20.jpg"))
                     {
-                        DataTable dtImage0 = dtImage.Select("Image_Type='0'").CopyToDataTable();
+                        DataRow dr = dtImage.NewRow();
+                        dr["Item_ID"] = itemID;
+                        dr["Image_Name"] = txtimg1.Text.ToString();
+                        dr["Image_Type"] = 0;
+                        dr["SN"] = 1;
+                        dtImage.Rows.Add(dr);
+                    }
+                    if (System.Text.RegularExpressions.Regex.IsMatch(txtimg2.Text, txtItem_Code.Text + "-[0-1]?[0-9]|20.jpg"))
+                    {
+                        DataRow dr = dtImage.NewRow();
+                        dr["Item_ID"] = itemID;
+                        dr["Image_Name"] = txtimg2.Text.ToString();
+                        dr["Image_Type"] = 0;
+                        dr["SN"] = 2;
+                        dtImage.Rows.Add(dr);
+                    }
+                    if (System.Text.RegularExpressions.Regex.IsMatch(txtimg3.Text, txtItem_Code.Text + "-[0-1]?[0-9]|20.jpg"))
+                    {
+                        DataRow dr = dtImage.NewRow();
+                        dr["Item_ID"] = itemID;
+                        dr["Image_Name"] = txtimg3.Text.ToString();
+                        dr["Image_Type"] = 0;
+                        dr["SN"] = 3;
+                        dtImage.Rows.Add(dr);
+                    }
+                    if (System.Text.RegularExpressions.Regex.IsMatch(txtimg4.Text, txtItem_Code.Text + "-[0-1]?[0-9]|20.jpg"))
+                    {
+                        DataRow dr = dtImage.NewRow();
+                        dr["Item_ID"] = itemID;
+                        dr["Image_Name"] = txtimg4.Text.ToString();
+                        dr["Image_Type"] = 0;
+                        dr["SN"] = 4;
+                        dtImage.Rows.Add(dr);
+                    }
+                    if (System.Text.RegularExpressions.Regex.IsMatch(txtimg5.Text, txtItem_Code.Text + "-[0-1]?[0-9]|20.jpg"))
+                    {
+                        DataRow dr = dtImage.NewRow();
+                        dr["Item_ID"] = itemID;
+                        dr["Image_Name"] = txtimg5.Text.ToString();
+                        dr["Image_Type"] = 0;
+                        dr["SN"] = 5;
+                        dtImage.Rows.Add(dr);
+                    }
+                    if (System.Text.RegularExpressions.Regex.IsMatch(txtimg6.Text, txtItem_Code.Text + "-[0-1]?[0-9]|20.jpg"))
+                    {
+                        DataRow dr = dtImage.NewRow();
+                        dr["Item_ID"] = itemID;
+                        dr["Image_Name"] = txtimg6.Text.ToString();
+                        dr["Image_Type"] = 0;
+                        dr["SN"] = 6;
+                        dtImage.Rows.Add(dr);
+                    }
+                    if (System.Text.RegularExpressions.Regex.IsMatch(txtimg7.Text, txtItem_Code.Text + "-[0-1]?[0-9]|20.jpg"))
+                    {
+                        DataRow dr = dtImage.NewRow();
+                        dr["Item_ID"] = itemID;
+                        dr["Image_Name"] = txtimg7.Text.ToString();
+                        dr["Image_Type"] = 0;
+                        dr["SN"] = 7;
+                        dtImage.Rows.Add(dr);
+                    }
+                    if (System.Text.RegularExpressions.Regex.IsMatch(txtimg8.Text, txtItem_Code.Text + "-[0-1]?[0-9]|20.jpg"))
+                    {
+                        DataRow dr = dtImage.NewRow();
+                        dr["Item_ID"] = itemID;
+                        dr["Image_Name"] = txtimg8.Text.ToString();
+                        dr["Image_Type"] = 0;
+                        dr["SN"] = 8;
+                        dtImage.Rows.Add(dr);
+                    }
+                    if (System.Text.RegularExpressions.Regex.IsMatch(txtimg9.Text, txtItem_Code.Text + "-[0-1]?[0-9]|20.jpg"))
+                    {
+                        DataRow dr = dtImage.NewRow();
+                        dr["Item_ID"] = itemID;
+                        dr["Image_Name"] = txtimg9.Text.ToString();
+                        dr["Image_Type"] = 0;
+                        dr["SN"] = 9;
+                        dtImage.Rows.Add(dr);
+                    }
 
-                        List<DataRow> rows_to_remove = new List<DataRow>();
-                        foreach (DataRow row1 in dtImage.Rows)
+                    if (System.Text.RegularExpressions.Regex.IsMatch(txtimg10.Text, txtItem_Code.Text + "-[0-1]?[0-9]|20.jpg"))
+                    {
+                        DataRow dr = dtImage.NewRow();
+                        dr["Item_ID"] = itemID;
+                        dr["Image_Name"] = txtimg10.Text.ToString();
+                        dr["Image_Type"] = 0;
+                        dr["SN"] = 10;
+                        dtImage.Rows.Add(dr);
+                    }
+
+                    if (System.Text.RegularExpressions.Regex.IsMatch(txtimg11.Text, txtItem_Code.Text + "-[0-1]?[0-9]|20.jpg"))
+                    {
+                        DataRow dr = dtImage.NewRow();
+                        dr["Item_ID"] = itemID;
+                        dr["Image_Name"] = txtimg11.Text.ToString();
+                        dr["Image_Type"] = 0;
+                        dr["SN"] = 11;
+                        dtImage.Rows.Add(dr);
+                    }
+
+                    if (System.Text.RegularExpressions.Regex.IsMatch(txtimg12.Text, txtItem_Code.Text + "-[0-1]?[0-9]|20.jpg"))
+                    {
+                        DataRow dr = dtImage.NewRow();
+                        dr["Item_ID"] = itemID;
+                        dr["Image_Name"] = txtimg12.Text.ToString();
+                        dr["Image_Type"] = 0;
+                        dr["SN"] = 12;
+                        dtImage.Rows.Add(dr);
+                    }
+
+                    if (System.Text.RegularExpressions.Regex.IsMatch(txtimg13.Text, txtItem_Code.Text + "-[0-1]?[0-9]|20.jpg"))
+                    {
+                        DataRow dr = dtImage.NewRow();
+                        dr["Item_ID"] = itemID;
+                        dr["Image_Name"] = txtimg13.Text.ToString();
+                        dr["Image_Type"] = 0;
+                        dr["SN"] = 13;
+                        dtImage.Rows.Add(dr);
+                    }
+
+                    if (System.Text.RegularExpressions.Regex.IsMatch(txtimg14.Text, txtItem_Code.Text + "-[0-1]?[0-9]|20.jpg"))
+                    {
+                        DataRow dr = dtImage.NewRow();
+                        dr["Item_ID"] = itemID;
+                        dr["Image_Name"] = txtimg14.Text.ToString();
+                        dr["Image_Type"] = 0;
+                        dr["SN"] = 14;
+                        dtImage.Rows.Add(dr);
+                    }
+
+                    if (System.Text.RegularExpressions.Regex.IsMatch(txtimg15.Text, txtItem_Code.Text + "-[0-1]?[0-9]|20.jpg"))
+                    {
+                        DataRow dr = dtImage.NewRow();
+                        dr["Item_ID"] = itemID;
+                        dr["Image_Name"] = txtimg15.Text.ToString();
+                        dr["Image_Type"] = 0;
+                        dr["SN"] = 15;
+                        dtImage.Rows.Add(dr);
+                    }
+
+                    if (System.Text.RegularExpressions.Regex.IsMatch(txtimg16.Text, txtItem_Code.Text + "-[0-1]?[0-9]|20.jpg"))
+                    {
+                        DataRow dr = dtImage.NewRow();
+                        dr["Item_ID"] = itemID;
+                        dr["Image_Name"] = txtimg16.Text.ToString();
+                        dr["Image_Type"] = 0;
+                        dr["SN"] = 16;
+                        dtImage.Rows.Add(dr);
+                    }
+
+                    if (System.Text.RegularExpressions.Regex.IsMatch(txtimg17.Text, txtItem_Code.Text + "-[0-1]?[0-9]|20.jpg"))
+                    {
+                        DataRow dr = dtImage.NewRow();
+                        dr["Item_ID"] = itemID;
+                        dr["Image_Name"] = txtimg17.Text.ToString();
+                        dr["Image_Type"] = 0;
+                        dr["SN"] = 17;
+                        dtImage.Rows.Add(dr);
+                    }
+                    if (System.Text.RegularExpressions.Regex.IsMatch(txtimg18.Text, txtItem_Code.Text + "-[0-1]?[0-9]|20.jpg"))
+                    {
+                        DataRow dr = dtImage.NewRow();
+                        dr["Item_ID"] = itemID;
+                        dr["Image_Name"] = txtimg18.Text.ToString();
+                        dr["Image_Type"] = 0;
+                        dr["SN"] = 18;
+                        dtImage.Rows.Add(dr);
+                    }
+                    if (System.Text.RegularExpressions.Regex.IsMatch(txtimg19.Text, txtItem_Code.Text + "-[0-1]?[0-9]|20.jpg"))
+                    {
+                        DataRow dr = dtImage.NewRow();
+                        dr["Item_ID"] = itemID;
+                        dr["Image_Name"] = txtimg19.Text.ToString();
+                        dr["Image_Type"] = 0;
+                        dr["SN"] = 19;
+                        dtImage.Rows.Add(dr);
+                    }
+
+                    if (System.Text.RegularExpressions.Regex.IsMatch(txtimg20.Text, txtItem_Code.Text + "-[0-1]?[0-9]|20.jpg"))
+                    {
+                        DataRow dr = dtImage.NewRow();
+                        dr["Item_ID"] = itemID;
+                        dr["Image_Name"] = txtimg20.Text.ToString();
+                        dr["Image_Type"] = 0;
+                        dr["SN"] = 20;
+                        dtImage.Rows.Add(dr);
+                    }
+
+
+
+                    //DataTable dtImage = ImageList as DataTable;
+                    Item_Image_BL itemImageBL = new Item_Image_BL();
+                    // dtImage = SetLibraryPhoto(dtImage);
+                    if (dtImage.Rows.Count > 0)
+                    {
+                        DataRow[] dr = dtImage.Select("Image_Type='0'");
+                        if (dr.Length > 0)
                         {
-                            if (int.Parse(row1["Image_Type"].ToString()) == 0)
+                            DataTable dtImage0 = dtImage.Select("Image_Type='0'").CopyToDataTable();
+
+                            List<DataRow> rows_to_remove = new List<DataRow>();
+                            foreach (DataRow row1 in dtImage.Rows)
                             {
-                                rows_to_remove.Add(row1);
+                                if (int.Parse(row1["Image_Type"].ToString()) == 0)
+                                {
+                                    rows_to_remove.Add(row1);
+                                }
                             }
-                        }
-                        foreach (DataRow row in rows_to_remove)
-                        {
-                            dtImage.Rows.Remove(row);
-                            dtImage.AcceptChanges();
-                        }
+                            foreach (DataRow row in rows_to_remove)
+                            {
+                                dtImage.Rows.Remove(row);
+                                dtImage.AcceptChanges();
+                            }
 
-                        dtImage.Merge(RemoveDuplicateRows(dtImage0, "SN"));
+                            dtImage.Merge(RemoveDuplicateRows(dtImage0, "SN"));
+                        }
+                    }
+                    itemImageBL.Insert(itemID, dtImage);
+                    if (String.IsNullOrWhiteSpace(txtimg1.Text.ToString()))
+                    {
+                        Image1.ImageUrl = "../../Item_Image/no_image.jpg";
+                        hlImage1.NavigateUrl = "../../Item_Image/no_image.jpg";
+                    }
+                    if (String.IsNullOrWhiteSpace(txtimg2.Text.ToString()))
+                    {
+                        Image2.ImageUrl = "../../Item_Image/no_image.jpg";
+                        hlImage2.NavigateUrl = "../../Item_Image/no_image.jpg";
+                    }
+                    if (String.IsNullOrWhiteSpace(txtimg3.Text.ToString()))
+                    {
+                        Image3.ImageUrl = "../../Item_Image/no_image.jpg";
+                        hlImage3.NavigateUrl = "../../Item_Image/no_image.jpg";
+                    }
+                    if (String.IsNullOrWhiteSpace(txtimg4.Text.ToString()))
+                    {
+                        Image4.ImageUrl = "../../Item_Image/no_image.jpg";
+                        hlImage4.NavigateUrl = "../../Item_Image/no_image.jpg";
+                    }
+                    if (String.IsNullOrWhiteSpace(txtimg5.Text.ToString()))
+                    {
+                        Image5.ImageUrl = "../../Item_Image/no_image.jpg";
+                        hlImage5.NavigateUrl = "../../Item_Image/no_image.jpg";
+                    }
+                    if (String.IsNullOrWhiteSpace(txtimg6.Text.ToString()))
+                    {
+                        Image6.ImageUrl = "../../Item_Image/no_image.jpg";
+                        hlImage6.NavigateUrl = "../../Item_Image/no_image.jpg";
+                    }
+                    if (String.IsNullOrWhiteSpace(txtimg7.Text.ToString()))
+                    {
+                        Image7.ImageUrl = "../../Item_Image/no_image.jpg";
+                        hlImage7.NavigateUrl = "../../Item_Image/no_image.jpg";
+                    }
+                    if (String.IsNullOrWhiteSpace(txtimg8.Text.ToString()))
+                    {
+                        Image8.ImageUrl = "../../Item_Image/no_image.jpg";
+                        hlImage8.NavigateUrl = "../../Item_Image/no_image.jpg";
+                    }
+                    if (String.IsNullOrWhiteSpace(txtimg9.Text.ToString()))
+                    {
+                        Image9.ImageUrl = "../../Item_Image/no_image.jpg";
+                        hlImage9.NavigateUrl = "../../Item_Image/no_image.jpg";
+                    }
+                    if (String.IsNullOrWhiteSpace(txtimg10.Text.ToString()))
+                    {
+                        Image10.ImageUrl = "../../Item_Image/no_image.jpg";
+                        hlImage10.NavigateUrl = "../../Item_Image/no_image.jpg";
+                    }
+                    if (String.IsNullOrWhiteSpace(txtimg11.Text.ToString()))
+                    {
+                        Image11.ImageUrl = "../../Item_Image/no_image.jpg";
+                        hlImage11.NavigateUrl = "../../Item_Image/no_image.jpg";
+                    }
+                    if (String.IsNullOrWhiteSpace(txtimg12.Text.ToString()))
+                    {
+                        Image12.ImageUrl = "../../Item_Image/no_image.jpg";
+                        hlImage12.NavigateUrl = "../../Item_Image/no_image.jpg";
+                    }
+                    if (String.IsNullOrWhiteSpace(txtimg13.Text.ToString()))
+                    {
+                        Image13.ImageUrl = "../../Item_Image/no_image.jpg";
+                        hlImage13.NavigateUrl = "../../Item_Image/no_image.jpg";
+                    }
+                    if (String.IsNullOrWhiteSpace(txtimg14.Text.ToString()))
+                    {
+                        Image14.ImageUrl = "../../Item_Image/no_image.jpg";
+                        hlImage14.NavigateUrl = "../../Item_Image/no_image.jpg";
+                    }
+                    if (String.IsNullOrWhiteSpace(txtimg15.Text.ToString()))
+                    {
+                        Image15.ImageUrl = "../../Item_Image/no_image.jpg";
+                        hlImage15.NavigateUrl = "../../Item_Image/no_image.jpg";
+                    }
+                    if (String.IsNullOrWhiteSpace(txtimg16.Text.ToString()))
+                    {
+                        Image16.ImageUrl = "../../Item_Image/no_image.jpg";
+                        hlImage16.NavigateUrl = "../../Item_Image/no_image.jpg";
+                    }
+                    if (String.IsNullOrWhiteSpace(txtimg17.Text.ToString()))
+                    {
+                        Image17.ImageUrl = "../../Item_Image/no_image.jpg";
+                        hlImage17.NavigateUrl = "../../Item_Image/no_image.jpg";
+                    }
+                    if (String.IsNullOrWhiteSpace(txtimg18.Text.ToString()))
+                    {
+                        Image18.ImageUrl = "../../Item_Image/no_image.jpg";
+                        hlImage18.NavigateUrl = "../../Item_Image/no_image.jpg";
+                    }
+                    if (String.IsNullOrWhiteSpace(txtimg19.Text.ToString()))
+                    {
+                        Image19.ImageUrl = "../../Item_Image/no_image.jpg";
+                        hlImage19.NavigateUrl = "../../Item_Image/no_image.jpg";
+                    }
+                    if (String.IsNullOrWhiteSpace(txtimg20.Text.ToString()))
+                    {
+                        Image20.ImageUrl = "../../Item_Image/no_image.jpg";
+                        hlImage20.NavigateUrl = "../../Item_Image/no_image.jpg";
                     }
                 }
-                itemImageBL.Insert(itemID, dtImage);
-                if (String.IsNullOrWhiteSpace(txtimg1.Text.ToString()))
-                {
-                    Image1.ImageUrl = "../../Item_Image/no_image.jpg";
-                    hlImage1.NavigateUrl = "../../Item_Image/no_image.jpg";
-                }
-                if (String.IsNullOrWhiteSpace(txtimg2.Text.ToString()))
-                {
-                    Image2.ImageUrl = "../../Item_Image/no_image.jpg";
-                    hlImage2.NavigateUrl = "../../Item_Image/no_image.jpg";
-                }
-                if (String.IsNullOrWhiteSpace(txtimg3.Text.ToString()))
-                {
-                    Image3.ImageUrl = "../../Item_Image/no_image.jpg";
-                    hlImage3.NavigateUrl = "../../Item_Image/no_image.jpg";
-                }
-                if (String.IsNullOrWhiteSpace(txtimg4.Text.ToString()))
-                {
-                    Image4.ImageUrl = "../../Item_Image/no_image.jpg";
-                    hlImage4.NavigateUrl = "../../Item_Image/no_image.jpg";
-                }
-                if (String.IsNullOrWhiteSpace(txtimg5.Text.ToString()))
-                {
-                    Image5.ImageUrl = "../../Item_Image/no_image.jpg";
-                    hlImage5.NavigateUrl = "../../Item_Image/no_image.jpg";
-                }
-                if (String.IsNullOrWhiteSpace(txtimg6.Text.ToString()))
-                {
-                    Image6.ImageUrl = "../../Item_Image/no_image.jpg";
-                    hlImage6.NavigateUrl = "../../Item_Image/no_image.jpg";
-                }
-                if (String.IsNullOrWhiteSpace(txtimg7.Text.ToString()))
-                {
-                    Image7.ImageUrl = "../../Item_Image/no_image.jpg";
-                    hlImage7.NavigateUrl = "../../Item_Image/no_image.jpg";
-                }
-                if (String.IsNullOrWhiteSpace(txtimg8.Text.ToString()))
-                {
-                    Image8.ImageUrl = "../../Item_Image/no_image.jpg";
-                    hlImage8.NavigateUrl = "../../Item_Image/no_image.jpg";
-                }
-                if (String.IsNullOrWhiteSpace(txtimg9.Text.ToString()))
-                {
-                    Image9.ImageUrl = "../../Item_Image/no_image.jpg";
-                    hlImage9.NavigateUrl = "../../Item_Image/no_image.jpg";
-                }
-                if (String.IsNullOrWhiteSpace(txtimg10.Text.ToString()))
-                {
-                    Image10.ImageUrl = "../../Item_Image/no_image.jpg";
-                    hlImage10.NavigateUrl = "../../Item_Image/no_image.jpg";
-                }
-                if (String.IsNullOrWhiteSpace(txtimg11.Text.ToString()))
-                {
-                    Image11.ImageUrl = "../../Item_Image/no_image.jpg";
-                    hlImage11.NavigateUrl = "../../Item_Image/no_image.jpg";
-                }
-                if (String.IsNullOrWhiteSpace(txtimg12.Text.ToString()))
-                {
-                    Image12.ImageUrl = "../../Item_Image/no_image.jpg";
-                    hlImage12.NavigateUrl = "../../Item_Image/no_image.jpg";
-                }
-                if (String.IsNullOrWhiteSpace(txtimg13.Text.ToString()))
-                {
-                    Image13.ImageUrl = "../../Item_Image/no_image.jpg";
-                    hlImage13.NavigateUrl = "../../Item_Image/no_image.jpg";
-                }
-                if (String.IsNullOrWhiteSpace(txtimg14.Text.ToString()))
-                {
-                    Image14.ImageUrl = "../../Item_Image/no_image.jpg";
-                    hlImage14.NavigateUrl = "../../Item_Image/no_image.jpg";
-                }
-                if (String.IsNullOrWhiteSpace(txtimg15.Text.ToString()))
-                {
-                    Image15.ImageUrl = "../../Item_Image/no_image.jpg";
-                    hlImage15.NavigateUrl = "../../Item_Image/no_image.jpg";
-                }
-                if (String.IsNullOrWhiteSpace(txtimg16.Text.ToString()))
-                {
-                    Image16.ImageUrl = "../../Item_Image/no_image.jpg";
-                    hlImage16.NavigateUrl = "../../Item_Image/no_image.jpg";
-                }
-                if (String.IsNullOrWhiteSpace(txtimg17.Text.ToString()))
-                {
-                    Image17.ImageUrl = "../../Item_Image/no_image.jpg";
-                    hlImage17.NavigateUrl = "../../Item_Image/no_image.jpg";
-                }
-                if (String.IsNullOrWhiteSpace(txtimg18.Text.ToString()))
-                {
-                    Image18.ImageUrl = "../../Item_Image/no_image.jpg";
-                    hlImage18.NavigateUrl = "../../Item_Image/no_image.jpg";
-                }
-                if (String.IsNullOrWhiteSpace(txtimg19.Text.ToString()))
-                {
-                    Image19.ImageUrl = "../../Item_Image/no_image.jpg";
-                    hlImage19.NavigateUrl = "../../Item_Image/no_image.jpg";
-                }
-                if (String.IsNullOrWhiteSpace(txtimg20.Text.ToString()))
-                {
-                    Image20.ImageUrl = "../../Item_Image/no_image.jpg";
-                    hlImage20.NavigateUrl = "../../Item_Image/no_image.jpg";
-                }
-            }
+            
             catch (Exception ex)
             {
                 Session["Exception"] = ex.ToString();

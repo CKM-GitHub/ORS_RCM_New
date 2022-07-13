@@ -263,7 +263,7 @@ table td {
                                         </asp:Label>
                                         <asp:TextBox CssClass="txtbox" ID="txtsiiresaki" MaxLength="100"  runat="server" style="width: 100%;"></asp:TextBox> 
                                 </div>
-                               <div class="floaddiv" style="width:100.64px;">
+                               <div class="floaddiv" style="width:180.64px;">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl greenlable">発注コード</span>
                                         </asp:Label>

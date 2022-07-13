@@ -460,15 +460,15 @@
                                     <asp:TemplateField HeaderText="商品画像">
                                         <ItemTemplate>
                                             <p>
-                                                <asp:Image runat="server" ID="Image1" ImageUrl="~/Item_Image/no_image.jpg" /></p>
+                                                <asp:Image runat="server" ID="Image1" ImageUrl="~/Item_Images/no_image.jpg" /></p>
                                             <p>
-                                                <asp:Image runat="server" ID="Image2" ImageUrl="~/Item_Image/no_image.jpg" /></p>
+                                                <asp:Image runat="server" ID="Image2" ImageUrl="~/Item_Images/no_image.jpg" /></p>
                                             <p>
-                                                <asp:Image runat="server" ID="Image3" ImageUrl="~/Item_Image/no_image.jpg" /></p>
+                                                <asp:Image runat="server" ID="Image3" ImageUrl="~/Item_Images/no_image.jpg" /></p>
                                             <p>
-                                                <asp:Image runat="server" ID="Image4" ImageUrl="~/Item_Image/no_image.jpg" /></p>
+                                                <asp:Image runat="server" ID="Image4" ImageUrl="~/Item_Images/no_image.jpg" /></p>
                                             <p>
-                                                <asp:Image runat="server" ID="Image5" ImageUrl="~/Item_Image/no_image.jpg" /></p>
+                                                <asp:Image runat="server" ID="Image5" ImageUrl="~/Item_Images/no_image.jpg" /></p>
                                             <%--<asp:DataList ID="dlImage" runat="server" RepeatColumns="5" RepeatDirection="Horizontal">--%>
                                             <%--<ItemTemplate>
 <asp:Image ID="imgItem" runat="server" Width="40px" Height="40px" ImageUrl='<%# Bind("Image_Name", "~/Item_Image/{0}") %>' />

@@ -227,7 +227,7 @@ table td {
                                         </asp:Label>
                                         <asp:DropDownList ID="ddlsalesunit" style="width:100%;" runat="server"></asp:DropDownList>
                                     </div>
-                                    <div class="floaddiv" style="width:151.23px;">
+                                    <div class="floaddiv" style="width:80.23px;">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl greenlable">内容量</span>
                                         </asp:Label>
@@ -239,7 +239,7 @@ table td {
                                         </asp:Label>
                                          <asp:DropDownList ID="ddlcontentunit1" style="width:100%;" runat="server"></asp:DropDownList>
                                     </div>
-                                 <div class="floaddiv" style="width:151.23px;">
+                                 <div class="floaddiv" style="width:94.23px;">
                                         <asp:Label CssClass=""  runat="server" >
                                         <span class="label label-md lbl greenlable">まとめ販売数</span>
                                         </asp:Label>
@@ -262,7 +262,13 @@ table td {
                                         <span class="label label-md lbl greenlable">仕入先</span>
                                         </asp:Label>
                                         <asp:TextBox CssClass="txtbox" ID="txtsiiresaki" MaxLength="100"  runat="server" style="width: 100%;"></asp:TextBox> 
-                                </div>      
+                                </div>
+                               <div class="floaddiv" style="width:100.64px;">
+                                        <asp:Label CssClass=""  runat="server" >
+                                        <span class="label label-md lbl greenlable">発注コード</span>
+                                        </asp:Label>
+                                        <asp:TextBox CssClass="txtbox" ID="txthachu" MaxLength="50"  runat="server" style="width: 100%;"></asp:TextBox> 
+                                </div> 
                           </div>
                      </div>
                     </div>

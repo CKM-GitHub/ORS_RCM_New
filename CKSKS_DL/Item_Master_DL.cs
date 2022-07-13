@@ -351,6 +351,7 @@ namespace ORS_RCM_DL
                 cmd.Parameters.AddWithValue("@JANCD", ime.JanCode);
                 cmd.Parameters.AddWithValue("@Memo", ime.Memo);
                 cmd.Parameters.AddWithValue("@Siiresaki", ime.Siiresaki);
+                cmd.Parameters.AddWithValue("@Yobi1", ime.Yobi1);
                 cmd.Parameters.AddWithValue("@NormalLargeKBN", ime.NormalLargeKBN);
                 cmd.Parameters.AddWithValue("@List_Price", ime.List_Price);
                 cmd.Parameters.AddWithValue("@Sale_Price", ime.Sale_Price);
@@ -713,6 +714,7 @@ namespace ORS_RCM_DL
                     }
                    // ime.NormalLargeKBN = Convert.ToInt32(dt.Rows[0]["NormalLargeKBN"].ToString());
                     ime.Siiresaki= dt.Rows[0]["Siiresaki"].ToString();
+                    ime.Yobi1 = dt.Rows[0]["Yobi"].ToString();
                     ime.Item_Name = dt.Rows[0]["Item_Name"].ToString();
                     ime.Product_Code = dt.Rows[0]["Product_Code"].ToString();
                     if (dt.Rows[0]["Release_Date"] != DBNull.Value)

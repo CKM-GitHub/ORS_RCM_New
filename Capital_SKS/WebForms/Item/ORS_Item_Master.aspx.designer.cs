@@ -213,6 +213,15 @@ namespace Capital_SKS.WebForms.Item
         protected global::System.Web.UI.WebControls.TextBox txtsiiresaki;
 
         /// <summary>
+        /// txthachu control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txthachu;
+
+        /// <summary>
         /// dis control.
         /// </summary>
         /// <remarks>

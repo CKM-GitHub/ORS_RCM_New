@@ -714,7 +714,7 @@ namespace ORS_RCM_DL
                     }
                    // ime.NormalLargeKBN = Convert.ToInt32(dt.Rows[0]["NormalLargeKBN"].ToString());
                     ime.Siiresaki= dt.Rows[0]["Siiresaki"].ToString();
-                    ime.Yobi1 = dt.Rows[0]["Yobi"].ToString();
+                    ime.Yobi1 = dt.Rows[0]["Hachu"].ToString();
                     ime.Item_Name = dt.Rows[0]["Item_Name"].ToString();
                     ime.Product_Code = dt.Rows[0]["Product_Code"].ToString();
                     if (dt.Rows[0]["Release_Date"] != DBNull.Value)

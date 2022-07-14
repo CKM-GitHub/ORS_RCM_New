@@ -615,9 +615,9 @@ namespace BoxPlayground
                                 var numberOfParts = GetUploadPartsCount(fileSize, partSizeLong);
 
                                 // Full file sha1 for final commit
-                                var fullFileSha1 = await Task.Run(() => {
-                                    return Helper.GetSha1Hash(toUpload);
-                                });
+                                //var fullFileSha1 = await Task.Run(() => {
+                                //    return Helper.GetSha1Hash(toUpload);
+                                //});
 
                                 for (var i = 0; i < numberOfParts; i++)
                                 {
@@ -627,6 +627,27 @@ namespace BoxPlayground
                                     partFileStream.Position = 0;
                                     await client.FilesManager.UploadPartAsync(uploadPartUri, sha, partOffset, fileSize, partFileStream);
                                 }
+                                await UploadPartsInSessionAsync(uploadPartUri, numberOfParts, partSizeLong, fileInMemoryStream, fileSize);
+
+                                // Assert file is not committed/uploaded to box yet
+                                Assert.IsFalse(await DoesFileExistInFolder(UserClient, FolderId, remoteFileName));
+
+                                var allSessionParts = new List<BoxSessionPartInfo>();
+
+                                var boxSessionParts = await client.FilesManager.GetSessionUploadedPartsAsync(listPartsUri, null, null, true);
+
+                                foreach (var sessionPart in boxSessionParts.Entries)
+                                {
+                                    allSessionParts.Add(sessionPart);
+                                }
+                                var sessionPartsForCommit = new BoxSessionParts() { Parts = allSessionParts };
+
+                                var uploadedFile = await client.FilesManager.CommitSessionAsync(commitUri, Helper.GetSha1Hash(fileInMemoryStream), sessionPartsForCommit);
+
+                                // Assert file is committed/uploaded to box after commit
+                                Assert.IsTrue(await DoesFileExistInFolder(UserClient, FolderId, remoteFileName));
+
+                                await DeleteFile(uploadedFile.Id);
                                 //var boxSessionParts = await UploadPartsInSessionAsync(uploadPartUri, numberOfParts, partSizeLong, toUpload, fileSize, client);
                                 //var allSessionParts = new List<BoxSessionPartInfo>();
 
@@ -639,38 +660,38 @@ namespace BoxPlayground
                                 //BoxSessionParts sessionPartsForCommit = new BoxSessionParts() { Parts = allSessionParts };
 
                                 // Upload parts in session
-                                var progress = new Progress<BoxProgress>(val =>
-                                               {
-                                                   Console.WriteLine("Uploaded {0}%", val.progress);
-                                               });
-                                BoxFilesManager1 boxFiles = new BoxFilesManager1(null, null, null, null, null, null);
-                                var allSessionParts = await boxFiles.UploadPartsInSessionAsync(uploadPartUri,
-                                                                numberOfParts, partSizeLong, toUpload,
-                                                                fileSize, TimeSpan.FromSeconds(360), progress).ConfigureAwait(false);
+                                //var progress = new Progress<BoxProgress>(val =>
+                                //               {
+                                //                   Console.WriteLine("Uploaded {0}%", val.progress);
+                                //               });
+                                //BoxFilesManager1 boxFiles = new BoxFilesManager1(null, null, null, null, null, null);
+                                //var allSessionParts = await boxFiles.UploadPartsInSessionAsync(uploadPartUri,
+                                //                                numberOfParts, partSizeLong, toUpload,
+                                //                                fileSize, TimeSpan.FromSeconds(360), progress).ConfigureAwait(false);
 
-                                var allSessionPartsList = allSessionParts.ToList();
+                                //var allSessionPartsList = allSessionParts.ToList();
 
-                                var sessionPartsForCommit = new BoxSessionParts
-                                {
-                                    Parts = allSessionPartsList
-                                };
+                                //var sessionPartsForCommit = new BoxSessionParts
+                                //{
+                                //    Parts = allSessionPartsList
+                                //};
 
                                 // Commit
                                 //await client.FilesManager.CommitSessionAsync(commitUri, Box.V2.Utility.Helper.GetSha1Hash(toUpload), sessionPartsForCommit);
 
                                 // Commit, Retry 5 times with interval related to the total part number
                                 // Having debugged this -- retries do consistenly happen so we up the retries
-                                const int retryCount = 5;
-                                var retryInterval = allSessionPartsList.Count * 100;
+                                //const int retryCount = 5;
+                                //var retryInterval = allSessionPartsList.Count * 100;
 
-                                var response =
-                                    await Retry.ExecuteAsync(
-                                        async () =>
-                                            await client.FilesManager.CommitSessionAsync(commitUri, Box.V2.Utility.Helper.GetSha1Hash(toUpload), sessionPartsForCommit),
-                                        TimeSpan.FromMilliseconds(retryInterval), retryCount);
+                                //var response =
+                                //    await Retry.ExecuteAsync(
+                                //        async () =>
+                                //            await client.FilesManager.CommitSessionAsync(commitUri, Box.V2.Utility.Helper.GetSha1Hash(toUpload), sessionPartsForCommit),
+                                //        TimeSpan.FromMilliseconds(retryInterval), retryCount);
 
-                                //return response;
-                                System.Console.WriteLine(response.ToString());
+                                ////return response;
+                                //System.Console.WriteLine(response.ToString());
                                 // Delete file
                                 //string fileId = await GetFileId(folderId, file, client);
                                 //if (!string.IsNullOrWhiteSpace(fileId))

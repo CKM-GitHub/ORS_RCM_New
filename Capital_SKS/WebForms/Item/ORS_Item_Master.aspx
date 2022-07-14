@@ -2118,7 +2118,11 @@ table td {
          }
          else {
              document.getElementById("imginputdelete").hidden = true;
-             document.getElementById("imginput").hidden = false;              
+             document.getElementById("imginput").hidden = false;
+             var hlImage1 = document.getElementById('<%= hlImage1.ClientID %>');
+             var image1 = document.getElementById('<%= Image1.ClientID %>');
+             hlImage1.href = '../../Item_Image/no_image.jpg';
+             image1.src = '../../Item_Image/no_image.jpg';
          }
 
          var img2 = document.getElementById('<%= txtimg2.ClientID %>')
@@ -2131,7 +2135,11 @@ table td {
          }
          else {
              document.getElementById("imginputdelete2").hidden = true;
-             document.getElementById("imginput2").hidden = false;              
+             document.getElementById("imginput2").hidden = false;
+             var hlImage1 = document.getElementById('<%= hlImage2.ClientID %>');
+             var image1 = document.getElementById('<%= Image2.ClientID %>');
+             hlImage1.href = '../../Item_Image/no_image.jpg';
+             image1.src = '../../Item_Image/no_image.jpg';
          }
 
          var img3 = document.getElementById('<%= txtimg3.ClientID %>')
@@ -2144,7 +2152,11 @@ table td {
          }
          else {
              document.getElementById("imginputdelete3").hidden = true;
-             document.getElementById("imginput3").hidden = false;              
+             document.getElementById("imginput3").hidden = false;
+             var hlImage1 = document.getElementById('<%= hlImage3.ClientID %>');
+             var image1 = document.getElementById('<%= Image3.ClientID %>');
+             hlImage1.href = '../../Item_Image/no_image.jpg';
+             image1.src = '../../Item_Image/no_image.jpg';
          }
 
          var img4 = document.getElementById('<%= txtimg4.ClientID %>')
@@ -2157,7 +2169,11 @@ table td {
          }
          else {
              document.getElementById("imginputdelete4").hidden = true;
-             document.getElementById("imginput4").hidden = false;              
+             document.getElementById("imginput4").hidden = false;
+             var hlImage1 = document.getElementById('<%= hlImage4.ClientID %>');
+             var image1 = document.getElementById('<%= Image4.ClientID %>');
+             hlImage1.href = '../../Item_Image/no_image.jpg';
+             image1.src = '../../Item_Image/no_image.jpg';
          }
          var img5 = document.getElementById('<%= txtimg5.ClientID %>')
         
@@ -2169,7 +2185,11 @@ table td {
          }
          else {
              document.getElementById("imginputdelete5").hidden = true;
-             document.getElementById("imginput5").hidden = false;              
+             document.getElementById("imginput5").hidden = false;
+             var hlImage1 = document.getElementById('<%= hlImage5.ClientID %>');
+             var image1 = document.getElementById('<%= Image5.ClientID %>');
+             hlImage1.href = '../../Item_Image/no_image.jpg';
+             image1.src = '../../Item_Image/no_image.jpg';
          }
 
          var img6 = document.getElementById('<%= txtimg6.ClientID %>')
@@ -2182,7 +2202,11 @@ table td {
          }
          else {
              document.getElementById("imginputdelete6").hidden = true;
-             document.getElementById("imginput6").hidden = false;              
+             document.getElementById("imginput6").hidden = false;
+             var hlImage1 = document.getElementById('<%= hlImage6.ClientID %>');
+             var image1 = document.getElementById('<%= Image6.ClientID %>');
+             hlImage1.href = '../../Item_Image/no_image.jpg';
+             image1.src = '../../Item_Image/no_image.jpg';
          }  
 
          var img7 = document.getElementById('<%= txtimg7.ClientID %>')
@@ -2195,7 +2219,11 @@ table td {
          }
          else {
              document.getElementById("imginputdelete7").hidden = true;
-             document.getElementById("imginput7").hidden = false;              
+             document.getElementById("imginput7").hidden = false;
+             var hlImage1 = document.getElementById('<%= hlImage7.ClientID %>');
+             var image1 = document.getElementById('<%= Image7.ClientID %>');
+             hlImage1.href = '../../Item_Image/no_image.jpg';
+             image1.src = '../../Item_Image/no_image.jpg';
          }
 
          var img8 = document.getElementById('<%= txtimg8.ClientID %>')
@@ -2208,7 +2236,11 @@ table td {
          }
          else {
              document.getElementById("imginputdelete8").hidden = true;
-             document.getElementById("imginput8").hidden = false;              
+             document.getElementById("imginput8").hidden = false;
+             var hlImage1 = document.getElementById('<%= hlImage8.ClientID %>');
+             var image1 = document.getElementById('<%= Image8.ClientID %>');
+             hlImage1.href = '../../Item_Image/no_image.jpg';
+             image1.src = '../../Item_Image/no_image.jpg';
          }
 
          var img9 = document.getElementById('<%= txtimg9.ClientID %>')
@@ -2221,7 +2253,11 @@ table td {
          }
          else {
              document.getElementById("imginputdelete9").hidden = true;
-             document.getElementById("imginput9").hidden = false;              
+             document.getElementById("imginput9").hidden = false;
+             var hlImage1 = document.getElementById('<%= hlImage9.ClientID %>');
+             var image1 = document.getElementById('<%= Image9.ClientID %>');
+             hlImage1.href = '../../Item_Image/no_image.jpg';
+             image1.src = '../../Item_Image/no_image.jpg';
          }
 
          var img10 = document.getElementById('<%= txtimg10.ClientID %>')
@@ -2234,7 +2270,11 @@ table td {
          }
          else {
              document.getElementById("imginputdelete10").hidden = true;
-             document.getElementById("imginput10").hidden = false;              
+             document.getElementById("imginput10").hidden = false;
+             var hlImage1 = document.getElementById('<%= hlImage10.ClientID %>');
+             var image1 = document.getElementById('<%= Image10.ClientID %>');
+             hlImage1.href = '../../Item_Image/no_image.jpg';
+             image1.src = '../../Item_Image/no_image.jpg';
          }
 
          var img11 = document.getElementById('<%= txtimg11.ClientID %>')
@@ -2247,7 +2287,11 @@ table td {
          }
          else {
              document.getElementById("imginputdelete11").hidden = true;
-             document.getElementById("imginput11").hidden = false;              
+             document.getElementById("imginput11").hidden = false;
+             var hlImage1 = document.getElementById('<%= hlImage11.ClientID %>');
+             var image1 = document.getElementById('<%= Image11.ClientID %>');
+             hlImage1.href = '../../Item_Image/no_image.jpg';
+             image1.src = '../../Item_Image/no_image.jpg';
          }
 
          var img12 = document.getElementById('<%= txtimg12.ClientID %>')
@@ -2260,7 +2304,11 @@ table td {
          }
          else {
              document.getElementById("imginputdelete12").hidden = true;
-             document.getElementById("imginput12").hidden = false;              
+             document.getElementById("imginput12").hidden = false;
+             var hlImage1 = document.getElementById('<%= hlImage12.ClientID %>');
+             var image1 = document.getElementById('<%= Image12.ClientID %>');
+             hlImage1.href = '../../Item_Image/no_image.jpg';
+             image1.src = '../../Item_Image/no_image.jpg';
          }
 
          var img13 = document.getElementById('<%= txtimg13.ClientID %>')
@@ -2273,7 +2321,11 @@ table td {
          }
          else {
              document.getElementById("imginputdelete13").hidden = true;
-             document.getElementById("imginput13").hidden = false;              
+             document.getElementById("imginput13").hidden = false;
+             var hlImage1 = document.getElementById('<%= hlImage13.ClientID %>');
+             var image1 = document.getElementById('<%= Image13.ClientID %>');
+             hlImage1.href = '../../Item_Image/no_image.jpg';
+             image1.src = '../../Item_Image/no_image.jpg';
          }
 
          var img14 = document.getElementById('<%= txtimg14.ClientID %>')
@@ -2286,7 +2338,11 @@ table td {
          }
          else {
              document.getElementById("imginputdelete14").hidden = true;
-             document.getElementById("imginput14").hidden = false;              
+             document.getElementById("imginput14").hidden = false;
+             var hlImage1 = document.getElementById('<%= hlImage14.ClientID %>');
+             var image1 = document.getElementById('<%= Image14.ClientID %>');
+             hlImage1.href = '../../Item_Image/no_image.jpg';
+             image1.src = '../../Item_Image/no_image.jpg';
          }
 
          var img15 = document.getElementById('<%= txtimg15.ClientID %>')
@@ -2299,7 +2355,11 @@ table td {
          }
          else {
              document.getElementById("imginputdelete15").hidden = true;
-             document.getElementById("imginput15").hidden = false;              
+             document.getElementById("imginput15").hidden = false;
+             var hlImage1 = document.getElementById('<%= hlImage15.ClientID %>');
+             var image1 = document.getElementById('<%= Image15.ClientID %>');
+             hlImage1.href = '../../Item_Image/no_image.jpg';
+             image1.src = '../../Item_Image/no_image.jpg';
          }
 
          var img16 = document.getElementById('<%= txtimg16.ClientID %>')
@@ -2312,7 +2372,11 @@ table td {
          }
          else {
              document.getElementById("imginputdelete16").hidden = true;
-             document.getElementById("imginput16").hidden = false;              
+             document.getElementById("imginput16").hidden = false;
+             var hlImage1 = document.getElementById('<%= hlImage16.ClientID %>');
+             var image1 = document.getElementById('<%= Image16.ClientID %>');
+             hlImage1.href = '../../Item_Image/no_image.jpg';
+             image1.src = '../../Item_Image/no_image.jpg';
          }
 
          var img17 = document.getElementById('<%= txtimg17.ClientID %>')
@@ -2325,7 +2389,11 @@ table td {
          }
          else {
              document.getElementById("imginputdelete17").hidden = true;
-             document.getElementById("imginput17").hidden = false;              
+             document.getElementById("imginput17").hidden = false;
+             var hlImage1 = document.getElementById('<%= hlImage17.ClientID %>');
+             var image1 = document.getElementById('<%= Image17.ClientID %>');
+             hlImage1.href = '../../Item_Image/no_image.jpg';
+             image1.src = '../../Item_Image/no_image.jpg';
          }
 
          var img18 = document.getElementById('<%= txtimg18.ClientID %>')
@@ -2338,7 +2406,11 @@ table td {
          }
          else {
              document.getElementById("imginputdelete18").hidden = true;
-             document.getElementById("imginput18").hidden = false;              
+             document.getElementById("imginput18").hidden = false;
+             var hlImage1 = document.getElementById('<%= hlImage18.ClientID %>');
+             var image1 = document.getElementById('<%= Image18.ClientID %>');
+             hlImage1.href = '../../Item_Image/no_image.jpg';
+             image1.src = '../../Item_Image/no_image.jpg';
          }
 
          var img19 = document.getElementById('<%= txtimg19.ClientID %>')
@@ -2351,7 +2423,11 @@ table td {
          }
          else {
              document.getElementById("imginputdelete19").hidden = true;
-             document.getElementById("imginput19").hidden = false;              
+             document.getElementById("imginput19").hidden = false;
+             var hlImage1 = document.getElementById('<%= hlImage19.ClientID %>');
+             var image1 = document.getElementById('<%= Image19.ClientID %>');
+             hlImage1.href = '../../Item_Image/no_image.jpg';
+             image1.src = '../../Item_Image/no_image.jpg';
          }
 
          var img20 = document.getElementById('<%= txtimg20.ClientID %>')
@@ -2364,7 +2440,11 @@ table td {
          }
          else {
              document.getElementById("imginputdelete20").hidden = true;
-             document.getElementById("imginput20").hidden = false;              
+             document.getElementById("imginput20").hidden = false;
+             var hlImage1 = document.getElementById('<%= hlImage20.ClientID %>');
+             var image1 = document.getElementById('<%= Image20.ClientID %>');
+             hlImage1.href = '../../Item_Image/no_image.jpg';
+             image1.src = '../../Item_Image/no_image.jpg';
          }
 
           $("#<%=txtreleasedatemonotaro.ClientID %>").datepicker(
@@ -2996,7 +3076,7 @@ table td {
  return true;
 }
 
-</script>
+ </script>
 
 <script type="text/javascript">
     function ShowMallCategory(mallID, ctrl) {

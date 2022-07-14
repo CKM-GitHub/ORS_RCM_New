@@ -5696,6 +5696,8 @@ namespace Capital_SKS.WebForms.Item
                     dtImage.Columns.Add(new DataColumn("Image_Name", typeof(string)));
                     dtImage.Columns.Add(new DataColumn("Image_Type", typeof(int)));
                     dtImage.Columns.Add(new DataColumn("SN", typeof(int)));
+                     string i = txtItem_Code.Text;
+                    string t= txtimg1.Text.Substring(i.Length, 1);
                     if (System.Text.RegularExpressions.Regex.IsMatch(txtimg1.Text, txtItem_Code.Text + "-[0-1]?[0-9]|20.jpg"))
                     {
                         DataRow dr = dtImage.NewRow();

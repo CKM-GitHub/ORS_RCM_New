@@ -122,6 +122,7 @@ namespace ORS_RCM_Common
         private int japanmprice = 0;
         private int kashiwagikoukiprice = 0;
         private string siiresaki = string.Empty;
+        private string yobi1 = string.Empty;
 
         private String personInCharge = String.Empty;
         public String PersonInCharge
@@ -134,6 +135,12 @@ namespace ORS_RCM_Common
         {
             get { return siiresaki; }
             set { siiresaki = value; }
+        }
+
+        public String Yobi1
+        {
+            get { return yobi1; }
+            set { yobi1 = value; }
         }
 
         private DateTime? fromDate=null;

@@ -2210,6 +2210,7 @@ namespace Capital_SKS.WebForms.Item
                 ime.JanCode = txtJanCD.Text.TrimStart();
                 ime.Memo = txtmemo.Text.TrimStart();
                 ime.Siiresaki = txtsiiresaki.Text.TrimStart();
+                ime.Yobi1 = txthachu.Text.TrimStart();
                 int normallargeKBN = 0;
                 if (Convert.ToInt32(ddNormalLargeKBN.SelectedIndex) == 1)
                 {
@@ -2643,6 +2644,13 @@ namespace Capital_SKS.WebForms.Item
                 }
 
                 length = Encoding.GetEncoding(932).GetByteCount(txtsiiresaki.Text);
+                if (length > 100)
+                {
+                    MessageBox("仕入先は100文字までです。");
+                    return false;
+                }
+
+                length = Encoding.GetEncoding(932).GetByteCount(txthachu.Text);
                 if (length > 100)
                 {
                     MessageBox("仕入先は100文字までです。");
@@ -4050,6 +4058,13 @@ namespace Capital_SKS.WebForms.Item
                 }
 
                 length = Encoding.GetEncoding(932).GetByteCount(txtsiiresaki.Text);
+                if (length > 100)
+                {
+                    MessageBox("仕入先は100文字までです。");
+                    return false;
+                }
+
+                length = Encoding.GetEncoding(932).GetByteCount(txthachu.Text);
                 if (length > 100)
                 {
                     MessageBox("仕入先は100文字までです。");
@@ -6555,6 +6570,7 @@ namespace Capital_SKS.WebForms.Item
                     ddNormalLargeKBN.SelectedIndex = normallargeKBN;
                 }
                 txtsiiresaki.Text = ime.Siiresaki;
+                txthachu.Text = ime.Yobi1;
                 txtProduct_Code.Text = ime.Product_Code;
                 if (!string.IsNullOrWhiteSpace(ime.Release_Date.ToString()))
                 {

@@ -237,182 +237,609 @@
 
 
 //jwt
+//using System;
+//using System.Collections.Generic;
+//using System.Diagnostics;
+//using System.Dynamic;
+//using System.IO;
+//using System.Linq;
+//using System.Net;
+//using System.Net.Sockets;
+//using System.Runtime.InteropServices;
+//using System.Security.Cryptography;
+//using System.Text;
+//using System.Threading.Tasks;
+//using Box.V2;
+//using Box.V2.Auth;
+//using Box.V2.Config;
+//using Box.V2.Converter;
+//using Box.V2.Exceptions;
+//using Box.V2.JWTAuth;
+//using Box.V2.Models;
+//using Box.V2.Utility;
+//using Newtonsoft.Json;
+
+//namespace BoxPlayground
+//{
+//    public class Program
+//    {
+//        static void Main(string[] args)
+//        {
+//            ExecuteMainAsync().Wait();
+//        }
+//        const long CHUNKED_UPLOAD_MINIMUM = 20000000;
+//        private static async Task ExecuteMainAsync()
+//        {
+//            var directoryName = @"D:\ORS_Data\ORS_RCM_New\Item_ImageAll_Backup_Console\bin\Debug\dotnetUploadFolder\";
+//            var parentFolderId = "0";
+//            //var files = Directory.EnumerateFiles(directoryName);
+//            var files = Directory.GetFileSystemEntries(directoryName, "*", SearchOption.AllDirectories);
+//            //var files = Directory.GetFiles(directoryName, "*", SearchOption.AllDirectories);
+//            System.Console.WriteLine(files.Count());
+//            //var reader = new StreamReader(@"D:\ORS_Data\ORS_RCM_New\Item_ImageAll_Backup_Console/907629304_cpqmqz6i_config.json");
+//            //var json = reader.ReadToEnd();
+//            //var config = BoxConfig.CreateFromJsonString(json);
+
+//            //var sdk = new BoxJWTAuth(config);
+//            //var token = sdk.AdminTokenAsync();
+//            //BoxClient client = sdk.AdminClient(token.ToString());
+
+
+//            using (FileStream fs = new FileStream(@"D:\ORS_Data\ORS_RCM_New\Item_ImageAll_Backup_Console\819341516_3y6kxr9l_config.json", FileMode.Open))
+//            {
+//                var session = new BoxJWTAuth(BoxConfig.CreateFromJsonFile(fs));
+//                var client = session.AdminClient(session.AdminTokenAsync().ToString());
+//                var folderId = "";
+//                //try
+//                //{
+//                //    var createdFolder = await client.FoldersManager.CreateAsync(
+//                //      new BoxFolderRequest
+//                //      {
+//                //          Parent = new BoxRequestEntity
+//                //          {
+//                //              Id = parentFolderId
+//                //          },
+//                //          Name = "BCP_Backup"
+//                //      });
+//                //    folderId = createdFolder.Id;
+//                //}
+//                //catch (BoxConflictException<BoxFolder> e)
+//                //{
+//                //    folderId = e.ConflictingItems.FirstOrDefault().Id;
+//                //    System.Console.WriteLine($"Found existing folder: {folderId}");
+//                //}
+//                BoxFolder folder1 = await client.FoldersManager.GetInformationAsync("166757454656");
+//                if (folder1 == null)
+//                    throw new InvalidOperationException(string.Format("Folder does not exist"));
+//                folderId = folder1.Id;
+
+//                var fileUploadTasks = new List<Task<BoxFile>>();
+//                foreach (var file in files)
+//                {
+//                    if (!File.Exists(file))
+//                    {                        
+//                    }
+//                    else
+//                    {
+//                        fileUploadTasks.Add(Task.Run(
+//                      async () =>
+//                      {
+//                          System.Console.WriteLine(file);
+//                          // var fileName = "Category5.csv";
+
+//                          //var fileName = file.Split(Path.DirectorySeparatorChar)
+//                          //.Where((item) => { return item != directoryName; }).ToString();
+//                          //DirectoryInfo di = new DirectoryInfo(directoryName);
+
+//                          //var fileName = di.GetFiles().OrderBy(fi => fi.Name).Select(fi => fi.Name).FirstOrDefault();
+
+//                          var fileName = Path.GetFileName(file);
+
+//                          System.Console.WriteLine(fileName);
+//                          var fileInfo = new FileInfo(file);
+//                          var preflightRequest = new BoxPreflightCheckRequest
+//                          {
+//                              Name = fileName,
+//                              Size = fileInfo.Length,
+//                              Parent = new BoxRequestEntity
+//                              {
+//                                  Id = folderId
+//                              }
+//                          };
+//                          using (FileStream toUpload = new FileStream(file, FileMode.Open))
+//                          {
+//                              try
+//                              {
+//                                  var preflightCheck = await client.FilesManager.PreflightCheck(preflightRequest);
+
+//                                  if (toUpload.Length < CHUNKED_UPLOAD_MINIMUM)
+//                                  {
+//                                      System.Console.WriteLine(toUpload.Length);
+//                                      using (SHA1 sha1 = SHA1.Create())
+//                                      {
+//                                          var fileUploadRequest = new BoxFileRequest
+//                                          {
+//                                              Name = fileName,
+//                                              Parent = new BoxRequestEntity
+//                                              {
+//                                                  Id = folderId
+//                                              }
+//                                          };
+//                                          var fileSHA = sha1.ComputeHash(toUpload);
+//                                          System.Console.WriteLine(fileSHA);
+//                                          return await client.FilesManager.UploadAsync(fileRequest: fileUploadRequest, stream: toUpload, contentMD5: fileSHA);
+//                                      }
+//                                  }
+//                                  else
+//                                  {
+//                                      //var progress = new Progress<BoxProgress>(val =>
+//                                      //{
+//                                      //    Console.WriteLine("Uploaded {0}%", val.progress);
+//                                      //});
+
+//                                      //Console.WriteLine("{0} uploaded to folder: {1} as file: {2}", toUpload, folderId);
+//                                      //return await client.FilesManager.UploadUsingSessionAsync(toUpload, fileName, folderId, null, progress);
+
+//                                      return await client.FilesManager.UploadUsingSessionAsync(stream: toUpload, fileName: fileName, folderId: folderId);
+//                                  }
+//                              }
+//                              catch (BoxPreflightCheckConflictException<BoxFile> e)
+//                              {
+//                                  if (toUpload.Length < CHUNKED_UPLOAD_MINIMUM)
+//                                  {
+//                                      System.Console.WriteLine(toUpload.Length);
+//                                      using (SHA1 sha1 = SHA1.Create())
+//                                      {
+//                                          var fileSHA = sha1.ComputeHash(toUpload);
+//                                          return await client.FilesManager.UploadNewVersionAsync(fileName: e.ConflictingItem.Name, fileId: e.ConflictingItem.Id, stream: toUpload, contentMD5: fileSHA);
+//                                      }
+//                                  }
+//                                  else
+//                                  {
+//                                      await client.FilesManager.UploadFileVersionUsingSessionAsync(fileId: e.ConflictingItem.Id, stream: toUpload);
+//                                      return await client.FilesManager.GetInformationAsync(e.ConflictingItem.Id);
+//                                  }
+//                              }
+//                          }
+
+//                      }));
+//                    }
+//                }
+
+//                var uploaded = await Task.WhenAll(fileUploadTasks);
+//                foreach (var file in uploaded)
+//                {
+//                    System.Console.WriteLine(file.Id);
+//                }
+//            }
+
+//        }
+//    }
+//}
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Dynamic;
 using System.IO;
 using System.Linq;
 using System.Net;
-using System.Net.Sockets;
-using System.Runtime.InteropServices;
+using System.Net.Http.Headers;
+using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using Box.V2;
 using Box.V2.Auth;
 using Box.V2.Config;
 using Box.V2.Converter;
 using Box.V2.Exceptions;
+using Box.V2.Extensions;
 using Box.V2.JWTAuth;
+using Box.V2.Managers;
 using Box.V2.Models;
+using Box.V2.Models.Request;
+using Box.V2.Services;
 using Box.V2.Utility;
-using Newtonsoft.Json;
+using Item_ImageAll_Backup_Console;
+using Newtonsoft.Json.Linq;
 
 namespace BoxPlayground
 {
-    public class Program
+    class Program
     {
         static void Main(string[] args)
         {
-            ExecuteMainAsync().Wait();
+            try
+            {
+                ExecuteMainAsync().Wait();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
         }
-        const long CHUNKED_UPLOAD_MINIMUM = 20000000;
+
         private static async Task ExecuteMainAsync()
         {
-            var directoryName = @"D:\ORS_Data\ORS_RCM_New\Item_ImageAll_Backup_Console\bin\Debug\dotnetUploadFolder\";
-            var parentFolderId = "0";
-            //var files = Directory.EnumerateFiles(directoryName);
-            var files = Directory.GetFileSystemEntries(directoryName, "*", SearchOption.AllDirectories);
-            //var files = Directory.GetFiles(directoryName, "*", SearchOption.AllDirectories);
-            System.Console.WriteLine(files.Count());
-            //var reader = new StreamReader(@"D:\ORS_Data\ORS_RCM_New\Item_ImageAll_Backup_Console/907629304_cpqmqz6i_config.json");
-            //var json = reader.ReadToEnd();
-            //var config = BoxConfig.CreateFromJsonString(json);
+            // var serviceAccount = BoxService.GetBoxServiceAccountClient();
+            var session = new BoxJWTAuth(ConfigureBoxApi());
+            var adminToken = session.AdminTokenAsync();
+            var serviceAccount = session.AdminClient(adminToken.ToString());
+            var me = await serviceAccount.UsersManager.GetCurrentUserInformationAsync();
+            System.Console.WriteLine(me.Name);
+            System.Console.WriteLine(me.Id);
+            await ChunkedUpload(serviceAccount);
+            System.Console.WriteLine("Finished.");
+        }
+        private static IBoxConfig ConfigureBoxApi()
+        {
 
-            //var sdk = new BoxJWTAuth(config);
-            //var token = sdk.AdminTokenAsync();
-            //BoxClient client = sdk.AdminClient(token.ToString());
-
-
+            IBoxConfig config = null;
+            // Change this to the config file for your Box App
             using (FileStream fs = new FileStream(@"D:\ORS_Data\ORS_RCM_New\Item_ImageAll_Backup_Console\819341516_3y6kxr9l_config.json", FileMode.Open))
             {
-                var session = new BoxJWTAuth(BoxConfig.CreateFromJsonFile(fs));
-                var client = session.AdminClient(session.AdminTokenAsync().ToString());
-                var folderId = "";
-                //try
-                //{
-                //    var createdFolder = await client.FoldersManager.CreateAsync(
-                //      new BoxFolderRequest
-                //      {
-                //          Parent = new BoxRequestEntity
-                //          {
-                //              Id = parentFolderId
-                //          },
-                //          Name = "BCP_Backup"
-                //      });
-                //    folderId = createdFolder.Id;
-                //}
-                //catch (BoxConflictException<BoxFolder> e)
-                //{
-                //    folderId = e.ConflictingItems.FirstOrDefault().Id;
-                //    System.Console.WriteLine($"Found existing folder: {folderId}");
-                //}
-                BoxFolder folder1 = await client.FoldersManager.GetInformationAsync("166757454656");
-                if (folder1 == null)
-                    throw new InvalidOperationException(string.Format("Folder does not exist"));
-                folderId = folder1.Id;
-
-                var fileUploadTasks = new List<Task<BoxFile>>();
-                foreach (var file in files)
-                {
-                    if (!File.Exists(file))
-                    {                        
-                    }
-                    else
-                    {
-                        fileUploadTasks.Add(Task.Run(
-                      async () =>
-                      {
-                          System.Console.WriteLine(file);
-                          // var fileName = "Category5.csv";
-
-                          //var fileName = file.Split(Path.DirectorySeparatorChar)
-                          //.Where((item) => { return item != directoryName; }).ToString();
-                          //DirectoryInfo di = new DirectoryInfo(directoryName);
-
-                          //var fileName = di.GetFiles().OrderBy(fi => fi.Name).Select(fi => fi.Name).FirstOrDefault();
-
-                          var fileName = Path.GetFileName(file);
-
-                          System.Console.WriteLine(fileName);
-                          var fileInfo = new FileInfo(file);
-                          var preflightRequest = new BoxPreflightCheckRequest
-                          {
-                              Name = fileName,
-                              Size = fileInfo.Length,
-                              Parent = new BoxRequestEntity
-                              {
-                                  Id = folderId
-                              }
-                          };
-                          using (FileStream toUpload = new FileStream(file, FileMode.Open))
-                          {
-                              try
-                              {
-                                  var preflightCheck = await client.FilesManager.PreflightCheck(preflightRequest);
-
-                                  if (toUpload.Length < CHUNKED_UPLOAD_MINIMUM)
-                                  {
-                                      System.Console.WriteLine(toUpload.Length);
-                                      using (SHA1 sha1 = SHA1.Create())
-                                      {
-                                          var fileUploadRequest = new BoxFileRequest
-                                          {
-                                              Name = fileName,
-                                              Parent = new BoxRequestEntity
-                                              {
-                                                  Id = folderId
-                                              }
-                                          };
-                                          var fileSHA = sha1.ComputeHash(toUpload);
-                                          System.Console.WriteLine(fileSHA);
-                                          return await client.FilesManager.UploadAsync(fileRequest: fileUploadRequest, stream: toUpload, contentMD5: fileSHA);
-                                      }
-                                  }
-                                  else
-                                  {
-                                      //var progress = new Progress<BoxProgress>(val =>
-                                      //{
-                                      //    Console.WriteLine("Uploaded {0}%", val.progress);
-                                      //});
-                                   
-                                      //Console.WriteLine("{0} uploaded to folder: {1} as file: {2}", toUpload, folderId);
-                                      //return await client.FilesManager.UploadUsingSessionAsync(toUpload, fileName, folderId, null, progress);
-
-                                      return await client.FilesManager.UploadUsingSessionAsync(stream: toUpload, fileName: fileName, folderId: folderId);
-                                  }
-                              }
-                              catch (BoxPreflightCheckConflictException<BoxFile> e)
-                              {
-                                  if (toUpload.Length < CHUNKED_UPLOAD_MINIMUM)
-                                  {
-                                      System.Console.WriteLine(toUpload.Length);
-                                      using (SHA1 sha1 = SHA1.Create())
-                                      {
-                                          var fileSHA = sha1.ComputeHash(toUpload);
-                                          return await client.FilesManager.UploadNewVersionAsync(fileName: e.ConflictingItem.Name, fileId: e.ConflictingItem.Id, stream: toUpload, contentMD5: fileSHA);
-                                      }
-                                  }
-                                  else
-                                  {
-                                      await client.FilesManager.UploadFileVersionUsingSessionAsync(fileId: e.ConflictingItem.Id, stream: toUpload);
-                                      return await client.FilesManager.GetInformationAsync(e.ConflictingItem.Id);
-                                  }
-                              }
-                          }
-
-                      }));
-                    }
-                }
-
-                var uploaded = await Task.WhenAll(fileUploadTasks);
-                foreach (var file in uploaded)
-                {
-                    System.Console.WriteLine(file.Id);
-                }
+                config = BoxConfig.CreateFromJsonFile(fs);
             }
 
+            return config;
+        }
+
+        public static int GetUploadPartsCount(long totalSize, long partSize)
+        {
+            if (partSize == 0)
+                throw new Exception("Part Size cannot be 0");
+            int numberOfParts = 1;
+            if (partSize != totalSize)
+            {
+                numberOfParts = Convert.ToInt32(totalSize / partSize);
+                numberOfParts += 1;
+            }
+            return numberOfParts;
+        }
+
+        public static Stream GetFilePart(Stream stream, long partSize, long partOffset)
+        {
+            // Default the buffer size to 4K.
+            const int bufferSize = 4096;
+
+            byte[] buffer = new byte[bufferSize];
+            int bytesRead = 0;
+            stream.Position = partOffset;
+            var partStream = new MemoryStream();
+            do
+            {
+                bytesRead = stream.Read(buffer, 0, 4096);
+                if (bytesRead > 0)
+                {
+                    long bytesToWrite = bytesRead;
+                    bool shouldBreak = false;
+                    if (partStream.Length + bytesRead >= partSize)
+                    {
+                        bytesToWrite = partSize - partStream.Length;
+                        shouldBreak = true;
+                    }
+
+                    partStream.Write(buffer, 0, Convert.ToInt32(bytesToWrite));
+
+                    if (shouldBreak)
+                    {
+                        break;
+                    }
+                }
+            } while (bytesRead > 0);
+
+            return partStream;
+        }
+        const long CHUNKED_UPLOAD_MINIMUM = 200000;
+        private static async Task ChunkedUpload(BoxClient client)
+        {
+            long fileSize;
+            System.Console.WriteLine("Retrieving randomized file...");
+
+            var directoryName = @"D:\ors_bak\";
+            var files = Directory.EnumerateFiles(directoryName);
+
+            //MemoryStream fileInMemoryStream = GetBigFileInMemoryStream(fileSize);
+            //System.Console.WriteLine("File in memory.");
+
+            //string remoteFileName = "UploadedUsingSession-" + DateTime.Now.TimeOfDay;
+            //System.Console.WriteLine($"File name: {remoteFileName}");
+            string folderId ;
+            BoxFolder folder1 = await client.FoldersManager.GetInformationAsync("167411991885");
+            if (folder1 == null)
+                throw new InvalidOperationException(string.Format("Folder does not exist"));
+            folderId = folder1.Id;
+
+     
+            foreach (var file in files)
+            {
+                using (FileStream toUpload = new FileStream(file, FileMode.Open))
+                {
+                    var fileName = Path.GetFileName(file);
+                    fileSize = toUpload.Length;
+                    var boxFileUploadSessionRequest = new BoxFileUploadSessionRequest()
+                    {
+                        FolderId = folderId,
+                        FileName = fileName,
+                        FileSize = fileSize
+                    };
+                    try
+                    {
+                        if (toUpload.Length < CHUNKED_UPLOAD_MINIMUM)
+                        {
+                            using (SHA1 sha1 = SHA1.Create())
+                            {
+                                var fileUploadRequest = new BoxFileRequest
+                                {
+                                    Name = fileName,
+                                    Parent = new BoxRequestEntity
+                                    {
+                                        Id = folderId
+                                    }
+                                };
+                                var fileSHA = sha1.ComputeHash(toUpload);
+                                System.Console.WriteLine(fileSHA);
+                                await client.FilesManager.UploadAsync(fileRequest: fileUploadRequest, stream: toUpload, contentMD5: fileSHA);
+                            }
+                        }
+                        else
+                        {
+                            try
+                            {
+                                // await client.FilesManager.UploadUsingSessionAsync(stream: toUpload, fileName: fileName, folderId: folderId);
+                                var boxFileUploadSession = await client.FilesManager.CreateUploadSessionAsync(boxFileUploadSessionRequest);
+                                System.Console.WriteLine("Requested for an Upload Session...");
+                                System.Console.WriteLine($"ID: {boxFileUploadSession.Id}");
+                                System.Console.WriteLine($"Parts Processed: {boxFileUploadSession.NumPartsProcessed}");
+                                System.Console.WriteLine($"Part Size: {boxFileUploadSession.PartSize}");
+                                System.Console.WriteLine($"Abort: {boxFileUploadSession.SessionEndpoints.Abort}");
+                                System.Console.WriteLine($"Commit: {boxFileUploadSession.SessionEndpoints.Commit}");
+                                System.Console.WriteLine($"List Parts: {boxFileUploadSession.SessionEndpoints.ListParts}");
+                                System.Console.WriteLine($"Log Event: {boxFileUploadSession.SessionEndpoints.LogEvent}");
+                                System.Console.WriteLine($"Status: {boxFileUploadSession.SessionEndpoints.Status}");
+                                System.Console.WriteLine($"Upload Part: {boxFileUploadSession.SessionEndpoints.UploadPart}");
+                                System.Console.WriteLine($"Type: {boxFileUploadSession.Type}");
+                                System.Console.WriteLine($"Total Parts: {boxFileUploadSession.TotalParts}");
+                                System.Console.WriteLine($"Expires: {boxFileUploadSession.SessionExpiresAt}");
+                                var boxSessionEndpoint = boxFileUploadSession.SessionEndpoints;
+                                var uploadPartUri = new Uri(boxSessionEndpoint.UploadPart);
+                                var commitUri = new Uri(boxSessionEndpoint.Commit);
+                                System.Console.WriteLine($"uri: {uploadPartUri}");
+                                var partSize = boxFileUploadSession.PartSize;
+                                long partSizeLong;
+                                if (long.TryParse(partSize, out partSizeLong) == false)
+                                {
+                                    throw new BoxException("File part size is wrong!");
+                                }
+
+                                long.TryParse(partSize, out partSizeLong);
+                                var numberOfParts = GetUploadPartsCount(fileSize, partSizeLong);
+
+                                // Full file sha1 for final commit
+                                var fullFileSha1 = await Task.Run(() => {
+                                    return Helper.GetSha1Hash(toUpload);
+                                });
+
+                                for (var i = 0; i < numberOfParts; i++)
+                                {
+                                    var partOffset = partSizeLong * i;
+                                    Stream partFileStream = GetFilePart(toUpload, partSizeLong, partOffset);
+                                    var sha = Helper.GetSha1Hash(partFileStream);
+                                    partFileStream.Position = 0;
+                                    await client.FilesManager.UploadPartAsync(uploadPartUri, sha, partOffset, fileSize, partFileStream);
+                                }
+                                //var boxSessionParts = await UploadPartsInSessionAsync(uploadPartUri, numberOfParts, partSizeLong, toUpload, fileSize, client);
+                                //var allSessionParts = new List<BoxSessionPartInfo>();
+
+                                //foreach (var sessionPart in boxSessionParts)
+                                //{
+                                //    System.Console.WriteLine($"Retrieved Session Part: {sessionPart.Part.PartId}");
+                                //    allSessionParts.Add(sessionPart.Part);
+                                //}
+
+                                //BoxSessionParts sessionPartsForCommit = new BoxSessionParts() { Parts = allSessionParts };
+
+                                // Upload parts in session
+                                var progress = new Progress<BoxProgress>(val =>
+                                               {
+                                                   Console.WriteLine("Uploaded {0}%", val.progress);
+                                               });
+                                BoxFilesManager1 boxFiles = new BoxFilesManager1(null, null, null, null, null, null);
+                                var allSessionParts = await boxFiles.UploadPartsInSessionAsync(uploadPartUri,
+                                                                numberOfParts, partSizeLong, toUpload,
+                                                                fileSize, TimeSpan.FromSeconds(360), progress).ConfigureAwait(false);
+
+                                var allSessionPartsList = allSessionParts.ToList();
+
+                                var sessionPartsForCommit = new BoxSessionParts
+                                {
+                                    Parts = allSessionPartsList
+                                };
+
+                                // Commit
+                                //await client.FilesManager.CommitSessionAsync(commitUri, Box.V2.Utility.Helper.GetSha1Hash(toUpload), sessionPartsForCommit);
+
+                                // Commit, Retry 5 times with interval related to the total part number
+                                // Having debugged this -- retries do consistenly happen so we up the retries
+                                const int retryCount = 5;
+                                var retryInterval = allSessionPartsList.Count * 100;
+
+                                var response =
+                                    await Retry.ExecuteAsync(
+                                        async () =>
+                                            await client.FilesManager.CommitSessionAsync(commitUri, Box.V2.Utility.Helper.GetSha1Hash(toUpload), sessionPartsForCommit),
+                                        TimeSpan.FromMilliseconds(retryInterval), retryCount);
+
+                                //return response;
+                                System.Console.WriteLine(response.ToString());
+                                // Delete file
+                                //string fileId = await GetFileId(folderId, file, client);
+                                //if (!string.IsNullOrWhiteSpace(fileId))
+                                //{
+                                //    await client.FilesManager.DeleteAsync(fileId);
+                                //    System.Console.WriteLine("Deleted");
+                                //}
+                            }
+
+
+                            catch (Exception ex)
+                            {
+                                System.Console.WriteLine(ex.ToString());
+                            }
+                        } 
+                    }
+                    catch (BoxPreflightCheckConflictException<BoxFile> e)
+                    {
+                              if (toUpload.Length < CHUNKED_UPLOAD_MINIMUM)
+                              {
+                                  using (SHA1 sha1 = SHA1.Create())
+                                  {
+                                      var fileSHA = sha1.ComputeHash(toUpload);
+                                      await client.FilesManager.UploadNewVersionAsync(fileName: e.ConflictingItem.Name, fileId: e.ConflictingItem.Id, stream: toUpload, contentMD5: fileSHA);
+                                  }
+                              }
+                              else
+                              {
+                                  await client.FilesManager.UploadFileVersionUsingSessionAsync(fileId: e.ConflictingItem.Id, stream: toUpload);
+                                  await client.FilesManager.GetInformationAsync(e.ConflictingItem.Id);
+                              }
+                     }
+                }
+            }
+           
+        }
+      private static MemoryStream GetBigFileInMemoryStream(long fileSize)
+        {
+            // Create random data to write to the file.
+            byte[] dataArray = new byte[fileSize];
+            new Random().NextBytes(dataArray);
+            MemoryStream memoryStream = new MemoryStream(dataArray);
+            return memoryStream;
+        }
+
+        //private static async Task<IEnumerable<BoxSessionPartInfo>> UploadPartsInSessionAsync(Uri uploadPartsUri, int numberOfParts, long partSize, Stream stream,
+        //    long fileSize, TimeSpan? timeout = null, IProgress<BoxProgress> progress = null)
+        //{
+        //    BoxFilesManager1 boxFiles = new BoxFilesManager1(null, null, null, null, null,null);
+        //    var maxTaskNum = Environment.ProcessorCount + 1;
+
+        //    // Retry 5 times for 10 seconds
+        //    const int RetryMaxCount = 5;
+        //    const int RetryMaxInterval = 10;
+
+        //    var ret = new List<BoxSessionPartInfo>();
+
+        //    using (var concurrencySemaphore = new SemaphoreSlim(maxTaskNum))
+        //    {
+        //        var postTaskTasks = new List<Task>();
+        //        var taskCompleted = 0;
+
+        //        var tasks = new List<Task<BoxUploadPartResponse>>();
+        //        for (var i = 0; i < numberOfParts; i++)
+        //        {
+        //            await concurrencySemaphore.WaitAsync().ConfigureAwait(false);
+
+        //            // Split file as per part size
+        //            var partOffset = partSize * i;
+
+        //            // Retry
+        //            var uploadPartWithRetryTask = Retry.ExecuteAsync(async () =>
+        //            {
+        //                // Release the memory when done
+        //                using (var partFileStream = UploadUsingSessionInternal.GetFilePart(stream, partSize,
+        //                            partOffset))
+        //                {
+        //                    var sha = Helper.GetSha1Hash(partFileStream);
+        //                    partFileStream.Position = 0;
+        //                    var uploadPartResponse = await boxFiles.UploadPartAsync(
+        //                        uploadPartsUri, sha, partOffset, fileSize, partFileStream,
+        //                        timeout).ConfigureAwait(false);
+
+        //                    return uploadPartResponse;
+        //                }
+        //            }, TimeSpan.FromSeconds(RetryMaxInterval), RetryMaxCount);
+
+        //            // Have each task notify the Semaphore when it completes so that it decrements the number of tasks currently running.
+        //            postTaskTasks.Add(uploadPartWithRetryTask.ContinueWith(tsk =>
+        //            {
+        //                concurrencySemaphore.Release();
+        //                ++taskCompleted;
+        //                if (progress != null)
+        //                {
+        //                    var boxProgress = new BoxProgress()
+        //                    {
+        //                        progress = taskCompleted * 100 / numberOfParts
+        //                    };
+
+        //                    progress.Report(boxProgress);
+        //                }
+        //            }
+        //            ));
+
+        //            tasks.Add(uploadPartWithRetryTask);
+        //        }
+
+        //        var results = await Task.WhenAll(tasks).ConfigureAwait(false);
+        //        ret.AddRange(results.Select(elem => elem.Part));
+        //    }
+
+        //    return ret;
+        //}
+        
+        private static async Task<string> GetFileId(string folderId, string fileName, BoxClient client)
+        {
+            BoxCollection<BoxItem> boxCollection = await client.FoldersManager.GetFolderItemsAsync(folderId, 1000);
+            return boxCollection.Entries.FirstOrDefault(item => item.Name == fileName)?.Id;
         }
     }
+    //internal static class UploadUsingSessionInternal
+    //{
+    //    public static int GetNumberOfParts(long totalSize, long partSize)
+    //    {
+    //        if (partSize == 0)
+    //        {
+    //            throw new BoxCodingException("Part Size cannot be 0");
+    //        }
+
+    //        var numberOfParts = Convert.ToInt32(totalSize / partSize);
+    //        if (totalSize % partSize != 0)
+    //        {
+    //            numberOfParts++;
+    //        }
+    //        return numberOfParts;
+    //    }
+
+    //    public static Stream GetFilePart(Stream stream, long partSize, long partOffset)
+    //    {
+    //        // Default the buffer size to 4K.
+    //        const int BufferSize = 4096;
+
+    //        var buffer = new byte[BufferSize];
+    //        stream.Position = partOffset;
+    //        var partStream = new MemoryStream();
+    //        int bytesRead;
+    //        do
+    //        {
+    //            bytesRead = stream.Read(buffer, 0, 4096);
+    //            if (bytesRead > 0)
+    //            {
+    //                long bytesToWrite = bytesRead;
+    //                var shouldBreak = false;
+    //                if (partStream.Length + bytesRead >= partSize)
+    //                {
+    //                    bytesToWrite = partSize - partStream.Length;
+    //                    shouldBreak = true;
+    //                }
+
+    //                partStream.Write(buffer, 0, Convert.ToInt32(bytesToWrite));
+
+    //                if (shouldBreak)
+    //                {
+    //                    break;
+    //                }
+    //            }
+    //        } while (bytesRead > 0);
+
+    //        return partStream;
+    //    }
+    //}
 }

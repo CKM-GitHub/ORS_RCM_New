@@ -2651,7 +2651,7 @@ namespace Capital_SKS.WebForms.Item
                 }
 
                 length = Encoding.GetEncoding(932).GetByteCount(txthachu.Text);
-                if (length > 100)
+                if (length > 50)
                 {
                     MessageBox("仕入先は100文字までです。");
                     return false;

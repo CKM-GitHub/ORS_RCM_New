@@ -593,7 +593,10 @@ namespace ORS_RCM_DL
                 cmd.Parameters.AddWithValue("@JISConform", ime.JISConform);
                 cmd.Parameters.AddWithValue("@ISOConform", ime.ISOConform);
 
-
+                cmd.Parameters.AddWithValue("@MonoPrice", ime.Monoprice);
+                cmd.Parameters.AddWithValue("@DitePrice", ime.Diteprice);
+                cmd.Parameters.AddWithValue("@JapanMPrice", ime.Japanmprice);
+                cmd.Parameters.AddWithValue("@KashiwagikoukiPrice", ime.Kashiwagikoukiprice);
 
                 cmd.Parameters.Add("@result", SqlDbType.Int).Direction = ParameterDirection.Output;
                 cmd.Connection.Open();

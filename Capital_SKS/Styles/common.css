@@ -264,20 +264,21 @@ nav p.logo img {
 
 
 /*-- MENU -----------------------------------*/
-nav ul#nav {
-	display: table-cell;
-	width: 660px;
-	height: 30px;
-}
-nav ul#nav li {
-    display: table-cell;
-	color: #fff;
-    border-left: 1px solid #545151;
-	height: 30px;
-	width: 101px;
-	position: relative;
-    box-sizing: border-box;
-}
+	nav ul#nav {
+		display: table-cell;
+		width: 816px !important;
+		height: 30px;
+	}
+	nav ul#nav li {
+		display: table-cell;
+		color: #fff;
+		border-left: 1px solid #545151;
+		height: 30px;
+		width: 100px;
+		position: relative;
+		box-sizing: border-box;
+		/*margin-left: -28px !important;*/
+	}
 nav ul#nav li:last-of-type {
     border-right: 1px solid #545151;
 }

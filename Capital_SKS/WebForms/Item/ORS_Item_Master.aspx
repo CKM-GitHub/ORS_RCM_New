@@ -1119,7 +1119,8 @@ table td {
                                 <asp:Button runat="server" ID="hideButton" Text="" Style="display: none;"  OnClick="UploadButton_Click" />
                             
                                 </ContentTemplate> 
-                                <Triggers>              
+                                <Triggers>         
+                                   
                                    <asp:PostBackTrigger controlid="hideButton"/>                 
                                 </Triggers>
                                 </asp:UpdatePanel>

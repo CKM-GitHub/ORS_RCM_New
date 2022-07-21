@@ -1153,16 +1153,16 @@ div.itemCmnSet.itemInfo table.listTable2 th:nth-of-type(3) { /*SKS ST*/
 	 width: 20px;
 }
 div.itemCmnSet.itemInfo table.listTable2 th:nth-of-type(4) { /*ショップST*/
-	 width: 20px;
+	 width: 28px;
 }
 div.itemCmnSet.itemInfo table.listTable2 th:nth-of-type(5) { /*M ST*/
-	 width: 20px;
+	 width: 28px;
 }
 div.itemCmnSet.itemInfo table.listTable2 th:nth-of-type(6) { /*商品番号*/
-    width: 70px;
+    width: 68px;
 }
 div.itemCmnSet.itemInfo table.listTable2 th:nth-of-type(7) { /*商品名*/
-    width: 168px;
+    width: 154px;
 }
 div.itemCmnSet.itemInfo table.listTable2 th:nth-of-type(8) { /*商品画像*/
     width: 140px;

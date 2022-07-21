@@ -489,7 +489,7 @@ namespace Capital_SKS.WebForms.Item
                     {
                         SKU_BIND();
                     }
-
+                   
                 }
                 #endregion
 
@@ -828,13 +828,16 @@ namespace Capital_SKS.WebForms.Item
                     }
                     else
                     {
+                        String date = DateTime.Now.ToString();
 
                         FileUpload1.SaveAs(Server.MapPath(imagePath) + FileUpload1.FileName);
                         if (!string.IsNullOrWhiteSpace(FileUpload1.FileName.ToString()))
                         {
-                            Image1.ImageUrl = imagePath + FileUpload1.FileName;
-                            hlImage1.NavigateUrl = imagePath + FileUpload1.FileName;
+                            Image1.ImageUrl = imagePath + FileUpload1.FileName +  "?r=" + DateTime.Now.Ticks.ToString();
+                            hlImage1.NavigateUrl = imagePath + FileUpload1.FileName +  "?r=" + DateTime.Now.Ticks.ToString();
+
                         }
+
                     }
                 }
                 else
@@ -884,8 +887,8 @@ namespace Capital_SKS.WebForms.Item
                         FileUpload2.SaveAs(Server.MapPath(imagePath) + FileUpload2.FileName);
                         if (!string.IsNullOrWhiteSpace(FileUpload2.FileName.ToString()))
                         {
-                            Image2.ImageUrl = imagePath + FileUpload2.FileName;
-                            hlImage2.NavigateUrl = imagePath + FileUpload2.FileName;
+                            Image2.ImageUrl = imagePath + FileUpload2.FileName + "?r=" + DateTime.Now.Ticks.ToString();
+                            hlImage2.NavigateUrl = imagePath + FileUpload2.FileName + "?r=" + DateTime.Now.Ticks.ToString();
                         }
                     }
                 }
@@ -937,8 +940,8 @@ namespace Capital_SKS.WebForms.Item
                         FileUpload3.SaveAs(Server.MapPath(imagePath) + FileUpload3.FileName);
                         if (!string.IsNullOrWhiteSpace(FileUpload3.FileName.ToString()))
                         {
-                            Image3.ImageUrl = imagePath + FileUpload3.FileName;
-                            hlImage3.NavigateUrl = imagePath + FileUpload3.FileName;
+                            Image3.ImageUrl = imagePath + FileUpload3.FileName + "?r=" + DateTime.Now.Ticks.ToString();
+                            hlImage3.NavigateUrl = imagePath + FileUpload3.FileName + "?r=" + DateTime.Now.Ticks.ToString();
                         }
                     }
                 }
@@ -989,8 +992,8 @@ namespace Capital_SKS.WebForms.Item
                         FileUpload4.SaveAs(Server.MapPath(imagePath) + FileUpload4.FileName);
                         if (!string.IsNullOrWhiteSpace(FileUpload4.FileName.ToString()))
                         {
-                            Image4.ImageUrl = imagePath + FileUpload4.FileName;
-                            hlImage4.NavigateUrl = imagePath + FileUpload4.FileName;
+                            Image4.ImageUrl = imagePath + FileUpload4.FileName + "?r=" + DateTime.Now.Ticks.ToString();
+                            hlImage4.NavigateUrl = imagePath + FileUpload4.FileName + "?r=" + DateTime.Now.Ticks.ToString();
                         }
                     }
                 }
@@ -1041,8 +1044,8 @@ namespace Capital_SKS.WebForms.Item
                         FileUpload5.SaveAs(Server.MapPath(imagePath) + FileUpload5.FileName);
                         if (!string.IsNullOrWhiteSpace(FileUpload5.FileName.ToString()))
                         {
-                            Image5.ImageUrl = imagePath + FileUpload5.FileName;
-                            hlImage5.NavigateUrl = imagePath + FileUpload5.FileName;
+                            Image5.ImageUrl = imagePath + FileUpload5.FileName + "?r=" + DateTime.Now.Ticks.ToString();
+                            hlImage5.NavigateUrl = imagePath + FileUpload5.FileName + "?r=" + DateTime.Now.Ticks.ToString();
                         }
                     }
                 }
@@ -1093,8 +1096,8 @@ namespace Capital_SKS.WebForms.Item
                         FileUpload6.SaveAs(Server.MapPath(imagePath) + FileUpload6.FileName);
                         if (!string.IsNullOrWhiteSpace(FileUpload6.FileName.ToString()))
                         {
-                            Image6.ImageUrl = imagePath + FileUpload6.FileName;
-                            hlImage6.NavigateUrl = imagePath + FileUpload6.FileName;
+                            Image6.ImageUrl = imagePath + FileUpload6.FileName + "?r=" + DateTime.Now.Ticks.ToString();
+                            hlImage6.NavigateUrl = imagePath + FileUpload6.FileName + "?r=" + DateTime.Now.Ticks.ToString();
                         }
                     }
                 }
@@ -1146,8 +1149,8 @@ namespace Capital_SKS.WebForms.Item
                         FileUpload7.SaveAs(Server.MapPath(imagePath) + FileUpload7.FileName);
                         if (!string.IsNullOrWhiteSpace(FileUpload7.FileName.ToString()))
                         {
-                            Image7.ImageUrl = imagePath + FileUpload7.FileName;
-                            hlImage7.NavigateUrl = imagePath + FileUpload7.FileName;
+                            Image7.ImageUrl = imagePath + FileUpload7.FileName + "?r=" + DateTime.Now.Ticks.ToString();
+                            hlImage7.NavigateUrl = imagePath + FileUpload7.FileName + "?r=" + DateTime.Now.Ticks.ToString();
                         }
                     }
                 }
@@ -1198,8 +1201,8 @@ namespace Capital_SKS.WebForms.Item
                         FileUpload8.SaveAs(Server.MapPath(imagePath) + FileUpload8.FileName);
                         if (!string.IsNullOrWhiteSpace(FileUpload8.FileName.ToString()))
                         {
-                            Image8.ImageUrl = imagePath + FileUpload8.FileName;
-                            hlImage8.NavigateUrl = imagePath + FileUpload8.FileName;
+                            Image8.ImageUrl = imagePath + FileUpload8.FileName + "?r=" + DateTime.Now.Ticks.ToString();
+                            hlImage8.NavigateUrl = imagePath + FileUpload8.FileName + "?r=" + DateTime.Now.Ticks.ToString();
                         }
                     }
                 }
@@ -1250,8 +1253,8 @@ namespace Capital_SKS.WebForms.Item
                         FileUpload9.SaveAs(Server.MapPath(imagePath) + FileUpload9.FileName);
                         if (!string.IsNullOrWhiteSpace(FileUpload9.FileName.ToString()))
                         {
-                            Image9.ImageUrl = imagePath + FileUpload9.FileName;
-                            hlImage9.NavigateUrl = imagePath + FileUpload9.FileName;
+                            Image9.ImageUrl = imagePath + FileUpload9.FileName + "?r=" + DateTime.Now.Ticks.ToString();
+                            hlImage9.NavigateUrl = imagePath + FileUpload9.FileName + "?r=" + DateTime.Now.Ticks.ToString();
                         }
                     }
                 }
@@ -1302,8 +1305,8 @@ namespace Capital_SKS.WebForms.Item
                         FileUpload10.SaveAs(Server.MapPath(imagePath) + FileUpload10.FileName);
                         if (!string.IsNullOrWhiteSpace(FileUpload10.FileName.ToString()))
                         {
-                            Image10.ImageUrl = imagePath + FileUpload10.FileName;
-                            hlImage10.NavigateUrl = imagePath + FileUpload10.FileName;
+                            Image10.ImageUrl = imagePath + FileUpload10.FileName + "?r=" + DateTime.Now.Ticks.ToString();
+                            hlImage10.NavigateUrl = imagePath + FileUpload10.FileName + "?r=" + DateTime.Now.Ticks.ToString();
                         }
                     }
                 }
@@ -1354,8 +1357,8 @@ namespace Capital_SKS.WebForms.Item
                         FileUpload11.SaveAs(Server.MapPath(imagePath) + FileUpload11.FileName);
                         if (!string.IsNullOrWhiteSpace(FileUpload11.FileName.ToString()))
                         {
-                            Image11.ImageUrl = imagePath + FileUpload11.FileName;
-                            hlImage11.NavigateUrl = imagePath + FileUpload11.FileName;
+                            Image11.ImageUrl = imagePath + FileUpload11.FileName + "?r=" + DateTime.Now.Ticks.ToString();
+                            hlImage11.NavigateUrl = imagePath + FileUpload11.FileName + "?r=" + DateTime.Now.Ticks.ToString();
                         }
                     }
                 }
@@ -1406,8 +1409,8 @@ namespace Capital_SKS.WebForms.Item
                         FileUpload12.SaveAs(Server.MapPath(imagePath) + FileUpload12.FileName);
                         if (!string.IsNullOrWhiteSpace(FileUpload12.FileName.ToString()))
                         {
-                            Image12.ImageUrl = imagePath + FileUpload12.FileName;
-                            hlImage12.NavigateUrl = imagePath + FileUpload12.FileName;
+                            Image12.ImageUrl = imagePath + FileUpload12.FileName + "?r=" + DateTime.Now.Ticks.ToString();
+                            hlImage12.NavigateUrl = imagePath + FileUpload12.FileName + "?r=" + DateTime.Now.Ticks.ToString();
                         }
                     }
                 }
@@ -1458,8 +1461,8 @@ namespace Capital_SKS.WebForms.Item
                         FileUpload13.SaveAs(Server.MapPath(imagePath) + FileUpload13.FileName);
                         if (!string.IsNullOrWhiteSpace(FileUpload13.FileName.ToString()))
                         {
-                            Image13.ImageUrl = imagePath + FileUpload13.FileName;
-                            hlImage13.NavigateUrl = imagePath + FileUpload13.FileName;
+                            Image13.ImageUrl = imagePath + FileUpload13.FileName + "?r=" + DateTime.Now.Ticks.ToString();
+                            hlImage13.NavigateUrl = imagePath + FileUpload13.FileName + "?r=" + DateTime.Now.Ticks.ToString();
                         }
                     }
                 }
@@ -1510,8 +1513,8 @@ namespace Capital_SKS.WebForms.Item
                         FileUpload14.SaveAs(Server.MapPath(imagePath) + FileUpload14.FileName);
                         if (!string.IsNullOrWhiteSpace(FileUpload14.FileName.ToString()))
                         {
-                            Image14.ImageUrl = imagePath + FileUpload14.FileName;
-                            hlImage14.NavigateUrl = imagePath + FileUpload14.FileName;
+                            Image14.ImageUrl = imagePath + FileUpload14.FileName + "?r=" + DateTime.Now.Ticks.ToString();
+                            hlImage14.NavigateUrl = imagePath + FileUpload14.FileName + "?r=" + DateTime.Now.Ticks.ToString();
                         }
                     }
                 }
@@ -1562,8 +1565,8 @@ namespace Capital_SKS.WebForms.Item
                         FileUpload15.SaveAs(Server.MapPath(imagePath) + FileUpload15.FileName);
                         if (!string.IsNullOrWhiteSpace(FileUpload15.FileName.ToString()))
                         {
-                            Image15.ImageUrl = imagePath + FileUpload15.FileName;
-                            hlImage15.NavigateUrl = imagePath + FileUpload15.FileName;
+                            Image15.ImageUrl = imagePath + FileUpload15.FileName + "?r=" + DateTime.Now.Ticks.ToString();
+                            hlImage15.NavigateUrl = imagePath + FileUpload15.FileName + "?r=" + DateTime.Now.Ticks.ToString();
                         }
                     }
                 }
@@ -1614,8 +1617,8 @@ namespace Capital_SKS.WebForms.Item
                         FileUpload16.SaveAs(Server.MapPath(imagePath) + FileUpload16.FileName);
                         if (!string.IsNullOrWhiteSpace(FileUpload16.FileName.ToString()))
                         {
-                            Image16.ImageUrl = imagePath + FileUpload16.FileName;
-                            hlImage16.NavigateUrl = imagePath + FileUpload16.FileName;
+                            Image16.ImageUrl = imagePath + FileUpload16.FileName + "?r=" + DateTime.Now.Ticks.ToString();
+                            hlImage16.NavigateUrl = imagePath + FileUpload16.FileName + "?r=" + DateTime.Now.Ticks.ToString();
                         }
                     }
                 }
@@ -1667,8 +1670,8 @@ namespace Capital_SKS.WebForms.Item
                         FileUpload17.SaveAs(Server.MapPath(imagePath) + FileUpload17.FileName);
                         if (!string.IsNullOrWhiteSpace(FileUpload17.FileName.ToString()))
                         {
-                            Image17.ImageUrl = imagePath + FileUpload17.FileName;
-                            hlImage17.NavigateUrl = imagePath + FileUpload17.FileName;
+                            Image17.ImageUrl = imagePath + FileUpload17.FileName + "?r=" + DateTime.Now.Ticks.ToString();
+                            hlImage17.NavigateUrl = imagePath + FileUpload17.FileName + "?r=" + DateTime.Now.Ticks.ToString();
                         }
                     }
                 }
@@ -1720,8 +1723,8 @@ namespace Capital_SKS.WebForms.Item
                         FileUpload18.SaveAs(Server.MapPath(imagePath) + FileUpload18.FileName);
                         if (!string.IsNullOrWhiteSpace(FileUpload18.FileName.ToString()))
                         {
-                            Image18.ImageUrl = imagePath + FileUpload18.FileName;
-                            hlImage18.NavigateUrl = imagePath + FileUpload18.FileName;
+                            Image18.ImageUrl = imagePath + FileUpload18.FileName + "?r=" + DateTime.Now.Ticks.ToString();
+                            hlImage18.NavigateUrl = imagePath + FileUpload18.FileName + "?r=" + DateTime.Now.Ticks.ToString();
                         }
                     }
                 }
@@ -1772,8 +1775,8 @@ namespace Capital_SKS.WebForms.Item
                         FileUpload19.SaveAs(Server.MapPath(imagePath) + FileUpload19.FileName);
                         if (!string.IsNullOrWhiteSpace(FileUpload19.FileName.ToString()))
                         {
-                            Image19.ImageUrl = imagePath + FileUpload19.FileName;
-                            hlImage19.NavigateUrl = imagePath + FileUpload19.FileName;
+                            Image19.ImageUrl = imagePath + FileUpload19.FileName + "?r=" + DateTime.Now.Ticks.ToString();
+                            hlImage19.NavigateUrl = imagePath + FileUpload19.FileName + "?r=" + DateTime.Now.Ticks.ToString();
                         }
                     }
                 }
@@ -1825,8 +1828,8 @@ namespace Capital_SKS.WebForms.Item
                         FileUpload20.SaveAs(Server.MapPath(imagePath) + FileUpload20.FileName);
                         if (!string.IsNullOrWhiteSpace(FileUpload20.FileName.ToString()))
                         {
-                            Image20.ImageUrl = imagePath + FileUpload20.FileName;
-                            hlImage20.NavigateUrl = imagePath + FileUpload20.FileName;
+                            Image20.ImageUrl = imagePath + FileUpload20.FileName + "?r=" + DateTime.Now.Ticks.ToString();
+                            hlImage20.NavigateUrl = imagePath + FileUpload20.FileName + "?r=" + DateTime.Now.Ticks.ToString();
                         }
                     }
                 }
@@ -4835,8 +4838,8 @@ namespace Capital_SKS.WebForms.Item
                                 case "1":
                                     if (!string.IsNullOrWhiteSpace(dtImage.Rows[m]["Image_Name"].ToString()))
                                     {
-                                        Image1.ImageUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "";
-                                        hlImage1.NavigateUrl = imagePath + dtImage.Rows[m]["Image_Name"];
+                                        Image1.ImageUrl = imagePath + dtImage.Rows[m]["Image_Name"] +"?r=" + DateTime.Now.Ticks.ToString(); ;
+                                        hlImage1.NavigateUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "?r=" + DateTime.Now.Ticks.ToString();
                                         txtimg1.Text = dtImage.Rows[m]["Image_Name"].ToString();
                                     }
                                     else
@@ -4849,8 +4852,8 @@ namespace Capital_SKS.WebForms.Item
                                 case "2":
                                     if (!string.IsNullOrWhiteSpace(dtImage.Rows[m]["Image_Name"].ToString()))
                                     {
-                                        Image2.ImageUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "";
-                                        hlImage2.NavigateUrl = imagePath + dtImage.Rows[m]["Image_Name"];
+                                        Image2.ImageUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "?r=" + DateTime.Now.Ticks.ToString();
+                                        hlImage2.NavigateUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "?r=" + DateTime.Now.Ticks.ToString();
                                         txtimg2.Text = dtImage.Rows[m]["Image_Name"].ToString();
                                     }
                                     else
@@ -4863,8 +4866,8 @@ namespace Capital_SKS.WebForms.Item
                                 case "3":
                                     if (!string.IsNullOrWhiteSpace(dtImage.Rows[m]["Image_Name"].ToString()))
                                     {
-                                        Image3.ImageUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "";
-                                        hlImage3.NavigateUrl = imagePath + dtImage.Rows[m]["Image_Name"];
+                                        Image3.ImageUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "?r=" + DateTime.Now.Ticks.ToString();
+                                        hlImage3.NavigateUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "?r=" + DateTime.Now.Ticks.ToString();
                                         txtimg3.Text = dtImage.Rows[m]["Image_Name"].ToString();
                                     }
                                     else
@@ -4877,8 +4880,8 @@ namespace Capital_SKS.WebForms.Item
                                 case "4":
                                     if (!string.IsNullOrWhiteSpace(dtImage.Rows[m]["Image_Name"].ToString()))
                                     {
-                                        Image4.ImageUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "";
-                                        hlImage4.NavigateUrl = imagePath + dtImage.Rows[m]["Image_Name"];
+                                        Image4.ImageUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "?r=" + DateTime.Now.Ticks.ToString();
+                                        hlImage4.NavigateUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "?r=" + DateTime.Now.Ticks.ToString();
                                         txtimg4.Text = dtImage.Rows[m]["Image_Name"].ToString();
                                     }
                                     else
@@ -4891,8 +4894,8 @@ namespace Capital_SKS.WebForms.Item
                                 case "5":
                                     if (!string.IsNullOrWhiteSpace(dtImage.Rows[m]["Image_Name"].ToString()))
                                     {
-                                        Image5.ImageUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "";
-                                        hlImage5.NavigateUrl = imagePath + dtImage.Rows[m]["Image_Name"];
+                                        Image5.ImageUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "?r=" + DateTime.Now.Ticks.ToString();
+                                        hlImage5.NavigateUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "?r=" + DateTime.Now.Ticks.ToString();
                                         txtimg5.Text = dtImage.Rows[m]["Image_Name"].ToString();
                                     }
                                     else
@@ -4905,8 +4908,8 @@ namespace Capital_SKS.WebForms.Item
                                 case "6":
                                     if (!string.IsNullOrWhiteSpace(dtImage.Rows[m]["Image_Name"].ToString()))
                                     {
-                                        Image6.ImageUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "";
-                                        hlImage6.NavigateUrl = imagePath + dtImage.Rows[m]["Image_Name"];
+                                        Image6.ImageUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "?r=" + DateTime.Now.Ticks.ToString();
+                                        hlImage6.NavigateUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "?r=" + DateTime.Now.Ticks.ToString();
                                         txtimg6.Text = dtImage.Rows[m]["Image_Name"].ToString();
                                     }
                                     else
@@ -4919,8 +4922,8 @@ namespace Capital_SKS.WebForms.Item
                                 case "7":
                                     if (!string.IsNullOrWhiteSpace(dtImage.Rows[m]["Image_Name"].ToString()))
                                     {
-                                        Image7.ImageUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "";
-                                        hlImage7.NavigateUrl = imagePath + dtImage.Rows[m]["Image_Name"];
+                                        Image7.ImageUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "?r=" + DateTime.Now.Ticks.ToString();
+                                        hlImage7.NavigateUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "?r=" + DateTime.Now.Ticks.ToString();
                                         txtimg7.Text = dtImage.Rows[m]["Image_Name"].ToString();
                                     }
                                     else
@@ -4933,8 +4936,8 @@ namespace Capital_SKS.WebForms.Item
                                 case "8":
                                     if (!string.IsNullOrWhiteSpace(dtImage.Rows[m]["Image_Name"].ToString()))
                                     {
-                                        Image8.ImageUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "";
-                                        hlImage8.NavigateUrl = imagePath + dtImage.Rows[m]["Image_Name"];
+                                        Image8.ImageUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "?r=" + DateTime.Now.Ticks.ToString();
+                                        hlImage8.NavigateUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "?r=" + DateTime.Now.Ticks.ToString();
                                         txtimg8.Text = dtImage.Rows[m]["Image_Name"].ToString();
                                     }
                                     else
@@ -4947,8 +4950,8 @@ namespace Capital_SKS.WebForms.Item
                                 case "9":
                                     if (!string.IsNullOrWhiteSpace(dtImage.Rows[m]["Image_Name"].ToString()))
                                     {
-                                        Image9.ImageUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "";
-                                        hlImage9.NavigateUrl = imagePath + dtImage.Rows[m]["Image_Name"];
+                                        Image9.ImageUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "?r=" + DateTime.Now.Ticks.ToString();
+                                        hlImage9.NavigateUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "?r=" + DateTime.Now.Ticks.ToString();
                                         txtimg9.Text = dtImage.Rows[m]["Image_Name"].ToString();
                                     }
                                     else
@@ -4961,8 +4964,8 @@ namespace Capital_SKS.WebForms.Item
                                 case "10":
                                     if (!string.IsNullOrWhiteSpace(dtImage.Rows[m]["Image_Name"].ToString()))
                                     {
-                                        Image10.ImageUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "";
-                                        hlImage10.NavigateUrl = imagePath + dtImage.Rows[m]["Image_Name"];
+                                        Image10.ImageUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "?r=" + DateTime.Now.Ticks.ToString();
+                                        hlImage10.NavigateUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "?r=" + DateTime.Now.Ticks.ToString();
                                         txtimg10.Text = dtImage.Rows[m]["Image_Name"].ToString();
                                     }
                                     else
@@ -4975,8 +4978,8 @@ namespace Capital_SKS.WebForms.Item
                                 case "11":
                                     if (!string.IsNullOrWhiteSpace(dtImage.Rows[m]["Image_Name"].ToString()))
                                     {
-                                        Image11.ImageUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "";
-                                        hlImage11.NavigateUrl = imagePath + dtImage.Rows[m]["Image_Name"];
+                                        Image11.ImageUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "?r=" + DateTime.Now.Ticks.ToString();
+                                        hlImage11.NavigateUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "?r=" + DateTime.Now.Ticks.ToString();
                                         txtimg11.Text = dtImage.Rows[m]["Image_Name"].ToString();
                                     }
                                     else
@@ -4989,8 +4992,8 @@ namespace Capital_SKS.WebForms.Item
                                 case "12":
                                     if (!string.IsNullOrWhiteSpace(dtImage.Rows[m]["Image_Name"].ToString()))
                                     {
-                                        Image12.ImageUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "";
-                                        hlImage12.NavigateUrl = imagePath + dtImage.Rows[m]["Image_Name"];
+                                        Image12.ImageUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "?r=" + DateTime.Now.Ticks.ToString();
+                                        hlImage12.NavigateUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "?r=" + DateTime.Now.Ticks.ToString();
                                         txtimg12.Text = dtImage.Rows[m]["Image_Name"].ToString();
                                     }
                                     else
@@ -5003,8 +5006,8 @@ namespace Capital_SKS.WebForms.Item
                                 case "13":
                                     if (!string.IsNullOrWhiteSpace(dtImage.Rows[m]["Image_Name"].ToString()))
                                     {
-                                        Image13.ImageUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "";
-                                        hlImage13.NavigateUrl = imagePath + dtImage.Rows[m]["Image_Name"];
+                                        Image13.ImageUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "?r=" + DateTime.Now.Ticks.ToString();
+                                        hlImage13.NavigateUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "?r=" + DateTime.Now.Ticks.ToString();
                                         txtimg13.Text = dtImage.Rows[m]["Image_Name"].ToString();
                                     }
                                     else
@@ -5017,8 +5020,8 @@ namespace Capital_SKS.WebForms.Item
                                 case "14":
                                     if (!string.IsNullOrWhiteSpace(dtImage.Rows[m]["Image_Name"].ToString()))
                                     {
-                                        Image14.ImageUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "";
-                                        hlImage14.NavigateUrl = imagePath + dtImage.Rows[m]["Image_Name"];
+                                        Image14.ImageUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "?r=" + DateTime.Now.Ticks.ToString();
+                                        hlImage14.NavigateUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "?r=" + DateTime.Now.Ticks.ToString();
                                         txtimg14.Text = dtImage.Rows[m]["Image_Name"].ToString();
                                     }
                                     else
@@ -5031,8 +5034,8 @@ namespace Capital_SKS.WebForms.Item
                                 case "15":
                                     if (!string.IsNullOrWhiteSpace(dtImage.Rows[m]["Image_Name"].ToString()))
                                     {
-                                        Image15.ImageUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "";
-                                        hlImage15.NavigateUrl = imagePath + dtImage.Rows[m]["Image_Name"];
+                                        Image15.ImageUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "?r=" + DateTime.Now.Ticks.ToString();
+                                        hlImage15.NavigateUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "?r=" + DateTime.Now.Ticks.ToString();
                                         txtimg15.Text = dtImage.Rows[m]["Image_Name"].ToString();
                                     }
                                     else
@@ -5045,8 +5048,8 @@ namespace Capital_SKS.WebForms.Item
                                 case "16":
                                     if (!string.IsNullOrWhiteSpace(dtImage.Rows[m]["Image_Name"].ToString()))
                                     {
-                                        Image16.ImageUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "";
-                                        hlImage16.NavigateUrl = imagePath + dtImage.Rows[m]["Image_Name"];
+                                        Image16.ImageUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "?r=" + DateTime.Now.Ticks.ToString();
+                                        hlImage16.NavigateUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "?r=" + DateTime.Now.Ticks.ToString();
                                         txtimg16.Text = dtImage.Rows[m]["Image_Name"].ToString();
                                     }
                                     else
@@ -5059,8 +5062,8 @@ namespace Capital_SKS.WebForms.Item
                                 case "17":
                                     if (!string.IsNullOrWhiteSpace(dtImage.Rows[m]["Image_Name"].ToString()))
                                     {
-                                        Image17.ImageUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "";
-                                        hlImage17.NavigateUrl = imagePath + dtImage.Rows[m]["Image_Name"];
+                                        Image17.ImageUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "?r=" + DateTime.Now.Ticks.ToString();
+                                        hlImage17.NavigateUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "?r=" + DateTime.Now.Ticks.ToString();
                                         txtimg17.Text = dtImage.Rows[m]["Image_Name"].ToString();
                                     }
                                     else
@@ -5073,8 +5076,8 @@ namespace Capital_SKS.WebForms.Item
                                 case "18":
                                     if (!string.IsNullOrWhiteSpace(dtImage.Rows[m]["Image_Name"].ToString()))
                                     {
-                                        Image18.ImageUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "";
-                                        hlImage18.NavigateUrl = imagePath + dtImage.Rows[m]["Image_Name"];
+                                        Image18.ImageUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "?r=" + DateTime.Now.Ticks.ToString();
+                                        hlImage18.NavigateUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "?r=" + DateTime.Now.Ticks.ToString();
                                         txtimg18.Text = dtImage.Rows[m]["Image_Name"].ToString();
                                     }
                                     else
@@ -5087,8 +5090,8 @@ namespace Capital_SKS.WebForms.Item
                                 case "19":
                                     if (!string.IsNullOrWhiteSpace(dtImage.Rows[m]["Image_Name"].ToString()))
                                     {
-                                        Image19.ImageUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "";
-                                        hlImage19.NavigateUrl = imagePath + dtImage.Rows[m]["Image_Name"];
+                                        Image19.ImageUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "?r=" + DateTime.Now.Ticks.ToString();
+                                        hlImage19.NavigateUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "?r=" + DateTime.Now.Ticks.ToString();
                                         txtimg19.Text = dtImage.Rows[m]["Image_Name"].ToString();
                                     }
                                     else
@@ -5101,8 +5104,8 @@ namespace Capital_SKS.WebForms.Item
                                 case "20":
                                     if (!string.IsNullOrWhiteSpace(dtImage.Rows[m]["Image_Name"].ToString()))
                                     {
-                                        Image20.ImageUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "";
-                                        hlImage20.NavigateUrl = imagePath + dtImage.Rows[m]["Image_Name"];
+                                        Image20.ImageUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "?r=" + DateTime.Now.Ticks.ToString();
+                                        hlImage20.NavigateUrl = imagePath + dtImage.Rows[m]["Image_Name"]+  "?r=" + DateTime.Now.Ticks.ToString();
                                         txtimg20.Text = dtImage.Rows[m]["Image_Name"].ToString();
                                     }
                                     else
@@ -5281,8 +5284,8 @@ namespace Capital_SKS.WebForms.Item
                                     case "1":
                                         if (!string.IsNullOrWhiteSpace(dtImage.Rows[m]["Image_Name"].ToString()))
                                         {
-                                            Image1.ImageUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "";
-                                            hlImage1.NavigateUrl = imagePath + dtImage.Rows[m]["Image_Name"];
+                                            Image1.ImageUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "?r=" + DateTime.Now.Ticks.ToString();
+                                            hlImage1.NavigateUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "?r=" + DateTime.Now.Ticks.ToString();
                                         }
                                         else
                                         {
@@ -5293,8 +5296,8 @@ namespace Capital_SKS.WebForms.Item
                                     case "2":
                                         if (!string.IsNullOrWhiteSpace(dtImage.Rows[m]["Image_Name"].ToString()))
                                         {
-                                            Image2.ImageUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "";
-                                            hlImage2.NavigateUrl = imagePath + dtImage.Rows[m]["Image_Name"];
+                                            Image2.ImageUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "?r=" + DateTime.Now.Ticks.ToString();
+                                            hlImage2.NavigateUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "?r=" + DateTime.Now.Ticks.ToString();
                                         }
                                         else
                                         {
@@ -5305,8 +5308,8 @@ namespace Capital_SKS.WebForms.Item
                                     case "3":
                                         if (!string.IsNullOrWhiteSpace(dtImage.Rows[m]["Image_Name"].ToString()))
                                         {
-                                            Image3.ImageUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "";
-                                            hlImage3.NavigateUrl = imagePath + dtImage.Rows[m]["Image_Name"];
+                                            Image3.ImageUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "?r=" + DateTime.Now.Ticks.ToString();
+                                            hlImage3.NavigateUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "?r=" + DateTime.Now.Ticks.ToString();
                                         }
                                         else
                                         {
@@ -5317,8 +5320,8 @@ namespace Capital_SKS.WebForms.Item
                                     case "4":
                                         if (!string.IsNullOrWhiteSpace(dtImage.Rows[m]["Image_Name"].ToString()))
                                         {
-                                            Image4.ImageUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "";
-                                            hlImage4.NavigateUrl = imagePath + dtImage.Rows[m]["Image_Name"];
+                                            Image4.ImageUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "?r=" + DateTime.Now.Ticks.ToString();
+                                            hlImage4.NavigateUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "?r=" + DateTime.Now.Ticks.ToString();
                                         }
                                         else
                                         {
@@ -5329,8 +5332,8 @@ namespace Capital_SKS.WebForms.Item
                                     case "5":
                                         if (!string.IsNullOrWhiteSpace(dtImage.Rows[m]["Image_Name"].ToString()))
                                         {
-                                            Image5.ImageUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "";
-                                            hlImage5.NavigateUrl = imagePath + dtImage.Rows[m]["Image_Name"];
+                                            Image5.ImageUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "?r=" + DateTime.Now.Ticks.ToString();
+                                            hlImage5.NavigateUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "?r=" + DateTime.Now.Ticks.ToString();
                                         }
                                         else
                                         {
@@ -5341,8 +5344,8 @@ namespace Capital_SKS.WebForms.Item
                                     case "6":
                                         if (!string.IsNullOrWhiteSpace(dtImage.Rows[m]["Image_Name"].ToString()))
                                         {
-                                            Image6.ImageUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "";
-                                            hlImage6.NavigateUrl = imagePath + dtImage.Rows[m]["Image_Name"];
+                                            Image6.ImageUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "?r=" + DateTime.Now.Ticks.ToString();
+                                            hlImage6.NavigateUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "?r=" + DateTime.Now.Ticks.ToString();
                                         }
                                         else
                                         {
@@ -5353,8 +5356,8 @@ namespace Capital_SKS.WebForms.Item
                                     case "7":
                                         if (!string.IsNullOrWhiteSpace(dtImage.Rows[m]["Image_Name"].ToString()))
                                         {
-                                            Image7.ImageUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "";
-                                            hlImage7.NavigateUrl = imagePath + dtImage.Rows[m]["Image_Name"];
+                                            Image7.ImageUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "?r=" + DateTime.Now.Ticks.ToString();
+                                            hlImage7.NavigateUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "?r=" + DateTime.Now.Ticks.ToString();
                                         }
                                         else
                                         {
@@ -5365,8 +5368,8 @@ namespace Capital_SKS.WebForms.Item
                                     case "8":
                                         if (!string.IsNullOrWhiteSpace(dtImage.Rows[m]["Image_Name"].ToString()))
                                         {
-                                            Image8.ImageUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "";
-                                            hlImage8.NavigateUrl = imagePath + dtImage.Rows[m]["Image_Name"];
+                                            Image8.ImageUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "?r=" + DateTime.Now.Ticks.ToString();
+                                            hlImage8.NavigateUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "?r=" + DateTime.Now.Ticks.ToString();
                                         }
                                         else
                                         {
@@ -5377,8 +5380,8 @@ namespace Capital_SKS.WebForms.Item
                                     case "9":
                                         if (!string.IsNullOrWhiteSpace(dtImage.Rows[m]["Image_Name"].ToString()))
                                         {
-                                            Image9.ImageUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "";
-                                            hlImage9.NavigateUrl = imagePath + dtImage.Rows[m]["Image_Name"];
+                                            Image9.ImageUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "?r=" + DateTime.Now.Ticks.ToString();
+                                            hlImage9.NavigateUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "?r=" + DateTime.Now.Ticks.ToString();
                                         }
                                         else
                                         {
@@ -5389,8 +5392,8 @@ namespace Capital_SKS.WebForms.Item
                                     case "10":
                                         if (!string.IsNullOrWhiteSpace(dtImage.Rows[m]["Image_Name"].ToString()))
                                         {
-                                            Image10.ImageUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "";
-                                            hlImage10.NavigateUrl = imagePath + dtImage.Rows[m]["Image_Name"];
+                                            Image10.ImageUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "?r=" + DateTime.Now.Ticks.ToString();
+                                            hlImage10.NavigateUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "?r=" + DateTime.Now.Ticks.ToString();
                                         }
                                         else
                                         {
@@ -5401,8 +5404,8 @@ namespace Capital_SKS.WebForms.Item
                                     case "11":
                                         if (!string.IsNullOrWhiteSpace(dtImage.Rows[m]["Image_Name"].ToString()))
                                         {
-                                            Image11.ImageUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "";
-                                            hlImage11.NavigateUrl = imagePath + dtImage.Rows[m]["Image_Name"];
+                                            Image11.ImageUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "?r=" + DateTime.Now.Ticks.ToString();
+                                            hlImage11.NavigateUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "?r=" + DateTime.Now.Ticks.ToString();
                                         }
                                         else
                                         {
@@ -5413,8 +5416,8 @@ namespace Capital_SKS.WebForms.Item
                                     case "12":
                                         if (!string.IsNullOrWhiteSpace(dtImage.Rows[m]["Image_Name"].ToString()))
                                         {
-                                            Image12.ImageUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "";
-                                            hlImage12.NavigateUrl = imagePath + dtImage.Rows[m]["Image_Name"];
+                                            Image12.ImageUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "?r=" + DateTime.Now.Ticks.ToString();
+                                            hlImage12.NavigateUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "?r=" + DateTime.Now.Ticks.ToString();
                                         }
                                         else
                                         {
@@ -5425,8 +5428,8 @@ namespace Capital_SKS.WebForms.Item
                                     case "13":
                                         if (!string.IsNullOrWhiteSpace(dtImage.Rows[m]["Image_Name"].ToString()))
                                         {
-                                            Image13.ImageUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "";
-                                            hlImage13.NavigateUrl = imagePath + dtImage.Rows[m]["Image_Name"];
+                                            Image13.ImageUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "?r=" + DateTime.Now.Ticks.ToString();
+                                            hlImage13.NavigateUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "?r=" + DateTime.Now.Ticks.ToString();
                                         }
                                         else
                                         {
@@ -5437,8 +5440,8 @@ namespace Capital_SKS.WebForms.Item
                                     case "14":
                                         if (!string.IsNullOrWhiteSpace(dtImage.Rows[m]["Image_Name"].ToString()))
                                         {
-                                            Image14.ImageUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "";
-                                            hlImage14.NavigateUrl = imagePath + dtImage.Rows[m]["Image_Name"];
+                                            Image14.ImageUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "?r=" + DateTime.Now.Ticks.ToString();
+                                            hlImage14.NavigateUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "?r=" + DateTime.Now.Ticks.ToString();
                                         }
                                         else
                                         {
@@ -5449,8 +5452,8 @@ namespace Capital_SKS.WebForms.Item
                                     case "15":
                                         if (!string.IsNullOrWhiteSpace(dtImage.Rows[m]["Image_Name"].ToString()))
                                         {
-                                            Image15.ImageUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "";
-                                            hlImage15.NavigateUrl = imagePath + dtImage.Rows[m]["Image_Name"];
+                                            Image15.ImageUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "?r=" + DateTime.Now.Ticks.ToString();
+                                            hlImage15.NavigateUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "?r=" + DateTime.Now.Ticks.ToString();
                                         }
                                         else
                                         {
@@ -5461,8 +5464,8 @@ namespace Capital_SKS.WebForms.Item
                                     case "16":
                                         if (!string.IsNullOrWhiteSpace(dtImage.Rows[m]["Image_Name"].ToString()))
                                         {
-                                            Image16.ImageUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "";
-                                            hlImage16.NavigateUrl = imagePath + dtImage.Rows[m]["Image_Name"];
+                                            Image16.ImageUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "?r=" + DateTime.Now.Ticks.ToString();
+                                            hlImage16.NavigateUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "?r=" + DateTime.Now.Ticks.ToString();
                                         }
                                         else
                                         {
@@ -5473,8 +5476,8 @@ namespace Capital_SKS.WebForms.Item
                                     case "17":
                                         if (!string.IsNullOrWhiteSpace(dtImage.Rows[m]["Image_Name"].ToString()))
                                         {
-                                            Image17.ImageUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "";
-                                            hlImage17.NavigateUrl = imagePath + dtImage.Rows[m]["Image_Name"];
+                                            Image17.ImageUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "?r=" + DateTime.Now.Ticks.ToString();
+                                            hlImage17.NavigateUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "?r=" + DateTime.Now.Ticks.ToString();
                                         }
                                         else
                                         {
@@ -5485,8 +5488,8 @@ namespace Capital_SKS.WebForms.Item
                                     case "18":
                                         if (!string.IsNullOrWhiteSpace(dtImage.Rows[m]["Image_Name"].ToString()))
                                         {
-                                            Image18.ImageUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "";
-                                            hlImage18.NavigateUrl = imagePath + dtImage.Rows[m]["Image_Name"];
+                                            Image18.ImageUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "?r=" + DateTime.Now.Ticks.ToString();
+                                            hlImage18.NavigateUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "?r=" + DateTime.Now.Ticks.ToString();
                                         }
                                         else
                                         {
@@ -5497,8 +5500,8 @@ namespace Capital_SKS.WebForms.Item
                                     case "19":
                                         if (!string.IsNullOrWhiteSpace(dtImage.Rows[m]["Image_Name"].ToString()))
                                         {
-                                            Image19.ImageUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "";
-                                            hlImage19.NavigateUrl = imagePath + dtImage.Rows[m]["Image_Name"];
+                                            Image19.ImageUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "?r=" + DateTime.Now.Ticks.ToString();
+                                            hlImage19.NavigateUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "?r=" + DateTime.Now.Ticks.ToString();
                                         }
                                         else
                                         {
@@ -5509,8 +5512,8 @@ namespace Capital_SKS.WebForms.Item
                                     case "20":
                                         if (!string.IsNullOrWhiteSpace(dtImage.Rows[m]["Image_Name"].ToString()))
                                         {
-                                            Image20.ImageUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "";
-                                            hlImage20.NavigateUrl = imagePath + dtImage.Rows[m]["Image_Name"];
+                                            Image20.ImageUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "?r=" + DateTime.Now.Ticks.ToString();
+                                            hlImage20.NavigateUrl = imagePath + dtImage.Rows[m]["Image_Name"] + "?r=" + DateTime.Now.Ticks.ToString();
                                         }
                                         else
                                         {

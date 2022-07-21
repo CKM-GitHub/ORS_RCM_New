@@ -2028,6 +2028,8 @@ namespace Capital_SKS.WebForms.Item
 
         public void SetMallCategoryData()
         {
+            string rakuten = null; string yahoo = null; string wowma = null; 
+            int countR = 0; int countY = 0;  int countW = 0;
             int rowIndex = 0;
             gvCatagories.DataSource = CategoryList;
             gvCatagories.DataBind();
@@ -2047,24 +2049,80 @@ namespace Capital_SKS.WebForms.Item
 
                 if (dt != null && dt.Rows.Count > 0)
                 {
-                    String id = (dt.Rows[0]["CID"]).ToString();
-
-                    if (dt.Rows.Count > 0)
+                    for (int i = 0; i < dt.Rows.Count; i++)
                     {
-                        DataTable driectdt = new DataTable();
-                        driectdt = catbl.Get_CategoryID(id);
-                        if (driectdt.Rows.Count > 0)
-                        {
-                            txtRakuten_CategoryID.Text = driectdt.Rows[0]["Rakutan_DirectoryID"].ToString();
-                            txtRakuten_CategoryPath.Text = driectdt.Rows[0]["Rakuten_CategoryName"].ToString();
-                            txtYahoo_CategoryID.Text = driectdt.Rows[0]["Yahoo_CategoryID"].ToString();
-                            txtYahoo_CategoryPath.Text = driectdt.Rows[0]["Yahoo_CategoryName"].ToString();
-                            txtWowma_CategoryID.Text = driectdt.Rows[0]["Wowma_CategoryID"].ToString();
-                            txtWowma_CategoryPath.Text = driectdt.Rows[0]["Wowma_CategoryName"].ToString();
+                        String id = (dt.Rows[i]["CID"]).ToString();
 
-                            //hhw
-                            //txtTennis_CategoryID.Text = driectdt.Rows[0]["Tennis_CategoryID"].ToString();
-                            //txtTennis_CategoryPath.Text = driectdt.Rows[0]["Tennis_CategoryName"].ToString();
+                        if (dt.Rows.Count > 0)
+                        {
+                            DataTable driectdt = new DataTable();
+                            driectdt = catbl.Get_CategoryID(id);
+                            if (driectdt.Rows.Count > 0)
+                            {
+                                string value = driectdt.Rows[0]["Rakutan_DirectoryID"].ToString();
+                                if (!String.IsNullOrEmpty(value))
+                                {
+                                    rakuten += value + ",";
+                                    string[] tokens = rakuten.Split(',');
+                                    countR += 1;
+                                    countR = tokens.Length - 1;
+                                    if (countR == 1)
+                                    {
+                                        txtRakuten_CategoryID.Text = driectdt.Rows[0]["Rakutan_DirectoryID"].ToString();
+                                        txtRakuten_CategoryPath.Text = driectdt.Rows[0]["Rakuten_CategoryName"].ToString();
+                                    }
+                                    else
+                                    {
+                                        txtRakuten_CategoryID.Text = String.Empty;
+                                        txtRakuten_CategoryPath.Text = String.Empty;
+                                    }
+                                }
+                                string value1 = driectdt.Rows[0]["Yahoo_CategoryID"].ToString();
+                                if (!String.IsNullOrEmpty(value1))
+                                {
+                                    yahoo += value1 + ",";
+                                    string[] tokens = yahoo.Split(',');
+                                    countY = tokens.Length - 1;
+                                    if (countY == 1)
+                                    {
+                                        txtYahoo_CategoryID.Text = driectdt.Rows[0]["Yahoo_CategoryID"].ToString();
+                                        txtYahoo_CategoryPath.Text = driectdt.Rows[0]["Yahoo_CategoryName"].ToString();
+
+                                    }
+                                    else
+                                    {
+                                        txtYahoo_CategoryID.Text = String.Empty;
+                                        txtYahoo_CategoryPath.Text = String.Empty;
+                                    }
+                                }
+                                string value3 = driectdt.Rows[0]["Wowma_CategoryID"].ToString();
+                                if (!String.IsNullOrEmpty(value3))
+                                {
+                                    wowma += value3 + ",";
+                                    string[] tokens = wowma.Split(',');
+                                    countW += tokens.Length - 1;
+                                    if (countW == 1)
+                                    {
+                                        txtWowma_CategoryID.Text = driectdt.Rows[0]["Wowma_CategoryID"].ToString();
+                                        txtWowma_CategoryPath.Text = driectdt.Rows[0]["Wowma_CategoryName"].ToString();
+                                    }
+                                    else
+                                    {
+                                        txtWowma_CategoryID.Text = String.Empty;
+                                        txtWowma_CategoryPath.Text = String.Empty;
+                                    }
+                                }
+                                //txtRakuten_CategoryID.Text = driectdt.Rows[0]["Rakutan_DirectoryID"].ToString();
+                                //txtRakuten_CategoryPath.Text = driectdt.Rows[0]["Rakuten_CategoryName"].ToString();
+                                //txtYahoo_CategoryID.Text = driectdt.Rows[0]["Yahoo_CategoryID"].ToString();
+                                //txtYahoo_CategoryPath.Text = driectdt.Rows[0]["Yahoo_CategoryName"].ToString();
+                                //txtWowma_CategoryID.Text = driectdt.Rows[0]["Wowma_CategoryID"].ToString();
+                                //txtWowma_CategoryPath.Text = driectdt.Rows[0]["Wowma_CategoryName"].ToString();
+
+                                //hhw
+                                //txtTennis_CategoryID.Text = driectdt.Rows[0]["Tennis_CategoryID"].ToString();
+                                //txtTennis_CategoryPath.Text = driectdt.Rows[0]["Tennis_CategoryName"].ToString();
+                            }
                         }
                     }
                 }

@@ -572,7 +572,7 @@ namespace Capital_SKS.WebForms.Item
                     {
                         txtItem_Code.Text = dt.Rows[0]["Item_Code"].ToString();
                         txtItem_Name.Text = dt.Rows[0]["Item_Name"].ToString();
-
+                        
                         DataTable dtskucolor = item.SelectSKUItemCode(dt.Rows[0]["Item_Code"].ToString()); //Select From Item Table
                         if (dtskucolor.Rows.Count > 0)
                         {
@@ -590,7 +590,68 @@ namespace Capital_SKS.WebForms.Item
                             rdb1.Checked = false;
                             rdb2.Checked = true;
                         }
+                        Image1.ImageUrl = imagePath + "no_image.jpg";
+                        Image2.ImageUrl = imagePath + "no_image.jpg";
+                        Image3.ImageUrl = imagePath + "no_image.jpg";
+                        Image4.ImageUrl = imagePath + "no_image.jpg";
+                        Image5.ImageUrl = imagePath + "no_image.jpg";
+                        Image6.ImageUrl = imagePath + "no_image.jpg";
+                        Image7.ImageUrl = imagePath + "no_image.jpg";
+                        Image8.ImageUrl = imagePath + "no_image.jpg";
+                        Image9.ImageUrl = imagePath + "no_image.jpg";
+                        Image10.ImageUrl = imagePath + "no_image.jpg";
+                        Image11.ImageUrl = imagePath + "no_image.jpg";
+                        Image12.ImageUrl = imagePath + "no_image.jpg";
+                        Image13.ImageUrl = imagePath + "no_image.jpg";
+                        Image14.ImageUrl = imagePath + "no_image.jpg";
+                        Image15.ImageUrl = imagePath + "no_image.jpg";
+                        Image16.ImageUrl = imagePath + "no_image.jpg";
+                        Image17.ImageUrl = imagePath + "no_image.jpg";
+                        Image18.ImageUrl = imagePath + "no_image.jpg";
+                        Image19.ImageUrl = imagePath + "no_image.jpg";
+                        Image20.ImageUrl = imagePath + "no_image.jpg";
 
+                        hlImage1.NavigateUrl = imagePath + "no_image.jpg";
+                        hlImage2.NavigateUrl = imagePath + "no_image.jpg";
+                        hlImage3.NavigateUrl = imagePath + "no_image.jpg";
+                        hlImage4.NavigateUrl = imagePath + "no_image.jpg";
+                        hlImage5.NavigateUrl = imagePath + "no_image.jpg";
+                        hlImage6.NavigateUrl = imagePath + "no_image.jpg";
+                        hlImage7.NavigateUrl = imagePath + "no_image.jpg";
+                        hlImage8.NavigateUrl = imagePath + "no_image.jpg";
+                        hlImage9.NavigateUrl = imagePath + "no_image.jpg";
+                        hlImage10.NavigateUrl = imagePath + "no_image.jpg";
+                        hlImage11.NavigateUrl = imagePath + "no_image.jpg";
+                        hlImage12.NavigateUrl = imagePath + "no_image.jpg";
+                        hlImage13.NavigateUrl = imagePath + "no_image.jpg";
+                        hlImage14.NavigateUrl = imagePath + "no_image.jpg";
+                        hlImage15.NavigateUrl = imagePath + "no_image.jpg";
+                        hlImage16.NavigateUrl = imagePath + "no_image.jpg";
+                        hlImage17.NavigateUrl = imagePath + "no_image.jpg";
+                        hlImage18.NavigateUrl = imagePath + "no_image.jpg";
+                        hlImage19.NavigateUrl = imagePath + "no_image.jpg";
+                        hlImage20.NavigateUrl = imagePath + "no_image.jpg";
+
+                        txtimg1.Text = "";
+                        txtimg2.Text = "";
+                        txtimg3.Text = "";
+                        txtimg4.Text = "";
+                        txtimg5.Text = "";
+                        txtimg6.Text = "";
+                        txtimg7.Text = "";
+                        txtimg8.Text = "";
+                        txtimg9.Text = "";
+                        txtimg10.Text = "";
+                        txtimg11.Text = "";
+                        txtimg12.Text = "";
+                        txtimg13.Text = "";
+                        txtimg14.Text = "";
+                        txtimg15.Text = "";
+                        txtimg16.Text = "";
+                        txtimg17.Text = "";
+                        txtimg18.Text = "";
+                        txtimg19.Text = "";
+                        txtimg20.Text = "";
                     }
                 }
             }

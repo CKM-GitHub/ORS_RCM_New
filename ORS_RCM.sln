@@ -65,6 +65,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Item_ImageAll_Backup_Consol
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Item_Image_Check_25server", "Item_Image_Check_25server\Item_Image_Check_25server.csproj", "{A5ED796A-B08F-4E92-AF5E-83982373570D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Item_Image_Copy_138server", "Item_Image_Copy_138server\Item_Image_Copy_138server.csproj", "{B58C9D89-C377-4A39-86F0-AD946111CFEA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -427,6 +429,22 @@ Global
 		{A5ED796A-B08F-4E92-AF5E-83982373570D}.Release|x64.Build.0 = Release|Any CPU
 		{A5ED796A-B08F-4E92-AF5E-83982373570D}.Release|x86.ActiveCfg = Release|Any CPU
 		{A5ED796A-B08F-4E92-AF5E-83982373570D}.Release|x86.Build.0 = Release|Any CPU
+		{B58C9D89-C377-4A39-86F0-AD946111CFEA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B58C9D89-C377-4A39-86F0-AD946111CFEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B58C9D89-C377-4A39-86F0-AD946111CFEA}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{B58C9D89-C377-4A39-86F0-AD946111CFEA}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{B58C9D89-C377-4A39-86F0-AD946111CFEA}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{B58C9D89-C377-4A39-86F0-AD946111CFEA}.Debug|x64.Build.0 = Debug|Any CPU
+		{B58C9D89-C377-4A39-86F0-AD946111CFEA}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{B58C9D89-C377-4A39-86F0-AD946111CFEA}.Debug|x86.Build.0 = Debug|Any CPU
+		{B58C9D89-C377-4A39-86F0-AD946111CFEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B58C9D89-C377-4A39-86F0-AD946111CFEA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B58C9D89-C377-4A39-86F0-AD946111CFEA}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{B58C9D89-C377-4A39-86F0-AD946111CFEA}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{B58C9D89-C377-4A39-86F0-AD946111CFEA}.Release|x64.ActiveCfg = Release|Any CPU
+		{B58C9D89-C377-4A39-86F0-AD946111CFEA}.Release|x64.Build.0 = Release|Any CPU
+		{B58C9D89-C377-4A39-86F0-AD946111CFEA}.Release|x86.ActiveCfg = Release|Any CPU
+		{B58C9D89-C377-4A39-86F0-AD946111CFEA}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

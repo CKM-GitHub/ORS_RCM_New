@@ -178,6 +178,7 @@ table td {
                                <span class="label label-md lbl greenlable lblrequired">商品番号</span>
                            </asp:Label>
                             <asp:TextBox CssClass="txtbox" ID="txtItem_Code"  runat="server" ReadOnly="true"></asp:TextBox>
+                                  <asp:HiddenField ID="lblItem_Code" runat="server" />
                               </div>
                               <div class="columnJanCD" >
                               <asp:Label  runat="server" Text="">
@@ -3094,7 +3095,7 @@ table td {
         params += ', scrollbars=yes';
         params += ', status=no';
         params += ', location=no';
-        var itemcode = document.getElementById("<%=txtItem_Code.ClientID %>").value;
+        var itemcode = document.getElementById("<%=lblItem_Code.ClientID %>").value;
         var retval = window.open('../Item/Mall_Category_Choice.aspx?Mall_ID=' + mallID + '&Item_Code=' + itemcode, window, params);
         var hidSourceID = document.getElementById("<%=CustomHiddenField.ClientID%>");
         hidSourceID.value = ctrl.id;
@@ -3357,7 +3358,7 @@ table td {
         params += ', scrollbars=yes';
         params += ', status=no';
         params += ', location=no';
-        var itemcode = document.getElementById("<%=txtItem_Code.ClientID %>").value;
+        var itemcode = document.getElementById("<%=lblItem_Code.ClientID %>").value;
         var hidderValue = document.getElementById("<%= txtYahoo_CategoryID.ClientID %>").value;
         var retval = window.open('../Item/Item_YahooSpecificValue.aspx?YahooMallCategoryID=' + hidderValue + '&Item_Code=' + itemcode, window, params);
         var hidSourceID = document.getElementById("<%=CustomHiddenField.ClientID%>");
@@ -3389,7 +3390,7 @@ table td {
         params += ', scrollbars=yes';
         params += ', status=no';
         params += ', location=no';
-        var itemcode = document.getElementById("<%=txtItem_Code.ClientID %>").value;
+        var itemcode = document.getElementById("<%=lblItem_Code.ClientID %>").value;
         var retval = window.open('../Item/PopupCatagoryList.aspx?Item_Code=' + itemcode, window, params);
         var hidSourceID = document.getElementById("<%=CustomHiddenField.ClientID%>");
         hidSourceID.value = ctrl.id;
@@ -3480,7 +3481,7 @@ table td {
         params += ', scrollbars=yes';       
         params += ', status=no';
         params += ', location=no';
-        var itemcode = document.getElementById("<%=txtItem_Code.ClientID %>").value;
+        var itemcode = document.getElementById("<%=lblItem_Code.ClientID %>").value;
         var retval = window.open('../Item/ShowRelatedProduct.aspx?Item_Code=' + itemcode, window, params);
         var hidSourceID = document.getElementById("<%=CustomHiddenField.ClientID%>");
         hidSourceID.value = ctrl.id;

@@ -4092,12 +4092,582 @@ table td {
     </script>
       <script type="text/javascript">
           function list_price_change(txt) {
-              var List_Price = txt.value.replace(/,/g, '');
-              document.getElementById("<%=txtList_Price.ClientID %>").value = numberWithCommas(List_Price);
+              var list_Price = txt.value.replace(/,/g, '');
+              document.getElementById("<%=txtList_Price.ClientID %>").value = numberWithCommas(list_Price);
+              
+              //new
+              var sale_Price = document.getElementById("<%=txtSale_Price.ClientID %>").value.replace(/,/g, '');
+              var cost = document.getElementById("<%=txtcost.ClientID %>").value.replace(/,/g, '');
+            //  var list_Price = document.getElementById("<%=txtList_Price.ClientID %>").value.replace(/,/g, '');
+              if (sale_Price.trim().length == 0) {
+                  sale_Price = 0;
+              }
+              if (cost.trim().length == 0) {
+                  cost = 0;
+              }
+              if (list_Price.trim().length == 0) {
+                  list_Price = 0;
+              }
+              var discount_rate = ((parseFloat(list_Price - sale_Price).toFixed(1) / parseFloat(list_Price).toFixed(1)) * 100).toFixed(1);
+              var profit_rate = ((parseFloat(sale_Price - cost).toFixed(1) / parseFloat(sale_Price).toFixed(1)) * 100).toFixed(1);
+              var cost_rate = ((parseFloat(cost).toFixed(1) / parseFloat(sale_Price).toFixed(1)) * 100).toFixed(1);
+              if (!isFinite(discount_rate)) {
+                  discount_rate = 0;
+              }
+              if (!isFinite(profit_rate)) {
+                  profit_rate = 0;
+              }
+              if (!isFinite(cost_rate)) {
+                  cost_rate = 0;
+              }
+              document.getElementById("<%=txtprofitrate.ClientID %>").value = profit_rate;
+              document.getElementById("<%=txtdiscountrate.ClientID %>").value = discount_rate;
+              document.getElementById("<%=txtcostrate.ClientID %>").value = cost_rate;
+              document.getElementById("<%=txtSale_Price.ClientID %>").value = numberWithCommas(sale_Price);
+
+
+              var JishaPrice = document.getElementById("<%=txtJishaPrice.ClientID %>").value.replace(/,/g, '');
+              var cost = document.getElementById("<%=txtcost.ClientID %>").value.replace(/,/g, '');
+             // var list_Price = document.getElementById("<%=txtList_Price.ClientID %>").value.replace(/,/g, '');
+              if (JishaPrice.trim().length == 0) {
+                  JishaPrice = 0;
+              }
+              if (cost.trim().length == 0) {
+                  cost = 0;
+              }
+              if (list_Price.trim().length == 0) {
+                  list_Price = 0;
+              }
+
+              var jisha_discount_rate = ((parseFloat(list_Price - JishaPrice).toFixed(1) / parseFloat(list_Price).toFixed(1)) * 100).toFixed(1);
+              var jisha_profit_rate = ((parseFloat(JishaPrice - cost).toFixed(1) / parseFloat(JishaPrice).toFixed(1)) * 100).toFixed(1);
+              var jisha_cost_rate = ((parseFloat(cost).toFixed(1) / parseFloat(JishaPrice).toFixed(1)) * 100).toFixed(1);
+              if (!isFinite(jisha_discount_rate)) {
+                  jisha_discount_rate = 0;
+              }
+              if (!isFinite(jisha_profit_rate)) {
+                  jisha_profit_rate = 0;
+
+              }
+              if (!isFinite(jisha_cost_rate)) {
+                  jisha_cost_rate = 0;
+              }
+
+              document.getElementById("<%=txtjishaProfitrate.ClientID %>").value = jisha_profit_rate;
+              document.getElementById("<%=txtjishaDiscountrate.ClientID %>").value = jisha_discount_rate;
+              document.getElementById("<%=txtjishaCostrate.ClientID %>").value = jisha_cost_rate;
+              document.getElementById("<%=txtJishaPrice.ClientID %>").value = numberWithCommas(JishaPrice);
+
+              var RakutenPrice = document.getElementById("<%=txtRakutenPrice.ClientID %>").value.replace(/,/g, '');
+              var cost = document.getElementById("<%=txtcost.ClientID %>").value.replace(/,/g, '');
+           //   var list_Price = document.getElementById("<%=txtList_Price.ClientID %>").value.replace(/,/g, '');
+              if (RakutenPrice.trim().length == 0) {
+                  RakutenPrice = 0;
+              }
+              if (cost.trim().length == 0) {
+                  cost = 0;
+              }
+              if (list_Price.trim().length == 0) {
+                  list_Price = 0;
+              }
+
+              var rakuten_discount_rate = ((parseFloat(list_Price - RakutenPrice).toFixed(1)/ parseFloat(list_Price).toFixed(1)) * 100).toFixed(1);
+              var rakuten_profit_rate = ((parseFloat(RakutenPrice - cost).toFixed(1) / parseFloat(RakutenPrice).toFixed(1)) * 100).toFixed(1);
+              var rakuten_cost_rate = ((parseFloat(cost).toFixed(1) / parseFloat(RakutenPrice).toFixed(1)) * 100).toFixed(1);
+              if (!isFinite(rakuten_discount_rate)) {
+                  rakuten_discount_rate = 0;
+              }
+              if (!isFinite(rakuten_profit_rate)) {
+                  rakuten_profit_rate = 0;
+              }
+              if (!isFinite(rakuten_cost_rate)) {
+                  rakuten_cost_rate = 0;
+              }
+              document.getElementById("<%=txtrakutenProfitrate.ClientID %>").value = rakuten_profit_rate;
+              document.getElementById("<%=txtrakutenDiscountrate.ClientID %>").value = rakuten_discount_rate;
+              document.getElementById("<%=txtrakutenCostrate.ClientID %>").value = rakuten_cost_rate;
+              document.getElementById("<%=txtRakutenPrice.ClientID %>").value = numberWithCommas(RakutenPrice);
+
+              var YahooPrice = document.getElementById("<%=txtYahooPrice.ClientID %>").value.replace(/,/g, '');
+              var cost = document.getElementById("<%=txtcost.ClientID %>").value.replace(/,/g, '');
+              //var list_Price = document.getElementById("<%=txtList_Price.ClientID %>").value.replace(/,/g, '');
+              if (YahooPrice.trim().length == 0) {
+                  YahooPrice = 0;
+              }
+              if (cost.trim().length == 0) {
+                  cost = 0;
+              }
+              if (list_Price.trim().length == 0) {
+                  list_Price = 0;
+              }
+
+              var yahoo_discount_rate = ((parseFloat(list_Price - YahooPrice).toFixed(1) / parseFloat(list_Price).toFixed(1)) * 100).toFixed(1);
+              var yahoo_profit_rate = ((parseFloat(YahooPrice - cost).toFixed(1) / parseFloat(YahooPrice).toFixed(1)) * 100).toFixed(1);
+              var yahoo_cost_rate = ((parseFloat(cost).toFixed(1) / parseFloat(YahooPrice).toFixed(1)) * 100).toFixed(1);
+              if (!isFinite(yahoo_discount_rate)) {
+                  yahoo_discount_rate = 0;
+              }
+              if (!isFinite(yahoo_profit_rate)) {
+                  yahoo_profit_rate = 0;
+              }
+              if (!isFinite(yahoo_cost_rate)) {
+                  yahoo_cost_rate = 0;
+              }
+
+              document.getElementById("<%=txtyahooProfitrate.ClientID %>").value = yahoo_profit_rate;
+              document.getElementById("<%=txtyahooDiscountrate.ClientID %>").value = yahoo_discount_rate;
+              document.getElementById("<%=txtyahooCostrate.ClientID %>").value = yahoo_cost_rate;
+              document.getElementById("<%=txtYahooPrice.ClientID %>").value = numberWithCommas(YahooPrice);
+
+              var WowmaPrice = document.getElementById("<%=txtWowmaPrice.ClientID %>").value.replace(/,/g, '');
+              var cost = document.getElementById("<%=txtcost.ClientID %>").value.replace(/,/g, '');
+              //var list_Price = document.getElementById("<%=txtList_Price.ClientID %>").value.replace(/,/g, '');
+              if (WowmaPrice.trim().length == 0) {
+                  WowmaPrice = 0;
+              }
+              if (cost.trim().length == 0) {
+                  cost = 0;
+              }
+              if (list_Price.trim().length == 0) {
+                  list_Price = 0;
+              }
+
+              var wowma_discount_rate = ((parseFloat(list_Price - WowmaPrice).toFixed(1) / parseFloat(list_Price).toFixed(1)) * 100).toFixed(1);
+              var wowma_profit_rate = ((parseFloat(WowmaPrice - cost).toFixed(1) / parseFloat(WowmaPrice).toFixed(1)) * 100).toFixed(1);
+              var wowma_cost_rate = ((parseFloat(cost).toFixed(1) / parseFloat(WowmaPrice).toFixed(1)) * 100).toFixed(1);
+              if (!isFinite(wowma_discount_rate)) {
+                  wowma_discount_rate = 0;
+              }
+              if (!isFinite(wowma_profit_rate)) {
+                  wowma_profit_rate = 0;
+              }
+              if (!isFinite(wowma_cost_rate)) {
+                  wowma_cost_rate = 0;
+              }
+
+              document.getElementById("<%=txtwowmaProfitrate.ClientID %>").value = wowma_profit_rate;
+              document.getElementById("<%=txtwowmaDiscountrate.ClientID %>").value = wowma_discount_rate;
+              document.getElementById("<%=txtwowmaCostrate.ClientID %>").value = wowma_cost_rate;
+              document.getElementById("<%=txtWowmaPrice.ClientID %>").value = numberWithCommas(WowmaPrice);
+
+
+              var MonotaroPrice = document.getElementById("<%=txtmonoprice.ClientID %>").value.replace(/,/g, '');
+              var cost = document.getElementById("<%=txtcost.ClientID %>").value.replace(/,/g, '');
+             // var list_Price = document.getElementById("<%=txtList_Price.ClientID %>").value.replace(/,/g, '');
+              if (MonotaroPrice.trim().length == 0) {
+                  MonotaroPrice = 0;
+              }
+              if (cost.trim().length == 0) {
+                  cost = 0;
+              }
+              if (list_Price.trim().length == 0) {
+                  list_Price = 0;
+              }
+
+              var monotaro_discount_rate = ((parseFloat(list_Price - MonotaroPrice).toFixed(1) / parseFloat(list_Price).toFixed(1)) * 100).toFixed(1);
+              var monotaro_profit_rate = ((parseFloat(MonotaroPrice - cost).toFixed(1) / parseFloat(MonotaroPrice).toFixed(1)) * 100).toFixed(1);
+              var monotaro_cost_rate = ((parseFloat(cost).toFixed(1) / parseFloat(MonotaroPrice).toFixed(1)) * 100).toFixed(1);
+              if (!isFinite(monotaro_discount_rate)) {
+                  monotaro_discount_rate = 0;
+              }
+              if (!isFinite(monotaro_profit_rate)) {
+                  monotaro_profit_rate = 0;
+              }
+              if (!isFinite(monotaro_cost_rate)) {
+                  monotaro_cost_rate = 0;
+              }
+
+              document.getElementById("<%=txtmonoprice_profitrate.ClientID %>").value = monotaro_profit_rate;
+              document.getElementById("<%=txtmonoprice_discountrate.ClientID %>").value = monotaro_discount_rate;
+              document.getElementById("<%=txtmonoprice_costrate.ClientID %>").value = monotaro_cost_rate;
+              document.getElementById("<%=txtmonoprice.ClientID %>").value = numberWithCommas(MonotaroPrice);
+
+              var DaitoPrice = document.getElementById("<%=txtditeprice.ClientID %>").value.replace(/,/g, '');
+              var cost = document.getElementById("<%=txtcost.ClientID %>").value.replace(/,/g, '');
+              //var list_Price = document.getElementById("<%=txtList_Price.ClientID %>").value.replace(/,/g, '');
+              if (DaitoPrice.trim().length == 0) {
+                  DaitoPrice = 0;
+              }
+              if (cost.trim().length == 0) {
+                  cost = 0;
+              }
+              if (list_Price.trim().length == 0) {
+                  list_Price = 0;
+              }
+
+              var dite_discount_rate = ((parseFloat(list_Price - DaitoPrice).toFixed(1) / parseFloat(list_Price).toFixed(1)) * 100).toFixed(1);
+              var dite_profit_rate = ((parseFloat(DaitoPrice - cost).toFixed(1) / parseFloat(DaitoPrice).toFixed(1)) * 100).toFixed(1);
+              var dite_cost_rate = ((parseFloat(cost).toFixed(1) / parseFloat(DaitoPrice).toFixed(1)) * 100).toFixed(1);
+              if (!isFinite(dite_discount_rate)) {
+                  dite_discount_rate = 0;
+
+              }
+              if (!isFinite(dite_profit_rate)) {
+                  dite_profit_rate =0;
+
+              }
+              if (!isFinite(dite_cost_rate)) {
+                  dite_cost_rate = 0;
+              }
+
+              document.getElementById("<%=txtditeprice_profitrate.ClientID %>").value = dite_profit_rate;
+              document.getElementById("<%=txtditeprice_discountrate.ClientID %>").value = dite_discount_rate;
+              document.getElementById("<%=txtditeprice_costrate.ClientID %>").value = dite_cost_rate;
+              document.getElementById("<%=txtditeprice.ClientID %>").value = numberWithCommas(DaitoPrice);
+
+
+              var JapanMotorPrice = document.getElementById("<%=txtjapanmprice.ClientID %>").value.replace(/,/g, '');
+              var cost = document.getElementById("<%=txtcost.ClientID %>").value.replace(/,/g, '');
+             // var list_Price = document.getElementById("<%=txtList_Price.ClientID %>").value.replace(/,/g, '');
+              if (JapanMotorPrice.trim().length == 0) {
+                  JapanMotorPrice = 0;
+              }
+              if (cost.trim().length == 0) {
+                  cost = 0;
+              }
+              if (list_Price.trim().length == 0) {
+                  list_Price = 0;
+              }
+
+              var japanm_discount_rate = ((parseFloat(list_Price - JapanMotorPrice).toFixed(1) / parseFloat(list_Price).toFixed(1)) * 100).toFixed(1);
+              var japanm_profit_rate = ((parseFloat(JapanMotorPrice - cost).toFixed(1) / parseFloat(JapanMotorPrice).toFixed(1)) * 100).toFixed(1);
+              var japanm_cost_rate = ((parseFloat(cost).toFixed(1) / parseFloat(JapanMotorPrice)) * 100).toFixed(1);
+              if (!isFinite(japanm_discount_rate)) {
+                  japanm_discount_rate = 0;
+              }
+              if (!isFinite(japanm_profit_rate)) {
+                  japanm_profit_rate = 0;
+              }
+              if (!isFinite(japanm_cost_rate)) {
+                  japanm_cost_rate = 0;
+              }
+
+              document.getElementById("<%=txtjapanmprice_profitrate.ClientID %>").value = japanm_profit_rate;
+              document.getElementById("<%=txtjapanmprice_discountrate.ClientID %>").value = japanm_discount_rate;
+              document.getElementById("<%=txtjapanmprice_costrate.ClientID %>").value = japanm_cost_rate;
+              document.getElementById("<%=txtjapanmprice.ClientID %>").value = numberWithCommas(JapanMotorPrice);
+
+
+              var KashiwagiPrice = document.getElementById("<%=txtkashiwagi.ClientID %>").value.replace(/,/g, '');
+              var cost = document.getElementById("<%=txtcost.ClientID %>").value.replace(/,/g, '');
+             // var list_Price = document.getElementById("<%=txtList_Price.ClientID %>").value.replace(/,/g, '');
+              if (KashiwagiPrice.trim().length == 0) {
+                  KashiwagiPrice = 0;
+              }
+              if (cost.trim().length == 0) {
+                  cost = 0;
+              }
+              if (list_Price.trim().length == 0) {
+                  list_Price = 0;
+              }
+
+              var kashiwagi_discount_rate = ((parseFloat(list_Price - KashiwagiPrice).toFixed(1) / parseFloat(list_Price).toFixed(1)) * 100).toFixed(1);
+              var kashiwagi_profit_rate = ((parseFloat(KashiwagiPrice - cost).toFixed(1) / parseFloat(KashiwagiPrice).toFixed(1)) * 100).toFixed(1);
+              var kashiwagi_cost_rate = ((parseFloat(cost).toFixed(1) / parseFloat(KashiwagiPrice).toFixed(1)) * 100).toFixed(1);
+              if (!isFinite(kashiwagi_discount_rate)) {
+                  kashiwagi_discount_rate = 0;
+              }
+              if (!isFinite(kashiwagi_profit_rate)) {
+                  kashiwagi_profit_rate = 0;
+              }
+              if (!isFinite(kashiwagi_cost_rate)) {
+                  kashiwagi_cost_rate = 0;
+              }
+
+              document.getElementById("<%=txtkashiwagi_profitrate.ClientID %>").value = kashiwagi_profit_rate;
+              document.getElementById("<%=txtkashiwagi_discountrate.ClientID %>").value = kashiwagi_discount_rate;
+              document.getElementById("<%=txtkashiwagi_costrate.ClientID %>").value = kashiwagi_cost_rate;
+              document.getElementById("<%=txtkashiwagi.ClientID %>").value = numberWithCommas(KashiwagiPrice);
+              //finish
           }
           function cost_change(txt) {
               var cost = txt.value.replace(/,/g, '');
               document.getElementById("<%=txtcost.ClientID %>").value = numberWithCommas(cost);
+
+              //new
+              var sale_Price = document.getElementById("<%=txtSale_Price.ClientID %>").value.replace(/,/g, '');
+             // var cost = document.getElementById("<%=txtcost.ClientID %>").value.replace(/,/g, '');
+              var list_Price = document.getElementById("<%=txtList_Price.ClientID %>").value.replace(/,/g, '');
+              if (sale_Price.trim().length == 0) {
+                  sale_Price = 0;
+              }
+              if (cost.trim().length == 0) {
+                  cost = 0;
+              }
+              if (list_Price.trim().length == 0) {
+                  list_Price = 0;
+              }
+              var discount_rate = ((parseFloat(list_Price - sale_Price).toFixed(1) / parseFloat(list_Price).toFixed(1)) * 100).toFixed(1);
+              var profit_rate = ((parseFloat(sale_Price - cost).toFixed(1) / parseFloat(sale_Price).toFixed(1)) * 100).toFixed(1);
+              var cost_rate = ((parseFloat(cost).toFixed(1) / parseFloat(sale_Price).toFixed(1)) * 100).toFixed(1);
+              if (!isFinite(discount_rate)) {
+                  discount_rate = 0;
+              }
+              if (!isFinite(profit_rate)) {
+                  profit_rate = 0;
+              }
+              if (!isFinite(cost_rate)) {
+                  cost_rate = 0;
+              }
+              document.getElementById("<%=txtprofitrate.ClientID %>").value = profit_rate;
+              document.getElementById("<%=txtdiscountrate.ClientID %>").value = discount_rate;
+              document.getElementById("<%=txtcostrate.ClientID %>").value = cost_rate;
+              document.getElementById("<%=txtSale_Price.ClientID %>").value = numberWithCommas(sale_Price);
+
+
+              var JishaPrice = document.getElementById("<%=txtJishaPrice.ClientID %>").value.replace(/,/g, '');
+             // var cost = document.getElementById("<%=txtcost.ClientID %>").value.replace(/,/g, '');
+              var list_Price = document.getElementById("<%=txtList_Price.ClientID %>").value.replace(/,/g, '');
+              if (JishaPrice.trim().length == 0) {
+                  JishaPrice = 0;
+              }
+              if (cost.trim().length == 0) {
+                  cost = 0;
+              }
+              if (list_Price.trim().length == 0) {
+                  list_Price = 0;
+              }
+
+              var jisha_discount_rate = ((parseFloat(list_Price - JishaPrice).toFixed(1) / parseFloat(list_Price).toFixed(1)) * 100).toFixed(1);
+              var jisha_profit_rate = ((parseFloat(JishaPrice - cost).toFixed(1) / parseFloat(JishaPrice).toFixed(1)) * 100).toFixed(1);
+              var jisha_cost_rate = ((parseFloat(cost).toFixed(1) / parseFloat(JishaPrice).toFixed(1)) * 100).toFixed(1);
+              if (!isFinite(jisha_discount_rate)) {
+                  jisha_discount_rate = 0;
+              }
+              if (!isFinite(jisha_profit_rate)) {
+                  jisha_profit_rate = 0;
+
+              }
+              if (!isFinite(jisha_cost_rate)) {
+                  jisha_cost_rate = 0;
+              }
+
+              document.getElementById("<%=txtjishaProfitrate.ClientID %>").value = jisha_profit_rate;
+              document.getElementById("<%=txtjishaDiscountrate.ClientID %>").value = jisha_discount_rate;
+              document.getElementById("<%=txtjishaCostrate.ClientID %>").value = jisha_cost_rate;
+              document.getElementById("<%=txtJishaPrice.ClientID %>").value = numberWithCommas(JishaPrice);
+
+              var RakutenPrice = document.getElementById("<%=txtRakutenPrice.ClientID %>").value.replace(/,/g, '');
+             // var cost = document.getElementById("<%=txtcost.ClientID %>").value.replace(/,/g, '');
+              var list_Price = document.getElementById("<%=txtList_Price.ClientID %>").value.replace(/,/g, '');
+              if (RakutenPrice.trim().length == 0) {
+                  RakutenPrice = 0;
+              }
+              if (cost.trim().length == 0) {
+                  cost = 0;
+              }
+              if (list_Price.trim().length == 0) {
+                  list_Price = 0;
+              }
+
+              var rakuten_discount_rate = ((parseFloat(list_Price - RakutenPrice).toFixed(1)/ parseFloat(list_Price).toFixed(1)) * 100).toFixed(1);
+              var rakuten_profit_rate = ((parseFloat(RakutenPrice - cost).toFixed(1) / parseFloat(RakutenPrice).toFixed(1)) * 100).toFixed(1);
+              var rakuten_cost_rate = ((parseFloat(cost).toFixed(1) / parseFloat(RakutenPrice).toFixed(1)) * 100).toFixed(1);
+              if (!isFinite(rakuten_discount_rate)) {
+                  rakuten_discount_rate = 0;
+              }
+              if (!isFinite(rakuten_profit_rate)) {
+                  rakuten_profit_rate = 0;
+              }
+              if (!isFinite(rakuten_cost_rate)) {
+                  rakuten_cost_rate = 0;
+              }
+              document.getElementById("<%=txtrakutenProfitrate.ClientID %>").value = rakuten_profit_rate;
+              document.getElementById("<%=txtrakutenDiscountrate.ClientID %>").value = rakuten_discount_rate;
+              document.getElementById("<%=txtrakutenCostrate.ClientID %>").value = rakuten_cost_rate;
+              document.getElementById("<%=txtRakutenPrice.ClientID %>").value = numberWithCommas(RakutenPrice);
+
+              var YahooPrice = document.getElementById("<%=txtYahooPrice.ClientID %>").value.replace(/,/g, '');
+              var cost = document.getElementById("<%=txtcost.ClientID %>").value.replace(/,/g, '');
+              //var list_Price = document.getElementById("<%=txtList_Price.ClientID %>").value.replace(/,/g, '');
+              if (YahooPrice.trim().length == 0) {
+                  YahooPrice = 0;
+              }
+              if (cost.trim().length == 0) {
+                  cost = 0;
+              }
+              if (list_Price.trim().length == 0) {
+                  list_Price = 0;
+              }
+
+              var yahoo_discount_rate = ((parseFloat(list_Price - YahooPrice).toFixed(1) / parseFloat(list_Price).toFixed(1)) * 100).toFixed(1);
+              var yahoo_profit_rate = ((parseFloat(YahooPrice - cost).toFixed(1) / parseFloat(YahooPrice).toFixed(1)) * 100).toFixed(1);
+              var yahoo_cost_rate = ((parseFloat(cost).toFixed(1) / parseFloat(YahooPrice).toFixed(1)) * 100).toFixed(1);
+              if (!isFinite(yahoo_discount_rate)) {
+                  yahoo_discount_rate = 0;
+              }
+              if (!isFinite(yahoo_profit_rate)) {
+                  yahoo_profit_rate = 0;
+              }
+              if (!isFinite(yahoo_cost_rate)) {
+                  yahoo_cost_rate = 0;
+              }
+
+              document.getElementById("<%=txtyahooProfitrate.ClientID %>").value = yahoo_profit_rate;
+              document.getElementById("<%=txtyahooDiscountrate.ClientID %>").value = yahoo_discount_rate;
+              document.getElementById("<%=txtyahooCostrate.ClientID %>").value = yahoo_cost_rate;
+              document.getElementById("<%=txtYahooPrice.ClientID %>").value = numberWithCommas(YahooPrice);
+
+              var WowmaPrice = document.getElementById("<%=txtWowmaPrice.ClientID %>").value.replace(/,/g, '');
+              var cost = document.getElementById("<%=txtcost.ClientID %>").value.replace(/,/g, '');
+              //var list_Price = document.getElementById("<%=txtList_Price.ClientID %>").value.replace(/,/g, '');
+              if (WowmaPrice.trim().length == 0) {
+                  WowmaPrice = 0;
+              }
+              if (cost.trim().length == 0) {
+                  cost = 0;
+              }
+              if (list_Price.trim().length == 0) {
+                  list_Price = 0;
+              }
+
+              var wowma_discount_rate = ((parseFloat(list_Price - WowmaPrice).toFixed(1) / parseFloat(list_Price).toFixed(1)) * 100).toFixed(1);
+              var wowma_profit_rate = ((parseFloat(WowmaPrice - cost).toFixed(1) / parseFloat(WowmaPrice).toFixed(1)) * 100).toFixed(1);
+              var wowma_cost_rate = ((parseFloat(cost).toFixed(1) / parseFloat(WowmaPrice).toFixed(1)) * 100).toFixed(1);
+              if (!isFinite(wowma_discount_rate)) {
+                  wowma_discount_rate = 0;
+              }
+              if (!isFinite(wowma_profit_rate)) {
+                  wowma_profit_rate = 0;
+              }
+              if (!isFinite(wowma_cost_rate)) {
+                  wowma_cost_rate = 0;
+              }
+
+              document.getElementById("<%=txtwowmaProfitrate.ClientID %>").value = wowma_profit_rate;
+              document.getElementById("<%=txtwowmaDiscountrate.ClientID %>").value = wowma_discount_rate;
+              document.getElementById("<%=txtwowmaCostrate.ClientID %>").value = wowma_cost_rate;
+              document.getElementById("<%=txtWowmaPrice.ClientID %>").value = numberWithCommas(WowmaPrice);
+
+
+              var MonotaroPrice = document.getElementById("<%=txtmonoprice.ClientID %>").value.replace(/,/g, '');
+              //var cost = document.getElementById("<%=txtcost.ClientID %>").value.replace(/,/g, '');
+              var list_Price = document.getElementById("<%=txtList_Price.ClientID %>").value.replace(/,/g, '');
+              if (MonotaroPrice.trim().length == 0) {
+                  MonotaroPrice = 0;
+              }
+              if (cost.trim().length == 0) {
+                  cost = 0;
+              }
+              if (list_Price.trim().length == 0) {
+                  list_Price = 0;
+              }
+
+              var monotaro_discount_rate = ((parseFloat(list_Price - MonotaroPrice).toFixed(1) / parseFloat(list_Price).toFixed(1)) * 100).toFixed(1);
+              var monotaro_profit_rate = ((parseFloat(MonotaroPrice - cost).toFixed(1) / parseFloat(MonotaroPrice).toFixed(1)) * 100).toFixed(1);
+              var monotaro_cost_rate = ((parseFloat(cost).toFixed(1) / parseFloat(MonotaroPrice).toFixed(1)) * 100).toFixed(1);
+              if (!isFinite(monotaro_discount_rate)) {
+                  monotaro_discount_rate = 0;
+              }
+              if (!isFinite(monotaro_profit_rate)) {
+                  monotaro_profit_rate = 0;
+              }
+              if (!isFinite(monotaro_cost_rate)) {
+                  monotaro_cost_rate = 0;
+              }
+
+              document.getElementById("<%=txtmonoprice_profitrate.ClientID %>").value = monotaro_profit_rate;
+              document.getElementById("<%=txtmonoprice_discountrate.ClientID %>").value = monotaro_discount_rate;
+              document.getElementById("<%=txtmonoprice_costrate.ClientID %>").value = monotaro_cost_rate;
+              document.getElementById("<%=txtmonoprice.ClientID %>").value = numberWithCommas(MonotaroPrice);
+
+              var DaitoPrice = document.getElementById("<%=txtditeprice.ClientID %>").value.replace(/,/g, '');
+              //var cost = document.getElementById("<%=txtcost.ClientID %>").value.replace(/,/g, '');
+              var list_Price = document.getElementById("<%=txtList_Price.ClientID %>").value.replace(/,/g, '');
+              if (DaitoPrice.trim().length == 0) {
+                  DaitoPrice = 0;
+              }
+              if (cost.trim().length == 0) {
+                  cost = 0;
+              }
+              if (list_Price.trim().length == 0) {
+                  list_Price = 0;
+              }
+
+              var dite_discount_rate = ((parseFloat(list_Price - DaitoPrice).toFixed(1) / parseFloat(list_Price).toFixed(1)) * 100).toFixed(1);
+              var dite_profit_rate = ((parseFloat(DaitoPrice - cost).toFixed(1) / parseFloat(DaitoPrice).toFixed(1)) * 100).toFixed(1);
+              var dite_cost_rate = ((parseFloat(cost).toFixed(1) / parseFloat(DaitoPrice).toFixed(1)) * 100).toFixed(1);
+              if (!isFinite(dite_discount_rate)) {
+                  dite_discount_rate = 0;
+
+              }
+              if (!isFinite(dite_profit_rate)) {
+                  dite_profit_rate =0;
+
+              }
+              if (!isFinite(dite_cost_rate)) {
+                  dite_cost_rate = 0;
+              }
+
+              document.getElementById("<%=txtditeprice_profitrate.ClientID %>").value = dite_profit_rate;
+              document.getElementById("<%=txtditeprice_discountrate.ClientID %>").value = dite_discount_rate;
+              document.getElementById("<%=txtditeprice_costrate.ClientID %>").value = dite_cost_rate;
+              document.getElementById("<%=txtditeprice.ClientID %>").value = numberWithCommas(DaitoPrice);
+
+
+              var JapanMotorPrice = document.getElementById("<%=txtjapanmprice.ClientID %>").value.replace(/,/g, '');
+              //var cost = document.getElementById("<%=txtcost.ClientID %>").value.replace(/,/g, '');
+              var list_Price = document.getElementById("<%=txtList_Price.ClientID %>").value.replace(/,/g, '');
+              if (JapanMotorPrice.trim().length == 0) {
+                  JapanMotorPrice = 0;
+              }
+              if (cost.trim().length == 0) {
+                  cost = 0;
+              }
+              if (list_Price.trim().length == 0) {
+                  list_Price = 0;
+              }
+
+              var japanm_discount_rate = ((parseFloat(list_Price - JapanMotorPrice).toFixed(1) / parseFloat(list_Price).toFixed(1)) * 100).toFixed(1);
+              var japanm_profit_rate = ((parseFloat(JapanMotorPrice - cost).toFixed(1) / parseFloat(JapanMotorPrice).toFixed(1)) * 100).toFixed(1);
+              var japanm_cost_rate = ((parseFloat(cost).toFixed(1) / parseFloat(JapanMotorPrice)) * 100).toFixed(1);
+              if (!isFinite(japanm_discount_rate)) {
+                  japanm_discount_rate = 0;
+              }
+              if (!isFinite(japanm_profit_rate)) {
+                  japanm_profit_rate = 0;
+              }
+              if (!isFinite(japanm_cost_rate)) {
+                  japanm_cost_rate = 0;
+              }
+
+              document.getElementById("<%=txtjapanmprice_profitrate.ClientID %>").value = japanm_profit_rate;
+              document.getElementById("<%=txtjapanmprice_discountrate.ClientID %>").value = japanm_discount_rate;
+              document.getElementById("<%=txtjapanmprice_costrate.ClientID %>").value = japanm_cost_rate;
+              document.getElementById("<%=txtjapanmprice.ClientID %>").value = numberWithCommas(JapanMotorPrice);
+
+
+              var KashiwagiPrice = document.getElementById("<%=txtkashiwagi.ClientID %>").value.replace(/,/g, '');
+             // var cost = document.getElementById("<%=txtcost.ClientID %>").value.replace(/,/g, '');
+              var list_Price = document.getElementById("<%=txtList_Price.ClientID %>").value.replace(/,/g, '');
+              if (KashiwagiPrice.trim().length == 0) {
+                  KashiwagiPrice = 0;
+              }
+              if (cost.trim().length == 0) {
+                  cost = 0;
+              }
+              if (list_Price.trim().length == 0) {
+                  list_Price = 0;
+              }
+
+              var kashiwagi_discount_rate = ((parseFloat(list_Price - KashiwagiPrice).toFixed(1) / parseFloat(list_Price).toFixed(1)) * 100).toFixed(1);
+              var kashiwagi_profit_rate = ((parseFloat(KashiwagiPrice - cost).toFixed(1) / parseFloat(KashiwagiPrice).toFixed(1)) * 100).toFixed(1);
+              var kashiwagi_cost_rate = ((parseFloat(cost).toFixed(1) / parseFloat(KashiwagiPrice).toFixed(1)) * 100).toFixed(1);
+              if (!isFinite(kashiwagi_discount_rate)) {
+                  kashiwagi_discount_rate = 0;
+              }
+              if (!isFinite(kashiwagi_profit_rate)) {
+                  kashiwagi_profit_rate = 0;
+              }
+              if (!isFinite(kashiwagi_cost_rate)) {
+                  kashiwagi_cost_rate = 0;
+              }
+
+              document.getElementById("<%=txtkashiwagi_profitrate.ClientID %>").value = kashiwagi_profit_rate;
+              document.getElementById("<%=txtkashiwagi_discountrate.ClientID %>").value = kashiwagi_discount_rate;
+              document.getElementById("<%=txtkashiwagi_costrate.ClientID %>").value = kashiwagi_cost_rate;
+              document.getElementById("<%=txtkashiwagi.ClientID %>").value = numberWithCommas(KashiwagiPrice);
+              //finish
           }
       </script>
 

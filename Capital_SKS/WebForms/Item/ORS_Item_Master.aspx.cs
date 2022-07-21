@@ -6551,6 +6551,7 @@ namespace Capital_SKS.WebForms.Item
             {
                 hdfCtrl_ID.Value = ime.Ctrl_ID;
                 txtItem_Code.Text = ime.Item_Code;
+                lblItem_Code.Value = ime.Item_Code;
                 txtItem_Name.Text = ime.Item_Name;
                 txtJanCD.Text = ime.JanCode;
                 txtmemo.Text = ime.Memo;
